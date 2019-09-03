@@ -10,8 +10,8 @@ session_start();
 	if (!empty($password) && !empty($email))
 	{
 
-		$result123 = mysqli_query($mysqliL, "SELECT apellidos_usuario,rol,id_usuario,nick,ruta,nombre_usuario,activo,correo_general, contra
-	    FROM usu_me WHERE correo_general = '$email' and contra='$password' and activo='si'");
+		$result123 = mysqli_query($mysqliL, "SELECT apellidos_usuario,rol,id_usuario,nick,nombre_usuario,activo,correo_general, contra
+	    FROM usu_me WHERE correo_general = '$email' and contra='$password' and activo=1");
 
 
 			$rowwe = mysqli_fetch_assoc($result123);
@@ -20,17 +20,16 @@ session_start();
   $contra = $rowwe['contra'];
   $id_usuario = $rowwe['id_usuario'];
   $nombre_usuario = $rowwe['nombre_usuario'];
-	  $ruta = $rowwe['ruta'];
 $rol = $rowwe['rol'];
 	    $total=$result123->num_rows;
 
 	    if($total==0){
 
-	      header('Location: index.php?error=1');
+	  //    header('Location: index.php?error=1');
 	    }
 			else{
 
-
+echo "ando qui";
 				$sql11 = "INSERT INTO bitacora_ingreso
 				  (id_u,fecha_ingreso)
 				  VALUES
@@ -41,14 +40,13 @@ $rol = $rowwe['rol'];
 				              $resultaq123 = $mysqliL->query($sql11);
 
 
-											if ($contra!='' & $activo=='si' & $correo_general!='') {
+											if ($contra!='' & $activo=='1' & $correo_general!='') {
 
 												$_SESSION['loggedin'] = true;
 												$_SESSION['nick'] = $rowwe['nick'];
 										 $_SESSION['id_usuario'] = $rowwe['id_usuario'];
 $_SESSION['correo_general'] = $rowwe['correo_general'];
  $_SESSION['nombre_usuario'] = $rowwe['nombre_usuario'];
- $_SESSION['ruta'] = $rowwe['ruta'];
 $_SESSION['nick'] = $rowwe['nick'];
 $_SESSION['rol'] = $rowwe['rol'];
 $_SESSION['apellidos_usuario'] = $rowwe['apellidos_usuario'];

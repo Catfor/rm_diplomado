@@ -60,9 +60,28 @@
 ============================================ -->
 <script src="../js/main.js"></script>
 
-
+<script src="../js/datapicker/bootstrap-datepicker.js"></script>
+<script src="../js/datapicker/datepicker-active.js"></script>
+<!-- bootstrap select JS
+============================================ -->
+<script src="../js/bootstrap-select/bootstrap-select.js"></script>
+<!--  color-picker JS
+============================================ -->
+<script src="../js/color-picker/farbtastic.min.js"></script>
+<script src="../js/color-picker/color-picker.js"></script>
+<!--  notification JS
+============================================ -->
+<script src="../js/notification/bootstrap-growl.min.js"></script>
+<script src="../js/notification/notification-active.js"></script>
+<!--  summernote JS
+============================================ -->
+<script src="../js/summernote/summernote-updated.min.js"></script>
+<script src="../js/summernote/summernote-active.js"></script>
+<!-- dropzone JS
+============================================ -->
+<script src="../js/dropzone/dropzone.js"></script>
 <!-- bootstrap JS
 ============================================ -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 <!-- tawk chat JS
 ============================================ -->

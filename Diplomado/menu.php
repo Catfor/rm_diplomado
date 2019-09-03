@@ -23,8 +23,11 @@ echo "
 
 ";
 
-                echo "     <li><a  href='123.php'><i class='notika-icon notika-form'></i> Alta Paciente</a>
-                    </li> <li><a  href='alta.php'><i class='notika-icon notika-windows'></i> Pendiente Atencion Medica</a>
+                echo "     <li><a  href='alta_paciente.php'><i class='notika-icon notika-form'></i> Alta Paciente</a>
+                    </li>
+                    <li><a  href='consulta_paciente.php'><i class='notika-icon notika-form'></i>Conuslta Pacientes</a>
+                      </li>
+                     <li><a  href='for_atencionmedica.php'><i class='notika-icon notika-windows'></i> Pendiente Atencion Medica</a>
                     </li>
                     <li><a href='resultados.php'><i class='notika-icon notika-form'></i> Resultado Patologia</a>
                     </li>

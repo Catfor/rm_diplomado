@@ -29,7 +29,9 @@
           </div>    </div>  </div>
         </div>
     </div>
-    <?php include('css.php');  ?>
+    <?php
+     include('css.php');
+       ?>
 
 
 </head>
@@ -44,7 +46,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
       $nick=$_SESSION['nick'];
          $correo_general=$_SESSION['correo_general'];
             $nombre_usuario=ucwords($_SESSION['nombre_usuario']);
-               $ruta=$_SESSION['ruta'];
                      $rol=$_SESSION['rol'];
                       $apellidos_usuario=ucwords($_SESSION['apellidos_usuario']);
 
@@ -166,14 +167,9 @@ include('menu.php');
                     <div class="contact-list">
                         <div class="contact-win">
                             <div class="contact-img">
-                              <?php
-if($ruta==""){
-  ?>
-    <img src="../img/user/1.png" width="250" height="250"/>
-    <?php
-}else{
-                      ?>
-                                <img src="<?php echo $ruta?>" width="250" height="250" />  <?php } ?>
+
+
+                                <img src="../img/user/logo.png" width="250" height="150" />
                             </div>
 
                             <div class="conct-sc-ic">

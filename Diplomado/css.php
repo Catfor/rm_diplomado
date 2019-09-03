@@ -24,6 +24,8 @@
 <!-- animate CSS
 ============================================ -->
 <link rel="stylesheet" href="../css/animate.css">
+<link rel="stylesheet" href="../css/summernote/summernote.css">
+<link rel="stylesheet" href="../css/themesaller-forms.css">
 <!-- normalize CSS
 ============================================ -->
 <link rel="stylesheet" href="../css/normalize.css">
@@ -33,6 +35,14 @@
 <!-- Notika icon CSS
 ============================================ -->
 <link rel="stylesheet" href="../css/notika-custom-icon.css">
+  <link rel="stylesheet" href="../css/bootstrap-select/bootstrap-select.css">
+  <link rel="stylesheet" href="../css/datapicker/datepicker3.css">
+  <link rel="stylesheet" href="../css/color-picker/farbtastic.css">
+    <link rel="stylesheet" href="../css/chosen/chosen.css">
+    <link rel="stylesheet" href="../css/notification/notification.css">
+    <!-- dropzone CSS
+    ============================================ -->
+    <link rel="stylesheet" href="../css/dropzone/dropzone.css">
 <!-- wave CSS
 ============================================ -->
 <link rel="stylesheet" href="../css/wave/waves.min.css">
