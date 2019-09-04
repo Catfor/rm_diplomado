@@ -35,6 +35,7 @@
 <!-- Notika icon CSS
 ============================================ -->
 <link rel="stylesheet" href="../css/notika-custom-icon.css">
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="../css/bootstrap-select/bootstrap-select.css">
   <link rel="stylesheet" href="../css/datapicker/datepicker3.css">
   <link rel="stylesheet" href="../css/color-picker/farbtastic.css">

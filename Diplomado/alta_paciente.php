@@ -204,7 +204,7 @@
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="nombre_paciente" id="nombre_paciente" class="form-control" placeholder="Nombres del paciente" onBlur="comprobarapelldios()">
+                                        <input type="text" name="nombre_paciente" id="nombre_paciente" class="form-control" placeholder="Nombres del paciente"  required>
 
                                     </div>
                                 </div>
@@ -215,7 +215,7 @@
                                         <i class="notika-icon notika-support"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="apellidos_paciente" id="apellidos_paciente" class="form-control" placeholder="Apellidos Del Paciente" onBlur="comprobarapelldios()">
+                                        <input type="text" name="apellidos_paciente" id="apellidos_paciente" class="form-control" placeholder="Apellidos Del Paciente"  required>
 
                                     </div>
                                 </div>
@@ -226,7 +226,7 @@
                                 <div class="input-group date nk-int-st">
 
                                         <span class="input-group-addon"></span>
-                                        <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Edad del Paciente">
+                                        <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Edad del Paciente" required>
                                     </div>
                                 </div>
                             </div>
@@ -604,7 +604,7 @@ exit;
 <script language="JavaScript">
 $( function() {
     $("#apoyo_gubernamental_paciente").change( function() {
-        if ($(this).val() === "si") {
+        if ($(this).val() === "no") {
             $("#razon_apoyo_paciente ").prop("disabled", true);
         }
 else if($(this).val() === ""){
