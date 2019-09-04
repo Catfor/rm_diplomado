@@ -1,0 +1,26 @@
+*{
+	font-family:Verdana;
+	font-size: 13px;
+	line-height: 11pt;
+	
+}
+
+p{
+	margin: 0 0 5px;
+}
+
+.txt-justificado{
+	text-align: justify;
+}
+
+.logo-area{
+	margin:5px 0px;
+}
+
+.container{
+	padding-right:15px;
+	padding-left:15px;
+	margin-right:0;
+	margin-left:45px;
+    max-width: 4.5in;
+}
