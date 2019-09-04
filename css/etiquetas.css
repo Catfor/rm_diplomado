@@ -1,0 +1,22 @@
+*{
+	font-family:Lucida Console;
+	font-size: 11px;
+	line-height: 10pt;
+	
+}
+
+p{
+	margin: 0 0 5px;
+}
+
+.logo-area{
+	margin:5px 0px;
+}
+
+.container{
+	padding-right:15px;
+	padding-left:15px;
+	margin-right:0;
+	margin-left:25px;
+    max-width: 4.5in;
+}
