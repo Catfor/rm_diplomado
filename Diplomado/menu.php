@@ -19,7 +19,7 @@ echo "
                       <ul class='mobile-menu-nav'>
 
                                   <li><a href='consulta_paciente.php'>Consulta Paciente</a></li>
-                                  <li><a href='atencion_medica.php'>Atencion Medica</a></li>
+                                  <li><a href=''>Atencion Medica</a></li>
                                   <li><a href='resultados.php'>Resultados</a></li>
                                   
                       </ul>
@@ -40,7 +40,7 @@ echo "
                     </li>
                     <li><a  href='consulta_paciente.php'><i class='notika-icon notika-form'></i>Conuslta Alta   Pacientes</a>
                       </li>
-                     <li><a  href='atencion_medica.php'><i class='notika-icon notika-windows'></i> Pendiente Atencion Medica</a>
+                     <li><a  href=''><i class='notika-icon notika-windows'></i> Pendiente Atencion Medica</a>
                     </li>
                     <li><a href='resultados.php'><i class='notika-icon notika-form'></i> Resultado Patologia</a>
                     </li>
