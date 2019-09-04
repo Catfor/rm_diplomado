@@ -522,7 +522,7 @@
                         </div> <br>
                         <div class="row">
 
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                           <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
                               <div class="input-group date nk-int-st">
 
@@ -531,7 +531,16 @@
                                   </div>
                               </div>
                           </div>
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                          <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+                              <div class="input-group date nk-int-st">
+
+                                      <span class="input-group-addon"></span>
+                                      <input type="text" class="form-control" name="fecha_ultima_regla"  placeholder="Fecha del último papanicolau:">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                               <div class="form-group ic-cmp-int float-lb floating-lb">
                                 <div class="form-ic-cmp">
                                     <i class="notika-icon notika-edit"></i>
@@ -542,7 +551,7 @@
                                   </div>
                               </div>
                           </div>
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                               <div class="form-group ic-cmp-int float-lb floating-lb">
                                 <div class="form-ic-cmp">
                                     <i class="notika-icon notika-edit"></i>

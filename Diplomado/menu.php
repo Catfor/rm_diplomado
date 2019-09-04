@@ -17,16 +17,11 @@ echo "
               <div class='mobile-menu'>
                   <nav id='dropdown'>
                       <ul class='mobile-menu-nav'>
-                          <li><a data-toggle='collapse' data-target='#Charts' href='#'>Home</a>
-                              <ul class='collapse dropdown-header-top'>
-                                  <li><a href='index.html'>Dashboard One</a></li>
+
                                   <li><a href='consulta_paciente.php'>Consulta Paciente</a></li>
                                   <li><a href=''>Atencion Medica</a></li>
                                   <li><a href='resultados.php'>Resultados</a></li>
-                                  <li><a href='analytics.html'>Analytics</a></li>
-                                  <li><a href='widgets.html'>Widgets</a></li>
-                              </ul>
-                          </li>
+                                  
                       </ul>
                   </nav>
               </div>
