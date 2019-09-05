@@ -775,11 +775,11 @@
 
                         <select name='ag_criterios_menores' id='ag_criterios_menores'class="form-control" >
                           <option value="" >Selecciona Criterios Menores</option>
-                          <option value="si">CAPILAR FINO</option>
-                          <option value="no">CALIBRE Y DISPOSICIÓN UNIFORME</option>
-                          <option value="no">PUNTILLEO FINO</option>
-                          <option value="no">MOSAICO FINO</option>
-                         <option value="no">VASOS MÁS ALLÁ DE ZT</option>
+                          <option value="capilar_fino">CAPILAR FINO</option>
+                          <option value="calibre_disposion_uniforme">CALIBRE Y DISPOSICIÓN UNIFORME</option>
+                          <option value="puntilleo_fino">PUNTILLEO FINO</option>
+                          <option value="nmosaico_fino">MOSAICO FINO</option>
+                         <option value="vasos_mas_alla_zt">VASOS MÁS ALLÁ DE ZT</option>
                 </select>
 
                 </div>
@@ -787,7 +787,7 @@
 
                         <select name='ag_criterios_intermedios ' id='ag_criterios_intermedios'class="form-control" >
                           <option value="" >Selecciona Criterios Intermedios</option>
-                          <option value="si">AUSENCIA DE VASOS</option>
+                          <option value="ausencia_vasos">AUSENCIA DE VASOS</option>
 
                 </select>
 
@@ -813,9 +813,9 @@
 
                         <select name='cy_menores ' id='cy_menores'class="form-control" >
                           <option value="" >CITERIOS MENORES</option>
-                          <option value="si">POSITIVA</option>
-                          <option value="no">NEGATIVA CON < 3 PUNTOS EN CRITERIOS ANTERIORES</option>
-                          <option value="si">ZONAS YODONEGATIVAS MÁS ALLÁ DE LA ZT</option>
+                          <option value="positiva">POSITIVA</option>
+                          <option value="negativa_puntos_criterios_anteriores">NEGATIVA CON < 3 PUNTOS EN CRITERIOS ANTERIORES</option>
+                          <option value="zonas_yodo_negativas">ZONAS YODONEGATIVAS MÁS ALLÁ DE LA ZT</option>
                 </select>
 
                 </div>
@@ -823,8 +823,8 @@
 
                         <select name='cy_intermedios ' id='cy_intermedios' class="form-control" >
                           <option value="" >CITERIOS INTERMEDIOS</option>
-                          <option value="si">CAPTACIÓN PARCIAL DE YODO</option>
-                          <option value="no">(MOTEADO-JASPEADO)</option>
+                          <option value="capacitacion_parcial_yodo">CAPTACIÓN PARCIAL DE YODO</option>
+                          <option value="motedao_jaspeado">(MOTEADO-JASPEADO)</option>
                 </select>
 
                 </div>
@@ -832,8 +832,8 @@
 
                         <select name='cy_mayores' id='cy_mayores'class="form-control" >
                           <option value="" >CITERIOS MAYORES</option>
-                          <option value="si">YODONEGATIVA CON 4 O MÁS PUNTOS</option>
-                          <option value="no">EN CRITERIOS ANTERIORES</option>
+                          <option value="yodo_negativa_conmas_puntos">YODONEGATIVA CON 4 O MÁS PUNTOS</option>
+                          <option value="en_criterios_anteriores">EN CRITERIOS ANTERIORES</option>
                 </select>
 
                 </div></div>
@@ -953,11 +953,11 @@
                   <div class="bootstrap-select fm-cmp-mg">
                       <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente'class="form-control" >
                         <option value="" >DIAGNOSTICO MÉDICO</option>
-                        <option value="si">HALLAZGOS NORMALES</option>
-                        <option value="1" >HALLAZGOS SUGESTIVOS DE INVASIÓN</option>
-                        <option value="si">MISCELANEOS O HALLAZGOS VARIOS</option>
-                        <option value="1" >LESIÓN INTRAEPITELIAL DE BAJO GRADO</option>
-                        <option value="si">LESIÓN INTRAEPITELIAL DE ALTO GRADO</option>
+                        <option value="hallazgos_normales">HALLAZGOS NORMALES</option>
+                        <option value="hallazgos_sugestivos_" >HALLAZGOS SUGESTIVOS DE INVASIÓN</option>
+                        <option value="miscelaneos_hallazgos_varios">MISCELANEOS O HALLAZGOS VARIOS</option>
+                        <option value="lesion_intraepitelial_bajogrado" >LESIÓN INTRAEPITELIAL DE BAJO GRADO</option>
+                        <option value="lesion_intraepitelial_altogrado">LESIÓN INTRAEPITELIAL DE ALTO GRADO</option>
 
 
 
@@ -1098,9 +1098,9 @@
 
                                                                                  Antecedenctes  de cancer:<br>
 
-                                                                                 <label><input type="radio" name="curso" value="ceramica"> Si</label>
+                                                                                 <label><input type="radio" name="si" value="si"> Si</label>
 
-                                                                                 <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
+                                                                                 <label><input type="radio" name="no" value="no" checked> NO</label>
 
 
 
@@ -1111,9 +1111,9 @@
 
                                                                                  Antecedenctes  de infecciòn vaginal :<br>
 
-                                                                                 <label><input type="radio" name="curso" value="ceramica"> Si</label>
+                                                                                 <label><input type="radio" name="si" value="si"> Si</label>
 
-                                                                                 <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
+                                                                                 <label><input type="radio" name="no" value="no" checked> NO</label>
 
 
 
@@ -1258,9 +1258,9 @@
                                                                                           <div class="bootstrap-select fm-cmp-mg">
                                                                                               <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente'class="form-control" >
                                                                                                 <option value="" >ESTUDIO A SOLICITAR</option>
-                                                                                                <option value="si">INSICIONAL</option>
-                                                                                                <option value="1" >TRUCUT</option>
-                                                                                                <option value="1" >ASPIRACIÒN</option></select>
+                                                                                                <option value="institucional">INSICIONAL</option>
+                                                                                                <option value="trucut" >TRUCUT</option>
+                                                                                                <option value="aspiracion" >ASPIRACIÒN</option></select>
                                                                                                 </select>
                                                                                       </div>
                                                                                           </div>
@@ -1307,9 +1307,9 @@
 
                                                                                                  Antecedenctes  de Metrorragia:<br>
 
-                                                                                                 <label><input type="radio" name="curso" value="ceramica"> Si</label>
+                                                                                                 <label><input type="radio" name="si" value="si"> Si</label>
 
-                                                                                                 <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
+                                                                                                 <label><input type="radio" name="no" value="no" checked> NO</label>
 
 
 
@@ -1320,9 +1320,9 @@
 
                                                                                                  Antecedenctes  de Hormonoterapia :<br>
 
-                                                                                                 <label><input type="radio" name="curso" value="ceramica"> Si</label>
+                                                                                                 <label><input type="radio" name="si" value="si"> Si</label>
 
-                                                                                                 <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
+                                                                                                 <label><input type="radio" name="no" value="no" checked> NO</label>
 
 
 
@@ -1334,7 +1334,7 @@
                                                                                                         <i class="notika-icon notika-edit"></i>
                                                                                                     </div>
                                                                                                     <div class="nk-int-st">
-                                                                                                        <input id="razon_apoyo_paciente" type="text" class="form-control" placeholder="Duraciòn del  tratamiento">
+                                                                                                        <input id="duracion_tratamiento" type="text" class="form-control" placeholder="Duraciòn del  tratamiento">
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
@@ -1346,7 +1346,7 @@
                                                                                                       <i class="notika-icon notika-edit"></i>
                                                                                                   </div>
                                                                                                   <div class="nk-int-st">
-                                                                                                      <input id="razon_apoyo_paciente" type="text" class="form-control" placeholder="Duraciòn del tratamiento">
+                                                                                                      <input id="duracion_tratamiento" type="text" class="form-control" placeholder="Duraciòn del tratamiento">
                                                                                                   </div>
                                                                                               </div>
                                                                                           </div>
@@ -1364,9 +1364,9 @@
 
                                                                                                          Existe Saco Ovulars<br>
 
-                                                                                                         <label><input type="radio" name="curso" value="ceramica"> Si</label>
+                                                                                                         <label><input type="radio" name="si" value="si"> Si</label>
 
-                                                                                                         <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
+                                                                                                         <label><input type="radio" name="no" value="no" checked> NO</label>
 
 
 
