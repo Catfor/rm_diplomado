@@ -1457,10 +1457,12 @@
           </div>
         </div>
 
-      </div><br>
-      <center><input type="submit" style="border: #000 1px solid; background-color: #ed80a8" value="Enviar formulario"></center>
-      </form>
-      <!-- Form Element area End-->
+                  </div><br>
+                  <center><input type="submit" style="border: #000 1px solid; background-color: #ed80a8" value="Enviar formulario"></center>
+  <button class="btn notika-btn-purple btn-reco-mg btn-button-mg" value="Enviar formulario">Purple</button>
+
+</form>
+    <!-- Form Element area End-->
 
       <!-- End Footer area-->
       <!-- jquery
