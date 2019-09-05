@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Etiqueta Estudio Endometrio</title>
+	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../../css/etiquetas.css" rel="stylesheet" />
+	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<script>
+		function imprimeEtiqueta() {
+			var mywindow = window.open('', 'PRINT', '', 'false');
+
+			mywindow.document.write('<html><head><title>' + document.title + '</title>');
+			mywindow.document.write('</head><body >');
+			mywindow.document.write('<link href="../../css/bootstrap.min.css" rel="stylesheet"/>');
+			mywindow.document.write('<link href="../../css/etiquetas.css" rel="stylesheet"/>');
+			mywindow.document.write(document.getElementById('etiqueta').innerHTML);
+			mywindow.document.write('</body></html>');
+
+			mywindow.document.close(); // necessary for IE >= 10
+			mywindow.focus(); // necessary for IE >= 10*/
+
+			mywindow.print();
+			mywindow.close();
+
+			return true;
+		}
+	</script>
+
+</head>
+
+<body>
+	<div id="etiqueta">
+		<div class="container">
+			<div class="row">
+				<div style="background-color:#fff">
+					<div>
+						<center>
+							<div class="logo-area">
+								<a href="#">
+									<img src="../../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
+								</a>
+							</div>
+						</center>
+					</div>
+					<div>
+						<p>
+							<center>
+								<b>Solicitud de Estudio Para Biopsia de Endometrio</b>
+							</center>
+						</p>
+
+						<div class="row">
+							<div class="column">
+								<p>
+									<b>Fecha:</b> 03/08/2019</p>
+								<p>
+							</div>
+							<div class="column">
+								<p>
+									<b>Edad:</b> 23</p>
+								<p>
+							</div>
+						</div>
+						<p><b>Paciente:</b> Itzel Paduano Gonzalez</p>
+						<p><b>Medico:</b> Susana Nieves Flores</p>
+						<p><b>Antecedentes de Metrorragia:</b> NO</p>
+						<p><b>Antecedentes de Hormonoterapia:</b> NO</p>
+						<p><b>Duracion del Tratamiento:</b> 1 Semana</p>
+						<p><b>Periodos menstruales:</b> Regulares - Irregulares</p>
+						<p><b>F.U.M.:</b> 13/07/2019</p>
+						<p><b>M&eacute;todo anticonceptivo:</b> Pastillas</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<button onclick="imprimeEtiqueta()">Imprimir</button>
+	</footer>
+
+</body>
+
+</html>
