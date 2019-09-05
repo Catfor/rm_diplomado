@@ -5,8 +5,31 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet"/>
 		<link href="css/etiquetas.css" rel="stylesheet"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+		<script>
+		function imprimeEtiqueta()
+			{
+				var mywindow = window.open('', 'PRINT', '','false');
+
+				mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+				mywindow.document.write('</head><body >');
+				mywindow.document.write('<link href="css/bootstrap.min.css" rel="stylesheet"/>');
+				mywindow.document.write('<link href="css/etiquetas.css" rel="stylesheet"/>');
+				mywindow.document.write(document.getElementById('etiqueta').innerHTML);
+				mywindow.document.write('</body></html>');
+
+				mywindow.document.close(); // necessary for IE >= 10
+				mywindow.focus(); // necessary for IE >= 10*/
+
+				mywindow.print();
+				mywindow.close();
+
+				return true;
+			}
+		</script>
+
 	</head>
-	<body>
+	<body id="etiqueta" onload="imprimeEtiqueta()">
 		<div class="container">
 			<div class="row">
 				<div style="background-color:#fff">
@@ -25,24 +48,43 @@
 								<b>Solicitud de Estudio Para  Biopsia de Cervix</b>
 							</center>
 						</p>
-						<p><b>Fecha:</b> 03/08/2019</p>
-						<p><b>Paciente:</b> Itzel Paduano Gonzalez</p>
-						<p><b>Medico:</b> Susana Nieves Flores</p>
-						<p><b>Antecedentes de Cancer Cervicouterino:</b> NO</p>
-						<p><b>Tratamientos Previos:</b> NO</p>
-						<p><b>F.U.Papanicolau:13/07/2019</b></p>
-						<p class="txt-justificado"><b>Hallazgos Colposcopia:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in diam interdum, accumsan ante quis, ultrices nibh. Mauris at mattis leo. Nulla in dolor laoreet, ullamcorper ipsum in, porttitor el</p>
-						<p><b>Antecedentes de Cancer Cervicouterino:</b> NO</p>
-						<p><b>Se&ntilde;ala Donde Fue Tomada la  muestra:</b></p>
-						<div>
-							<center>
-								<a href="#">
-									<img src="img/dona_marca.png" style="max-width: 100px; max-height: 100px"/>
-								</a>
-							</center>
+						<div class="row">
+							<div class="column">
+								<p>
+									<b>Fecha:</b> 03/08/2019</p>
+								<p>
+							</div>
+							<div class="column">
+								<p>
+									<b>Edad:</b> 23</p>
+								<p>
+							</div>
 						</div>
-						<p><b>Anotaciones:</b></p>
-						<p class="txt-justificado">Quisque id elit sed tortor commodo fringilla ac eget libero. Duis pretium lobortis vehicula. Duis non augue nec lacus tempor consequat vel et quam. Vivamus eget viverra augue, nec vestibulum metus. Nullam tincidunt eros at massa ullamcorper, semper finibus felis euismod. Morbi ultrices, arcu in gravida cursus, risus est porta erat, in faucibus ex ex pulvinar nisl. Pellentesque sed dui ac enim aliquet suscipit vel et justo.</p>
+							<b>Paciente:</b> Itzel Paduano Gonzalez</p>
+						<p>
+							<b>Medico:</b> Susana Nieves Flores</p>
+						<p class="txt-justificado">
+							<b>Hallazgos Colposcopia:</b> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent in diam interdum, accumsan ante quis, ultrices nibh. Mauris at mattis leo. Nulla in dolor laoreet, ullamcorper ipsum in, porttitor el</p>
+						<p>
+							<b>Antecedentes de Cancer Cervicouterino:</b> NO</p>
+						<p>
+							<b>Se&ntilde;ala Donde Fue Tomada la  muestra:</b>
+						</p>
+						<div class="row">
+							<div class="column">
+								<center>
+									<a href="#">
+										<img src="img/dona_marca.png" style="max-width: 180px; max-height: 180px"/>
+									</a>
+								</center>
+							</div>
+							<div class="column">
+								<p>
+									<b>Anotaciones:</b>
+								</p>
+								<p class="txt-justificado">Quisque id elit sed tortor commodo fringilla ac eget libero. Duis pretium lobortis vehicula. Duis non augue nec lacus tempor consequat vel et quam. Vivamus eget viverra augue, nec vestibulum metus. Nullam tincidunt eros at massa ullamcorper, semper finibus felis euismod. Morbi ultrices, arcu in gravida cursus, risus est porta erat, in faucibus ex ex pulvinar nisl. Pellentesque sed dui ac enim aliquet suscipit vel et justo.</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
