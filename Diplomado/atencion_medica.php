@@ -1211,8 +1211,16 @@
                                                                                                 <p>Señala Donde Fue Tomada la  muetra</p>
                                                                                             </div>
                                                                                         </div>
-                                                                                    
+                                                                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                                                                            <div class="logo-area">
+                                                                                                <a href="#"><img src="img/vulva.jpg" alt="" /></a>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
+
+
+
+
                                                                                       <div class="row">
                                                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                                             <div class="floating-numner">
@@ -1237,7 +1245,7 @@
                                                                             <div class="panel-heading" role="tab">
                                                                                 <h4 class="panel-title">
                                                                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-seven" aria-expanded="false">
-                                                        BIOPSIAS DE
+                                                        BIOPSIAS DE VAGINOSCOPIA
                                                             </a>
                                                                                 </h4>
                                                                             </div>
@@ -1256,69 +1264,27 @@
                                                                                                 </select>
                                                                                       </div>
                                                                                           </div>
-                                                                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                                            <div class="bootstrap-select fm-cmp-mg">
-                                                                                                <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente'class="form-control" >
-                                                                                                  <option value="" >MAMA BIOPSIADA</option>
-                                                                                                  <option value="si">DERECHA</option>
-                                                                                                  <option value="1" >IZQUIERDA</option>
-
-                                                                                                  </select>
-                                                                                        </div>
+                                                                                          <div class="row">
+                                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                                <div class="floating-numner">
+                                                                                                    <p>Anotaciones</p>
+                                                                                                </div>
                                                                                             </div>
-
-                                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                                                <div class="form-group ic-cmp-int float-lb floating-lb">
-                                                                                                  <div class="form-ic-cmp">
-                                                                                                      <i class="notika-icon notika-edit"></i>
-                                                                                                  </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                                <div class="form-group">
                                                                                                     <div class="nk-int-st">
-                                                                                                        <input type="text" name="atecedentes_lesion" class="form-control">
-                                                                                                        <label class="nk-label">SITIO BIOPSIADO</label>
+                                                                                                        <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones"></textarea>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
+                                                                                        </div>
+
+
+
                                                                                       </div> <br>
-                                                                                      <div class="row">
-                                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                                                  <p>
 
-                                                                                                     Uso de Hormonales<br>
-
-                                                                                                     <label><input type="radio" name="curso" value="ceramica"> Si</label>
-
-                                                                                                     <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
-
-
-
-                                                                                                   </p>
-                                                                                                </div>
-
-
-                                                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                                              <p>
-
-                                                                                                 Biopsias Previas<br>
-
-                                                                                                 <label><input type="radio" name="curso" value="ceramica"> Si</label>
-
-                                                                                                 <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
-
-
-
-                                                                                               </p>
-                                                                                            </div>
-                                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                                              <p>
-
-                                                                                                Tratamientos Previos<br>
-
-                                                                                                 <label><input type="radio" name="curso" value="ceramica"> Si</label>
-
-                                                                                                 <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
-</p>
-                                                                                            </div>
-                                                                                        </div><br>
                                                                                       </p>
                                                                                 </div>
                                                                             </div>
@@ -1327,7 +1293,7 @@
                                                                             <div class="panel-heading" role="tab">
                                                                                 <h4 class="panel-title">
                                                                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-six" aria-expanded="false">
-                                                              BIOPSIA DE VAGINOSCOPIA
+                                                              BIOPSIA DE ENDOMETRIO
 
                                                             </a>
                                                                                 </h4>
