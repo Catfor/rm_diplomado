@@ -1803,12 +1803,7 @@ ul.wizard-nav-ac li .disabled{
     backface-visibility:hidden;
     top:8px;
 }
-.panel-collapse .panel-heading:before{
-    content:"\e923";
-    -ms-transform:scale(1);
-    -o-transform:scale(1);
-	 font-family: 'notika-icon';
-}
+
 .panel-collapse .panel-heading:after{
     -webkit-transform:scale(0);
     -ms-transform:scale(0);

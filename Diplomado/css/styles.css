@@ -143,3 +143,15 @@ body {
     background: -moz-linear-gradient(top, #00adee 10%, #0078a5 90%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.1, #00adee), color-stop(0.9, #0078a5));
 }
+
+.fila{
+    margin:20px 0;
+}
+
+.filaInterna{
+    margin:15px 0 !important; 
+}
+
+.formularioOculto{
+    margin-bottom:40px;
+}

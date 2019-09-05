@@ -5,6 +5,7 @@
 <!-- favicon
 ============================================ -->
 
+<link rel="stylesheet" href="./css/styles.css">
 <!-- Google Fonts
 ============================================ -->
   <!-- Bootstrap CSS
