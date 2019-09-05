@@ -1077,11 +1077,50 @@
                                                                             <div class="panel-heading" role="tab">
                                                                                 <h4 class="panel-title">
                                                                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-five" aria-expanded="false">
-                                                        BIOPSIAS DE MAMA
+                                                        BIOPSIAS DE VULVOSCOPIA
                                                             </a>
                                                                                 </h4>
                                                                             </div>
                                                                             <div id="accordionPurple-five" class="collapse" role="tabpanel">
+                                                                                <div class="panel-body">
+                                                                                    <p>
+                                                                                      <div class="row">
+                                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                            <div class="floating-numner">
+                                                                                                <p>Señala Donde Fue Tomada la  muetra</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    
+                                                                                    </div>
+                                                                                      <div class="row">
+                                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                            <div class="floating-numner">
+                                                                                                <p>Anotaciones</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                                            <div class="form-group">
+                                                                                                <div class="nk-int-st">
+                                                                                                    <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones"></textarea>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                      </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="panel panel-collapse notika-accrodion-cus">
+                                                                            <div class="panel-heading" role="tab">
+                                                                                <h4 class="panel-title">
+                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-seven" aria-expanded="false">
+                                                        BIOPSIAS DE
+                                                            </a>
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div id="accordionPurple-seven" class="collapse" role="tabpanel">
                                                                                 <div class="panel-body">
                                                                                     <p>
                                                                                       <div class="row">
@@ -1167,7 +1206,7 @@
                                                                             <div class="panel-heading" role="tab">
                                                                                 <h4 class="panel-title">
                                                                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-six" aria-expanded="false">
-                                                              BIOPSIA DE ENDOMETRIO
+                                                              BIOPSIA DE VAGINOSCOPIA
 
                                                             </a>
                                                                                 </h4>
