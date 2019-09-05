@@ -667,7 +667,7 @@
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                        <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' class="form-control" onChange="pagoOnChange(this)">
+                        <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' class="form-control" onChange="pagoOnChange(this)" required>
                           <option value="">Selecciona Epitelio Acetoblanco</option>
                           <option value="ausente">AUSENTE</option>
                           <option value="presente">PRESENTE</option>
@@ -880,7 +880,7 @@
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                      <select name='miscelaneos ' id='miscelaneos' class="form-control" >
+                      <select name='miscelaneos' id='miscelaneos' class="form-control" >
                         <option value="" >Selecciona Miscelaneos</option>
                         <option value="condilomas">CONDILOMAS</option>
                         <option value="eversion_glandular" >EVERSIÓN GLANDULAR</option>
@@ -1073,7 +1073,6 @@
                                                           <div class="panel-body">
                                                               <p>
                                                                 <div class="row">
-
                                                                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="form-ic-cmp">
 
@@ -1091,36 +1090,33 @@
                                                                   </select>
 
                                                                   </div>
-                                                                </div>  <br><br>
-                                                                <div class="row">
-                                                                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                              <p>
+                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <p>
 
-                                                                                 Antecedenctes  de cancer:<br>
+                                                                           Antecedenctes  de cancer:<br>
 
-                                                                                 <label><input type="radio" name="curso" value="ceramica"> Si</label>
+                                                                           <label><input type="radio" name="curso" value="ceramica"> Si</label>
 
-                                                                                 <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
+                                                                           <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
 
 
 
-                                                                               </p>
-                                                                            </div>
-                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                              <p>
+                                                                         </p>
+                                                                      </div>
+                                                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                        <p>
 
-                                                                                 Antecedenctes  de infecciòn vaginal :<br>
+                                                                           Antecedenctes  de infecciòn vaginal :<br>
 
-                                                                                 <label><input type="radio" name="curso" value="ceramica"> Si</label>
+                                                                           <label><input type="radio" name="curso" value="ceramica"> Si</label>
 
-                                                                                 <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
+                                                                           <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
 
 
 
-                                                                               </p>
-                                                                            </div>
-                                                                </div> <br>
-
+                                                                         </p>
+                                                                      </div>
+                                                                  </div>  <br><br>
                                                                   <div class="row">
                                                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                           <div class="floating-numner">
@@ -1198,50 +1194,11 @@
                                                                             <div class="panel-heading" role="tab">
                                                                                 <h4 class="panel-title">
                                                                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-five" aria-expanded="false">
-                                                        BIOPSIAS DE VULVOSCOPIA
+                                                        BIOPSIAS DE MAMA
                                                             </a>
                                                                                 </h4>
                                                                             </div>
                                                                             <div id="accordionPurple-five" class="collapse" role="tabpanel">
-                                                                                <div class="panel-body">
-                                                                                    <p>
-                                                                                      <div class="row">
-                                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                            <div class="floating-numner">
-                                                                                                <p>Señala Donde Fue Tomada la  muetra</p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    
-                                                                                    </div>
-                                                                                      <div class="row">
-                                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                            <div class="floating-numner">
-                                                                                                <p>Anotaciones</p>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row">
-                                                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                                            <div class="form-group">
-                                                                                                <div class="nk-int-st">
-                                                                                                    <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones"></textarea>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                      </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="panel panel-collapse notika-accrodion-cus">
-                                                                            <div class="panel-heading" role="tab">
-                                                                                <h4 class="panel-title">
-                                                                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-seven" aria-expanded="false">
-                                                        BIOPSIAS DE
-                                                            </a>
-                                                                                </h4>
-                                                                            </div>
-                                                                            <div id="accordionPurple-seven" class="collapse" role="tabpanel">
                                                                                 <div class="panel-body">
                                                                                     <p>
                                                                                       <div class="row">
@@ -1327,7 +1284,7 @@
                                                                             <div class="panel-heading" role="tab">
                                                                                 <h4 class="panel-title">
                                                                                     <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-six" aria-expanded="false">
-                                                              BIOPSIA DE VAGINOSCOPIA
+                                                              BIOPSIA DE ENDOMETRIO
 
                                                             </a>
                                                                                 </h4>
