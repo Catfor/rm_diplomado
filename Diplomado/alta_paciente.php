@@ -596,7 +596,7 @@ exit;
 ============================================ -->
 <script src="../jquery-3.0.0.js" type="text/javascript"></script>
 
-<script src="../dropzone.min.js"></script>>
+<script src="../dropzone.min.js"></script>
 <script src="../script.js" type="text/javascript"></script>
 <!-- main JS
 ============================================ -->
