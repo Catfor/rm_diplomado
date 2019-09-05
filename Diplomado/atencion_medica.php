@@ -232,24 +232,25 @@
                         </div>
 
                       </div><br><br>
+                      <form id="f" action='guardar_atencion_medica.php' method="get">
                       <div class="row">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                           <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
                               <div class="input-group date nk-int-st">
 
                                       <span class="input-group-addon"></span>
-                                      <input type="text" class="form-control"   placeholder="Edad de Inicio de menstruación">
+                                      <input type="text" class="form-control" name="edad_inicio_menstruacion"  placeholder="Edad de Inicio de menstruación">
                                   </div>
                               </div>
                           </div>
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <div class="bootstrap-select fm-cmp-mg">
-                                  <select name="metodos_planificacion" class="selectpicker" required>
-                                    <option value="" >Método de Planificación Familiar:</option>
-                                    <option value="soltero." >Hormonales orales</option>
-                                  <option value="  Comprometido/a.">Hormonales inyectables</option>
-                                  <option value="Casado/a." >Condon</option>
-                                  <option value="Casado/a." >Otro</option>
+                                  <select id='metodos_planificacion' name="metodos_planificacion"  class="selectpicker" >
+                                    <option value="" >Selecciona Método de Planificación Familiar:</option>
+                                    <option value="hormonales_orales" >Hormonales orales</option>
+                                  <option value="hormonales_inyectables">Hormonales inyectables</option>
+                                  <option value="condon" >Condon</option>
+                                  <option value="otro" >Otro</option>
                           </select>
                               </div>
                           </div>
@@ -259,7 +260,7 @@
                                       <i class="notika-icon notika-edit"></i>
                                   </div>
                                   <div class="nk-int-st">
-                                      <input id="razon_apoyo_paciente" type="text" class="form-control" placeholder="¿Cùal?">
+                                      <input id="cual" name="cual" type="text" class="form-control" placeholder="¿Cùal?" disabled>
                                   </div>
                               </div>
                           </div>
@@ -269,7 +270,7 @@
                         <div class="row">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <div class="bootstrap-select fm-cmp-mg">
-                                  <select name="edad_inicio_vida_sexual"  class="selectpicker" required>
+                                  <select name="edad_inicio_vida_sexual" class="form-control" >
                                     <option value="">Edad de inicio de vida sexual</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -395,7 +396,7 @@
                           </div>
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <div class="bootstrap-select fm-cmp-mg">
-                                  <select name="parejas_sexuales" class="selectpicker" required>
+                                  <select name="parejas_sexuales"class="form-control" >
                                      <option value="">Parejas sexuales</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -432,7 +433,7 @@
                           </div>
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <div class="bootstrap-select fm-cmp-mg">
-                                  <select name="gestas" class="selectpicker" required>
+                                  <select name="gestas"class="form-control" >
                                     <option value="">Gestas</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -457,7 +458,7 @@
 
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <div class="bootstrap-select fm-cmp-mg">
-                                  <select name="para" class="selectpicker" required>
+                                  <select name="para"class="form-control" >
                                     <option value="">Para</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -478,7 +479,7 @@
                           </div>
                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="bootstrap-select fm-cmp-mg">
-                                    <select name="cesareas" class="selectpicker" required>
+                                    <select name="cesareas"class="form-control" >
                                       <option value="">Césareas</option>
                                       <option value="1">1</option>
                                       <option value="2">2</option>
@@ -499,7 +500,7 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                  <div class="bootstrap-select fm-cmp-mg">
-                                     <select name="abortos" class="selectpicker" required>
+                                     <select name="abortos"class="form-control" >
                                        <option value="">Abortos</option>
                                        <option value="1">1</option>
                                        <option value="2">2</option>
@@ -536,7 +537,7 @@
                               <div class="input-group date nk-int-st">
 
                                       <span class="input-group-addon"></span>
-                                      <input type="text" class="form-control" name="fecha_ultima_regla"  placeholder="Fecha del último papanicolau:">
+                                      <input type="text" class="form-control" name="fecha_ultimo_papanicolau"  placeholder="Fecha del último papanicolau:">
                                   </div>
                               </div>
                           </div>
@@ -569,6 +570,7 @@
               </div>
           </div>
             </div>
+
             <div class="row">
               <div class="accordion-area">
                   <div class="container">
@@ -597,26 +599,27 @@
             <div class="row">
 
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <div class="bootstrap-select fm-cmp-mg">
-                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                        <option value="" >COLPOSCOPIA</option>
-                        <option value="si">ADECUADA</option>
-                        <option value="no">NO ADECUADA</option>
+
+                      <select name='colposcopia' id='colposcopia' class="form-control">
+                        <option value="">Selecciona colposcopia</option>
+                        <option value="adecuada">ADECUADA</option>
+                        <option value="no_adecuada">NO ADECUADA</option>
               </select>
-                  </div>
+
               </div>
 
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <div class="bootstrap-select fm-cmp-mg">
-                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                        <option value="" >CAUSA</option>
-                        <option value="si">SANGRADO</option>
-                        <option value="no">INFLAMACIÓN</option>
-                        <option value="si">CICATRICES</option>
+
+                      <select name='causa' id='causa'  class="form-control" disabled>
+                        <option value="">Selecciona una Causa</option>
+                        <option value="sangrado">SANGRADO</option>
+                        <option value="inflamacion">INFLAMACIÓN</option>
+                        <option value="cicatrices">CICATRICES</option>
                         <option value="no">OTRAS</option>
               </select>
-                  </div>
+
               </div>
+
 
 
 
@@ -625,93 +628,96 @@
 
             <div class="row">
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <div class="bootstrap-select fm-cmp-mg">
-                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                        <option value="" >CÉRVIX</option>
-                        <option value="si">EUTRÓFICO</option>
-                        <option value="no">ATRÓFICO</option>
-                        <option value="si">HIPOTRÓFICO</option>
-                        <option value="no">HIPERTRÓFICO</option>
-                        <option value="si">AUSENCIA QUIRÚRGICA</option>
-                        <option value="no">AUSENCIA OTRAS CAUSAS</option>
+
+                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="form-control">
+                        <option value="" >Selecciona Cervix</option>
+                        <option value="eutrofico">EUTRÓFICO</option>
+                        <option value="atrofico">ATRÓFICO</option>
+                        <option value="hipotrofico">HIPOTRÓFICO</option>
+                        <option value="hipertrofico">HIPERTRÓFICO</option>
+                        <option value="ausencia_quirurgica">AUSENCIA QUIRÚRGICA</option>
+                        <option value="ausencia_otras_causas">AUSENCIA OTRAS CAUSAS</option>
               </select>
-                  </div>
+
               </div>
 
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <div class="bootstrap-select fm-cmp-mg">
-                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                        <option value="" >UNIÓN ESCAMOCOLUMNAR</option>
-                        <option value="si">COMPLETAMENTE VISIBLE</option>
-                        <option value="no">PARCIALMENTE VISIBLE</option>
+
+                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="form-control" >
+                        <option value="" >Selecciona Union Escamocolumnar </option>
+                        <option value="completamente_visible">COMPLETAMENTE VISIBLE</option>
+                        <option value="parcialmente_visible">PARCIALMENTE VISIBLE</option>
               </select>
-                  </div>
+
               </div>
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <div class="bootstrap-select fm-cmp-mg">
-                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                        <option value="" >ZONA DE TRANSFORMACIÓN</option>
-                        <option value="si">TIPO 1</option>
-                        <option value="no">TIPO 2 A</option>
-                        <option value="si">TIPO 2 B</option>
-                        <option value="no">TIPO 3</option>
+
+                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="form-control">
+                        <option value="" >Selecciona Zona De Transfromacion</option>
+                        <option value="tipo 1">TIPO 1</option>
+                        <option value="tipo 2 a">TIPO 2 A</option>
+                        <option value=" tipo 2 b">TIPO 2 B</option>
+                        <option value="tipo 3">TIPO 3</option>
               </select>
-                  </div>
+
               </div>
 
             </div> <br><br><br>
               <div class="row">
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                          <option value="" >EPITELIO ACETOBLANCO</option>
-                          <option value="si">AUSENTE</option>
-                          <option value="no">PRESENTE</option>
+
+                        <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' class="form-control" onChange="pagoOnChange(this)">
+                          <option value="">Selecciona Epitelio Acetoblanco</option>
+                          <option value="ausente">AUSENTE</option>
+                          <option value="presente">PRESENTE</option>
                 </select>
-                    </div>
+
                 </div>
+
               </div> <br><br>
+              <div id="nCuenta" style="display:;">
+
+              </div>
 
 
-
-              <div class="row">
+              <div class="row" id="nTargeta" style="display:none;">
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                          <option value="" >CITERIOS MENORES</option>
-                          <option value="si">TENUE</option>
-                          <option value="no">BLANCO INTENSO C/BRILLO SUPERFICIAL</option>
-                          <option value="si">BRILLO SUPERFICIAL</option>
-                          <option value="no">TRANSPARENTE</option>
-                          <option value="si">FUERA DE LA ZT</option>
+
+                        <select name='ep_criterios_menores' id='ep_criterios_menores'class="form-control" disabled>
+                          <option value="" >Selecciona Criterios Menores</option>
+                          <option value="tenue">TENUE</option>
+                          <option value="blanco_intenso_c/brillo_superficial">BLANCO INTENSO C/BRILLO SUPERFICIAL</option>
+                          <option value="brillo_superficial">BRILLO SUPERFICIAL</option>
+                          <option value="transparente">TRANSPARENTE</option>
+                          <option value="fuera_zt">FUERA DE LA ZT</option>
 
                 </select>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                          <option value="" >CITERIOS INTERMEDIOS</option>
-                          <option value="si">BLANCO INTERMEDIO C/BRILLO</option>
-                          <option value="no">(MAYORÍA DE LESIONES)</option>
-                </select>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                          <option value="" >CITERIOS MAYORES</option>
-                          <option value="si">BLANCO DENSO</option>
-                          <option value="no">BLANCO OPACO</option>
-                          <option value="no">BLANCO OSTRA</option>
-                          <option value="no">GRIS</option>
-                </select>
-                    </div>
-                </div>
-              </div> <br><br>
 
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                        <select name='ep_criterios_intermedios' id='ep_criterios_intermedios'class="form-control" disabled>
+                          <option value="" >Selecciona Criterios Intermedios</option>
+                          <option value="blanco_intermedio_c/brillo">BLANCO INTERMEDIO C/BRILLO</option>
+                          <option value="mayoria_lesiones">(MAYORÍA DE LESIONES)</option>
+                </select>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                        <select name='ep_criterios_mayores' id='ep_criterios_mayores'class="form-control" disabled>
+                          <option value="" >Selecciona Criterios Mayores</option>
+                          <option value="blanco_Denso">BLANCO DENSO</option>
+                          <option value="blanco_opaco">BLANCO OPACO</option>
+                          <option value="blanco_ostra">BLANCO OSTRA</option>
+                          <option value="gris">GRIS</option>
+                </select>
+
+                </div>
+         <br><br>
+<br><br>
               <div class="panel panel-default">
                 <div class="panel-heading">BORDE Y SUPERFICIE</div>
 
@@ -720,42 +726,42 @@
 
 
 
-              <div class="row">
+
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                          <option value="" >CITERIOS MENORES</option>
-                          <option value="si">MICROCONDILOMATOSO</option>
-                          <option value="no">MICROPAPILAR</option>
-                          <option value="" >BORDE INDEFINIDO</option>
-                          <option value="si">BORDE EN PLUMA O DENTADO</option>
-                          <option value="no">LESIÓN ANGULADA</option>
+
+                        <select name='bs_criterios_menores ' id='bs_criterios_menores'class="form-control" >
+                          <option value="" >Selecciona Criterios Menores</option>
+                          <option value="microcondilomatoso">MICROCONDILOMATOSO</option>
+                          <option value="micropapilar">MICROPAPILAR</option>
+                          <option value="borde_indefinido" >BORDE INDEFINIDO</option>
+                          <option value="borde_pluma_dentado">BORDE EN PLUMA O DENTADO</option>
+                          <option value="lesion_angulada">LESIÓN ANGULADA</option>
                 </select>
-                    </div>
+
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                          <option value="" >CITERIOS INTERMEDIOS</option>
-                          <option value="si">LESIÓN REGULAR</option>
-                          <option value="si">SIMÉTRICA</option>
-                          <option value="no">CONTORNOS NETOS</option>
-                          <option value="no">CONTORNOS RECTILÍNEOS</option>
+
+                        <select name='bs_criterios_intermedios ' id='bs_criterios_intermedios'class="form-control" >
+                          <option value="" >Selecciona Criterios Intermedios</option>
+                          <option value="lesion_regular">LESIÓN REGULAR</option>
+                          <option value="simetrica">SIMÉTRICA</option>
+                          <option value="contornos_netos">CONTORNOS NETOS</option>
+                          <option value="contornos_rectilineos">CONTORNOS RECTILÍNEOS</option>
                 </select>
-                    </div>
+
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                          <option value="" >CITERIOS MAYORES</option>
-                          <option value="si">BORDES DEHISCENTES</option>
-                          <option value="no">BORDES ENROLLADOS</option>
-                          <option value="no">CAMBIOS MENORES PERIFÉRICOS Y MAYORES CENTRALES</option>
+
+                        <select name='bs_criterios_mayores ' id='bs_criterios_mayores'class="form-control" >
+                          <option value="" >Selecciona Criterios Mayores</option>
+                          <option value="bordes_dehiscentes">BORDES DEHISCENTES</option>
+                          <option value="bordes_enrolaldos">BORDES ENROLLADOS</option>
+                          <option value="cambios_menores_perifericos_mayores">CAMBIOS MENORES PERIFÉRICOS Y MAYORES CENTRALES</option>
                 </select>
-                    </div>
+
                 </div>
-              </div> <br><br>
+           <br><br>
 
               <div class="panel panel-default">
                 <div class="panel-heading">ANGIOARQUITECTURA</div>
@@ -763,86 +769,86 @@
               </div> <br><br>
 
 
-              <div class="row">
+
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                          <option value="" >CITERIOS MENORES</option>
+
+                        <select name='ag_criterios_menores' id='ag_criterios_menores'class="form-control" >
+                          <option value="" >Selecciona Criterios Menores</option>
                           <option value="si">CAPILAR FINO</option>
                           <option value="no">CALIBRE Y DISPOSICIÓN UNIFORME</option>
                           <option value="no">PUNTILLEO FINO</option>
                           <option value="no">MOSAICO FINO</option>
                          <option value="no">VASOS MÁS ALLÁ DE ZT</option>
                 </select>
-                    </div>
+
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                          <option value="" >CITERIOS INTERMEDIOS</option>
+
+                        <select name='ag_criterios_intermedios ' id='ag_criterios_intermedios'class="form-control" >
+                          <option value="" >Selecciona Criterios Intermedios</option>
                           <option value="si">AUSENCIA DE VASOS</option>
 
                 </select>
-                    </div>
+
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                          <option value="" >CITERIOS MAYORES</option>
-                          <option value="si">PUNTILLEO GRUESO</option>
-                          <option value="no">MOSAICO GRUESO</option>
+
+                        <select name='ag_criterios_mayores ' id='ag_criterios_mayores'class="form-control" >
+                          <option value="" >Selecciona Criterios Mayores</option>
+                          <option value="puntilleo_grueso">PUNTILLEO GRUESO</option>
+                          <option value="mosaico_grueso">MOSAICO GRUESO</option>
                 </select>
-                    </div>
+
                 </div>
-              </div> <br><br>
+               <br><br> <br>
 
               <div class="panel panel-default">
                 <div class="panel-heading">CAPTACIÓN DE YODO</div>
 
               </div>
-              <div class="row"><br><br>
+            <br><br>
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
+
+                        <select name='cy_menores ' id='cy_menores'class="form-control" >
                           <option value="" >CITERIOS MENORES</option>
                           <option value="si">POSITIVA</option>
                           <option value="no">NEGATIVA CON < 3 PUNTOS EN CRITERIOS ANTERIORES</option>
                           <option value="si">ZONAS YODONEGATIVAS MÁS ALLÁ DE LA ZT</option>
                 </select>
-                    </div>
+
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
+
+                        <select name='cy_intermedios ' id='cy_intermedios' class="form-control" >
                           <option value="" >CITERIOS INTERMEDIOS</option>
                           <option value="si">CAPTACIÓN PARCIAL DE YODO</option>
                           <option value="no">(MOTEADO-JASPEADO)</option>
                 </select>
-                    </div>
+
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="bootstrap-select fm-cmp-mg">
-                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
+
+                        <select name='cy_mayores' id='cy_mayores'class="form-control" >
                           <option value="" >CITERIOS MAYORES</option>
                           <option value="si">YODONEGATIVA CON 4 O MÁS PUNTOS</option>
                           <option value="no">EN CRITERIOS ANTERIORES</option>
                 </select>
-                    </div>
-                </div>
-              </div> <br><br><br>
+
+                </div></div>
+               <br><br><br>
               <div class="row">
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div class="bootstrap-select fm-cmp-mg">
-                    <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                      <option value="" >SCHILLER</option>
-                      <option value="si">NEGATIVA</option>
-                      <option value="no">POSITIVA</option>
+
+                    <select name='schiller' id='schiller' class="form-control" >
+                      <option value="" >Selecciona Schiller</option>
+                      <option value="negativa">NEGATIVA</option>
+                      <option value="positiva">POSITIVA</option>
 
             </select>
-                </div>
+
             </div>
 
               </div> <br>
@@ -850,52 +856,81 @@
               <div class="row">
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <div class="bootstrap-select fm-cmp-mg">
-                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                        <option value="" >VAGINOSCOPIA</option>
-                        <option value="si">ACÉTICO</option>
-                        <option value="no">LUGOL</option>
+
+                      <select name='vaginoscopia ' id='vaginoscopia' class="form-control" >
+                        <option value="" >Selecciona Vaginoscopia</option>
+                        <option value="acetico">ACÉTICO</option>
+                        <option value="lugol">LUGOL</option>
               </select>
-                  </div>
+
               </div>
               </div> <br>
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <div class="bootstrap-select fm-cmp-mg">
-                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                        <option value="" >VULVOSCOPIA</option>
-                        <option value="si">ACÉTICO</option>
+
+                      <select name='vulvoscopia ' id='vulvoscopia' class="form-control" >
+                        <option value="" >Selecciona vulvoscopia</option>
+                        <option value="acetico">ACÉTICO</option>
 
               </select>
-                  </div>
+
               </div>
               </div> <br>
               <div class="row">
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <div class="bootstrap-select fm-cmp-mg">
-                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
-                        <option value="" >MISCELANEOS</option>
-                        <option value="si">CONDILOMAS</option>
-                        <option value="1" >EVERSIÓN GLANDULAR</option>
-                        <option value="si">LEUCOPLASIA</option>
-                        <option value="1" >ZT CONGÉNITA</option>
-                        <option value="si">INFLAMACIÓN</option>
-                        <option value="1" >ATROFIA</option>
-                        <option value="si">PÓLIPOS</option>
-                        <option value="1" >DECIDUOSIS</option>
-                        <option value="si">QUERATOSIS</option>
-                        <option value="1" >HIPERPLASIA GLANDULAR</option>
-                        <option value="si">MICROPAPILOMATOSIS VESTIBULAR</option>
+
+                      <select name='miscelaneos ' id='miscelaneos' class="form-control" >
+                        <option value="" >Selecciona Miscelaneos</option>
+                        <option value="condilomas">CONDILOMAS</option>
+                        <option value="eversion_glandular" >EVERSIÓN GLANDULAR</option>
+                        <option value="leucoplasia">LEUCOPLASIA</option>
+                        <option value="zt_congenita" >ZT CONGÉNITA</option>
+                        <option value="inflamacion">INFLAMACIÓN</option>
+                        <option value="atrofia" >ATROFIA</option>
+                        <option value="polipos">PÓLIPOS</option>
+                        <option value="deciduosis" >DECIDUOSIS</option>
+                        <option value="queratosis">QUERATOSIS</option>
+                        <option value="hiperplasia_glandular" >HIPERPLASIA GLANDULAR</option>
+                        <option value="micropapilomatosis_vestibular">MICROPAPILOMATOSIS VESTIBULAR</option>
 
 
               </select>
-              </div>
+
                   </div>
               </div> <br>
 
 
 
+              <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="floating-numner">
+                          <p>POSIBLE RECOMENDACIÓN DIAGNOSTICA</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="form-group">
+                          <div class="nk-int-st">
+                              <!--<textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="recomendacion_diagnostica" form="f"></textarea>
+                        -->
+                        <span>Valor #1</span>
+                        <input type="text" id="txt_campo_1" class="monto" onkeyup="sumar();" />
+                        <br/>
+
+                        <span>Valor #2</span>
+                        <input type="text" id="txt_campo_2" class="monto" onkeyup="sumar();" />
+                        <br/>
+
+                        <span>Valor #3</span>
+                        <input type="text" id="txt_campo_3" class="monto" onkeyup="sumar();" />
+                        <br/>
+<span>El resultado es: </span> <span id="spTotal"></span>
+                      </div>
+                      </div>
+                  </div>
+              </div>
               <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="floating-numner">
@@ -907,7 +942,7 @@
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="form-group">
                           <div class="nk-int-st">
-                              <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica"></textarea>
+                              <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="posible_recomendacion_diagnostica" form="f" disabled></textarea>
                           </div>
                       </div>
                   </div>
@@ -916,7 +951,7 @@
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                   <div class="bootstrap-select fm-cmp-mg">
-                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
+                      <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente'class="form-control" >
                         <option value="" >DIAGNOSTICO MÉDICO</option>
                         <option value="si">HALLAZGOS NORMALES</option>
                         <option value="1" >HALLAZGOS SUGESTIVOS DE INVASIÓN</option>
@@ -930,12 +965,93 @@
               </div>
                   </div>
               </div> <br>
-              <div class="row">
-                <form action="/file-upload" class="dropzone">
+              <div class="container">
+
+
+
+                  <div class="row">
+                      <div id="content" class="col-lg-12">
+
                   <div class="fallback">
-                    <input name="file" type="file" multiple />
+                      <input name="file" type="file" multiple />
                   </div>
-                </form>
+                  <div id="actions" class="row">
+                      <div class="col-lg-7">
+                          <!-- The fileinput-button span is used to style the file input field as button -->
+                          <span class="btn btn-success fileinput-button">
+                              <i class="glyphicon glyphicon-plus"></i>
+                              <span>Añadir imágeness...</span>
+                          </span>
+                          <button type="submit" class="btn btn-primary start" style="display: none;">
+                              <i class="glyphicon glyphicon-upload"></i>
+                              <span>Start upload</span>
+                          </button>
+                          <button type="reset" class="btn btn-warning cancel" style="display: none;">
+                              <i class="glyphicon glyphicon-ban-circle"></i>
+                              <span>Cancel upload</span>
+                          </button>
+                      </div>
+
+
+                  </div>
+
+                  <div class="table table-striped files" id="previews">
+                      <div id="template" class="file-row row">
+                          <!-- This is used as the file preview template -->
+                          <div class="col-xs-12 col-lg-3">
+                              <span class="preview" style="width:160px;height:160px;">
+                                  <img data-dz-thumbnail />
+                              </span>
+                              <br/>
+                              <button class="btn btn-primary start" style="display:none;">
+                                  <i class="glyphicon glyphicon-upload"></i>
+                                  <span>Empezar</span>
+                              </button>
+
+                              <button data-dz-remove class="btn btn-danger delete">
+                                  <i class="icon-trash fa fa-trash"></i>
+                                  <span>Eliminar</span>
+                              </button>
+                          </div>
+                          <div class="col-xs-12 col-lg-9">
+                              <p class="name" data-dz-name></p>
+                              <p class="size" data-dz-size></p>
+                              <div>
+                                  <strong class="error text-danger" data-dz-errormessage></strong>
+                              </div>
+                              <div>
+                                  <div  >
+                                    <div ></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="dropzone-here">Añade tus  archivos.</div>
+
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                          <!-- Bloque de anuncios adaptable -->
+                          <ins class="adsbygoogle"
+                               style="display:block"
+                               data-ad-client="ca-pub-6676636635558550"
+                               data-ad-slot="8523024962"
+                               data-ad-format="auto"
+                               data-full-width-responsive="true"></ins>
+                          <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                          </script>
+                      </div>
+                  </div>
+
+
+
+
 
               </div> <br>
 
@@ -959,11 +1075,11 @@
                                                                 <div class="row">
                                                                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                     <div class="form-ic-cmp">
-                                                                        <i class="notika-icon notika-tax"></i>
-                                                                    </div>
-                                                                      <div class="bootstrap-select fm-cmp-mg">
 
-                                                                          <select name="edad_inicio_vida_sexual"  class="selectpicker" required>
+                                                                    </div>
+
+
+                                                                          <select name="edad_inicio_vida_sexual" class="form-control" >
                                                                             <option value="">Estudio a solicitar</option>
                                                                             <option value="1">1</option>
                                                                             <option value="2">2</option>
@@ -972,7 +1088,7 @@
                                                                             <option value="5">5</option>
 
                                                                   </select>
-                                                                      </div>
+
                                                                   </div>
                                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                         <p>
@@ -1089,7 +1205,7 @@
 
                                                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                                           <div class="bootstrap-select fm-cmp-mg">
-                                                                                              <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
+                                                                                              <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente'class="form-control" >
                                                                                                 <option value="" >ESTUDIO A SOLICITAR</option>
                                                                                                 <option value="si">INSICIONAL</option>
                                                                                                 <option value="1" >TRUCUT</option>
@@ -1099,7 +1215,7 @@
                                                                                           </div>
                                                                                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                                             <div class="bootstrap-select fm-cmp-mg">
-                                                                                                <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker" required>
+                                                                                                <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente'class="form-control" >
                                                                                                   <option value="" >MAMA BIOPSIADA</option>
                                                                                                   <option value="si">DERECHA</option>
                                                                                                   <option value="1" >IZQUIERDA</option>
@@ -1251,7 +1367,7 @@
 
                                                                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                                                                         <div class="bootstrap-select fm-cmp-mg">
-                                                                                                            <select name="para" class="selectpicker" required>
+                                                                                                            <select name="para"class="form-control" >
                                                                                                               <option value="">SDG</option>
                                                                                                               <option value="1">1</option>
                                                                                                               <option value="2">2</option>
@@ -1336,8 +1452,9 @@
                           </div>
                       </div>
 
-                  </div>
-
+                  </div><br>
+                  <center><input type="submit" style="border: #000 1px solid; background-color: #ed80a8" value="Enviar formulario"></center>
+</form>
     <!-- Form Element area End-->
 
     <!-- End Footer area-->
@@ -1394,7 +1511,7 @@
     <script src="js/icheck/icheck-active.js"></script>
     <!--  Chat JS
 		============================================ -->
-    <script src="js/chat/jquery.chat.js"></script>
+
     <!--  todo JS
 		============================================ -->
     <script src="js/todo/jquery.todo.js"></script>
@@ -1428,7 +1545,7 @@
     <script src="js/summernote/summernote-active.js"></script>
     <!-- dropzone JS
     ============================================ -->
-    <script src="js/dropzone/dropzone.js"></script>
+
 	<!--  wave JS
 		============================================ -->
     <script src="js/wave/waves.min.js"></script>
@@ -1447,15 +1564,253 @@
     <script src="js/plugins.js"></script>
     <!-- and drop JS
 		============================================ -->
-    <script src="jquery-3.0.0.js" type="text/javascript"></script>
 
-    <script src="dropzone.min.js"></script>>
-    <script src="script.js" type="text/javascript"></script>
+
+
+
     <!-- main JS
 		============================================ -->
-    <script src="js/main.js"></script>
+
+    <script language="JavaScript">
+    $( function() {
+        $("#metodos_planificacion").change( function() {
+            if ($(this).val() === "hormonales_orales") {
+                $("#cual ").prop("disabled", true);
+            }
+    else if($(this).val() === ""){
+    $("#cual").prop("disabled", true);
+    }
+    else if($(this).val() === "hormonales_inyectables"){
+    $("#cual").prop("disabled", true);
+    }
+    else if($(this).val() === "condon"){
+    $("#cual").prop("disabled", true);
+    }
+            else {
+                $("#cual").prop("disabled", false);
+            }
+        });
+    });
+    </script>
+<!-- ----------------------------------------------------------------------------------------------------->
+<script language="JavaScript">
+$( function() {
+    $("#colposcopia").change( function() {
+        if ($(this).val() !== "no_adecuada") {
+            $("#causa ").prop("disabled", true);
+        }
+
+        else {
+            $("#causa").prop("disabled", false);
+        }
+    });
+});
+</script>
+<!-- ----------------------------------------------------------------------------------------------------->
+<!-- ----------------------------------------------------------------------------------------------------->
+<script language="JavaScript">
+$("#epitelio_acetoblanco").change(function() {
+      if($("#epitelio_acetoblanco").val() === "presente"){
+        $('#ep_criterios_menores').prop('disabled', false);
+          $('#ep_criterios_intermedios').prop('disabled', false);
+            $('#ep_criterios_mayores').prop('disabled', false);
+
+      }else{
+        $('#ep_criterios_menores').prop('disabled', 'disabled');
+        $('#ep_criterios_intermedios').prop('disabled', 'disabled');
+        $('#ep_criterios_mayores').prop('disabled', 'disabled');
+      }
+    });
 
 
+    $("#ep_criterios_menores").change(function() {
+      if($("#ep_criterios_menores").val() === ""){
+        $('#ep_criterios_intermedios').prop('disabled', false);
+          $('#ep_criterios_mayores').prop('disabled', false);
+      }
+      else
+      {
+
+        $('#ep_criterios_intermedios').prop('disabled', 'disabled');
+        $('#ep_criterios_mayores').prop('disabled', 'disabled');
+      }
+    });
+
+    $("#ep_criterios_intermedios").change(function() {
+      if($("#ep_criterios_intermedios").val() === ""){
+        $('#ep_criterios_menores').prop('disabled', false);
+          $('#ep_criterios_mayores').prop('disabled', false);
+      }
+      else
+      {
+
+        $('#ep_criterios_menores').prop('disabled', 'disabled');
+        $('#ep_criterios_mayores').prop('disabled', 'disabled');
+      }
+    });
+
+
+
+
+    $("#ep_criterios_mayores").change(function() {
+      if($("#ep_criterios_mayores").val() === ""){
+        $('#ep_criterios_menores').prop('disabled', false);
+          $('#ep_criterios_intermedios').prop('disabled', false);
+      }
+      else
+      {
+        $('#ep_criterios_menores').prop('disabled', 'disabled');
+        $('#ep_criterios_intermedios').prop('disabled', 'disabled');
+      }
+    });
+///////////////////////////////////////////////////////////////////////////////////////////
+$("#bs_criterios_menores").change(function() {
+  if($("#bs_criterios_menores").val() === ""){
+    $('#bs_criterios_intermedios').prop('disabled', false);
+      $('#bs_criterios_mayores').prop('disabled', false);
+  }
+  else
+  {
+
+    $('#bs_criterios_intermedios').prop('disabled', 'disabled');
+    $('#bs_criterios_mayores').prop('disabled', 'disabled');
+  }
+});
+
+$("#bs_criterios_intermedios").change(function() {
+  if($("#bs_criterios_intermedios").val() === ""){
+    $('#bs_criterios_menores').prop('disabled', false);
+      $('#bs_criterios_mayores').prop('disabled', false);
+  }
+  else
+  {
+
+    $('#bs_criterios_menores').prop('disabled', 'disabled');
+    $('#bs_criterios_mayores').prop('disabled', 'disabled');
+  }
+});
+
+
+
+
+$("#bs_criterios_mayores").change(function() {
+  if($("#bs_criterios_mayores").val() === ""){
+    $('#bs_criterios_menores').prop('disabled', false);
+      $('#bs_criterios_intermedios').prop('disabled', false);
+  }
+  else
+  {
+    $('#bs_criterios_menores').prop('disabled', 'disabled');
+    $('#bs_criterios_intermedios').prop('disabled', 'disabled');
+  }
+});
+////////////////////////////////////////////////
+
+$("#ag_criterios_menores").change(function() {
+  if($("#ag_criterios_menores").val() === ""){
+    $('#ag_criterios_intermedios').prop('disabled', false);
+      $('#ag_criterios_mayores').prop('disabled', false);
+  }
+  else
+  {
+
+    $('#ag_criterios_intermedios').prop('disabled', 'disabled');
+    $('#ag_criterios_mayores').prop('disabled', 'disabled');
+  }
+});
+
+$("#ag_criterios_intermedios").change(function() {
+  if($("#ag_criterios_intermedios").val() === ""){
+    $('#ag_criterios_menores').prop('disabled', false);
+      $('#ag_criterios_mayores').prop('disabled', false);
+  }
+  else
+  {
+
+    $('#ag_criterios_menores').prop('disabled', 'disabled');
+    $('#ag_criterios_mayores').prop('disabled', 'disabled');
+  }
+});
+
+
+
+
+$("#ag_criterios_mayores").change(function() {
+  if($("#ag_criterios_mayores").val() === ""){
+    $('#ag_criterios_menores').prop('disabled', false);
+      $('#ag_criterios_intermedios').prop('disabled', false);
+  }
+  else
+  {
+    $('#ag_criterios_menores').prop('disabled', 'disabled');
+    $('#ag_criterios_intermedios').prop('disabled', 'disabled');
+  }
+});
+//////////////////////////////////////////////////////
+
+$("#cy_menores").change(function() {
+  if($("#cy_menores").val() === ""){
+    $('#cy_intermedios').prop('disabled', false);
+      $('#cy_mayores').prop('disabled', false);
+  }
+  else
+  {
+
+    $('#cy_intermedios').prop('disabled', 'disabled');
+    $('#cy_mayores').prop('disabled', 'disabled');
+  }
+});
+
+$("#cy_intermedios").change(function() {
+  if($("#cy_intermedios").val() === ""){
+    $('#cy_menores').prop('disabled', false);
+      $('#cy_mayores').prop('disabled', false);
+  }
+  else
+  {
+
+    $('#cy_menores').prop('disabled', 'disabled');
+    $('#cy_mayores').prop('disabled', 'disabled');
+  }
+});
+
+
+
+
+$("#cy_mayores").change(function() {
+  if($("#cy_mayores").val() === ""){
+    $('#cy_menores').prop('disabled', false);
+      $('#cy_intermedios').prop('disabled', false);
+  }
+  else
+  {
+    $('#cy_menores').prop('disabled', 'disabled');
+    $('#cy_intermedios').prop('disabled', 'disabled');
+  }
+});
+</script>
+
+
+<script>
+function pagoOnChange(sel) {
+      if (sel.value=="ausente"){
+           divC = document.getElementById("nCuenta");
+           divC.style.display = "";
+
+           divT = document.getElementById("nTargeta");
+           divT.style.display = "none";
+
+      }else{
+
+           divC = document.getElementById("nCuenta");
+           divC.style.display="none";
+
+           divT = document.getElementById("nTargeta");
+           divT.style.display = "";
+      }
+}
+</script>
+<!-- ----------------------------------------------------------------------------------------------------->
     <?php
   include('pie.php');
      ?>
@@ -1464,6 +1819,7 @@
 </body>
 
 </html>
+
 <?php
 }
 } else {

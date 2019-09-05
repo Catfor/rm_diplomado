@@ -185,12 +185,14 @@
 
                                         <?php
 include('../coni/Localhost.php');
-      $consultasemanas = "SELECT * FROM paciente";
+      $consultasemanas = "SELECT * FROM paciente AS p
+INNER JOIN atencion_medica AS a
+ON a.id_usu=p.id_paciente";
                                         $resultadosemanas = $mysqliL->query($consultasemanas);
 
 
                                         $si=$resultadosemanas->num_rows;
-                                        if($si>=0){
+
                                           while($resultadosemanas1= $resultadosemanas->fetch_assoc()) {
                                           $nombre_paciente = $resultadosemanas1['nombre_paciente'];
                                           $apellidos_paciente= $resultadosemanas1['apellidos_paciente'];
@@ -199,6 +201,7 @@ include('../coni/Localhost.php');
                                           $fecha_creacion= $resultadosemanas1['fecha_creacion'];
                                           $codigo_postal= $resultadosemanas1['codigo_postal'];
 $id_paciente= $resultadosemanas1['id_paciente'];
+$id_atencion_medica= $resultadosemanas1['id_atencion_medica'];
 
 
                                         ECHO "  <tr><td>$nombre_paciente $apellidos_paciente </td>
@@ -206,18 +209,14 @@ $id_paciente= $resultadosemanas1['id_paciente'];
                                           <td>$fecha_nacimiento_paciente</td>
                                           <td>$codigo_postal  </td>
                                           <td>$fecha_creacion</td>
-                                            <td><a href='atencion_medica.php?id_paciente=$id_paciente'>CONSULTAR</a</td>
+                                            <td><a href='atencion_medica.php?id_paciente=$id_paciente&id_atencion_medica=$id_atencion_medica'>CONSULTAR</a</td>
 
 
 
-                                            </tr>";
-                                        }
-                                        }
-                                          else{
-                                            ECHO "  <tr><td>No hay Registro </td>
                                             </tr>";
 
 }
+
 
                                         ?>
 
@@ -256,7 +255,7 @@ $id_paciente= $resultadosemanas1['id_paciente'];
     <!-- scrollUp JS
 		============================================ -->
     <script src="js/jquery.scrollUp.min.js"></script>
-    
+
     <!-- counterup JS
 		============================================ -->
     <script src="js/counterup/jquery.counterup.min.js"></script>

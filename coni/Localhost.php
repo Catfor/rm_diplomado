@@ -1,4 +1,5 @@
 <?php
+
 $mysqliL = new mysqli('74.208.183.28', 'apps', 'apps1', 'diplomado',3307);
 mysqli_set_charset($mysqliL, 'utf8');
 //mysqli_query("SET NAMES 'utf8'");
@@ -10,7 +11,7 @@ if(mysqli_connect_errno()){
  ?>
  <?php
 /*
- $mysqliL = new mysqli('74.208.183.28', 'apps', 'apps1', 'diplomado',3307);
+ $mysqliL = new mysqli('localhost', 'root', '', 'diplomadoreinamadre',3306);
  mysqli_set_charset($mysqliL, 'utf8');
  //mysqli_query("SET NAMES 'utf8'");
  if(mysqli_connect_errno()){

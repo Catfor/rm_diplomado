@@ -4,7 +4,6 @@ date_default_timezone_set('America/Mexico_City');
  $hoys = date("Y-m-d H:i:s");
 $nombre_paciente=$_GET['nombre_paciente'];
 $apellidos_paciente=$_GET['apellidos_paciente'];
-$edad_paciente=$_GET['edad_paciente'];
 $estado_civil=$_GET['estado_civil'];
 $direccion_paciente=$_GET['direccion_paciente'];
 $municipio_paciente=$_GET['municipio_paciente'];
@@ -20,7 +19,7 @@ $celular_familiar_paciente=$_GET['celular_familiar_paciente'];
 $nombre_contacto_paciente=$_GET['nombre_contacto_paciente'];
 $telefono_contacto_paciente=$_GET['telefono_contacto_paciente'];
 $celular_contacto_paciente=$_GET['celular_contacto_paciente'];
-$newDate = date('Y-m-d', strtotime($edad_paciente));
+$newDate = date('Y-m-d', strtotime($_GET['edad_paciente']));
 
 $cumpleanos = new DateTime("$newDate");
     $hoy = new DateTime();
@@ -44,7 +43,13 @@ $sql11 = "INSERT INTO paciente
        $resultaq = $mysqliL->query($sql11);
     //   echo $sql11.'<br>';
       $id_bitacora=$mysqliL->insert_id;
-
+////////////////////////////////////////////////
+$sql11 = "INSERT INTO atencion_medica
+  (id_usu)
+  VALUES
+  ('$id_bitacora')";
+       $resultaq = $mysqliL->query($sql11);
+//////////////////////////////////////////////
 
 
 for ($y=0; $y<count($tipo_seguro);  $y++) {
