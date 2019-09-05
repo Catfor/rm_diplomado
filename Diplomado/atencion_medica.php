@@ -957,50 +957,49 @@
                                                           <div class="panel-body">
                                                               <p>
                                                                 <div class="row">
+
                                                                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                    <div class="form-ic-cmp">
-                                                                        <i class="notika-icon notika-tax"></i>
-                                                                    </div>
-                                                                      <div class="bootstrap-select fm-cmp-mg">
+                                                                      <div class="form-group ic-cmp-int float-lb floating-lb">
+                                                                        <div class="form-ic-cmp">
+                                                                            <i class="notika-icon notika-edit"></i>
+                                                                        </div>
+                                                                          <div class="nk-int-st">
+                                                                              <input type="text"  name="" placeholder="" value="" disabled >
+                                                                              <label class="nk-label">Estudio a Solicitar:  Papanicolaou/Citología Exfoliativa </label>
 
-                                                                          <select name="edad_inicio_vida_sexual"  class="selectpicker" required>
-                                                                            <option value="">Estudio a solicitar</option>
-                                                                            <option value="1">1</option>
-                                                                            <option value="2">2</option>
-                                                                            <option value="3">3</option>
-                                                                            <option value="4">4</option>
-                                                                            <option value="5">5</option>
-
-                                                                  </select>
+                                                                          </div>
                                                                       </div>
                                                                   </div>
-                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                        <p>
+                                                                </div>  <br><br>
+                                                                <div class="row">
+                                                                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                              <p>
 
-                                                                           Antecedenctes  de cancer:<br>
+                                                                                 Antecedenctes  de cancer:<br>
 
-                                                                           <label><input type="radio" name="curso" value="ceramica"> Si</label>
+                                                                                 <label><input type="radio" name="curso" value="ceramica"> Si</label>
 
-                                                                           <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
-
-
-
-                                                                         </p>
-                                                                      </div>
-                                                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                                        <p>
-
-                                                                           Antecedenctes  de infecciòn vaginal :<br>
-
-                                                                           <label><input type="radio" name="curso" value="ceramica"> Si</label>
-
-                                                                           <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
+                                                                                 <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
 
 
 
-                                                                         </p>
-                                                                      </div>
-                                                                  </div>  <br><br>
+                                                                               </p>
+                                                                            </div>
+                                                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                              <p>
+
+                                                                                 Antecedenctes  de infecciòn vaginal :<br>
+
+                                                                                 <label><input type="radio" name="curso" value="ceramica"> Si</label>
+
+                                                                                 <label><input type="radio" name="curso" value="jardineria" checked> NO</label>
+
+
+
+                                                                               </p>
+                                                                            </div>
+                                                                </div> <br>
+
                                                                   <div class="row">
                                                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                                           <div class="floating-numner">
