@@ -676,20 +676,20 @@
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
 
                                         <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' class="form-control" onChange="pagoOnChange(this)" required>
-                                          <option value="">Selecciona Epitelio Acetoblanco</option>
-                                          <option value="ausente">AUSENTE</option>
+
+                                          <option value="">AUSENTE</option>
                                           <option value="presente">PRESENTE</option>
                                         </select>
 
                                       </div>
 
                                     </div>
-                                    <div id="nCuenta" style="display:;">
+                                    <div id="ausente" style="display:;">
 
                                     </div>
 
 
-                                    <div id="nTargeta" class="formularioOculto" style="display:none;">
+                                    <div id="presente" class="formularioOculto" style="display:none;">
                                       <div class="row fila">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
@@ -917,7 +917,7 @@
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                           <div class="nk-int-st">
-                                          <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="recomendacion_diagnostica" form="f"></textarea>
+                                          <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="recomendacion_diagnostica" form="f" disabled></textarea>
 
                                             </div>
                                         </div>
@@ -934,7 +934,7 @@
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                           <div class="nk-int-st">
-                                            <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="posible_recomendacion_diagnostica" form="f" disabled></textarea>
+                                            <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="posible_recomendacion_diagnostica" form="f" ></textarea>
                                           </div>
                                         </div>
                                       </div>
@@ -1759,29 +1759,29 @@
       <script>
         function pagoOnChange(sel) {
           if (sel.value == "ausente") {
-            divC = document.getElementById("nCuenta");
+            divC = document.getElementById("ausente");
             divC.style.display = "";
 
-            divT = document.getElementById("nTargeta");
+            divT = document.getElementById("presente");
             divT.style.display = "none";
 
           }
 
 else if(sel.value == "") {
-  divC = document.getElementById("nCuenta");
+  divC = document.getElementById("ausente");
   divC.style.display = "";
 
-  divT = document.getElementById("nTargeta");
+  divT = document.getElementById("presente");
   divT.style.display = "none";
 
 }
 
           else {
 
-            divC = document.getElementById("nCuenta");
+            divC = document.getElementById("ausente");
             divC.style.display = "none";
 
-            divT = document.getElementById("nTargeta");
+            divT = document.getElementById("presente");
             divT.style.display = "";
           }
         }
