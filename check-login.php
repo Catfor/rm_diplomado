@@ -29,7 +29,7 @@ $rol = $rowwe['rol'];
 	    }
 			else{
 
-echo "ando qui";
+
 				$sql11 = "INSERT INTO bitacora_ingreso
 				  (id_u,fecha_ingreso)
 				  VALUES
