@@ -30,7 +30,7 @@ if (!empty($password) && !empty($email)) {
 			header('Location: index.php?error=1');
 		} else {
 
-			echo "ando qui";
+			
 			$sql11 = "INSERT INTO bitacora_ingreso
 				  (id_u,fecha_ingreso)
 				  VALUES
