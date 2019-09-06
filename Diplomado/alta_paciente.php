@@ -323,7 +323,7 @@
                               <div class="form-group ic-cmp-int">
 
                                   <div class="nk-int-st">
-                                      <input id="razon_apoyo_paciente" name='razon_apoyo_paciente' type="text" class="form-control" placeholder="¿Cùal?" disabled>
+                                      <input id="razon_apoyo_paciente" name='razon_apoyo_paciente' type="text" class="form-control" placeholder="¿Cúal?" disabled>
                                   </div>
                               </div>
                           </div>
