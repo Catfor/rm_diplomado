@@ -22,7 +22,7 @@
 
                             </li>
                             <li class="nav-item dropdown">
-           <a href="logout.php"  role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class='notika-icon notika-close'></i></span></a>
+           <a href="logout.php"  role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
 
                             </li>
                           </ul>
