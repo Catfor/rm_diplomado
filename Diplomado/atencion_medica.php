@@ -547,8 +547,7 @@
                           <i class="notika-icon notika-edit"></i>
                         </div>
                         <div class="nk-int-st">
-                          <input type="text" name="atecedentes_lesion" class="form-control">
-                          <label class="nk-label">Antecedentes de lesión</label>
+                          <input type="text" name="atecedentes_lesion" class="form-control" placeholder="Antecedentes de lesión:">
                         </div>
                       </div>
                     </div>
@@ -558,9 +557,8 @@
                           <i class="notika-icon notika-edit"></i>
                         </div>
                         <div class="nk-int-st">
-                          <input type="text" name="antecedentes_tratamiento" class="form-control">
-                          <label class="nk-label">Antecedente de tratamiento</label>
-                        </div>
+                          <input type="text" name="antecedentes_tratamiento" class="form-control" placeholder="Antecedente de tratamiento:">
+                     </div>
                       </div>
                     </div>
 
@@ -1449,7 +1447,7 @@
 
                   </div><br>
                   <center><input type="submit" style="border: #000 1px solid; background-color: #ed80a8" value="Enviar formulario"></center>
-  <button class="btn notika-btn-purple btn-reco-mg btn-button-mg" value="Enviar formulario">Purple</button>
+
 
 </form>
     <!-- Form Element area End-->
