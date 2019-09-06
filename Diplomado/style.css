@@ -1789,7 +1789,7 @@ ul.wizard-nav-ac li .disabled{
 .panel-collapse .panel-heading:not(.active) .panel-title>a:before{
     background:#eee
 }
-.panel-collapse .panel-heading:after,.panel-collapse .panel-heading:before{
+.panel-collapse .panel-heading:after,{
     font-size:14px;
     position:absolute;
     left:0;
@@ -1802,20 +1802,6 @@ ul.wizard-nav-ac li .disabled{
     -moz-backface-visibility:hidden;
     backface-visibility:hidden;
     top:8px;
-}
-.panel-collapse .panel-heading:before{
-    content:"\e923";
-    -ms-transform:scale(1);
-    -o-transform:scale(1);
-	 font-family: 'notika-icon';
-}
-.panel-collapse .panel-heading:after{
-    -webkit-transform:scale(0);
-    -ms-transform:scale(0);
-    -o-transform:scale(0);
-    transform:scale(0);
-    content:"\e91b";
-	font-family: 'notika-icon';
 }
 .panel-collapse .panel-heading.active .panel-title>a:after{
     -webkit-transform:scale(1);
