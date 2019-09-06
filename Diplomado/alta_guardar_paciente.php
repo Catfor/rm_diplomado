@@ -48,7 +48,7 @@ $sql11 = "INSERT INTO atencion_medica
   (id_paciente)
   VALUES
   ('$id_bitacora')";
-       $resultaq = $mysqliL->query($sql11);
+  //     $resultaq = $mysqliL->query($sql11);
 //////////////////////////////////////////////
 
 

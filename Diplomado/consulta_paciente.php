@@ -186,9 +186,7 @@
 
                                         <?php
 include('../coni/Localhost.php');
-      $consultasemanas = "SELECT * FROM paciente AS p
-INNER JOIN atencion_medica AS a
-ON a.id_paciente=p.id_paciente";
+      $consultasemanas = "SELECT * FROM paciente ";
                                         $resultadosemanas = $mysqliL->query($consultasemanas);
 
 
@@ -202,7 +200,7 @@ ON a.id_paciente=p.id_paciente";
                                           $fecha_creacion= $resultadosemanas1['fecha_creacion'];
                                           $codigo_postal= $resultadosemanas1['codigo_postal'];
 $id_paciente= $resultadosemanas1['id_paciente'];
-$id_atencion_medica= $resultadosemanas1['id_atencion_medica'];
+
 
 
                                         ECHO "  <tr><td>$nombre_paciente $apellidos_paciente </td>
@@ -210,7 +208,7 @@ $id_atencion_medica= $resultadosemanas1['id_atencion_medica'];
                                           <td>$fecha_nacimiento_paciente</td>
                                           <td>$codigo_postal  </td>
                                           <td>$fecha_creacion</td>
-                                            <td><a href='atencion_medica.php?id_paciente=$id_paciente&id_atencion_medica=$id_atencion_medica'>CONSULTAR</a</td>
+                                            <td><a href='atencion_medica.php?id_paciente=$id_paciente'>CONSULTAR</a</td>
 
 
 

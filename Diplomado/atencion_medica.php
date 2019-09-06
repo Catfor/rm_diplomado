@@ -131,6 +131,7 @@
 
           include('menu.php');
           $idpaciente = $_GET['id_paciente'];
+
           $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$idpaciente");
 
 
@@ -234,6 +235,7 @@
 
                 </div><br><br>
                 <form id="f" action='guardar_atencion_medica.php' method="get">
+                  <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente?>" >
                   <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
@@ -241,6 +243,8 @@
 
                           <span class="input-group-addon"></span>
                           <input type="text" class="form-control" name="edad_inicio_menstruacion" placeholder="Edad de Inicio de menstruación">
+
+
                         </div>
                       </div>
                     </div>
@@ -270,7 +274,7 @@
                   </div> <br>
                   <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <div class="bootstrap-select fm-cmp-mg">
+
                         <select name="edad_inicio_vida_sexual" class="form-control">
                           <option value="">Edad de inicio de vida sexual</option>
                           <option value="1">1</option>
@@ -393,10 +397,10 @@
                           <option value="119">119</option>
                           <option value="120">120</option>
                         </select>
-                      </div>
+
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <div class="bootstrap-select fm-cmp-mg">
+
                         <select name="parejas_sexuales" class="form-control">
                           <option value="">Parejas sexuales</option>
                           <option value="1">1</option>
@@ -430,10 +434,10 @@
                           <option value="29">29</option>
                           <option value="30">30</option>
                         </select>
-                      </div>
+
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <div class="bootstrap-select fm-cmp-mg">
+
                         <select name="gestas" class="form-control">
                           <option value="">Gestas</option>
                           <option value="1">1</option>
@@ -451,14 +455,14 @@
                           <option value="13">13</option>
                           <option value="14">14</option>>
                         </select>
-                      </div>
+
                     </div>
                   </div><br>
                   <div class="row">
 
 
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <div class="bootstrap-select fm-cmp-mg">
+
                         <select name="para" class="form-control">
                           <option value="">Para</option>
                           <option value="1">1</option>
@@ -476,10 +480,10 @@
                           <option value="13">13</option>
                           <option value="14">14</option>>
                         </select>
-                      </div>
+
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <div class="bootstrap-select fm-cmp-mg">
+
                         <select name="cesareas" class="form-control">
                           <option value="">Césareas</option>
                           <option value="1">1</option>
@@ -497,10 +501,10 @@
                           <option value="13">13</option>
                           <option value="14">14</option>>
                         </select>
-                      </div>
+
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <div class="bootstrap-select fm-cmp-mg">
+
                         <select name="abortos" class="form-control">
                           <option value="">Abortos</option>
                           <option value="1">1</option>
@@ -518,7 +522,7 @@
                           <option value="13">13</option>
                           <option value="14">14</option>>
                         </select>
-                      </div>
+
                     </div>
 
                   </div> <br>
@@ -674,7 +678,7 @@
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
 
-                                        <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' class="form-control" onChange="pagoOnChange(this)" required>
+                                        <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' class="form-control" onChange="pagoOnChange(this)" >
 
                                           <option value="">AUSENTE</option>
                                           <option value="presente">PRESENTE</option>
@@ -993,9 +997,9 @@
 
                                           Antecedenctes de cancer:<br>
 
-                                          <label><input type="radio" name="antecedente_cancer" value="1" required> Si</label>
+                                          <label><input type="radio" name="antecedente_cancer" value="1" > Si</label>
 
-                                          <label><input type="radio" name="antecedente_cancer" value="0" required> NO</label>
+                                          <label><input type="radio" name="antecedente_cancer" value="0" > NO</label>
 
 
 
@@ -1006,9 +1010,9 @@
 
                                           Antecedenctes de infecciòn vaginal :<br>
 
-                                          <label><input type="radio" name="antecedente_infeccion_vagina" value="1" required> Si</label>
+                                          <label><input type="radio" name="antecedente_infeccion_vagina" value="1" > Si</label>
 
-                                          <label><input type="radio" name="antecedente_infeccion_vagina" value="0" required> NO</label>
+                                          <label><input type="radio" name="antecedente_infeccion_vagina" value="0" > NO</label>
 
 
 
@@ -1152,7 +1156,7 @@
                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                                     <select name='estudio_solicitar_vaginoscopia' id='estudio_solicitar_vaginoscopia' class="form-control">
-                                                      <option value="">ESTUDIO A SOLICITAR</option>
+                                                      <option value="">Selecciona Estudio A Solicitar</option>
                                                       <option value="institucional">INSICIONAL</option>
                                                       <option value="trucut">TRUCUT</option>
                                                       <option value="aspiracion">ASPIRACIÒN</option>
@@ -1197,7 +1201,7 @@
                                         <div id="accordionPurple-six" class="collapse" role="tabpanel">
                                           <div class="panel-body">
                                             <p>
-                                  
+
                                               <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="floating-numner">
@@ -1209,7 +1213,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="form-group">
                                                     <div class="nk-int-st">
-                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las observaciones"></textarea>
+                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las observaciones" name="observaciones_endometrio" form="f"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
