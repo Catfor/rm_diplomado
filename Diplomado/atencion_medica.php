@@ -676,8 +676,8 @@
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
 
                                         <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' class="form-control" onChange="pagoOnChange(this)" required>
-                                          <option value="">Selecciona Epitelio Acetoblanco</option>
-                                          <option value="ausente">AUSENTE</option>
+
+                                          <option value="">AUSENTE</option>
                                           <option value="presente">PRESENTE</option>
                                         </select>
 
