@@ -629,7 +629,7 @@
                                     <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="form-control">
+                                        <select name='cervix ' id='cervix' class="form-control">
                                           <option value="">Selecciona Cervix</option>
                                           <option value="eutrofico">EUTRÓFICO</option>
                                           <option value="atrofico">ATRÓFICO</option>
@@ -643,7 +643,7 @@
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="form-control">
+                                        <select name='union_escamocolumnar ' id='union_escamocolumnar' class="form-control">
                                           <option value="">Selecciona Union Escamocolumnar </option>
                                           <option value="completamente_visible">COMPLETAMENTE VISIBLE</option>
                                           <option value="parcialmente_visible">PARCIALMENTE VISIBLE</option>
@@ -652,7 +652,7 @@
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="form-control">
+                                        <select name='zona_transformacion ' id='zona_transformacion' class="form-control">
                                           <option value="">Selecciona Zona De Transfromacion</option>
                                           <option value="tipo 1">TIPO 1</option>
                                           <option value="tipo 2 a">TIPO 2 A</option>
@@ -796,7 +796,7 @@
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='ag_criterios_mayores ' id='ag_criterios_mayores' class="form-control">
+                                          <select name='ag_criterios_mayores' id='ag_criterios_mayores' class="form-control">
                                             <option value="">Selecciona Criterios Mayores</option>
                                             <option value="puntilleo_grueso">PUNTILLEO GRUESO</option>
                                             <option value="mosaico_grueso">MOSAICO GRUESO</option>
@@ -814,7 +814,7 @@
 
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='cy_menores ' id='cy_menores' class="form-control">
+                                          <select name='cy_menores' id='cy_menores' class="form-control">
                                             <option value="">CITERIOS MENORES</option>
                                             <option value="positiva">POSITIVA</option>
                                             <option value="negativa_puntos_criterios_anteriores">NEGATIVA CON < 3 PUNTOS EN CRITERIOS ANTERIORES</option> <option value="zonas_yodo_negativas">ZONAS YODONEGATIVAS MÁS ALLÁ DE LA ZT</option>
@@ -823,7 +823,7 @@
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='cy_intermedios ' id='cy_intermedios' class="form-control">
+                                          <select name='cy_intermedios' id='cy_intermedios' class="form-control">
                                             <option value="">CITERIOS INTERMEDIOS</option>
                                             <option value="capacitacion_parcial_yodo">CAPTACIÓN PARCIAL DE YODO</option>
                                             <option value="motedao_jaspeado">(MOTEADO-JASPEADO)</option>
@@ -861,7 +861,7 @@
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='vaginoscopia ' id='vaginoscopia' class="form-control">
+                                        <select name='vaginoscopia' id='vaginoscopia' class="form-control">
                                           <option value="">Selecciona Vaginoscopia</option>
                                           <option value="acetico">ACÉTICO</option>
                                           <option value="lugol">LUGOL</option>
@@ -872,7 +872,7 @@
                                     <div class="row">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='vulvoscopia ' id='vulvoscopia' class="form-control">
+                                        <select name='vulvoscopia' id='vulvoscopia' class="form-control">
                                           <option value="">Selecciona vulvoscopia</option>
                                           <option value="acetico">ACÉTICO</option>
 
@@ -884,7 +884,7 @@
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='miscelaneos ' id='miscelaneos' class="form-control">
+                                        <select name='miscelaneos' id='miscelaneos' class="form-control">
                                           <option value="">Selecciona Miscelaneos</option>
                                           <option value="condilomas">CONDILOMAS</option>
                                           <option value="eversion_glandular">EVERSIÓN GLANDULAR</option>
@@ -917,7 +917,7 @@
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                           <div class="nk-int-st">
-                                          <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="recomendacion_diagnostica" form="f" disabled></textarea>
+                                          <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="recomendacion_diagnostica" form="f" ></textarea>
 
                                             </div>
                                         </div>
@@ -957,90 +957,7 @@
                                         </div>
                                       </div>
                                     </div> <br>
-                                    <div class="container">
-
-
-
-                                      <div class="row">
-                                        <div id="content" class="col-lg-12">
-
-                                          <div class="fallback">
-                                            <input name="file" type="file" multiple />
-                                          </div>
-                                          <div id="actions" class="row">
-                                            <div class="col-lg-7">
-                                              <!-- The fileinput-button span is used to style the file input field as button -->
-                                              <span class="btn btn-success fileinput-button">
-                                                <i class="glyphicon glyphicon-plus"></i>
-                                                <span>Añadir imágeness...</span>
-                                              </span>
-                                              <button type="submit" class="btn btn-primary start" style="display: none;">
-                                                <i class="glyphicon glyphicon-upload"></i>
-                                                <span>Start upload</span>
-                                              </button>
-                                              <button type="reset" class="btn btn-warning cancel" style="display: none;">
-                                                <i class="glyphicon glyphicon-ban-circle"></i>
-                                                <span>Cancel upload</span>
-                                              </button>
-                                            </div>
-
-
-                                          </div>
-
-                                          <div class="table table-striped files" id="previews">
-                                            <div id="template" class="file-row row">
-                                              <!-- This is used as the file preview template -->
-                                              <div class="col-xs-12 col-lg-3">
-                                                <span class="preview" style="width:160px;height:160px;">
-                                                  <img data-dz-thumbnail />
-                                                </span>
-                                                <br />
-                                                <button class="btn btn-primary start" style="display:none;">
-                                                  <i class="glyphicon glyphicon-upload"></i>
-                                                  <span>Empezar</span>
-                                                </button>
-
-                                                <button data-dz-remove class="btn btn-danger delete">
-                                                  <i class="icon-trash fa fa-trash"></i>
-                                                  <span>Eliminar</span>
-                                                </button>
-                                              </div>
-                                              <div class="col-xs-12 col-lg-9">
-                                                <p class="name" data-dz-name></p>
-                                                <p class="size" data-dz-size></p>
-                                                <div>
-                                                  <strong class="error text-danger" data-dz-errormessage></strong>
-                                                </div>
-                                                <div>
-                                                  <div>
-                                                    <div></div>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-
-                                          <div class="dropzone-here">Añade tus archivos.</div>
-
-                                        </div>
-                                      </div>
-
-                                      <div class="row">
-                                        <div class="col-lg-12">
-                                          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                                          <!-- Bloque de anuncios adaptable -->
-                                          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6676636635558550" data-ad-slot="8523024962" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                                          <script>
-                                            (adsbygoogle = window.adsbygoogle || []).push({});
-                                          </script>
-                                        </div>
-                                      </div>
-
-
-
-
-
-                                    </div> <br>
+                                <br>
 
 
                                   </p>
@@ -1062,20 +979,14 @@
                                     <div class="row">
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="form-ic-cmp">
 
-                                        </div>
+                                          <div class="nk-int-st">
+                                            <input id="" name="" type="text" class="form-control" placeholder="PAPANICOLAOU/CITOLOGIA EXFOLIATIVA" disabled>
+                                          </div>
 
 
-                                        <select name="edad_inicio_vida_sexual" class="form-control">
-                                          <option value="">Estudio a solicitar</option>
-                                          <option value="1">1</option>
-                                          <option value="2">2</option>
-                                          <option value="3">3</option>
-                                          <option value="4">4</option>
-                                          <option value="5">5</option>
 
-                                        </select>
+
 
                                                                   </div>
                                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -1083,9 +994,9 @@
 
                                           Antecedenctes de cancer:<br>
 
-                                          <label><input type="radio" name="si" value="si"> Si</label>
+                                          <label><input type="radio" name="antecedente_cancer" value="1" required> Si</label>
 
-                                          <label><input type="radio" name="no" value="no" checked> NO</label>
+                                          <label><input type="radio" name="antecedente_cancer" value="0" required> NO</label>
 
 
 
@@ -1096,9 +1007,9 @@
 
                                           Antecedenctes de infecciòn vaginal :<br>
 
-                                          <label><input type="radio" name="si" value="si"> Si</label>
+                                          <label><input type="radio" name="antecedente_infeccion_vagina" value="1" required> Si</label>
 
-                                          <label><input type="radio" name="no" value="no" checked> NO</label>
+                                          <label><input type="radio" name="antecedente_infeccion_vagina" value="0" required> NO</label>
 
 
 
@@ -1117,7 +1028,7 @@
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                           <div class="nk-int-st">
-                                            <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las observaciones"></textarea>
+                                            <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las observaciones" name="observaciones_papinocolau" form="f"></textarea>
                                           </div>
                                         </div>
                                       </div>
@@ -1169,7 +1080,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="form-group">
                                                     <div class="nk-int-st">
-                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones"></textarea>
+                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones" name="senalizacion" form="f"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -1217,7 +1128,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="form-group">
                                                     <div class="nk-int-st">
-                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones"></textarea>
+                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones" name="anotaciones_vulvoscopia" form="f"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -1240,16 +1151,16 @@
                                               <div class="row">
 
                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                  <div class="bootstrap-select fm-cmp-mg">
-                                                    <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="form-control">
+
+                                                    <select name='estudio_solicitar_vaginoscopia' id='estudio_solicitar_vaginoscopia' class="form-control">
                                                       <option value="">ESTUDIO A SOLICITAR</option>
                                                       <option value="institucional">INSICIONAL</option>
                                                       <option value="trucut">TRUCUT</option>
                                                       <option value="aspiracion">ASPIRACIÒN</option>
                                                     </select>
-                                                    </select>
-                                                  </div>
-                                                </div>
+
+
+                                                </div><br><br><br><br>
                                                 <div class="row">
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="floating-numner">
@@ -1261,7 +1172,7 @@
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group">
                                                       <div class="nk-int-st">
-                                                        <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones"></textarea>
+                                                        <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f"></textarea>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -1287,15 +1198,15 @@
                                         <div id="accordionPurple-six" class="collapse" role="tabpanel">
                                           <div class="panel-body">
                                             <p>
-                                              <div class="row">
+                                            <!--  <div class="row">
                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                   <p>
 
                                                     Antecedenctes de Metrorragia:<br>
 
-                                                    <label><input type="radio" name="si" value="si"> Si</label>
+                                                    <label><input type="radio" name="antecedente_metrorragia" value="1"> Si</label>
 
-                                                    <label><input type="radio" name="no" value="no" checked> NO</label>
+                                                    <label><input type="radio" name="antecedente_metrorragia" value="0" checked> NO</label>
 
 
 
@@ -1306,9 +1217,9 @@
 
                                                     Antecedenctes de Hormonoterapia :<br>
 
-                                                    <label><input type="radio" name="si" value="si"> Si</label>
+                                                    <label><input type="radio" name="antecedente_hormonoterapia" value="1"> Si</label>
 
-                                                    <label><input type="radio" name="no" value="no" checked> NO</label>
+                                                    <label><input type="radio" name="antecedente_hormonoterapia" value="0" checked> NO</label>
 
 
 
@@ -1408,7 +1319,7 @@
                                                   </div>
                                                 </div>
 
-                                              </div> <br>
+                                              </div> <br>-->
                                               <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="floating-numner">
@@ -1746,6 +1657,7 @@
 
         $("#cy_mayores").change(function() {
           if ($("#cy_mayores").val() === "") {
+
             $('#cy_menores').prop('disabled', false);
             $('#cy_intermedios').prop('disabled', false);
           } else {
@@ -1787,6 +1699,14 @@ else if(sel.value == "") {
         }
       </script>
       <!-- ----------------------------------------------------------------------------------------------------->
+<script language="JavaScript">
+
+  </script>
+
+
+
+
+            <!-- ----------------------------------------------------------------------------------------------------->
       <?php
           include('pie.php');
           ?>
