@@ -665,6 +665,14 @@
                                     </div>
                                     <div class="row">
 
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                      <div class="panel panel-default">
+                                        <div class="panel-heading">EPITELIO ACETOBLANCO</div>
+
+                                        </div>
+                                      </div>
+
+
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
 
                                         <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' class="form-control" onChange="pagoOnChange(this)">
@@ -683,10 +691,6 @@
 
                                     <div id="nTargeta" class="formularioOculto" style="display:none;">
                                       <div class="row fila">
-                                        <div class="panel panel-default filaInterna">
-                                          <div class="panel-heading">EPITELIO ACETOBLANCO</div>
-
-                                        </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                           <select name='ep_criterios_menores' id='ep_criterios_menores' class="form-control" disabled>
