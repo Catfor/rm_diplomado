@@ -226,7 +226,7 @@
                                 <div class="input-group date nk-int-st">
 
                                         <span class="input-group-addon"></span>
-                                        <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Edad del Paciente" required>
+                                        <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Fecha de Nacimiento" required>
                                     </div>
                                 </div>
                             </div>
@@ -240,7 +240,7 @@
                                     <option value="soltera" >Soltera</option>
                                     <option value="Casada" >Casada</option>
                                     <option value="Divorciada" >Divorciada</option>
-                                    <option value="Viuda" >Viudoa.</option>
+                                    <option value="Viuda" >Viuda</option>
                           </select>
                               </div>
                           </div>
@@ -250,7 +250,7 @@
                                         <i class="notika-icon notika-house"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="direccion_paciente" class="form-control" placeholder="Direcciòn Paciente">
+                                        <input type="text" name="direccion_paciente" class="form-control" placeholder="Dirección Paciente">
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +261,7 @@
                                         <i class="notika-icon notika-map"></i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" name="municipio_paciente" class="form-control" placeholder="Municipio:">
+                                        <input type="text" name="municipio_paciente" class="form-control" placeholder="Municipio">
                                     </div>
                                 </div>
                             </div>
@@ -277,27 +277,27 @@
                                       <i class="notika-icon notika-star"></i>
                                   </div>
                                   <div class="nk-int-st">
-                                      <input type="text" name="codigo_postal"class="form-control" data-mask="99999" placeholder="Còdigo Postal:">
+                                      <input type="text" name="codigo_postal"class="form-control" data-mask="99999" placeholder="Código Postal:">
                                   </div>
                               </div>
                           </div>
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <div class="bootstrap-select fm-cmp-mg">
                                   <select name="ingresomensual" class="selectpicker" required>
-                                        <option value="">selecciona Ingreso Mensual</option>
+                                        <option value="">Selecciona Ingreso Mensual</option>
                                     <option value="Menos de $2,000" >Menos de $2,000</option>
-                                    <option value="Entre $2,000 y $6,000">Entre $2,000 y $6,000</option>
+                                    <option value="Entre $2,000 y $6,000">Entre $2,001 y $6,000</option>
                                     <option value="Entre $6,001 y $12,000" >Entre $6,001 y $12,000</option>
-                                    <option value="Menos de $2,000" >Menos de $2,000</option>
-                                    <option value="Entre $2,000 y $6,000">Entre $2,000 y $6,000</option>
-                                    <option value="Más de $12,001" >Más de $12,001</option>
+                                    <option value="Entre $6,001 y $12,000" >Entre $12,001 y $18,000</option>
+                                    <option value="Entre $6,001 y $12,000" >Entre $18,001 y $23,000</option>
+                                    <option value="Más de $12,001" >Más de $23,001</option>
                           </select>
                               </div>
                           </div>
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <div class="bootstrap-select fm-cmp-mg">
                                   <select name="escolaridad_paciente" class="selectpicker" required>
-                                    <option value="">selecciona Grado de Escolaridad.</option>
+                                    <option value="">Selecciona Grado de Escolaridad</option>
                                     <option value="sin estudios" >Sin estudios</option>
                                     <option value="primaria">Primaria</option>
                                     <option value="secundaria" >Secundaria</option>
@@ -331,16 +331,16 @@
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                                   <div class="basic-tb-hd">
-                                <p>Cuenta con algùn Tipo de Seguro:</p>
+                                <p>Cuenta con algún Tipo de Seguro:</p>
                                   </div>
 
 
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                        <label><input type="checkbox"  value='imss' name="tipo_seguro[]"> IMSS    </label>
-                                        <label><input type="checkbox"  value='isste' name="tipo_seguro[]"> ISSTE  </label>
-                                        <label><input type="checkbox"  value='seguro_popular' name="tipo_seguro[]"> Seguro Popular  </label>
-                                        <label><input type="checkbox"  value='sgmm' name="tipo_seguro[]"> SGMM  </label>
+                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="checkbox"  value='imss' name="tipo_seguro[]"> IMSS    </label>
+                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="checkbox"  value='isste' name="tipo_seguro[]"> ISSTE  </label>
+                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="checkbox"  value='seguro_popular' name="tipo_seguro[]"> Seguro Popular  </label>
+                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="checkbox"  value='sgmm' name="tipo_seguro[]"> SGMM  </label>
                                       </div>
 
 
