@@ -187,7 +187,7 @@
 include('../coni/Localhost.php');
       $consultasemanas = "SELECT * FROM paciente AS p
 INNER JOIN atencion_medica AS a
-ON a.id_usu=p.id_paciente";
+ON a.id_paciente=p.id_paciente";
                                         $resultadosemanas = $mysqliL->query($consultasemanas);
 
 
