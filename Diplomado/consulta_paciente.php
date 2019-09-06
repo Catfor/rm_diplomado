@@ -142,7 +142,7 @@
 									<div class="breadcomb-icon">
 										<i class="notika-icon notika-windows"></i>
 									</div>
-									<div class="breadcomb-ctn">
+									<div class="breadcomb-ctn" style="margin: auto 15px;">
 									    <h2>Pacientes Registrados</h2>
 
 									</div>
@@ -194,8 +194,8 @@ ON a.id_paciente=p.id_paciente";
                                         $si=$resultadosemanas->num_rows;
 
                                           while($resultadosemanas1= $resultadosemanas->fetch_assoc()) {
-                                          $nombre_paciente = $resultadosemanas1['nombre_paciente'];
-                                          $apellidos_paciente= $resultadosemanas1['apellidos_paciente'];
+                                          $nombre_paciente = ucwords($resultadosemanas1['nombre_paciente']);
+                                          $apellidos_paciente= ucwords($resultadosemanas1['apellidos_paciente']);
                                           $fecha_nacimiento_paciente= $resultadosemanas1['fecha_nacimiento_paciente'];
                                           $edad_paciente= $resultadosemanas1['edad_paciente'];
                                           $fecha_creacion= $resultadosemanas1['fecha_creacion'];

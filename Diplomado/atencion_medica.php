@@ -153,28 +153,30 @@
                     </div>
                     <div class="breadcomb-ctn">
                       <h2>ATENCIÓN MÉDICA</h2>
+                    </div>
+                  </div>
                       <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group ic-cmp-int form-elet-mg">
 
                             <div class="nk-int-st">
-                              <p>Paciente:<br><?php echo $nombrepaciente . ' ' . $apellidospaciente; ?></p>
+                              <p>Paciente: <?php echo ' ' .$nombrepaciente . ' ' . $apellidospaciente; ?></p>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group ic-cmp-int form-elet-mg">
 
                             <div class="nk-int-st">
-                              <p>Edad Paciente:<br><?php echo $edad_paciente; ?></p>
+                              <p>Edad Paciente: <?php echo ' ' .$edad_paciente; ?></p>
                             </div>
                           </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group ic-cmp-int form-elet-mg">
 
                             <div class="nk-int-st">
-                              <p>Fecha Nacimiento:<br><?php echo $fecha_nacimiento_paciente; ?></p>
+                              <p>Fecha Nacimiento: <?php echo ' ' .$fecha_nacimiento_paciente; ?></p>
                             </div>
                           </div>
                         </div>
@@ -182,8 +184,6 @@
 
 
                       </div>
-                    </div>
-                  </div>
 
                 </div>
               </div>
