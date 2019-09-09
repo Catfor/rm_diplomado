@@ -20,11 +20,27 @@ $nombre_contacto_paciente=$_GET['nombre_contacto_paciente'];
 $telefono_contacto_paciente=$_GET['telefono_contacto_paciente'];
 $celular_contacto_paciente=$_GET['celular_contacto_paciente'];
 $newDate = date('Y-m-d', strtotime($_GET['edad_paciente']));
+$result123 = mysqli_query($mysqliL, "SELECT * from paciente where nombre_paciente='$nombre_paciente' and apellidos_paciente='$apellidos_paciente'");
+
+$total=$result123->num_rows;
+if($total>0){
+   header("Location:alta_paciente.php?nombres=$nombre_paciente $apellidos_paciente");
+}
+
+
+else{
+
+
+
+
 
 $cumpleanos = new DateTime("$newDate");
     $hoy = new DateTime();
     $annos = $hoy->diff($cumpleanos);
   $edad= $annos->y;
+
+
+
 
 
 $sql11 = "INSERT INTO paciente
@@ -64,5 +80,5 @@ VALUES
    }
 
    header("Location:alta_paciente.php?nombre=$nombre_paciente $apellidos_paciente");
-
+}
  ?>

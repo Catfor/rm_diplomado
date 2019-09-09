@@ -20,14 +20,20 @@
      $atecedentes_lesion=$_POST['atecedentes_lesion'];
      $antecedentes_tratamiento=$_POST['antecedentes_tratamiento'];
      $idpaciente=$_POST['idpaciente'];
-
+     $metrorragia=$_POST['metrorragia'];
+          $hormonoterapia=$_POST['hormonoterapia'];
+               $duracion_hormonoterapia=$_POST['duracion_hormonoterapia'];
+                    $ritmo=$_POST['ritmo'];
+                         $antecedente_cancer_cervicouterino=$_POST['antecedente_cancer_cervicouterino'];
+                             $tratamiento_previo=$_POST['tratamiento_previo'];
      $insertaratecion= "INSERT INTO atencion_medica
        (edad_inicio_menstruacion,metodos_planificacion,cual,edad_inicio_vida_sexual,parejas_sexuales,gestas,para,cesareas,abortos,
-         fecha_ultima_regla,fecha_ultimo_papanicolau,antecedentes_tratamiento,atecedentes_lesion,id_paciente,fecha_atencion_medica)
+   fecha_ultima_regla,fecha_ultimo_papanicolau,antecedentes_tratamiento,atecedentes_lesion,id_paciente,fecha_atencion_medica,metrorragia,hormonoterapia,duracion_hormonoterapia,ritmo,antecedente_cancer_cervicouterino,tratamiento_previo)
        VALUES
        ('$edad_inicio_menstruacion','$metodos_planificacion','$cual','$edad_inicio_vida_sexual','$parejas_sexuales','$gestas',
        '$para','$cesareas','$abortos','$fecha_ultima_regla','$fecha_ultimo_papanicolau','$antecedentes_tratamiento',
-       '$atecedentes_lesion','$idpaciente','$hoys')";
+       '$atecedentes_lesion','$idpaciente','$hoys','$metrorragia','$hormonoterapia','$duracion_hormonoterapia',
+       '$ritmo','$antecedente_cancer_cervicouterino','$tratamiento_previo')";
        $resultadoinsertaratencion = $mysqliL->query($insertaratecion);
          //   echo $sql11.'<br>';
            $id_ant_atencionmedica=$mysqliL->insert_id;
@@ -50,7 +56,7 @@
      $ep_criterios_intermedios=$_POST['ep_criterios_intermedios'];
      $ep_criterios_mayores=$_POST['ep_criterios_mayores'];
      $bs_criterios_menores=$_POST['bs_criterios_menores'];
-     $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
+$bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
      $bs_criterios_mayores=$_POST['bs_criterios_mayores'];
      $ag_criterios_menores=$_POST['ag_criterios_menores'];
      $ag_criterios_intermedios=$_POST['ag_criterios_intermedios'];
@@ -195,7 +201,7 @@
   	{
   		//Validamos que el archivo exista
   		if($_FILES["archivo"]["name"][$key]) {
-  			$filename = $h.'-'.$idpaciente.$_FILES["archivo"]["name"][$key]; //Obtenemos el nombre original del archivo
+  			$filename = $h.'-'.$id_ant_atencionmedica.$_FILES["archivo"]["name"][$key]; //Obtenemos el nombre original del archivo
   			$source = $_FILES["archivo"]["tmp_name"][$key]; //Obtenemos un nombre temporal del archivo
 
   			$directorio = 'imagesestudios/'; //Declaramos un  variable con la ruta donde guardaremos los archivos
@@ -207,7 +213,7 @@
 
   			$dir=opendir($directorio); //Abrimos el directorio de destino
   			$target_path = $directorio.'/'.$h.'-'.$idpaciente.$filename; //Indicamos la ruta de destino, así como el nombre del archivo
-$target_pat =$h.'-'.$idpaciente.$filename;
+$target_pat =$h.'-'.$id_ant_atencionmedica.$filename;
   			//Movemos y validamos que el archivo se haya cargado correctamente
   			//El primer campo es el origen y el segundo el destino
   			if(move_uploaded_file($source, $target_path)) {
@@ -225,6 +231,12 @@ $target_pat =$h.'-'.$idpaciente.$filename;
   			closedir($dir); //Cerramos el directorio de destino
   		}
   	}
+    $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$idpaciente");
 
+
+    $rowwe = mysqli_fetch_assoc($result123);
+    $nombrepaciente = ucwords($rowwe['nombre_paciente']);
+    $apellidospaciente = ucwords($rowwe['apellidos_paciente']);
+ header("Location:consulta_paciente.php?nombres=$nombrepaciente $apellidospaciente");
 
  ?>

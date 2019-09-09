@@ -131,7 +131,27 @@
   include('menu.php');
      ?>
 
+     <?php
+     if(isset($_GET['nombres'])){
+     if($_GET['nombres']){
+     $nombre= $_GET['nombres'];
+     //imprimes el error
+     echo " <div class='alert-list'>
+         <div class='alert alert-success alert-dismissible' role='alert'>
+             <button type='button' class='close' data-dismiss='alert'
+              aria-label='Close'><span aria-hidden='true'>
+              <i class='notika-icon notika-close'></i></span>
+              </button>
+           Atencion Medica Agregada Correctamente de   $nombre
+        </div>
 
+
+
+     </div>";
+     }
+
+     }
+     ?>
 	<div class="breadcomb-area">
 		<div class="container">
 			<div class="row">
@@ -143,6 +163,7 @@
 									<div class="breadcomb-icon">
 										<i class="notika-icon notika-windows"></i>
 									</div>
+
 									<div class="breadcomb-ctn" style="margin: auto 15px;">
 									    <h2>Pacientes Registrados</h2>
 
@@ -173,10 +194,13 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre Completo</th>
+
                                         <th>Edad</th>
                                         <th>Fecha Nacimiento</th>
                                         <th>CP</th>
+                                          <th>total de Consultas</th>
                                         <th>Fecha Alta</th>
+
 <th>Estatus</th>
                                     </tr>
                                 </thead>
@@ -203,12 +227,29 @@ $id_paciente= $resultadosemanas1['id_paciente'];
 
 
 
-                                        ECHO "  <tr><td>$nombre_paciente $apellidos_paciente </td>
+                                        ECHO "  <tr><td><a href='alta_paciente.php?id_paciente=$id_paciente'><i class='far fa-edit'></i></a> $nombre_paciente $apellidos_paciente </td>
+
                                           <td>$edad_paciente</td>
                                           <td>$fecha_nacimiento_paciente</td>
                                           <td>$codigo_postal  </td>
-                                          <td>$fecha_creacion</td>
-                                            <td><a href='atencion_medica.php?id_paciente=$id_paciente'>CONSULTAR</a</td>
+                                          ";
+                                          $consultasemanas1 = "SELECT COUNT(*) as total FROM paciente AS p
+INNER JOIN atencion_medica AS a
+ON a.id_paciente=p.id_paciente
+WHERE p.id_paciente=$id_paciente
+                                           ";
+                                                                            $resultadosemanas1 = $mysqliL->query($consultasemanas1);
+
+
+
+
+                                                                              while($resultadosemanas1w= $resultadosemanas1->fetch_assoc()) {
+                                                                                $total= $resultadosemanas1w['total'];
+                          echo "<td>$total</td>";
+                        }
+                                                echo "
+                                            <td>$fecha_creacion</td>
+                                            <td><a href='atencion_medica.php?id_paciente=$id_paciente'>CONSULTAR</a></td>
 
 
 

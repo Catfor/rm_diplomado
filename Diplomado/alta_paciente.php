@@ -145,9 +145,9 @@
 
               <!----------- ----------->
               <?php
-              if(isset($_GET['nombre'])){
-              if($_GET['nombre']){
-            $nombre= $_GET['nombre'];
+              if(isset($_GET['nombres'])){
+              if($_GET['nombres']){
+            $nombre= $_GET['nombres'];
               //imprimes el error
               echo " <div class='alert-list'>
                   <div class='alert alert-success alert-dismissible' role='alert'>
@@ -164,9 +164,21 @@
               }
 
               }
+              if(isset($_GET['nombres'])){
+              if($_GET['nombres']){
+              $nombres= $_GET['nombres'];
+              //imprimes el error
+              echo " <div class='alert-list'>
 
+                 <div class='alert alert-danger alert-mg-b-0' role='alert'>    Usuario Existente $nombres
+                 </div>
+
+
+              </div>";
+              }
+
+              }
               ?>
-
 
               <!----------- ----------->
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -439,7 +451,7 @@
                 </div>
             </div>
 <br>
-  
+
     <input class="btn btn-primary" type="submit" value="Enviar formulario">
 
 </form>
@@ -466,6 +478,8 @@ function pregunta(){
     }
 }
 </script>
+
+
 <!-- Contact area End-->
 <!-- Start Footer area--><br><br>
 <?php
