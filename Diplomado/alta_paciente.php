@@ -439,7 +439,9 @@
                 </div>
             </div>
 <br>
-    <input type="submit" style="border: #000 1px solid; background-color: #ed80a8" value="Enviar formulario">
+  
+    <input class="btn btn-primary" type="submit" value="Enviar formulario">
+
 </form>
 
 <script language="JavaScript">

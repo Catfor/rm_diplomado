@@ -9,22 +9,49 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	<?php
-		ob_start();
-        session_start();
-        include('coni/Localhost.php');
-        date_default_timezone_set('America/Mexico_City');
-		$informacion = mysqli_query($mysqliL, "SELECT apellidos_usuario,rol,id_usuario,nick,nombre_usuario,activo,correo_general, contra
-	    FROM usu_me WHERE correo_general = '$email' and contra='$password' and activo=1");
-        $info = mysqli_fetch_assoc($informacion);
-        
-		$fecha = $info['activo'];
-		$edad = $info['activo'];
-		$paciente = $info['activo'];
-		$medico = $info['activo'];
-		$colposcopico = $info['activo'];
-		$observaciones = $info['activo'];
+	ob_start();
+	session_start();
+	include('../../coni/Localhost.php');
+	date_default_timezone_set('America/Mexico_City');
+	$informacion = mysqli_query($mysqliL, "SELECT 
+		CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
+		CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
+		p.edad_paciente,
+		e.fecha_estudio,
+		e.hallazgos_colposcopicos,
+		e.observaciones_papinocolau
+		FROM
+		paciente p
+		INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = 27
+		INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
+		INNER JOIN estudio_papanicolau e ON ct.id_estudio = e.id_estudio");
+	$info = mysqli_fetch_assoc($informacion);
+
+	$fecha = $info['fecha_estudio'];
+	$edad = $info['edad_paciente'];
+	$paciente = $info['paciente'];
+	$medico = $info['medico'];
+	$colposcopico = $info['hallazgos_colposcopicos'];
+	$observaciones = $info['observaciones_papinocolau'];
+
+	if(!endsWith(trim($colposcopico),".")){
+		$colposcopico = $colposcopico . '.';
+	}
+
+	if(!endsWith(trim($observaciones),".")){
+		$observaciones = $observaciones . '.';
+	}
 	
-		ob_end_flush();
+	ob_end_flush();
+
+	function endsWith($string, $endString) 
+{ 
+    $len = strlen($endString); 
+    if ($len == 0) { 
+        return true; 
+    } 
+    return (substr($string, -$len) === $endString); 
+} 
 	?>
 
 	<script>
@@ -74,30 +101,21 @@
 						<div class="row">
 							<div class="column">
 								<p>
-									<b>Fecha:</b> 03/08/2019</p>
-								<p>
+									<b>Fecha:</b> <?php echo $fecha; ?>
+								</p>
 							</div>
 							<div class="column">
 								<p>
-									<b>Edad:</b> 23</p>
+									<b>Edad:</b> <?php echo $edad; ?></p>
 								<p>
 							</div>
 						</div>
-						<p><b>Paciente:</b> Itzel Paduano Gonzalez</p>
-						<p><b>Medico:</b> Susana Nieves Flores</p>
+						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
+						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
 						<p><b>Estudio Solicitado:</b> Citolog&iacute;a Exfoliativa</p>
-						<p class="txt-justificado"><b>Hallazgos Colposc&oacute;picos:</b>Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Praesent in diam interdum, accumsan ante quis, ultrices nibh.
-							Mauris at mattis leo. Nulla in dolor laoreet, ullamcorper ipsum in, porttitor el</p>
+						<p class="txt-justificado"><b>Hallazgos Colposc&oacute;picos:</b><?php echo $colposcopico; ?></p>
 						<p><b>Observaciones:</b></p>
-						<p class="txt-justificado">Quisque id elit sed tortor commodo fringilla ac eget libero. Duis
-							pretium
-							lobortis vehicula. Duis non augue nec lacus tempor consequat vel et quam. Vivamus eget
-							viverra
-							augue, nec vestibulum metus. Nullam tincidunt eros at massa ullamcorper, semper finibus
-							felis
-							euismod. Morbi ultrices, arcu in gravida cursus, risus est porta erat, in faucibus ex ex
-							pulvinar nisl. Pellentesque sed dui ac enim aliquet suscipit vel et justo.</p>
+						<p class="txt-justificado"><?php echo $observaciones; ?></p>
 					</div>
 				</div>
 			</div>
