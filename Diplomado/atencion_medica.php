@@ -233,7 +233,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="form-element-list">
                 <div class="basic-tb-hd">
-                  <h2>ATENCIÓN MÉDICA</h2>
+                  <h2 class="cabecera-morada">ATENCIÓN MÉDICA</h2>
 
                 </div>
                 <div class="row"><br>
@@ -1114,7 +1114,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="accordion-wn-wp">
                     <div class="accordion-hd">
-                      <h2>ESTUDIOS MÉDICOS</h2>
+                      <h2 class="cabecera-morada">ESTUDIOS MÉDICOS</h2>
 
                     </div>
                     <div class="row">
@@ -1124,7 +1124,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                             <div class="panel panel-collapse notika-accrodion-cus">
                               <div class="panel-heading" role="tab">
                                 <h4 class="panel-title">
-                                  <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-one" aria-expanded="false">
+                                  <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-one" aria-expanded="false">
                                     DATOS COLPOSCOPICOS
                                   </a>
                                 </h4>
@@ -1202,13 +1202,11 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                                     <div class="row">
 
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                      <div class="panel panel-default">
+                                      <div class="panel cabecera-morada">
                                         <div class="panel-heading">EPITELIO ACETOBLANCO</div>
 
                                         </div>
                                       </div>
-
-
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
 
                                         <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' class="form-control" onChange="pagoOnChange(this)" >
@@ -1263,7 +1261,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                                       </div>
 
                                       <div class="row fila">
-                                        <div class="panel panel-default filaInterna">
+                                        <div class="panel cabecera-morada filaInterna">
                                           <div class="panel-heading">BORDE Y SUPERFICIE</div>
 
                                         </div>
@@ -1305,7 +1303,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                                       </div>
 
                                       <div class="row fila">
-                                        <div class="panel panel-default filaInterna">
+                                        <div class="panel cabecera-morada filaInterna">
                                           <div class="panel-heading">ANGIOARQUITECTURA</div>
 
                                         </div>
@@ -1343,7 +1341,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                                       </div>
 
                                       <div class="row fila ">
-                                        <div class="panel panel-default filaInterna">
+                                        <div class="panel cabecera-morada filaInterna">
                                           <div class="panel-heading">CAPTACIÓN DE YODO</div>
 
                                         </div>
@@ -1512,7 +1510,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                             <div class="panel panel-collapse notika-accrodion-cus">
                               <div class="panel-heading" role="tab">
                                 <h4 class="panel-title">
-                                  <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-two" aria-expanded="false">
+                                  <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-two" aria-expanded="false">
                                     PAPANICOLAOU
                                   </a>
                                 </h4>
@@ -1585,7 +1583,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                           <div class="panel panel-collapse notika-accrodion-cus">
                             <div class="panel-heading" role="tab">
                               <h4 class="panel-title">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-three" aria-expanded="false">
+                                <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-three" aria-expanded="false">
                                   BIOPSIAS
                                 </a>
                               </h4>
@@ -1598,7 +1596,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                                       <div class="panel panel-collapse notika-accrodion-cus">
                                         <div class="panel-heading" role="tab">
                                           <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-four" aria-expanded="false">
+                                            <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-four" aria-expanded="false">
                                               BIOPSIAS CERVIX
                                             </a>
                                           </h4>
@@ -1637,7 +1635,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                                       <div class="panel panel-collapse notika-accrodion-cus">
                                         <div class="panel-heading" role="tab">
                                           <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-five" aria-expanded="false">
+                                            <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-five" aria-expanded="false">
                                               BIOPSIAS DE VULVOSCOPIA
                                             </a>
                                           </h4>
@@ -1684,7 +1682,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                                       <div class="panel panel-collapse notika-accrodion-cus">
                                         <div class="panel-heading" role="tab">
                                           <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-seven" aria-expanded="false">
+                                            <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-seven" aria-expanded="false">
                                               BIOPSIAS DE VAGINOSCOPIA
                                             </a>
                                           </h4>
@@ -1733,7 +1731,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
                                       <div class="panel panel-collapse notika-accrodion-cus">
                                         <div class="panel-heading" role="tab">
                                           <h4 class="panel-title">
-                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-six" aria-expanded="false">
+                                            <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-six" aria-expanded="false">
                                               BIOPSIA DE ENDOMETRIO
 
                                             </a>
