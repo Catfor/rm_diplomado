@@ -141,6 +141,20 @@
           $edad_paciente = $rowwe['edad_paciente'];
           $fecha_nacimiento_paciente = $rowwe['fecha_nacimiento_paciente'];
 
+$re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
+INNER JOIN atencion_medica AS a
+ON a.id_paciente=p.id_paciente
+
+
+
+WHERE a.id_paciente=$idpaciente");
+$total=$re->num_rows;
+$ro = mysqli_fetch_assoc($re);
+
+
+
+if($total==0){
+
           ?>
       <div class="breadcomb-area">
         <div class="container">
@@ -573,7 +587,9 @@
             </div>
           </div>
         </div>
+<?php  } else{
 
+} ?>
         <div class="row">
           <div class="accordion-area">
             <div class="container">
