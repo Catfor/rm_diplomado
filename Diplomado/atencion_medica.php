@@ -569,6 +569,77 @@
 
                   </div>
 
+                  <div class="row fila">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="bootstrap-select fm-cmp-mg">
+                            <select name="metrorragia" class="selectpicker" required>
+                              <option value="" >Metrorragia</option>
+                              <option value="si" >SI</option>
+                              <option value="no" >NO</option>
+
+                    </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="bootstrap-select fm-cmp-mg">
+                            <select name="hormonoterapia" class="selectpicker" required>
+                              <option value="" >Hormonoterapia</option>
+                              <option value="si" >SI</option>
+                              <option value="no" >NO</option>
+
+                    </select>
+                        </div>
+                    </div>
+
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                          <div class="form-group ic-cmp-int">
+
+                              <div class="nk-int-st">
+                                  <input type="text" name="cual" class="form-control" placeholder="¿Duración?">
+                              </div>
+                          </div>
+                      </div>
+        </div>
+
+        <div class="row fila">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <div class="bootstrap-select fm-cmp-mg">
+                  <select name="ritmo" class="selectpicker" required>
+                    <option value="" >Ritmo</option>
+                    <option value="regular" >Regular</option>
+                    <option value="irregular" >Irregular</option>
+                      <option value="ausente" >Ausente</option>
+
+          </select>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <div class="bootstrap-select fm-cmp-mg">
+                  <select name="antecedente_cancer_cervicouterino" class="selectpicker" required>
+                    <option value="" >Antecedente de Cáncer cervicouterino</option>
+                    <option value="si" >SI</option>
+                    <option value="no" >NO</option>
+
+          </select>
+              </div>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <div class="bootstrap-select fm-cmp-mg">
+                  <select name="tratamiento_previo" class="selectpicker" required>
+                    <option value="" >Tratamientos previos:</option>
+                    <option value="si" >SI</option>
+                    <option value="no" >NO</option>
+
+          </select>
+              </div>
+          </div>
+
+
+
+
+        </div>
+
               </div>
             </div>
           </div>
