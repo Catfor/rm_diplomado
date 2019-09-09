@@ -147,13 +147,30 @@ ON a.id_paciente=p.id_paciente
 
 
 
-WHERE a.id_paciente=$idpaciente");
+WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 $total=$re->num_rows;
 $ro = mysqli_fetch_assoc($re);
+$edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
+$metodos_planificacion = $ro['metodos_planificacion'];
+$cual = $ro['cual'];
+$edad_inicio_vida_sexual = $ro['edad_inicio_vida_sexual'];
+$parejas_sexuales= $ro['parejas_sexuales'];
+$gestas = $ro['gestas'];
+$para = $ro['para'];
+$cesareas = $ro['cesareas'];
+$abortos = $ro['abortos'];
+$fecha_ultima_regla = $ro['fecha_ultima_regla'];
+$fecha_ultimo_papanicolau = $ro['fecha_ultimo_papanicolau'];
+$antecedentes_tratamiento = $ro['antecedentes_tratamiento'];
+$atecedentes_lesion = $ro['atecedentes_lesion'];
+$metrorragia = $ro['metrorragia'];
+$hormonoterapia = $ro['hormonoterapia'];
+$duracion_hormonoterapia = $ro['duracion_hormonoterapia'];
+$ritmo = $ro['ritmo'];
+$antecedente_cancer_cervicouterino = $ro['antecedente_cancer_cervicouterino'];
+$tratamiento_previo = $ro['tratamiento_previo'];
+$fecha_atencion_medica = $ro['fecha_atencion_medica'];
 
-
-
-if($total==0){
 
           ?>
       <div class="breadcomb-area">
@@ -248,6 +265,9 @@ if($total==0){
                   </div>
 
                 </div><br><br>
+<?php
+                if($total==0){?>
+
                 <form id="f" action='guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
                   <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente?>" >
                   <div class="row">
@@ -658,9 +678,435 @@ if($total==0){
             </div>
           </div>
         </div>
-<?php  } else{
+<?php  } else{ ?>
 
-} ?>
+
+
+
+  <form id="f" action='guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
+    <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente?>" >
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+          <div class="input-group date nk-int-st">
+
+            <span class="input-group-addon"></span>
+            <input type="text" class="form-control" name="edad_inicio_menstruacion" placeholder="<?php
+
+            $q = date("M.Y", strtotime($edad_inicio_menstruacion));
+            $inicios = strftime("%d de %B del %Y", strtotime($q));
+
+
+
+
+
+
+
+            echo "Su Fecha Anterior fue ".$inicios ?>">
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="bootstrap-select fm-cmp-mg">
+          <select id='metodos_planificacion' name="metodos_planificacion" class="selectpicker" >
+            <option value=""><?php echo "Su Seleccion Anterior Fue ".$metodos_planificacion ?></option>
+            <option value="hormonales_orales">Hormonales orales</option>
+            <option value="hormonales_inyectables">Hormonales inyectables</option>
+            <option value="condon">Condon</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="form-group ic-cmp-int form-elet-mg">
+          <div class="form-ic-cmp">
+            <i class="notika-icon notika-edit"></i>
+          </div>
+          <div class="nk-int-st">
+            <input id="cual" name="cual" type="text" class="form-control" placeholder="Eleccion Anterior:<?php echo $cual?>" disabled>
+          </div>
+        </div>
+      </div>
+
+
+    </div> <br>
+  
+
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+          <select name="edad_inicio_vida_sexual" class="form-control">
+            <option value="">Edad de inicio de vida sexual</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+            <option value="46">46</option>
+            <option value="47">47</option>
+            <option value="48">48</option>
+            <option value="49">49</option>
+            <option value="50">50</option>
+            <option value="51">51</option>
+            <option value="52">52</option>
+            <option value="53">53</option>
+            <option value="54">54</option>
+            <option value="55">55</option>
+            <option value="56">56</option>
+            <option value="57">57</option>
+            <option value="58">58</option>
+            <option value="59">59</option>
+            <option value="60">60</option>
+            <option value="61">61</option>
+            <option value="62">62</option>
+            <option value="63">63</option>
+            <option value="64">64</option>
+            <option value="65">65</option>
+            <option value="66">66</option>
+            <option value="67">67</option>
+            <option value="68">68</option>
+            <option value="69">69</option>
+            <option value="70">70</option>
+            <option value="71">71</option>
+            <option value="72">72</option>
+            <option value="73">73</option>
+            <option value="74">74</option>
+            <option value="75">75</option>
+            <option value="76">76</option>
+            <option value="77">77</option>
+            <option value="78">78</option>
+            <option value="79">79</option>
+            <option value="80">80</option>
+            <option value="81">81</option>
+            <option value="82">82</option>
+            <option value="83">83</option>
+            <option value="84">84</option>
+            <option value="85">85</option>
+            <option value="86">86</option>
+            <option value="87">87</option>
+            <option value="88">88</option>
+            <option value="89">89</option>
+            <option value="90">90</option>
+            <option value="91">91</option>
+            <option value="92">92</option>
+            <option value="93">93</option>
+            <option value="94">94</option>
+            <option value="95">95</option>
+            <option value="96">96</option>
+            <option value="97">97</option>
+            <option value="98">98</option>
+            <option value="99">99</option>
+            <option value="100">100</option>
+            <option value="101">101</option>
+            <option value="102">102</option>
+            <option value="103">103</option>
+            <option value="104">104</option>
+            <option value="105">105</option>
+            <option value="106">106</option>
+            <option value="107">107</option>
+            <option value="108">108</option>
+            <option value="109">109</option>
+            <option value="110">110</option>
+            <option value="111">111</option>
+            <option value="112">112</option>
+            <option value="113">113</option>
+            <option value="114">114</option>
+            <option value="115">115</option>
+            <option value="116">116</option>
+            <option value="117">117</option>
+            <option value="118">118</option>
+            <option value="119">119</option>
+            <option value="120">120</option>
+          </select>
+
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+          <select name="parejas_sexuales" class="form-control">
+            <option value="">Parejas sexuales</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+          </select>
+
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+          <select name="gestas" class="form-control">
+            <option value="">Gestas</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>>
+          </select>
+
+      </div>
+    </div><br>
+    <div class="row">
+
+
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+          <select name="para" class="form-control">
+            <option value="">Para</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>>
+          </select>
+
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+          <select name="cesareas" class="form-control">
+            <option value="">Césareas</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>>
+          </select>
+
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+          <select name="abortos" class="form-control">
+            <option value="">Abortos</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>>
+          </select>
+
+      </div>
+
+    </div> <br>
+    <div class="row">
+
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+          <div class="input-group date nk-int-st">
+
+            <span class="input-group-addon"></span>
+            <input type="text" class="form-control" name="fecha_ultima_regla" placeholder="Fecha de la última regla">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+          <div class="input-group date nk-int-st">
+
+            <span class="input-group-addon"></span>
+            <input type="text" class="form-control" name="fecha_ultimo_papanicolau" placeholder="Fecha del último papanicolau:">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group ic-cmp-int float-lb floating-lb">
+          <div class="form-ic-cmp">
+            <i class="notika-icon notika-edit"></i>
+          </div>
+          <div class="nk-int-st">
+            <input type="text" name="atecedentes_lesion" class="form-control" placeholder="Antecedentes de lesión:">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+        <div class="form-group ic-cmp-int float-lb floating-lb">
+          <div class="form-ic-cmp">
+            <i class="notika-icon notika-edit"></i>
+          </div>
+          <div class="nk-int-st">
+            <input type="text" name="antecedentes_tratamiento" class="form-control" placeholder="Antecedente de tratamiento:">
+       </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row fila">
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <div class="bootstrap-select fm-cmp-mg">
+              <select name="metrorragia" class="selectpicker" required>
+                <option value="" >Metrorragia</option>
+                <option value="si" >SI</option>
+                <option value="no" >NO</option>
+
+      </select>
+          </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <div class="bootstrap-select fm-cmp-mg">
+              <select name="hormonoterapia" class="selectpicker" required>
+                <option value="" >Hormonoterapia</option>
+                <option value="si" >SI</option>
+                <option value="no" >NO</option>
+
+      </select>
+          </div>
+      </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="form-group ic-cmp-int">
+
+                <div class="nk-int-st">
+                    <input type="text" name="cual" class="form-control" placeholder="¿Duración?">
+                </div>
+            </div>
+        </div>
+  </div>
+
+  <div class="row fila">
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+  <div class="bootstrap-select fm-cmp-mg">
+    <select name="ritmo" class="selectpicker" required>
+      <option value="" >Ritmo</option>
+      <option value="regular" >Regular</option>
+      <option value="irregular" >Irregular</option>
+        <option value="ausente" >Ausente</option>
+
+  </select>
+  </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+  <div class="bootstrap-select fm-cmp-mg">
+    <select name="antecedente_cancer_cervicouterino" class="selectpicker" required>
+      <option value="" >Antecedente de Cáncer cervicouterino</option>
+      <option value="si" >SI</option>
+      <option value="no" >NO</option>
+
+  </select>
+  </div>
+  </div>
+
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+  <div class="bootstrap-select fm-cmp-mg">
+    <select name="tratamiento_previo" class="selectpicker" required>
+      <option value="" >Tratamientos previos:</option>
+      <option value="si" >SI</option>
+      <option value="no" >NO</option>
+
+  </select>
+  </div>
+  </div>
+
+
+
+
+  </div>
+
+  </div>
+  </div>
+  </div>
+</div>-->
+<?php } ?>
         <div class="row">
           <div class="accordion-area">
             <div class="container">
