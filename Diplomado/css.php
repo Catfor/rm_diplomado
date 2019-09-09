@@ -15,6 +15,8 @@
 ============================================ -->
 <link rel="stylesheet" href="../css/font-awesome.min.css">
 <link rel="stylesheet" href="../css/fontawesome/css/all.css">
+<link rel="stylesheet" href="../css/fontawesome/css/solid.min.css">
+<link rel="stylesheet" href="../css/fontawesome/css/fontawesome.css">
 <!-- owl.carousel CSS
 ============================================ -->
 <link rel="stylesheet" href="../css/owl.carousel.css">
@@ -55,6 +57,7 @@
 <!-- style CSS
 ============================================ -->
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../Diplomado/style.css">
 <!-- responsive CSS
 ============================================ -->
 <link rel="stylesheet" href="../css/responsive.css">
