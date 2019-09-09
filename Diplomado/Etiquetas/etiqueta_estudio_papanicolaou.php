@@ -1,3 +1,4 @@
+<?php session_start();  ?>
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +11,6 @@
 
 	<?php
 	ob_start();
-	session_start();
 	include('../../coni/Localhost.php');
 	date_default_timezone_set('America/Mexico_City');
 	$informacion = mysqli_query($mysqliL, "SELECT 
@@ -34,24 +34,24 @@
 	$colposcopico = $info['hallazgos_colposcopicos'];
 	$observaciones = $info['observaciones_papinocolau'];
 
-	if(!endsWith(trim($colposcopico),".")){
+	if (!endsWith(trim($colposcopico), ".")) {
 		$colposcopico = $colposcopico . '.';
 	}
 
-	if(!endsWith(trim($observaciones),".")){
+	if (!endsWith(trim($observaciones), ".")) {
 		$observaciones = $observaciones . '.';
 	}
-	
+
 	ob_end_flush();
 
-	function endsWith($string, $endString) 
-{ 
-    $len = strlen($endString); 
-    if ($len == 0) { 
-        return true; 
-    } 
-    return (substr($string, -$len) === $endString); 
-} 
+	function endsWith($string, $endString)
+	{
+		$len = strlen($endString);
+		if ($len == 0) {
+			return true;
+		}
+		return (substr($string, -$len) === $endString);
+	}
 	?>
 
 	<script>
