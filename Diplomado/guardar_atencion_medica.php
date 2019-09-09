@@ -20,19 +20,19 @@ $idpaciente=$_GET['idpaciente'];
 
 $insertaratecion= "INSERT INTO atencion_medica
   (edad_inicio_menstruacion,metodos_planificacion,cual,edad_inicio_vida_sexual,parejas_sexuales,gestas,para,cesareas,abortos,
-    fecha_ultima_regla,fecha_ultimo_papanicolau,antecedentes_tratamiento,atecedentes_lesion,id_paciente)
+    fecha_ultima_regla,fecha_ultimo_papanicolau,antecedentes_tratamiento,atecedentes_lesion,id_paciente,fecha_atencion_medica)
   VALUES
   ('$edad_inicio_menstruacion','$metodos_planificacion','$cual','$edad_inicio_vida_sexual','$parejas_sexuales','$gestas',
   '$para','$cesareas','$abortos','$fecha_ultima_regla','$fecha_ultimo_papanicolau','$antecedentes_tratamiento',
-  '$atecedentes_lesion','$idpaciente')";
+  '$atecedentes_lesion','$idpaciente','$hoys')";
   $resultadoinsertaratencion = $mysqliL->query($insertaratecion);
     //   echo $sql11.'<br>';
       $id_ant_atencionmedica=$mysqliL->insert_id;
 
       $sql1 = "INSERT INTO ctrl_paciente_estudios
-        (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,fecha_estudio)
+        (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
         VALUES
-        ('$idpaciente','','','','$id_ant_atencionmedica','$hoys')";
+        ('$idpaciente','','','','$id_ant_atencionmedica')";
             $resulta1 = $mysqliL->query($sql1);
 ////////////////////obtencion de parametros colposcopia/////////////////////////////////////////////////////////////
 $colposcopia=$_GET['colposcopia'];
@@ -63,11 +63,11 @@ $posible_recomendacion_diagnostica=$_GET['posible_recomendacion_diagnostica'];
 $recomendacion_diagnostica=$_GET['recomendacion_diagnostica'];
 $insertaestudio_colposcopico= "INSERT INTO estudio_colposcopico
   (colposcopia,causa,cervix,union_escamocolumnar,zona_transformacion,epitelio_acetoblanco,ep_criterios_menores,ep_criterios_intermedios,ep_criterios_mayores,bs_criterios_menores,bs_criterios_intermedios,
-  bs_criterios_mayores,ag_criterios_menores,ag_criterios_intermedios,ag_criterios_mayores,cy_menores,cy_intermedios,cy_mayores,schiller,vaginoscopia,vulvoscopia,miscelaneos,posible_recomendacion_diagnostica,recomendacion_diagnostica)
+  bs_criterios_mayores,ag_criterios_menores,ag_criterios_intermedios,ag_criterios_mayores,cy_menores,cy_intermedios,cy_mayores,schiller,vaginoscopia,vulvoscopia,miscelaneos,posible_recomendacion_diagnostica,recomendacion_diagnostica,fecha_estudio)
   VALUES
   ('$colposcopia','$causa','$cervix','$union_escamocolumnar','$zona_transformacion','$epitelio_acetoblanco','$ep_criterios_menores','$ep_criterios_intermedios','$ep_criterios_mayores',
     '$bs_criterios_menores','$bs_criterios_intermedios','$bs_criterios_mayores','$ag_criterios_menores','$ag_criterios_intermedios','$ag_criterios_mayores',
-    '$cy_menores','$cy_intermedios','$cy_mayores','$schiller','$vaginoscopia','$vulvoscopia','$miscelaneos','$posible_recomendacion_diagnostica','$recomendacion_diagnostica')";
+    '$cy_menores','$cy_intermedios','$cy_mayores','$schiller','$vaginoscopia','$vulvoscopia','$miscelaneos','$posible_recomendacion_diagnostica','$recomendacion_diagnostica','$hoys')";
   $resultadoinsertaestudio_colposcopico = $mysqliL->query($insertaestudio_colposcopico);
 
       $id_ant_colposcopico=$mysqliL->insert_id;
@@ -75,9 +75,9 @@ $insertaestudio_colposcopico= "INSERT INTO estudio_colposcopico
 
 
 $sql2 = "INSERT INTO ctrl_paciente_estudios
-  (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,fecha_estudio)
+  (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
   VALUES
-  ('$idpaciente','$id_ant_colposcopico','1','','$id_ant_atencionmedica','$hoys')";
+  ('$idpaciente','$id_ant_colposcopico','1','','$id_ant_atencionmedica')";
       $resulta2 = $mysqliL->query($sql2);
     }
 ////////////////////obtencion de parametros papanicolau/////////////////////////////////////////////////////
@@ -90,18 +90,18 @@ if($antecedente_cancer==''){
 }
 else{
   $insertaestudio_papanicolau= "INSERT INTO estudio_papanicolau
-    (antecedente_cancer,antecedente_infeccion_vagina,observaciones_papinocolau)
+    (antecedente_cancer,antecedente_infeccion_vagina,observaciones_papinocolau,fecha_estudio)
     VALUES
-    ('$antecedente_cancer','$antecedente_infeccion_vagina','$observaciones_papinocolau')";
+    ('$antecedente_cancer','$antecedente_infeccion_vagina','$observaciones_papinocolau','$hoys')";
     $resultadoestudio_papanicolau = $mysqliL->query($insertaestudio_papanicolau);
 
         $id_ant_estudio_papanicolau=$mysqliL->insert_id;
 
 
   $sql3 = "INSERT INTO ctrl_paciente_estudios
-    (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,fecha_estudio)
+    (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
     VALUES
-    ('$idpaciente','$id_ant_estudio_papanicolau','7','','$id_ant_atencionmedica','$hoys')";
+    ('$idpaciente','$id_ant_estudio_papanicolau','7','','$id_ant_atencionmedica')";
         $resulta3 = $mysqliL->query($sql3);
 }
 ////////////////////obtencion de parametros biopsas CERVIX/////////////////////////////////////////////////////
@@ -111,18 +111,18 @@ if($senalizacion==''){
 }
 else{
   $insertaestudio_biopsia_cervix= "INSERT INTO estudio_biopsia_cervix
-    (senalizacion)
+    (senalizacion,fecha_estudio)
     VALUES
-    ('$senalizacion')";
+    ('$senalizacion','$hoys')";
     $resultadoestudio_biopsia_cervix = $mysqliL->query($insertaestudio_biopsia_cervix);
 
         $id_ant_estudio_biopsia_cervix=$mysqliL->insert_id;
 
 
   $sql3 = "INSERT INTO ctrl_paciente_estudios
-    (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,fecha_estudio)
+    (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
     VALUES
-    ('$idpaciente','$id_ant_estudio_biopsia_cervix','2','','$id_ant_atencionmedica','$hoys')";
+    ('$idpaciente','$id_ant_estudio_biopsia_cervix','2','','$id_ant_atencionmedica')";
         $resulta3 = $mysqliL->query($sql3);
 }
 ////////////////////obtencion de parametros biopsas DE VULVOSCOPIA/////////////////////////////////////////////////////
@@ -131,18 +131,18 @@ if($anotaciones_vulvoscopia==''){
 
 }else{
   $insertaestudio_vulvoscopia= "INSERT INTO estudio_vulvoscopia
-    (anotaciones_vulvoscopia)
+    (anotaciones_vulvoscopia,fecha_estudio)
     VALUES
-    ('$anotaciones_vulvoscopia')";
+    ('$anotaciones_vulvoscopia','$hoys')";
     $resultadoestudio_vulvoscopia = $mysqliL->query($insertaestudio_vulvoscopia);
 
         $id_ant_estudio_vulvoscopia=$mysqliL->insert_id;
 
 
   $sql3 = "INSERT INTO ctrl_paciente_estudios
-    (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,fecha_estudio)
+    (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
     VALUES
-    ('$idpaciente','$id_ant_estudio_vulvoscopia','6','','$id_ant_atencionmedica','$hoys')";
+    ('$idpaciente','$id_ant_estudio_vulvoscopia','6','','$id_ant_atencionmedica')";
         $resulta3 = $mysqliL->query($sql3);
 }
 ////////////////////obtencion de parametros biopsas DE VAGINOSCOPIA/////////////////////////////////////////////////////
@@ -152,18 +152,18 @@ if($estudio_solicitar_vaginoscopia==''){
 
 }else{
   $insertaestudio_vaginoscopia= "INSERT INTO estudio_vaginoscopia
-    (estudio_solicitar_vaginoscopia,anotaciones_vaginoscopia)
+    (estudio_solicitar_vaginoscopia,anotaciones_vaginoscopia,fecha_estudio)
     VALUES
-    ('$estudio_solicitar_vaginoscopia','$anotaciones_vaginoscopia')";
+    ('$estudio_solicitar_vaginoscopia','$anotaciones_vaginoscopia','$hoys')";
     $resultadoestudio_vaginoscopia = $mysqliL->query($insertaestudio_vaginoscopia);
 
         $id_ant_estudio_vaginoscopia=$mysqliL->insert_id;
 
 
   $sql3 = "INSERT INTO ctrl_paciente_estudios
-    (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,fecha_estudio)
+    (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
     VALUES
-    ('$idpaciente','$id_ant_estudio_vaginoscopia','5','','$id_ant_atencionmedica','$hoys')";
+    ('$idpaciente','$id_ant_estudio_vaginoscopia','5','','$id_ant_atencionmedica')";
         $resulta3 = $mysqliL->query($sql3);
 }
 ////////////////////obtencion de parametros biopsas DE ENDOMETRIO/////////////////////////////////////////////////////
@@ -173,18 +173,18 @@ if($observaciones_endometrio==''){
 
 }else{
   $insertaestudio_biopsia_endometrio= "INSERT INTO estudio_biopsia_endometrio
-    (observaciones_endometrio)
+    (observaciones_endometrio,fecha_estudio)
     VALUES
-    ('$observaciones_endometrio')";
+    ('$observaciones_endometrio','$hoys')";
     $resultadoestudio_biopsia_endometrio = $mysqliL->query($insertaestudio_biopsia_endometrio);
 
         $id_ant_estudio_biopsia_endometrio=$mysqliL->insert_id;
 
 
   $sql3 = "INSERT INTO ctrl_paciente_estudios
-    (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,fecha_estudio)
+    (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
     VALUES
-    ('$idpaciente','$id_ant_estudio_biopsia_endometrio','4','','$id_ant_atencionmedica','$hoys')";
+    ('$idpaciente','$id_ant_estudio_biopsia_endometrio','4','','$id_ant_atencionmedica')";
         $resulta3 = $mysqliL->query($sql3);
 }
 /////////////////////////////////////////////
