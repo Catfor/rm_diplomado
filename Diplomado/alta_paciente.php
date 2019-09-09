@@ -56,6 +56,7 @@
         $rowwe = mysqli_fetch_assoc($result123);
         $contra = $rowwe['contra'];
 
+        if ($contra == '3d603c7c93fb63c7db2b1d99b1998bb6') {
         ?>
 
         <div class="modals-default-cl">
@@ -114,7 +115,7 @@
 
 
         <?php
-
+             } else {
             include('menu.php');
             ?>
         <div class="breadcomb-area">
@@ -147,6 +148,7 @@
                                 }
                             }
                             if (isset($_GET['nombres'])) {
+                                
                                 if ($_GET['nombres']) {
                                     $nombres = $_GET['nombres'];
                                     //imprimes el error
@@ -159,6 +161,7 @@
               </div>";
                                 }
                             }
+                        }
                             ?>
 
                             <!----------- ----------->
@@ -462,8 +465,6 @@
             </div>
             <br>
 
-            <input class="btn btn-primary" type="submit" value="Enviar formulario">
-
             <input class="btn notika-btn-purble" type="submit" value="Enviar formulario" style="float:right;margin: 10px 0;background: #a25cbf;color: white;">
 
         </form>
@@ -475,8 +476,7 @@
                 }
             }
         </script>
-        <!-- Contact area End-->
-        <!-- Start Footer area--><br><br>
+        
         <?php
         include('pie.php');
         ?>
@@ -488,15 +488,6 @@
                 }
             }
         </script>
-
-
-        <!-- Contact area End-->
-        <!-- Start Footer area--><br><br>
-        <?php
-        include('pie.php');
-        ?>
-
-
 
         <script src="../js/vendor/jquery-1.12.4.min.js"></script>
         <!-- bootstrap JS
@@ -607,6 +598,5 @@
         <!-- main JS
 ============================================ -->
         <script src="../js/main.js"></script>
-</body>
-
+        </body>
 </html>

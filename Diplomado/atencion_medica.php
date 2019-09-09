@@ -793,7 +793,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
 
                                     </div>
-                                    <div id="ausente" style="display:;">
+                                    <div id="ausente" style="display:none;">
 
                                     </div>
 
@@ -1930,7 +1930,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     </div>
 
                                   </div>
-                                  <div id="ausente" style="display:;">
+                                  <div id="ausente" style="display:none;">
 
                                   </div>
 
