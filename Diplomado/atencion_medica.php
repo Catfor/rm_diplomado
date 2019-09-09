@@ -234,7 +234,7 @@
                   </div>
 
                 </div><br><br>
-                <form id="f" action='guardar_atencion_medica.php' method="get">
+                <form id="f" action='guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
                   <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente?>" >
                   <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -907,7 +907,15 @@
                                       </div>
                                     </div> <br>
 
+                                    <h4 class="text-center">Imagenes Colposcopicas </h4>
 
+                                    						<div class="form-group">
+
+                                    							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    					<center>			<input type="file" class="form-control" id="archivo[]" name="archivo[]" multiple="">	</center>
+                                    							</div>
+</div>
+<br><br><br><br>
 
                                     <div class="row">
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1239,9 +1247,11 @@
             </div>
           </div>
         </div>
+<br><br>
+      <center>  <button type="submit" class="btn btn-primary">Enviar</button></center>
+      <br>
 
-                  </div><br>
-                  <center><input type="submit" style="border: #000 1px solid; background-color: #ed80a8" value="Enviar formulario"></center>
+                  <!--<center><input type="submit" style="border: #000 1px solid; background-color: #ed80a8" value="Enviar formulario"></center>-->
 
 
 </form>
