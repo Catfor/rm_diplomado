@@ -225,7 +225,7 @@
 
 
 
-                            echo "  <tr><td><a href='alta_paciente.php?id_paciente=$id_paciente'><i class='far fa-edit'></i></a> $nombre_paciente $apellidos_paciente </td>
+                            echo "  <tr><td><a href='editar_paciente.php?id_paciente=$id_paciente'><i class='far fa-edit'></i></a> $nombre_paciente $apellidos_paciente </td>
 
                                           <td>$edad_paciente</td>
                                           <td>$fecha_nacimiento_paciente</td>

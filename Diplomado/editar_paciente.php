@@ -165,7 +165,7 @@
                                 }
 
                                 //En este apartado se hace la precarga de datos si se recibe el id_paciente dentro del GET
-                                if (isset($_GET['id_paciente'])) {
+
                                     $id_paciente = $_GET['id_paciente'];
                                     $query = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
                                     $resultado = mysqli_fetch_assoc($query);
@@ -193,27 +193,7 @@
                                     $telefono_contacto_paciente = $resultado['telefono_contacto_paciente'];
                                     $celular_contacto_paciente = $resultado['celular_contacto_paciente'];
                                     $tipo_seguro = $resultado2['nombre_tipo_seguro'];
-                                } else {
-                                    $nombre_paciente = "";
-                                    $apellidos_paciente = "";
-                                    $fecha_nacimiento_paciente = "";
-                                    $estado_civil = "";
-                                    $fecha_creacion = "";
-                                    $codigo_postal = "";
-                                    $direccion_paciente = "";
-                                    $municipio_paciente = "";
-                                    $ingreso_mensual = "";
-                                    $escolaridad_paciente = "";
-                                    $apoyo_gubernamental_paciente = "";
-                                    $razon_apoyo_paciente = "";
-                                    $nombre_familiar_paciente = "";
-                                    $telefono_familiar_paciente = "";
-                                    $celular_familiar_paciente = "";
-                                    $nombre_contacto_paciente = "";
-                                    $telefono_contacto_paciente = "";
-                                    $celular_contacto_paciente = "";
-                                    $tipo_seguro = "";
-                                }
+
 
                             }
                             ?>
@@ -225,7 +205,7 @@
                                         <i class="notika-icon notika-form"></i>
                                     </div>
                                     <div class="breadcomb-ctn">
-                                        <h2>Alta Paciente</h2>
+                                        <h2>Editar Paciente</h2>
                                     </div>
                                 </div>
                             </div>
@@ -238,7 +218,7 @@
             </div>
             <!-- Breadcomb area End-->
             <!-- Form Element area Start-->
-    
+
                     <!-- Breadcomb area End-->
                     <!-- Form Element area Start-->
                     <form id="tuformulario" name="tuformulario" action="alta_guardar_paciente.php" method="GET" onsubmit="pregunta()">
