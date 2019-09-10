@@ -13,22 +13,23 @@
 	ob_start();
 	include('../../coni/Localhost.php');
 	date_default_timezone_set('America/Mexico_City');
-	if (isset($_GET["id_paciente"])) {
+	if (isset($_GET["id_paciente"]) && isset($_GET["id_estudio"])) {
 		$id_paciente = $_GET["id_paciente"];
-		$informacion = mysqli_query($mysqliL, "SELECT 
-	CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
-	CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
-	p.edad_paciente,
-	e.fecha_estudio,
-	e.hallazgos_colposcopicos,
-	e.observaciones_papinocolau
-	FROM
-	paciente p
-	INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente
-	INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-	INNER JOIN estudio_papanicolau e ON ct.id_estudio = e.id_estudio");
-		$info = mysqli_fetch_assoc($informacion);
-
+		$informacion = "SELECT 
+			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
+			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
+			p.edad_paciente,
+			e.fecha_estudio,
+			e.hallazgos_colposcopicos,
+			e.observaciones_papinocolau
+			FROM
+			paciente p
+			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 7
+			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
+			INNER JOIN estudio_papanicolau e ON ct.id_estudio = e.id_estudio";
+			
+		$res =$mysqliL->query($informacion);
+		$info = $res->fetch_assoc();
 		$fecha = $info['fecha_estudio'];
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
@@ -45,6 +46,13 @@
 		}
 
 		ob_end_flush();
+	}else{
+		$fecha ="";
+		$edad ="";
+		$paciente ="";
+		$medico ="";
+		$colposcopico ="";
+		$observaciones ="";
 	}
 
 	function endsWith($string, $endString)
@@ -73,14 +81,14 @@
 
 			mywindow.print();
 			mywindow.close();
-
+			window.close();
 			return true;
 		}
 	</script>
 
 </head>
 
-<body>
+<body onload="imprimeEtiqueta()">
 	<div id="etiqueta">
 		<div class="container">
 			<div class="row">
