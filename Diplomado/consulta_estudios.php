@@ -191,9 +191,9 @@
                             </thead>
                             <tbody>
                                 <?php
+                                
                                         $consultasemanas = "SELECT id_paciente,nombre_paciente,apellidos_paciente,fecha_nacimiento_paciente,edad_paciente FROM paciente ";
                                         $resultadosemanas = $mysqliL->query($consultasemanas);
-                                        $si = $resultadosemanas->num_rows;
 
                                         while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
                                             $id_paciente = ucwords($resultadosemanas1['id_paciente']);
@@ -226,7 +226,7 @@
                                                 $si = $resultSetPapanicolaou->num_rows;
                                                 while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
                                                     $id_estudio = $resultSet['id_estudio'];
-                                                    echo "<a href='atencion_medica.php?id_paciente=$id_paciente'>Ver Papanicolaou</a>";
+                                                    echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Papanicolaou</a>";
                                                 }
                                             }
                                             echo "</td>";
@@ -277,15 +277,12 @@
 
                                             //Termina la fila de la consulta de estudios
                                             echo "</tr>";
+                                            
                                         }
 
 
                                         ?>
-
-
-
                             </tbody>
-
                         </table>
                     </div>
                 </div>
