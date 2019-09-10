@@ -175,6 +175,66 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
 
           ?>
+          <script language="JavaScript">
+
+          var ns4 = (document.layers)? true:false
+          var ie4 = (document.all)? true:false
+          var ns6 = (document.getElementById && !document.all) ? true: false;
+          var coorX, coorY, iniX, iniY;
+
+          if (ns6) document.addEventListener("mousemove", mouseMove, true)
+          if (ns4) {document.captureEvents(Event.MOUSEMOVE); document.mousemove = mouseMove;}
+
+          function mouseMove(e)
+          {
+          if (ns4||ns6) {coorX = e.pageX; coorY = e.pageY;}
+          if (ie4) {coorX = event.x; coorY = event.y;}
+          return true;
+          }
+
+          function ini() {
+          if (ie4) document.body.onmousemove = mouseMove;
+          iniX = document.getElementById("recuadro").offsetLeft;
+          iniY = document.getElementById("recuadro").offsetTop;
+          }
+
+          function asignar() {
+          with (document.forms[0]) {
+          x.value = coorX;
+          y.value = coorY;
+
+          }
+          } </script>
+          <script language="JavaScript">
+
+          var ns4 = (document.layers)? true:false
+          var ie4 = (document.all)? true:false
+          var ns6 = (document.getElementById && !document.all) ? true: false;
+          var coorX, coorY, iniX, iniY;
+
+          if (ns6) document.addEventListener("mousemove", mouseMove, true)
+          if (ns4) {document.captureEvents(Event.MOUSEMOVE); document.mousemove = mouseMove;}
+
+          function mouseMove(e)
+          {
+          if (ns4||ns6) {coorX = e.pageX; coorY = e.pageY;}
+          if (ie4) {coorX = event.x; coorY = event.y;}
+          return true;
+          }
+
+          function ini() {
+          if (ie4) document.body.onmousemove = mouseMove;
+          iniX = document.getElementById("recuadro").offsetLeft;
+          iniY = document.getElementById("recuadro").offsetTop;
+          }
+
+          function asignars() {
+          with (document.forms[0]) {
+          xy.value = coorX;
+          yx.value = coorY;
+
+          }
+          } </script>
       <div class="breadcomb-area">
         <div class="container">
 
@@ -1183,9 +1243,13 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="floating-numner">
                                                     <p>Señala Donde Fue Tomada la muetra</p>
+
+                                                    <a href="prueba.php"><img src="../img/dona.JPG" width="200" height="200"  ismap onclick="asignar();return false;"></a>
+                                                    <input type="text" name="x" value="x">
+                                                    <input type="text" name="y" value="y">
                                                   </div>
                                                 </div>
-                                              </div>
+                                              </div><br><br><br>
                                               <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="floating-numner">
@@ -1222,6 +1286,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="floating-numner">
                                                     <p>Señala Donde Fue Tomada la muetra</p>
+                                                    <a href="prueba.php"><img src="../img/vulva.JPG" width="200" height="200"  ismap onclick="asignars();return false;"></a>
+                                                    <input type="text" name="xy" value="x">
+                                                    <input type="text" name="yx" value="y">
                                                   </div>
                                                 </div>
                                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -2320,6 +2387,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="floating-numner">
                                                   <p>Señala Donde Fue Tomada la muetra</p>
+
+
+
                                                 </div>
                                               </div>
                                             </div>

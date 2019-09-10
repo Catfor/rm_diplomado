@@ -4,6 +4,8 @@
      $h = date("Y-m-d");
 
 
+
+
      date_default_timezone_set('America/Mexico_City');
       $hoys = date("Y-m-d H:i:s");
      $edad_inicio_menstruacion = date('Y-m-d', strtotime($_POST['edad_inicio_menstruacion']));
@@ -119,10 +121,13 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
 
      }
      else{
+       $x = $_POST["x"];
+       $y = $_POST["y"];
+
        $insertaestudio_biopsia_cervix= "INSERT INTO estudio_biopsia_cervix
-         (senalizacion,fecha_estudio)
+         (senalizacion,fecha_estudio,x,y)
          VALUES
-         ('$senalizacion','$hoys')";
+         ('$senalizacion','$hoys','$x','$y')";
          $resultadoestudio_biopsia_cervix = $mysqliL->query($insertaestudio_biopsia_cervix);
 
              $id_ant_estudio_biopsia_cervix=$mysqliL->insert_id;
@@ -139,10 +144,13 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
      if($anotaciones_vulvoscopia==''){
 
      }else{
+       $xy = $_POST["xy"];
+       $yx = $_POST["yx"];
+
        $insertaestudio_vulvoscopia= "INSERT INTO estudio_vulvoscopia
-         (anotaciones_vulvoscopia,fecha_estudio)
+         (anotaciones_vulvoscopia,fecha_estudio,x,y)
          VALUES
-         ('$anotaciones_vulvoscopia','$hoys')";
+         ('$anotaciones_vulvoscopia','$hoys','$xy','$yx')";
          $resultadoestudio_vulvoscopia = $mysqliL->query($insertaestudio_vulvoscopia);
 
              $id_ant_estudio_vulvoscopia=$mysqliL->insert_id;
