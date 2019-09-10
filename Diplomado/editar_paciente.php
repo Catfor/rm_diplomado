@@ -1,4 +1,4 @@
-<?php session_start();  ?>
+<?php session_start();  setlocale(LC_TIME, 'es_ES', 'esp_esp');?>
 <!doctype html>
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
@@ -192,6 +192,11 @@
                                     $telefono_contacto_paciente = $resultado['telefono_contacto_paciente'];
                                     $celular_contacto_paciente = $resultado['celular_contacto_paciente'];
 
+                                    $fe = date("d.M.Y", strtotime($fecha_nacimiento_paciente));
+                                    $inicio = strftime("%d de %B del %Y", strtotime($fe));
+
+
+
 
 
                             }
@@ -220,7 +225,9 @@
 
                     <!-- Breadcomb area End-->
                     <!-- Form Element area Start-->
-                    <form id="tuformulario" name="tuformulario" action="alta_guardar_paciente.php" method="GET" onsubmit="pregunta()">
+                    <form id="tuformulario" name="tuformulario" action="guardar_editar_paciente.php" method="GET" onsubmit="pregunta()">
+                      <input type="hidden" name="id_paciente" id="id_paciente" class="form-control"  value="<?php echo ($id_paciente); ?>" required>
+
                         <div class="form-element-area">
                             <div class="container">
                                 <div class="row">
@@ -257,7 +264,7 @@
                                                         </div>
                                                         <div class="input-group date nk-int-st">
                                                             <span class="input-group-addon" style="border: 0px;"></span>
-                                                            <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Fecha de Nacimiento" value="<?php echo ($fecha_nacimiento_paciente); ?>" required>
+                                                            <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Fecha de Nacimiento" value="<?php echo $inicio ?>" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -323,8 +330,8 @@
                                                             <i class="glyphicon glyphicon-usd" style="color: #888;"></i>
                                                         </div>
                                                         <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name="ingresomensual" class="selectpicker" required>
-                                                                <option value="">Selecciona Ingreso Mensual</option>
+                                                            <select name="ingresomensual" class="selectpicker" >
+                                                                <option value="">El anterior Ingreso Mensual Fue:<?php echo $ingreso_mensual?></option>
                                                                 <option value="Menos de $2,000" <?php if (strtolower($ingreso_mensual) == "menos de $2,000") {
                                                                                                     echo (" selected");
                                                                                                 } ?>>Menos de $2,000</option>
@@ -407,7 +414,7 @@ if($id_tipo_seguro_paciente!=''){
 
  ?>
 
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="checkbox"   checked> <?php echo  $nombre_seguro?> </label>
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="checkbox" name="tipo_seguros[]"  checked> <?php echo  $nombre_seguro?> </label>
 
 <?php
 

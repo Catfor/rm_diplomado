@@ -1,13 +1,14 @@
-<?php session_start();  ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-	<title>Etiqueta Estudio Papanicolaou</title>
+	<title>Etiqueta Estudio Vulva</title>
 	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../css/etiquetas.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	
 
 	<?php
 	ob_start();
@@ -21,39 +22,35 @@
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
 			e.fecha_estudio,
-			e.hallazgos_colposcopicos,
-			e.observaciones_papinocolau
+			e.anotaciones_vulvoscopia,
+			e.x,
+			e.y
 			FROM
 			paciente p
-			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 7
+			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 4
 			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-			INNER JOIN estudio_papanicolau e ON ct.id_estudio = e.id_estudio";
-
-		$res = $mysqliL->query($informacion);
+			INNER JOIN estudio_vulvoscopia e ON ct.id_estudio = e.id_estudio";
+			
+		$res =$mysqliL->query($informacion);
 		$info = $res->fetch_assoc();
 		$fecha = $info['fecha_estudio'];
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
-		$colposcopico = $info['hallazgos_colposcopicos'];
-		$observaciones = $info['observaciones_papinocolau'];
+		$anotaciones_vulvoscopia = $info['anotaciones_vulvoscopia'];
 
-		if (!endsWith(trim($colposcopico), ".")) {
-			$colposcopico = $colposcopico . '.';
-		}
-
-		if (!endsWith(trim($observaciones), ".")) {
-			$observaciones = $observaciones . '.';
+		if (!endsWith(trim($anotaciones_vulvoscopia), ".")) {
+			$anotaciones_vulvoscopia = $anotaciones_vulvoscopia . '.';
 		}
 
 		ob_end_flush();
-	} else {
-		$fecha = "";
-		$edad = "";
-		$paciente = "";
-		$medico = "";
-		$colposcopico = "";
-		$observaciones = "";
+	}else{
+		$fecha ="";
+		$edad ="";
+		$paciente ="";
+		$medico ="";
+		$colposcopico ="";
+		$observaciones ="";
 	}
 
 	function endsWith($string, $endString)
@@ -82,7 +79,7 @@
 
 			mywindow.print();
 			mywindow.close();
-			window.close();
+
 			return true;
 		}
 	</script>
@@ -104,12 +101,6 @@
 						</center>
 					</div>
 					<div>
-						<p>
-							<center>
-								<b>Solicitud de Estudio de Papanicolaou</b>
-							</center>
-						</p>
-
 						<div class="row">
 							<div class="column">
 								<p>
@@ -124,10 +115,31 @@
 						</div>
 						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
-						<p><b>Estudio Solicitado:</b> Citolog&iacute;a Exfoliativa</p>
-						<p class="txt-justificado"><b>Hallazgos Colposc&oacute;picos:</b><?php echo $colposcopico; ?></p>
-						<p><b>Observaciones:</b></p>
-						<p class="txt-justificado"><?php echo $observaciones; ?></p>
+						<p class="txt-justificado">
+							<b>Hallazgos Vulvoscopia:</b></p>
+						<p>
+							<b>Acetico:</b> NEGATIVO</p>
+						<p>
+							<p>
+								<b>Se&ntilde;ala Donde Fue Tomada la muestra:</b>
+							</p>
+
+							<div class="row">
+								<div class="column">
+									<center>
+										<a href="#">
+											<img src="../../img/vulva.jpg"
+												style="max-width: 180px; max-height: 180px" />
+										</a>
+									</center>
+								</div>
+								<div class="column">
+									<p>
+										<b>Anotaciones:</b>
+									</p>
+									<p class="txt-justificado"><?php echo ucwords($medico); ?></p>
+								</div>
+							</div>
 					</div>
 				</div>
 			</div>
