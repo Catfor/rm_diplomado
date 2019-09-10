@@ -131,33 +131,48 @@
 
                                     <!----------- ----------->
                             <?php
-                                    if (isset($_GET['nombres'])) {
-                                        if ($_GET['nombres']) {
-                                            $nombre = $_GET['nombres'];
+                                    if (isset($_GET['nombre'])) {
+                                        if ($_GET['nombre']) {
+                                            $nombre = $_GET['nombre'];
                                             //imprimes el error
                                             echo " <div class='alert-list'>
-                  <div class='alert alert-success alert-dismissible' role='alert'>
-                      <button type='button' class='close' data-dismiss='alert'
-                       aria-label='Close'><span aria-hidden='true'>
-                       <i class='notika-icon notika-close'></i></span>
-                       </button>
-                    Se dio de alta el paciente  $nombre
-                 </div>
-
-
-
-              </div>";
+                                                        <div class='alert alert-success alert-dismissible' role='alert'>
+                                                            <button type='button' class='close' data-dismiss='alert'
+                                                            aria-label='Close'><span aria-hidden='true'>
+                                                            <i class='notika-icon notika-close'></i></span>
+                                                            </button>
+                                                                    Se dio de alta el paciente  $nombre
+                                                        </div>
+                                                    </div>";
+                                        }
+                                    }
+                                    
+                                    if (isset($_GET['nombres'])) {
+                                        if ($_GET['nombres']) {
+                                            $nombres = $_GET['nombres'];
+                                            //imprimes el error
+                                            echo "  <div class='alert-list'>
+                                                        <div class='alert alert-danger alert-dismissible' role='alert'>
+                                                        <button type='button' class='close' data-dismiss='alert'
+                                                        aria-label='Close'><span aria-hidden='true'>
+                                                        <i class='notika-icon notika-close'></i></span>
+                                                        </button>
+                                                                    Usuario Existente $nombres
+                                                        </div>
+                                                    </div>";
                                         }
                                     }
                                 }
 
-
+                                //En este apartado se hace la precarga de datos si se recibe el id_paciente dentro del GET
                                 if (isset($_GET['id_paciente'])) {
                                     $id_paciente = $_GET['id_paciente'];
                                     $query = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
-
-
                                     $resultado = mysqli_fetch_assoc($query);
+                                    $query2 = mysqli_query($mysqliL, "SELECT * from tipo_seguro where id_paciente='$id_paciente'");
+                                    $resultado2 = mysqli_fetch_assoc($query2);
+
+
 
                                     $nombre_paciente = ucwords($resultado['nombre_paciente']);
                                     $apellidos_paciente = ucwords($resultado['apellidos_paciente']);
@@ -171,22 +186,35 @@
                                     $escolaridad_paciente = $resultado['escolaridad_paciente'];
                                     $apoyo_gubernamental_paciente = $resultado['apoyo_gubernamental_paciente'];
                                     $razon_apoyo_paciente = $resultado['razon_apoyo_paciente'];
+                                    $nombre_familiar_paciente = $resultado['nombre_familiar_paciente'];
+                                    $telefono_familiar_paciente = $resultado['telefono_familiar_paciente'];
+                                    $celular_familiar_paciente = $resultado['celular_familiar_paciente'];
+                                    $nombre_contacto_paciente = $resultado['nombre_contacto_paciente'];
+                                    $telefono_contacto_paciente = $resultado['telefono_contacto_paciente'];
+                                    $celular_contacto_paciente = $resultado['celular_contacto_paciente'];
+                                    $tipo_seguro = $resultado2['nombre_tipo_seguro'];
+                                } else {
+                                    $nombre_paciente = "";
+                                    $apellidos_paciente = "";
+                                    $fecha_nacimiento_paciente = "";
+                                    $estado_civil = "";
+                                    $fecha_creacion = "";
+                                    $codigo_postal = "";
+                                    $direccion_paciente = "";
+                                    $municipio_paciente = "";
+                                    $ingreso_mensual = "";
+                                    $escolaridad_paciente = "";
+                                    $apoyo_gubernamental_paciente = "";
+                                    $razon_apoyo_paciente = "";
+                                    $nombre_familiar_paciente = "";
+                                    $telefono_familiar_paciente = "";
+                                    $celular_familiar_paciente = "";
+                                    $nombre_contacto_paciente = "";
+                                    $telefono_contacto_paciente = "";
+                                    $celular_contacto_paciente = "";
+                                    $tipo_seguro = "";
                                 }
 
-                                if (isset($_GET['nombres'])) {
-
-                                    if ($_GET['nombres']) {
-                                        $nombres = $_GET['nombres'];
-                                        //imprimes el error
-                                        echo " <div class='alert-list'>
-
-                 <div class='alert alert-danger alert-mg-b-0' role='alert'>    Usuario Existente $nombres
-                 </div>
-
-
-              </div>";
-                                    }
-                                }
                             }
                             ?>
 
@@ -381,10 +409,18 @@
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group ic-cmp-int">
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='imss' name="tipo_seguro[]"> IMSS </label>
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='isste' name="tipo_seguro[]"> ISSTE </label>
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='seguro_popular' name="tipo_seguro[]"> Seguro Popular </label>
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='sgmm' name="tipo_seguro[]"> SGMM </label>
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='imss' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "imss") {
+                                                                                                echo (" checked='checked'");
+                                                                                            } ?>> IMSS </label>
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='isste' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "isste") {
+                                                                                                echo (" checked='checked'");
+                                                                                            } ?>> ISSTE </label>
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='seguro_popular' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "seguro_popular") {
+                                                                                                echo (" checked='checked'");
+                                                                                            } ?>> Seguro Popular </label>
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='sgmm' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "sgmm") {
+                                                                                                echo (" checked='checked'");
+                                                                                            } ?>> SGMM </label>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -395,10 +431,10 @@
                                                         <div class="bootstrap-select fm-cmp-mg">
                                                             <select name='apoyo_gubernamental_paciente' id='apoyo_gubernamental_paciente' class="selectpicker" required>
                                                                 <option value="">¿Apoyo gubernamental?</option>
-                                                                <option value="si" <?php if (strtolower($apoyo_gubernamental_paciente) == "si") {
+                                                                <option value="1" <?php if (strtolower($apoyo_gubernamental_paciente) == "1") {
                                                                                         echo (" selected");
                                                                                     } ?>>Si</option>
-                                                                <option value="no" <?php if (strtolower($apoyo_gubernamental_paciente) == "no") {
+                                                                <option value="0" <?php if (strtolower($apoyo_gubernamental_paciente) == "0") {
                                                                                         echo (" selected");
                                                                                     } ?>>No</option>
                                                             </select>
@@ -411,7 +447,7 @@
                                                             <i class="fas fa-question"></i>
                                                         </div>
                                                         <div class="nk-int-st">
-                                                            <input id="apoyo_gubernamental" name='cual' type="text" class="form-control" placeholder="¿Cúal?" value="<?php echo ($razon_apoyo_paciente); ?>">
+                                                            <input id="apoyo_gubernamental" name='razon_apoyo_paciente' type="text" class="form-control" placeholder="¿Cúal?" value="<?php echo ($razon_apoyo_paciente); ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -433,8 +469,7 @@
                                                             <i class="notika-icon notika-support"></i>
                                                         </div>
                                                         <div class="nk-int-st">
-                                                            <input type="text" name="nombre_contacto_paciente" class="form-control">
-                                                            <label class="nk-label">Nombre de Contacto #1</label>
+                                                            <input type="text" name="nombre_familiar_paciente" class="form-control" placeholder="Nombre de Contacto #1" value="<?php echo ($nombre_familiar_paciente); ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -445,7 +480,7 @@
                                                             <i class="notika-icon notika-phone"></i>
                                                         </div>
                                                         <div class="nk-int-st">
-                                                            <input name='telefono_contacto_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Telefono de Casa de Contacto #1">
+                                                            <input name='telefono_familiar_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Telefono de Casa de Contacto #1"  value="<?php echo ($telefono_familiar_paciente); ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -456,7 +491,7 @@
                                                             <i class="notika-icon notika-phone"></i>
                                                         </div>
                                                         <div class="nk-int-st">
-                                                            <input name='celular_contacto_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Numero Celular de Contacto #1">
+                                                            <input name='celular_familiar_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Numero Celular de Contacto #1"  value="<?php echo ($celular_familiar_paciente); ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -468,8 +503,7 @@
                                                             <i class="notika-icon notika-support"></i>
                                                         </div>
                                                         <div class="nk-int-st">
-                                                            <input type="text" name="nombre_contacto_paciente" class="form-control">
-                                                            <label class="nk-label">Nombre de Contacto #2</label>
+                                                            <input type="text" name="nombre_contacto_paciente" class="form-control" placeholder="Nombre de Contacto #2" value="<?php echo ($nombre_contacto_paciente); ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -480,7 +514,7 @@
                                                             <i class="notika-icon notika-phone"></i>
                                                         </div>
                                                         <div class="nk-int-st">
-                                                            <input name='telefono_contacto_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Telefono de Casa de Contacto #2">
+                                                            <input name='telefono_contacto_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Telefono de Casa de Contacto #2" value="<?php echo ($telefono_contacto_paciente); ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -491,7 +525,7 @@
                                                             <i class="notika-icon notika-phone"></i>
                                                         </div>
                                                         <div class="nk-int-st">
-                                                            <input name='celular_contacto_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Numero Celular de Contacto #2">
+                                                            <input name='celular_contacto_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Numero Celular de Contacto #2" value="<?php echo ($celular_contacto_paciente); ?>">
                                                         </div>
                                                     </div>
                                                 </div>
