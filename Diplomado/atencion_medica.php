@@ -2116,7 +2116,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <option value="blanco_intenso_c/brillo_superficial">Blanco intenso c/brillo superficial</option>
                                           <option value="brillo_superficial">Brillo superficial</option>
                                           <option value="transparente">Transparente</option>
-                                          <option value="fuera_zt">FUERA DE LA ZT</option>
+                                          <option value="fuera_zt">Fuera de la ZT</option>
 
                                         </select>
 
@@ -2127,8 +2127,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                   </div>
                                         <select name='ep_criterios_intermedios' id='ep_criterios_intermedios' class="form-control" disabled>
                                           <option value="">Selecciona Criterios Intermedios</option>
-                                          <option value="blanco_intermedio_c/brillo">BLANCO INTERMEDIO C/BRILLO</option>
-                                          <option value="mayoria_lesiones">(MAYORÍA DE LESIONES)</option>
+                                          <option value="blanco_intermedio_c/brillo">Blanco intermedio c/brillo</option>
+                                          <option value="mayoria_lesiones">(Mayoria lesiones)</option>
                                         </select>
 
                                       </div>
@@ -2138,10 +2138,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                   </div>
                                         <select name='ep_criterios_mayores' id='ep_criterios_mayores' class="form-control" disabled>
                                           <option value="">Selecciona Criterios Mayores</option>
-                                          <option value="blanco_Denso">BLANCO DENSO</option>
-                                          <option value="blanco_opaco">BLANCO OPACO</option>
-                                          <option value="blanco_ostra">BLANCO OSTRA</option>
-                                          <option value="gris">GRIS</option>
+                                          <option value="blanco_Denso">Blanco denso</option>
+                                          <option value="blanco_opaco">Blanco opaco</option>
+                                          <option value="blanco_ostra">Blanco ostra</option>
+                                          <option value="gris">Gris</option>
                                         </select>
 
                                       </div>
@@ -2159,11 +2159,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     </div>
                                         <select name='bs_criterios_menores' id='bs_criterios_menores' class="form-control">
                                           <option value="">Selecciona Criterios Menores</option>
-                                          <option value="microcondilomatoso">MICROCONDILOMATOSO</option>
-                                          <option value="micropapilar">MICROPAPILAR</option>
-                                          <option value="borde_indefinido">BORDE INDEFINIDO</option>
-                                          <option value="borde_pluma_dentado">BORDE EN PLUMA O DENTADO</option>
-                                          <option value="lesion_angulada">LESIÓN ANGULADA</option>
+                                          <option value="microcondilomatoso">Microcondilomatoso</option>
+                                          <option value="micropapilar">Micropapilar</option>
+                                          <option value="borde_indefinido">Borde indefinido</option>
+                                          <option value="borde_pluma_dentado">Borde en pluma o dentado</option>
+                                          <option value="lesion_angulada">Lesión angulada</option>
                                         </select>
 
                                       </div>
@@ -2173,10 +2173,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     </div>
                                         <select name='bs_criterios_intermedios' id='bs_criterios_intermedios' class="form-control">
                                           <option value="">Selecciona Criterios Intermedios</option>
-                                          <option value="lesion_regular">LESIÓN REGULAR</option>
-                                          <option value="simetrica">SIMÉTRICA</option>
-                                          <option value="contornos_netos">CONTORNOS NETOS</option>
-                                          <option value="contornos_rectilineos">CONTORNOS RECTILÍNEOS</option>
+                                          <option value="lesion_regular">Lesión regular</option>
+                                          <option value="simetrica">Simétrica</option>
+                                          <option value="contornos_netos">Contornos netos</option>
+                                          <option value="contornos_rectilineos">Contornos Rrectilineos</option>
                                         </select>
 
                                       </div>
@@ -2186,9 +2186,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
                                         <select name='bs_criterios_mayores' id='bs_criterios_mayores' class="form-control">
                                           <option value="">Selecciona Criterios Mayores</option>
-                                          <option value="bordes_dehiscentes">BORDES DEHISCENTES</option>
-                                          <option value="bordes_enrolaldos">BORDES ENROLLADOS</option>
-                                          <option value="cambios_menores_perifericos_mayores">CAMBIOS MENORES PERIFÉRICOS Y MAYORES CENTRALES</option>
+                                          <option value="bordes_dehiscentes">Bordes dehiscentes</option>
+                                          <option value="bordes_enrolaldos">Bordes enrollados</option>
+                                          <option value="cambios_menores_perifericos_mayores">Cambios menores periféricos ymayores centrales</option>
                                         </select>
 
                                       </div>
@@ -2201,28 +2201,34 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+                                        <div class="nk-int-mk sl-dp-mn">
+                                      <h6>Tus  Criterios menores fueron</h6>
+                                      </div>
                                         <select name='ag_criterios_menores' id='ag_criterios_menores' class="form-control">
                                           <option value="">Selecciona Criterios Menores</option>
-                                          <option value="capilar_fino">CAPILAR FINO</option>
-                                          <option value="calibre_disposion_uniforme">CALIBRE Y DISPOSICIÓN UNIFORME</option>
-                                          <option value="puntilleo_fino">PUNTILLEO FINO</option>
-                                          <option value="nmosaico_fino">MOSAICO FINO</option>
-                                          <option value="vasos_mas_alla_zt">VASOS MÁS ALLÁ DE ZT</option>
+                                          <option value="capilar_fino">Capilar fino</option>
+                                          <option value="calibre_disposion_uniforme">Calibre y disposión uniforme</option>
+                                          <option value="puntilleo_fino">Puntilleo fino</option>
+                                          <option value="nmosaico_fino">Mosaico fino</option>
+                                          <option value="vasos_mas_alla_zt">Vasos más allá de ZT</option>
                                         </select>
 
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+                                        <div class="nk-int-mk sl-dp-mn">
+                                        <h6>Tus  Criterios intermedios fueron</h6>
+                                        </div>
                                         <select name='ag_criterios_intermedios' id='ag_criterios_intermedios' class="form-control">
                                           <option value="">Selecciona Criterios Intermedios</option>
-                                          <option value="ausencia_vasos">AUSENCIA DE VASOS</option>
+                                          <option value="ausencia_vasos">Ausencia de vasos</option>
 
                                         </select>
 
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+                                        <div class="nk-int-mk sl-dp-mn">
+                                        <h6>Tus  Criterios mayores fueron</h6>
+                                        </div>
                                         <select name='ag_criterios_mayores' id='ag_criterios_mayores' class="form-control">
                                           <option value="">Selecciona Criterios Mayores</option>
                                           <option value="puntilleo_grueso">PUNTILLEO GRUESO</option>
@@ -2240,25 +2246,31 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+                                        <div class="nk-int-mk sl-dp-mn">
+                                        <h6>Tus  Criterios menores fueron</h6>
+                                      </div>
                                         <select name='cy_menores' id='cy_menores' class="form-control">
-                                          <option value="">CITERIOS MENORES</option>
+
                                           <option value="positiva">Positiva</option>
                                           <option value="negativa_puntos_criterios_anteriores">Negativa con < 3 puntos en criterios anteriores</option> <option value="zonas_yodo_negativas">ZONAS YODONEGATIVAS MÁS ALLÁ DE LA ZT</option>
                                         </select>
 
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+                                        <div class="nk-int-mk sl-dp-mn">
+                                        <h6>Tus  Criterios intermedios fueron</h6>
+                                      </div>
                                         <select name='cy_intermedios' id='cy_intermedios' class="form-control">
-                                          <option value="">CITERIOS INTERMEDIOS</option>
+
                                           <option value="capacitacion_parcial_yodo">Capacitación parcial de yodo</option>
                                           <option value="motedao_jaspeado">(Motedao-jaspeado)</option>
                                         </select>
 
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+                                        <div class="nk-int-mk sl-dp-mn">
+                                        <h6>Tus  Criterios mayores fueron</h6>
+                                      </div>
                                         <select name='cy_mayores' id='cy_mayores' class="form-control">
                                           <option value="">CITERIOS MAYORES</option>
                                           <option value="yodo_negativa_conmas_puntos">Yodonegativa con 4 o más puntos</option>
@@ -2344,6 +2356,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                      <div class="nk-int-mk sl-dp-mn">
+                                        <h6>Tus miscelaneos fueron</h6>
+                                        </div>
 
                                       <select name='miscelaneos' id='miscelaneos' class="form-control">
                                         <option value="">Selecciona Miscelaneos</option>
@@ -2411,14 +2426,17 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                   <div class="row">
 
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                      <div class="nk-int-mk sl-dp-mn">
+                                        <h6>Tu diagnostico medico</h6>
+                                        </div>
                                       <div class="bootstrap-select fm-cmp-mg">
-                                        <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="form-control">
-                                          <option value="">DIAGNOSTICO MÉDICO</option>
-                                          <option value="hallazgos_normales">HALLAZGOS NORMALES</option>
-                                          <option value="hallazgos_sugestivos_">HALLAZGOS SUGESTIVOS DE INVASIÓN</option>
-                                          <option value="miscelaneos_hallazgos_varios">MISCELANEOS O HALLAZGOS VARIOS</option>
-                                          <option value="lesion_intraepitelial_bajogrado">LESIÓN INTRAEPITELIAL DE BAJO GRADO</option>
-                                          <option value="lesion_intraepitelial_altogrado">LESIÓN INTRAEPITELIAL DE ALTO GRADO</option>
+                                        <select name='diagnostico_medico ' id='diagnostico_medico' class="form-control">
+                                          <option value="">Diagnostico medico</option>
+                                          <option value="hallazgos_normales">Hallazgos normales</option>
+                                          <option value="hallazgos_sugestivos_">Hallazgos sugestivo de invasión</option>
+                                          <option value="miscelaneos_hallazgos_varios">Miscelaneos o hallazgos varios</option>
+                                          <option value="lesion_intraepitelial_bajogrado">lesión intraepitelial de bajo grado </option>
+                                          <option value="lesion_intraepitelial_altogrado">lesión intraepitelial de alto grado</option>
 
 
 
