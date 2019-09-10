@@ -1,9 +1,8 @@
-<?php session_start();  ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-	<title>Etiqueta Estudio Papanicolaou</title>
+	<title>Etiqueta Estudio Endometrio</title>
 	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../css/etiquetas.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
@@ -21,22 +20,30 @@
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
 			e.fecha_estudio,
-			e.hallazgos_colposcopicos,
-			e.observaciones_papinocolau
+			e.antecedente_metrorragia, 	
+			e.antecedente_hormonoterapia, 	
+			e.duracion_tratamiento, 	
+			e.periodo_menstrual, 	
+			e.fecha_ultima_menstruacion, 	
+			e.metodo_anticonceptivo
 			FROM
 			paciente p
-			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 7
+			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 4
 			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-			INNER JOIN estudio_papanicolau e ON ct.id_estudio = e.id_estudio";
-
-		$res = $mysqliL->query($informacion);
+			INNER JOIN estudio_biopsia_endometrio e ON ct.id_estudio = e.id_estudio";
+			
+		$res =$mysqliL->query($informacion);
 		$info = $res->fetch_assoc();
 		$fecha = $info['fecha_estudio'];
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
-		$colposcopico = $info['hallazgos_colposcopicos'];
-		$observaciones = $info['observaciones_papinocolau'];
+		$antecedente_metrorragia = $info['antecedente_metrorragia'];
+		$antecedente_hormonoterapia = $info['antecedente_hormonoterapia'];
+		$duracion_tratamiento = $info['duracion_tratamiento'];
+		$periodo_menstrual = $info['periodo_menstrual'];
+		$fecha_ultima_menstruacion = $info['fecha_ultima_menstruacion'];
+		$metodo_anticonceptivo = $info['metodo_anticonceptivo'];
 
 		if (!endsWith(trim($colposcopico), ".")) {
 			$colposcopico = $colposcopico . '.';
@@ -47,13 +54,13 @@
 		}
 
 		ob_end_flush();
-	} else {
-		$fecha = "";
-		$edad = "";
-		$paciente = "";
-		$medico = "";
-		$colposcopico = "";
-		$observaciones = "";
+	}else{
+		$fecha ="";
+		$edad ="";
+		$paciente ="";
+		$medico ="";
+		$colposcopico ="";
+		$observaciones ="";
 	}
 
 	function endsWith($string, $endString)
@@ -82,7 +89,7 @@
 
 			mywindow.print();
 			mywindow.close();
-			window.close();
+
 			return true;
 		}
 	</script>
@@ -106,10 +113,9 @@
 					<div>
 						<p>
 							<center>
-								<b>Solicitud de Estudio de Papanicolaou</b>
+								<b>Solicitud de Estudio Para Biopsia de Endometrio</b>
 							</center>
 						</p>
-
 						<div class="row">
 							<div class="column">
 								<p>
@@ -124,10 +130,12 @@
 						</div>
 						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
-						<p><b>Estudio Solicitado:</b> Citolog&iacute;a Exfoliativa</p>
-						<p class="txt-justificado"><b>Hallazgos Colposc&oacute;picos:</b><?php echo $colposcopico; ?></p>
-						<p><b>Observaciones:</b></p>
-						<p class="txt-justificado"><?php echo $observaciones; ?></p>
+						<p><b>Antecedentes de Metrorragia:</b> <?php echo ucwords($antecedente_metrorragia); ?></p>
+						<p><b>Antecedentes de Hormonoterapia:</b> <?php echo ucwords($antecedente_hormonoterapia); ?></p>
+						<p><b>Duracion del Tratamiento:</b><?php echo ucwords($duracion_tratamiento); ?></p>
+						<p><b>Periodos menstruales:</b> <?php echo ucwords($periodo_menstrual); ?></p>
+						<p><b>F.U.M.:</b> <?php echo ucwords($fecha_ultima_menstruacion); ?></p>
+						<p><b>M&eacute;todo anticonceptivo:</b> <?php echo ucwords($metodo_anticonceptivo); ?></p>
 					</div>
 				</div>
 			</div>
