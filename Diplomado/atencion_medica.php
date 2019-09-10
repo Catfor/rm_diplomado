@@ -336,9 +336,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
 
                   <form id="f" action='guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
-                  <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente ?>">
-                    <div class="row fila">
+                    <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente ?>">
+<input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id ?>">
 
+                    <div class="row">
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
 
