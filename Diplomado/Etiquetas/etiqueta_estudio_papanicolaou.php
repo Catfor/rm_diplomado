@@ -13,36 +13,39 @@
 	ob_start();
 	include('../../coni/Localhost.php');
 	date_default_timezone_set('America/Mexico_City');
-	$informacion = mysqli_query($mysqliL, "SELECT 
-		CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
-		CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
-		p.edad_paciente,
-		e.fecha_estudio,
-		e.hallazgos_colposcopicos,
-		e.observaciones_papinocolau
-		FROM
-		paciente p
-		INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = 27
-		INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-		INNER JOIN estudio_papanicolau e ON ct.id_estudio = e.id_estudio");
-	$info = mysqli_fetch_assoc($informacion);
+	if (isset($_GET["id_paciente"])) {
+		$id_paciente = $_GET["id_paciente"];
+		$informacion = mysqli_query($mysqliL, "SELECT 
+	CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
+	CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
+	p.edad_paciente,
+	e.fecha_estudio,
+	e.hallazgos_colposcopicos,
+	e.observaciones_papinocolau
+	FROM
+	paciente p
+	INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente
+	INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
+	INNER JOIN estudio_papanicolau e ON ct.id_estudio = e.id_estudio");
+		$info = mysqli_fetch_assoc($informacion);
 
-	$fecha = $info['fecha_estudio'];
-	$edad = $info['edad_paciente'];
-	$paciente = $info['paciente'];
-	$medico = $info['medico'];
-	$colposcopico = $info['hallazgos_colposcopicos'];
-	$observaciones = $info['observaciones_papinocolau'];
+		$fecha = $info['fecha_estudio'];
+		$edad = $info['edad_paciente'];
+		$paciente = $info['paciente'];
+		$medico = $info['medico'];
+		$colposcopico = $info['hallazgos_colposcopicos'];
+		$observaciones = $info['observaciones_papinocolau'];
 
-	if (!endsWith(trim($colposcopico), ".")) {
-		$colposcopico = $colposcopico . '.';
+		if (!endsWith(trim($colposcopico), ".")) {
+			$colposcopico = $colposcopico . '.';
+		}
+
+		if (!endsWith(trim($observaciones), ".")) {
+			$observaciones = $observaciones . '.';
+		}
+
+		ob_end_flush();
 	}
-
-	if (!endsWith(trim($observaciones), ".")) {
-		$observaciones = $observaciones . '.';
-	}
-
-	ob_end_flush();
 
 	function endsWith($string, $endString)
 	{
