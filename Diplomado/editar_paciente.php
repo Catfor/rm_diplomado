@@ -165,7 +165,7 @@
                                 }
 
                                 //En este apartado se hace la precarga de datos si se recibe el id_paciente dentro del GET
-                                if (isset($_GET['id_paciente'])) {
+
                                     $id_paciente = $_GET['id_paciente'];
                                     $query = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
                                     $resultado = mysqli_fetch_assoc($query);
@@ -193,27 +193,7 @@
                                     $telefono_contacto_paciente = $resultado['telefono_contacto_paciente'];
                                     $celular_contacto_paciente = $resultado['celular_contacto_paciente'];
                                     $tipo_seguro = $resultado2['nombre_tipo_seguro'];
-                                } else {
-                                    $nombre_paciente = "";
-                                    $apellidos_paciente = "";
-                                    $fecha_nacimiento_paciente = "";
-                                    $estado_civil = "";
-                                    $fecha_creacion = "";
-                                    $codigo_postal = "";
-                                    $direccion_paciente = "";
-                                    $municipio_paciente = "";
-                                    $ingreso_mensual = "";
-                                    $escolaridad_paciente = "";
-                                    $apoyo_gubernamental_paciente = "";
-                                    $razon_apoyo_paciente = "";
-                                    $nombre_familiar_paciente = "";
-                                    $telefono_familiar_paciente = "";
-                                    $celular_familiar_paciente = "";
-                                    $nombre_contacto_paciente = "";
-                                    $telefono_contacto_paciente = "";
-                                    $celular_contacto_paciente = "";
-                                    $tipo_seguro = "";
-                                }
+
 
                             }
                             ?>
@@ -225,7 +205,7 @@
                                         <i class="notika-icon notika-form"></i>
                                     </div>
                                     <div class="breadcomb-ctn">
-                                        <h2>Alta Paciente</h2>
+                                        <h2>Editar Paciente</h2>
                                     </div>
                                 </div>
                             </div>
@@ -238,7 +218,7 @@
             </div>
             <!-- Breadcomb area End-->
             <!-- Form Element area Start-->
-    
+
                     <!-- Breadcomb area End-->
                     <!-- Form Element area Start-->
                     <form id="tuformulario" name="tuformulario" action="alta_guardar_paciente.php" method="GET" onsubmit="pregunta()">
@@ -408,16 +388,16 @@
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group ic-cmp-int">
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input  type="checkbox" value='imss' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "imss") {
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='imss' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "imss") {
                                                                                                 echo (" checked='checked'");
                                                                                             } ?>> IMSS </label>
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input  type="checkbox" value='isste' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "isste") {
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='isste' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "isste") {
                                                                                                 echo (" checked='checked'");
                                                                                             } ?>> ISSTE </label>
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input  type="checkbox" value='seguro_popular' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "seguro_popular") {
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='seguro_popular' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "seguro_popular") {
                                                                                                 echo (" checked='checked'");
                                                                                             } ?>> Seguro Popular </label>
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input  type="checkbox" value='sgmm' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "sgmm") {
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='sgmm' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "sgmm") {
                                                                                                 echo (" checked='checked'");
                                                                                             } ?>> SGMM </label>
                                                     </div>

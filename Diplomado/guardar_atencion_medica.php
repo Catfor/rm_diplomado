@@ -23,6 +23,8 @@
      $antecedentes_tratamiento=$_POST['antecedentes_tratamiento'];
      $idpaciente=$_POST['idpaciente'];
      $metrorragia=$_POST['metrorragia'];
+     $id_usuario=$_POST['id_usuario'];
+
           $hormonoterapia=$_POST['hormonoterapia'];
                $duracion_hormonoterapia=$_POST['duracion_hormonoterapia'];
                     $ritmo=$_POST['ritmo'];
@@ -41,9 +43,9 @@
            $id_ant_atencionmedica=$mysqliL->insert_id;
 
            $sql1 = "INSERT INTO ctrl_paciente_estudios
-             (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
+             (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,id_usuario)
              VALUES
-             ('$idpaciente','','','','$id_ant_atencionmedica')";
+             ('$idpaciente','','','','$id_ant_atencionmedica','$id_usuario')";
                  $resulta1 = $mysqliL->query($sql1);
      ////////////////////obtencion de parametros colposcopia/////////////////////////////////////////////////////////////
      $colposcopia=$_POST['colposcopia'];
@@ -86,9 +88,9 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
 
 
      $sql2 = "INSERT INTO ctrl_paciente_estudios
-       (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
+       (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,id_usuario)
        VALUES
-       ('$idpaciente','$id_ant_colposcopico','1','','$id_ant_atencionmedica')";
+       ('$idpaciente','$id_ant_colposcopico','1','','$id_ant_atencionmedica','$id_usuario')";
            $resulta2 = $mysqliL->query($sql2);
          }
      ////////////////////obtencion de parametros papanicolau/////////////////////////////////////////////////////
@@ -110,9 +112,9 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
 
 
        $sql3 = "INSERT INTO ctrl_paciente_estudios
-         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
+         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,id_usuario)
          VALUES
-         ('$idpaciente','$id_ant_estudio_papanicolau','7','','$id_ant_atencionmedica')";
+         ('$idpaciente','$id_ant_estudio_papanicolau','7','','$id_ant_atencionmedica','$id_usuario')";
              $resulta3 = $mysqliL->query($sql3);
      }
      ////////////////////obtencion de parametros biopsas CERVIX/////////////////////////////////////////////////////
@@ -134,9 +136,9 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
 
 
        $sql3 = "INSERT INTO ctrl_paciente_estudios
-         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
+         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,id_usuario)
          VALUES
-         ('$idpaciente','$id_ant_estudio_biopsia_cervix','2','','$id_ant_atencionmedica')";
+         ('$idpaciente','$id_ant_estudio_biopsia_cervix','2','','$id_ant_atencionmedica','$id_usuario')";
              $resulta3 = $mysqliL->query($sql3);
      }
      ////////////////////obtencion de parametros biopsas DE VULVOSCOPIA/////////////////////////////////////////////////////
@@ -157,9 +159,9 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
 
 
        $sql3 = "INSERT INTO ctrl_paciente_estudios
-         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
+         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,id_usuario)
          VALUES
-         ('$idpaciente','$id_ant_estudio_vulvoscopia','6','','$id_ant_atencionmedica')";
+         ('$idpaciente','$id_ant_estudio_vulvoscopia','6','','$id_ant_atencionmedica','$id_usuario')";
              $resulta3 = $mysqliL->query($sql3);
      }
      ////////////////////obtencion de parametros biopsas DE VAGINOSCOPIA/////////////////////////////////////////////////////
@@ -178,9 +180,9 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
 
 
        $sql3 = "INSERT INTO ctrl_paciente_estudios
-         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
+         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,id_usuario)
          VALUES
-         ('$idpaciente','$id_ant_estudio_vaginoscopia','5','','$id_ant_atencionmedica')";
+         ('$idpaciente','$id_ant_estudio_vaginoscopia','5','','$id_ant_atencionmedica','$id_usuario')";
              $resulta3 = $mysqliL->query($sql3);
      }
      ////////////////////obtencion de parametros biopsas DE ENDOMETRIO/////////////////////////////////////////////////////
@@ -199,9 +201,9 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
 
 
        $sql3 = "INSERT INTO ctrl_paciente_estudios
-         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
+         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,id_usuario)
          VALUES
-         ('$idpaciente','$id_ant_estudio_biopsia_endometrio','4','','$id_ant_atencionmedica')";
+         ('$idpaciente','$id_ant_estudio_biopsia_endometrio','4','','$id_ant_atencionmedica','$id_usuario')";
              $resulta3 = $mysqliL->query($sql3);
      }
 
