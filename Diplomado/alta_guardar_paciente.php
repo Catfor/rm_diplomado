@@ -60,7 +60,7 @@ if ($total > 0) {
     $tipos = $tipo_seguro[$y];
     echo $tipos . '<br>';
     $sql112 = "INSERT INTO tipo_seguro
-(nombre_tipo_seguro,id_paciente)
+(id_seguro,id_paciente)
 VALUES
 ('$tipos','$id_bitacora')";
     $resultaq123 = $mysqliL->query($sql112);

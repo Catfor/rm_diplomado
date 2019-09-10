@@ -169,8 +169,7 @@
                                     $id_paciente = $_GET['id_paciente'];
                                     $query = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
                                     $resultado = mysqli_fetch_assoc($query);
-                                    $query2 = mysqli_query($mysqliL, "SELECT * from tipo_seguro where id_paciente='$id_paciente'");
-                                    $resultado2 = mysqli_fetch_assoc($query2);
+
 
 
 
@@ -192,7 +191,7 @@
                                     $nombre_contacto_paciente = $resultado['nombre_contacto_paciente'];
                                     $telefono_contacto_paciente = $resultado['telefono_contacto_paciente'];
                                     $celular_contacto_paciente = $resultado['celular_contacto_paciente'];
-                                    $tipo_seguro = $resultado2['nombre_tipo_seguro'];
+
 
 
                             }
@@ -388,18 +387,39 @@
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group ic-cmp-int">
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='imss' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "imss") {
-                                                                                                echo (" checked='checked'");
-                                                                                            } ?>> IMSS </label>
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='isste' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "isste") {
-                                                                                                echo (" checked='checked'");
-                                                                                            } ?>> ISSTE </label>
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='seguro_popular' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "seguro_popular") {
-                                                                                                echo (" checked='checked'");
-                                                                                            } ?>> Seguro Popular </label>
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="radio" value='sgmm' name="tipo_seguro[]"<?php if (strtolower($tipo_seguro) == "sgmm") {
-                                                                                                echo (" checked='checked'");
-                                                                                            } ?>> SGMM </label>
+<?php
+
+
+   // Variable $row hold the result of the query
+   $comnsultaBETWEENClientescreados = "  SELECT t.nombre_seguro as n ,t.id_seguro as s,s.id_tipo_seguro_paciente as i FROM seguros AS T LEFT JOIN tipo_seguro AS s ON s.id_seguro=t.id_seguro AND id_paciente='$id_paciente'";
+   $resultBETWEENClientescreados = $mysqliL->query($comnsultaBETWEENClientescreados);
+
+
+//echo $comnsultaBETWEENClientescreados;
+while($rowBETWEENClientescreados= $resultBETWEENClientescreados->fetch_assoc()) {
+
+$nombre_seguro = $rowBETWEENClientescreados['n'];
+$id_seguro = $rowBETWEENClientescreados['s'];
+$id_tipo_seguro_paciente = $rowBETWEENClientescreados['i'];
+
+
+if($id_tipo_seguro_paciente!=''){
+
+ ?>
+
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="checkbox"   checked> <?php echo  $nombre_seguro?> </label>
+
+<?php
+
+}else{
+
+?>
+<label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="checkbox"   name="tipo_seguro[]" value="<?php echo  $id_seguro?>"> <?php echo  $nombre_seguro?> </label>
+  <?php
+}
+
+}?>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -515,7 +535,7 @@
 
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <input class="btn notika-btn-purble" type="submit" value="Enviar formulario" style="float:right;margin: 10px 0;background: #a25cbf;color: white;">
+                                      <center>  <input class="btn notika-btn-purble" type="submit" value="Editar Paciente" style="float:center;margin: 10px 0;background: #a25cbf;color: white;"></center>
                                     </div>
                                 </div>
                             </div>
