@@ -208,7 +208,6 @@
 
 
                       <?php
-                          include('../coni/Localhost.php');
                           $consultasemanas = "SELECT * FROM paciente ";
                           $resultadosemanas = $mysqliL->query($consultasemanas);
 
