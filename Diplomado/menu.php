@@ -39,7 +39,7 @@ echo "
                     </li>
                     <li><a  href='consulta_paciente.php'><i class='notika-icon notika-form'></i>Consultar Pacientes</a>
                       </li>
-                     <li><a  href='consulta_estudios.php'><i class='notika-icon notika-windows'></i>Pendiente Atención Médica</a>
+                     <li><a  href='consulta_estudios.php'><i class='notika-icon notika-windows'></i>Reporte De Consulta</a>
                     </li>
                     <li><a href='resultados.php'><i class='notika-icon notika-form'></i>Resultado Patología</a>
                     </li>
