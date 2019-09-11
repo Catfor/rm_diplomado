@@ -815,7 +815,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='causa' id='causa' class="form-control" disabled>
+                                        <select name='causa' id='causa' class="selectpicker" disabled>
                                           <option value="">Selecciona una Causa</option>
                                           <option value="sangrado">SANGRADO</option>
                                           <option value="inflamacion">INFLAMACIÓN</option>
@@ -1100,8 +1100,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                         <select name='vulvoscopia' id='vulvoscopia' class="selectpicker">
                                           <option value="">Selecciona Acético</option>
-                                          <option value="positivo">Positivo</option>
-                                          <option value="negativo">Negativo</option>
+                                          <option value="acetico">ACÉTICO</option>
+
                                         </select>
 
                                       </div>
@@ -2026,7 +2026,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                           <div class="panel panel-collapse notika-accrodion-cus">
                             <div class="panel-heading" role="tab">
                               <h4 class="panel-title">
-                                <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-one" aria-expanded="false">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-one" aria-expanded="false">
                                   DATOS COLPOSCOPICOS
                                 </a>
                               </h4>
@@ -2487,7 +2487,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                           <div class="panel panel-collapse notika-accrodion-cus">
                             <div class="panel-heading" role="tab">
                               <h4 class="panel-title">
-                                <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-two" aria-expanded="false">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-two" aria-expanded="false">
                                   PAPANICOLAOU
                                 </a>
                               </h4>
@@ -2560,7 +2560,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                         <div class="panel panel-collapse notika-accrodion-cus">
                           <div class="panel-heading" role="tab">
                             <h4 class="panel-title">
-                              <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-three" aria-expanded="false">
+                              <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-three" aria-expanded="false">
                                 BIOPSIAS
                               </a>
                             </h4>
