@@ -94,7 +94,7 @@
                                     <div class='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
                                         <div class='form-group'>
                                             <div class='nk-int-st'>
-                                                <input type='Password' class='form-control' placeholder='Nueva Password' name='password' id='password'  required>
+                                                <input type='Password' class='form-control' placeholder='Nueva Password' name='password' id='password'  >
                                             </div>";
           ?>
 
@@ -359,7 +359,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
 
                         <div class="bootstrap-select fm-cmp-mg">
-                          <select id='metodos_planificacion' name="metodos_planificacion" class="selectpicker">
+                          <select id='metodos_planificacion' name="metodos_planificacion" >
                             <option value="">Selecciona Método de Planificación Familiar:</option>
                             <option value="hormonales_orales">Hormonales orales</option>
                             <option value="hormonales_inyectables">Hormonales inyectables</option>
@@ -387,7 +387,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                 <div class="bootstrap-select fm-cmp-mg">
-                        <select name="edad_inicio_vida_sexual"  class="selectpicker">
+                        <select name="edad_inicio_vida_sexual"  >
                           <option value="">Edad de inicio de vida sexual</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -515,7 +515,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                 <div class="bootstrap-select fm-cmp-mg">
 
-                        <select name="parejas_sexuales" class="selectpicker">
+                        <select name="parejas_sexuales" >
                           <option value="">Parejas sexuales</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -552,9 +552,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                <div class="bootstrap-select fm-cmp-mg">
 
-                        <select name="gestas" class="selectpicker">
+
+                        <select name="gestas" >
                           <option value="">Gestas</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -572,7 +572,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                           <option value="14">14</option>>
                         </select>
 </div>
-                      </div>
+
                     </div>
                     <div class="row fila">
 
@@ -581,7 +581,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                 <div class="bootstrap-select fm-cmp-mg">
 
-                        <select name="para"   class="selectpicker">
+                        <select name="para"   >
                           <option value="">Para</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -604,7 +604,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                 <div class="bootstrap-select fm-cmp-mg">
 
-                        <select name="cesareas" class="selectpicker">
+                        <select name="cesareas" >
                           <option value="">Césareas</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -627,7 +627,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                 <div class="bootstrap-select fm-cmp-mg">
 
-                        <select name="abortos" class="selectpicker">
+                        <select name="abortos" >
                           <option value="">Abortos</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -699,7 +699,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                         <div class="bootstrap-select fm-cmp-mg">
-                          <select name="metrorragia" class="selectpicker" required>
+                          <select name="metrorragia"  >
                             <option value="">Metrorragia</option>
                             <option value="1">SI</option>
                             <option value="0">NO</option>
@@ -710,7 +710,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                         <div class="bootstrap-select fm-cmp-mg">
-                          <select name="hormonoterapia" class="selectpicker" required>
+                          <select name="hormonoterapia"  >
                             <option value="">Hormonoterapia</option>
                             <option value="1">SI</option>
                             <option value="0">NO</option>
@@ -734,7 +734,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                         <div class="bootstrap-select fm-cmp-mg">
-                          <select name="ritmo" class="selectpicker" required>
+                          <select name="ritmo"  >
                             <option value="">Ritmo</option>
                             <option value="regular">Regular</option>
                             <option value="irregular">Irregular</option>
@@ -746,7 +746,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                         <div class="bootstrap-select fm-cmp-mg">
-                          <select name="antecedente_cancer_cervicouterino" class="selectpicker" required>
+                          <select name="antecedente_cancer_cervicouterino"  >
                             <option value="">Antecedente de Cáncer cervicouterino</option>
                             <option value="1">SI</option>
                             <option value="0">NO</option>
@@ -758,7 +758,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                         <div class="bootstrap-select fm-cmp-mg">
-                          <select name="tratamiento_previo" class="selectpicker" required>
+                          <select name="tratamiento_previo"  >
                             <option value="">Tratamientos previos:</option>
                             <option value="1">SI</option>
                             <option value="0">NO</option>
@@ -805,7 +805,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='colposcopia' id='colposcopia' class="selectpicker">
+                                        <select name='colposcopia' id='colposcopia' >
                                           <option value="">Selecciona colposcopia</option>
                                           <option value="adecuada">ADECUADA</option>
                                           <option value="no_adecuada">NO ADECUADA</option>
@@ -815,7 +815,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='causa' id='causa' class="selectpicker" disabled>
+                                        <select name='causa' id='causa'  disabled>
                                           <option value="">Selecciona una Causa</option>
                                           <option value="sangrado">SANGRADO</option>
                                           <option value="inflamacion">INFLAMACIÓN</option>
@@ -834,7 +834,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='cervix ' id='cervix'class="selectpicker">
+                                        <select name='cervix ' id='cervix'>
                                           <option value="">Selecciona Cervix</option>
                                           <option value="eutrofico">EUTRÓFICO</option>
                                           <option value="atrofico">ATRÓFICO</option>
@@ -848,7 +848,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='union_escamocolumnar ' id='union_escamocolumnar' class="selectpicker">
+                                        <select name='union_escamocolumnar ' id='union_escamocolumnar' >
                                           <option value="">Selecciona Union Escamocolumnar </option>
                                           <option value="completamente_visible">COMPLETAMENTE VISIBLE</option>
                                           <option value="parcialmente_visible">PARCIALMENTE VISIBLE</option>
@@ -857,7 +857,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='zona_transformacion ' id='zona_transformacion' class="selectpicker">
+                                        <select name='zona_transformacion ' id='zona_transformacion' >
                                           <option value="">Selecciona Zona De Transfromacion</option>
                                           <option value="tipo 1">TIPO 1</option>
                                           <option value="tipo 2 a">TIPO 2 A</option>
@@ -880,7 +880,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
 
-                                        <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' class="selectpicker" onChange="pagoOnChange(this)">
+                                        <select name='epitelio_acetoblanco' id='epitelio_acetoblanco'  onChange="pagoOnChange(this)">
 
                                           <option value="">AUSENTE</option>
                                           <option value="presente">PRESENTE</option>
@@ -898,7 +898,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       <div class="row fila">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='ep_criterios_menores' id='ep_criterios_menores' class="selectpicker" disabled>
+                                          <select name='ep_criterios_menores' id='ep_criterios_menores'  disabled>
                                             <option value="">Selecciona Criterios Menores</option>
                                             <option value="tenue">TENUE</option>
                                             <option value="blanco_intenso_c/brillo_superficial">BLANCO INTENSO C/BRILLO SUPERFICIAL</option>
@@ -911,7 +911,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='ep_criterios_intermedios' id='ep_criterios_intermedios' class="selectpicker" disabled>
+                                          <select name='ep_criterios_intermedios' id='ep_criterios_intermedios'  disabled>
                                             <option value="">Selecciona Criterios Intermedios</option>
                                             <option value="blanco_intermedio_c/brillo">BLANCO INTERMEDIO C/BRILLO</option>
                                             <option value="mayoria_lesiones">(MAYORÍA DE LESIONES)</option>
@@ -920,7 +920,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='ep_criterios_mayores' id='ep_criterios_mayores' class="selectpicker" disabled>
+                                          <select name='ep_criterios_mayores' id='ep_criterios_mayores'  disabled>
                                             <option value="">Selecciona Criterios Mayores</option>
                                             <option value="blanco_Denso">BLANCO DENSO</option>
                                             <option value="blanco_opaco">BLANCO OPACO</option>
@@ -941,7 +941,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='bs_criterios_menores' id='bs_criterios_menores' class="selectpicker">
+                                          <select name='bs_criterios_menores' id='bs_criterios_menores' >
                                             <option value="">Selecciona Criterios Menores</option>
                                             <option value="microcondilomatoso">MICROCONDILOMATOSO</option>
                                             <option value="micropapilar">MICROPAPILAR</option>
@@ -953,7 +953,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='bs_criterios_intermedios' id='bs_criterios_intermedios' class="selectpicker">
+                                          <select name='bs_criterios_intermedios' id='bs_criterios_intermedios' >
                                             <option value="">Selecciona Criterios Intermedios</option>
                                             <option value="lesion_regular">LESIÓN REGULAR</option>
                                             <option value="simetrica">SIMÉTRICA</option>
@@ -964,7 +964,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='bs_criterios_mayores' id='bs_criterios_mayores' class="selectpicker">
+                                          <select name='bs_criterios_mayores' id='bs_criterios_mayores' >
                                             <option value="">Selecciona Criterios Mayores</option>
                                             <option value="bordes_dehiscentes">BORDES DEHISCENTES</option>
                                             <option value="bordes_enrolaldos">BORDES ENROLLADOS</option>
@@ -982,7 +982,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='ag_criterios_menores' id='ag_criterios_menores' class="selectpicker">
+                                          <select name='ag_criterios_menores' id='ag_criterios_menores' >
                                             <option value="">Selecciona Criterios Menores</option>
                                             <option value="capilar_fino">CAPILAR FINO</option>
                                             <option value="calibre_disposion_uniforme">CALIBRE Y DISPOSICIÓN UNIFORME</option>
@@ -994,7 +994,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='ag_criterios_intermedios' id='ag_criterios_intermedios' class="selectpicker">
+                                          <select name='ag_criterios_intermedios' id='ag_criterios_intermedios' >
                                             <option value="">Selecciona Criterios Intermedios</option>
                                             <option value="ausencia_vasos">AUSENCIA DE VASOS</option>
 
@@ -1003,7 +1003,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='ag_criterios_mayores' id='ag_criterios_mayores' class="selectpicker">
+                                          <select name='ag_criterios_mayores' id='ag_criterios_mayores' >
                                             <option value="">Selecciona Criterios Mayores</option>
                                             <option value="puntilleo_grueso">PUNTILLEO GRUESO</option>
                                             <option value="mosaico_grueso">MOSAICO GRUESO</option>
@@ -1021,7 +1021,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='cy_menores' id='cy_menores' class="selectpicker">
+                                          <select name='cy_menores' id='cy_menores' >
                                             <option value="">CITERIOS MENORES</option>
                                             <option value="positiva">POSITIVA</option>
                                             <option value="negativa_puntos_criterios_anteriores">NEGATIVA CON < 3 PUNTOS EN CRITERIOS ANTERIORES</option> <option value="zonas_yodo_negativas">ZONAS YODONEGATIVAS MÁS ALLÁ DE LA ZT</option>
@@ -1030,7 +1030,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='cy_intermedios' id='cy_intermedios' class="selectpicker">
+                                          <select name='cy_intermedios' id='cy_intermedios' >
                                             <option value="">CITERIOS INTERMEDIOS</option>
                                             <option value="capacitacion_parcial_yodo">CAPTACIÓN PARCIAL DE YODO</option>
                                             <option value="motedao_jaspeado">(MOTEADO-JASPEADO)</option>
@@ -1039,7 +1039,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='cy_mayores' id='cy_mayores' class="selectpicker">
+                                          <select name='cy_mayores' id='cy_mayores' >
                                             <option value="">CITERIOS MAYORES</option>
                                             <option value="yodo_negativa_conmas_puntos">YODONEGATIVA CON 4 O MÁS PUNTOS</option>
                                             <option value="en_criterios_anteriores">EN CRITERIOS ANTERIORES</option>
@@ -1056,7 +1056,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='schiller' id='schiller' class="selectpicker">
+                                        <select name='schiller' id='schiller' >
                                           <option value="">Selecciona Schiller</option>
                                           <option value="negativa">NEGATIVA</option>
                                           <option value="positiva">POSITIVA</option>
@@ -1074,7 +1074,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='vaginoscopia' id='vaginoscopia' class="selectpicker">
+                                        <select name='vaginoscopia' id='vaginoscopia' >
                                           <option value="">Selecciona Acético</option>
                                           <option value="positivo">Positivo</option>
                                           <option value="negativo">Negativo</option>
@@ -1083,7 +1083,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='vaginoscopia' id='vaginoscopia' class="selectpicker">
+                                        <select name='vaginoscopia' id='vaginoscopia' >
                                           <option value="">Selecciona lugol</option>
                                           <option value="positivo">Positivo</option>
                                           <option value="negativo">Negativo</option>
@@ -1098,7 +1098,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='vulvoscopia' id='vulvoscopia' class="selectpicker">
+                                        <select name='vulvoscopia' id='vulvoscopia' >
                                           <option value="">Selecciona Acético</option>
                                           <option value="acetico">ACÉTICO</option>
 
@@ -1114,7 +1114,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <select name='miscelaneos' id='miscelaneos' class="selectpicker">
+                                        <select name='miscelaneos' id='miscelaneos' >
                                           <option value="">Selecciona Miscelaneos</option>
                                           <option value="condilomas">CONDILOMAS</option>
                                           <option value="eversion_glandular">EVERSIÓN GLANDULAR</option>
@@ -1147,7 +1147,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     <div class="row fila">
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="floating-numner">
-                                          <p>POSIBLE RECOMENDACIÓN DIAGNOSTICA</p>
+                                          <p> RECOMENDACIÓN </p>
                                         </div>
                                       </div>
                                     </div>
@@ -1155,7 +1155,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                           <div class="nk-int-st">
-                                            <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="recomendacion_diagnostica" form="f"></textarea>
+                                            <textarea class="form-control auto-size" rows="2" placeholder="LIEBG" name="recomendacion_diagnostica" disabled form="f"></textarea>
 
                                           </div>
                                         </div>
@@ -1164,7 +1164,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     <div class="row fila">
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="floating-numner">
-                                          <p>RECOMENDACIÓN DIAGNOSTICA</p>
+                                          <p> DIAGNOSTICA</p>
                                         </div>
                                       </div>
                                     </div>
@@ -1181,7 +1181,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
-                                          <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' class="selectpicker">
+                                          <select name='apoyo_gubernamental_paciente ' id='apoyo_gubernamental_paciente' >
                                             <option value="">DIAGNOSTICO MÉDICO</option>
                                             <option value="hallazgos_normales">HALLAZGOS NORMALES</option>
                                             <option value="hallazgos_sugestivos_">HALLAZGOS SUGESTIVOS DE INVASIÓN</option>
@@ -1531,16 +1531,16 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tu método de planificacion fue</h6>
                 </div>
-          <div class="bootstrap-select fm-cmp-mg">
 
-                <select id='metodos_planificacion' name="metodos_planificacion" class="selectpicker">
-                  <option value=""><?php echo "Seleccion Anterior Fue " . $metodos_planificacion ?></option>
+
+                <select id='metodos_planificacion' class="form-control" name="metodos_planificacion" >
+                  <option value=""><?php echo  $metodos_planificacion ?></option>
                   <option value="hormonales_orales">Hormonales orales</option>
                   <option value="hormonales_inyectables">Hormonales inyectables</option>
                   <option value="condon">Condon</option>
                   <option value="otro">Otro</option>
                 </select>
-              </div>
+
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <div class="nk-int-mk sl-dp-mn">
@@ -1551,7 +1551,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                   <i class="notika-icon notika-edit"></i>
                 </div>
                 <div class="nk-int-st">
-                  <input id="cual" name="cual" type="text" class="form-control" placeholder="Eleccion Anterior:<?php echo $cual ?>" disabled>
+                  <input id="cual" name="cual" type="text" class="form-control" placeholder="<?php echo $cual ?>">
                 </div>
               </div>
             </div>
@@ -1564,8 +1564,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tu edad de inicio de vida sexual fue</h6>
                 </div>
-               <select name="edad_inicio_vida_sexual"  class="selectpicker">
-                <option value="">Eleccion Anterior: <?php echo $edad_inicio_vida_sexual ?></option>
+               <select name="edad_inicio_vida_sexual"  class="form-control">
+                <option value=""> <?php echo $edad_inicio_vida_sexual ?></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -1693,8 +1693,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tus Parejas sexuales fueron</h6>
                 </div>
-                <select name="parejas_sexuales" class="selectpicker">
-                <option value="">Eleccion Anterior: <?php echo $parejas_sexuales ?></option>
+                <select name="parejas_sexuales" class="form-control" >
+                <option value=""><?php echo $parejas_sexuales ?></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -1733,8 +1733,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tus gestas fueron:</h6>
                 </div>
-                <select name="gestas" class="selectpicker">
-                <option value=""> Eleccion Anterior: <?php echo $gestas ?></option>
+                <select name="gestas" class="form-control">
+                <option value=""> <?php echo $gestas ?></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -1760,8 +1760,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tus para fueron:</h6>
                 </div>
-              <select name="para" class="selectpicker">
-                <option value=""> Eleccion Anterior: <?php echo $para ?></option>
+              <select name="para" class="form-control">
+                <option value=""> <?php echo $para ?></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -1784,8 +1784,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tus cesareas fueron:</h6>
                 </div>
-              <select name="cesareas" class="selectpicker">
-                <option value=""> Eleccion Anterior: <?php echo $cesareas ?></option>
+              <select name="cesareas" class="form-control">
+                <option value=""> <?php echo $cesareas ?></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -1808,8 +1808,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tus abortos fueron:</h6>
                 </div>
-              <select name="abortos" class="selectpicker">
-                <option value="">Eleccion Anterior: <?php echo $abortos ?></option>
+              <select name="abortos" class="form-control" >
+                <option value=""> <?php echo $abortos ?></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -1851,7 +1851,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
 
 
-                                                                                                        echo "Fecha Anterior " . $fecha_ultima_regla11 ?>">
+                                                                                                        echo  $fecha_ultima_regla11 ?>">
                 </div>
               </div>
             </div>
@@ -1875,7 +1875,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
 
 
-                                                                                                              echo "Fecha Anterior " . $fecha_ultimo_papanicolau11 ?>">
+                                                                                                              echo $fecha_ultimo_papanicolau11 ?>">
                 </div>
               </div>
             </div>
@@ -1892,7 +1892,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group">
                 <div class="nk-int-st">
-                  <textarea class="form-control auto-size" rows="2"  name="atecedentes_lesion" form="f1"></textarea>
+
+                  <textarea class="form-control auto-size" rows="2"  name="atecedentes_lesion" form="f1" placeholder="<?php echo $atecedentes_lesion?>"></textarea>
 
                 </div>
               </div>
@@ -1909,7 +1910,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="form-group">
                 <div class="nk-int-st">
-                  <textarea class="form-control auto-size" rows="2"  name="antecedentes_tratamiento"  form="f1"></textarea>
+
+                  <textarea class="form-control auto-size" rows="2"  name="antecedentes_tratamiento"  form="f1" placeholder="<?php echo $antecedentes_tratamiento?>"></textarea>
 
                 </div>
               </div>
@@ -1920,27 +1922,28 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tu metrorragia fue</h6>
                 </div>
-              <div class="bootstrap-select fm-cmp-mg">
-                <select name="metrorragia" class="selectpicker" required>
-                  <option value="">Metrorragia</option>
-                  <option value="si">SI</option>
-                  <option value="no">NO</option>
+
+
+                <select name="metrorragia"  class="form-control">
+                  <option value=""><?php echo $metrorragia?></option>
+                  <option value="1">SI</option>
+                  <option value="0">NO</option>
 
                 </select>
-              </div>
+
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tu hormonoterapia fue</h6>
                 </div>
-              <div class="bootstrap-select fm-cmp-mg">
-                <select name="hormonoterapia" class="selectpicker" required>
-                  <option value="">Hormonoterapia</option>
-                  <option value="si">SI</option>
-                  <option value="no">NO</option>
+
+                <select name="hormonoterapia" class="form-control" >
+                  <option value=""><?php echo $hormonoterapia?></option>
+                  <option value="1">SI</option>
+                  <option value="0">NO</option>
 
                 </select>
-              </div>
+
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -1949,8 +1952,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                 </div>
               <div class="form-group ic-cmp-int">
 
+
                 <div class="nk-int-st">
-                  <input type="text" name="cual" class="form-control" placeholder="¿Duración?">
+                  <input type="text" name="cual" class="form-control" placeholder="  <?php echo $duracion_hormonoterapia?>">
                 </div>
               </div>
             </div>
@@ -1961,42 +1965,43 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tu ritmo fue</h6>
                 </div>
-              <div class="bootstrap-select fm-cmp-mg">
-                <select name="ritmo" class="selectpicker" required>
-                  <option value="">Ritmo</option>
+
+
+                <select name="ritmo"  class="form-control">
+                  <option value=""><?php echo $ritmo?></option>
                   <option value="regular">Regular</option>
                   <option value="irregular">Irregular</option>
                   <option value="ausente">Ausente</option>
 
                 </select>
-              </div>
+
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tus antecedente de cáncer cervicouterino fueron</h6>
                 </div>
-              <div class="bootstrap-select fm-cmp-mg">
-                <select name="antecedente_cancer_cervicouterino" class="selectpicker" required>
-                  <option value="">Antecedente de Cáncer cervicouterino</option>
+
+                <select name="antecedente_cancer_cervicouterino"  class="form-control">
+                  <option value=""><?php echo $antecedente_cancer_cervicouterino?></option>
                   <option value="1">SI</option>
                   <option value="0">NO</option>
 
                 </select>
-              </div>
+
             </div>
 
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <div class="nk-int-mk sl-dp-mn">
                 <h6>Tus tratamientos previos fueron</h6>
                 </div>
-              <div class="bootstrap-select fm-cmp-mg">
-                <select name="tratamiento_previo" class="selectpicker" required>
-                  <option value="">Tratamientos previos:</option>
+
+                <select name="tratamiento_previo" class="form-control" >
+                  <option value=""><?php echo $tratamiento_previo?></option>
                   <option value="1">SI</option>
                   <option value="0">NO</option>
 
                 </select>
-              </div>
+
             </div>
 
 
@@ -2425,7 +2430,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                   <div class="row fila">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                       <div class="floating-numner">
-                                        <p>POSIBLE RECOMENDACIÓN DIAGNOSTICA</p>
+                                        <p> RECOMENDACIÓN </p>
                                       </div>
                                     </div>
                                   </div>
@@ -2433,7 +2438,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                       <div class="form-group">
                                         <div class="nk-int-st">
-                                          <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="recomendacion_diagnostica" form="f1"></textarea>
+                                          <textarea class="form-control auto-size" rows="2"  name="recomendacion_diagnostica"  placeholder="LIEBG" form="f1" disabled></textarea>
 
                                         </div>
                                       </div>
@@ -2442,7 +2447,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                   <div class="row fila">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                       <div class="floating-numner">
-                                        <p>RECOMENDACIÓN DIAGNOSTICA</p>
+                                        <p>DIAGNOSTICA</p>
                                       </div>
                                     </div>
                                   </div>
