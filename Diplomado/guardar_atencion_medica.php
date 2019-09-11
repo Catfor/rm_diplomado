@@ -68,18 +68,24 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
      $cy_intermedios=$_POST['cy_intermedios'];
      $cy_mayores=$_POST['cy_mayores'];
      $schiller=$_POST['schiller'];
-     $vaginoscopia=$_POST['vaginoscopia'];
-     $vulvoscopia=$_POST['vulvoscopia'];
-     $miscelaneos=$_POST['miscelaneos'];
+     $vaginoscopia=$_POST['vaginoscopia_acetico'];
+     //$vulvoscopia=$_POST['vulvoscopia'];
+
+        $vaginoscopia_lugol=$_POST['vaginoscopia_lugol'];
+         $miscelaneos=$_POST['miscelaneos'];
+
+
      $posible_recomendacion_diagnostica=$_POST['posible_recomendacion_diagnostica'];
      $recomendacion_diagnostica=$_POST['recomendacion_diagnostica'];
+     $vulvoscopia_acetico=$_POST['vulvoscopia_acetico'];
      $insertaestudio_colposcopico= "INSERT INTO estudio_colposcopico
        (colposcopia,causa,cervix,union_escamocolumnar,zona_transformacion,epitelio_acetoblanco,ep_criterios_menores,ep_criterios_intermedios,ep_criterios_mayores,bs_criterios_menores,bs_criterios_intermedios,
-       bs_criterios_mayores,ag_criterios_menores,ag_criterios_intermedios,ag_criterios_mayores,cy_menores,cy_intermedios,cy_mayores,schiller,vaginoscopia,vulvoscopia,miscelaneos,posible_recomendacion_diagnostica,recomendacion_diagnostica,fecha_estudio)
+       bs_criterios_mayores,ag_criterios_menores,ag_criterios_intermedios,ag_criterios_mayores,cy_menores,cy_intermedios,cy_mayores,schiller,
+       vaginoscopia_acetico,vaginoscopia_lugol,miscelaneos,posible_recomendacion_diagnostica,fecha_estudio,vulvoscopia_acetico)
        VALUES
        ('$colposcopia','$causa','$cervix','$union_escamocolumnar','$zona_transformacion','$epitelio_acetoblanco','$ep_criterios_menores','$ep_criterios_intermedios','$ep_criterios_mayores',
          '$bs_criterios_menores','$bs_criterios_intermedios','$bs_criterios_mayores','$ag_criterios_menores','$ag_criterios_intermedios','$ag_criterios_mayores',
-         '$cy_menores','$cy_intermedios','$cy_mayores','$schiller','$vaginoscopia','$vulvoscopia','$miscelaneos','$posible_recomendacion_diagnostica','$recomendacion_diagnostica','$hoys')";
+         '$cy_menores','$cy_intermedios','$cy_mayores','$schiller','$vaginoscopia','$vaginoscopia_lugol','$miscelaneos','$posible_recomendacion_diagnostica','$hoys','$vulvoscopia_acetico')";
        $resultadoinsertaestudio_colposcopico = $mysqliL->query($insertaestudio_colposcopico);
 
            $id_ant_colposcopico=$mysqliL->insert_id;
@@ -90,7 +96,8 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
        (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
        VALUES
        ('$idpaciente','$id_ant_colposcopico','1','$id_usuario','$id_ant_atencionmedica')";
-       echo $sql2;
+
+
            $resulta2 = $mysqliL->query($sql2);
 
      ////////////////////obtencion de parametros papanicolau/////////////////////////////////////////////////////
@@ -222,19 +229,14 @@ $target_pat =$h.'-'.$id_ant_atencionmedica.$filename;
             $resultadoestudio_biopsia_endometrio = $mysqliL->query($insertaestudio_biopsia_endometrio);
 //$id_ant_atencionmedica
 
-  				echo "El archivo $filename se ha almacenado en forma exitosa.<br>";
+
   				} else {
-  				echo "Ha ocurrido un error, por favor inténtelo de nuevo.<br>";
+
   			}
   			closedir($dir); //Cerramos el directorio de destino
   		}
   	}
-    $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$idpaciente");
 
-
-    $rowwe = mysqli_fetch_assoc($result123);
-    $nombrepaciente = ucwords($rowwe['nombre_paciente']);
-    $apellidospaciente = ucwords($rowwe['apellidos_paciente']);
- header("Location:consulta_paciente.php?nombres=$nombrepaciente $apellidospaciente");
+ header("Location:consulta_paciente.php");
 
  ?>
