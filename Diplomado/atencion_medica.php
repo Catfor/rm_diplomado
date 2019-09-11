@@ -898,7 +898,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       <div class="row fila">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='ep_criterios_menores' id='ep_criterios_menores'  disabled>
+                                          <select name='ep_criterios_menores' id='ep_criterios_menores' class="selectpicker">
                                             <option value="">Selecciona Criterios Menores</option>
                                             <option value="tenue">TENUE</option>
                                             <option value="blanco_intenso_c/brillo_superficial">BLANCO INTENSO C/BRILLO SUPERFICIAL</option>
@@ -911,7 +911,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='ep_criterios_intermedios' id='ep_criterios_intermedios'  disabled>
+                                          <select name='ep_criterios_intermedios' id='ep_criterios_intermedios' class="selectpicker">
                                             <option value="">Selecciona Criterios Intermedios</option>
                                             <option value="blanco_intermedio_c/brillo">BLANCO INTERMEDIO C/BRILLO</option>
                                             <option value="mayoria_lesiones">(MAYORÍA DE LESIONES)</option>
@@ -920,7 +920,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='ep_criterios_mayores' id='ep_criterios_mayores'  disabled>
+                                          <select name='ep_criterios_mayores' id='ep_criterios_mayores' class="selectpicker">
                                             <option value="">Selecciona Criterios Mayores</option>
                                             <option value="blanco_Denso">BLANCO DENSO</option>
                                             <option value="blanco_opaco">BLANCO OPACO</option>
