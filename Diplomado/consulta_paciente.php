@@ -150,6 +150,26 @@
      </div>";
             }
           }
+
+
+          if (isset($_GET['nom'])) {
+            if ($_GET['nom']) {
+              $nombre = $_GET['nom'];
+              //imprimes el error
+              echo " <div class='alert-list'>
+         <div class='alert alert-success alert-dismissible' role='alert'>
+             <button type='button' class='close' data-dismiss='alert'
+              aria-label='Close'><span aria-hidden='true'>
+              <i class='notika-icon notika-close'></i></span>
+              </button>
+           Paciente Agregada Correctamente    $nombre
+        </div>
+
+
+
+     </div>";
+            }
+          }
           ?>
       <div class="breadcomb-area">
         <div class="container">

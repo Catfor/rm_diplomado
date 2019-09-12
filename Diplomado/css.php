@@ -47,7 +47,7 @@
     <link rel="stylesheet" href="../css/notification/notification.css">
     <!-- dropzone CSS
     ============================================ -->
-    
+
 <!-- wave CSS
 ============================================ -->
 <link rel="stylesheet" href="../css/wave/waves.min.css">

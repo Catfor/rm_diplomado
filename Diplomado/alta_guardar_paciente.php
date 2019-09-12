@@ -67,5 +67,5 @@ VALUES
     echo $sql112;
   }
 
-  header("Location:alta_paciente.php?nombre=$nombre_paciente $apellidos_paciente");
+  header("Location:consulta_paciente.php?nom=$nombre_paciente $apellidos_paciente");
 }

@@ -65,19 +65,10 @@ $tipo_seguros = $_GET['tipo_seguros'];
     ('$tipos','$id_paciente')";
     $resultaq1 = $mysqliL->query($sql112);
   }
-  for ($y = 0; $y < count($tipo_seguros); $y++) {
-    $tipos3 = $tipo_seguros[$y];
 
-    $Modifi = "DELETE FROM tipo_seguro WHERE id_seguro='$tipos3'
-    WHERE id_paciente='$id_paciente'";
 
-    $Mo= $mysqliL->query($Modifi);
 
-echo $Mo;
-  }
+
   header("Location:consulta_paciente.php");
-
-
-
 
  ?>

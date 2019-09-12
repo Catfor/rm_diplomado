@@ -9,7 +9,7 @@ $password = md5($_POST['password']);
 
 if (!empty($password) && !empty($email)) {
 
-	if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+	//if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 		$result123 = mysqli_query($mysqliL, "SELECT apellidos_usuario,rol,id_usuario,nick,nombre_usuario,activo,correo_general, contra
 	    FROM usu_me WHERE correo_general = '$email' and contra='$password' and activo=1");
@@ -30,7 +30,7 @@ if (!empty($password) && !empty($email)) {
 			header('Location: index.php?error=1');
 		} else {
 
-			
+
 			$sql11 = "INSERT INTO bitacora_ingreso
 				  (id_u,fecha_ingreso)
 				  VALUES
@@ -54,9 +54,9 @@ if (!empty($password) && !empty($email)) {
 				header('Location: Diplomado/Sistema.php');
 			}
 		}
-	} else {
-		header('Location: index.php?error=2');
-	 }
+//	} else {
+		//header('Location: index.php?error=2');
+	// }
 } else {
 	header('Location: index.php?error=3');
 }

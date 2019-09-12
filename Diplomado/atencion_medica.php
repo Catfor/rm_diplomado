@@ -1147,7 +1147,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     <div class="form-group">
 
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <center> <input type="file" class="form-control" id="archivo[]" name="archivo[]" multiple=""> </center>
+                                        <center> <input type="file" class="form-control" id="archivo" name="archivo[]" multiple=""> </center>
                                       </div>
                                     </div>
                                     <br><br><br><br>
