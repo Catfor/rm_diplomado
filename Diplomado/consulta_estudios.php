@@ -142,7 +142,9 @@
      </div>";
             }
         }
+        if($rol=='Medico'){
         ?>
+
 <div class="breadcomb-area">
     <div class="container">
         <div class="row">
@@ -170,6 +172,7 @@
 </div>
 <!--//Breadcomb area End-->
 <!--//Data Table area Start-->
+
 <div class="data-table-area">
     <div class="container">
         <div class="row">
@@ -192,7 +195,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                
+
                                         $consultasemanas = "SELECT DISTINCT p.id_paciente, 	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p LEFT JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente";
                                         $resultadosemanas = $mysqliL->query($consultasemanas);
 
@@ -274,7 +277,7 @@
 
                                             //Termina la fila de la consulta de estudios
                                             echo "</tr>";
-                                            
+
                                         }
 
 
@@ -287,8 +290,236 @@
         </div>
     </div>
 </div>
-<!--//Data Table area End-->
-<!--//Start Footer area-->
+<?php
+}else{
+
+
+ ?>
+ <div class="breadcomb-area">
+     <div class="container">
+         <div class="row">
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                 <div class="breadcomb-list">
+                     <div class="row">
+                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                             <div class="breadcomb-wp">
+                                 <div class="breadcomb-icon">
+                                     <i class="notika-icon notika-windows"></i>
+                                 </div>
+                                 <div class="breadcomb-ctn" style="margin: auto 15px;">
+                                     <h2>Resultados</h2>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <!--//Breadcomb area End-->
+ <!--//Data Table area Start-->
+
+ <div class="data-table-area">
+     <div class="container">
+         <div class="row">
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                 <div class="data-table-list">
+                     <div class="basic-tb-hd">
+                     </div>
+                     <div class="table-responsive">
+                       <form action="accesos.php" method="">
+                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                         <div class="nk-int-mk sl-dp-mn">
+                           <h6>Selecciona Patologa</h6>
+                           </div>
+                           <select id='patologo' class="form-control" name="patologo" required>
+                                  <option value="">Selecciona Patologo...</option>
+                                                      <?php
+                                                      $consultapatologa = "SELECT id_usuario,nombre_usuario,apellidos_usuario,rol FROM usu_me where rol='Patologo/Biopsa' or rol='Patologo/Paps'";
+                                                      $resultadopato = $mysqliL->query($consultapatologa);
+
+                                                      while ($rowpato = $resultadopato->fetch_assoc()) {
+                                                        $nombre_usuario = ucwords($rowpato['nombre_usuario']);
+                                                         $rol = ucwords($rowpato['rol']);
+                                                          $apellidos_usuario = ucwords($rowpato['apellidos_usuario']);
+                                                            $id_usuario = $rowpato['id_usuario'];
+
+                           ?>
+
+
+                                                        <option  value="<?php echo $id_usuario ?>"><?php echo $nombre_usuario.' '.$apellidos_usuario.'/'.$rol?></option>
+
+
+                                                       <?php
+                           }
+                           ?></select>
+
+                       </div>
+<br><br><br><br><br>
+                         <table id="data-table-basic" class="table table-striped">
+                             <thead>
+                                 <tr>
+                                   <th>Accion</th>
+                                     <th>Nombre</th>
+                                     <th>Edad</th>
+                                     <th>Fecha de Nacimiento</th>
+                                     <th>ID de Atencion</th>
+                                     <th>Colposcopia</th>
+                                     <th>Papanicolau</th>
+                                     <th>Biopsias</th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                 <?php
+
+                                         $consultasemanas = "SELECT DISTINCT ct.id_atencion as i,ct.id_estudio,ct.estatus,ct.id_usu_pat,p.id_paciente,
+p.nombre_paciente, 	p.apellidos_paciente,
+IFNULL(LPAD(ct.id_atencion,4,'0000'),'-') AS id_atencion,
+	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM
+		paciente p LEFT JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente
+WHERE id_estudio!=0 GROUP BY ct.id_estudio";
+                                         $resultadosemanas = $mysqliL->query($consultasemanas);
+
+                                         while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
+                                             $id_paciente = ucwords($resultadosemanas1['id_paciente']);
+                                             $nombre_paciente = ucwords($resultadosemanas1['nombre_paciente']);
+                                             $apellidos_paciente = ucwords($resultadosemanas1['apellidos_paciente']);
+                                             $fecha_nacimiento_paciente = $resultadosemanas1['fecha_nacimiento_paciente'];
+                                             $edad_paciente = $resultadosemanas1['edad_paciente'];
+                                             $id_atencion = $resultadosemanas1['id_atencion'];
+                                             $id_usu_pat = $resultadosemanas1['id_usu_pat'];
+                                            $estatus1 = $resultadosemanas1['estatus'];
+                                            $ii = $resultadosemanas1['i'];
+                                            $consultasemanas1 = "SELECT DISTINCT c.estatus,c.id_usu_pat  FROM paciente AS p left JOIN ctrl_paciente_estudios AS c ON c.id_paciente=p.id_paciente WHERE p.id_paciente=$id_paciente AND id_estudio!=0";
+                                            $resultadosemanas1 = $mysqliL->query($consultasemanas1);
+
+                                            $totalsi=$resultadosemanas1->num_rows;
+                                            if($totalsi==0){
+                                              echo "<tr><td><center>----</center> </td>";
+                                            }else{
+                                            while ($resultadosemanas12 = $resultadosemanas1->fetch_assoc()) {
+                                                $estatus1 = $resultadosemanas12['estatus'];
+
+                                                $id_usu_pat1 = $resultadosemanas12['id_usu_pat'];
+
+
+                                           if($estatus1==0 and $id_usu_pat1==0){
+                                             echo "<td> <center> <label class='col-lg-3 col-md-3 col-sm-6 col-xs-12'><input  type='checkbox'  name='idusuariopato[]' value='$ii'> </label> </center></td>";
+                                           }
+
+
+                                           elseif($id_usu_pat1==1 and $estatus1==0){
+
+                                                                                        echo "
+                                                                                           <td> <center> VER/EDITAR </center></td>
+
+                                           ";
+
+                                               }
+
+                                           elseif($id_usu_pat1==1 and $estatus1==1){
+
+                                                                                        echo "
+                                                                                           <td><center>  VER </center></td>
+
+                                           ";
+
+                                           }
+                                                   }
+                                                   }
+                                             echo "
+
+                                                                     <td>$nombre_paciente $apellidos_paciente </td>
+                                                                     <td>$edad_paciente</td>
+                                                                     <td>$fecha_nacimiento_paciente</td>
+                                                                     <td>$id_atencion</td>";
+
+
+                                             //Colposcopia
+                                             echo "<td>";
+                                             $queryColposcopia = "select 	e.id_estudio from 	estudio_colposcopico e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente;";
+                                             if ($resultSetColposcopia = $mysqliL->query($queryColposcopia)) {
+                                                 while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
+                                                     $id_estudio = $resultSet['id_estudio'];
+                                                     echo "<a href='atencion_medica.php?id_paciente=$id_paciente'  target='_blank'>Ver Colposcopia</a>";
+                                                 }
+                                             }
+                                             echo "</td>";
+                                             echo "<td>";
+                                             //Papanicolaou
+                                             $queryPapanicolaou = "select 	e.id_estudio, 	e.fecha_estudio, 	e.estudio, 	e.antecedente_cancer, 	e.antecedente_infeccion_vagina, 	e.fecha_ultima_menstruacion, 	e.fecha_ultima_papanicolau, 	e.metodo_anticonceptivo, 	e.menopausia, 	e.hallazgos_colposcopicos, 	e.observaciones_papinocolau from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7 	and c.id_paciente = $id_paciente; ";
+                                             if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
+                                                 while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
+                                                     $id_estudio = $resultSet['id_estudio'];
+                                                     echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Papanicolaou</a>";
+                                                 }
+                                             }
+                                             echo "</td>";
+
+                                             //BIOPSIAS =============
+                                             echo "<td>";
+                                             //Vulvoscopia
+                                             $queryVulvoscopia = "select 	e.id_estudio from 	estudio_vulvoscopia e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 6 	and c.id_paciente = $id_paciente;";
+                                             if ($resultSetVulvoscopia = $mysqliL->query($queryVulvoscopia)) {
+                                                 while ($resultSet = $resultSetVulvoscopia->fetch_assoc()) {
+                                                     $id_estudio = $resultSet['id_estudio'];
+                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_vulva.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Vulvoscopia</a></div>";
+                                                 }
+                                             }
+
+                                             //Vaginoscopia
+                                             $queryVaginoscopia = "select 	e.id_estudio from 	estudio_vaginoscopia e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 5 	and c.id_paciente = $id_paciente; ";
+                                             if ($resultSetVaginoscopia = $mysqliL->query($queryVaginoscopia)) {
+                                                 while ($resultSet = $resultSetVaginoscopia->fetch_assoc()) {
+                                                     $id_estudio = $resultSet['id_estudio'];
+                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_vaginoscopia.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Vaginoscopia</a></div>";
+                                                 }
+                                             }
+
+                                             //Cervix
+                                             $queryCervix = "select 	e.id_estudio from 	estudio_biopsia_cervix e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 2 	and c.id_paciente = $id_paciente; ";
+                                             if ($resultSetCervix = $mysqliL->query($queryCervix)) {
+                                                 while ($resultSet = $resultSetCervix->fetch_assoc()) {
+                                                     $id_estudio = $resultSet['id_estudio'];
+                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_cervix.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Cervix</a></div>";
+                                                 }
+                                             }
+
+                                             //Endometrio
+                                             $queryEndometrio = "select 	e.id_estudio from 	estudio_biopsia_endometrio e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 4 	and c.id_paciente = $id_paciente; ";
+                                             if ($resultSetEndometrio = $mysqliL->query($queryEndometrio)) {
+                                                 while ($resultSet = $resultSetEndometrio->fetch_assoc()) {
+                                                     $id_estudio = $resultSet['id_estudio'];
+                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_endometrio.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Endometrio</a></div>";
+                                                 }
+                                             }
+
+                                             echo "</td>";
+
+                                             //Termina la fila de la consulta de estudios
+                                             echo "</tr>";
+
+                                         }
+
+
+                                         ?>
+                             </tbody>
+                         </table>
+                         <center> <button type="submit" class="btn btn-primary">Enviar</button></center>
+                       </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+<?php
+      }
+        ?>
 <?php
         include('pie.php');
         ?>
@@ -335,7 +566,7 @@
 <script src="js/knob/knob-active.js"></script>
 <!--// Chat JS
 		============================================ -->
-<script src="js/chat/jquery.chat.js"></script>
+
 <!--// todo JS
 		============================================ -->
 <script src="js/todo/jquery.todo.js"></script>
@@ -352,7 +583,7 @@
 <script src="js/data-table/data-table-act.js"></script>
 <!--//main JS
 		============================================ -->
-<script src="js/main.js"></script>
+
 <!--//tawk chat JS
 		============================================ -->
 

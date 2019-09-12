@@ -224,7 +224,7 @@
 
 
 
-include('js.php');
+
 
 ?>
 <script>
