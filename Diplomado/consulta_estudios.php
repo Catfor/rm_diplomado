@@ -363,13 +363,15 @@
                          <table id="data-table-basic" class="table table-striped">
                              <thead>
                                  <tr>
-                                   <th>Accion</th>
+
                                      <th>Nombre</th>
                                      <th>Edad</th>
-                                     <th>Fecha de Nacimiento</th>
+
                                      <th>ID de Atencion</th>
                                      <th>Colposcopia</th>
+
                                      <th>Papanicolau</th>
+
                                      <th>Biopsias</th>
                                  </tr>
                              </thead>
@@ -408,7 +410,7 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
 
 
                                            if($estatus1==0 and $id_usu_pat1==0){
-                                             echo "<td> <center> <label class='col-lg-3 col-md-3 col-sm-6 col-xs-12'><input  type='checkbox'  name='idusuariopato[]' value='$ii'> </label> </center></td>";
+                                    //         echo "<td> <center> <label class='col-lg-3 col-md-3 col-sm-6 col-xs-12'><input  type='checkbox'  name='idusuariopato[]' value='$ii'> </label> </center></td>";
                                            }
 
 
@@ -435,27 +437,35 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
 
                                                                      <td>$nombre_paciente $apellidos_paciente </td>
                                                                      <td>$edad_paciente</td>
-                                                                     <td>$fecha_nacimiento_paciente</td>
+
                                                                      <td>$id_atencion</td>";
 
 
                                              //Colposcopia
                                              echo "<td>";
-                                             $queryColposcopia = "select 	e.id_estudio from 	estudio_colposcopico e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente;";
+                                             $queryColposcopia = "SELECT 	e.id_estudio from 	estudio_colposcopico e inner join ctrl_paciente_estudios c on
+                                             	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente;";
                                              if ($resultSetColposcopia = $mysqliL->query($queryColposcopia)) {
                                                  while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
                                                      $id_estudio = $resultSet['id_estudio'];
-                                                     echo "<a href='atencion_medica.php?id_paciente=$id_paciente'  target='_blank'>Ver Colposcopia</a>";
+                                                     echo "<a href='atencion_medica.php?id_paciente=$id_paciente'  target='_blank'>colpos</a>";
+
                                                  }
                                              }
                                              echo "</td>";
                                              echo "<td>";
                                              //Papanicolaou
-                                             $queryPapanicolaou = "select 	e.id_estudio, 	e.fecha_estudio, 	e.estudio, 	e.antecedente_cancer, 	e.antecedente_infeccion_vagina, 	e.fecha_ultima_menstruacion, 	e.fecha_ultima_papanicolau, 	e.metodo_anticonceptivo, 	e.menopausia, 	e.hallazgos_colposcopicos, 	e.observaciones_papinocolau from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7 	and c.id_paciente = $id_paciente; ";
+                                             $queryPapanicolaou = "SELECT 	e.id_estudio, 	e.fecha_estudio, 	e.estudio, 	e.antecedente_cancer, 	e.antecedente_infeccion_vagina,
+                                             	e.fecha_ultima_menstruacion, 	e.fecha_ultima_papanicolau, 	e.metodo_anticonceptivo, 	e.menopausia,
+                                              	e.hallazgos_colposcopicos, 	e.observaciones_papinocolau from
+                                                	estudio_papanicolau e inner join ctrl_paciente_estudios c on
+                                                  	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7 	and c.id_paciente = $id_paciente; ";
                                              if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
                                                  while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
                                                      $id_estudio = $resultSet['id_estudio'];
-                                                     echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Papanicolaou</a>";
+                                                     echo "<input  type='checkbox'  name='idusuariopato[]' value='$ii'>  ";
+                                                     echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente&id_estudio=$id_estudio'
+                                                      target='_blank'>Paps</a>";
                                                  }
                                              }
                                              echo "</td>";
@@ -463,38 +473,46 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
                                              //BIOPSIAS =============
                                              echo "<td>";
                                              //Vulvoscopia
-                                             $queryVulvoscopia = "select 	e.id_estudio from 	estudio_vulvoscopia e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 6 	and c.id_paciente = $id_paciente;";
+                                             $queryVulvoscopia = "SELECT 	e.id_estudio from 	estudio_vulvoscopia e inner join ctrl_paciente_estudios c on
+                                             e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 6 	and c.id_paciente = $id_paciente;";
                                              if ($resultSetVulvoscopia = $mysqliL->query($queryVulvoscopia)) {
                                                  while ($resultSet = $resultSetVulvoscopia->fetch_assoc()) {
                                                      $id_estudio = $resultSet['id_estudio'];
-                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_vulva.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Vulvoscopia</a></div>";
+                                                     echo "<input  type='checkbox'  name='idusuariopato[]' value='$ii'>";
+                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_vulva.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Vulvo</a></div>";
                                                  }
                                              }
 
                                              //Vaginoscopia
-                                             $queryVaginoscopia = "select 	e.id_estudio from 	estudio_vaginoscopia e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 5 	and c.id_paciente = $id_paciente; ";
+                                             $queryVaginoscopia = "SELECT 	e.id_estudio from 	estudio_vaginoscopia e inner join ctrl_paciente_estudios c on
+                                             	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 5 	and c.id_paciente = $id_paciente; ";
                                              if ($resultSetVaginoscopia = $mysqliL->query($queryVaginoscopia)) {
                                                  while ($resultSet = $resultSetVaginoscopia->fetch_assoc()) {
                                                      $id_estudio = $resultSet['id_estudio'];
-                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_vaginoscopia.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Vaginoscopia</a></div>";
+                                                     echo " <input  type='checkbox'  name='idusuariopato[]' value='$ii'> ";
+                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_vaginoscopia.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Vagins</a></div>";
                                                  }
                                              }
 
                                              //Cervix
-                                             $queryCervix = "select 	e.id_estudio from 	estudio_biopsia_cervix e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 2 	and c.id_paciente = $id_paciente; ";
+                                             $queryCervix = "SELECT 	e.id_estudio from 	estudio_biopsia_cervix e inner join
+                                             ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 2 	and c.id_paciente = $id_paciente; ";
                                              if ($resultSetCervix = $mysqliL->query($queryCervix)) {
                                                  while ($resultSet = $resultSetCervix->fetch_assoc()) {
                                                      $id_estudio = $resultSet['id_estudio'];
-                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_cervix.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Cervix</a></div>";
+                                                     echo " <div><input  type='checkbox'  name='idusuariopato[]' value='$ii'> ";
+                                                     echo "<a href='Etiquetas/etiqueta_estudio_cervix.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Cervix</a></div>";
                                                  }
                                              }
 
                                              //Endometrio
-                                             $queryEndometrio = "select 	e.id_estudio from 	estudio_biopsia_endometrio e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 4 	and c.id_paciente = $id_paciente; ";
+                                             $queryEndometrio = "SELECT 	e.id_estudio from 	estudio_biopsia_endometrio e inner join
+                                             ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 4 	and c.id_paciente = $id_paciente; ";
                                              if ($resultSetEndometrio = $mysqliL->query($queryEndometrio)) {
                                                  while ($resultSet = $resultSetEndometrio->fetch_assoc()) {
                                                      $id_estudio = $resultSet['id_estudio'];
-                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_endometrio.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Endometrio</a></div>";
+                                                     echo "<div><input  type='checkbox'  name='idusuariopato[]' value='$ii'>";
+                                                     echo "<a href='Etiquetas/etiqueta_estudio_endometrio.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Endometrio</a></div>";
                                                  }
                                              }
 
