@@ -282,6 +282,7 @@
                             <option value="Satisfactoria">Satisfactoria</option>
                             <option value="Insatisfactoria">Insatisfactoria</option>
 
+
                           </select>
                         </div>
                       </div>
@@ -297,6 +298,7 @@
                         </div>
                       </div>
 
+
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="panel panel-default filaInterna">
                           <div class="panel-heading">3.-Indice de mduracón</div>
@@ -305,12 +307,18 @@
                       </div>
 
 
+  <div class="row fila">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="notika-btn-hd">
+            <h4>Indice de maduración</h4>
+
+          </div>
                   <label><input type="checkbox" name="personality">C.PARABASAL     </label>
                   <label><input type="checkbox" name="personality">C.INTERMEDIA    </label>
                   <label><input type="checkbox" name="personality">C.SUPERFICIALES </label>
             </div>
-
+            </div>
+  <div class="row fila">
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                   <div class="form-group ic-cmp-int float-lb floating-lb">
                     <div class="nk-int-st">
@@ -319,13 +327,15 @@
                       </div>
                   </div>
               </div>
+                </div>
 
   <div class="row fila">
     <div class="notika-btn-hd">
-          <h6>Flora bacteriana</h6>
+<h4>Flora Bacteriana
+</h4>
 
-        </div>
-        <div class="row">
+</div>
+
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                           <p>BACILAR
@@ -334,15 +344,15 @@
                                </p>
 
                               </div>
-                                </div>
-                                  <div class="row">
+
+
                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                              <p>COCOIDE
                                <label><input type="radio" name="celulas_endocervicales" value="1" required> Si</label>
                                <label><input type="radio" name="celulas_endocervicales" value="0" required> NO</label>
                                   </p>
                         </div>
-                          </div>
+
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                           <p>MIXTA
                             <label><input type="radio" name="celulas_endocervicales" value="1" required> Si</label>
