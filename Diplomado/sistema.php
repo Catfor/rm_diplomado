@@ -164,9 +164,9 @@
 
             <div class="contact-area">
                 <div class="container">
-                    <div class="row">
+                    <div class="row fila">
 
-                        <div class="col-lg-15 col-md-6 col-sm-6 col-xs-12">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="contact-list">
                                 <div class="contact-win">
                                     <div class="contact-img">
@@ -182,11 +182,16 @@
                                 </div>
 
                                 <div class="social-st-list">
+
+
                                     <div class="social-sn">
                                         <h2>Nombre:</h2>
                                         <p><?php echo $nombre_usuario . ' ' . $apellidos_usuario ?></p>
                                     </div>
+
+
                                     <div class="social-sn">
+
                                         <h2>Correo:</h2>
                                         <p><?php echo $correo_general ?></p>
                                     </div>
