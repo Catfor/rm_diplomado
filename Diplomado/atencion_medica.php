@@ -11,7 +11,7 @@
       <div class="row fila">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <div class="logo-area">
-            <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="100" height="100" /></a>
+            <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="130" height="100" /></a>
 
           </div>
         </div>
@@ -650,7 +650,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                     </div>
                     <div class="row fila">
 
-                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                         <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
                           <div class="input-group date nk-int-st">
@@ -660,7 +660,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                         <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
                           <div class="input-group date nk-int-st">
@@ -670,30 +670,32 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-
-                        <div class="form-group ic-cmp-int float-lb floating-lb">
-                          <div class="form-ic-cmp">
-                            <i class="notika-icon notika-edit"></i>
-                          </div>
-                          <div class="nk-int-st">
-                            <input type="text" name="atecedentes_lesion" class="form-control" placeholder="Antecedentes de lesión:">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-
-                        <div class="form-group ic-cmp-int float-lb floating-lb">
-                          <div class="form-ic-cmp">
-                            <i class="notika-icon notika-edit"></i>
-                          </div>
-                          <div class="nk-int-st">
-                            <input type="text" name="antecedentes_tratamiento" class="form-control" placeholder="Antecedente de tratamiento:">
-                          </div>
-                        </div>
-                      </div>
 
                     </div>
+                    <div class="row fila">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group purple-border">
+                      <div class="row fila">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
+                    </div>
+                          </div>
+                      <textarea class="form-control" rows="1" placeholder="Escribe recomendacion Diagnostica" name="atecedentes_lesion" form="f"></textarea>
+                    </div>
+                          </div>
+                                </div>
+                                <div class="row fila">
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group purple-border">
+                                  <div class="row fila">
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                  <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
+                                </div>
+                                      </div>
+                                  <textarea class="form-control" rows="1" placeholder="Escribe Antecedente de Tratamiento" name="antecedentes_tratamiento" form="f"></textarea>
+                                </div>
+                                      </div>
+                                            </div>
 
                     <div class="row fila">
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -807,8 +809,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                         <select name='colposcopia' id='colposcopia' class="form-control">
                                           <option value="">Selecciona colposcopia</option>
-                                          <option value="adecuada">ADECUADA</option>
-                                          <option value="no_adecuada">NO ADECUADA</option>
+                                          <option value="adecuada">Adecuada</option>
+                                          <option value="no_adecuada">No Adecuada</option>
                                         </select>
 
                                       </div>
@@ -817,10 +819,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                         <select name='causa' id='causa'  class="form-control">
                                           <option value="">Selecciona una Causa</option>
-                                          <option value="sangrado">SANGRADO</option>
-                                          <option value="inflamacion">INFLAMACIÓN</option>
-                                          <option value="cicatrices">CICATRICES</option>
-                                          <option value="no">OTRAS</option>
+                                          <option value="sangrado">Sangrado</option>
+                                          <option value="inflamacion">Inflamación</option>
+                                          <option value="cicatrices">Cicatrices</option>
+                                          <option value="no">Otras</option>
                                         </select>
 
                                       </div>
@@ -872,7 +874,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="panel panel-default filaInterna">
-                                          <div class="panel-heading">EPITELIO ACETOBLANCO</div>
+                                          <div class="panel-heading">Epitelio Acetoblanco</div>
 
                                         </div>
                                       </div>
@@ -900,11 +902,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='ep_criterios_menores' id='ep_criterios_menores' class="form-control">
                                             <option value="">Selecciona Criterios Menores</option>
-                                            <option value="tenue">TENUE</option>
-                                            <option value="blanco_intenso_c/brillo_superficial">BLANCO INTENSO C/BRILLO SUPERFICIAL</option>
-                                            <option value="brillo_superficial">BRILLO SUPERFICIAL</option>
-                                            <option value="transparente">TRANSPARENTE</option>
-                                            <option value="fuera_zt">FUERA DE LA ZT</option>
+                                            <option value="tenue">Tenue</option>
+                                            <option value="blanco_intenso_c/brillo_superficial">Blanco Intenso C/Brillo Superficial</option>
+                                            <option value="brillo_superficial">Brillo Superficial</option>
+                                            <option value="plano">Plano</option>
+                                            <option value="transparente">Transparente</option>
+                                            <option value="fuera_zt">Fuera de la ZT</option>
 
                                           </select>
 
@@ -913,8 +916,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='ep_criterios_intermedios' id='ep_criterios_intermedios' class="form-control">
                                             <option value="">Selecciona Criterios Intermedios</option>
-                                            <option value="blanco_intermedio_c/brillo">BLANCO INTERMEDIO C/BRILLO</option>
-                                            <option value="mayoria_lesiones">(MAYORÍA DE LESIONES)</option>
+                                            <option value="blanco_intermedio_c/brillo">Blanco Intermedio C/Brillo</option>
+                                            <option value="mayoria_lesiones">(Mayoría de Lesiones)</option>
                                           </select>
 
                                         </div>
@@ -922,10 +925,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='ep_criterios_mayores' id='ep_criterios_mayores' class="form-control">
                                             <option value="">Selecciona Criterios Mayores</option>
-                                            <option value="blanco_Denso">BLANCO DENSO</option>
-                                            <option value="blanco_opaco">BLANCO OPACO</option>
-                                            <option value="blanco_ostra">BLANCO OSTRA</option>
-                                            <option value="gris">GRIS</option>
+                                            <option value="blanco_denso">Blanco Denso</option>
+                                            <option value="blanco_opaco">Blanco Opaco</option>
+                                            <option value="blanco_ostra">Blanco Ostra</option>
+                                            <option value="gris">Gris</option>
                                           </select>
 
                                         </div>
@@ -935,19 +938,20 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
 
                                         <div class="panel panel-default filaInterna">
-                                          <div class="panel-heading">BORDE Y SUPERFICIE</div>
+                                          <div class="panel-heading">Borde y Superficie</div>
 
                                         </div>
-
+                                          </div>
+  <div class="row fila">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                           <select name='bs_criterios_menores' id='bs_criterios_menores' class="form-control">
                                             <option value="">Selecciona Criterios Menores</option>
-                                            <option value="microcondilomatoso">MICROCONDILOMATOSO</option>
-                                            <option value="micropapilar">MICROPAPILAR</option>
-                                            <option value="borde_indefinido">BORDE INDEFINIDO</option>
-                                            <option value="borde_pluma_dentado">BORDE EN PLUMA O DENTADO</option>
-                                            <option value="lesion_angulada">LESIÓN ANGULADA</option>
+                                            <option value="microcondilomatoso">Microcondilomatoso</option>
+                                            <option value="micropapilar">Micropapilar</option>
+                                            <option value="borde_indefinido">Borde Indefinido</option>
+                                            <option value="borde_pluma_dentado">Borde en Pluma o Dentado</option>
+                                            <option value="lesion_angulada">Lesión Angulada</option>
                                           </select>
 
                                         </div>
@@ -955,10 +959,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='bs_criterios_intermedios' id='bs_criterios_intermedios' class="form-control">
                                             <option value="">Selecciona Criterios Intermedios</option>
-                                            <option value="lesion_regular">LESIÓN REGULAR</option>
-                                            <option value="simetrica">SIMÉTRICA</option>
-                                            <option value="contornos_netos">CONTORNOS NETOS</option>
-                                            <option value="contornos_rectilineos">CONTORNOS RECTILÍNEOS</option>
+                                            <option value="lesion_regular">Lesión Regular</option>
+                                            <option value="simetrica">Simétrica</option>
+                                            <option value="contornos_netos">Contornos Netos</option>
+                                            <option value="contornos_rectilineos">Contornos Rectilíneos</option>
                                           </select>
 
                                         </div>
@@ -966,9 +970,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='bs_criterios_mayores' id='bs_criterios_mayores' class="form-control">
                                             <option value="">Selecciona Criterios Mayores</option>
-                                            <option value="bordes_dehiscentes">BORDES DEHISCENTES</option>
-                                            <option value="bordes_enrolaldos">BORDES ENROLLADOS</option>
-                                            <option value="cambios_menores_perifericos_mayores">CAMBIOS MENORES PERIFÉRICOS Y MAYORES CENTRALES</option>
+                                            <option value="bordes_dehiscentes">Bordes Dehiscentes</option>
+                                            <option value="bordes_enrolaldos">Bordes Enrollados</option>
+                                            <option value="cambios_menores_perifericos_mayores">Cambios Menores Periféricos Y Mayores Centrales</option>
                                           </select>
 
                                         </div>
@@ -977,18 +981,18 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <div class="row fila">
                                         <div class="panel panel-default filaInterna">
-                                          <div class="panel-heading">ANGIOARQUITECTURA</div>
+                                          <div class="panel-heading">Angioarquitectura</div>
 
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                           <select name='ag_criterios_menores' id='ag_criterios_menores' class="form-control">
                                             <option value="">Selecciona Criterios Menores</option>
-                                            <option value="capilar_fino">CAPILAR FINO</option>
-                                            <option value="calibre_disposion_uniforme">CALIBRE Y DISPOSICIÓN UNIFORME</option>
-                                            <option value="puntilleo_fino">PUNTILLEO FINO</option>
-                                            <option value="nmosaico_fino">MOSAICO FINO</option>
-                                            <option value="vasos_mas_alla_zt">VASOS MÁS ALLÁ DE ZT</option>
+                                            <option value="capilar_fino">Capilar Fino</option>
+                                            <option value="calibre_disposion_uniforme">Calibre y Disposición Uniforme</option>
+                                            <option value="puntilleo_fino">Puntilleo Fino</option>
+                                            <option value="nmosaico_fino">Mosaico Fino</option>
+                                            <option value="vasos_mas_alla_zt">Vasos Más Allá de ZT</option>
                                           </select>
 
                                         </div>
@@ -996,7 +1000,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='ag_criterios_intermedios' id='ag_criterios_intermedios' class="form-control">
                                             <option value="">Selecciona Criterios Intermedios</option>
-                                            <option value="ausencia_vasos">AUSENCIA DE VASOS</option>
+                                            <option value="ausencia_vasos">Ausencia de Vasos</option>
 
                                           </select>
 
@@ -1005,8 +1009,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='ag_criterios_mayores' id='ag_criterios_mayores' class="form-control">
                                             <option value="">Selecciona Criterios Mayores</option>
-                                            <option value="puntilleo_grueso">PUNTILLEO GRUESO</option>
-                                            <option value="mosaico_grueso">MOSAICO GRUESO</option>
+                                            <option value="puntilleo_grueso">Puntilleo Grueso</option>
+                                            <option value="mosaico_grueso">Mosaico Grueso</option>
                                           </select>
 
                                         </div>
@@ -1015,7 +1019,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <div class="row fila ">
                                         <div class="panel panel-default filaInterna">
-                                          <div class="panel-heading">CAPTACIÓN DE YODO</div>
+                                          <div class="panel-heading">Captación de Yodo</div>
 
                                         </div>
 
@@ -1051,15 +1055,17 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                     <div class="row fila">
                                       <div class="panel panel-default filaInterna">
-                                        <div class="panel-heading">SCHILLER</div>
+                                        <div class="panel-heading">Schiller</div>
 
                                       </div>
+                                        </div>
+                                        <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                         <select name='schiller' id='schiller' class="form-control" >
                                           <option value="">Selecciona Schiller</option>
-                                          <option value="negativa">NEGATIVA</option>
-                                          <option value="positiva">POSITIVA</option>
+                                          <option value="negativa">Negativa</option>
+                                          <option value="positiva">Positiva</option>
 
                                         </select>
 
@@ -1069,9 +1075,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                     <div class="row fila">
                                       <div class="panel panel-default filaInterna">
-                                        <div class="panel-heading">VAGINOSCOPIA</div>
+                                        <div class="panel-heading">Vaginoscopia</div>
 
                                       </div>
+                                      </div>
+                                      <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                         <select name='vaginoscopia_acetico' id='vaginoscopia_acetico' class="form-control">
@@ -1093,14 +1101,17 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     </div>
                                     <div class="row fila">
                                       <div class="panel panel-default filaInterna">
-                                        <div class="panel-heading">VULVOSCOPIA</div>
+                                        <div class="panel-heading">Vulvoscopia</div>
 
                                       </div>
+                                      </div>
+                                        <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                         <select name='vulvoscopia' id='vulvoscopia' class="form-control">
                                           <option value="">Selecciona Acético</option>
-                                          <option value="acetico">ACÉTICO</option>
+                                          <option value="negativO">Negativo</option>
+                                          <option value="positivO">Positivo</option>
 
                                         </select>
 
@@ -1117,9 +1128,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     </div> <br>
                                     <div class="row fila">
                                       <div class="panel panel-default filaInterna">
-                                        <div class="panel-heading">MISCELANEOS</div>
-
+                                        <div class="panel-heading">Misceláneos</div>
                                       </div>
+                                      </div>
+                                    <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                         <select name='miscelaneos' id='miscelaneos' class="form-control">
@@ -1136,12 +1148,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <option value="hiperplasia_glandular">HIPERPLASIA GLANDULAR</option>
                                           <option value="micropapilomatosis_vestibular">MICROPAPILOMATOSIS VESTIBULAR</option>
 
-
-                                        </select>
-
-                                      </div>
-                                    </div> <br>
-
+<div class="row fila">
                                     <h4 class="text-center">Imagenes Colposcopicas </h4>
 
                                     <div class="form-group">
@@ -1262,24 +1269,19 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </p>
                                       </div>
                                     </div> <br>
-
                                     <div class="row fila">
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="floating-numner">
-                                          <p>OBSERVACIONES</p>
-                                        </div>
-                                      </div>
+                                    <div class="form-group purple-border">
+                                      <div class="row fila">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                      <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Observaciones</FONT>
                                     </div>
-                                    <div class="row fila">
-                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group">
-                                          <div class="nk-int-st">
-                                            <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las observaciones" name="observaciones_papinocolau" form="f"></textarea>
                                           </div>
-                                        </div>
-                                      </div>
+                                      <textarea class="form-control" rows="2" placeholder="Escribe  las observaciones" name="observaciones_papinocolau" form="f"></textarea>
                                     </div>
-                                </div><br>
+                                          </div>
+                                                </div>
+                                </div>
                                 </p>
                               </div>
                             </div>
@@ -1318,23 +1320,19 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                     <input type="text" name="y" value="y">
                                                   </div>
                                                 </div>
-                                              </div><br><br><br>
-                                              <div class="row fila">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                  <div class="floating-numner">
-                                                    <p>Anotaciones</p>
-                                                  </div>
-                                                </div>
                                               </div>
                                               <div class="row fila">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                  <div class="form-group">
-                                                    <div class="nk-int-st">
-                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones" name="senalizacion" form="f"></textarea>
+                                              <div class="form-group purple-border">
+                                                <div class="row fila">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
+                                              </div>
                                                     </div>
-                                                  </div>
-                                                </div>
+                                                <textarea class="form-control" rows="1" placeholder="Escribe  las Anotaciones" name="senalizacion" form="f"></textarea>
                                               </div>
+                                                    </div>
+                                                          </div>
                                             </p>
 
                                           </div>
@@ -1367,25 +1365,18 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                 </div>
                                               </div>
 
-
-
-
                                               <div class="row fila">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                  <div class="floating-numner">
-                                                    <p>Anotaciones</p>
-                                                  </div>
-                                                </div>
+                                              <div class="form-group purple-border">
+                                                <div class="row fila">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
                                               </div>
-                                              <div class="row fila">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                  <div class="form-group">
-                                                    <div class="nk-int-st">
-                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones" name="anotaciones_vulvoscopia" form="f"></textarea>
                                                     </div>
-                                                  </div>
-                                                </div>
+                                                <textarea class="form-control" rows="1" placeholder="Escribe  las Anotaciones" name="anotaciones_vulvoscopia" form="f"></textarea>
                                               </div>
+                                                    </div>
+                                                          </div>
                                             </p>
                                           </div>
                                         </div>
@@ -1413,27 +1404,25 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                   </select>
 
 
-                                                </div><br><br><br><br>
-                                                <div class="row fila">
-                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="floating-numner">
-                                                      <p>Anotaciones</p>
-                                                    </div>
-                                                  </div>
                                                 </div>
+
                                                 <div class="row fila">
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group">
-                                                      <div class="nk-int-st">
-                                                        <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f"></textarea>
+                                                <div class="form-group purple-border">
+                                                  <div class="row fila">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                  <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
+                                                </div>
                                                       </div>
-                                                    </div>
-                                                  </div>
+                                                  <textarea class="form-control" rows="2" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f"></textarea>
                                                 </div>
+                                                      </div>
+                                                            </div>
 
 
 
-                                              </div> <br>
+
+                                              </div>
 
                                             </p>
                                           </div>
@@ -1454,21 +1443,17 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                               <div class="row fila">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                  <div class="floating-numner">
-                                                    <p>OBSERVACIONES</p>
-                                                  </div>
-                                                </div>
+                                              <div class="form-group purple-border">
+                                                <div class="row fila">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Observaciones</FONT>
                                               </div>
-                                              <div class="row fila">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                  <div class="form-group">
-                                                    <div class="nk-int-st">
-                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las observaciones" name="observaciones_endometrio" form="f"></textarea>
                                                     </div>
-                                                  </div>
-                                                </div>
+                                                <textarea class="form-control" rows="2" placeholder="Escribe  las observaciones" name="observaciones_endometrio" form="f"></textarea>
                                               </div>
-                                          </div><br>
+                                                    </div>
+                                                          </div>
+                                          </div>
 
                                           </p>
                                         </div>
@@ -2053,8 +2038,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <select name='colposcopia' id='colposcopia' class="form-control">
                                         <option value="">Selecciona colposcopia</option>
-                                        <option value="adecuada">ADECUADA</option>
-                                        <option value="no_adecuada">NO ADECUADA</option>
+                                        <option value="adecuada">Adecuada</option>
+                                        <option value="no_adecuada">No Adecuada</option>
                                       </select>
 
                                     </div>
@@ -2063,10 +2048,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                       <select name='causa' id='causa' class="form-control" disabled>
                                         <option value="">Selecciona una Causa</option>
-                                        <option value="sangrado">SANGRADO</option>
-                                        <option value="inflamacion">INFLAMACIÓN</option>
-                                        <option value="cicatrices">CICATRICES</option>
-                                        <option value="no">OTRAS</option>
+                                        <option value="sangrado">Sangrado</option>
+                                        <option value="inflamacion">Inflamación</option>
+                                        <option value="cicatrices">Cicatrices</option>
+                                        <option value="no">Otras</option>
                                       </select>
 
                                     </div>
@@ -2115,17 +2100,14 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                   </div>
                                   <div class="row fila">
-
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                      <div class="panel panel-default filaInterna">
-                                        <div class="panel-heading">EPITELIO ACETOBLANCO</div>
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="panel panel-default filaInterna">
+                                        <div class="panel-heading">Epitelio Acetoblanco</div>
 
                                       </div>
-
-
-
                                     </div>
+                                      </div>
+                                        <div class="row fila">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
 
                                       <div class="nk-int-mk sl-dp-mn">
@@ -2192,7 +2174,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                     <div class="row fila">
                                       <div class="panel cabecera-morada filaInterna">
-                                        <div class="panel-heading">BORDE Y SUPERFICIE</div>
+                                        <div class="panel-heading">Borde y Superficie</div>
 
                                       </div>
 
@@ -2240,7 +2222,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                     <div class="row fila">
                                       <div class="panel cabecera-morada filaInterna">
-                                        <div class="panel-heading">ANGIOARQUITECTURA</div>
+                                        <div class="panel-heading">Angioarquitectura</div>
 
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -2284,7 +2266,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                     <div class="row fila ">
                                       <div class="panel cabecera-morada filaInterna">
-                                        <div class="panel-heading">CAPTACIÓN DE YODO</div>
+                                        <div class="panel-heading">Captación de Yodo</div>
 
                                       </div>
 
@@ -2294,8 +2276,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
                                         <select name='cy_menores' id='cy_menores' class="form-control">
 
+                                          <option value="">Selecciona Criterios Menores</option>
                                           <option value="positiva">Positiva</option>
-                                          <option value="negativa_puntos_criterios_anteriores">Negativa con < 3 puntos en criterios anteriores</option> <option value="zonas_yodo_negativas">ZONAS YODONEGATIVAS MÁS ALLÁ DE LA ZT</option>
+                                          <option value="negativa_puntos_criterios_anteriores">Negativa Con < 3 Puntos En Criterios Anteriores</option> <option value="zonas_yodo_negativas">ZONAS YODONegativaS MÁS ALLÁ DE LA ZT</option>
+                                          <option value="zonas_yodonegativas_más_allá_de_la_zt">Zonas Yodonegativas Más Allá De La ZT</option>
                                         </select>
 
                                       </div>
@@ -2315,7 +2299,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         <h6>Tus  Criterios mayores fueron</h6>
                                       </div>
                                         <select name='cy_mayores' id='cy_mayores' class="form-control">
-                                          <option value="">CITERIOS MAYORES</option>
+                                          <option value="">Selecciona Criterios Mayores</option>
                                           <option value="yodo_negativa_conmas_puntos">Yodonegativa con 4 o más puntos</option>
                                           <option value="en_criterios_anteriores">En criterios anteriores</option>
                                         </select>
@@ -2327,10 +2311,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                   <div class="row fila">
 
                                     <div class="panel panel-default filaInterna">
-                                      <div class="panel-heading">SCHILLER</div>
+                                      <div class="panel-heading">Schiller</div>
+                                   </div>
                                    </div>
 
-
+  <div class="row fila">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                       <div class="nk-int-mk sl-dp-mn">
                                         <h6>Tu schiller fue </h6>
@@ -2348,7 +2333,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                   </div>
 
                                   <div class="panel panel-default filaInterna">
-                                    <div class="panel-heading">VAGINOSCOPIA</div>
+                                    <div class="panel-heading">Vaginoscopia</div>
                                  </div>
 
                                   <div class="row fila">
@@ -2379,7 +2364,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                   </div>
                                   <div class="row fila">
                                     <div class="panel panel-default filaInterna">
-                                      <div class="panel-heading">VULVOSCOPIA</div>
+                                      <div class="panel-heading">Vulvoscopia</div>
                                    </div>
 
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -2397,7 +2382,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                   </div>
                                   <div class="row fila">
                                     <div class="panel panel-default filaInterna">
-                                      <div class="panel-heading">MISCELANEOS</div>
+                                      <div class="panel-heading">Misceláneos</div>
                                    </div>
 
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -2629,7 +2614,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       <div class="panel-heading" role="tab">
                                         <h4 class="panel-title">
                                           <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-five" aria-expanded="false">
-                                            BIOPSIAS DE VULVOSCOPIA
+                                            BIOPSIAS DE Vulvoscopia
                                           </a>
                                         </h4>
                                       </div>
@@ -2676,7 +2661,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       <div class="panel-heading" role="tab">
                                         <h4 class="panel-title">
                                           <a class="collapsed cabecera-morada" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-seven" aria-expanded="false">
-                                            BIOPSIAS DE VAGINOSCOPIA
+                                            BIOPSIAS DE Vaginoscopia
                                           </a>
                                         </h4>
                                       </div>
@@ -2695,23 +2680,19 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                 </select>
 
 
-                                              </div><br><br><br><br>
-                                              <div class="row fila">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                  <div class="floating-numner">
-                                                    <p>Anotaciones</p>
-                                                  </div>
-                                                </div>
                                               </div>
                                               <div class="row fila">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                  <div class="form-group">
-                                                    <div class="nk-int-st">
-                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f1"></textarea>
+                                              <div class="form-group purple-border">
+                                                <div class="row fila">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
+                                              </div>
                                                     </div>
-                                                  </div>
-                                                </div>
+                                                <textarea class="form-control" rows="2" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f1"></textarea>
                                               </div>
+                                                    </div>
+                                                          </div>
 
 
 
