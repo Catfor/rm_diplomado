@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="logo-area">
-                        <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="100" height="100" /></a>
+                        <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="130" height="100" /></a>
 
                     </div>
                 </div>
@@ -192,7 +192,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                
+
                                         $consultasemanas = "SELECT DISTINCT p.id_paciente, 	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p LEFT JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente";
                                         $resultadosemanas = $mysqliL->query($consultasemanas);
 
@@ -274,7 +274,7 @@
 
                                             //Termina la fila de la consulta de estudios
                                             echo "</tr>";
-                                            
+
                                         }
 
 
