@@ -2,8 +2,12 @@
 session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   include('../coni/Localhost.php');
-  $patologo=$_GET['patologo'];
-$idusuariopato=$_GET['idusuariopato'];
+  $patologo=$_GET['patologo'];#es igual al usuario que le asignare osea al puto patologo
+$paps=$_GET['paps'];
+$vulva=$_GET['vulva'];
+$vagi=$_GET['vagi'];
+$cervix=$_GET['cervix'];
+$endo=$_GET['endo'];
 ?>
 <!doctype html>
 <html class="no-js" lang="">

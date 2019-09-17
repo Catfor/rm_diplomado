@@ -237,6 +237,6 @@ $target_pat =$h.'-'.$id_ant_atencionmedica.$filename;
   		}
   	}
 
- header("Location:consulta_paciente.php");
+header("Location:consulta_paciente.php");
 
  ?>

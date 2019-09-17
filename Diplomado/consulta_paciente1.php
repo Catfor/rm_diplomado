@@ -2,6 +2,7 @@
 <!doctype html>
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
+<script src="jquery.min.js"></script>
 
 <head>
   <meta charset="utf-8">
@@ -212,8 +213,8 @@
                   <table id="data-table-basic" class="table table-striped">
                     <thead>
                       <tr>
-                        <th>Nombre Completo</th>
-
+                        <th>Nombre</th>
+  <th>Apellidos</th>
                         <th>Edad</th>
                         <th>Fecha Nacimiento</th>
                         <th>CP</th>
@@ -243,10 +244,11 @@
                             $codigo_postal = $resultadosemanas1['codigo_postal'];
                             $id_paciente = $resultadosemanas1['id_paciente'];
 
+?>
 
-
-                            echo "  <tr><td> $nombre_paciente $apellidos_paciente </td>
-
+                              <tr><td><span id="firstname"><?php echo $nombre_paciente ?></span></td>
+<?php
+echo "<td>$edad_paciente</td>
                                           <td>$edad_paciente</td>
                                           <td>$fecha_nacimiento_paciente</td>
                                           <td>$codigo_postal  </td>
@@ -266,10 +268,11 @@ WHERE p.id_paciente=$id_paciente
                               echo "<td>$total</td>";
                             }
                             echo "
-                                            <td>$fecha_creacion</td>
-                                            <td><a href='atencion_medica.php?id_paciente=$id_paciente'>CONSULTAR</a></td>
+                                            <td>$fecha_creacion</td>";
+?>
+                                            <td> <a href="editar_paciente.php?id_paciente=<?php echo $id_paciente ?>"><i class='far fa-edit'></i></a></td>
 
-
+<?php echo "
 
                                             </tr>";
                           }
@@ -293,6 +296,8 @@ WHERE p.id_paciente=$id_paciente
       <?php
           include('pie.php');
           ?>
+          <?php include('modal.php'); ?>
+          <script src="custom.js"></script>
       <!-- End Footer area-->
       <!-- jquery
 		============================================ -->
@@ -337,7 +342,7 @@ WHERE p.id_paciente=$id_paciente
       <script src="js/knob/knob-active.js"></script>
       <!--  Chat JS
 		============================================ -->
-      <script src="js/chat/jquery.chat.js"></script>
+
       <!--  todo JS
 		============================================ -->
       <script src="js/todo/jquery.todo.js"></script>
@@ -354,7 +359,7 @@ WHERE p.id_paciente=$id_paciente
       <script src="js/data-table/data-table-act.js"></script>
       <!-- main JS
 		============================================ -->
-      <script src="js/main.js"></script>
+
       <!-- tawk chat JS
 		============================================ -->
 
