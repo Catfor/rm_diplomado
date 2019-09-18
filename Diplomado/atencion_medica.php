@@ -175,67 +175,77 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
 
           ?>
-          <script language="JavaScript">
-
-          var ns4 = (document.layers)? true:false
-          var ie4 = (document.all)? true:false
-          var ns6 = (document.getElementById && !document.all) ? true: false;
-          var coorX, coorY, iniX, iniY;
-
-          if (ns6) document.addEventListener("mousemove", mouseMove, true)
-          if (ns4) {document.captureEvents(Event.MOUSEMOVE); document.mousemove = mouseMove;}
+      <script language="JavaScript">
 
 
-          function mouseMove(e)
-          {
-          if (ns4||ns6) {coorX = e.pageX; coorY = e.pageY;}
-          if (ie4) {coorX = event.x; coorY = event.y;}
-          return true;
+          function offset(el) {
+            var rect = el.getBoundingClientRect(),
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            return { top: rect.top, left: rect.left }
           }
 
-          function ini() {
-          if (ie4) document.body.onmousemove = mouseMove;
-          iniX = document.getElementById("recuadro").offsetLeft;
-          iniY = document.getElementById("recuadro").offsetTop;
-          }
+          window.onload = function() {
+            var canvasDona = document.getElementById("canvasDona");
+            var ctxDona = canvasDona.getContext("2d");
+            var dona = document.getElementById("recuadroDona");
+            
+            var canvasVulva = document.getElementById("canvasVulva");
+            var ctxVulva = canvasVulva.getContext("2d");
+            var vulva = document.getElementById("recuadroVulva");
+            var donax = document.getElementById("x");
+            var donay = document.getElementById("y");
+            var vulvax = document.getElementById("xy");
+            var vulvay = document.getElementById("yx");
 
-          function asignar() {
-          with (document.forms[0]) {
-          x.value = coorX;
-          y.value = coorY;
+            ctxVulva.drawImage(vulva, 0, 0,200,200);
+            ctxDona.drawImage(dona, 0, 0,200,200);
+            ctxVulva.lineWidth = 3;
 
-          }
-          } </script>
-          <script language="JavaScript">
+            $("#canvasDona").on("click", function(event) {
+                var offsetImg = offset(this);
+                var x = (event.clientX - offsetImg.left).toFixed(2);
+                var y = (event.clientY- offsetImg.top).toFixed(2);
+                donax.value = x;
+                donay.value = y;
+                console.log("X: " + x + " Y: " + y);
+                ctxDona.drawImage(dona, 0, 0,200,200);
+                ctxDona.lineWidth = 4;
+                ctxDona.strokeStyle = "#FFF";
+                ctxDona.beginPath();
+                ctxDona.arc(x, y, 10, 0, 2 * Math.PI);
+                ctxDona.stroke();
+                ctxDona.lineWidth = 2;
+                ctxDona.strokeStyle = "#000";
+                ctxDona.beginPath();
+                ctxDona.arc(x, y, 10, 0, 2 * Math.PI);
+                ctxDona.stroke();
+            });
 
-          var ns4 = (document.layers)? true:false
-          var ie4 = (document.all)? true:false
-          var ns6 = (document.getElementById && !document.all) ? true: false;
-          var coorX, coorY, iniX, iniY;
+            $("#canvasVulva").on("click", function(event) {
+                var offsetImg = offset(this);
+                var x = (event.clientX - offsetImg.left).toFixed(2);
+                var y = (event.clientY- offsetImg.top).toFixed(2);
+                vulvax.value = x;
+                vulvay.value = y;
+                console.log("X: " + x + " Y: " + y);
+                ctxVulva.drawImage(vulva, 0, 0,200,200);
+                ctxVulva.lineWidth = 4;
+                ctxVulva.strokeStyle = "#FFF";
+                ctxVulva.beginPath();
+                ctxVulva.arc(x, y, 10, 0, 2 * Math.PI);
+                ctxVulva.stroke();
+                ctxVulva.lineWidth = 2;
+                ctxVulva.strokeStyle = "#000";
+                ctxVulva.beginPath();
+                ctxVulva.arc(x, y, 10, 0, 2 * Math.PI);
+                ctxVulva.stroke();
+            });
 
-          if (ns6) document.addEventListener("mousemove", mouseMove, true)
-          if (ns4) {document.captureEvents(Event.MOUSEMOVE); document.mousemove = mouseMove;}
+          };
 
-          function mouseMove(e)
-          {
-          if (ns4||ns6) {coorX = e.pageX; coorY = e.pageY;}
-          if (ie4) {coorX = event.x; coorY = event.y;}
-          return true;
-          }
 
-          function ini() {
-          if (ie4) document.body.onmousemove = mouseMove;
-          iniX = document.getElementById("recuadro").offsetLeft;
-          iniY = document.getElementById("recuadro").offsetTop;
-          }
-
-          function asignars() {
-          with (document.forms[0]) {
-          xy.value = coorX;
-          yx.value = coorY;
-
-          }
-          } </script>
+      </script>
       <div class="breadcomb-area">
         <div class="container">
 
@@ -1157,6 +1167,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         <center> <input type="file" class="form-control" id="archivo" name="archivo[]" multiple=""> </center>
                                       </div>
                                     </div>
+
+                                    
                                     <br><br><br><br>
 
                                     <div class="row fila">
@@ -1314,10 +1326,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="floating-numner">
                                                     <p>Señala Donde Fue Tomada la muetra</p>
-
-                                                    <a href="prueba.php"><img src="../img/dona.JPG" width="200" height="200"  ismap onclick="asignar();return false;"></a>
-                                                    <input type="text" name="x" value="x">
-                                                    <input type="text" name="y" value="y">
+                                                    <img  id="recuadroDona" src="../img/dona.JPG" width="200" height="200"  ismap  style="display:none">
+                                                    <canvas id="canvasDona" width="200" height="200">
+                                                    <input id="x" name="x" value="0" style="display:none">
+                                                    <input id="y" name="y" value="0" style="display:none">
                                                   </div>
                                                 </div>
                                               </div>
@@ -1353,14 +1365,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="floating-numner">
                                                     <p>Señala Donde Fue Tomada la muetra</p>
-                                                    <a href="prueba.php"><img src="../img/vulva.JPG" width="200" height="200"  ismap onclick="asignars();return false;"></a>
-                                                    <input type="text" name="xy" value="x">
-                                                    <input type="text" name="yx" value="y">
-                                                  </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                                  <div class="logo-area">
-                                                    <a href="#"><img src="img/vulva.jpg" alt="" /></a>
+                                                    <img  id="recuadroVulva" src="../img/vulva.JPG" width="200" height="200"  ismap  style="display:none">
+                                                    <canvas id="canvasVulva" width="200" height="200">
+                                                    <input id="xy" name="xy" value="0" style="display:none">
+                                                    <input id="yx" name="yx" value="0" style="display:none">
                                                   </div>
                                                 </div>
                                               </div>
@@ -2629,7 +2637,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                               </div>
                                               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                                 <div class="logo-area">
-                                                  <a href="#"><img src="img/vulva.jpg" alt="" /></a>
+                                                  <a href="#" id="recuadroVulva"><img src="img/vulva.jpg" alt="" /></a>
                                                 </div>
                                               </div>
                                             </div>
