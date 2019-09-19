@@ -28,7 +28,7 @@
 			e.y
 			FROM
 			paciente p
-			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 4
+			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 2
 			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
 			INNER JOIN estudio_biopsia_cervix e ON ct.id_estudio = e.id_estudio";
 			
@@ -73,7 +73,46 @@
 	?>
 
 	<script>
+
+		window.onload = function(){
+
+
+            var canvasDona = document.getElementById("canvasDona");
+            var ctxDona = canvasDona.getContext("2d");
+            var dona = document.getElementById("recuadroDona");
+
+			var x = <?php echo $x ?>;
+			var y = <?php echo $y ?>;
+			ctxDona.drawImage(dona, 0, 0,200,200);
+			ctxDona.lineWidth = 5;
+			ctxDona.strokeStyle = "#FFF";
+			ctxDona.beginPath();
+			ctxDona.moveTo(x-10,y-10);
+			ctxDona.lineTo(x+10,y+10);
+			ctxDona.moveTo(x-10,y+10);
+			ctxDona.lineTo(x+10,y-10);
+			ctxDona.stroke();
+			ctxDona.lineWidth = 2;
+			ctxDona.strokeStyle = "#000";
+			ctxDona.beginPath();
+			ctxDona.moveTo(x-10,y-10);
+			ctxDona.lineTo(x+10,y+10);
+			ctxDona.moveTo(x-10,y+10);
+			ctxDona.lineTo(x+10,y-10);
+			ctxDona.stroke();
+
+			dona.style.display = "block";
+			canvasDona.style.display = "none";
+			dona.setAttribute("src",canvasDona.toDataURL());
+			
+			setTimeout(imprimeEtiqueta(), 1000);
+
+			
+		}
+
 		function imprimeEtiqueta() {
+
+
 			var mywindow = window.open('', 'PRINT', '', 'false');
 
 			mywindow.document.write('<html><head><title>' + document.title + '</title>');
@@ -91,11 +130,14 @@
 
 			return true;
 		}
+
+		
+
 	</script>
 
 </head>
 
-<body onload="imprimeEtiqueta()">
+<body>
 	<div id="etiqueta">
 		<div class="container">
 			<div class="row">
@@ -139,10 +181,8 @@
 						<div class="row">
 							<div class="column">
 								<center>
-									<a href="#">
-										<img src="../../img/dona_marca.png"
-											style="max-width: 180px; max-height: 180px" />
-									</a>
+									<img  id="recuadroDona" src="../../img/dona.JPG" width="200" height="200"  ismap  style="display:none">
+									<canvas id="canvasDona" width="200" height="200">
 								</center>
 							</div>
 							<div class="column">

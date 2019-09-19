@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="logo-area">
-                        <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="100" height="100" /></a>
+                        <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="130" height="100" /></a>
 
                     </div>
                 </div>
@@ -674,10 +674,10 @@ if($id_tipo_seguro_paciente!=''){
             <script src="../js/plugins.js"></script>
             <!-- and drop JS
 ============================================ -->
-            <script src="../jquery-3.0.0.js" type="text/javascript"></script>
+            
 
-            <script src="../dropzone.min.js"></script>
-            <script src="../script.js" type="text/javascript"></script>
+            
+            
             <!-- main JS
 ============================================ -->
             <script src="../js/main.js"></script>

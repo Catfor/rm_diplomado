@@ -27,7 +27,7 @@
 			e.y
 			FROM
 			paciente p
-			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 4
+			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 6
 			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
 			INNER JOIN estudio_vulvoscopia e ON ct.id_estudio = e.id_estudio";
 			
@@ -38,6 +38,8 @@
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
 		$anotaciones_vulvoscopia = $info['anotaciones_vulvoscopia'];
+		$x = $info['x'];
+		$y = $info['y'];
 
 		if (!endsWith(trim($anotaciones_vulvoscopia), ".")) {
 			$anotaciones_vulvoscopia = $anotaciones_vulvoscopia . '.';
@@ -64,6 +66,43 @@
 	?>
 
 	<script>
+
+
+		window.onload = function(){
+
+			var canvasVulva = document.getElementById("canvasVulva");
+			var ctxVulva = canvasVulva.getContext("2d");
+			var vulva = document.getElementById("recuadroVulva");
+			var x = <?php echo $x ?>;
+			var y = <?php echo $y ?>;
+			ctxVulva.drawImage(vulva, 0, 0,200,200);
+			ctxVulva.lineWidth = 5;
+			ctxVulva.strokeStyle = "#FFF";
+			ctxVulva.beginPath();
+			ctxVulva.moveTo(x-10,y-10);
+			ctxVulva.lineTo(x+10,y+10);
+			ctxVulva.moveTo(x-10,y+10);
+			ctxVulva.lineTo(x+10,y-10);
+			ctxVulva.stroke();
+			ctxVulva.lineWidth = 2;
+			ctxVulva.strokeStyle = "#000";
+			ctxVulva.beginPath();
+			ctxVulva.moveTo(x-10,y-10);
+			ctxVulva.lineTo(x+10,y+10);
+			ctxVulva.moveTo(x-10,y+10);
+			ctxVulva.lineTo(x+10,y-10);
+			ctxVulva.stroke();
+
+			vulva.style.display = "block";
+			canvasVulva.style.display = "none";
+			vulva.setAttribute("src",canvasVulva.toDataURL());
+			
+			setTimeout(imprimeEtiqueta(), 1000);
+
+
+		}
+
+
 		function imprimeEtiqueta() {
 			var mywindow = window.open('', 'PRINT', '', 'false');
 
@@ -86,7 +125,7 @@
 
 </head>
 
-<body onload="imprimeEtiqueta()">
+<body>
 	<div id="etiqueta">
 		<div class="container">
 			<div class="row">
@@ -127,10 +166,8 @@
 							<div class="row">
 								<div class="column">
 									<center>
-										<a href="#">
-											<img src="../../img/vulva.jpg"
-												style="max-width: 180px; max-height: 180px" />
-										</a>
+										<img  id="recuadroVulva" src="../../img/vulva.JPG" width="200" height="200"  ismap  style="display:none">
+										<canvas id="canvasVulva" width="200" height="200">
 									</center>
 								</div>
 								<div class="column">
