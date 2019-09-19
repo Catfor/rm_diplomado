@@ -710,7 +710,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                 <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
                               </div>
                             </div>
-                            <textarea class="form-control" rows="1" placeholder="Escribe recomendacion Diagnostica" name="atecedentes_lesion" form="f"></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Escribe recomendacion Diagnostica" name="atecedentes_lesion" form="f"></textarea>
                           </div>
                         </div>
                       </div>
@@ -722,7 +722,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                 <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
                               </div>
                             </div>
-                            <textarea class="form-control" rows="1" placeholder="Escribe Antecedente de Tratamiento" name="antecedentes_tratamiento" form="f"></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Escribe Antecedente de Tratamiento" name="antecedentes_tratamiento" form="f"></textarea>
                           </div>
                         </div>
                       </div>
@@ -1203,7 +1203,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                           <div class="form-group">
                                             <div class="nk-int-st">
-                                              <textarea class="form-control auto-size" rows="2" placeholder="LIEBG" name="recomendacion_diagnostica" disabled form="f"></textarea>
+                                              <textarea class="form-control auto-size" rows="3" placeholder="LIEBG" name="recomendacion_diagnostica" disabled form="f"></textarea>
 
                                             </div>
                                           </div>
@@ -1310,7 +1310,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                 <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Observaciones</FONT>
                                               </div>
                                             </div>
-                                            <textarea class="form-control" rows="2" placeholder="Escribe  las observaciones" name="observaciones_papinocolau" form="f"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Escribe  las observaciones" name="observaciones_papinocolau" form="f"></textarea>
                                           </div>
                                         </div>
                                       </div>
@@ -1362,7 +1362,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                           <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
                                                         </div>
                                                       </div>
-                                                      <textarea class="form-control" rows="1" placeholder="Escribe  las Anotaciones" name="senalizacion" form="f"></textarea>
+                                                      <textarea class="form-control" rows="3" placeholder="Escribe  las Anotaciones" name="senalizacion" form="f"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -1402,7 +1402,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                           <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
                                                         </div>
                                                       </div>
-                                                      <textarea class="form-control" rows="1" placeholder="Escribe  las Anotaciones" name="anotaciones_vulvoscopia" form="f"></textarea>
+                                                      <textarea class="form-control" rows="3" placeholder="Escribe  las Anotaciones" name="anotaciones_vulvoscopia" form="f"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -1443,7 +1443,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                             <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
                                                           </div>
                                                         </div>
-                                                        <textarea class="form-control" rows="2" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f"></textarea>
+                                                        <textarea class="form-control" rows="3" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f"></textarea>
                                                       </div>
                                                     </div>
                                                   </div>
@@ -1478,7 +1478,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                           <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Observaciones</FONT>
                                                         </div>
                                                       </div>
-                                                      <textarea class="form-control" rows="2" placeholder="Escribe  las observaciones" name="observaciones_endometrio" form="f"></textarea>
+                                                      <textarea class="form-control" rows="3" placeholder="Escribe  las observaciones" name="observaciones_endometrio" form="f"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -1907,7 +1907,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             <div class="form-group">
               <div class="nk-int-st">
 
-                <textarea class="form-control auto-size" rows="2" name="atecedentes_lesion" form="f1" placeholder="<?php echo $atecedentes_lesion ?>"></textarea>
+                <textarea class="form-control auto-size" rows="3" name="atecedentes_lesion" form="f1" placeholder="<?php echo $atecedentes_lesion ?>"></textarea>
 
               </div>
             </div>
@@ -1925,7 +1925,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             <div class="form-group">
               <div class="nk-int-st">
 
-                <textarea class="form-control auto-size" rows="2" name="antecedentes_tratamiento" form="f1" placeholder="<?php echo $antecedentes_tratamiento ?>"></textarea>
+                <textarea class="form-control auto-size" rows="3" name="antecedentes_tratamiento" form="f1" placeholder="<?php echo $antecedentes_tratamiento ?>"></textarea>
 
               </div>
             </div>
@@ -2446,7 +2446,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                           <div class="nk-int-st">
-                                            <textarea class="form-control auto-size" rows="2" name="recomendacion_diagnostica" placeholder="LIEBG" form="f1" disabled></textarea>
+                                            <textarea class="form-control auto-size" rows="3" name="recomendacion_diagnostica" placeholder="LIEBG" form="f1" disabled></textarea>
 
                                           </div>
                                         </div>
@@ -2463,7 +2463,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                           <div class="nk-int-st">
-                                            <textarea class="form-control auto-size" rows="2" placeholder="Escribe recomendacion Diagnostica" name="posible_recomendacion_diagnostica" form="f1"></textarea>
+                                            <textarea class="form-control auto-size" rows="3" placeholder="Escribe recomendacion Diagnostica" name="posible_recomendacion_diagnostica" form="f1"></textarea>
                                           </div>
                                         </div>
                                       </div>
@@ -2560,7 +2560,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                           <div class="nk-int-st">
-                                            <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las observaciones" name="observaciones_papinocolau" form="f1"></textarea>
+                                            <textarea class="form-control auto-size" rows="3" placeholder="Escribe  las observaciones" name="observaciones_papinocolau" form="f1"></textarea>
                                           </div>
                                         </div>
                                       </div>
@@ -2615,7 +2615,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="form-group">
                                                     <div class="nk-int-st">
-                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones" name="senalizacion" form="f1"></textarea>
+                                                      <textarea class="form-control auto-size" rows="3" placeholder="Escribe  las Anotaciones" name="senalizacion" form="f1"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -2663,7 +2663,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="form-group">
                                                     <div class="nk-int-st">
-                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las Anotaciones" name="anotaciones_vulvoscopia" form="f1"></textarea>
+                                                      <textarea class="form-control auto-size" rows="3" placeholder="Escribe  las Anotaciones" name="anotaciones_vulvoscopia" form="f1"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -2704,7 +2704,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                           <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
                                                         </div>
                                                       </div>
-                                                      <textarea class="form-control" rows="2" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f1"></textarea>
+                                                      <textarea class="form-control" rows="3" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f1"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -2741,7 +2741,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <div class="form-group">
                                                     <div class="nk-int-st">
-                                                      <textarea class="form-control auto-size" rows="2" placeholder="Escribe  las observaciones" name="observaciones_endometrio" form="f1"></textarea>
+                                                      <textarea class="form-control auto-size" rows="3" placeholder="Escribe  las observaciones" name="observaciones_endometrio" form="f1"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
