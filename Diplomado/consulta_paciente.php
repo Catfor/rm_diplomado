@@ -337,7 +337,7 @@ WHERE p.id_paciente=$id_paciente
       <script src="js/knob/knob-active.js"></script>
       <!--  Chat JS
 		============================================ -->
-      <script src="js/chat/jquery.chat.js"></script>
+      
       <!--  todo JS
 		============================================ -->
       <script src="js/todo/jquery.todo.js"></script>
