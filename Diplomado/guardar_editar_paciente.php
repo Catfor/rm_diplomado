@@ -12,6 +12,8 @@ $direccion_paciente = $_GET['direccion_paciente'];
 $municipio_paciente = $_GET['municipio_paciente'];
 $codigo_postal = $_GET['codigo_postal'];
 $tipo_seguro = $_GET['tipo_seguro'];
+$otro_tipo_seguro = $_GET['otro_tipo_seguro'];
+
 $ingresomensual = $_GET['ingresomensual'];
 $escolaridad_paciente = $_GET['escolaridad_paciente'];
 $apoyo_gubernamental_paciente = $_GET['apoyo_gubernamental_paciente'];
@@ -23,7 +25,7 @@ $nombre_contacto_paciente = $_GET['nombre_contacto_paciente'];
 $telefono_contacto_paciente = $_GET['telefono_contacto_paciente'];
 $celular_contacto_paciente = $_GET['celular_contacto_paciente'];
 $newDate = date('Y-m-d', strtotime($_GET['edad_paciente']));
-$tipo_seguros = $_GET['tipo_seguros'];
+ $tipo_seguros = $_GET['tipo_seguros'];
 
   $cumpleanos = new DateTime("$newDate");
   $hoy = new DateTime();
@@ -46,29 +48,33 @@ $tipo_seguros = $_GET['tipo_seguros'];
   escolaridad_paciente='$escolaridad_paciente',apoyo_gubernamental_paciente='$apoyo_gubernamental_paciente',
   razon_apoyo_paciente='$razon_apoyo_paciente',nombre_familiar_paciente='$nombre_familiar_paciente',telefono_familiar_paciente='$telefono_familiar_paciente',
   celular_familiar_paciente='$celular_familiar_paciente',nombre_contacto_paciente='$nombre_contacto_paciente',telefono_contacto_paciente='$telefono_contacto_paciente',
-  celular_contacto_paciente='$celular_contacto_paciente'
+  celular_contacto_paciente='$celular_contacto_paciente',otro_tipo_seguro='$otro_tipo_seguro'
   WHERE id_paciente='$id_paciente'";
 
   $Mo= $mysqliL->query($Modifi);
 
 
+  $Modifi1 = "DELETE FROM tipo_seguro
+  WHERE id_paciente='$id_paciente'";
 
+  $Mo1= $mysqliL->query($Modifi1);
 
 
   for ($y = 0; $y < count($tipo_seguro); $y++) {
     $tipos = $tipo_seguro[$y];
-
+echo $tipos.' tipo_seguro<br>';
 
     $sql112= "INSERT INTO tipo_seguro
     (id_seguro,id_paciente)
     VALUES
     ('$tipos','$id_paciente')";
-    $resultaq1 = $mysqliL->query($sql112);
+   $resultaq1 = $mysqliL->query($sql112);
   }
 
 
 
 
-  header("Location:consulta_paciente.php");
+
+  header("Location:consulta_paciente1.php");
 
  ?>

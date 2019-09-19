@@ -209,15 +209,18 @@
                                                             <i class="far fa-user"></i>
                                                         </div>
                                                         <div class="nk-int-st">
-                                                            <input type="text" name="nombre_paciente" id="nombre_paciente" class="form-control" placeholder="Nombres del paciente" value="" required>
+                                                            <input type="text" name="nombre_paciente" id="nombre_paciente" class="form-control" placeholder="Nombres del paciente" value="" >
 
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div style="padding: 0px 20px 10px 39px;">
+                                                      <div class="form-group ic-cmp-int">
+                                                      <div class="customFontAwesome">
+                                                          <i class="far fa-user"></i>
+                                                      </div>
                                                         <div class="nk-int-st">
-                                                            <input type="text" name="apellidos_paciente" id="apellidos_paciente" class="form-control" placeholder="Apellidos Del Paciente" value="" required>
+                                                            <input type="text" name="apellidos_paciente" id="apellidos_paciente" class="form-control" placeholder="Apellidos Del Paciente" value="" >
 
                                                         </div>
                                                     </div>
@@ -230,7 +233,7 @@
                                                         </div>
                                                         <div class="input-group date nk-int-st">
                                                             <span class="input-group-addon" style="border: 0px;"></span>
-                                                            <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Fecha de Nacimiento" value="" required>
+                                                            <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Fecha de Nacimiento" value="" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -241,7 +244,7 @@
                                                             <i class="notika-icon notika-promos"></i>
                                                         </div>
                                                         <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name="estado_civil" class="selectpicker" required>
+                                                            <select name="estado_civil" class="selectpicker" >
                                                                 <option value="">Selecciona Estado Civil</option>
                                                                 <option value="Soltera">Soltera</option>
                                                                 <option value="Casada">Casada</option>
@@ -288,7 +291,7 @@
                                                             <i class="glyphicon glyphicon-usd" style="color: #888;"></i>
                                                         </div>
                                                         <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name="ingresomensual" class="selectpicker" required>
+                                                            <select name="ingresomensual" class="selectpicker" >
                                                                 <option value="">Selecciona Ingreso Mensual</option>
                                                                 <option value="Menos de $2,000">Menos de $2,000</option>
                                                                 <option value="Entre $2,000 y $6,000">Entre $2,001 y $6,000</option>
@@ -306,7 +309,7 @@
                                                             <i class="fas fa-graduation-cap"></i>
                                                         </div>
                                                         <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name="escolaridad_paciente" class="selectpicker" required>
+                                                            <select name="escolaridad_paciente" class="selectpicker" >
                                                                 <option value="">Selecciona Grado de Escolaridad</option>
                                                                 <option value="sin estudios">Sin estudios</option>
                                                                 <option value="primaria">Primaria</option>
@@ -361,10 +364,20 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group ic-cmp-int" id="data_3">
                                                         <div class="customFontAwesome">
+                                                            <i class="fas fa-question"></i>
+                                                        </div>
+                                                        <div class="nk-int-st">
+                                                            <input id="otro_tipo_seguro" name='otro_tipo_seguro' type="text" class="form-control" placeholder="Otro Tipo de Seguro?" value="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group ic-cmp-int" id="data_3">
+                                                        <div class="customFontAwesome">
                                                             <i class="fas fa-tag"></i>
                                                         </div>
                                                         <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name='apoyo_gubernamental_paciente' id='apoyo_gubernamental_paciente' class="selectpicker" required>
+                                                            <select name='apoyo_gubernamental_paciente' id='apoyo_gubernamental_paciente' class="selectpicker" >
                                                                 <option value="">¿Apoyo gubernamental?</option>
                                                                 <option value="1">Si</option>
                                                                 <option value="0">No</option>

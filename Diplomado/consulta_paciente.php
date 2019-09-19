@@ -228,11 +228,12 @@
 
 
                       <?php
-                          $consultasemanas = "SELECT * FROM paciente ";
+                          $consultasemanas = "SELECT   a.id_atencion_medica,p.nombre_paciente,p.apellidos_paciente,p.fecha_nacimiento_paciente,p.edad_paciente
+                            ,p.fecha_creacion,p.codigo_postal,p.id_paciente FROM paciente AS p
+                         LEFT JOIN atencion_medica AS a
+                         ON a.id_paciente=p.id_paciente ORDER BY p.fecha_creacion asc ";
                           $resultadosemanas = $mysqliL->query($consultasemanas);
 
-
-                          $si = $resultadosemanas->num_rows;
 
                           while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
                             $nombre_paciente = ucwords($resultadosemanas1['nombre_paciente']);
@@ -243,11 +244,12 @@
                             $codigo_postal = $resultadosemanas1['codigo_postal'];
                             $id_paciente = $resultadosemanas1['id_paciente'];
 
-
+      $id_atencion_medica = $resultadosemanas1['id_atencion_medica'];
+      if($id_atencion_medica!=''){}else{
 
                             echo "  <tr><td> $nombre_paciente $apellidos_paciente </td>
 
-                                          <td>$edad_paciente</td>
+                                          <td> $fecha_creacion</td>
                                           <td>$fecha_nacimiento_paciente</td>
                                           <td>$codigo_postal  </td>
                                           ";
@@ -266,12 +268,12 @@ WHERE p.id_paciente=$id_paciente
                               echo "<td>$total</td>";
                             }
                             echo "
-                                            <td>$fecha_creacion</td>
+                                            <td>$edad_paciente</td>
                                             <td><a href='atencion_medica.php?id_paciente=$id_paciente'>CONSULTAR</a></td>
 
 
 
-                                            </tr>";
+                                            </tr>";}
                           }
 
 

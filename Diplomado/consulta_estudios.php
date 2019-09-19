@@ -185,7 +185,7 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>Edad</th>
+
                                     <th>Fecha de Nacimiento</th>
                                     <th>ID de Atencion</th>
                                     <th>Colposcopia</th>
@@ -196,7 +196,7 @@
                             <tbody>
                                 <?php
 
-                                        $consultasemanas = "SELECT DISTINCT p.id_paciente, 	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p LEFT JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente";
+                                        $consultasemanas = "SELECT DISTINCT p.id_paciente, 	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente";
                                         $resultadosemanas = $mysqliL->query($consultasemanas);
 
                                         while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
@@ -209,7 +209,7 @@
 
                                             echo "  <tr>
                                                                     <td>$nombre_paciente $apellidos_paciente </td>
-                                                                    <td>$edad_paciente</td>
+
                                                                     <td>$fecha_nacimiento_paciente</td>
                                                                     <td>$id_atencion</td>";
 
@@ -220,7 +220,8 @@
                                             if ($resultSetColposcopia = $mysqliL->query($queryColposcopia)) {
                                                 while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
                                                     $id_estudio = $resultSet['id_estudio'];
-                                                    echo "<a href='atencion_medica.php?id_paciente=$id_paciente'  target='_blank'>Ver Colposcopia</a>";
+                                                    echo "<a href='atencion_medica.php?id_paciente=$id_paciente'  target='_blank'>Ver</a>";
+                                                  
                                                 }
                                             }
                                             echo "</td>";

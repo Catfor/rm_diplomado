@@ -414,7 +414,7 @@ if($id_tipo_seguro_paciente!=''){
 
  ?>
 
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="checkbox" name="tipo_seguros[]"  checked> <?php echo  $nombre_seguro?> </label>
+                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input type="checkbox" name="tipo_seguro[]"  value="<?php echo  $id_seguro?>" checked> <?php echo  $nombre_seguro?> </label>
 
 <?php
 
@@ -427,6 +427,16 @@ if($id_tipo_seguro_paciente!=''){
 
 }?>
 
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="form-group ic-cmp-int" id="data_3">
+                                                        <div class="customFontAwesome">
+                                                            <i class="fas fa-question"></i>
+                                                        </div>
+                                                        <div class="nk-int-st">
+                                                            <input id="otro_tipo_seguro" name='otro_tipo_seguro' type="text" class="form-control" placeholder="Otro Tipo de Seguro?" value="">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

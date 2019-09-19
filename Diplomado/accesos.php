@@ -104,6 +104,25 @@ $rol = $rowwe['rol'];
               }
               ?>
 
+              <?php
+                            for ($y = 0; $y < count($idusuariopato); $y++) {
+                              $idusuariopatos = $idusuariopato[$y];
+
+                          echo "    <input type='hidden' class='form-control' name='idusuariopato[]' value='$idusuariopatos' >";
+                            }
+                            ?>
+
+                            <?php
+                                          for ($y = 0; $y < count($idusuariopato); $y++) {
+                                            $idusuariopatos = $idusuariopato[$y];
+
+                                        echo "    <input type='hidden' class='form-control' name='idusuariopato[]' value='$idusuariopatos' >";
+                                          }
+                                          ?>
+
+
+
+
 
               <input type="hidden" class="form-control" name='patologo' value="<?php echo $patologo?>">
             </div>

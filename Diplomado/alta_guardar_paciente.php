@@ -20,6 +20,9 @@ $nombre_contacto_paciente = $_GET['nombre_contacto_paciente'];
 $telefono_contacto_paciente = $_GET['telefono_contacto_paciente'];
 $celular_contacto_paciente = $_GET['celular_contacto_paciente'];
 $newDate = date('Y-m-d', strtotime($_GET['edad_paciente']));
+$otro_tipo_seguro = $_GET['otro_tipo_seguro'];
+
+
 $result123 = mysqli_query($mysqliL, "SELECT * from paciente where nombre_paciente='$nombre_paciente' and apellidos_paciente='$apellidos_paciente'");
 
 $total = $result123->num_rows;
@@ -38,12 +41,12 @@ if ($total > 0) {
     apoyo_gubernamental_paciente,razon_apoyo_paciente
     ,nombre_familiar_paciente,telefono_familiar_paciente,
     celular_familiar_paciente
-    ,nombre_contacto_paciente,telefono_contacto_paciente,celular_contacto_paciente,fecha_creacion)
+    ,nombre_contacto_paciente,telefono_contacto_paciente,celular_contacto_paciente,fecha_creacion,otro_tipo_seguro)
   VALUES
   ('$nombre_paciente','$apellidos_paciente','$newDate','$edad','$estado_civil','$direccion_paciente','$municipio_paciente',
     '$codigo_postal','$ingresomensual','$escolaridad_paciente','$apoyo_gubernamental_paciente',
     '$razon_apoyo_paciente','$nombre_familiar_paciente','$telefono_familiar_paciente','$celular_familiar_paciente',
-    '$nombre_contacto_paciente','$telefono_contacto_paciente','$celular_contacto_paciente','$hoys')";
+    '$nombre_contacto_paciente','$telefono_contacto_paciente','$celular_contacto_paciente','$hoys','$otro_tipo_seguro')";
   $resultaq = $mysqliL->query($sql11);
   //   echo $sql11.'<br>';
   $id_bitacora = $mysqliL->insert_id;
@@ -67,5 +70,5 @@ VALUES
     echo $sql112;
   }
 
-  header("Location:consulta_paciente.php?nom=$nombre_paciente $apellidos_paciente");
+  header("Location:consulta_paciente1.php?nom=$nombre_paciente $apellidos_paciente");
 }
