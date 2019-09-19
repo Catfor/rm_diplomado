@@ -1157,20 +1157,16 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <option value="queratosis">QUERATOSIS</option>
                                           <option value="hiperplasia_glandular">HIPERPLASIA GLANDULAR</option>
                                           <option value="micropapilomatosis_vestibular">MICROPAPILOMATOSIS VESTIBULAR</option>
-
-<div class="row fila">
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="row fila">
                                     <h4 class="text-center">Imagenes Colposcopicas </h4>
-
                                     <div class="form-group">
-
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <center> <input type="file" class="form-control" id="archivo" name="archivo[]" multiple=""> </center>
                                       </div>
                                     </div>
-
-                                    
-                                    <br><br><br><br>
-
                                     <div class="row fila">
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="floating-numner">
