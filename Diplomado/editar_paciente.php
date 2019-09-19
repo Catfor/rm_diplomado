@@ -664,10 +664,10 @@ if($id_tipo_seguro_paciente!=''){
             <script src="../js/plugins.js"></script>
             <!-- and drop JS
 ============================================ -->
-            <script src="../jquery-3.0.0.js" type="text/javascript"></script>
+            
 
-            <script src="../dropzone.min.js"></script>
-            <script src="../script.js" type="text/javascript"></script>
+            
+            
             <!-- main JS
 ============================================ -->
             <script src="../js/main.js"></script>
