@@ -1,4 +1,11 @@
+<pre>
+<?php var_dump($_POST); ?>
+</pre>
+<pre>
+<?php var_dump($_FILES); ?>
+</pre>
 <?php
+
     include('../coni/Localhost.php');
     date_default_timezone_set('America/Mexico_City');
      $h = date("Y-m-d");
@@ -59,7 +66,7 @@
      $ep_criterios_intermedios=$_POST['ep_criterios_intermedios'];
      $ep_criterios_mayores=$_POST['ep_criterios_mayores'];
      $bs_criterios_menores=$_POST['bs_criterios_menores'];
-$bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
+     $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
      $bs_criterios_mayores=$_POST['bs_criterios_mayores'];
      $ag_criterios_menores=$_POST['ag_criterios_menores'];
      $ag_criterios_intermedios=$_POST['ag_criterios_intermedios'];
@@ -78,16 +85,15 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
      $posible_recomendacion_diagnostica=$_POST['posible_recomendacion_diagnostica'];
      $recomendacion_diagnostica=$_POST['recomendacion_diagnostica'];
      $vulvoscopia_acetico=$_POST['vulvoscopia_acetico'];
-     $insertaestudio_colposcopico= "INSERT INTO estudio_colposcopico
-       (colposcopia,causa,cervix,union_escamocolumnar,zona_transformacion,epitelio_acetoblanco,ep_criterios_menores,ep_criterios_intermedios,ep_criterios_mayores,bs_criterios_menores,bs_criterios_intermedios,
-       bs_criterios_mayores,ag_criterios_menores,ag_criterios_intermedios,ag_criterios_mayores,cy_menores,cy_intermedios,cy_mayores,schiller,
-       vaginoscopia_acetico,vaginoscopia_lugol,miscelaneos,posible_recomendacion_diagnostica,fecha_estudio,vulvoscopia_acetico)
-       VALUES
-       ('$colposcopia','$causa','$cervix','$union_escamocolumnar','$zona_transformacion','$epitelio_acetoblanco','$ep_criterios_menores','$ep_criterios_intermedios','$ep_criterios_mayores',
-         '$bs_criterios_menores','$bs_criterios_intermedios','$bs_criterios_mayores','$ag_criterios_menores','$ag_criterios_intermedios','$ag_criterios_mayores',
-         '$cy_menores','$cy_intermedios','$cy_mayores','$schiller','$vaginoscopia','$vaginoscopia_lugol','$miscelaneos','$posible_recomendacion_diagnostica','$hoys','$vulvoscopia_acetico')";
-       $resultadoinsertaestudio_colposcopico = $mysqliL->query($insertaestudio_colposcopico);
-
+   $insertaestudio_colposcopico= "INSERT INTO estudio_colposcopico
+     (colposcopia,causa,cervix,union_escamocolumnar,zona_transformacion,epitelio_acetoblanco,ep_criterios_menores,ep_criterios_intermedios,ep_criterios_mayores,bs_criterios_menores,bs_criterios_intermedios,
+     bs_criterios_mayores,ag_criterios_menores,ag_criterios_intermedios,ag_criterios_mayores,cy_menores,cy_intermedios,cy_mayores,schiller,
+     vaginoscopia_acetico,vaginoscopia_lugol,miscelaneos,posible_recomendacion_diagnostica,fecha_estudio,vulvoscopia_acetico)
+     VALUES
+     ('$colposcopia','$causa','$cervix','$union_escamocolumnar','$zona_transformacion','$epitelio_acetoblanco','$ep_criterios_menores','$ep_criterios_intermedios','$ep_criterios_mayores',
+       '$bs_criterios_menores','$bs_criterios_intermedios','$bs_criterios_mayores','$ag_criterios_menores','$ag_criterios_intermedios','$ag_criterios_mayores',
+       '$cy_menores','$cy_intermedios','$cy_mayores','$schiller','$vaginoscopia','$vaginoscopia_lugol','$miscelaneos','$posible_recomendacion_diagnostica','$hoys','$vulvoscopia_acetico')";
+     $resultadoinsertaestudio_colposcopico = $mysqliL->query($insertaestudio_colposcopico);
            $id_ant_colposcopico=$mysqliL->insert_id;
 
 
@@ -106,20 +112,20 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
      $antecedente_infeccion_vagina=$_POST['antecedente_infeccion_vagina'];
      $observaciones_papinocolau=$_POST['observaciones_papinocolau'];
 
-       $insertaestudio_papanicolau= "INSERT INTO estudio_papanicolau
-         (antecedente_cancer,antecedente_infeccion_vagina,observaciones_papinocolau,fecha_estudio)
-         VALUES
-         ('$antecedente_cancer','$antecedente_infeccion_vagina','$observaciones_papinocolau','$hoys')";
-         $resultadoestudio_papanicolau = $mysqliL->query($insertaestudio_papanicolau);
+      $insertaestudio_papanicolau= "INSERT INTO estudio_papanicolau
+        (antecedente_cancer,antecedente_infeccion_vagina,observaciones_papinocolau,fecha_estudio)
+        VALUES
+        ('$antecedente_cancer','$antecedente_infeccion_vagina','$observaciones_papinocolau','$hoys')";
+        $resultadoestudio_papanicolau = $mysqliL->query($insertaestudio_papanicolau);
 
-             $id_ant_estudio_papanicolau=$mysqliL->insert_id;
+            $id_ant_estudio_papanicolau=$mysqliL->insert_id;
 
 
-       $sql3 = "INSERT INTO ctrl_paciente_estudios
-         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
-         VALUES
-         ('$idpaciente','$id_ant_estudio_papanicolau','7','$id_usuario','$id_ant_atencionmedica')";
-             $resulta3 = $mysqliL->query($sql3);
+      $sql3 = "INSERT INTO ctrl_paciente_estudios
+        (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
+        VALUES
+        ('$idpaciente','$id_ant_estudio_papanicolau','7','$id_usuario','$id_ant_atencionmedica')";
+            $resulta3 = $mysqliL->query($sql3);
 
      ////////////////////obtencion de parametros biopsas CERVIX/////////////////////////////////////////////////////
      $senalizacion=$_POST['senalizacion'];
@@ -167,20 +173,20 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
      $estudio_solicitar_vaginoscopia=$_POST['estudio_solicitar_vaginoscopia'];
      $anotaciones_vaginoscopia=$_POST['anotaciones_vaginoscopia'];
 
-       $insertaestudio_vaginoscopia= "INSERT INTO estudio_vaginoscopia
-         (estudio_solicitar_vaginoscopia,anotaciones_vaginoscopia,fecha_estudio)
-         VALUES
-         ('$estudio_solicitar_vaginoscopia','$anotaciones_vaginoscopia','$hoys')";
-         $resultadoestudio_vaginoscopia = $mysqliL->query($insertaestudio_vaginoscopia);
+      $insertaestudio_vaginoscopia= "INSERT INTO estudio_vaginoscopia
+        (estudio_solicitar_vaginoscopia,anotaciones_vaginoscopia,fecha_estudio)
+        VALUES
+        ('$estudio_solicitar_vaginoscopia','$anotaciones_vaginoscopia','$hoys')";
+        $resultadoestudio_vaginoscopia = $mysqliL->query($insertaestudio_vaginoscopia);
 
-             $id_ant_estudio_vaginoscopia=$mysqliL->insert_id;
+            $id_ant_estudio_vaginoscopia=$mysqliL->insert_id;
 
 
-       $sql3 = "INSERT INTO ctrl_paciente_estudios
-         (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
-         VALUES
-         ('$idpaciente','$id_ant_estudio_vaginoscopia','5','$id_usuario','$id_ant_atencionmedica')";
-             $resulta3 = $mysqliL->query($sql3);
+      $sql3 = "INSERT INTO ctrl_paciente_estudios
+        (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion)
+        VALUES
+        ('$idpaciente','$id_ant_estudio_vaginoscopia','5','$id_usuario','$id_ant_atencionmedica')";
+            $resulta3 = $mysqliL->query($sql3);
 
      ////////////////////obtencion de parametros biopsas DE ENDOMETRIO/////////////////////////////////////////////////////
 
@@ -208,7 +214,7 @@ $bs_criterios_intermedios=$_POST['bs_criterios_intermedios'];
   		if($_FILES["archivo"]["name"][$key]) {
   			$filename = $h.'-'.$id_ant_atencionmedica.$_FILES["archivo"]["name"][$key]; //Obtenemos el nombre original del archivo
   			$source = $_FILES["archivo"]["tmp_name"][$key]; //Obtenemos un nombre temporal del archivo
-
+        echo($filename);
   			$directorio = 'imagesestudios/'; //Declaramos un  variable con la ruta donde guardaremos los archivos
 
   			//Validamos si la ruta de destino existe, en caso de no existir la creamos
@@ -227,7 +233,7 @@ $target_pat =$h.'-'.$id_ant_atencionmedica.$filename;
             VALUES
             ('$target_pat','$id_ant_atencionmedica','$hoys')";
             $resultadoestudio_biopsia_endometrio = $mysqliL->query($insertaestudio_biopsia_endometrio);
-//$id_ant_atencionmedica
+        //$id_ant_atencionmedica
 
 
   				} else {
@@ -237,6 +243,15 @@ $target_pat =$h.'-'.$id_ant_atencionmedica.$filename;
   		}
   	}
 
-header("Location:consulta_paciente.php");
+//header("Location:consulta_paciente.php");
+function base64ToImage($base64_string, $output_file) {
+  $file = fopen($output_file, "wb");
 
+  $data = explode(',', $base64_string);
+
+  fwrite($file, base64_decode($data[1]));
+  fclose($file);
+
+  return $output_file;
+}
  ?>

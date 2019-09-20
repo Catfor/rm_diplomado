@@ -1114,15 +1114,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='vaginoscopia_acetico' id='vaginoscopia_acetico' class="form-control">
                                             <option value="">Selecciona Acético</option>
-                                            <option value="positivo">Acetico</option>
-                                            <option value="negativo">Lugol</option>
+                                            <option value="positivo">Positivo</option>
+                                            <option value="negativo">Neganitvo</option>
                                           </select>
 
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                           <select name='vaginoscopia_lugol' id='vaginoscopia_lugol' class="form-control">
-                                            <option value="">Selecciona lugol</option>
+                                            <option value="">Selecciona Lugol</option>
                                             <option value="positivo">Positivo</option>
                                             <option value="negativo">Negativo</option>
                                           </select>
@@ -1138,18 +1138,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       <div class="row fila">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='vulvoscopia' id='vulvoscopia' class="form-control">
-                                            <option value="">Selecciona Acético</option>
-                                            <option value="negativO">Negativo</option>
-                                            <option value="positivO">Positivo</option>
-
-                                          </select>
-
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='vulvoscopia_acetico' id='vulvoscopia_acetico' class="form-control">
-                                            <option value="">Selecciona..</option>
+                                            <option value="">Selecciona Acético</option>
                                             <option value="positivo">Positivo</option>
                                             <option value="negativo">Negativo</option>
                                           </select>
@@ -1184,7 +1174,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         <h4 class="text-center">Imagenes Colposcopicas </h4>
                                         <div class="form-group">
                                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <center> <input type="file" class="form-control" id="archivo" name="archivo[]" multiple=""> </center>
+                                            <center> <input type="file" class="form-control" id="archivo" name="archivo[]" multiple> </center>
                                           </div>
                                         </div>
                                       </div>
@@ -1204,7 +1194,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <div class="form-group">
                                             <div class="nk-int-st">
                                               <textarea class="form-control auto-size" rows="3" placeholder="LIEBG" name="recomendacion_diagnostica" disabled form="f"></textarea>
-
                                             </div>
                                           </div>
                                         </div>
@@ -1505,6 +1494,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           </div>
           <br><br>
           <center> <button type="submit" class="btn btn-primary">Enviar</button></center>
+          <input id='myFormSubmit' name="submit" type="submit" value="Enviar">
         </div>
       </div>
 
@@ -1533,9 +1523,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                 <input type="text" class="form-control" name="edad_inicio_menstruacion" placeholder="<?php
 
-                    $q = date("d.M.Y", strtotime($edad_inicio_menstruacion));
-                    $inicios = strftime("%d de %B del %Y", strtotime($q));
-                    echo "Fecha Anterior fue " . $inicios ?>">
+                                                                                                            $q = date("d.M.Y", strtotime($edad_inicio_menstruacion));
+                                                                                                            $inicios = strftime("%d de %B del %Y", strtotime($q));
+                                                                                                            echo "Fecha Anterior fue " . $inicios ?>">
 
 
               </div>
@@ -2430,7 +2420,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     <div class="form-group">
 
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <center> <input type="file" class="form-control" id="archivo[]" name="archivo[]" multiple=""> </center>
+                                        <center> <input type="file" class="form-control" name="archivo[]" multiple> </center>
                                       </div>
                                     </div>
                                     <br><br><br><br>
@@ -2770,6 +2760,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         <br><br>
         <center> <button type="submit" class="btn btn-primary">Enviar</button></center>
 
+        <input id='myFormSubmit' name="submit" type="submit" value="Enviar">
+
         <br>
 
         <!--<center><input type="submit" style="border: #000 1px solid; background-color: #ed80a8" value="Enviar formulario"></center>-->
@@ -2782,6 +2774,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
     <!-- jquery
 		============================================ -->
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <!-- bootstrap JS
 		============================================ -->
     <script src="js/bootstrap.min.js"></script>
@@ -3140,7 +3133,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
       videoSelect.onchange = iniciaTransmicion();
 
       iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision);
-      
+
       function getDevices() {
         // AFAICT in Safari this only gets default devices until gUM is called :/
         return navigator.mediaDevices.enumerateDevices();
@@ -3189,7 +3182,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         document.getElementById('pantallaVideo').style.display = "block";
         document.querySelector("ul.notika-menu-wrap").style.paddingLeft = "200px";
         document.querySelector("div.logo-area").style.paddingLeft = "200px";
-        
+
 
         return navigator.mediaDevices.getUserMedia(constraints).
         then(gotStream).catch(handleError);
@@ -3227,31 +3220,51 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
 
       screenshotButton.onclick = videoElement.onclick = function() {
-
+        //<input id="img" type="hidden" name="archivo[]">
+        var formulario = document.getElementById('f');
         var img = document.createElement('img');
         var canvas = document.createElement('canvas');
         canvas.width = 300 //videoElement.videoWidth;
         canvas.height = 300 //videoElement.videoHeight;
         canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
         // Other browsers will fall back to image/png
-        img.src = canvas.toDataURL('image/webp');
-        img.setAttribute("name", "archivo[]");
+        //img.src = canvas.toDataURL('image/webp');
+        img.src = canvas.toDataURL('image/jpeg');
         img.setAttribute("id", "imgFoto" + contadorCanvas);
-        divCanvas.appendChild(img);
+        var input = document.createElement('input');
+        input.setAttribute("id", "inputImg" + contadorCanvas);
+        input.setAttribute("type", "hidden");
+        input.setAttribute("name", "canvas[]");
+        //input.setAttribute("class", "form-control captura");
+        input.setAttribute("value", canvas.toDataURL('image/jpeg'));
+        //input.style.display = "none";
+        //input.addEventListener('submit', functSubmit);
+        input.style.display = "none";
+        document.getElementById('vectorFotos').appendChild(img);
+        formulario.appendChild(input);
         contadorCanvas = contadorCanvas + 1;
       }
 
       function capturaFoto() {
+        var formulario = document.getElementById('f');
         var img = document.createElement('img');
         var canvas = document.createElement('canvas');
         canvas.width = 300 //videoElement.videoWidth;
         canvas.height = 300 //videoElement.videoHeight;
         canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
         // Other browsers will fall back to image/png
-        img.src = canvas.toDataURL('image/webp');
-        img.setAttribute("name", "archivo[]");
+        img.src = canvas.toDataURL('image/jpeg');
         img.setAttribute("id", "imgFoto" + contadorCanvas);
-        divCanvas.appendChild(img);
+        var input = document.createElement('input');
+        input.setAttribute("id", "inputImg" + contadorCanvas);
+        input.setAttribute("type", "hidden");
+        input.setAttribute("name", "canvas[]");
+        //input.setAttribute("class", "form-control captura");
+        input.setAttribute("value", canvas.toDataURL('image/jpeg'));
+        //input.style.display = "none";
+        //input.addEventListener('submit', functSubmit);
+        document.getElementById('vectorFotos').appendChild(img);
+        formulario.appendChild(input);
         contadorCanvas = contadorCanvas + 1;
       };
 
@@ -3266,12 +3279,28 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         }
       });
 
+      function functSubmit(event) {
+
+      }
     </script>
 
 
     <!-- ----------------------------------------------------------------------------------------------------->
-    <script language="JavaScript">
+    <script>
+      $("#f").submit(function(event) {
+        event.preventDefault(); //prevent default action 
+        var post_url = $(this).attr("action"); //get form action url
+        var request_method = $(this).attr("method"); //get form GET/POST method
+        var form_data = $(this).serialize(); //Encode form elements for submission
 
+        $.ajax({
+          url: post_url,
+          type: request_method,
+          data: form_data
+        }).done(function(response) { //
+          console.log(response);
+        });
+      });
     </script>
 
 
