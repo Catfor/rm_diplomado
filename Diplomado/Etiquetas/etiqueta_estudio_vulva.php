@@ -146,6 +146,11 @@
 						</center>
 					</div>
 					<div>
+						<p>
+							<center>
+								<b>Solicitud De Estudio Para Biopsia De Vulva</b>
+							</center>
+						</p>
 						<div class="row">
 							<div class="column">
 								<p>

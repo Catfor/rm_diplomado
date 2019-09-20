@@ -147,7 +147,7 @@ $(document).ready(function(){
 
 <body>
 	<div id="etiqueta">
-		<div class="container">
+		<div class="container" style="word-wrap:break-word;">
 			<div class="row">
 				<div style="background-color:#fff">
 					<div>
@@ -162,7 +162,7 @@ $(document).ready(function(){
 					<div>
 						<p>
 							<center>
-								<b>Solicitud de Estudio Para Biopsia de Cervix</b>
+								<b>Solicitud De Estudio Para Biopsia De Cervix</b>
 							</center>
 						</p>
 						<div class="row">
