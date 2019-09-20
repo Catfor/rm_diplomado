@@ -21,14 +21,15 @@ include('../../../coni/Localhost.php');
 
     <header class="clearfix">
 
-    <center><br>
-    <img src="logo.png"  width="150" height="75"/>
-          <h3>SISTEMA ÚNICO DE
-REPORTE DE COLPOSCOPIA REINA MADRE: CLÍNICAS DE LA MUJER
-</h3>
+    <div  id="logo">
+    <img src="logo.png" >
+    <font color="#A25CBF" face="Comic Sans MS,arial">
 
+  <h2 align="center">EXCELENCIA MÉDICA PARA QUIEN MÁS AMAS</h2>
+  </font>
 
-</center>
+          <h1>REPORTE DE COLPOSCOPIA</h1>
+</div>
 <br>
 <?php
 $consultasemanas = "SELECT CONCAT(p.nombre_paciente,'',p.apellidos_paciente) AS nombre,p.edad_paciente AS edad,a.fecha_atencion_medica AS fecha_atencion
@@ -95,8 +96,7 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
   $inicio = strftime("%d de %B del %Y", strtotime($fe));
 
       echo  $inicio;  ?></FONT></div>
-        <div><FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Envio</FONT></div>
-
+      
         <div><span></span> </div>
         <div><span></span> </div>
       </div>
@@ -174,17 +174,14 @@ if($m=='otro'){
           <tr>
             <td ><?php echo $colposcopia;?></td>
             <td class="service"><?php echo $cervix; ?></td>
-            <td class="service"><?php echo $zona_transformacion;?></td>
-
-
-
-          </tr>
+            <td class="service"><?php echo $zona_transformacion;?></td></tr>
           </tbody>
           <thead>
             <tr>
 
               <th>EPITELIO ACETOBLANCO</th>
               <th class="service">Borde y Superficie </th>
+              <th>PRUEBA DE SCHILLER</th>
 
 
 
@@ -212,30 +209,12 @@ if($bs_criterios_intermedios==''){
   <?php
 }
                 ?>
-
-
-
-
-
-
-
-
+                <td class="service"><?php echo $schiller; ?></td>
             </tr>
             </tbody>
-            <thead>
-              <tr>
-                <th>PRUEBA DE SCHILLER</th>
-
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="service"><?php echo $schiller; ?></td>
 
 
 
-              </tr>
-              </tbody>
       </table>
 
 
@@ -247,7 +226,7 @@ if($bs_criterios_intermedios==''){
       <table>
         <thead>
           <tr>
-            <th class="service"><FONT FACE="Arial" SIZE="2" style="color:rgb(93, 105, 117);">ANTECEDENTES DE IMPORTANCIA (CIRUGÍAS PREVIAS, CTRIOTERAPIA, LASSER, ELECTROCIRUGÍA) </FONT></th>
+            <th class="service"><FONT  FACE="Arial" SIZE="2" style="color:rgb(93, 105, 117);">ANTECEDENTES DE IMPORTANCIA (CIRUGÍAS PREVIAS, CTRIOTERAPIA, LASSER, ELECTROCIRUGÍA) </FONT></th>
             </tr>
         </thead>
         <tbody>
