@@ -1,4 +1,6 @@
-<?php session_start();  ?>
+<?php session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+  ?>
 <!doctype html>
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
@@ -41,7 +43,7 @@
 
 <body>
   <?php
-  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+
     include('../coni/Localhost.php');
     $id = $_SESSION['id_usuario'];
     $nick = $_SESSION['nick'];
@@ -214,11 +216,11 @@
                       <tr>
                         <th>Nombre Completo</th>
 
-                        <th>Edad</th>
+                        <th> Fecha Alta</th>
                         <th>Fecha Nacimiento</th>
                         <th>CP</th>
                         <th>total de Consultas</th>
-                        <th>Fecha Alta</th>
+                        <th>Edad</th>
 
                         <th>Estatus</th>
                       </tr>
@@ -339,7 +341,7 @@ WHERE p.id_paciente=$id_paciente
       <script src="js/knob/knob-active.js"></script>
       <!--  Chat JS
 		============================================ -->
-      
+      <script src="js/chat/jquery.chat.js"></script>
       <!--  todo JS
 		============================================ -->
       <script src="js/todo/jquery.todo.js"></script>
