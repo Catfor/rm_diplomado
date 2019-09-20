@@ -6,6 +6,7 @@
 	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../css/etiquetas.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
@@ -25,12 +26,15 @@
 			e.hallazgos_colposcopicos,
 			e.senalizacion,
 			e.x,
-			e.y
+			e.y,
+			ec.posible_recomendacion_diagnostica
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 2
 			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-			INNER JOIN estudio_biopsia_cervix e ON ct.id_estudio = e.id_estudio";
+			INNER JOIN estudio_biopsia_cervix e ON ct.id_estudio = e.id_estudio
+			INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 2
+			INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
 			
 		$res =$mysqliL->query($informacion);
 		$info = $res->fetch_assoc();
@@ -43,6 +47,7 @@
 		$senalizacion = $info['senalizacion'];
 		$x = $info['x'];
 		$y = $info['y'];
+		$posible_recomendacion_diagnostica = ucwords(str_replace("_"," ",$info['posible_recomendacion_diagnostica']));
 
 		if (!endsWith(trim($hallazgos_colposcopicos), ".")) {
 			$hallazgos_colposcopicos = $hallazgos_colposcopicos . '.';
@@ -74,7 +79,7 @@
 
 	<script>
 
-		window.onload = function(){
+$(document).ready(function(){
 
 
             var canvasDona = document.getElementById("canvasDona");
@@ -105,10 +110,12 @@
 			canvasDona.style.display = "none";
 			dona.setAttribute("src",canvasDona.toDataURL());
 			
-			setTimeout(imprimeEtiqueta(), 2000);
+			$(canvasDona).delay( 200 ).queue(function() {
+				imprimeEtiqueta();
+			});
 
 			
-		}
+		});
 
 		function imprimeEtiqueta() {
 
@@ -140,7 +147,7 @@
 
 <body>
 	<div id="etiqueta">
-		<div class="container">
+		<div class="container" style="word-wrap:break-word;">
 			<div class="row">
 				<div style="background-color:#fff">
 					<div>
@@ -155,7 +162,7 @@
 					<div>
 						<p>
 							<center>
-								<b>Solicitud de Estudio Para Biopsia de Cervix</b>
+								<b>Solicitud De Estudio Para Biopsia De Cervix</b>
 							</center>
 						</p>
 						<div class="row">
@@ -173,7 +180,7 @@
 						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
 						<p class="txt-justificado">
-							<b>Hallazgos Colposcopia:</b><?php echo ucwords($hallazgos_colposcopicos); ?></p>
+							<b>Hallazgos Colposcopia:</b><?php echo ucwords($posible_recomendacion_diagnostica); ?></p>
 						<p>
 							<b>Antecedentes de Cancer Cervicouterino:</b><?php echo ucwords($antecendente_cancer_cervicouterino); ?></p>
 						<p>
