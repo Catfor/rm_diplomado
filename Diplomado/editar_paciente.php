@@ -191,7 +191,7 @@
                                     $nombre_contacto_paciente = $resultado['nombre_contacto_paciente'];
                                     $telefono_contacto_paciente = $resultado['telefono_contacto_paciente'];
                                     $celular_contacto_paciente = $resultado['celular_contacto_paciente'];
-
+  $otro_tipo_seguro = $resultado['otro_tipo_seguro'];
                                     $fe = date("d.M.Y", strtotime($fecha_nacimiento_paciente));
                                     $inicio = strftime("%d de %B del %Y", strtotime($fe));
 
@@ -226,7 +226,7 @@
                     <!-- Breadcomb area End-->
                     <!-- Form Element area Start-->
                     <form id="tuformulario" name="tuformulario" action="guardar_editar_paciente.php" method="GET" onsubmit="pregunta()">
-                      <input type="hidden" name="id_paciente" id="id_paciente" class="form-control"  value="<?php echo ($id_paciente); ?>" required>
+                      <input type="hidden" name="id_paciente" id="id_paciente" class="form-control"  value="<?php echo ($id_paciente); ?>" >
 
                         <div class="form-element-area">
                             <div class="container">
@@ -243,7 +243,7 @@
                                                             <i class="far fa-user"></i>
                                                         </div>
                                                         <div class="nk-int-st">
-                                                            <input type="text" name="nombre_paciente" id="nombre_paciente" class="form-control" placeholder="Nombres del paciente" value="<?php echo ($nombre_paciente); ?>" required>
+                                                            <input type="text" name="nombre_paciente" id="nombre_paciente" class="form-control" placeholder="Nombres del paciente" value="<?php echo ($nombre_paciente); ?>" >
 
                                                         </div>
                                                     </div>
@@ -251,7 +251,7 @@
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div style="padding: 0px 20px 10px 39px;">
                                                         <div class="nk-int-st">
-                                                            <input type="text" name="apellidos_paciente" id="apellidos_paciente" class="form-control" placeholder="Apellidos Del Paciente" value="<?php echo ($apellidos_paciente); ?>" required>
+                                                            <input type="text" name="apellidos_paciente" id="apellidos_paciente" class="form-control" placeholder="Apellidos Del Paciente" value="<?php echo ($apellidos_paciente); ?>" >
 
                                                         </div>
                                                     </div>
@@ -264,7 +264,7 @@
                                                         </div>
                                                         <div class="input-group date nk-int-st">
                                                             <span class="input-group-addon" style="border: 0px;"></span>
-                                                            <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Fecha de Nacimiento" value="<?php echo $inicio ?>" required>
+                                                            <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Fecha de Nacimiento" value="<?php echo $inicio ?>" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -275,7 +275,7 @@
                                                             <i class="notika-icon notika-promos"></i>
                                                         </div>
                                                         <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name="estado_civil" class="selectpicker" required>
+                                                            <select name="estado_civil" class="selectpicker" >
                                                                 <option value="">Selecciona Estado Civil</option>
                                                                 <option value="Soltera" <?php if (strtolower($estado_civil) === "soltera") {
                                                                                             echo (" selected");
@@ -360,7 +360,7 @@
                                                             <i class="fas fa-graduation-cap"></i>
                                                         </div>
                                                         <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name="escolaridad_paciente" class="selectpicker" required>
+                                                            <select name="escolaridad_paciente" class="selectpicker" >
                                                                 <option value="">Selecciona Grado de Escolaridad</option>
                                                                 <option value="sin estudios" <?php if (strtolower($escolaridad_paciente) == "sin estudios") {
                                                                                                     echo (" selected");
@@ -435,7 +435,7 @@ if($id_tipo_seguro_paciente!=''){
                                                             <i class="fas fa-question"></i>
                                                         </div>
                                                         <div class="nk-int-st">
-                                                            <input id="otro_tipo_seguro" name='otro_tipo_seguro' type="text" class="form-control" placeholder="Otro Tipo de Seguro?" value="">
+                                                            <input id="otro_tipo_seguro" name='otro_tipo_seguro' type="text" class="form-control" placeholder="Otro Tipo de Seguro?" value="<?php echo $otro_tipo_seguro; ?>">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -445,7 +445,7 @@ if($id_tipo_seguro_paciente!=''){
                                                             <i class="fas fa-tag"></i>
                                                         </div>
                                                         <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name='apoyo_gubernamental_paciente' id='apoyo_gubernamental_paciente' class="selectpicker" required>
+                                                            <select name='apoyo_gubernamental_paciente' id='apoyo_gubernamental_paciente' class="selectpicker" >
                                                                 <option value="">¿Apoyo gubernamental?</option>
                                                                 <option value="1" <?php if (strtolower($apoyo_gubernamental_paciente) == "1") {
                                                                                         echo (" selected");
@@ -674,10 +674,10 @@ if($id_tipo_seguro_paciente!=''){
             <script src="../js/plugins.js"></script>
             <!-- and drop JS
 ============================================ -->
-            
 
-            
-            
+
+
+
             <!-- main JS
 ============================================ -->
             <script src="../js/main.js"></script>
