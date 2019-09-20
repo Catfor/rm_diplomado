@@ -31,9 +31,13 @@ REPORTE DE COLPOSCOPIA REINA MADRE: CLÍNICAS DE LA MUJER
 </center>
 <br>
 <?php
-$consultasemanas = " SELECT CONCAT(p.nombre_paciente,'',p.apellidos_paciente) AS nombre,p.edad_paciente AS edad,a.fecha_atencion_medica AS fecha_atencion
+$consultasemanas = "SELECT CONCAT(p.nombre_paciente,'',p.apellidos_paciente) AS nombre,p.edad_paciente AS edad,a.fecha_atencion_medica AS fecha_atencion
 ,a.ritmo AS ritmo,a.gestas AS gestas,a.para AS para,a.abortos AS abortos,a.cesareas AS cesareas,a.fecha_ultima_regla AS fum
-,a.fecha_ultimo_papanicolau AS fup,ec.cervix AS cervix
+,a.fecha_ultimo_papanicolau AS fup,ec.cervix AS cervix,a.metodos_planificacion AS m,a.cual AS cual,a.edad_inicio_vida_sexual AS ivsa
+,ec.colposcopia AS colposcopia,ec.zona_transformacion AS zona_transformacion,a.edad_en_que_fue_su_regla AS menarca
+,ec.epitelio_acetoblanco AS epitelio_acetoblanco,ec.bs_criterios_menores AS bs_criterios_menores,ec.bs_criterios_intermedios AS bs_criterios_intermedios
+,ec.bs_criterios_mayores AS bs_criterios_mayores,ec.schiller AS schiller,ec.antecedentes_de_importancia AS antecedentes_de_importancia,ec.plan_de_tratamiento AS plan_de_tratamiento
+,ec.miscelaneos AS miscelaneos,ec.posible_recomendacion_diagnostica
  FROM paciente AS p
  INNER JOIN ctrl_paciente_estudios AS c
  ON c.id_paciente=p.id_paciente
@@ -47,6 +51,26 @@ $resultadosemanas = $mysqliL->query($consultasemanas);
 
 while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
     $nombre = ucwords($resultadosemanas1['nombre']);
+$posible_recomendacion_diagnostica= $resultadosemanas1['posible_recomendacion_diagnostica'];
+$miscelaneos= $resultadosemanas1['miscelaneos'];
+
+
+
+$plan_de_tratamiento= $resultadosemanas1['plan_de_tratamiento'];
+$antecedentes_de_importancia= $resultadosemanas1['antecedentes_de_importancia'];
+
+$schiller= $resultadosemanas1['schiller'];
+
+$bs_criterios_menores= $resultadosemanas1['bs_criterios_menores'];
+$bs_criterios_intermedios= $resultadosemanas1['bs_criterios_intermedios'];
+$bs_criterios_mayores= $resultadosemanas1['bs_criterios_mayores'];
+
+      $menarca= $resultadosemanas1['menarca'];
+    $zona_transformacion= $resultadosemanas1['zona_transformacion'];
+    $colposcopia= $resultadosemanas1['colposcopia'];
+      $ivsa= $resultadosemanas1['ivsa'];
+      $m= $resultadosemanas1['m'];
+        $cual = $resultadosemanas1['cual'];
     $edad = $resultadosemanas1['edad'];
         $fecha_atencion = $resultadosemanas1['fecha_atencion'];
         $ritmo = $resultadosemanas1['ritmo'];
@@ -100,10 +124,19 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
         </thead>
         <tbody>
           <tr>
-            <td class="service"><?php  ?></td>
+            <td class="service"><?php  echo $menarca; ?></td>
             <td class="service"><?php echo  $ritmo; ?></td>
-            <td class="service"><?php  ?></td>
-            <td class="service"><?php  ?></td>
+            <?php
+if($m=='otro'){
+  echo "  <td class='service'>otro/$cual</td>";
+}else{
+             ?>
+<td class='service'><?php echo $m; ?></td>
+             <?php
+}
+              ?>
+
+            <td class="service"><?php echo $ivsa; ?></td>
             <td class="service"><?php echo  $gestas; ?></td>
             <td class="service"><?php echo  $para; ?></td>
             <td class="service"><?php echo  $abortos; ?></td>
@@ -139,9 +172,9 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
         </thead>
         <tbody>
           <tr>
-            <td >Design</td>
+            <td ><?php echo $colposcopia;?></td>
             <td class="service"><?php echo $cervix; ?></td>
-            <td class="service"></td>
+            <td class="service"><?php echo $zona_transformacion;?></td>
 
 
 
@@ -149,18 +182,39 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
           </tbody>
           <thead>
             <tr>
+
               <th>EPITELIO ACETOBLANCO</th>
-              <th class="service">SUPERFICIE</th>
-              <th class="desc">BORDES</th>
+              <th class="service">Borde y Superficie </th>
+
 
 
             </tr>
           </thead>
           <tbody>
             <tr>
-                <td class="service">Design</td>
-              <td class="service">Design</td>
-              <td class="service">Design</td>
+                <td class="service"><?php echo $colposcopia; ?></td>
+                <?php if($bs_criterios_menores==''){
+
+                }else{?>
+                  <td class="service"><?php echo $bs_criterios_menores; ?> </td>
+<?php
+                }?>
+        <?php
+if($bs_criterios_intermedios==''){
+
+}else{
+  ?>
+  <td class="service"><?php echo $bs_criterios_intermedios; ?></td>
+<?php
+}if($bs_criterios_mayores==''){}else{
+  ?>
+  <td class="service"><?php echo $bs_criterios_mayores; ?></td>
+  <?php
+}
+                ?>
+
+
+
 
 
 
@@ -176,7 +230,7 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
             </thead>
             <tbody>
               <tr>
-                <td class="service">Design</td>
+                <td class="service"><?php echo $schiller; ?></td>
 
 
 
@@ -198,7 +252,8 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
         </thead>
         <tbody>
           <tr>
-            <td class="service">Design</td>  </tr>
+
+            <td class="service"><?php echo $antecedentes_de_importancia; ?> </td>  </tr>
           </tbody>
           <thead>
             <tr>
@@ -208,7 +263,7 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
           <tbody>
             <tr>
 
-              <td class="service">Design</td>
+              <td class="service"><?php echo  $posible_recomendacion_diagnostica;?></td>
             </tr>
             </tbody>
             <thead>
@@ -219,7 +274,7 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
             <tbody>
               <tr>
 
-                <td class="service">Design</td>
+                <td class="service"><?php echo  $miscelaneos;?> </td>
               </tr>
               </tbody>
               <thead>
@@ -230,7 +285,7 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
               <tbody>
                 <tr>
 
-                  <td class="service">Design</td>
+                  <td class="service"><?php echo $plan_de_tratamiento; ?> </td>
                 </tr>
                 </tbody>
 
@@ -250,8 +305,10 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
    ?>
 <img src="../.././imagesestudios/<?php echo $ruta_imagen; ?>"  width="250" height="105"/>
 <?php  }   ?>
-</center><br><br>
+</center><br><br><br><br><br><br><br><br><br>
+<center>---------------------------------------<br>firma medico</center>
     </main>
+    <div>
     <footer>
 DATOS DE MÉDICO TRATANTE
       <div id="company" class="clearfix">
@@ -263,7 +320,7 @@ DATOS DE MÉDICO TRATANTE
         <div><a >www.reinamadre.mx</a></div>
       </div>
     </footer>
-
+</div>
   </body>
 </html>
 <?php
