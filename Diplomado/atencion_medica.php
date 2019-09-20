@@ -982,12 +982,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='cervix' id='cervix' class="form-control">
                                             <option value="">Selecciona Cervix</option>
-                                            <option value="eutrofico">EUTRÓFICO</option>
-                                            <option value="atrofico">ATRÓFICO</option>
-                                            <option value="hipotrofico">HIPOTRÓFICO</option>
-                                            <option value="hipertrofico">HIPERTRÓFICO</option>
-                                            <option value="ausencia_quirurgica">AUSENCIA QUIRÚRGICA</option>
-                                            <option value="ausencia_otras_causas">AUSENCIA OTRAS CAUSAS</option>
+                                            <option value="eutrofico">Eutrófico</option>
+                                            <option value="atrofico">Atrófico</option>
+                                            <option value="hipotrofico">Hipotrófico</option>
+                                            <option value="hipertrofico">Hipertrófico</option>
+                                            <option value="ausencia_quirurgica">Ausencia Quirúrgica</option>
+                                            <option value="ausencia_otras_causas">Ausencia Otras Causas</option>
                                           </select>
 
                                         </div>
@@ -996,8 +996,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='union_escamocolumnar' id='union_escamocolumnar' class="form-control">
                                             <option value="">Selecciona Union Escamocolumnar </option>
-                                            <option value="completamente_visible">COMPLETAMENTE VISIBLE</option>
-                                            <option value="parcialmente_visible">PARCIALMENTE VISIBLE</option>
+                                            <option value="completamente_visible">Completamente Visible</option>
+                                            <option value="parcialmente_visible">Parcialmente Visible</option>
                                           </select>
 
                                         </div>
@@ -1028,8 +1028,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' onChange="pagoOnChange(this)" class="form-control">
 
-                                            <option value="">AUSENTE</option>
-                                            <option value="presente">PRESENTE</option>
+                                            <option value="">Ausente</option>
+                                            <option value="presente">Presente</option>
                                           </select>
 
                                         </div>
@@ -1170,27 +1170,28 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                             <select name='cy_menores' id='cy_menores' class="form-control">
-                                              <option value="">CITERIOS MENORES</option>
-                                              <option value="positiva">POSITIVA</option>
-                                              <option value="negativa_puntos_criterios_anteriores">NEGATIVA CON < 3 PUNTOS EN CRITERIOS ANTERIORES</option> <option value="zonas_yodo_negativas">ZONAS YODONEGATIVAS MÁS ALLÁ DE LA ZT</option>
+                                              <option value="">Criterios Menores</option>
+                                              <option value="positiva">Positivo</option>
+                                              <option value="negativa_puntos_criterios_anteriores">Negativa Con < 3 Puntos En Criterios Anteriores</option> 
+                                              <option value="zonas_yodo_negativas">Zonas Yodonegativas Más Allá De La ZT</option>
                                             </select>
 
                                           </div>
                                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                             <select name='cy_intermedios' id='cy_intermedios' class="form-control">
-                                              <option value="">CITERIOS INTERMEDIOS</option>
-                                              <option value="capacitacion_parcial_yodo">CAPTACIÓN PARCIAL DE YODO</option>
-                                              <option value="motedao_jaspeado">(MOTEADO-JASPEADO)</option>
+                                              <option value="">Citerios Intermedios</option>
+                                              <option value="capacitacion_parcial_yodo">Captación Parcial De Yodo</option>
+                                              <option value="motedao_jaspeado">(Moteado-Jaspeado)</option>
                                             </select>
 
                                           </div>
                                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                             <select name='cy_mayores' id='cy_mayores' class="form-control">
-                                              <option value="">CITERIOS MAYORES</option>
-                                              <option value="yodo_negativa_conmas_puntos">YODONEGATIVA CON 4 O MÁS PUNTOS</option>
-                                              <option value="en_criterios_anteriores">EN CRITERIOS ANTERIORES</option>
+                                              <option value="">Citerios Mayores</option>
+                                              <option value="yodo_negativa_conmas_puntos">Yodonegativa Con 4 O Más Puntos</option>
+                                              <option value="en_criterios_anteriores">En Criterios Anteriores</option>
                                             </select>
 
                                           </div>
@@ -1229,7 +1230,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <select name='vaginoscopia_acetico' id='vaginoscopia_acetico' class="form-control">
                                             <option value="">Selecciona Acético</option>
                                             <option value="positivo">Positivo</option>
-                                            <option value="negativo">Neganitvo</option>
+                                            <option value="negativo">Negativo</option>
                                           </select>
 
                                         </div>
@@ -1270,17 +1271,17 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='miscelaneos' id='miscelaneos' class="form-control">
                                             <option value="">Selecciona Miscelaneos</option>
-                                            <option value="condilomas">CONDILOMAS</option>
-                                            <option value="eversion_glandular">EVERSIÓN GLANDULAR</option>
-                                            <option value="leucoplasia">LEUCOPLASIA</option>
-                                            <option value="zt_congenita">ZT CONGÉNITA</option>
-                                            <option value="inflamacion">INFLAMACIÓN</option>
-                                            <option value="atrofia">ATROFIA</option>
-                                            <option value="polipos">PÓLIPOS</option>
-                                            <option value="deciduosis">DECIDUOSIS</option>
-                                            <option value="queratosis">QUERATOSIS</option>
-                                            <option value="hiperplasia_glandular">HIPERPLASIA GLANDULAR</option>
-                                            <option value="micropapilomatosis_vestibular">MICROPAPILOMATOSIS VESTIBULAR</option>
+                                            <option value="condilomas">Condilomas</option>
+                                            <option value="eversion_glandular">Eversión Glandular</option>
+                                            <option value="leucoplasia">Leucoplasia</option>
+                                            <option value="zt_congenita">ZT Congénita</option>
+                                            <option value="inflamacion">Inflamación</option>
+                                            <option value="atrofia">Atrofia</option>
+                                            <option value="polipos">Pólipos</option>
+                                            <option value="deciduosis">Deciduosis</option>
+                                            <option value="queratosis">Queratosis</option>
+                                            <option value="hiperplasia_glandular">Hiperplasia Glandular</option>
+                                            <option value="micropapilomatosis_vestibular">Micropapilomatosis Vestibular</option>
                                           </select>
                                         </div>
 
@@ -1554,7 +1555,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                                    <select name='estudio_solicitar_vaginoscopia' id='estudio_solicitar_vaginoscopia' class="selectpicker">
+                                                    <select name='estudio_solicitar_vaginoscopia' id='estudio_solicitar_vaginoscopia' class="form-control">
                                                       <option value="">Selecciona Estudio A Solicitar</option>
                                                       <option value="institucional">INSICIONAL</option>
                                                       <option value="trucut">TRUCUT</option>
@@ -1634,7 +1635,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           </div>
           <br><br>
           <center> <button type="submit" class="btn btn-primary">Enviar</button></center>
-          <input id='myFormSubmit' name="submit" type="submit" value="Enviar">
         </div>
       </div>
 
@@ -2924,7 +2924,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         <br><br>
         <center> <button type="submit" class="btn btn-primary">Enviar</button></center>
 
-        <input id='myFormSubmit' name="submit" type="submit" value="Enviar">
 
         <br>
 
@@ -3460,9 +3459,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         $.ajax({
           url: post_url,
           type: request_method,
-          data: form_data
-        }).done(function(response) { //
-          console.log(response);
+          data: form_data,
+          success: function(result){
+            //console.log(result);
+            //if(result === "no_errors"){ 
+              if(!result.includes("error")){
+                location.href = "consulta_paciente.php"
+              }
+            //}
+          }
         });
       });
     </script>
