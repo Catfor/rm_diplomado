@@ -105,7 +105,7 @@
 			canvasDona.style.display = "none";
 			dona.setAttribute("src",canvasDona.toDataURL());
 			
-			setTimeout(imprimeEtiqueta(), 1000);
+			setTimeout(imprimeEtiqueta(), 2000);
 
 			
 		}
@@ -127,6 +127,7 @@
 
 			mywindow.print();
 			mywindow.close();
+			window.close();
 
 			return true;
 		}

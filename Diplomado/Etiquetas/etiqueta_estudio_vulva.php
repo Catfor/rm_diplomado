@@ -6,6 +6,7 @@
 	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../css/etiquetas.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 	
@@ -24,12 +25,15 @@
 			e.fecha_estudio,
 			e.anotaciones_vulvoscopia,
 			e.x,
-			e.y
+			e.y,
+			ec.vulvoscopia_acetico
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 6
 			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-			INNER JOIN estudio_vulvoscopia e ON ct.id_estudio = e.id_estudio";
+			INNER JOIN estudio_vulvoscopia e ON ct.id_estudio = e.id_estudio
+			INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
+			INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
 			
 		$res =$mysqliL->query($informacion);
 		$info = $res->fetch_assoc();
@@ -40,6 +44,7 @@
 		$anotaciones_vulvoscopia = $info['anotaciones_vulvoscopia'];
 		$x = $info['x'];
 		$y = $info['y'];
+		$vulvoscopia_acetico = $info["vulvoscopia_acetico"];
 
 		if (!endsWith(trim($anotaciones_vulvoscopia), ".")) {
 			$anotaciones_vulvoscopia = $anotaciones_vulvoscopia . '.';
@@ -67,8 +72,7 @@
 
 	<script>
 
-
-		window.onload = function(){
+		$(document).ready(function(){
 
 			var canvasVulva = document.getElementById("canvasVulva");
 			var ctxVulva = canvasVulva.getContext("2d");
@@ -93,14 +97,15 @@
 			ctxVulva.lineTo(x+10,y-10);
 			ctxVulva.stroke();
 
+			vulva.setAttribute("src",canvasVulva.toDataURL());
 			vulva.style.display = "block";
 			canvasVulva.style.display = "none";
-			vulva.setAttribute("src",canvasVulva.toDataURL());
-			
-			setTimeout(imprimeEtiqueta(), 1000);
+			$(canvasVulva).delay( 200 ).queue(function() {
+				imprimeEtiqueta();
+			});
 
 
-		}
+		});
 
 
 		function imprimeEtiqueta() {
@@ -118,6 +123,7 @@
 
 			mywindow.print();
 			mywindow.close();
+			window.close();
 
 			return true;
 		}
@@ -154,19 +160,19 @@
 						</div>
 						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
-						<p class="txt-justificado">
+						<!--<p class="txt-justificado">
 							<b>Hallazgos Vulvoscopia:</b></p>
-						<p>
-							<b>Acetico:</b> NEGATIVO</p>
+						<p>-->
+							<b>Acetico:</b> <?php echo ucwords($vulvoscopia_acetico)?></p>
 						<p>
 							<p>
 								<b>Se&ntilde;ala Donde Fue Tomada la muestra:</b>
 							</p>
 
 							<div class="row">
-								<div class="column">
+								<div id="columnaCanvas" class="column">
 									<center>
-										<img  id="recuadroVulva" src="../../img/vulva.JPG" width="200" height="200"  ismap  style="display:none">
+										<img  id="recuadroVulva" src="../../img/vulva.JPG" width="200" height="200" style="display:none;max-width:200px;max-height:200px;">
 										<canvas id="canvasVulva" width="200" height="200">
 									</center>
 								</div>
@@ -174,7 +180,7 @@
 									<p>
 										<b>Anotaciones:</b>
 									</p>
-									<p class="txt-justificado"><?php echo ucwords($medico); ?></p>
+									<p class="txt-justificado"><?php echo ucwords($anotaciones_vulvoscopia); ?></p>
 								</div>
 							</div>
 					</div>

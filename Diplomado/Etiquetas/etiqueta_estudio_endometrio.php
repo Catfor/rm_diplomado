@@ -89,7 +89,8 @@
 
 			mywindow.print();
 			mywindow.close();
-
+			
+			window.close();
 			return true;
 		}
 	</script>
