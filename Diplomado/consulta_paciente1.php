@@ -217,14 +217,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     <thead>
                       <tr>
                         <th>Nombre</th>
-  <th>Apellidos</th>
+
                         <th>Edad</th>
                         <th>Fecha Nacimiento</th>
                         <th>CP</th>
                         <th>total de Consultas</th>
                         <th>Fecha Alta</th>
 
-                        <th>Estatus</th>
+                        <th>Editar Paciente </th>
                       </tr>
                     </thead>
 
@@ -249,9 +249,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 ?>
 
-                              <tr><td><span id="firstname"><?php echo $nombre_paciente ?></span></td>
+                              <tr><td><span id="firstname"><?php echo $nombre_paciente.' '.$apellidos_paciente?></span></td>
 <?php
-echo "<td>$edad_paciente</td>
+echo "
                                           <td>$edad_paciente</td>
                                           <td>$fecha_nacimiento_paciente</td>
                                           <td>$codigo_postal  </td>
@@ -273,7 +273,7 @@ WHERE p.id_paciente=$id_paciente
                             echo "
                                             <td>$fecha_creacion</td>";
 ?>
-                                            <td> <a href="editar_paciente.php?id_paciente=<?php echo $id_paciente ?>"><i class='far fa-edit'></i></a></td>
+                                      <td>       <a href="editar_paciente.php?id_paciente=<?php echo $id_paciente ?>"><center><i class='far fa-edit'></i></center>  </a></td>
 
 <?php echo "
 

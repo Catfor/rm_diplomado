@@ -214,7 +214,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                                                     <td>$nombre_paciente $apellidos_paciente </td>
 
                                                                     <td>$fecha_nacimiento_paciente</td>
-                                                                    <td><a href='pdfcolpos/reportes/index.php?id_paciente=$id_paciente&id_atencion=$i'  target='_blank'>$id_atencion </a></td>";
+                                                                    <td><a href='atencion_medica.php?id_paciente=$id_paciente&id_atencion=$i'  target='_blank'>$id_atencion </a></td>";
 
 
                                             //Colposcopia
@@ -400,43 +400,8 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
                                              $id_usu_pat = $resultadosemanas1['id_usu_pat'];
                                             $estatus1 = $resultadosemanas1['estatus'];
                                             $ii = $resultadosemanas1['i'];
-                                            $consultasemanas1 = "SELECT DISTINCT c.estatus,c.id_usu_pat  FROM paciente AS p left JOIN ctrl_paciente_estudios AS c ON c.id_paciente=p.id_paciente WHERE p.id_paciente=$id_paciente AND id_estudio!=0";
-                                            $resultadosemanas1 = $mysqliL->query($consultasemanas1);
-
-                                            $totalsi=$resultadosemanas1->num_rows;
-                                            if($totalsi==0){
-                                              echo "<tr><td><center>----</center> </td>";
-                                            }else{
-                                            while ($resultadosemanas12 = $resultadosemanas1->fetch_assoc()) {
-                                                $estatus1 = $resultadosemanas12['estatus'];
-
-                                                $id_usu_pat1 = $resultadosemanas12['id_usu_pat'];
 
 
-                                           if($estatus1==0 and $id_usu_pat1==0){
-                                    //         echo "<td> <center> <label class='col-lg-3 col-md-3 col-sm-6 col-xs-12'><input  type='checkbox'  name='idusuariopato[]' value='$ii'> </label> </center></td>";
-                                           }
-
-
-                                           elseif($id_usu_pat1==1 and $estatus1==0){
-
-                                                                                        echo "
-                                                                                           <td> <center> VER/EDITAR </center></td>
-
-                                           ";
-
-                                               }
-
-                                           elseif($id_usu_pat1==1 and $estatus1==1){
-
-                                                                                        echo "
-                                                                                           <td><center>  VER </center></td>
-
-                                           ";
-
-                                           }
-                                                   }
-                                                   }
                                              echo "
 
                                                                      <td>$nombre_paciente<br>$apellidos_paciente </td>
