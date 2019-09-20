@@ -1,26 +1,48 @@
 <!DOCTYPE html>
+<?php
+$id_atencion=$_GET['id_atencion'];
+$id_paciente=$_GET['id_paciente'];
+$id_estudio=$_GET['id_estudio'];
+include('../../../coni/Localhost.php');
+
+
+ ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Example 1</title>
+    <title>Colposcopia Reina Madre</title>
     <link rel="stylesheet" href="style.css" media="all" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png">
   </head>
   <body>
 
     <header class="clearfix">
 
-      <div  id="logo">
-      <img src="logo.png"  ><br><br><br><br><br><br>
-          <h1>SISTEMA ÚNICO DE
+    <center>
+    <img src="logo.png"  width="150" height="75"/>
+          <h3>SISTEMA ÚNICO DE
 REPORTE DE COLPOSCOPIA REINA MADRE: CLÍNICAS DE LA MUJER
-</h1>
+</h3>
 
-      </div>
 
+</center>
 
 
       <div id="project">
-        <div><FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Nombre Del Paciente :</FONT></div>
+        <div><FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Nombre Del Paciente :<?php
+
+        $consultasemanas = "SELECT CONCAT(p.nombre_paciente,'',p.apellidos_paciente) AS nombre FROM paciente AS p INNER JOIN ctrl_paciente_estudios AS c
+        ON c.id_paciente=p.id_paciente
+        INNER JOIN estudio_colposcopico AS ec
+        ON ec.id_estudio=c.id_estudio
+        WHERE c.id_estudio='$id_estudio' AND c.id_paciente='$id_paciente' AND c.id_tipo_estudio=2";
+
+        $resultadosemanas = $mysqliL->query($consultasemanas);
+
+        while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
+            $nombre = ucwords($resultadosemanas1['nombre']);
+          }
+       echo $nombre;?></FONT></div>
         <div><FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Edad:</FONT></div>
         <div><FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Envio</FONT></div>
 

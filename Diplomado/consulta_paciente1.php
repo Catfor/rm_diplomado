@@ -1,4 +1,7 @@
-<?php session_start();  ?>
+<?php session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+
+  ?>
 <!doctype html>
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
@@ -42,7 +45,7 @@
 
 <body>
   <?php
-  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+
     include('../coni/Localhost.php');
     $id = $_SESSION['id_usuario'];
     $nick = $_SESSION['nick'];
@@ -362,7 +365,7 @@ WHERE p.id_paciente=$id_paciente
 
       <!-- tawk chat JS
 		============================================ -->
-
+<?php include('js.php');?>
 </body>
 
 </html>
@@ -376,6 +379,6 @@ WHERE p.id_paciente=$id_paciente
 
 
 
-include('js.php');
+
 
 ?>

@@ -1,4 +1,6 @@
-<?php session_start();  ?>
+<?php session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+  ?>
 <!doctype html>
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
@@ -41,7 +43,7 @@
 
 <body>
     <?php
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+
         include('../coni/Localhost.php');
         $id = $_SESSION['id_usuario'];
         $nick = $_SESSION['nick'];
@@ -189,14 +191,14 @@
                                     <th>Fecha de Nacimiento</th>
                                     <th>ID de Atencion</th>
                                     <th>Colposcopia</th>
-                                    <th>Papanicolau</th>
-                                    <th>Biopsias</th>
+                                    <th>Papanicolau-----Biopsias</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
 
-                                        $consultasemanas = "SELECT DISTINCT p.id_paciente, 	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente";
+                                        $consultasemanas = "SELECT DISTINCT ct.id_atencion as i,p.id_paciente ,p.id_paciente as p, 	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente WHERE  ct.id_usuario='$id'";
                                         $resultadosemanas = $mysqliL->query($consultasemanas);
 
                                         while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
@@ -206,12 +208,13 @@
                                             $fecha_nacimiento_paciente = $resultadosemanas1['fecha_nacimiento_paciente'];
                                             $edad_paciente = $resultadosemanas1['edad_paciente'];
                                             $id_atencion = $resultadosemanas1['id_atencion'];
-
+  $p = $resultadosemanas1['p'];
+    $i = $resultadosemanas1['i'];
                                             echo "  <tr>
                                                                     <td>$nombre_paciente $apellidos_paciente </td>
 
                                                                     <td>$fecha_nacimiento_paciente</td>
-                                                                    <td>$id_atencion</td>";
+                                                                    <td><a href='pdfcolpos/reportes/index.php?id_paciente=$id_paciente&id_atencion=$i'  target='_blank'>$id_atencion </a></td>";
 
 
                                             //Colposcopia
@@ -220,8 +223,8 @@
                                             if ($resultSetColposcopia = $mysqliL->query($queryColposcopia)) {
                                                 while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
                                                     $id_estudio = $resultSet['id_estudio'];
-                                                    echo "<a href='atencion_medica.php?id_paciente=$id_paciente'  target='_blank'>Ver</a>";
-                                                  
+                                                    echo "<a href='pdfcolpos/reportes/index.php?id_paciente=$id_paciente&id_atencion=$p&id_estudio=$id_estudio'  target='_blank'>Ver </a>";
+
                                                 }
                                             }
                                             echo "</td>";
@@ -231,7 +234,7 @@
                                             if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
                                                 while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
                                                     $id_estudio = $resultSet['id_estudio'];
-                                                    echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver Papanicolaou</a>";
+                                                    echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver </a>";
                                                 }
                                             }
                                             echo "</td>";
@@ -611,7 +614,7 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
 
 <!--//tawk chat JS
 		============================================ -->
-
+<?php //include('js.php'); ?>
 </body>
 
 </html>
@@ -625,6 +628,6 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
 
 
 
-include('js.php');
+
 
 ?>
