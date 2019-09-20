@@ -1,5 +1,6 @@
 <?php session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+  error_reporting(0);
   ?>
 <!DOCTYPE html>
 <?php
@@ -45,8 +46,7 @@ $consultasemanas = "SELECT CONCAT(p.nombre_paciente,'',p.apellidos_paciente) AS 
  ON ec.id_estudio=c.id_estudio
  INNER JOIN atencion_medica AS a
  ON a.id_atencion_medica=c.id_atencion
-        WHERE c.id_estudio='$id_estudio' AND c.id_paciente='$id_paciente' AND c.id_tipo_estudio=2";
-
+        WHERE c.id_estudio='$id_estudio' AND c.id_paciente='$id_paciente' AND c.id_tipo_estudio=1";
 $resultadosemanas = $mysqliL->query($consultasemanas);
 
 while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
