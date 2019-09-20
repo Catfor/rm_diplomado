@@ -102,7 +102,7 @@
 					<div>
 						<p>
 							<center>
-								<b>Solicitud De Estudio Para Biopsia De Vaginoscopia</b>
+								<b>Solicitud de Estudio Para Biopsia de Vaginoscopia</b>
 							</center>
 						</p>
 

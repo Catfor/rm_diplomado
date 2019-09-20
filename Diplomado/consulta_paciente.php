@@ -48,9 +48,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     $id = $_SESSION['id_usuario'];
     $nick = $_SESSION['nick'];
     $correo_general = $_SESSION['correo_general'];
-    $nombre_usuario = ucwords(strtolower($_SESSION['nombre_usuario']));
+    $nombre_usuario = ucwords($_SESSION['nombre_usuario']);
     $rol = $_SESSION['rol'];
-    $apellidos_usuario = ucwords(strtolower($_SESSION['apellidos_usuario']));
+    $apellidos_usuario = ucwords($_SESSION['apellidos_usuario']);
 
     $result123 = mysqli_query($mysqliL, "SELECT contra from usu_me where id_usuario='$id'");
 
@@ -238,8 +238,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 
                           while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
-                            $nombre_paciente = ucwords(strtolower($resultadosemanas1['nombre_paciente']));
-                            $apellidos_paciente = ucwords(strtolower($resultadosemanas1['apellidos_paciente']));
+                            $nombre_paciente = ucwords($resultadosemanas1['nombre_paciente']);
+                            $apellidos_paciente = ucwords($resultadosemanas1['apellidos_paciente']);
                             $fecha_nacimiento_paciente = $resultadosemanas1['fecha_nacimiento_paciente'];
                             $edad_paciente = $resultadosemanas1['edad_paciente'];
                             $fecha_creacion = $resultadosemanas1['fecha_creacion'];

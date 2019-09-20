@@ -106,7 +106,7 @@
 					<div>
 						<p>
 							<center>
-								<b>Solicitud De Estudio De Papanicolaou</b>
+								<b>Solicitud de Estudio de Papanicolaou</b>
 							</center>
 						</p>
 

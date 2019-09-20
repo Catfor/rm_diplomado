@@ -114,7 +114,7 @@
 					<div>
 						<p>
 							<center>
-								<b>Solicitud De Estudio Para Biopsia De Endometrio</b>
+								<b>Solicitud de Estudio Para Biopsia de Endometrio</b>
 							</center>
 						</p>
 						<div class="row">
