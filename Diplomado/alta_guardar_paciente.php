@@ -27,7 +27,7 @@ $result123 = mysqli_query($mysqliL, "SELECT * from paciente where nombre_pacient
 
 $total = $result123->num_rows;
 if ($total > 0) {
-  header("Location:alta_paciente.php?nombres=$nombre_paciente $apellidos_paciente");
+  header("Location:alta_paciente1.php?nombres=$nombre_paciente $apellidos_paciente");
 } else {
   $cumpleanos = new DateTime("$newDate");
   $hoy = new DateTime();

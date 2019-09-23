@@ -378,7 +378,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                             <div class="input-group date nk-int-st">
 
                               <span class="input-group-addon"></span>
-                              <input type="text" class="form-control" name="edad_inicio_menstruacion" placeholder="Edad de Inicio de menstruación">
+                              <input type="text" class="form-control inputDeshabilitado" name="edad_inicio_menstruacion" placeholder="Edad de Inicio de menstruación">
 
 
                             </div>
@@ -800,7 +800,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                             <div class="input-group date nk-int-st">
 
                               <span class="input-group-addon"></span>
-                              <input type="text" class="form-control" name="fecha_ultima_regla" placeholder="Fecha de la última regla">
+                              <input type="text" class="form-control inputDeshabilitado" name="fecha_ultima_regla" placeholder="Fecha de la última regla">
                             </div>
                           </div>
                         </div>
@@ -810,33 +810,33 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                             <div class="input-group date nk-int-st">
 
                               <span class="input-group-addon"></span>
-                              <input type="text" class="form-control" name="fecha_ultimo_papanicolau" placeholder="Fecha del último papanicolau:">
+                              <input type="text" class="form-control inputDeshabilitado" name="fecha_ultimo_papanicolau" placeholder="Fecha del último papanicolau:">
                             </div>
                           </div>
                         </div>
 
                       </div>
-                      <div class="row fila">
+                      <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group purple-border">
-                            <div class="row fila">
+                            <div class="row">
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
                               </div>
                             </div>
-                            <textarea class="form-control" rows="1" placeholder="Escribe Antecedentes de Lesión" name="atecedentes_lesion" form="f"></textarea>
+                            <textarea class="form-control" rows="2" placeholder="Escribe Antecedentes de Lesión" name="atecedentes_lesion" form="f"></textarea>
                           </div>
                         </div>
                       </div>
-                      <div class="row fila">
+                      <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                           <div class="form-group purple-border">
-                            <div class="row fila">
+                            <div class="row">
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
                               </div>
                             </div>
-                            <textarea class="form-control" rows="1" placeholder="Escribe Antecedente de Tratamiento" name="antecedentes_tratamiento" form="f"></textarea>
+                            <textarea class="form-control" rows="2" placeholder="Escribe Antecedente de Tratamiento" name="antecedentes_tratamiento" form="f"></textarea>
                           </div>
                         </div>
                       </div>
@@ -1320,7 +1320,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                       </div>
                                       <div class="row fila">
-                                        <div id="vectorFotos" style="width: 900px;display:inline-block;">
+                                        <div id="vectorFotos" style="width: 100%;display:inline-block; text-align:center;">
                                         </div>
                                       </div>
                                       <div class="row fila">
@@ -2098,7 +2098,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
       }
 
-
       screenshotButton.onclick = videoElement.onclick = function() {
         //<input id="img" type="hidden" name="archivo[]">
         var formulario = document.getElementById('f');
@@ -2134,7 +2133,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
         // Other browsers will fall back to image/png
         img.src = canvas.toDataURL('image/jpeg');
-        img.setAttribute("id", "imgFoto" + contadorCanvas);
+        img.setAttribute("id", "inputImg" + contadorCanvas);
         var input = document.createElement('input');
         input.setAttribute("id", "inputImg" + contadorCanvas);
         input.setAttribute("type", "hidden");
@@ -2143,7 +2142,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         input.setAttribute("value", canvas.toDataURL('image/jpeg'));
         //input.style.display = "none";
         //input.addEventListener('submit', functSubmit);
-        document.getElementById('vectorFotos').appendChild(img);
+        var div = document.createElement('div');
+        var i = document.createElement('i');
+        i.setAttribute("class","far fa-times-circle fa-2x");
+        div.style.position = "relative";
+        div.style.display = "inline-block";
+        div.style.margin = "5px";
+        div.appendChild(img);
+        div.appendChild(i);
+        document.getElementById('vectorFotos').appendChild(div);
         formulario.appendChild(input);
         contadorCanvas = contadorCanvas + 1;
       };
@@ -2159,9 +2166,16 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         }
       });
 
-      function functSubmit(event) {
+      $(document).on("click",".fa-times-circle.fa-2x",function(e){
+        var idElemento = $($(e.target)[0]).prev().attr('id');
+        $($(e.target)[0]).parent().fadeOut().remove();
+        $('#'+idElemento).remove();
+      });
 
-      }
+      $('.inputDeshabilitado').keydown(function() {
+        return false;
+      });
+
     </script>
 
 
@@ -2212,6 +2226,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
 
 
+/*
+<i class="far fa-times-circle fa-2x" style="
+     top: 10px;
+     right: 10px;
+     position:absolute;
+     color:white;
+     opacity: 0.5;
+     "></i>
 
+*/
 
 ?>
