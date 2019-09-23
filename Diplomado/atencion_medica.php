@@ -1,4 +1,4 @@
-<?php session_start();  ?>
+<?php session_start(); if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
 <!doctype html>
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
@@ -362,8 +362,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                     </div>
 
                   </div><br><br>
-                  <?php
-                      if ($total == 0) { ?>
+          
 
 
                     <form id="f" action='guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
@@ -1172,7 +1171,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                             <select name='cy_menores' id='cy_menores' class="form-control">
                                               <option value="">Criterios Menores</option>
                                               <option value="positiva">Positivo</option>
-                                              <option value="negativa_puntos_criterios_anteriores">Negativa Con < 3 Puntos En Criterios Anteriores</option> 
+                                              <option value="negativa_puntos_criterios_anteriores">Negativa Con < 3 Puntos En Criterios Anteriores</option>
                                               <option value="zonas_yodo_negativas">Zonas Yodonegativas Más Allá De La ZT</option>
                                             </select>
 
@@ -2193,7 +2192,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           data: form_data,
           success: function(result){
             //console.log(result);
-            //if(result === "no_errors"){ 
+            //if(result === "no_errors"){
               if(!result.includes("error")){
                 location.href = "consulta_paciente.php"
               }
