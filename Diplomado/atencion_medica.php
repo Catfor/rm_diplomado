@@ -362,7 +362,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                     </div>
 
                   </div><br><br>
-          
+                
 
 
                     <form id="f" action='guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
