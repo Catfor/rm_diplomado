@@ -358,8 +358,9 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
         <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <p>Seleccion Anterior  Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></p>
               <select name="edad_inicio_menstruacion" class="form-control">
-              <option value="<?php echo $edad_inicio_menstruacion; ?>">Seleccion Anterior  Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></option>
+              <option value="<?php echo $edad_inicio_menstruacion; ?>">Seleccion Anterior  Menstruacion  Fue:</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -463,12 +464,9 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-
-
-            <select id='metodos_planificacion' name="metodos_planificacion" class="form-control">
-              <option value="<?php echo $metodos_planificacion; ?>">Seleccion Anterior Fuer:<?php echo $metodos_planificacion; ?></option>
+              <p>Seleccion Anterior Metodos de Planificacion Fuer:<?php echo $metodos_planificacion; ?></p>
+              <select id='metodos_planificacion' name="metodos_planificacion" class="form-control">
+              <option value="<?php echo $metodos_planificacion; ?>">Seleccion Anterior Metodos de Planificacion Fuer:</option>
               <option value="hormonales_orales">Hormonales orales</option>
               <option value="hormonales_inyectables">Hormonales inyectables</option>
               <option value="condon">Condon</option>
@@ -493,8 +491,9 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
         </div>
         <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <p>Edad de Regla Anterior fue:<?php echo $edad_en_que_fue_su_regla; ?></p>
               <select name="edad_en_que_fue_su_regla" class="form-control">
-              <option value="<?php echo $edad_en_que_fue_su_regla; ?>">Edad de Regla Anterior fue:<?php echo $edad_en_que_fue_su_regla; ?></option>
+              <option value="<?php echo $edad_en_que_fue_su_regla; ?>">Edad de Regla Anterior fue:</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -618,8 +617,9 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <p>Edad de inicio de vida sexual elegida:<?php echo $edad_inicio_vida_sexual; ?></p>
               <select name="edad_inicio_vida_sexual" class="form-control">
-              <option value="<?php echo $edad_inicio_vida_sexual; ?>">Edad de inicio de vida sexual elegida:<?php echo $edad_inicio_vida_sexual; ?></option>
+              <option value="<?php echo $edad_inicio_vida_sexual; ?>">Edad de inicio de vida sexual elegida:</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -743,11 +743,9 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-
-            <select name="parejas_sexuales" class="form-control">
-              <option value="<?php echo $edad_inicio_vida_sexual; ?>">Seleccion Anterior de Parejas sexuales:<?php echo $edad_inicio_vida_sexual; ?></option>
+          <p>Seleccion Anterior de Parejas sexuales:<?php echo $edad_inicio_vida_sexual; ?></p>
+          <select name="parejas_sexuales" class="form-control">
+              <option value="<?php echo $edad_inicio_vida_sexual; ?>">Seleccion Anterior de Parejas sexuales:</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -786,8 +784,9 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
         </div>
         <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <p>Seleccion Ateriror Gestas Fue:<?php echo $gestas;?></p>
               <select name="gestas" class="form-control">
-              <option value="<?php echo $gestas;?>">Seleccion Ateriror Gestas Fue:<?php echo $gestas;?></option>
+              <option value="<?php echo $gestas;?>">Seleccion Ateriror Gestas Fue:</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -807,8 +806,9 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
 
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <p>Seleccion Anterior Para fue:<?php echo $para;?></p>
               <select name="para" class="form-control">
-              <option value="<?php echo $para;?>">Seleccion Anterior Para fue:<?php echo $para;?></option>
+              <option value="<?php echo $para;?>">Seleccion Anterior Para fue:</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -827,11 +827,9 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-
+          <p>Seleccion Anterior de Césareas Fue:<?php echo $cesareas;?> </p>
             <select name="cesareas" class="form-control">
-              <option value="<?php echo $cesareas;?>">Seleccion Anterior de Césareas Fue:<?php echo $cesareas;?></option>
+              <option value="<?php echo $cesareas;?>">Seleccion Anterior de Césareas Fue:</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -877,7 +875,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
             <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
               <div class="input-group date nk-int-st">
-  <p>Fecha de ultima regla </p>
+  <p>Fecha de ultima regla Fue:<?php echo $fecha_ultima_regla; ?></p>
                 <span class="input-group-addon"></span>
                 <input type="text" class="form-control inputDeshabilitado" name="fecha_ultima_regla" value='<?php echo $fecha_ultima_regla; ?>'>
               </div>
@@ -887,7 +885,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
             <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
               <div class="input-group date nk-int-st">
-<p> Fecha de ultimo papanicolau Fue:  </p>
+                <p>Fecha de ultimo papanicolau Fue:  <?php echo $fecha_ultimo_papanicolau; ?></p>
                 <span class="input-group-addon"></span>
                 <input type="text" class="form-control inputDeshabilitado" name="fecha_ultimo_papanicolau" value='<?php echo $fecha_ultimo_papanicolau; ?>'>
               </div>
@@ -965,8 +963,8 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
         <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+       <p>Ritmo anterior: <?php echo $ritmo; ?> </p>
 
-<p>Ritmo anterior:</p>
             <select name="ritmo" class="form-control">
               <option value="">Ritmo</option>
               <option value="regular">Regular</option>
@@ -977,9 +975,13 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <p>Antecedente de Cáncer cervicouterino anterior:<?php if($antecedente_cancer_cervicouterino==0) {
+              echo "No";
+            }else{
+              echo "Si";
+            } ?></p>
 
-
-            <select name="antecedente_cancer_cervicouterino" class="form-control">
+              <select name="antecedente_cancer_cervicouterino" class="form-control">
               <option value="">Antecedente de Cáncer cervicouterino</option>
               <option value="1">SI</option>
               <option value="0">NO</option>
@@ -989,6 +991,11 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
 
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <p>Tratamiento Previos anterior:<?php if($tratamiento_previo==0) {
+              echo "No";
+            }else{
+              echo "Si";
+            } ?></p>
 
 
             <select name="tratamiento_previo" class="form-control">
