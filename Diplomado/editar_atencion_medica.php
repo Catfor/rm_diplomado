@@ -965,10 +965,6 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
        <p>Ritmo anterior: <?php echo $ritmo; ?> </p>
 
-<<<<<<< HEAD
-=======
-<p>Ritmo anterior:<?php echo $ritmo; ?></p>
->>>>>>> master
             <select name="ritmo" class="form-control">
               <option value="<?php echo $ritmo; ?>">Ritmo</option>
               <option value="regular">Regular</option>
@@ -985,33 +981,17 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
               echo "Si";
             } ?></p>
 
-<<<<<<< HEAD
+
               <select name="antecedente_cancer_cervicouterino" class="form-control">
               <option value="">Antecedente de Cáncer cervicouterino</option>
-=======
-            <p>Antece anterior:<?php if($hormonoterapia==0) {
-              echo "No";
-            }else{
-              echo "Si";
-            } ?></p>
-            <select name="antecedente_cancer_cervicouterino" class="form-control">
-              <option value="<?php echo $antecedente_cancer_cervicouterino; ?>">Antecedente de Cáncer cervicouterino</option>
->>>>>>> master
               <option value="1">SI</option>
               <option value="0">NO</option>
-
-            </select>
+          </select>
           </div>
 
 
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <p>Tratamiento Previos anterior:<?php if($tratamiento_previo==0) {
-              echo "No";
-            }else{
-              echo "Si";
-            } ?></p>
-
-            <p>Antece anterior:<?php if($tratamiento_previo==0) {
               echo "No";
             }else{
               echo "Si";
