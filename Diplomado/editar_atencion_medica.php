@@ -903,7 +903,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                   <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
                 </div>
               </div>
-              <textarea class="form-control" rows="2" placeholder="Escribe Antecedentes de Lesión" name="atecedentes_lesion" form="f"></textarea>
+              <textarea class="form-control" rows="2" placeholder="<?php echo $atecedentes_lesion; ?>" name="atecedentes_lesion" form="f"></textarea>
             </div>
           </div>
         </div>
@@ -915,7 +915,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                   <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
                 </div>
               </div>
-              <textarea class="form-control" rows="2" placeholder="Escribe Antecedente de Tratamiento" name="antecedentes_tratamiento" form="f"></textarea>
+              <textarea class="form-control" rows="2" placeholder="<?php echo $antecedentes_tratamiento; ?>" name="antecedentes_tratamiento" form="f"></textarea>
             </div>
           </div>
         </div>
@@ -923,9 +923,13 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
         <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-
+<p>Metrorragia anterior:<?php if($metrorragia==0) {
+  echo "No";
+}else{
+  echo "Si";
+} ?></p>
             <select name="metrorragia" class="form-control">
-              <option value="">Metrorragia</option>
+              <option value="<?php echo $metrorragia; ?>">Metrorragia</option>
               <option value="1">SI</option>
               <option value="0">NO</option>
 
@@ -933,10 +937,14 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+            <p>Hormonoterapia anterior:<?php if($hormonoterapia==0) {
+              echo "No";
+            }else{
+              echo "Si";
+            } ?></p>
 
             <select name="hormonoterapia" class="form-control">
-              <option value="">Hormonoterapia</option>
+              <option value="<?php echo $hormonoterapia; ?>">Hormonoterapia</option>
               <option value="1">SI</option>
               <option value="0">NO</option>
 
@@ -947,9 +955,9 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
             <div class="form-group">
-
+<p>duracion anterior:</p>
               <div class="nk-int-st">
-                <input type="text" name="duracion_hormonoterapia" class="form-control" placeholder="¿Duración?">
+                <input type="text" name="duracion_hormonoterapia" class="form-control" value="<?php echo $duracion_hormonoterapia;  ?>">
               </div>
             </div>
           </div>
@@ -958,7 +966,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
         <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-
+<p>Ritmo anterior:</p>
             <select name="ritmo" class="form-control">
               <option value="">Ritmo</option>
               <option value="regular">Regular</option>
