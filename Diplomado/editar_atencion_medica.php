@@ -965,8 +965,12 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
        <p>Ritmo anterior: <?php echo $ritmo; ?> </p>
 
+<<<<<<< HEAD
+=======
+<p>Ritmo anterior:<?php echo $ritmo; ?></p>
+>>>>>>> master
             <select name="ritmo" class="form-control">
-              <option value="">Ritmo</option>
+              <option value="<?php echo $ritmo; ?>">Ritmo</option>
               <option value="regular">Regular</option>
               <option value="irregular">Irregular</option>
               <option value="ausente">Ausente</option>
@@ -981,8 +985,18 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
               echo "Si";
             } ?></p>
 
+<<<<<<< HEAD
               <select name="antecedente_cancer_cervicouterino" class="form-control">
               <option value="">Antecedente de Cáncer cervicouterino</option>
+=======
+            <p>Antece anterior:<?php if($hormonoterapia==0) {
+              echo "No";
+            }else{
+              echo "Si";
+            } ?></p>
+            <select name="antecedente_cancer_cervicouterino" class="form-control">
+              <option value="<?php echo $antecedente_cancer_cervicouterino; ?>">Antecedente de Cáncer cervicouterino</option>
+>>>>>>> master
               <option value="1">SI</option>
               <option value="0">NO</option>
 
@@ -997,9 +1011,13 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
               echo "Si";
             } ?></p>
 
-
+            <p>Antece anterior:<?php if($tratamiento_previo==0) {
+              echo "No";
+            }else{
+              echo "Si";
+            } ?></p>
             <select name="tratamiento_previo" class="form-control">
-              <option value="">Tratamientos previos:</option>
+              <option value="<?php echo $tratamiento_previo; ?>">Tratamientos previos:</option>
               <option value="1">SI</option>
               <option value="0">NO</option>
 
@@ -1023,6 +1041,28 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="accordion-wn-wp">
         <div class="basic-tb-hd">
+          <?php
+
+
+          $re3 = mysqli_query($mysqliL,"SELECT ec.colposcopia FROM atencion_medica AS  a
+INNER JOIN ctrl_paciente_estudios AS ct
+ON ct.id_paciente=a.id_paciente
+
+INNER JOIN estudio_colposcopico AS ec
+ON ec.id_estudio=ct.id_estudio
+
+
+
+WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='1' ");
+
+
+
+          $ro2 = mysqli_fetch_assoc($re3);
+            $colposcopia = $ro2['colposcopia'];
+
+
+
+          ?>
           <h2 class="cabecera-morada">ESTUDIOS MÉDICOS</h2>
 
         </div>
@@ -1044,9 +1084,9 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                         <div class="row fila">
 
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>Seleccion Colposcopica Anterior fue:<?php echo $colposcopia; ?> </p>
                             <select name='colposcopia' id='colposcopia' class="form-control">
-                              <option value="">Selecciona colposcopia</option>
+                              <option value="<?php echo  $colposcopia; ?>">Selecciona colposcopia</option>
                               <option value="adecuada">Adecuada</option>
                               <option value="no_adecuada">No Adecuada</option>
                             </select>
