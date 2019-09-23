@@ -5,7 +5,7 @@ include('../coni/Localhost.php');
 date_default_timezone_set('America/Mexico_City');
 $h = date("Y-m-d");
 $hoys = date("Y-m-d H:i:s");
-$edad_inicio_menstruacion = date('Y-m-d', strtotime($_POST['edad_inicio_menstruacion']));
+$edad_inicio_menstruacion = $_POST['edad_inicio_menstruacion'];
 $metodos_planificacion = $_POST['metodos_planificacion'];
 $cual = isset($_POST['cual']) ? $_POST['cual'] : "N/A";
 $edad_inicio_vida_sexual = $_POST['edad_inicio_vida_sexual'];

@@ -1,5 +1,7 @@
 <?php session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+  date_default_timezone_set('America/Mexico_City');
+  $hoys = date("Y-m-d");
   ?>
 <!doctype html>
 <html class="no-js" lang="">
