@@ -1,5 +1,7 @@
 <?php session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+  date_default_timezone_set('America/Mexico_City');
+  $hoys = date("Y-m-d");
   ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -214,7 +216,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                                                     <td>$nombre_paciente $apellidos_paciente </td>
 
                                                                     <td>$fecha_nacimiento_paciente</td>
-                                                                    <td><a href='atencion_medica.php?id_paciente=$id_paciente&id_atencion=$i'  target='_blank'>$id_atencion </a></td>";
+                                                                    <td><a href='editar_atencion_medica.php?id_paciente=$id_paciente&id_atencion=$i'  target='_blank'>$id_atencion </a></td>";
 
 
                                             //Colposcopia
@@ -417,7 +419,7 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
                                              if ($resultSetColposcopia = $mysqliL->query($queryColposcopia)) {
                                                  while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
                                                      $id_estudio = $resultSet['id_estudio'];
-                                                     echo "<a href='atencion_medica.php?id_paciente=$id_paciente'  target='_blank'>colpos</a>";
+                                                     echo "<a href='atencion_medica.php?id_paciente=$id_paciente'  target='_blank'>colposasdasd</a>";
 
                                                  }
                                              }
@@ -435,7 +437,7 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
                                                       $paps = $resultSet['paps'];
                                                      echo "<input  type='checkbox' name='paps[]' value='$paps'>  ";
                                                      echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente&id_estudio=$id_estudio'
-                                                      target='_blank'>Paps</a>";
+                                                      target='_blank'>Papsasdsadsa</a>";
                                                  }
                                              }
                                              echo "</td>";

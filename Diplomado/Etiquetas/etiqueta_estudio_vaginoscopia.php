@@ -20,12 +20,16 @@
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
 			e.fecha_estudio,
-			e.anotaciones_vaginoscopia
+			e.anotaciones_vaginoscopia,
+			ec.vaginoscopia_acetico,
+			ec.vaginoscopia_lugol
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 5
 			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-			INNER JOIN estudio_vaginoscopia e ON ct.id_estudio = e.id_estudio";
+			INNER JOIN estudio_vaginoscopia e ON ct.id_estudio = e.id_estudio
+			INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
+			INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
 			
 		$res =$mysqliL->query($informacion);
 		$info = $res->fetch_assoc();
@@ -33,6 +37,8 @@
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
+		$vaginoscopia_acetico = $info['vaginoscopia_acetico'];
+		$vaginoscopia_lugol = $info['vaginoscopia_lugol'];
 		$anotaciones_vaginoscopia = $info['anotaciones_vaginoscopia'];
 
 		if (!endsWith(trim($colposcopico), ".")) {
@@ -122,9 +128,9 @@
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
 						<p class="txt-justificado"><b>Hallazgos Vaginoscopia:</b></p>
 						<p>
-							<b>Acetico:</b> NEGATIVO</p>
+							<b>Acetico:</b> <?php echo ucwords($vaginoscopia_acetico); ?></p>
 						<p>
-							<b>LUGOL:</b> POSITIVO</p>
+							<b>Lugol:</b> <?php echo ucwords($vaginoscopia_lugol); ?></p>
 						<p><b>Anotaciones:</b></p>
 						<p class="txt-justificado"><?php echo $anotaciones_vaginoscopia; ?></p>
 					</div>

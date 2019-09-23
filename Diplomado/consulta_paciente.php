@@ -1,5 +1,7 @@
 <?php session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+  date_default_timezone_set('America/Mexico_City');
+  $hoys = date("Y-m-d");
   ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -233,7 +235,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                           $consultasemanas = "SELECT   a.id_atencion_medica,p.nombre_paciente,p.apellidos_paciente,p.fecha_nacimiento_paciente,p.edad_paciente
                             ,p.fecha_creacion,p.codigo_postal,p.id_paciente FROM paciente AS p
                          LEFT JOIN atencion_medica AS a
-                         ON a.id_paciente=p.id_paciente ORDER BY p.fecha_creacion asc ";
+                         ON a.id_paciente=p.id_paciente WHERE DATE_FORMAT(p.fecha_creacion,'%Y-%m-%d')='$hoys' ORDER BY p.fecha_creacion asc ";
                           $resultadosemanas = $mysqliL->query($consultasemanas);
 
 
