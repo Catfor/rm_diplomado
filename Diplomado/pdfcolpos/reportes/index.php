@@ -96,7 +96,7 @@ setlocale(LC_TIME, 'es_ES', 'esp_esp');
   $inicio = strftime("%d de %B del %Y", strtotime($fe));
 
       echo  $inicio;  ?></FONT></div>
-      
+
         <div><span></span> </div>
         <div><span></span> </div>
       </div>
@@ -209,8 +209,8 @@ if($bs_criterios_intermedios==''){
   <?php
 }
                 ?>
-                <td class="service"><?php echo $schiller; ?></td>
-            </tr>
+                <td class="service"><?php echo $schiller; ?></td></tr>
+
             </tbody>
 
 
