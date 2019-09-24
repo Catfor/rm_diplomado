@@ -2192,6 +2192,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           document.querySelector("div.logo-area").style.paddingLeft = "0px";
 
         }
+        
 
         screenshotButton.onclick = videoElement.onclick = function() {
           var formulario = document.getElementById('f');
@@ -2220,6 +2221,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           div.style.margin = "5px";
           div.appendChild(img);
           div.appendChild(i);
+          var audioElement = document.createElement('audio');
+          audioElement.setAttribute('src', '../Diplomado/efecto/camara.mp3');
+          audioElement.play();
           if ($(".chkImagenSeleccionada").length < 8) {
             var ic = document.createElement('i');
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
@@ -2257,6 +2261,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           div.style.margin = "5px";
           div.appendChild(img);
           div.appendChild(i);
+          var audioElement = document.createElement('audio');
+          audioElement.setAttribute('src', '../Diplomado/efecto/camara.mp3');
+          audioElement.play();
           if ($(".chkImagenSeleccionada").length < 8) {
             var ic = document.createElement('i');
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
@@ -2283,7 +2290,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           $($(e.target)[0]).parent().fadeOut().remove();
           $('#' + idElemento).remove();
         });
-        
+
         $(document).on("click", ".contenedorCanvas", function(e) {
               var apuntador = $($(e.target)[0]).parent();
                 if ($(".chkImagenSeleccionada").length < 8) {
