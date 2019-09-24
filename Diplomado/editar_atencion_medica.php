@@ -352,13 +352,14 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
 
 
-      <form id="f1" action='editar_guardar_atencion_medica.php' method="get" enctype="multipart/form-data">
-        <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente ?>">
-        <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id ?>">
+      <form id="f1" action='editar_guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
+        <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente ;?>">
+        <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id; ?>">
+        <input type="hidden" class="form-control" name="id_atencion" value="<?php echo $id_atencion; ?>">
 
         <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <p>Seleccion Anterior  Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></p>
+              <p>Seleccion Anterior Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></p>
               <select name="edad_inicio_menstruacion" class="form-control">
               <option value="<?php echo $edad_inicio_menstruacion; ?>">Seleccion Anterior  Menstruacion  Fue:</option>
               <option value="1">1</option>
@@ -477,12 +478,11 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
 
-            <div class="form-group ic-cmp-int form-elet-mg">
-              <div class="form-ic-cmp">
-                <i class="notika-icon notika-edit"></i>
-              </div>
+            <div class="form-group ic-cmp-int form-elet-mg"><p>Cual</p>
+
+
               <div class="nk-int-st">
-                <input id="cual" name="cual" type="text" class="form-control" value='<?php echo $cual; ?>' disabled>
+                <input id="cual" name="cual" type="text" class="form-control" value='<?php echo $cual; ?>' >
               </div>
             </div>
           </div>
@@ -901,7 +901,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                   <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
                 </div>
               </div>
-              <textarea class="form-control" rows="2" placeholder="<?php echo $atecedentes_lesion; ?>" name="atecedentes_lesion" form="f"></textarea>
+              <textarea class="form-control" rows="2" placeholder="<?php echo $atecedentes_lesion; ?>" name="atecedentes_lesion" form="f1"></textarea>
             </div>
           </div>
         </div>
@@ -913,7 +913,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                   <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
                 </div>
               </div>
-              <textarea class="form-control" rows="2" placeholder="<?php echo $antecedentes_tratamiento; ?>" name="antecedentes_tratamiento" form="f"></textarea>
+              <textarea class="form-control" rows="2" placeholder="<?php echo $antecedentes_tratamiento; ?>" name="antecedentes_tratamiento" form="f1"></textarea>
             </div>
           </div>
         </div>
@@ -1456,8 +1456,24 @@ $plan_de_tratamiento = $ro2['plan_de_tratamiento'];
 
                         </div>
 
-
                         <div class="row fila">
+                          <center>
+                            <?php
+                            $consultasemanas = "SELECT * FROM imagen AS i WHERE i.id_atencion_medica='$id_atencion'";
+
+                            $resultadosemanas = $mysqliL->query($consultasemanas);
+
+                            while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
+                                $ruta_imagen = $resultadosemanas1['ruta_imagen'];
+    $id_imagen = $resultadosemanas1['id_imagen'];
+
+
+
+
+                             ?>
+                 <img src="imagesestudios/<?php echo $ruta_imagen; ?>"  width="150" height="75"> <a href='eliminarimagen.php?id_paciente=<?php echo $idpaciente;?>&id_atencion=<?php echo $id_atencion;?>&id_imagen=<?php echo $id_imagen;?>'>eliminar</a></img>
+                          <?php  }   ?>
+                      <br><br>  <br><br>  <br><br>
                           <h4 class="text-center">Imagenes Colposcopicas </h4>
                           <div class="form-group">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1599,9 +1615,20 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
                               Antecedenctes de infecciòn vaginal :<br>
 
-                              <label><input type="radio" name="antecedente_infeccion_vagina" value="1" checked> Si</label>
+                              <?php if($antecedente_infeccion_vagina==0){
 
-                              <label><input type="radio" name="antecedente_infeccion_vagina" value="0"> NO</label>
+                              ?>
+                              <label><input type="radio" name="antecedente_infeccion_vagina" value="1" > Si</label>
+
+                              <label><input type="radio" name="antecedente_infeccion_vagina" value="0" checked> NO</label>
+                              <?php } else{ ?>
+                                <label><input type="radio" name="antecedente_infeccion_vagina" value="1" checked> Si</label>
+
+                                <label><input type="radio" name="antecedente_infeccion_vagina" value="0"> NO</label>
+                                <?php
+                              }?>
+
+
 
 
 
@@ -1647,6 +1674,26 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                               </h4>
                             </div>
                             <div id="accordionPurple-four" class="collapse" role="tabpanel">
+                              <?php     $re4 = mysqli_query($mysqliL,"SELECT ep.senalizacion
+
+ FROM atencion_medica AS  a
+INNER JOIN ctrl_paciente_estudios AS ct
+ON ct.id_paciente=a.id_paciente
+
+INNER JOIN estudio_biopsia_cervix AS ep
+ON ep.id_estudio=ct.id_estudio
+
+
+
+                  WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='2' ");
+
+
+
+                                  $ro2 = mysqli_fetch_assoc($re4);
+                                    $senalizacion = $ro2['senalizacion'];
+
+
+                                    ?>
                               <div class="panel-body">
                                 <p>
                                   <div class="row fila">
@@ -1668,7 +1715,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                                             <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
                                           </div>
                                         </div>
-                                        <textarea class="form-control" rows="3" placeholder="Escribe  las Anotaciones" name="senalizacion" form="f"></textarea>
+                                        <textarea class="form-control" rows="3" placeholder="<?php echo $senalizacion;?> " name="senalizacion" form="f"></textarea>
                                       </div>
                                     </div>
                                   </div>
@@ -1686,6 +1733,26 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                               </h4>
                             </div>
                             <div id="accordionPurple-five" class="collapse" role="tabpanel">
+                              <?php     $re4 = mysqli_query($mysqliL,"SELECT ep.anotaciones_vulvoscopia
+
+ FROM atencion_medica AS  a
+INNER JOIN ctrl_paciente_estudios AS ct
+ON ct.id_paciente=a.id_paciente
+
+INNER JOIN estudio_vulvoscopia AS ep
+ON ep.id_estudio=ct.id_estudio
+
+
+
+                  WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='6' ");
+
+
+
+                                  $ro2 = mysqli_fetch_assoc($re4);
+                                    $anotaciones_vulvoscopia = $ro2['anotaciones_vulvoscopia'];
+
+
+                                    ?>
                               <div class="panel-body">
                                 <p>
                                   <div class="row fila">
@@ -1708,7 +1775,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                                             <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
                                           </div>
                                         </div>
-                                        <textarea class="form-control" rows="3" placeholder="Escribe  las Anotaciones" name="anotaciones_vulvoscopia" form="f"></textarea>
+                                        <textarea class="form-control" rows="3" placeholder="<?php echo $anotaciones_vulvoscopia;?>" name="anotaciones_vulvoscopia" form="f"></textarea>
                                       </div>
                                     </div>
                                   </div>
@@ -1728,11 +1795,31 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                               <div class="panel-body">
                                 <p>
                                   <div class="row fila">
+                                    <?php     $re4 = mysqli_query($mysqliL,"SELECT ep.anotaciones_vaginoscopia,ep.estudio_solicitar_vaginoscopia
 
+ FROM atencion_medica AS  a
+INNER JOIN ctrl_paciente_estudios AS ct
+ON ct.id_paciente=a.id_paciente
+
+INNER JOIN estudio_vaginoscopia AS ep
+ON ep.id_estudio=ct.id_estudio
+
+
+
+
+                                  WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='5' ");
+
+
+
+                                        $ro2 = mysqli_fetch_assoc($re4);
+                                          $anotaciones_vaginoscopia = $ro2['anotaciones_vaginoscopia'];
+                                  $estudio_solicitar_vaginoscopia = $ro2['estudio_solicitar_vaginoscopia'];
+
+                                          ?>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>Seleccion Anterior fue:<?php echo $estudio_solicitar_vaginoscopia;?></p>
                                       <select name='estudio_solicitar_vaginoscopia' id='estudio_solicitar_vaginoscopia' class="form-control">
-                                        <option value="">Selecciona Estudio A Solicitar</option>
+                                        <option value="<?php echo $estudio_solicitar_vaginoscopia;?>">Selecciona Estudio A Solicitar</option>
                                         <option value="institucional">INSICIONAL</option>
                                         <option value="trucut">TRUCUT</option>
                                         <option value="aspiracion">ASPIRACIÒN</option>
@@ -1749,7 +1836,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                                               <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
                                             </div>
                                           </div>
-                                          <textarea class="form-control" rows="3" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f"></textarea>
+                                          <textarea class="form-control" rows="3" placeholder="<?php echo $anotaciones_vaginoscopia;?> " name="anotaciones_vaginoscopia" form="f"></textarea>
                                         </div>
                                       </div>
                                     </div>
@@ -1764,6 +1851,27 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                             </div>
                           </div>
                           <div class="panel panel-collapse notika-accrodion-cus">
+                            <?php     $re4 = mysqli_query($mysqliL,"SELECT ep.observaciones_endometrio
+
+ FROM atencion_medica AS  a
+INNER JOIN ctrl_paciente_estudios AS ct
+ON ct.id_paciente=a.id_paciente
+
+INNER JOIN estudio_biopsia_endometrio AS ep
+ON ep.id_estudio=ct.id_estudio
+
+
+
+
+                WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='4' ");
+
+
+
+                                $ro2 = mysqli_fetch_assoc($re4);
+                                  $observaciones_endometrio = $ro2['observaciones_endometrio'];
+
+
+                                  ?>
                             <div class="panel-heading" role="tab">
                               <h4 class="panel-title">
                                 <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-six" aria-expanded="false">
@@ -1784,7 +1892,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                                             <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Observaciones</FONT>
                                           </div>
                                         </div>
-                                        <textarea class="form-control" rows="3" placeholder="Escribe  las observaciones" name="observaciones_endometrio" form="f"></textarea>
+                                        <textarea class="form-control" rows="3" placeholder="<?php echo $observaciones_endometrio;?>" name="observaciones_endometrio" form="f"></textarea>
                                       </div>
                                     </div>
                                   </div>
@@ -1937,23 +2045,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
     <!-- main JS
 		============================================ -->
 
-    <script language="JavaScript">
-      $(function() {
-        $("#metodos_planificacion").change(function() {
-          if ($(this).val() === "hormonales_orales") {
-            $("#cual ").prop("disabled", true);
-          } else if ($(this).val() === "") {
-            $("#cual").prop("disabled", true);
-          } else if ($(this).val() === "hormonales_inyectables") {
-            $("#cual").prop("disabled", true);
-          } else if ($(this).val() === "condon") {
-            $("#cual").prop("disabled", true);
-          } else {
-            $("#cual").prop("disabled", false);
-          }
-        });
-      });
-    </script>
+
     <!-- ----------------------------------------------------------------------------------------------------->
     <script language="JavaScript">
       $(function() {

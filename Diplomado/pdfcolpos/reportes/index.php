@@ -282,7 +282,7 @@ if($bs_criterios_intermedios==''){
 
 
    ?>
-<img src="../.././imagesestudios/<?php echo $ruta_imagen; ?>"  width="250" height="105"/>
+<img src="../../imagesestudios/<?php echo $ruta_imagen; ?>"  width="250" height="105"/>
 <?php  }   ?>
 </center><br><br><br><br><br><br><br><br><br>
 <center>---------------------------------------<br>firma medico</center>

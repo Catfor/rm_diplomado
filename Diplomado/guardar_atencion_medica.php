@@ -151,9 +151,9 @@ foreach ($_POST["canvas"] as $canvas) {
   $dir = opendir($directorio); //Abrimos el directorio de destino
   $datos = explode(";", $canvas);
   $data = explode(",", $datos[1]);
-  $filename = 'Atencion_' . $id_ant_atencionmedica.'_img'.$imagenCont . '_CAM';
+  $filename = 'Atencion_' . $id_ant_atencionmedica.'_img'.$imagenCont . '_CAM'.'.jpg';
   $imagenCont++;
-  if (file_put_contents($directorio . '/' . $filename . '.jpg', base64_decode($data[1]))) {
+  if (file_put_contents($directorio . '/' . $filename , base64_decode($data[1]))) {
     $inserta_imagen = "INSERT INTO imagen (ruta_imagen,id_atencion_medica,fecha_imagen) VALUES ('$filename','$id_ant_atencionmedica','$hoys')";
     $resultado_inserta_imagen = $mysqliL->query($inserta_imagen);
   }

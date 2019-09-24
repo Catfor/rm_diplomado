@@ -216,16 +216,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                                                     <td>$nombre_paciente $apellidos_paciente </td>
 
                                                                     <td>$fecha_nacimiento_paciente</td>
-                                                                    <td><a href='editar_atencion_medica.php?id_paciente=$id_paciente&id_atencion=$i'  target='_blank'>$id_atencion </a></td>";
+                                                                    <td><a href='editar_atencion_medica.php?id_paciente=$id_paciente&id_atencion=$i'  target='_blank'>$id_atencion</a></td>";
 
 
                                             //Colposcopia
                                             echo "<td>";
-                                            $queryColposcopia = "select 	e.id_estudio from 	estudio_colposcopico e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente;";
+                                            $queryColposcopia = "select 	e.id_estudio,c.id_atencion from 	estudio_colposcopico e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente;";
                                             if ($resultSetColposcopia = $mysqliL->query($queryColposcopia)) {
                                                 while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
                                                     $id_estudio = $resultSet['id_estudio'];
-                                                    echo "<a href='pdfcolpos/reportes/index.php?id_paciente=$id_paciente&id_atencion=$p&id_estudio=$id_estudio'  target='_blank'>Ver </a>";
+                                                      $id_atencion1 = $resultSet['id_atencion'];
+                                                    echo "<a href='pdfcolpos/reportes/index.php?id_paciente=$id_paciente&id_atencion=$id_atencion1&id_estudio=$id_estudio'  target='_blank'>Ver Colposcopia</a>";
 
                                                 }
                                             }
