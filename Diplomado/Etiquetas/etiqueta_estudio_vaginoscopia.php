@@ -41,14 +41,6 @@
 		$vaginoscopia_lugol = $info['vaginoscopia_lugol'];
 		$anotaciones_vaginoscopia = $info['anotaciones_vaginoscopia'];
 
-		if (!endsWith(trim($colposcopico), ".")) {
-			$colposcopico = $colposcopico . '.';
-		}
-
-		if (!endsWith(trim($observaciones), ".")) {
-			$observaciones = $observaciones . '.';
-		}
-
 		ob_end_flush();
 	}else{
 		$fecha ="";
