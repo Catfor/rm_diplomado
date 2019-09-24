@@ -254,16 +254,16 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
               <div style="position: fixed;top: 10px;left: 10px;z-index: 5;max-width: 200px;" class="tarjeta">
-                <div style="display: none;">
+                <div style="display: block;">
                   <div class="select">
-                    <label for="audioSource">Audio source: </label><select id="audioSource"></select>
+                    <label for="audioSource">Audio source: </label><select id="audioSource" onchange="iniciaTransmicion()"></select>
                   </div>
                   <div class="select">
-                    <label for="videoSource">Video source: </label><select id="videoSource"></select>
+                    <label for="videoSource">Video source: </label><select id="videoSource" onchange="iniciaTransmicion()"></select>
                   </div>
                 </div>
                 <!-- #region -->
-                <video id="pantallaVideo" style="max-width: 450px;max-height: 450px; display:none" autoplay muted playsinline></video>
+                <video id="pantallaVideo" style="max-width: 450px;max-height: 450px; display:none" autoplay="true" muted="muted"></video>
                 <p>
                   <button id="btn-activar" type="button" class="btn btn-default filaInterna" style="display: none" onclick="iniciaTransmicion()">Activar cámara en vivo</button>
                   <button id="btn-detener" type="button" class="btn btn-default filaInterna" style="display: none" onclick="detenTransmision()">Detener cámara</button>
@@ -2100,10 +2100,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
       const screenshotButton = document.getElementById('btn-captura');
       const divCanvas = document.getElementById('vectorFotos');
 
-
-      audioSelect.onchange = iniciaTransmicion();
-      videoSelect.onchange = iniciaTransmicion();
-
       iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision);
 
       function getDevices() {
@@ -2112,22 +2108,27 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
       }
 
       function gotDevices(deviceInfos) {
+        console.log("Obteniendo informacion");
         window.deviceInfos = deviceInfos; // make available to console
         //console.log('Dispositivos Disponibles:', deviceInfos);
+        var dev = 1;
         for (const deviceInfo of deviceInfos) {
           const option = document.createElement('option');
           option.value = deviceInfo.deviceId;
-          if (deviceInfo.kind === 'audioinput') {
+          if (deviceInfo.kind === 'audioinput' && deviceInfo.label.includes("ISST")) {
             option.text = deviceInfo.label || `Microfono ${audioSelect.length + 1}`;
             audioSelect.appendChild(option);
-          } else if (deviceInfo.kind === 'videoinput') {
+            console.log('audioinput',option);
+          } else if (deviceInfo.kind === 'videoinput' && deviceInfo.label.includes("gato")) {
             option.text = deviceInfo.label || `Camara ${videoSelect.length + 1}`;
             videoSelect.appendChild(option);
+            console.log('videoinput',option);
           }
         }
       }
 
       function iniciaTransmicion() {
+        console.log("initTrans");
         if (window.stream) {
           window.stream.getTracks().forEach(track => {
             track.stop();
@@ -2155,26 +2156,28 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         document.querySelector("ul.notika-menu-wrap").style.paddingLeft = "200px";
         document.querySelector("div.logo-area").style.paddingLeft = "200px";
 
-
+        console.log("ending");
         return navigator.mediaDevices.getUserMedia(constraints).
         then(gotStream).catch(handleError);
       }
 
       function gotStream(stream) {
+        console.log("Setting up...");
         window.stream = stream; // make stream available to console
         audioSelect.selectedIndex = [...audioSelect.options].
         findIndex(option => option.text === stream.getAudioTracks()[0].label);
         videoSelect.selectedIndex = [...videoSelect.options].
         findIndex(option => option.text === stream.getVideoTracks()[0].label);
         videoElement.srcObject = stream;
+        console.log("Ready");
       }
 
       function handleError(error) {
-        console.error('Error: ', error);
+        console.error('Error > ', error);
       }
 
       function detenTransmision() {
-
+        console.log("stopTrans");
         if (window.stream) {
           window.stream.getTracks().forEach(function(track) {
             track.stop();
@@ -2191,7 +2194,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
       }
 
       screenshotButton.onclick = videoElement.onclick = function() {
-        //<input id="img" type="hidden" name="archivo[]">
         var formulario = document.getElementById('f');
         var img = document.createElement('img');
         var canvas = document.createElement('canvas');
@@ -2199,9 +2201,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         canvas.height = 300 //videoElement.videoHeight;
         canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
         // Other browsers will fall back to image/png
-        //img.src = canvas.toDataURL('image/webp');
         img.src = canvas.toDataURL('image/jpeg');
-        img.setAttribute("id", "imgFoto" + contadorCanvas);
+        img.setAttribute("id", "inputImg" + contadorCanvas);
         var input = document.createElement('input');
         input.setAttribute("id", "inputImg" + contadorCanvas);
         input.setAttribute("type", "hidden");
@@ -2210,8 +2211,21 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         input.setAttribute("value", canvas.toDataURL('image/jpeg'));
         //input.style.display = "none";
         //input.addEventListener('submit', functSubmit);
-        input.style.display = "none";
-        document.getElementById('vectorFotos').appendChild(img);
+        var div = document.createElement('div');
+        var i = document.createElement('i');
+        i.setAttribute("class","far fa-times-circle fa-2x");
+        div.setAttribute("class","contenedorCanvas"));
+        div.style.position = "relative";
+        div.style.display = "inline-block";
+        div.style.margin = "5px";
+        div.appendChild(img);
+        div.appendChild(i);
+        if($(".chkImagenSeleccionada").length < 8){
+          var ic = document.createElement('i');
+          ic.setAttribute("class","chkImagenSeleccionada fas fa-check-circle fa-2x");
+          div.appendChild(ic);
+        }
+        document.getElementById('vectorFotos').appendChild(div);
         formulario.appendChild(input);
         contadorCanvas = contadorCanvas + 1;
       }
@@ -2237,11 +2251,17 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         var div = document.createElement('div');
         var i = document.createElement('i');
         i.setAttribute("class","far fa-times-circle fa-2x");
+        div.setAttribute("class","contenedorCanvas"));
         div.style.position = "relative";
         div.style.display = "inline-block";
         div.style.margin = "5px";
         div.appendChild(img);
         div.appendChild(i);
+        if($(".chkImagenSeleccionada").length < 8){
+          var ic = document.createElement('i');
+          ic.setAttribute("class","chkImagenSeleccionada fas fa-check-circle fa-2x");
+          div.appendChild(ic);
+        }
         document.getElementById('vectorFotos').appendChild(div);
         formulario.appendChild(input);
         contadorCanvas = contadorCanvas + 1;

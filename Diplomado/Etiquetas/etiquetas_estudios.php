@@ -20,7 +20,6 @@
 		////////////////////////////////////////////////////////////////////////////////////////////
 
 		$id_paciente = $_GET["id_paciente"];
-		$id_estudio = $_GET["id_estudio"];
 		$informacionPaciente = "SELECT 
 			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
@@ -30,7 +29,7 @@
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 0
 			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario";
 
-		$resPaciente = $mysqliL->query($informacion_paps);
+		$resPaciente = $mysqliL->query($informacionPaciente);
 		$infoPaciente = $resPaciente->fetch_assoc();
 		$edad = $infoPaciente['edad_paciente'];
 		$paciente = $infoPaciente['paciente'];
@@ -120,7 +119,7 @@
 		$anotaciones_vaginoscopia_vagino = $info_vagino['anotaciones_vaginoscopia'];
 
 		////////////////////////////////////////////////////////////////////////////////////////////
-		$informacion = "SELECT 
+		$informacion_vulva = "SELECT 
 		CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 		CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 		p.edad_paciente,
@@ -131,41 +130,64 @@
 		ec.vulvoscopia_acetico
 		FROM
 		paciente p
-		INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 6
+		INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 6
 		INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
 		INNER JOIN estudio_vulvoscopia e ON ct.id_estudio = e.id_estudio
 		INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
 		INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
 
-		$res = $mysqliL->query($informacion);
-		$info = $res->fetch_assoc();
-		$fecha = $info['fecha_estudio'];
-		$edad = $info['edad_paciente'];
-		$paciente = $info['paciente'];
-		$medico = $info['medico'];
-		$anotaciones_vulvoscopia = $info['anotaciones_vulvoscopia'];
-		$x = $info['x'];
-		$y = $info['y'];
-		$vulvoscopia_acetico = $info["vulvoscopia_acetico"];
+		$res_vulva = $mysqliL->query($informacion_vulva);
+		$info_vulva = $res_vulva->fetch_assoc();
+		$fecha_vulva = $info_vulva['fecha_estudio'];
+		$anotaciones_vulvoscopia_vulva = $info_vulva['anotaciones_vulvoscopia'];
+		$x_vulva = $info_vulva['x'];
+		$y_vulva = $info_vulva['y'];
+		$vulvoscopia_acetico_vulva = $info_vulva["vulvoscopia_acetico"];
 
-		if (!endsWith(trim($anotaciones_vulvoscopia), ".")) {
-			$anotaciones_vulvoscopia = $anotaciones_vulvoscopia . '.';
+		if (!endsWith(trim($anotaciones_vulvoscopia_vulva), ".")) {
+			$anotaciones_vulvoscopia_vulva = $anotaciones_vulvoscopia_vulva . '.';
 		}
 
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 
+		$informacion_cervix = "SELECT 
+			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
+			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
+			p.edad_paciente,
+			e.fecha_estudio,
+			e.antecendente_cancer_cervicouterino,
+			e.hallazgos_colposcopicos,
+			e.senalizacion,
+			e.x,
+			e.y,
+			ec.posible_recomendacion_diagnostica
+			FROM
+			paciente p
+			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 2
+			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
+			INNER JOIN estudio_biopsia_cervix e ON ct.id_estudio = e.id_estudio
+			INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
+			INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
 
+		$res_cervix = $mysqliL->query($informacion_cervix);
+		$info_cervix = $res_cervix->fetch_assoc();
+		$fecha_cervix = $info_cervix['fecha_estudio'];
+		$antecendente_cancer_cervicouterino_cervix = $info_cervix['antecendente_cancer_cervicouterino'];
+		$hallazgos_colposcopicos_cervix = $info_cervix['hallazgos_colposcopicos'];
+		$senalizacion_cervix = $info_cervix['senalizacion'];
+		$x_cervix = $info_cervix['x'];
+		$y_cervix = $info_cervix['y'];
+		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info_cervix['posible_recomendacion_diagnostica']));
 
-		////////////////////////////////////////////////////////////////////////////////////////////
+		if (!endsWith(trim($hallazgos_colposcopicos_cervix), ".")) {
+			$hallazgos_colposcopicos_cervix = $hallazgos_colposcopicos_cervix . '.';
+		}
 
-
-
-		////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
+		if (!endsWith(trim($senalizacion_cervix), ".")) {
+			$senalizacion_cervix = $senalizacion_cervix . '.';
+		}
 
 		ob_end_flush();
 	} //END IF -> if (isset($_GET["id_paciente"]))
@@ -192,7 +214,7 @@
 		function imprimeEtiqueta() {
 			var mywindow = window.open('', 'PRINT', '', 'false');
 
-			mywindow.document.write('<html><head><title>' + document.title + '</title>');
+			mywindow.document.write('<html><head><title>Etiquetas Disponibles</title>');
 			mywindow.document.write('</head><body >');
 			mywindow.document.write('<link href="../../css/bootstrap.min.css" rel="stylesheet"/>');
 			mywindow.document.write('<link href="../../css/etiquetas.css" rel="stylesheet"/>');
@@ -207,12 +229,86 @@
 			window.close();
 			return true;
 		}
+		////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		$(document).ready(function() {
+
+
+			var canvasDona = document.getElementById("canvasDona");
+			var ctxDona = canvasDona.getContext("2d");
+			var dona = document.getElementById("recuadroDona");
+
+			var x_cervix = <?php echo $x_cervix ?>;
+			var y_cervix = <?php echo $y_cervix ?>;
+			ctxDona.drawImage(dona, 0, 0, 200, 200);
+			ctxDona.lineWidth = 5;
+			ctxDona.strokeStyle = "#FFF";
+			ctxDona.beginPath();
+			ctxDona.moveTo(x_cervix - 10, y_cervix - 10);
+			ctxDona.lineTo(x_cervix + 10, y_cervix + 10);
+			ctxDona.moveTo(x_cervix - 10, y_cervix + 10);
+			ctxDona.lineTo(x_cervix + 10, y_cervix - 10);
+			ctxDona.stroke();
+			ctxDona.lineWidth = 2;
+			ctxDona.strokeStyle = "#000";
+			ctxDona.beginPath();
+			ctxDona.moveTo(x_cervix - 10, y_cervix - 10);
+			ctxDona.lineTo(x_cervix + 10, y_cervix + 10);
+			ctxDona.moveTo(x_cervix - 10, y_cervix + 10);
+			ctxDona.lineTo(x_cervix + 10, y_cervix - 10);
+			ctxDona.stroke();
+
+			dona.style.display = "block";
+			canvasDona.style.display = "none";
+			dona.setAttribute("src", canvasDona.toDataURL());
+
+			//$(canvasDona).delay(200).queue(function() {
+			//	imprimeEtiqueta();
+			//});
+
+			var canvasVulva = document.getElementById("canvasVulva");
+			var ctxVulva = canvasVulva.getContext("2d");
+			var vulva = document.getElementById("recuadroVulva");
+			var x_vulva = <?php echo $x_vulva ?>;
+			var y_vulva = <?php echo $y_vulva ?>;
+			ctxVulva.drawImage(vulva, 0, 0, 200, 200);
+			ctxVulva.lineWidth = 5;
+			ctxVulva.strokeStyle = "#FFF";
+			ctxVulva.beginPath();
+			ctxVulva.moveTo(x_vulva - 10, y_vulva - 10);
+			ctxVulva.lineTo(x_vulva + 10, y_vulva + 10);
+			ctxVulva.moveTo(x_vulva - 10, y_vulva + 10);
+			ctxVulva.lineTo(x_vulva + 10, y_vulva - 10);
+			ctxVulva.stroke();
+			ctxVulva.lineWidth = 2;
+			ctxVulva.strokeStyle = "#000";
+			ctxVulva.beginPath();
+			ctxVulva.moveTo(x_vulva - 10, y_vulva - 10);
+			ctxVulva.lineTo(x_vulva + 10, y_vulva + 10);
+			ctxVulva.moveTo(x_vulva - 10, y_vulva + 10);
+			ctxVulva.lineTo(x_vulva + 10, y_vulva - 10);
+			ctxVulva.stroke();
+
+			vulva.setAttribute("src", canvasVulva.toDataURL());
+			vulva.style.display = "block";
+			canvasVulva.style.display = "none";
+			//$(canvasVulva).delay(200).queue(function() {
+			//	imprimeEtiqueta();
+			//});
+
+
+		});
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////
 	</script>
 
 </head>
 
 <body>
 	<!-- SEPARACION DE ETIQUETAS -->
+	<?php if(isset($fecha_paps)){ ?>
 	<div id="etiqueta">
 		<div class="container">
 			<div class="row">
@@ -256,7 +352,9 @@
 			</div>
 		</div>
 	</div>
+	<?php } ?>
 	<!-- SEPARACION DE ETIQUETAS -->
+	<?php if(isset($fecha_endo)){ ?>
 	<div id="etiqueta">
 		<div class="container">
 			<div class="row">
@@ -301,7 +399,9 @@
 			</div>
 		</div>
 	</div>
+	<?php } ?>
 	<!-- SEPARACION DE ETIQUETAS -->
+	<?php if(isset($fecha_vagino)){ ?>
 	<div id="etiqueta">
 		<div class="container">
 			<div class="row">
@@ -348,10 +448,130 @@
 			</div>
 		</div>
 	</div>
+	<?php } ?>
 	<!-- SEPARACION DE ETIQUETAS -->
+	<?php if(isset($fecha_vulva)){ ?>
+	<div id="etiqueta">
+		<div class="container">
+			<div class="row">
+				<div style="background-color:#fff">
+					<div>
+						<center>
+							<div class="logo-area">
+								<a href="#">
+									<img src="../../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
+								</a>
+							</div>
+						</center>
+					</div>
+					<div>
+						<p>
+							<center>
+								<b>Solicitud De Estudio Para Biopsia De Vulva</b>
+							</center>
+						</p>
+						<div class="row">
+							<div class="column">
+								<p>
+									<b>Fecha:</b> <?php echo $fecha_vulva; ?>
+								</p>
+							</div>
+							<div class="column">
+								<p>
+									<b>Edad:</b> <?php echo $edad; ?></p>
+								<p>
+							</div>
+						</div>
+						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
+						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
+						<b>Acetico:</b> <?php echo ucwords($vulvoscopia_acetico_vulva) ?></p>
+						<p>
+							<p>
+								<b>Se&ntilde;ala Donde Fue Tomada la muestra:</b>
+							</p>
 
+							<div class="row">
+								<div id="columnaCanvas" class="column">
+									<center>
+										<img id="recuadroVulva" src="../../img/vulva.JPG" width="200" height="200" style="display:none;max-width:200px;max-height:200px;">
+										<canvas id="canvasVulva" width="200" height="200">
+									</center>
+								</div>
+								<div class="column">
+									<p>
+										<b>Anotaciones:</b>
+									</p>
+									<p class="txt-justificado"><?php echo ucwords($anotaciones_vulvoscopia_vulva); ?></p>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php } ?>
 	<!-- SEPARACION DE ETIQUETAS -->
-
+	<?php if(isset($fecha_cervix)){ ?>
+	<div id="etiqueta">
+		<div class="container" style="word-wrap:break-word;">
+			<div class="row">
+				<div style="background-color:#fff">
+					<div>
+						<center>
+							<div class="logo-area">
+								<a href="#">
+									<img src="../../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
+								</a>
+							</div>
+						</center>
+					</div>
+					<div>
+						<p>
+							<center>
+								<b>Solicitud De Estudio Para Biopsia De Cervix</b>
+							</center>
+						</p>
+						<div class="row">
+							<div class="column">
+								<p>
+									<b>Fecha:</b> <?php echo $fecha_cervix; ?>
+								</p>
+							</div>
+							<div class="column">
+								<p>
+									<b>Edad:</b> <?php echo $edad; ?></p>
+								<p>
+							</div>
+						</div>
+						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
+						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
+						<p class="txt-justificado">
+							<b>Hallazgos Colposcopia:</b><?php echo ucwords($posible_recomendacion_diagnostica); ?></p>
+						<p>
+							<b>Antecedentes de Cancer Cervicouterino:</b><?php echo ucwords($antecendente_cancer_cervicouterino_cervix); ?></p>
+						<p>
+							<b>Se&ntilde;ala Donde Fue Tomada la muestra:</b>
+						</p>
+						<div class="row">
+							<div class="column">
+								<center>
+									<img id="recuadroDona" src="../../img/dona.JPG" width="200" height="200" ismap style="display:none">
+									<canvas id="canvasDona" width="200" height="200">
+								</center>
+							</div>
+							<div class="column">
+								<p>
+									<b>Anotaciones:</b>
+								</p>
+								<p class="txt-justificado"><?php echo ucwords($senalizacion_cervix); ?></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php } ?>
 	<!-- SEPARACION DE ETIQUETAS -->
 
 	<footer>
