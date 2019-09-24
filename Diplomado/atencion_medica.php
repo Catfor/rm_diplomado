@@ -1,63 +1,64 @@
-<?php session_start(); if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
-<!doctype html>
-<html class="no-js" lang="">
-<link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
+<?php session_start();
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
+  <!doctype html>
+  <html class="no-js" lang="">
+  <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <div class="header-top-area">
-    <div class="container">
-      <div class="row fila">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-          <div class="logo-area">
-            <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="130" height="100" /></a>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <div class="header-top-area">
+      <div class="container">
+        <div class="row fila">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="logo-area">
+              <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="130" height="100" /></a>
 
+            </div>
           </div>
-        </div>
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-          <div class="header-top-menu">
-            <ul class="nav navbar-nav notika-top-nav">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="header-top-menu">
+              <ul class="nav navbar-nav notika-top-nav">
 
-              <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
 
 
-              </li>
-              <li class="nav-item dropdown">
+                </li>
+                <li class="nav-item dropdown">
 
-                <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
+                  <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
 
-              </li>
-            </ul>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <?php
-  include('css.php');
-  ?>
-
-</head>
-
-<body>
-  <?php
-
-    include('../coni/Localhost.php');
-    $id = $_SESSION['id_usuario'];
-    $nick = $_SESSION['nick'];
-    $correo_general = $_SESSION['correo_general'];
-    $nombre_usuario = ucwords($_SESSION['nombre_usuario']);
-    $rol = $_SESSION['rol'];
-    $apellidos_usuario = ucwords($_SESSION['apellidos_usuario']);
-
-    $result123 = mysqli_query($mysqliL, "SELECT contra from usu_me where id_usuario='$id'");
-
-
-    $rowwe = mysqli_fetch_assoc($result123);
-    $contra = $rowwe['contra'];
-    if ($contra == '3d603c7c93fb63c7db2b1d99b1998bb6') {
+    <?php
+      include('css.php');
       ?>
+
+  </head>
+
+  <body>
+    <?php
+
+      include('../coni/Localhost.php');
+      $id = $_SESSION['id_usuario'];
+      $nick = $_SESSION['nick'];
+      $correo_general = $_SESSION['correo_general'];
+      $nombre_usuario = ucwords($_SESSION['nombre_usuario']);
+      $rol = $_SESSION['rol'];
+      $apellidos_usuario = ucwords($_SESSION['apellidos_usuario']);
+
+      $result123 = mysqli_query($mysqliL, "SELECT contra from usu_me where id_usuario='$id'");
+
+
+      $rowwe = mysqli_fetch_assoc($result123);
+      $contra = $rowwe['contra'];
+      if ($contra == '3d603c7c93fb63c7db2b1d99b1998bb6') {
+        ?>
       <br>
       <div class="modals-default-cl">
         <button type="button" class="btn nk-deep-purple btn-info" data-toggle="modal" data-target="#myModaltwelve">ayuda</button>
@@ -362,653 +363,653 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                     </div>
 
                   </div><br><br>
-                
-
-
-                    <form id="f" action='guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
-                      <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente ?>">
-                      <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id ?>">
-
-                      <div class="row fila">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <select name="edad_inicio_menstruacion" class="form-control">
-                            <option value="">Edad de Inicio de menstruación</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                            <option value="32">32</option>
-                            <option value="33">33</option>
-                            <option value="34">34</option>
-                            <option value="35">35</option>
-                            <option value="36">36</option>
-                            <option value="37">37</option>
-                            <option value="38">38</option>
-                            <option value="39">39</option>
-                            <option value="40">40</option>
-                            <option value="41">42</option>
-                            <option value="43">43</option>
-                            <option value="44">44</option>
-                            <option value="45">45</option>
-                            <option value="46">46</option>
-                            <option value="47">47</option>
-                            <option value="48">48</option>
-                            <option value="49">49</option>
-                            <option value="50">50</option>
-                            <option value="51">51</option>
-                            <option value="52">52</option>
-                            <option value="53">53</option>
-                            <option value="54">54</option>
-                            <option value="55">55</option>
-                            <option value="56">56</option>
-                            <option value="57">57</option>
-                            <option value="58">58</option>
-                            <option value="59">59</option>
-                            <option value="60">60</option>
-                            <option value="61">61</option>
-                            <option value="62">62</option>
-                            <option value="63">63</option>
-                            <option value="64">64</option>
-                            <option value="65">65</option>
-                            <option value="66">66</option>
-                            <option value="67">67</option>
-                            <option value="68">68</option>
-                            <option value="69">69</option>
-                            <option value="70">70</option>
-                            <option value="71">71</option>
-                            <option value="72">72</option>
-                            <option value="73">73</option>
-                            <option value="74">74</option>
-                            <option value="75">75</option>
-                            <option value="76">76</option>
-                            <option value="77">77</option>
-                            <option value="78">78</option>
-                            <option value="79">79</option>
-                            <option value="80">80</option>
-                            <option value="81">81</option>
-                            <option value="82">82</option>
-                            <option value="83">83</option>
-                            <option value="84">84</option>
-                            <option value="85">85</option>
-                            <option value="86">86</option>
-                            <option value="87">87</option>
-                            <option value="88">88</option>
-                            <option value="89">89</option>
-                            <option value="90">90</option>
-                            <option value="91">91</option>
-                            <option value="92">92</option>
-                            <option value="93">93</option>
-                            <option value="94">94</option>
-                            <option value="95">95</option>
-                            <option value="96">96</option>
-                            <option value="97">97</option>
-                            <option value="98">98</option>
-                            <option value="99">99</option>
-
-                          </select>
-
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
 
 
+                  <form id="f" action='guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente ?>">
+                    <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id ?>">
 
-                          <select id='metodos_planificacion' name="metodos_planificacion" class="form-control">
-                            <option value="">Selecciona Método de Planificación Familiar:</option>
-                            <option value="hormonales_orales">Hormonales orales</option>
-                            <option value="hormonales_inyectables">Hormonales inyectables</option>
-                            <option value="condon">Condon</option>
-                            <option value="otro">Otro</option>
-                          </select>
+                    <div class="row fila">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <select name="edad_inicio_menstruacion" class="form-control">
+                          <option value="">Edad de Inicio de menstruación</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                          <option value="25">25</option>
+                          <option value="26">26</option>
+                          <option value="27">27</option>
+                          <option value="28">28</option>
+                          <option value="29">29</option>
+                          <option value="30">30</option>
+                          <option value="31">31</option>
+                          <option value="32">32</option>
+                          <option value="33">33</option>
+                          <option value="34">34</option>
+                          <option value="35">35</option>
+                          <option value="36">36</option>
+                          <option value="37">37</option>
+                          <option value="38">38</option>
+                          <option value="39">39</option>
+                          <option value="40">40</option>
+                          <option value="41">42</option>
+                          <option value="43">43</option>
+                          <option value="44">44</option>
+                          <option value="45">45</option>
+                          <option value="46">46</option>
+                          <option value="47">47</option>
+                          <option value="48">48</option>
+                          <option value="49">49</option>
+                          <option value="50">50</option>
+                          <option value="51">51</option>
+                          <option value="52">52</option>
+                          <option value="53">53</option>
+                          <option value="54">54</option>
+                          <option value="55">55</option>
+                          <option value="56">56</option>
+                          <option value="57">57</option>
+                          <option value="58">58</option>
+                          <option value="59">59</option>
+                          <option value="60">60</option>
+                          <option value="61">61</option>
+                          <option value="62">62</option>
+                          <option value="63">63</option>
+                          <option value="64">64</option>
+                          <option value="65">65</option>
+                          <option value="66">66</option>
+                          <option value="67">67</option>
+                          <option value="68">68</option>
+                          <option value="69">69</option>
+                          <option value="70">70</option>
+                          <option value="71">71</option>
+                          <option value="72">72</option>
+                          <option value="73">73</option>
+                          <option value="74">74</option>
+                          <option value="75">75</option>
+                          <option value="76">76</option>
+                          <option value="77">77</option>
+                          <option value="78">78</option>
+                          <option value="79">79</option>
+                          <option value="80">80</option>
+                          <option value="81">81</option>
+                          <option value="82">82</option>
+                          <option value="83">83</option>
+                          <option value="84">84</option>
+                          <option value="85">85</option>
+                          <option value="86">86</option>
+                          <option value="87">87</option>
+                          <option value="88">88</option>
+                          <option value="89">89</option>
+                          <option value="90">90</option>
+                          <option value="91">91</option>
+                          <option value="92">92</option>
+                          <option value="93">93</option>
+                          <option value="94">94</option>
+                          <option value="95">95</option>
+                          <option value="96">96</option>
+                          <option value="97">97</option>
+                          <option value="98">98</option>
+                          <option value="99">99</option>
 
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        </select>
+
+                      </div>
+
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
 
-                          <div class="form-group ic-cmp-int form-elet-mg">
-                            <div class="form-ic-cmp">
-                              <i class="notika-icon notika-edit"></i>
-                            </div>
-                            <div class="nk-int-st">
-                              <input id="cual" name="cual" type="text" class="form-control" placeholder="¿Cùal?" disabled>
-                            </div>
+
+
+                        <select id='metodos_planificacion' name="metodos_planificacion" class="form-control">
+                          <option value="">Selecciona Método de Planificación Familiar:</option>
+                          <option value="hormonales_orales">Hormonales orales</option>
+                          <option value="hormonales_inyectables">Hormonales inyectables</option>
+                          <option value="condon">Condon</option>
+                          <option value="otro">Otro</option>
+                        </select>
+
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                        <div class="form-group ic-cmp-int form-elet-mg">
+                          <div class="form-ic-cmp">
+                            <i class="notika-icon notika-edit"></i>
                           </div>
-                        </div>
-
-
-                      </div>
-                      <div class="row fila">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <select name="edad_en_que_fue_su_regla" class="form-control">
-                            <option value="">Edad en que fue su regla</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                            <option value="32">32</option>
-                            <option value="33">33</option>
-                            <option value="34">34</option>
-                            <option value="35">35</option>
-                            <option value="36">36</option>
-                            <option value="37">37</option>
-                            <option value="38">38</option>
-                            <option value="39">39</option>
-                            <option value="40">40</option>
-                            <option value="41">42</option>
-                            <option value="43">43</option>
-                            <option value="44">44</option>
-                            <option value="45">45</option>
-                            <option value="46">46</option>
-                            <option value="47">47</option>
-                            <option value="48">48</option>
-                            <option value="49">49</option>
-                            <option value="50">50</option>
-                            <option value="51">51</option>
-                            <option value="52">52</option>
-                            <option value="53">53</option>
-                            <option value="54">54</option>
-                            <option value="55">55</option>
-                            <option value="56">56</option>
-                            <option value="57">57</option>
-                            <option value="58">58</option>
-                            <option value="59">59</option>
-                            <option value="60">60</option>
-                            <option value="61">61</option>
-                            <option value="62">62</option>
-                            <option value="63">63</option>
-                            <option value="64">64</option>
-                            <option value="65">65</option>
-                            <option value="66">66</option>
-                            <option value="67">67</option>
-                            <option value="68">68</option>
-                            <option value="69">69</option>
-                            <option value="70">70</option>
-                            <option value="71">71</option>
-                            <option value="72">72</option>
-                            <option value="73">73</option>
-                            <option value="74">74</option>
-                            <option value="75">75</option>
-                            <option value="76">76</option>
-                            <option value="77">77</option>
-                            <option value="78">78</option>
-                            <option value="79">79</option>
-                            <option value="80">80</option>
-                            <option value="81">81</option>
-                            <option value="82">82</option>
-                            <option value="83">83</option>
-                            <option value="84">84</option>
-                            <option value="85">85</option>
-                            <option value="86">86</option>
-                            <option value="87">87</option>
-                            <option value="88">88</option>
-                            <option value="89">89</option>
-                            <option value="90">90</option>
-                            <option value="91">91</option>
-                            <option value="92">92</option>
-                            <option value="93">93</option>
-                            <option value="94">94</option>
-                            <option value="95">95</option>
-                            <option value="96">96</option>
-                            <option value="97">97</option>
-                            <option value="98">98</option>
-                            <option value="99">99</option>
-                            <option value="100">100</option>
-                            <option value="101">101</option>
-                            <option value="102">102</option>
-                            <option value="103">103</option>
-                            <option value="104">104</option>
-                            <option value="105">105</option>
-                            <option value="106">106</option>
-                            <option value="107">107</option>
-                            <option value="108">108</option>
-                            <option value="109">109</option>
-                            <option value="110">110</option>
-                            <option value="111">111</option>
-                            <option value="112">112</option>
-                            <option value="113">113</option>
-                            <option value="114">114</option>
-                            <option value="115">115</option>
-                            <option value="116">116</option>
-                            <option value="117">117</option>
-                            <option value="118">118</option>
-                            <option value="119">119</option>
-                            <option value="120">120</option>
-                          </select>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <select name="edad_inicio_vida_sexual" class="form-control">
-                            <option value="">Edad de inicio de vida sexual</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                            <option value="32">32</option>
-                            <option value="33">33</option>
-                            <option value="34">34</option>
-                            <option value="35">35</option>
-                            <option value="36">36</option>
-                            <option value="37">37</option>
-                            <option value="38">38</option>
-                            <option value="39">39</option>
-                            <option value="40">40</option>
-                            <option value="41">42</option>
-                            <option value="43">43</option>
-                            <option value="44">44</option>
-                            <option value="45">45</option>
-                            <option value="46">46</option>
-                            <option value="47">47</option>
-                            <option value="48">48</option>
-                            <option value="49">49</option>
-                            <option value="50">50</option>
-                            <option value="51">51</option>
-                            <option value="52">52</option>
-                            <option value="53">53</option>
-                            <option value="54">54</option>
-                            <option value="55">55</option>
-                            <option value="56">56</option>
-                            <option value="57">57</option>
-                            <option value="58">58</option>
-                            <option value="59">59</option>
-                            <option value="60">60</option>
-                            <option value="61">61</option>
-                            <option value="62">62</option>
-                            <option value="63">63</option>
-                            <option value="64">64</option>
-                            <option value="65">65</option>
-                            <option value="66">66</option>
-                            <option value="67">67</option>
-                            <option value="68">68</option>
-                            <option value="69">69</option>
-                            <option value="70">70</option>
-                            <option value="71">71</option>
-                            <option value="72">72</option>
-                            <option value="73">73</option>
-                            <option value="74">74</option>
-                            <option value="75">75</option>
-                            <option value="76">76</option>
-                            <option value="77">77</option>
-                            <option value="78">78</option>
-                            <option value="79">79</option>
-                            <option value="80">80</option>
-                            <option value="81">81</option>
-                            <option value="82">82</option>
-                            <option value="83">83</option>
-                            <option value="84">84</option>
-                            <option value="85">85</option>
-                            <option value="86">86</option>
-                            <option value="87">87</option>
-                            <option value="88">88</option>
-                            <option value="89">89</option>
-                            <option value="90">90</option>
-                            <option value="91">91</option>
-                            <option value="92">92</option>
-                            <option value="93">93</option>
-                            <option value="94">94</option>
-                            <option value="95">95</option>
-                            <option value="96">96</option>
-                            <option value="97">97</option>
-                            <option value="98">98</option>
-                            <option value="99">99</option>
-                            <option value="100">100</option>
-                            <option value="101">101</option>
-                            <option value="102">102</option>
-                            <option value="103">103</option>
-                            <option value="104">104</option>
-                            <option value="105">105</option>
-                            <option value="106">106</option>
-                            <option value="107">107</option>
-                            <option value="108">108</option>
-                            <option value="109">109</option>
-                            <option value="110">110</option>
-                            <option value="111">111</option>
-                            <option value="112">112</option>
-                            <option value="113">113</option>
-                            <option value="114">114</option>
-                            <option value="115">115</option>
-                            <option value="116">116</option>
-                            <option value="117">117</option>
-                            <option value="118">118</option>
-                            <option value="119">119</option>
-                            <option value="120">120</option>
-                          </select>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-
-                          <select name="parejas_sexuales" class="form-control">
-                            <option value="">Parejas sexuales</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                          </select>
-
-                        </div>
-
-
-                      </div>
-                      <div class="row fila">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <select name="gestas" class="form-control">
-                            <option value="">Gestas</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>>
-                          </select>
-                        </div>
-
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <select name="para" class="form-control">
-                            <option value="">Para</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>>
-                          </select>
-
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-
-                          <select name="cesareas" class="form-control">
-                            <option value="">Césareas</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>>
-                          </select>
-
-                        </div>
-
-                      </div>
-                      <div class="row fila">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                          <select name="abortos" class="form-control">
-                            <option value="">Abortos</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>>
-                          </select>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                          <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
-                            <div class="input-group date nk-int-st">
-
-                              <span class="input-group-addon"></span>
-                              <input type="text" class="form-control inputDeshabilitado" name="fecha_ultima_regla" placeholder="Fecha de la última regla">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                          <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
-                            <div class="input-group date nk-int-st">
-
-                              <span class="input-group-addon"></span>
-                              <input type="text" class="form-control inputDeshabilitado" name="fecha_ultimo_papanicolau" placeholder="Fecha del último papanicolau:">
-                            </div>
-                          </div>
-                        </div>
-
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group purple-border">
-                            <div class="row">
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
-                              </div>
-                            </div>
-                            <textarea class="form-control" rows="2" placeholder="Escribe Antecedentes de Lesión" name="atecedentes_lesion" form="f"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="form-group purple-border">
-                            <div class="row">
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
-                              </div>
-                            </div>
-                            <textarea class="form-control" rows="2" placeholder="Escribe Antecedente de Tratamiento" name="antecedentes_tratamiento" form="f"></textarea>
+                          <div class="nk-int-st">
+                            <input id="cual" name="cual" type="text" class="form-control" placeholder="¿Cùal?" disabled>
                           </div>
                         </div>
                       </div>
 
-                      <div class="row fila">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                    </div>
+                    <div class="row fila">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <select name="edad_en_que_fue_su_regla" class="form-control">
+                          <option value="">Edad en que fue su regla</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                          <option value="25">25</option>
+                          <option value="26">26</option>
+                          <option value="27">27</option>
+                          <option value="28">28</option>
+                          <option value="29">29</option>
+                          <option value="30">30</option>
+                          <option value="31">31</option>
+                          <option value="32">32</option>
+                          <option value="33">33</option>
+                          <option value="34">34</option>
+                          <option value="35">35</option>
+                          <option value="36">36</option>
+                          <option value="37">37</option>
+                          <option value="38">38</option>
+                          <option value="39">39</option>
+                          <option value="40">40</option>
+                          <option value="41">42</option>
+                          <option value="43">43</option>
+                          <option value="44">44</option>
+                          <option value="45">45</option>
+                          <option value="46">46</option>
+                          <option value="47">47</option>
+                          <option value="48">48</option>
+                          <option value="49">49</option>
+                          <option value="50">50</option>
+                          <option value="51">51</option>
+                          <option value="52">52</option>
+                          <option value="53">53</option>
+                          <option value="54">54</option>
+                          <option value="55">55</option>
+                          <option value="56">56</option>
+                          <option value="57">57</option>
+                          <option value="58">58</option>
+                          <option value="59">59</option>
+                          <option value="60">60</option>
+                          <option value="61">61</option>
+                          <option value="62">62</option>
+                          <option value="63">63</option>
+                          <option value="64">64</option>
+                          <option value="65">65</option>
+                          <option value="66">66</option>
+                          <option value="67">67</option>
+                          <option value="68">68</option>
+                          <option value="69">69</option>
+                          <option value="70">70</option>
+                          <option value="71">71</option>
+                          <option value="72">72</option>
+                          <option value="73">73</option>
+                          <option value="74">74</option>
+                          <option value="75">75</option>
+                          <option value="76">76</option>
+                          <option value="77">77</option>
+                          <option value="78">78</option>
+                          <option value="79">79</option>
+                          <option value="80">80</option>
+                          <option value="81">81</option>
+                          <option value="82">82</option>
+                          <option value="83">83</option>
+                          <option value="84">84</option>
+                          <option value="85">85</option>
+                          <option value="86">86</option>
+                          <option value="87">87</option>
+                          <option value="88">88</option>
+                          <option value="89">89</option>
+                          <option value="90">90</option>
+                          <option value="91">91</option>
+                          <option value="92">92</option>
+                          <option value="93">93</option>
+                          <option value="94">94</option>
+                          <option value="95">95</option>
+                          <option value="96">96</option>
+                          <option value="97">97</option>
+                          <option value="98">98</option>
+                          <option value="99">99</option>
+                          <option value="100">100</option>
+                          <option value="101">101</option>
+                          <option value="102">102</option>
+                          <option value="103">103</option>
+                          <option value="104">104</option>
+                          <option value="105">105</option>
+                          <option value="106">106</option>
+                          <option value="107">107</option>
+                          <option value="108">108</option>
+                          <option value="109">109</option>
+                          <option value="110">110</option>
+                          <option value="111">111</option>
+                          <option value="112">112</option>
+                          <option value="113">113</option>
+                          <option value="114">114</option>
+                          <option value="115">115</option>
+                          <option value="116">116</option>
+                          <option value="117">117</option>
+                          <option value="118">118</option>
+                          <option value="119">119</option>
+                          <option value="120">120</option>
+                        </select>
+
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <select name="edad_inicio_vida_sexual" class="form-control">
+                          <option value="">Edad de inicio de vida sexual</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                          <option value="25">25</option>
+                          <option value="26">26</option>
+                          <option value="27">27</option>
+                          <option value="28">28</option>
+                          <option value="29">29</option>
+                          <option value="30">30</option>
+                          <option value="31">31</option>
+                          <option value="32">32</option>
+                          <option value="33">33</option>
+                          <option value="34">34</option>
+                          <option value="35">35</option>
+                          <option value="36">36</option>
+                          <option value="37">37</option>
+                          <option value="38">38</option>
+                          <option value="39">39</option>
+                          <option value="40">40</option>
+                          <option value="41">42</option>
+                          <option value="43">43</option>
+                          <option value="44">44</option>
+                          <option value="45">45</option>
+                          <option value="46">46</option>
+                          <option value="47">47</option>
+                          <option value="48">48</option>
+                          <option value="49">49</option>
+                          <option value="50">50</option>
+                          <option value="51">51</option>
+                          <option value="52">52</option>
+                          <option value="53">53</option>
+                          <option value="54">54</option>
+                          <option value="55">55</option>
+                          <option value="56">56</option>
+                          <option value="57">57</option>
+                          <option value="58">58</option>
+                          <option value="59">59</option>
+                          <option value="60">60</option>
+                          <option value="61">61</option>
+                          <option value="62">62</option>
+                          <option value="63">63</option>
+                          <option value="64">64</option>
+                          <option value="65">65</option>
+                          <option value="66">66</option>
+                          <option value="67">67</option>
+                          <option value="68">68</option>
+                          <option value="69">69</option>
+                          <option value="70">70</option>
+                          <option value="71">71</option>
+                          <option value="72">72</option>
+                          <option value="73">73</option>
+                          <option value="74">74</option>
+                          <option value="75">75</option>
+                          <option value="76">76</option>
+                          <option value="77">77</option>
+                          <option value="78">78</option>
+                          <option value="79">79</option>
+                          <option value="80">80</option>
+                          <option value="81">81</option>
+                          <option value="82">82</option>
+                          <option value="83">83</option>
+                          <option value="84">84</option>
+                          <option value="85">85</option>
+                          <option value="86">86</option>
+                          <option value="87">87</option>
+                          <option value="88">88</option>
+                          <option value="89">89</option>
+                          <option value="90">90</option>
+                          <option value="91">91</option>
+                          <option value="92">92</option>
+                          <option value="93">93</option>
+                          <option value="94">94</option>
+                          <option value="95">95</option>
+                          <option value="96">96</option>
+                          <option value="97">97</option>
+                          <option value="98">98</option>
+                          <option value="99">99</option>
+                          <option value="100">100</option>
+                          <option value="101">101</option>
+                          <option value="102">102</option>
+                          <option value="103">103</option>
+                          <option value="104">104</option>
+                          <option value="105">105</option>
+                          <option value="106">106</option>
+                          <option value="107">107</option>
+                          <option value="108">108</option>
+                          <option value="109">109</option>
+                          <option value="110">110</option>
+                          <option value="111">111</option>
+                          <option value="112">112</option>
+                          <option value="113">113</option>
+                          <option value="114">114</option>
+                          <option value="115">115</option>
+                          <option value="116">116</option>
+                          <option value="117">117</option>
+                          <option value="118">118</option>
+                          <option value="119">119</option>
+                          <option value="120">120</option>
+                        </select>
+
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
 
-                          <select name="metrorragia" class="form-control">
-                            <option value="">Metrorragia</option>
-                            <option value="1">SI</option>
-                            <option value="0">NO</option>
 
-                          </select>
+                        <select name="parejas_sexuales" class="form-control">
+                          <option value="">Parejas sexuales</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                          <option value="25">25</option>
+                          <option value="26">26</option>
+                          <option value="27">27</option>
+                          <option value="28">28</option>
+                          <option value="29">29</option>
+                          <option value="30">30</option>
+                        </select>
 
+                      </div>
+
+
+                    </div>
+                    <div class="row fila">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <select name="gestas" class="form-control">
+                          <option value="">Gestas</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>>
+                        </select>
+                      </div>
+
+
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <select name="para" class="form-control">
+                          <option value="">Para</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>>
+                        </select>
+
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+
+                        <select name="cesareas" class="form-control">
+                          <option value="">Césareas</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>>
+                        </select>
+
+                      </div>
+
+                    </div>
+                    <div class="row fila">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <select name="abortos" class="form-control">
+                          <option value="">Abortos</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>>
+                        </select>
+                      </div>
+
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+                          <div class="input-group date nk-int-st">
+
+                            <span class="input-group-addon"></span>
+                            <input type="text" class="form-control inputDeshabilitado" name="fecha_ultima_regla" placeholder="Fecha de la última regla">
+                          </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
+                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+                          <div class="input-group date nk-int-st">
 
-                          <select name="hormonoterapia" class="form-control">
-                            <option value="">Hormonoterapia</option>
-                            <option value="1">SI</option>
-                            <option value="0">NO</option>
-
-                          </select>
-
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                          <div class="form-group">
-
-                            <div class="nk-int-st">
-                              <input type="text" name="duracion_hormonoterapia" class="form-control" placeholder="¿Duración?">
-                            </div>
+                            <span class="input-group-addon"></span>
+                            <input type="text" class="form-control inputDeshabilitado" name="fecha_ultimo_papanicolau" placeholder="Fecha del último papanicolau:">
                           </div>
                         </div>
                       </div>
 
-                      <div class="row fila">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-                          <select name="ritmo" class="form-control">
-                            <option value="">Ritmo</option>
-                            <option value="regular">Regular</option>
-                            <option value="irregular">Irregular</option>
-                            <option value="ausente">Ausente</option>
-
-                          </select>
-
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group purple-border">
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
+                            </div>
+                          </div>
+                          <textarea class="form-control" rows="2" placeholder="Escribe Antecedentes de Lesión" name="atecedentes_lesion" form="f"></textarea>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-                          <select name="antecedente_cancer_cervicouterino" class="form-control">
-                            <option value="">Antecedente de Cáncer cervicouterino</option>
-                            <option value="1">SI</option>
-                            <option value="0">NO</option>
-
-                          </select>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group purple-border">
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
+                            </div>
+                          </div>
+                          <textarea class="form-control" rows="2" placeholder="Escribe Antecedente de Tratamiento" name="antecedentes_tratamiento" form="f"></textarea>
                         </div>
+                      </div>
+                    </div>
+
+                    <div class="row fila">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <select name="metrorragia" class="form-control">
+                          <option value="">Metrorragia</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
 
-
-                          <select name="tratamiento_previo" class="form-control">
-                            <option value="">Tratamientos previos:</option>
-                            <option value="1">SI</option>
-                            <option value="0">NO</option>
-
-                          </select>
-
-                        </div>
-
-
-
+                        </select>
 
                       </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                        <select name="hormonoterapia" class="form-control">
+                          <option value="">Hormonoterapia</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+
+                        </select>
+
+                      </div>
+
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                        <div class="form-group">
+
+                          <div class="nk-int-st">
+                            <input type="text" name="duracion_hormonoterapia" class="form-control" placeholder="¿Duración?">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row fila">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                        <select name="ritmo" class="form-control">
+                          <option value="">Ritmo</option>
+                          <option value="regular">Regular</option>
+                          <option value="irregular">Irregular</option>
+                          <option value="ausente">Ausente</option>
+
+                        </select>
+
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                        <select name="antecedente_cancer_cervicouterino" class="form-control">
+                          <option value="">Antecedente de Cáncer cervicouterino</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+
+                        </select>
+                      </div>
+
+
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                        <select name="tratamiento_previo" class="form-control">
+                          <option value="">Tratamientos previos:</option>
+                          <option value="1">SI</option>
+                          <option value="0">NO</option>
+
+                        </select>
+
+                      </div>
+
+
+
+
+                    </div>
 
                 </div>
               </div>
@@ -1264,8 +1265,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                             <select name='cy_menores' id='cy_menores' class="form-control">
                                               <option value="">Criterios Menores</option>
                                               <option value="positiva">Positivo</option>
-                                              <option value="negativa_puntos_criterios_anteriores">Negativa Con < 3 Puntos En Criterios Anteriores</option>
-                                              <option value="zonas_yodo_negativas">Zonas Yodonegativas Más Allá De La ZT</option>
+                                              <option value="negativa_puntos_criterios_anteriores">Negativa Con < 3 Puntos En Criterios Anteriores</option> <option value="zonas_yodo_negativas">Zonas Yodonegativas Más Allá De La ZT</option>
                                             </select>
 
                                           </div>
@@ -1377,28 +1377,28 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           </select>
                                         </div>
 
-                                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="form-group purple-border">
-                                              <div class="row fila">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                  <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)</FONT>
-                                                </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                          <div class="form-group purple-border">
+                                            <div class="row fila">
+                                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)</FONT>
                                               </div>
-                                              <textarea class="form-control" rows="1" placeholder="Escribe Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)" name="antecedentes_de_importancia" form="f"></textarea>
                                             </div>
+                                            <textarea class="form-control" rows="1" placeholder="Escribe Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)" name="antecedentes_de_importancia" form="f"></textarea>
                                           </div>
+                                        </div>
 
 
-                                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="form-group purple-border">
-                                              <div class="row fila">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                  <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Plan de Tratamiento</FONT>
-                                                </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                          <div class="form-group purple-border">
+                                            <div class="row fila">
+                                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Plan de Tratamiento</FONT>
                                               </div>
-                                              <textarea class="form-control" rows="1" placeholder="Escribe Plan de Tratamiento" name="plan_de_tratamiento" form="f"></textarea>
                                             </div>
+                                            <textarea class="form-control" rows="1" placeholder="Escribe Plan de Tratamiento" name="plan_de_tratamiento" form="f"></textarea>
                                           </div>
+                                        </div>
 
                                       </div>
 
@@ -1740,593 +1740,605 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
 
 
-    <!-- Form Element area End-->
+      <!-- Form Element area End-->
 
-    <!-- End Footer area-->
-    <!-- jquery
+      <!-- End Footer area-->
+      <!-- jquery
 		============================================ -->
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- bootstrap JS
+      <script src="js/vendor/jquery-1.12.4.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <!-- bootstrap JS
 		============================================ -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- wow JS
+      <script src="js/bootstrap.min.js"></script>
+      <!-- wow JS
 		============================================ -->
-    <script src="js/wow.min.js"></script>
-    <!-- price-slider JS
+      <script src="js/wow.min.js"></script>
+      <!-- price-slider JS
 		============================================ -->
-    <script src="js/jquery-price-slider.js"></script>
-    <!-- owl.carousel JS
+      <script src="js/jquery-price-slider.js"></script>
+      <!-- owl.carousel JS
 		============================================ -->
-    <script src="js/owl.carousel.min.js"></script>
-    <!-- scrollUp JS
+      <script src="js/owl.carousel.min.js"></script>
+      <!-- scrollUp JS
 		============================================ -->
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <!-- meanmenu JS
+      <script src="js/jquery.scrollUp.min.js"></script>
+      <!-- meanmenu JS
 		============================================ -->
-    <script src="js/meanmenu/jquery.meanmenu.js"></script>
-    <!-- counterup JS
+      <script src="js/meanmenu/jquery.meanmenu.js"></script>
+      <!-- counterup JS
 		============================================ -->
-    <script src="js/counterup/jquery.counterup.min.js"></script>
-    <script src="js/counterup/waypoints.min.js"></script>
-    <script src="js/counterup/counterup-active.js"></script>
-    <!-- mCustomScrollbar JS
+      <script src="js/counterup/jquery.counterup.min.js"></script>
+      <script src="js/counterup/waypoints.min.js"></script>
+      <script src="js/counterup/counterup-active.js"></script>
+      <!-- mCustomScrollbar JS
 		============================================ -->
-    <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <!-- sparkline JS
+      <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+      <!-- sparkline JS
 		============================================ -->
-    <script src="js/sparkline/jquery.sparkline.min.js"></script>
-    <script src="js/sparkline/sparkline-active.js"></script>
-    <!-- flot JS
+      <script src="js/sparkline/jquery.sparkline.min.js"></script>
+      <script src="js/sparkline/sparkline-active.js"></script>
+      <!-- flot JS
 		============================================ -->
-    <script src="js/flot/jquery.flot.js"></script>
-    <script src="js/flot/jquery.flot.resize.js"></script>
-    <script src="js/flot/flot-active.js"></script>
+      <script src="js/flot/jquery.flot.js"></script>
+      <script src="js/flot/jquery.flot.resize.js"></script>
+      <script src="js/flot/flot-active.js"></script>
 
-    <!-- knob JS
+      <!-- knob JS
 		============================================ -->
-    <script src="js/knob/jquery.knob.js"></script>
-    <script src="js/knob/jquery.appear.js"></script>
-    <script src="js/knob/knob-active.js"></script>
-    <!-- Input Mask JS
+      <script src="js/knob/jquery.knob.js"></script>
+      <script src="js/knob/jquery.appear.js"></script>
+      <script src="js/knob/knob-active.js"></script>
+      <!-- Input Mask JS
 		============================================ -->
-    <script src="js/jasny-bootstrap.min.js"></script>
-    <!-- icheck JS
+      <script src="js/jasny-bootstrap.min.js"></script>
+      <!-- icheck JS
 		============================================ -->
-    <script src="js/icheck/icheck.min.js"></script>
-    <script src="js/icheck/icheck-active.js"></script>
-    <!--  Chat JS
+      <script src="js/icheck/icheck.min.js"></script>
+      <script src="js/icheck/icheck-active.js"></script>
+      <!--  Chat JS
 		============================================ -->
 
-    <!--  todo JS
+      <!--  todo JS
 		============================================ -->
-    <script src="js/todo/jquery.todo.js"></script>
-    <!-- icheck JS
+      <script src="js/todo/jquery.todo.js"></script>
+      <!-- icheck JS
 		============================================ -->
-    <script src="js/icheck/icheck.min.js"></script>
-    <script src="js/icheck/icheck-active.js"></script>
-    <!-- rangle-slider JS
+      <script src="js/icheck/icheck.min.js"></script>
+      <script src="js/icheck/icheck-active.js"></script>
+      <!-- rangle-slider JS
     ============================================ -->
-    <script src="js/rangle-slider/jquery-ui-1.10.4.custom.min.js"></script>
-    <script src="js/rangle-slider/jquery-ui-touch-punch.min.js"></script>
-    <script src="js/rangle-slider/rangle-active.js"></script>
-    <!-- datapicker JS
+      <script src="js/rangle-slider/jquery-ui-1.10.4.custom.min.js"></script>
+      <script src="js/rangle-slider/jquery-ui-touch-punch.min.js"></script>
+      <script src="js/rangle-slider/rangle-active.js"></script>
+      <!-- datapicker JS
     ============================================ -->
-    <script src="js/datapicker/bootstrap-datepicker.js"></script>
-    <script src="js/datapicker/datepicker-active.js"></script>
-    <!-- bootstrap select JS
+      <script src="js/datapicker/bootstrap-datepicker.js"></script>
+      <script src="js/datapicker/datepicker-active.js"></script>
+      <!-- bootstrap select JS
     ============================================ -->
-    <script src="js/bootstrap-select/bootstrap-select.js"></script>
-    <!--  color-picker JS
+      <script src="js/bootstrap-select/bootstrap-select.js"></script>
+      <!--  color-picker JS
     ============================================ -->
-    <script src="js/color-picker/farbtastic.min.js"></script>
-    <script src="js/color-picker/color-picker.js"></script>
-    <!--  notification JS
+      <script src="js/color-picker/farbtastic.min.js"></script>
+      <script src="js/color-picker/color-picker.js"></script>
+      <!--  notification JS
     ============================================ -->
-    <script src="js/notification/bootstrap-growl.min.js"></script>
-    <script src="js/notification/notification-active.js"></script>
-    <!--  summernote JS
+      <script src="js/notification/bootstrap-growl.min.js"></script>
+      <script src="js/notification/notification-active.js"></script>
+      <!--  summernote JS
     ============================================ -->
-    <script src="js/summernote/summernote-updated.min.js"></script>
-    <script src="js/summernote/summernote-active.js"></script>
-    <!-- dropzone JS
+      <script src="js/summernote/summernote-updated.min.js"></script>
+      <script src="js/summernote/summernote-active.js"></script>
+      <!-- dropzone JS
     ============================================ -->
 
-    <!--  wave JS
+      <!--  wave JS
 		============================================ -->
-    <script src="js/wave/waves.min.js"></script>
-    <script src="js/wave/wave-active.js"></script>
-    <!--  chosen JS
+      <script src="js/wave/waves.min.js"></script>
+      <script src="js/wave/wave-active.js"></script>
+      <!--  chosen JS
 		============================================ -->
-    <script src="js/chosen/chosen.jquery.js"></script>
-    <!--  todo JS
+      <script src="js/chosen/chosen.jquery.js"></script>
+      <!--  todo JS
 		============================================ -->
-    <script src="js/todo/jquery.todo.js"></script>
-    <!-- autosize JS
+      <script src="js/todo/jquery.todo.js"></script>
+      <!-- autosize JS
 		============================================ -->
-    <script src="js/autosize.min.js"></script>
-    <!-- plugins JS
+      <script src="js/autosize.min.js"></script>
+      <!-- plugins JS
 		============================================ -->
-    <script src="js/plugins.js"></script>
-    <!-- and drop JS
-		============================================ -->
-
-
-
-
-    <!-- main JS
+      <script src="js/plugins.js"></script>
+      <!-- and drop JS
 		============================================ -->
 
-    <script language="JavaScript">
-      $(function() {
-        $("#metodos_planificacion").change(function() {
-          if ($(this).val() === "hormonales_orales") {
-            $("#cual ").prop("disabled", true);
-          } else if ($(this).val() === "") {
-            $("#cual").prop("disabled", true);
-          } else if ($(this).val() === "hormonales_inyectables") {
-            $("#cual").prop("disabled", true);
-          } else if ($(this).val() === "condon") {
-            $("#cual").prop("disabled", true);
-          } else {
-            $("#cual").prop("disabled", false);
-          }
-        });
-      });
-    </script>
-    <!-- ----------------------------------------------------------------------------------------------------->
-    <script language="JavaScript">
-      $(function() {
-        $("#colposcopia").change(function() {
-          if ($(this).val() !== "no_adecuada") {
-            $("#causa ").prop("disabled", true);
-          } else {
-            $("#causa").prop("disabled", false);
-          }
-        });
-      });
-    </script>
-    <!-- ----------------------------------------------------------------------------------------------------->
-    <!-- ----------------------------------------------------------------------------------------------------->
-    <script language="JavaScript">
-      $("#epitelio_acetoblanco").change(function() {
-        if ($("#epitelio_acetoblanco").val() === "presente") {
-          $('#ep_criterios_menores').prop('disabled', false);
-          $('#ep_criterios_intermedios').prop('disabled', false);
-          $('#ep_criterios_mayores').prop('disabled', false);
-
-        } else {
-          $('#ep_criterios_menores').prop('disabled', 'disabled');
-          $('#ep_criterios_intermedios').prop('disabled', 'disabled');
-          $('#ep_criterios_mayores').prop('disabled', 'disabled');
-        }
-      });
-
-
-      $("#ep_criterios_menores").change(function() {
-        if ($("#ep_criterios_menores").val() === "") {
-          $('#ep_criterios_intermedios').prop('disabled', false);
-          $('#ep_criterios_mayores').prop('disabled', false);
-        } else {
-
-          $('#ep_criterios_intermedios').prop('disabled', 'disabled');
-          $('#ep_criterios_mayores').prop('disabled', 'disabled');
-        }
-      });
-
-      $("#ep_criterios_intermedios").change(function() {
-        if ($("#ep_criterios_intermedios").val() === "") {
-          $('#ep_criterios_menores').prop('disabled', false);
-          $('#ep_criterios_mayores').prop('disabled', false);
-        } else {
-
-          $('#ep_criterios_menores').prop('disabled', 'disabled');
-          $('#ep_criterios_mayores').prop('disabled', 'disabled');
-        }
-      });
 
 
 
+      <!-- main JS
+		============================================ -->
 
-      $("#ep_criterios_mayores").change(function() {
-        if ($("#ep_criterios_mayores").val() === "") {
-          $('#ep_criterios_menores').prop('disabled', false);
-          $('#ep_criterios_intermedios').prop('disabled', false);
-        } else {
-          $('#ep_criterios_menores').prop('disabled', 'disabled');
-          $('#ep_criterios_intermedios').prop('disabled', 'disabled');
-        }
-      });
-      ///////////////////////////////////////////////////////////////////////////////////////////
-      $("#bs_criterios_menores").change(function() {
-        if ($("#bs_criterios_menores").val() === "") {
-          $('#bs_criterios_intermedios').prop('disabled', false);
-          $('#bs_criterios_mayores').prop('disabled', false);
-        } else {
-
-          $('#bs_criterios_intermedios').prop('disabled', 'disabled');
-          $('#bs_criterios_mayores').prop('disabled', 'disabled');
-        }
-      });
-
-      $("#bs_criterios_intermedios").change(function() {
-        if ($("#bs_criterios_intermedios").val() === "") {
-          $('#bs_criterios_menores').prop('disabled', false);
-          $('#bs_criterios_mayores').prop('disabled', false);
-        } else {
-
-          $('#bs_criterios_menores').prop('disabled', 'disabled');
-          $('#bs_criterios_mayores').prop('disabled', 'disabled');
-        }
-      });
-
-
-
-
-      $("#bs_criterios_mayores").change(function() {
-        if ($("#bs_criterios_mayores").val() === "") {
-          $('#bs_criterios_menores').prop('disabled', false);
-          $('#bs_criterios_intermedios').prop('disabled', false);
-        } else {
-          $('#bs_criterios_menores').prop('disabled', 'disabled');
-          $('#bs_criterios_intermedios').prop('disabled', 'disabled');
-        }
-      });
-      ////////////////////////////////////////////////
-
-      $("#ag_criterios_menores").change(function() {
-        if ($("#ag_criterios_menores").val() === "") {
-          $('#ag_criterios_intermedios').prop('disabled', false);
-          $('#ag_criterios_mayores').prop('disabled', false);
-        } else {
-
-          $('#ag_criterios_intermedios').prop('disabled', 'disabled');
-          $('#ag_criterios_mayores').prop('disabled', 'disabled');
-        }
-      });
-
-      $("#ag_criterios_intermedios").change(function() {
-        if ($("#ag_criterios_intermedios").val() === "") {
-          $('#ag_criterios_menores').prop('disabled', false);
-          $('#ag_criterios_mayores').prop('disabled', false);
-        } else {
-
-          $('#ag_criterios_menores').prop('disabled', 'disabled');
-          $('#ag_criterios_mayores').prop('disabled', 'disabled');
-        }
-      });
-
-
-
-
-      $("#ag_criterios_mayores").change(function() {
-        if ($("#ag_criterios_mayores").val() === "") {
-          $('#ag_criterios_menores').prop('disabled', false);
-          $('#ag_criterios_intermedios').prop('disabled', false);
-        } else {
-          $('#ag_criterios_menores').prop('disabled', 'disabled');
-          $('#ag_criterios_intermedios').prop('disabled', 'disabled');
-        }
-      });
-      //////////////////////////////////////////////////////
-
-      $("#cy_menores").change(function() {
-        if ($("#cy_menores").val() === "") {
-          $('#cy_intermedios').prop('disabled', false);
-          $('#cy_mayores').prop('disabled', false);
-        } else {
-
-          $('#cy_intermedios').prop('disabled', 'disabled');
-          $('#cy_mayores').prop('disabled', 'disabled');
-        }
-      });
-
-      $("#cy_intermedios").change(function() {
-        if ($("#cy_intermedios").val() === "") {
-          $('#cy_menores').prop('disabled', false);
-          $('#cy_mayores').prop('disabled', false);
-        } else {
-
-          $('#cy_menores').prop('disabled', 'disabled');
-          $('#cy_mayores').prop('disabled', 'disabled');
-        }
-      });
-
-
-
-
-      $("#cy_mayores").change(function() {
-        if ($("#cy_mayores").val() === "") {
-
-          $('#cy_menores').prop('disabled', false);
-          $('#cy_intermedios').prop('disabled', false);
-        } else {
-          $('#cy_menores').prop('disabled', 'disabled');
-          $('#cy_intermedios').prop('disabled', 'disabled');
-        }
-      });
-    </script>
-
-
-    <script>
-      function pagoOnChange(sel) {
-        if (sel.value == "ausente") {
-          divC = document.getElementById("ausente");
-          divC.style.display = "";
-
-          divT = document.getElementById("presente");
-          divT.style.display = "none";
-
-        } else if (sel.value == "") {
-          divC = document.getElementById("ausente");
-          divC.style.display = "";
-
-          divT = document.getElementById("presente");
-          divT.style.display = "none";
-
-        } else {
-
-          divC = document.getElementById("ausente");
-          divC.style.display = "none";
-
-          divT = document.getElementById("presente");
-          divT.style.display = "";
-        }
-      }
-    </script>
-
-
-
-    <script>
-      //Bloque de codigo de JS para hacer la captura de imagenes desde una webcam / colposcopio
-      function hasGetUserMedia() {
-        return !!(navigator.mediaDevices &&
-          navigator.mediaDevices.getUserMedia);
-      }
-
-      if (hasGetUserMedia()) {
-        // Good to go!
-      } else {
-        alert('La captura de fotos desde la web no es soportado por tu navegador');
-        document.getElementById("modalCam").style.display = "none";
-      }
-
-      'use strict';
-      var contadorCanvas = 1;
-      var videoElement = document.querySelector('video');
-      var audioSelect = document.getElementById('audioSource');
-      var videoSelect = document.getElementById('videoSource');
-      const captureVideoButton = document.querySelector('#screenshot .capture-button');
-      const screenshotButton = document.getElementById('btn-captura');
-      const divCanvas = document.getElementById('vectorFotos');
-
-      iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision);
-
-      function getDevices() {
-        // AFAICT in Safari this only gets default devices until gUM is called :/
-        return navigator.mediaDevices.enumerateDevices();
-      }
-
-      function gotDevices(deviceInfos) {
-        console.log("Obteniendo informacion");
-        window.deviceInfos = deviceInfos; // make available to console
-        //console.log('Dispositivos Disponibles:', deviceInfos);
-        var dev = 1;
-        for (const deviceInfo of deviceInfos) {
-          const option = document.createElement('option');
-          option.value = deviceInfo.deviceId;
-          if (deviceInfo.kind === 'audioinput' && deviceInfo.label.includes("ISST")) {
-            option.text = deviceInfo.label || `Microfono ${audioSelect.length + 1}`;
-            audioSelect.appendChild(option);
-            console.log('audioinput',option);
-          } else if (deviceInfo.kind === 'videoinput' && deviceInfo.label.includes("gato")) {
-            option.text = deviceInfo.label || `Camara ${videoSelect.length + 1}`;
-            videoSelect.appendChild(option);
-            console.log('videoinput',option);
-          }
-        }
-      }
-
-      function iniciaTransmicion() {
-        console.log("initTrans");
-        if (window.stream) {
-          window.stream.getTracks().forEach(track => {
-            track.stop();
+      <script language="JavaScript">
+        $(function() {
+          $("#metodos_planificacion").change(function() {
+            if ($(this).val() === "hormonales_orales") {
+              $("#cual ").prop("disabled", true);
+            } else if ($(this).val() === "") {
+              $("#cual").prop("disabled", true);
+            } else if ($(this).val() === "hormonales_inyectables") {
+              $("#cual").prop("disabled", true);
+            } else if ($(this).val() === "condon") {
+              $("#cual").prop("disabled", true);
+            } else {
+              $("#cual").prop("disabled", false);
+            }
           });
-        }
-        const audioSrc = audioSelect.value;
-        const videoSrc = videoSelect.value;
-        const constraints = {
-          audio: {
-            deviceId: audioSrc ? {
-              exact: audioSrc
-            } : undefined
-          },
-          video: {
-            deviceId: videoSrc ? {
-              exact: videoSrc
-            } : undefined
+        });
+      </script>
+      <!-- ----------------------------------------------------------------------------------------------------->
+      <script language="JavaScript">
+        $(function() {
+          $("#colposcopia").change(function() {
+            if ($(this).val() !== "no_adecuada") {
+              $("#causa ").prop("disabled", true);
+            } else {
+              $("#causa").prop("disabled", false);
+            }
+          });
+        });
+      </script>
+      <!-- ----------------------------------------------------------------------------------------------------->
+      <!-- ----------------------------------------------------------------------------------------------------->
+      <script language="JavaScript">
+        $("#epitelio_acetoblanco").change(function() {
+          if ($("#epitelio_acetoblanco").val() === "presente") {
+            $('#ep_criterios_menores').prop('disabled', false);
+            $('#ep_criterios_intermedios').prop('disabled', false);
+            $('#ep_criterios_mayores').prop('disabled', false);
+
+          } else {
+            $('#ep_criterios_menores').prop('disabled', 'disabled');
+            $('#ep_criterios_intermedios').prop('disabled', 'disabled');
+            $('#ep_criterios_mayores').prop('disabled', 'disabled');
           }
+        });
+
+
+        $("#ep_criterios_menores").change(function() {
+          if ($("#ep_criterios_menores").val() === "") {
+            $('#ep_criterios_intermedios').prop('disabled', false);
+            $('#ep_criterios_mayores').prop('disabled', false);
+          } else {
+
+            $('#ep_criterios_intermedios').prop('disabled', 'disabled');
+            $('#ep_criterios_mayores').prop('disabled', 'disabled');
+          }
+        });
+
+        $("#ep_criterios_intermedios").change(function() {
+          if ($("#ep_criterios_intermedios").val() === "") {
+            $('#ep_criterios_menores').prop('disabled', false);
+            $('#ep_criterios_mayores').prop('disabled', false);
+          } else {
+
+            $('#ep_criterios_menores').prop('disabled', 'disabled');
+            $('#ep_criterios_mayores').prop('disabled', 'disabled');
+          }
+        });
+
+
+
+
+        $("#ep_criterios_mayores").change(function() {
+          if ($("#ep_criterios_mayores").val() === "") {
+            $('#ep_criterios_menores').prop('disabled', false);
+            $('#ep_criterios_intermedios').prop('disabled', false);
+          } else {
+            $('#ep_criterios_menores').prop('disabled', 'disabled');
+            $('#ep_criterios_intermedios').prop('disabled', 'disabled');
+          }
+        });
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        $("#bs_criterios_menores").change(function() {
+          if ($("#bs_criterios_menores").val() === "") {
+            $('#bs_criterios_intermedios').prop('disabled', false);
+            $('#bs_criterios_mayores').prop('disabled', false);
+          } else {
+
+            $('#bs_criterios_intermedios').prop('disabled', 'disabled');
+            $('#bs_criterios_mayores').prop('disabled', 'disabled');
+          }
+        });
+
+        $("#bs_criterios_intermedios").change(function() {
+          if ($("#bs_criterios_intermedios").val() === "") {
+            $('#bs_criterios_menores').prop('disabled', false);
+            $('#bs_criterios_mayores').prop('disabled', false);
+          } else {
+
+            $('#bs_criterios_menores').prop('disabled', 'disabled');
+            $('#bs_criterios_mayores').prop('disabled', 'disabled');
+          }
+        });
+
+
+
+
+        $("#bs_criterios_mayores").change(function() {
+          if ($("#bs_criterios_mayores").val() === "") {
+            $('#bs_criterios_menores').prop('disabled', false);
+            $('#bs_criterios_intermedios').prop('disabled', false);
+          } else {
+            $('#bs_criterios_menores').prop('disabled', 'disabled');
+            $('#bs_criterios_intermedios').prop('disabled', 'disabled');
+          }
+        });
+        ////////////////////////////////////////////////
+
+        $("#ag_criterios_menores").change(function() {
+          if ($("#ag_criterios_menores").val() === "") {
+            $('#ag_criterios_intermedios').prop('disabled', false);
+            $('#ag_criterios_mayores').prop('disabled', false);
+          } else {
+
+            $('#ag_criterios_intermedios').prop('disabled', 'disabled');
+            $('#ag_criterios_mayores').prop('disabled', 'disabled');
+          }
+        });
+
+        $("#ag_criterios_intermedios").change(function() {
+          if ($("#ag_criterios_intermedios").val() === "") {
+            $('#ag_criterios_menores').prop('disabled', false);
+            $('#ag_criterios_mayores').prop('disabled', false);
+          } else {
+
+            $('#ag_criterios_menores').prop('disabled', 'disabled');
+            $('#ag_criterios_mayores').prop('disabled', 'disabled');
+          }
+        });
+
+
+
+
+        $("#ag_criterios_mayores").change(function() {
+          if ($("#ag_criterios_mayores").val() === "") {
+            $('#ag_criterios_menores').prop('disabled', false);
+            $('#ag_criterios_intermedios').prop('disabled', false);
+          } else {
+            $('#ag_criterios_menores').prop('disabled', 'disabled');
+            $('#ag_criterios_intermedios').prop('disabled', 'disabled');
+          }
+        });
+        //////////////////////////////////////////////////////
+
+        $("#cy_menores").change(function() {
+          if ($("#cy_menores").val() === "") {
+            $('#cy_intermedios').prop('disabled', false);
+            $('#cy_mayores').prop('disabled', false);
+          } else {
+
+            $('#cy_intermedios').prop('disabled', 'disabled');
+            $('#cy_mayores').prop('disabled', 'disabled');
+          }
+        });
+
+        $("#cy_intermedios").change(function() {
+          if ($("#cy_intermedios").val() === "") {
+            $('#cy_menores').prop('disabled', false);
+            $('#cy_mayores').prop('disabled', false);
+          } else {
+
+            $('#cy_menores').prop('disabled', 'disabled');
+            $('#cy_mayores').prop('disabled', 'disabled');
+          }
+        });
+
+
+
+
+        $("#cy_mayores").change(function() {
+          if ($("#cy_mayores").val() === "") {
+
+            $('#cy_menores').prop('disabled', false);
+            $('#cy_intermedios').prop('disabled', false);
+          } else {
+            $('#cy_menores').prop('disabled', 'disabled');
+            $('#cy_intermedios').prop('disabled', 'disabled');
+          }
+        });
+      </script>
+
+
+      <script>
+        function pagoOnChange(sel) {
+          if (sel.value == "ausente") {
+            divC = document.getElementById("ausente");
+            divC.style.display = "";
+
+            divT = document.getElementById("presente");
+            divT.style.display = "none";
+
+          } else if (sel.value == "") {
+            divC = document.getElementById("ausente");
+            divC.style.display = "";
+
+            divT = document.getElementById("presente");
+            divT.style.display = "none";
+
+          } else {
+
+            divC = document.getElementById("ausente");
+            divC.style.display = "none";
+
+            divT = document.getElementById("presente");
+            divT.style.display = "";
+          }
+        }
+      </script>
+
+
+
+      <script>
+        //Bloque de codigo de JS para hacer la captura de imagenes desde una webcam / colposcopio
+        function hasGetUserMedia() {
+          return !!(navigator.mediaDevices &&
+            navigator.mediaDevices.getUserMedia);
+        }
+
+        if (hasGetUserMedia()) {
+          // Good to go!
+        } else {
+          alert('La captura de fotos desde la web no es soportado por tu navegador');
+          document.getElementById("modalCam").style.display = "none";
+        }
+
+        'use strict';
+        var contadorCanvas = 1;
+        var videoElement = document.querySelector('video');
+        var audioSelect = document.getElementById('audioSource');
+        var videoSelect = document.getElementById('videoSource');
+        const captureVideoButton = document.querySelector('#screenshot .capture-button');
+        const screenshotButton = document.getElementById('btn-captura');
+        const divCanvas = document.getElementById('vectorFotos');
+
+        iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision);
+
+        function getDevices() {
+          // AFAICT in Safari this only gets default devices until gUM is called :/
+          return navigator.mediaDevices.enumerateDevices();
+        }
+
+        function gotDevices(deviceInfos) {
+          console.log("Obteniendo informacion");
+          window.deviceInfos = deviceInfos; // make available to console
+          //console.log('Dispositivos Disponibles:', deviceInfos);
+          var dev = 1;
+          for (const deviceInfo of deviceInfos) {
+            const option = document.createElement('option');
+            option.value = deviceInfo.deviceId;
+            if (deviceInfo.kind === 'audioinput' && deviceInfo.label.includes("ISST")) {
+              option.text = deviceInfo.label || `Microfono ${audioSelect.length + 1}`;
+              audioSelect.appendChild(option);
+              console.log('audioinput', option);
+            } else if (deviceInfo.kind === 'videoinput' && deviceInfo.label.includes("gato")) {
+              option.text = deviceInfo.label || `Camara ${videoSelect.length + 1}`;
+              videoSelect.appendChild(option);
+              console.log('videoinput', option);
+            }
+          }
+        }
+
+        function iniciaTransmicion() {
+          console.log("initTrans");
+          if (window.stream) {
+            window.stream.getTracks().forEach(track => {
+              track.stop();
+            });
+          }
+          const audioSrc = audioSelect.value;
+          const videoSrc = videoSelect.value;
+          const constraints = {
+            audio: {
+              deviceId: audioSrc ? {
+                exact: audioSrc
+              } : undefined
+            },
+            video: {
+              deviceId: videoSrc ? {
+                exact: videoSrc
+              } : undefined
+            }
+          };
+          document.getElementById('btn-activar').style.display = "none";
+          document.getElementById('btn-captura').style.display = "block";
+          document.getElementById('btn-detener').style.display = "block";
+          document.getElementById('formulario').style.paddingLeft = "400px";
+          document.getElementById('pantallaVideo').style.display = "block";
+          document.querySelector("ul.notika-menu-wrap").style.paddingLeft = "200px";
+          document.querySelector("div.logo-area").style.paddingLeft = "200px";
+
+          console.log("ending");
+          return navigator.mediaDevices.getUserMedia(constraints).
+          then(gotStream).catch(handleError);
+        }
+
+        function gotStream(stream) {
+          console.log("Setting up...");
+          window.stream = stream; // make stream available to console
+          audioSelect.selectedIndex = [...audioSelect.options].
+          findIndex(option => option.text === stream.getAudioTracks()[0].label);
+          videoSelect.selectedIndex = [...videoSelect.options].
+          findIndex(option => option.text === stream.getVideoTracks()[0].label);
+          videoElement.srcObject = stream;
+          console.log("Ready");
+        }
+
+        function handleError(error) {
+          console.error('Error > ', error);
+        }
+
+        function detenTransmision() {
+          console.log("stopTrans");
+          if (window.stream) {
+            window.stream.getTracks().forEach(function(track) {
+              track.stop();
+            });
+          }
+          document.getElementById('btn-activar').style.display = "block";
+          document.getElementById('btn-captura').style.display = "none";
+          document.getElementById('btn-detener').style.display = "none";
+          document.getElementById('formulario').style.paddingLeft = "0px";
+          document.getElementById('pantallaVideo').style.display = "none";
+          document.querySelector("ul.notika-menu-wrap").style.paddingLeft = "0px";
+          document.querySelector("div.logo-area").style.paddingLeft = "0px";
+
+        }
+
+        screenshotButton.onclick = videoElement.onclick = function() {
+          var formulario = document.getElementById('f');
+          var img = document.createElement('img');
+          var canvas = document.createElement('canvas');
+          canvas.width = 300 //videoElement.videoWidth;
+          canvas.height = 300 //videoElement.videoHeight;
+          canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
+          // Other browsers will fall back to image/png
+          img.src = canvas.toDataURL('image/jpeg');
+          img.setAttribute("id", "inputImg" + contadorCanvas);
+          var input = document.createElement('input');
+          input.setAttribute("id", "inputImg" + contadorCanvas);
+          input.setAttribute("type", "hidden");
+          input.setAttribute("name", "canvas[]");
+          //input.setAttribute("class", "form-control captura");
+          input.setAttribute("value", canvas.toDataURL('image/jpeg'));
+          //input.style.display = "none";
+          //input.addEventListener('submit', functSubmit);
+          var div = document.createElement('div');
+          var i = document.createElement('i');
+          i.setAttribute("class", "far fa-times-circle fa-2x");
+          div.setAttribute("class", "contenedorCanvas");
+          div.style.position = "relative";
+          div.style.display = "inline-block";
+          div.style.margin = "5px";
+          div.appendChild(img);
+          div.appendChild(i);
+          if ($(".chkImagenSeleccionada").length < 8) {
+            var ic = document.createElement('i');
+            ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
+            div.appendChild(ic);
+          }
+          document.getElementById('vectorFotos').appendChild(div);
+          formulario.appendChild(input);
+          contadorCanvas = contadorCanvas + 1;
+        }
+
+        function capturaFoto() {
+          var formulario = document.getElementById('f');
+          var img = document.createElement('img');
+          var canvas = document.createElement('canvas');
+          canvas.width = 300 //videoElement.videoWidth;
+          canvas.height = 300 //videoElement.videoHeight;
+          canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
+          // Other browsers will fall back to image/png
+          img.src = canvas.toDataURL('image/jpeg');
+          img.setAttribute("id", "inputImg" + contadorCanvas);
+          var input = document.createElement('input');
+          input.setAttribute("id", "inputImg" + contadorCanvas);
+          input.setAttribute("type", "hidden");
+          input.setAttribute("name", "canvas[]");
+          //input.setAttribute("class", "form-control captura");
+          input.setAttribute("value", canvas.toDataURL('image/jpeg'));
+          //input.style.display = "none";
+          //input.addEventListener('submit', functSubmit);
+          var div = document.createElement('div');
+          var i = document.createElement('i');
+          i.setAttribute("class", "far fa-times-circle fa-2x");
+          div.setAttribute("class", "contenedorCanvas");
+          div.style.position = "relative";
+          div.style.display = "inline-block";
+          div.style.margin = "5px";
+          div.appendChild(img);
+          div.appendChild(i);
+          if ($(".chkImagenSeleccionada").length < 8) {
+            var ic = document.createElement('i');
+            ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
+            div.appendChild(ic);
+          }
+          document.getElementById('vectorFotos').appendChild(div);
+          formulario.appendChild(input);
+          contadorCanvas = contadorCanvas + 1;
         };
-        document.getElementById('btn-activar').style.display = "none";
-        document.getElementById('btn-captura').style.display = "block";
-        document.getElementById('btn-detener').style.display = "block";
-        document.getElementById('formulario').style.paddingLeft = "400px";
-        document.getElementById('pantallaVideo').style.display = "block";
-        document.querySelector("ul.notika-menu-wrap").style.paddingLeft = "200px";
-        document.querySelector("div.logo-area").style.paddingLeft = "200px";
 
-        console.log("ending");
-        return navigator.mediaDevices.getUserMedia(constraints).
-        then(gotStream).catch(handleError);
-      }
-
-      function gotStream(stream) {
-        console.log("Setting up...");
-        window.stream = stream; // make stream available to console
-        audioSelect.selectedIndex = [...audioSelect.options].
-        findIndex(option => option.text === stream.getAudioTracks()[0].label);
-        videoSelect.selectedIndex = [...videoSelect.options].
-        findIndex(option => option.text === stream.getVideoTracks()[0].label);
-        videoElement.srcObject = stream;
-        console.log("Ready");
-      }
-
-      function handleError(error) {
-        console.error('Error > ', error);
-      }
-
-      function detenTransmision() {
-        console.log("stopTrans");
-        if (window.stream) {
-          window.stream.getTracks().forEach(function(track) {
-            track.stop();
-          });
+        function handleSuccess(stream) {
+          screenshotButton.disabled = false;
+          videoElement.srcObject = stream;
         }
-        document.getElementById('btn-activar').style.display = "block";
-        document.getElementById('btn-captura').style.display = "none";
-        document.getElementById('btn-detener').style.display = "none";
-        document.getElementById('formulario').style.paddingLeft = "0px";
-        document.getElementById('pantallaVideo').style.display = "none";
-        document.querySelector("ul.notika-menu-wrap").style.paddingLeft = "0px";
-        document.querySelector("div.logo-area").style.paddingLeft = "0px";
 
-      }
+        document.addEventListener("keyup", function(event) {
+          if (event.keyCode == 44) {
+            capturaFoto();
+          }
+        });
 
-      screenshotButton.onclick = videoElement.onclick = function() {
-        var formulario = document.getElementById('f');
-        var img = document.createElement('img');
-        var canvas = document.createElement('canvas');
-        canvas.width = 300 //videoElement.videoWidth;
-        canvas.height = 300 //videoElement.videoHeight;
-        canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
-        // Other browsers will fall back to image/png
-        img.src = canvas.toDataURL('image/jpeg');
-        img.setAttribute("id", "inputImg" + contadorCanvas);
-        var input = document.createElement('input');
-        input.setAttribute("id", "inputImg" + contadorCanvas);
-        input.setAttribute("type", "hidden");
-        input.setAttribute("name", "canvas[]");
-        //input.setAttribute("class", "form-control captura");
-        input.setAttribute("value", canvas.toDataURL('image/jpeg'));
-        //input.style.display = "none";
-        //input.addEventListener('submit', functSubmit);
-        var div = document.createElement('div');
-        var i = document.createElement('i');
-        i.setAttribute("class","far fa-times-circle fa-2x");
-        div.setAttribute("class","contenedorCanvas"));
-        div.style.position = "relative";
-        div.style.display = "inline-block";
-        div.style.margin = "5px";
-        div.appendChild(img);
-        div.appendChild(i);
-        if($(".chkImagenSeleccionada").length < 8){
-          var ic = document.createElement('i');
-          ic.setAttribute("class","chkImagenSeleccionada fas fa-check-circle fa-2x");
-          div.appendChild(ic);
-        }
-        document.getElementById('vectorFotos').appendChild(div);
-        formulario.appendChild(input);
-        contadorCanvas = contadorCanvas + 1;
-      }
+        $(document).on("click", ".fa-times-circle.fa-2x", function(e) {
+          var idElemento = $($(e.target)[0]).prev().attr('id');
+          $($(e.target)[0]).parent().fadeOut().remove();
+          $('#' + idElemento).remove();
+        });
+        
+        $(document).on("click", ".contenedorCanvas", function(e) {
+              var apuntador = $($(e.target)[0]).parent();
+                if ($(".chkImagenSeleccionada").length < 8) {
+                  if ($(apuntador).children(".chkImagenSeleccionada").length == 0) {
+                    $(apuntador).append('<i class="chkImagenSeleccionada fas fa-check-circle fa-2x"></i>');
+                  } else {
+                    $(apuntador).children(".chkImagenSeleccionada").remove();
+                  }
+                } else if ($(apuntador).children(".chkImagenSeleccionada").length == 1) {
+                  $(apuntador).children(".chkImagenSeleccionada").remove();
+                }
+              });
 
-      function capturaFoto() {
-        var formulario = document.getElementById('f');
-        var img = document.createElement('img');
-        var canvas = document.createElement('canvas');
-        canvas.width = 300 //videoElement.videoWidth;
-        canvas.height = 300 //videoElement.videoHeight;
-        canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
-        // Other browsers will fall back to image/png
-        img.src = canvas.toDataURL('image/jpeg');
-        img.setAttribute("id", "inputImg" + contadorCanvas);
-        var input = document.createElement('input');
-        input.setAttribute("id", "inputImg" + contadorCanvas);
-        input.setAttribute("type", "hidden");
-        input.setAttribute("name", "canvas[]");
-        //input.setAttribute("class", "form-control captura");
-        input.setAttribute("value", canvas.toDataURL('image/jpeg'));
-        //input.style.display = "none";
-        //input.addEventListener('submit', functSubmit);
-        var div = document.createElement('div');
-        var i = document.createElement('i');
-        i.setAttribute("class","far fa-times-circle fa-2x");
-        div.setAttribute("class","contenedorCanvas"));
-        div.style.position = "relative";
-        div.style.display = "inline-block";
-        div.style.margin = "5px";
-        div.appendChild(img);
-        div.appendChild(i);
-        if($(".chkImagenSeleccionada").length < 8){
-          var ic = document.createElement('i');
-          ic.setAttribute("class","chkImagenSeleccionada fas fa-check-circle fa-2x");
-          div.appendChild(ic);
-        }
-        document.getElementById('vectorFotos').appendChild(div);
-        formulario.appendChild(input);
-        contadorCanvas = contadorCanvas + 1;
-      };
-
-      function handleSuccess(stream) {
-        screenshotButton.disabled = false;
-        videoElement.srcObject = stream;
-      }
-
-      document.addEventListener("keyup", function(event) {
-        if (event.keyCode == 44) {
-          capturaFoto();
-        }
-      });
-
-      $(document).on("click",".fa-times-circle.fa-2x",function(e){
-        var idElemento = $($(e.target)[0]).prev().attr('id');
-        $($(e.target)[0]).parent().fadeOut().remove();
-        $('#'+idElemento).remove();
-      });
-
-      $('.inputDeshabilitado').keydown(function() {
-        return false;
-      });
-
-    </script>
+            $('.inputDeshabilitado').keydown(function() {
+              return false;
+            });
+      </script>
 
 
-    <!-- ----------------------------------------------------------------------------------------------------->
-    <script>
-      $("#f").submit(function(event) {
-        event.preventDefault(); //prevent default action
-        var post_url = $(this).attr("action"); //get form action url
-        var request_method = $(this).attr("method"); //get form GET/POST method
-        var form_data = $(this).serialize(); //Encode form elements for submission
+      <!-- ----------------------------------------------------------------------------------------------------->
+      <script>
+        $("#f").submit(function(event) {
+          event.preventDefault(); //prevent default action
+          var post_url = $(this).attr("action"); //get form action url
+          var request_method = $(this).attr("method"); //get form GET/POST method
+          var form_data = $(this).serialize(); //Encode form elements for submission
 
-        $.ajax({
-          url: post_url,
-          type: request_method,
-          data: form_data,
-          success: function(result){
-            //console.log(result);
-            //if(result === "no_errors"){
-              if(!result.includes("error")){
+          $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            success: function(result) {
+              //console.log(result);
+              //if(result === "no_errors"){
+              if (!result.includes("error")) {
                 location.href = "consulta_paciente.php"
               }
-            //}
-          }
+              //}
+            }
+          });
         });
-      });
-    </script>
+      </script>
 
 
 
 
-    <!-- ----------------------------------------------------------------------------------------------------->
-    <?php
-        include('pie.php');
-        ?>
+      <!-- ----------------------------------------------------------------------------------------------------->
+      <?php
+          include('pie.php');
+          ?>
 
 
-</body>
+  </body>
 
-</html>
+  </html>
 
 <?php
   }

@@ -198,6 +198,7 @@ body {
     right: 10px;
     opacity: 0.5;
     cursor: pointer;
+    color: black;
 }
 
 .fa-times-circle.fa-2x:hover{
@@ -216,5 +217,12 @@ body {
 
 .chkImagenSeleccionada:hover{
     opacity: 1;
+    cursor: pointer;
+}
+
+.contenedorCanvas img:hover{
+    filter: brightness(200%);
+}
+.contenedorCanvas{
     cursor: pointer;
 }
