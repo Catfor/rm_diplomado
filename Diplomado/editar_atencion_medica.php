@@ -352,7 +352,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
 
 
-      <form id="f1" action='editar_guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
+      <form id="f1" action='editar_guardar_atencion_medica.php' method="get" enctype="multipart/form-data">
         <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente ?>">
         <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id ?>">
 
@@ -464,7 +464,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <p>Seleccion Anterior Metodos de Planificacion Fuer:<?php echo $metodos_planificacion; ?></p>
+              <p> Anterior Metodos de Planificacion Fue:<?php echo $metodos_planificacion; ?></p>
               <select id='metodos_planificacion' name="metodos_planificacion" class="form-control">
               <option value="<?php echo $metodos_planificacion; ?>">Seleccion Anterior Metodos de Planificacion Fuer:</option>
               <option value="hormonales_orales">Hormonales orales</option>
@@ -975,7 +975,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
           </div>
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <p>Antecedente de Cáncer cervicouterino anterior:<?php if($antecedente_cancer_cervicouterino==0) {
+            <p>Antecedente de Cáncer cervicouterino :<?php if($antecedente_cancer_cervicouterino==0) {
               echo "No";
             }else{
               echo "Si";
@@ -1024,12 +1024,20 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
           <?php
 
 
-          $re3 = mysqli_query($mysqliL,"SELECT ec.colposcopia FROM atencion_medica AS  a
+          $re3 = mysqli_query($mysqliL,"SELECT ec.colposcopia,ec.causa,ec.cervix,ec.union_escamocolumnar,ec.zona_transformacion,
+ec.ag_criterios_intermedios,ec.ag_criterios_mayores,ec.ag_criterios_menores
+,ec.bs_criterios_intermedios,ec.bs_criterios_mayores,ec.bs_criterios_menores
+,ec.cy_intermedios,ec.cy_mayores,ec.cy_menores,ec.epitelio_acetoblanco,ec.ep_criterios_intermedios,ec.ep_criterios_mayores,ec.ep_criterios_menores,
+ec.schiller,ec.vaginoscopia_acetico,ec.vaginoscopia_lugol,ec.vulvoscopia_acetico,ec.miscelaneos,ec.antecedentes_de_importancia,ec.plan_de_tratamiento
+,ec.posible_recomendacion_diagnostica
+
+ FROM atencion_medica AS  a
 INNER JOIN ctrl_paciente_estudios AS ct
 ON ct.id_paciente=a.id_paciente
 
 INNER JOIN estudio_colposcopico AS ec
 ON ec.id_estudio=ct.id_estudio
+
 
 
 
@@ -1039,8 +1047,32 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
           $ro2 = mysqli_fetch_assoc($re3);
             $colposcopia = $ro2['colposcopia'];
+  $causa = $ro2['causa'];
+    $cervix = $ro2['cervix'];
+      $union_escamocolumnar = $ro2['union_escamocolumnar'];
+        $zona_transformacion = $ro2['zona_transformacion'];
+          $ag_criterios_intermedios = $ro2['ag_criterios_intermedios'];
+            $ag_criterios_mayores= $ro2['ag_criterios_mayores'];
+              $ag_criterios_menores = $ro2['ag_criterios_menores'];
+                $bs_criterios_intermedios = $ro2['bs_criterios_intermedios'];
+                  $bs_criterios_mayores = $ro2['bs_criterios_mayores'];
+                    $bs_criterios_menores = $ro2['bs_criterios_menores'];
+                      $cy_intermedios = $ro2['cy_intermedios'];
+                        $cy_mayores = $ro2['cy_mayores'];
+                          $cy_menores = $ro2['cy_menores'];
+                            $epitelio_acetoblanco = $ro2['epitelio_acetoblanco'];
+                              $ep_criterios_intermedios = $ro2['ep_criterios_intermedios'];
+$ep_criterios_mayores = $ro2['ep_criterios_mayores'];
+$ep_criterios_menores = $ro2['ep_criterios_menores'];
+$schiller = $ro2['schiller'];
+$vaginoscopia_acetico = $ro2['vaginoscopia_acetico'];
+$vaginoscopia_lugol = $ro2['vaginoscopia_lugol'];
+$vulvoscopia_acetico = $ro2['vulvoscopia_acetico'];
+$antecedentes_de_importancia = $ro2['antecedentes_de_importancia'];
+$plan_de_tratamiento = $ro2['plan_de_tratamiento'];
+      $posible_recomendacion_diagnostica = $ro2['posible_recomendacion_diagnostica'];
 
-
+  $miscelaneos = $ro2['miscelaneos'];
 
           ?>
           <h2 class="cabecera-morada">ESTUDIOS MÉDICOS</h2>
@@ -1064,7 +1096,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                         <div class="row fila">
 
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-<p>Seleccion Colposcopica Anterior fue:<?php echo $colposcopia; ?> </p>
+<p> Colposcopica Anterior fue:<?php echo $colposcopia; ?> </p>
                             <select name='colposcopia' id='colposcopia' class="form-control">
                               <option value="<?php echo  $colposcopia; ?>">Selecciona colposcopia</option>
                               <option value="adecuada">Adecuada</option>
@@ -1074,9 +1106,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                           </div>
 
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p> Causa Anterior fue:<?php echo $causa; ?> </p>
                             <select name='causa' id='causa' class="form-control">
-                              <option value="">Selecciona una Causa</option>
+                              <option value="<?php echo $causa; ?>">Selecciona una Causa</option>
                               <option value="sangrado">Sangrado</option>
                               <option value="inflamacion">Inflamación</option>
                               <option value="cicatrices">Cicatrices</option>
@@ -1093,9 +1125,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
                         <div class="row fila">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p> cervix Anterior fue:<?php echo $cervix; ?> </p>
                             <select name='cervix' id='cervix' class="form-control">
-                              <option value="">Selecciona Cervix</option>
+                              <option value="<?php echo $cervix; ?>">Selecciona Cervix</option>
                               <option value="eutrofico">Eutrófico</option>
                               <option value="atrofico">Atrófico</option>
                               <option value="hipotrofico">Hipotrófico</option>
@@ -1107,18 +1139,18 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                           </div>
 
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>escamocolumnar Anterior fue:<?php echo $union_escamocolumnar; ?> </p>
                             <select name='union_escamocolumnar' id='union_escamocolumnar' class="form-control">
-                              <option value="">Selecciona Union Escamocolumnar </option>
+                              <option value="<?php echo $union_escamocolumnar; ?>">Selecciona Union Escamocolumnar </option>
                               <option value="completamente_visible">Completamente Visible</option>
                               <option value="parcialmente_visible">Parcialmente Visible</option>
                             </select>
 
                           </div>
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p> zona transformacion Anterior fue:<?php echo $zona_transformacion; ?> </p>
                             <select name='zona_transformacion' id='zona_transformacion' class="form-control">
-                              <option value="">Selecciona Zona De Transfromacion</option>
+                              <option value="<?php echo $zona_transformacion; ?>">Selecciona Zona De Transfromacion</option>
                               <option value="tipo 1">TIPO 1</option>
                               <option value="tipo 2 a">TIPO 2 A</option>
                               <option value=" tipo 2 b">TIPO 2 B</option>
@@ -1139,7 +1171,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
 
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
-
+<p> Epitelio Acetoblanco Anterior fue:<?php echo $epitelio_acetoblanco; ?> </p>
                             <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' onChange="pagoOnChange(this)" class="form-control">
 
                               <option value="">Ausente</option>
@@ -1157,9 +1189,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                         <div id="presente" class="formularioOculto" style="display:none;">
                           <div class="row fila">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $ep_criterios_menores; ?> </p>
                               <select name='ep_criterios_menores' id='ep_criterios_menores' class="form-control">
-                                <option value="">Selecciona Criterios Menores</option>
+                                <option value="<?php echo $ep_criterios_menores; ?>">Selecciona Criterios Menores</option>
                                 <option value="tenue">Tenue</option>
                                 <option value="blanco_intenso_c/brillo_superficial">Blanco Intenso C/Brillo Superficial</option>
                                 <option value="brillo_superficial">Brillo Superficial</option>
@@ -1171,18 +1203,18 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $ep_criterios_intermedios; ?> </p>
                               <select name='ep_criterios_intermedios' id='ep_criterios_intermedios' class="form-control">
-                                <option value="">Selecciona Criterios Intermedios</option>
+                                <option value="<?php echo $ep_criterios_intermedios; ?>">Selecciona Criterios Intermedios</option>
                                 <option value="blanco_intermedio_c/brillo">Blanco Intermedio C/Brillo</option>
                                 <option value="mayoria_lesiones">(Mayoría de Lesiones)</option>
                               </select>
 
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $ep_criterios_mayores; ?> </p>
                               <select name='ep_criterios_mayores' id='ep_criterios_mayores' class="form-control">
-                                <option value="">Selecciona Criterios Mayores</option>
+                                <option value="<?php echo $ep_criterios_mayores; ?>">Selecciona Criterios Mayores</option>
                                 <option value="blanco_denso">Blanco Denso</option>
                                 <option value="blanco_opaco">Blanco Opaco</option>
                                 <option value="blanco_ostra">Blanco Ostra</option>
@@ -1202,9 +1234,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                           </div>
                           <div class="row fila">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $bs_criterios_menores; ?> </p>
                               <select name='bs_criterios_menores' id='bs_criterios_menores' class="form-control">
-                                <option value="">Selecciona Criterios Menores</option>
+                                <option value="<?php echo $bs_criterios_menores; ?>">Selecciona Criterios Menores</option>
                                 <option value="microcondilomatoso">Microcondilomatoso</option>
                                 <option value="micropapilar">Micropapilar</option>
                                 <option value="borde_indefinido">Borde Indefinido</option>
@@ -1214,9 +1246,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $bs_criterios_intermedios; ?> </p>
                               <select name='bs_criterios_intermedios' id='bs_criterios_intermedios' class="form-control">
-                                <option value="">Selecciona Criterios Intermedios</option>
+                                <option value="<?php echo $bs_criterios_intermedios; ?>">Selecciona Criterios Intermedios</option>
                                 <option value="lesion_regular">Lesión Regular</option>
                                 <option value="simetrica">Simétrica</option>
                                 <option value="contornos_netos">Contornos Netos</option>
@@ -1225,9 +1257,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $bs_criterios_mayores; ?> </p>
                               <select name='bs_criterios_mayores' id='bs_criterios_mayores' class="form-control">
-                                <option value="">Selecciona Criterios Mayores</option>
+                                <option value="<?php echo $bs_criterios_mayores; ?>">Selecciona Criterios Mayores</option>
                                 <option value="bordes_dehiscentes">Bordes Dehiscentes</option>
                                 <option value="bordes_enrolaldos">Bordes Enrollados</option>
                                 <option value="cambios_menores_perifericos_mayores">Cambios Menores Periféricos Y Mayores Centrales</option>
@@ -1243,9 +1275,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $ag_criterios_menores; ?> </p>
                               <select name='ag_criterios_menores' id='ag_criterios_menores' class="form-control">
-                                <option value="">Selecciona Criterios Menores</option>
+                                <option value="<?php echo $ag_criterios_menores; ?>">Selecciona Criterios Menores</option>
                                 <option value="capilar_fino">Capilar Fino</option>
                                 <option value="calibre_disposion_uniforme">Calibre y Disposición Uniforme</option>
                                 <option value="puntilleo_fino">Puntilleo Fino</option>
@@ -1255,18 +1287,18 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $ag_criterios_intermedios; ?> </p>
                               <select name='ag_criterios_intermedios' id='ag_criterios_intermedios' class="form-control">
-                                <option value="">Selecciona Criterios Intermedios</option>
+                                <option value="<?php echo $ag_criterios_intermedios; ?>">Selecciona Criterios Intermedios</option>
                                 <option value="ausencia_vasos">Ausencia de Vasos</option>
 
                               </select>
 
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $ag_criterios_mayores; ?> </p>
                               <select name='ag_criterios_mayores' id='ag_criterios_mayores' class="form-control">
-                                <option value="">Selecciona Criterios Mayores</option>
+                                <option value="<?php echo $ag_criterios_mayores; ?>">Selecciona Criterios Mayores</option>
                                 <option value="puntilleo_grueso">Puntilleo Grueso</option>
                                 <option value="mosaico_grueso">Mosaico Grueso</option>
                               </select>
@@ -1282,9 +1314,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $cy_menores; ?> </p>
                               <select name='cy_menores' id='cy_menores' class="form-control">
-                                <option value="">Criterios Menores</option>
+                                <option value="<?php echo $cy_menores; ?>">Criterios Menores</option>
                                 <option value="positiva">Positivo</option>
                                 <option value="negativa_puntos_criterios_anteriores">Negativa Con < 3 Puntos En Criterios Anteriores</option>
                                 <option value="zonas_yodo_negativas">Zonas Yodonegativas Más Allá De La ZT</option>
@@ -1292,18 +1324,18 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $cy_intermedios; ?> </p>
                               <select name='cy_intermedios' id='cy_intermedios' class="form-control">
-                                <option value="">Citerios Intermedios</option>
+                                <option value="<?php echo $cy_intermedios; ?>">Citerios Intermedios</option>
                                 <option value="capacitacion_parcial_yodo">Captación Parcial De Yodo</option>
                                 <option value="motedao_jaspeado">(Moteado-Jaspeado)</option>
                               </select>
 
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p>  Anterior fue:<?php echo $cy_mayores; ?> </p>
                               <select name='cy_mayores' id='cy_mayores' class="form-control">
-                                <option value="">Citerios Mayores</option>
+                                <option value="<?php echo $cy_mayores; ?>">Citerios Mayores</option>
                                 <option value="yodo_negativa_conmas_puntos">Yodonegativa Con 4 O Más Puntos</option>
                                 <option value="en_criterios_anteriores">En Criterios Anteriores</option>
                               </select>
@@ -1320,9 +1352,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                         </div>
                         <div class="row fila">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p> schiller Anterior fue:<?php echo $schiller; ?> </p>
                             <select name='schiller' id='schiller' class="form-control">
-                              <option value="">Selecciona Schiller</option>
+                              <option value="<?php echo $schiller; ?>">Selecciona Schiller</option>
                               <option value="negativa">Negativa</option>
                               <option value="positiva">Positiva</option>
 
@@ -1340,18 +1372,18 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                         </div>
                         <div class="row fila">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p> vaginoscopia acetico Anterior fue:<?php echo $vaginoscopia_acetico; ?> </p>
                             <select name='vaginoscopia_acetico' id='vaginoscopia_acetico' class="form-control">
-                              <option value="">Selecciona Acético</option>
+                              <option value="<?php echo $vaginoscopia_acetico; ?>">Selecciona Acético</option>
                               <option value="positivo">Positivo</option>
                               <option value="negativo">Negativo</option>
                             </select>
 
                           </div>
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p> vaginoscopia lugol Anterior fue:<?php echo $vaginoscopia_lugol; ?> </p>
                             <select name='vaginoscopia_lugol' id='vaginoscopia_lugol' class="form-control">
-                              <option value="">Selecciona Lugol</option>
+                              <option value="<?php echo $vaginoscopia_lugol; ?>">Selecciona Lugol</option>
                               <option value="positivo">Positivo</option>
                               <option value="negativo">Negativo</option>
                             </select>
@@ -1366,9 +1398,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                         </div>
                         <div class="row fila">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p> vulvoscopia acetico Anterior fue:<?php echo $vulvoscopia_acetico; ?> </p>
                             <select name='vulvoscopia_acetico' id='vulvoscopia_acetico' class="form-control">
-                              <option value="">Selecciona Acético</option>
+                              <option value="<?php echo $vulvoscopia_acetico; ?>">Selecciona Acético</option>
                               <option value="positivo">Positivo</option>
                               <option value="negativo">Negativo</option>
                             </select>
@@ -1382,9 +1414,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                         </div>
                         <div class="row fila">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p> Misceláneos Anterior fue:<?php echo $miscelaneos; ?> </p>
                             <select name='miscelaneos' id='miscelaneos' class="form-control">
-                              <option value="">Selecciona Miscelaneos</option>
+                              <option value="<?php echo $miscelaneos; ?>">Selecciona Miscelaneos</option>
                               <option value="condilomas">Condilomas</option>
                               <option value="eversion_glandular">Eversión Glandular</option>
                               <option value="leucoplasia">Leucoplasia</option>
@@ -1406,7 +1438,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                                     <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)</FONT>
                                   </div>
                                 </div>
-                                <textarea class="form-control" rows="1" placeholder="Escribe Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)" name="antecedentes_de_importancia" form="f"></textarea>
+                                <textarea class="form-control" rows="1" placeholder="<?php echo $antecedentes_de_importancia; ?>" name="antecedentes_de_importancia" form="f"></textarea>
                               </div>
                             </div>
 
@@ -1418,7 +1450,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                                     <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Plan de Tratamiento</FONT>
                                   </div>
                                 </div>
-                                <textarea class="form-control" rows="1" placeholder="Escribe Plan de Tratamiento" name="plan_de_tratamiento" form="f"></textarea>
+                                <textarea class="form-control" rows="1" placeholder="<?php echo $plan_de_tratamiento; ?>" name="plan_de_tratamiento" form="f"></textarea>
                               </div>
                             </div>
 
@@ -1472,9 +1504,9 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                         <div class="row fila">
 
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
+<p> DIAGNOSTICO MÉDICO Anterior fue:<?php echo $posible_recomendacion_diagnostica; ?> </p>
                             <select name='posible_recomendacion_diagnostica' id='posible_recomendacion_diagnostica' class="form-control">
-                              <option value="">DIAGNOSTICO MÉDICO</option>
+                              <option value="<?php echo $posible_recomendacion_diagnostica; ?>">DIAGNOSTICO MÉDICO</option>
                               <option value="hallazgos_normales">HALLAZGOS NORMALES</option>
                               <option value="hallazgos_sugestivos_">HALLAZGOS SUGESTIVOS DE INVASIÓN</option>
                               <option value="miscelaneos_hallazgos_varios">MISCELANEOS O HALLAZGOS VARIOS</option>
@@ -1495,6 +1527,27 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                     </div>
                   </div>
                 </div>
+            <?php     $re4 = mysqli_query($mysqliL,"SELECT ep.antecedente_cancer,ep.antecedente_infeccion_vagina,ep.observaciones_papinocolau
+
+ FROM atencion_medica AS  a
+INNER JOIN ctrl_paciente_estudios AS ct
+ON ct.id_paciente=a.id_paciente
+
+INNER JOIN estudio_papanicolau AS ep
+ON ep.id_estudio=ct.id_estudio
+
+
+
+WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='7' ");
+
+
+
+                $ro2 = mysqli_fetch_assoc($re4);
+                  $antecedente_cancer = $ro2['antecedente_cancer'];
+                    $antecedente_infeccion_vagina = $ro2['antecedente_infeccion_vagina'];
+                      $observaciones_papinocolau= $ro2['observaciones_papinocolau'];
+
+                  ?>
                 <div class="panel panel-collapse notika-accrodion-cus">
                   <div class="panel-heading" role="tab">
                     <h4 class="panel-title">
@@ -1523,10 +1576,19 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                             <p>
 
                               Antecedenctes de cancer:<br>
+<?php if($antecedente_cancer==0){
 
-                              <label><input type="radio" name="antecedente_cancer" value="1"> Si</label>
+?>
+<label><input type="radio" name="antecedente_cancer" value="1"> Si</label>
 
-                              <label><input type="radio" name="antecedente_cancer" value="0"> NO</label>
+<label><input type="radio" name="antecedente_cancer" value="0" checked> NO</label>
+<?php } else{ ?>
+  <label><input type="radio" name="antecedente_cancer" value="1" checked> Si</label>
+
+  <label><input type="radio" name="antecedente_cancer" value="0"> NO</label>
+  <?php
+}?>
+
 
 
 
@@ -1537,7 +1599,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
 
                               Antecedenctes de infecciòn vaginal :<br>
 
-                              <label><input type="radio" name="antecedente_infeccion_vagina" value="1"> Si</label>
+                              <label><input type="radio" name="antecedente_infeccion_vagina" value="1" checked> Si</label>
 
                               <label><input type="radio" name="antecedente_infeccion_vagina" value="0"> NO</label>
 
@@ -1554,7 +1616,7 @@ WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_
                                   <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Observaciones</FONT>
                                 </div>
                               </div>
-                              <textarea class="form-control" rows="3" placeholder="Escribe  las observaciones" name="observaciones_papinocolau" form="f"></textarea>
+                              <textarea class="form-control" rows="3" placeholder="<?php echo $observaciones_papinocolau; ?>" name="observaciones_papinocolau" form="f"></textarea>
                             </div>
                           </div>
                         </div>
