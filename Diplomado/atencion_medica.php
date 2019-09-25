@@ -42,6 +42,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
   </head>
 
   <body>
+
+    <div class="loader">
+      <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+        <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+          <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite" />
+        </path>
+      </svg>
+    </div>
+
     <?php
 
       include('../coni/Localhost.php');
@@ -255,7 +264,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
               <div style="position: fixed;top: 10px;left: 10px;z-index: 5;max-width: 200px;" class="tarjeta">
-                <div style="display: block;">
+                <div style="display: none;">
                   <div class="select">
                     <label for="audioSource">Audio source: </label><select id="audioSource" onchange="iniciaTransmicion()"></select>
                   </div>
@@ -2100,7 +2109,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         const screenshotButton = document.getElementById('btn-captura');
         const divCanvas = document.getElementById('vectorFotos');
 
-        iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision);
+        iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision).then(function(){$(".loader").fadeOut()});
 
         function getDevices() {
           // AFAICT in Safari this only gets default devices until gUM is called :/
@@ -2192,7 +2201,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           document.querySelector("div.logo-area").style.paddingLeft = "0px";
 
         }
-        
+
 
         screenshotButton.onclick = videoElement.onclick = function() {
           var formulario = document.getElementById('f');
@@ -2249,7 +2258,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           input.setAttribute("type", "hidden");
           input.setAttribute("name", "canvas[]");
           //input.setAttribute("class", "form-control captura");
-          input.setAttribute("value", canvas.toDataURL('image/jpeg'));
+          input.setAttribute("value", "," + canvas.toDataURL('image/jpeg'));
           //input.style.display = "none";
           //input.addEventListener('submit', functSubmit);
           var div = document.createElement('div');
@@ -2292,21 +2301,21 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         });
 
         $(document).on("click", ".contenedorCanvas", function(e) {
-              var apuntador = $($(e.target)[0]).parent();
-                if ($(".chkImagenSeleccionada").length < 8) {
-                  if ($(apuntador).children(".chkImagenSeleccionada").length == 0) {
-                    $(apuntador).append('<i class="chkImagenSeleccionada fas fa-check-circle fa-2x"></i>');
-                  } else {
-                    $(apuntador).children(".chkImagenSeleccionada").remove();
-                  }
-                } else if ($(apuntador).children(".chkImagenSeleccionada").length == 1) {
-                  $(apuntador).children(".chkImagenSeleccionada").remove();
-                }
-              });
+          var apuntador = $($(e.target)[0]).parent();
+          if ($(".chkImagenSeleccionada").length < 8) {
+            if ($(apuntador).children(".chkImagenSeleccionada").length == 0) {
+              $(apuntador).append('<i class="chkImagenSeleccionada fas fa-check-circle fa-2x"></i>');
+            } else {
+              $(apuntador).children(".chkImagenSeleccionada").remove();
+            }
+          } else if ($(apuntador).children(".chkImagenSeleccionada").length == 1) {
+            $(apuntador).children(".chkImagenSeleccionada").remove();
+          }
+        });
 
-            $('.inputDeshabilitado').keydown(function() {
-              return false;
-            });
+        $('.inputDeshabilitado').keydown(function() {
+          return false;
+        });
       </script>
 
 
