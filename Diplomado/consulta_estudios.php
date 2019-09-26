@@ -346,7 +346,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                            <select id='patologo' class="form-control" name="patologo" required>
                                   <option value="">Selecciona Patologo...</option>
                                                       <?php
-                                                      $consultapatologa = "SELECT id_usuario,nombre_usuario,apellidos_usuario,rol FROM usu_me where rol='Patologo/Biopsa' or rol='Patologo/Paps'";
+                                                      $consultapatologa = "SELECT id_usuario,nombre_usuario,apellidos_usuario,rol FROM usu_me where rol='Patologo' ";
                                                       $resultadopato = $mysqliL->query($consultapatologa);
 
                                                       while ($rowpato = $resultadopato->fetch_assoc()) {
@@ -427,18 +427,21 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
                                              echo "</td>";
                                              echo "<td>";
                                              //Papanicolaou
-                                             $queryPapanicolaou = "SELECT 	e.id_estudio,e.id_estudio as paps,  	e.fecha_estudio, 	e.estudio, 	e.antecedente_cancer, 	e.antecedente_infeccion_vagina,
-                                             	e.fecha_ultima_menstruacion, 	e.fecha_ultima_papanicolau, 	e.metodo_anticonceptivo, 	e.menopausia,
-                                              	e.hallazgos_colposcopicos, 	e.observaciones_papinocolau from
-                                                	estudio_papanicolau e inner join ctrl_paciente_estudios c on
-                                                  	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7 	and c.id_paciente = $id_paciente; ";
+$queryPapanicolaou = "SELECT c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio
+ FROM estudio_papanicolau e
+INNER JOIN ctrl_paciente_estudios c ON
+e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente =  $id_paciente; ";
                                              if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
                                                  while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
-                                                     $id_estudio = $resultSet['id_estudio'];
-                                                      $paps = $resultSet['paps'];
-                                                     echo "<input  type='checkbox' name='paps[]' value='$paps'>  ";
-                                                     echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente&id_estudio=$id_estudio'
-                                                      target='_blank'>Papsasdsadsa</a>";
+                                                     $paciente = $resultSet['paciente'];
+                                                      $atencion = $resultSet['atencion'];
+                                                      $estudio = $resultSet['estudio'];
+                                                       $tipo_estudio = $resultSet['tipo_estudio'];
+
+
+                                                     echo "<input  type='checkbox' name='paps[]' value='$atencion'>  ";
+                                                     echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?paciente=$paciente&atencion=$atencion&estudio=$estudio&tipo_estudio=$tipo_estudio'
+                                                      target='_blank'>Papanicolau</a>";
                                                  }
                                              }
                                              echo "</td>";

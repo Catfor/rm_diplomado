@@ -1,16 +1,24 @@
 <?php
-session_start();
-if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+//session_start();
+//if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   include('../coni/Localhost.php');
   date_default_timezone_set('America/Mexico_City');
   $hoys = date("Y-m-d H:i:s");
 $password=md5($_GET['password']);
-  $id = $_SESSION['id_usuario'];
+//  $id = $_SESSION['id_usuario'];
 $email=$_GET['email'];
 $patologo=$_GET['patologo'];
-$idusuariopato=$_GET['idusuariopato'];
-
-
+$paps=$_GET['paps'];
+$vulva=$_GET['vulva'];
+$vagi=$_GET['vagi'];
+$cervix=$_GET['cervix'];
+$endo=$_brGET['endo'];
+echo $email."<br>";
+echo $patologo."<br>";
+echo $password."<br>";
+print_r($paps);
+print_r($vulva);
+/*
 if (!empty($password) && !empty($email) && !empty($patologo)) {
 
   $result123 = mysqli_query($mysqliL, "SELECT apellidos_usuario,rol,id_usuario,nick,nombre_usuario,activo,correo_general, contra
@@ -36,18 +44,18 @@ if (!empty($password) && !empty($email) && !empty($patologo)) {
           (id_u,fecha_ingreso,id_atencion,accion,id_asignacion)
           VALUES
           ('$id','$hoys','$idusuariopatos','se autorizo entrega de muestras','$patologo')";
-      $resultaq = $mysqliL->query($sql11);
+      //$resultaq = $mysqliL->query($sql11);
 
 
       $Modifi = "UPDATE ctrl_paciente_estudios
       SET id_usu_pat='1'
       WHERE id_estudio='$idusuariopatos'";
 
-      $Mo= $mysqliL->query($Modifi);
+    //  $Mo= $mysqliL->query($Modifi);
     }
 
 
-header("Location:consulta_estudios.php");
+//header("Location:consulta_estudios.php");
 
 }
 
@@ -71,7 +79,7 @@ else {
     exit;
 }
 
-
+*/
 
 
 

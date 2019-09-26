@@ -497,6 +497,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                           <option value="hormonales_inyectables">Hormonales inyectables</option>
                           <option value="condon">Condon</option>
                           <option value="otro">Otro</option>
+                            <option value="ninguno">Ninguno</option>
                         </select>
 
                       </div>

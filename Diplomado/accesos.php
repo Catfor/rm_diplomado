@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   include('../coni/Localhost.php');
@@ -8,7 +9,9 @@ $vulva=$_GET['vulva'];
 $vagi=$_GET['vagi'];
 $cervix=$_GET['cervix'];
 $endo=$_GET['endo'];
+
 ?>
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -97,28 +100,45 @@ $rol = $rowwe['rol'];
             <div class="nk-int-st">
               <input type="text" class="form-control" name='email' placeholder="Correo">
 <?php
-              for ($y = 0; $y < count($idusuariopato); $y++) {
-                $idusuariopatos = $idusuariopato[$y];
+              for ($y = 0; $y < count($paps); $y++) {
+                $paps1 = $paps[$y];
 
-            echo "    <input type='hidden' class='form-control' name='idusuariopato[]' value='$idusuariopatos' >";
+            echo "    <input type='hidden' class='form-control' name='paps[]' value='$paps1' >";
               }
               ?>
 
               <?php
-                            for ($y = 0; $y < count($idusuariopato); $y++) {
-                              $idusuariopatos = $idusuariopato[$y];
+                            for ($y = 0; $y < count($vulva); $y++) {
+                              $vulva1 = $vulva[$y];
 
-                          echo "    <input type='hidden' class='form-control' name='idusuariopato[]' value='$idusuariopatos' >";
+                          echo "    <input type='hidden' class='form-control' name='vulva[]' value='$vulva1' >";
                             }
                             ?>
 
                             <?php
-                                          for ($y = 0; $y < count($idusuariopato); $y++) {
-                                            $idusuariopatos = $idusuariopato[$y];
+                                          for ($y = 0; $y < count($vagi); $y++) {
+                                            $vagi1 = $vagi[$y];
 
-                                        echo "    <input type='hidden' class='form-control' name='idusuariopato[]' value='$idusuariopatos' >";
+                                        echo "    <input type='hidden' class='form-control' name='vagi[]' value='$vagi1' >";
                                           }
                                           ?>
+
+
+
+                                          <?php
+                                                        for ($y = 0; $y < count($cervix); $y++) {
+                                                          $cervix1 = $cervix[$y];
+
+                                                      echo "    <input type='hidden' class='form-control' name='cervix[]' value='$cervix1' >";
+                                                        }
+                                                        ?>
+                                                        <?php
+                                                                      for ($y = 0; $y < count($endo); $y++) {
+                                                                        $endo1 = $endo[$y];
+
+                                                                    echo "    <input type='hidden' class='form-control' name='endo[]' value='$endo1' >";
+                                                                      }
+                                                                      ?>
 
 
 
@@ -246,6 +266,7 @@ $rol = $rowwe['rol'];
 </body>
 
 </html>
+
 <?php
 
 } else {
