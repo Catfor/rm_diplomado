@@ -138,7 +138,7 @@ if (!empty(trim($observaciones_endometrio))) {
   $id_ant_estudio_biopsia_endometrio = $mysqliL->insert_id;
 
 
-  $sql3 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,id_usuario) VALUES ('$idpaciente','$id_ant_estudio_biopsia_endometrio','4','$id_usuario','$id_ant_atencionmedica')";
+  $sql3 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion) VALUES ('$idpaciente','$id_ant_estudio_biopsia_endometrio','4','$id_usuario','$id_ant_atencionmedica')";
   $resulta3 = $mysqliL->query($sql3);
 }
 $imagenCont = 1;
