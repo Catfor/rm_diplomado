@@ -205,8 +205,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
                                         while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
                                             $id_paciente = ucwords($resultadosemanas1['id_paciente']);
-                                            $nombre_paciente = ucwords($resultadosemanas1['nombre_paciente']);
-                                            $apellidos_paciente = ucwords($resultadosemanas1['apellidos_paciente']);
+                                            $nombre_paciente = ucwords(strtolower($resultadosemanas1['nombre_paciente']));
+                                            $apellidos_paciente = ucwords(strtolower($resultadosemanas1['apellidos_paciente']));
                                             $fecha_nacimiento_paciente = $resultadosemanas1['fecha_nacimiento_paciente'];
                                             $edad_paciente = $resultadosemanas1['edad_paciente'];
                                             $id_atencion = $resultadosemanas1['id_atencion'];
@@ -395,8 +395,8 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
 
                                          while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
                                              $id_paciente = ucwords($resultadosemanas1['id_paciente']);
-                                             $nombre_paciente = ucwords($resultadosemanas1['nombre_paciente']);
-                                             $apellidos_paciente = ucwords($resultadosemanas1['apellidos_paciente']);
+                                             $nombre_paciente = ucwords(strtolower($resultadosemanas1['nombre_paciente']));
+                                             $apellidos_paciente = ucwords(strtolower($resultadosemanas1['apellidos_paciente']));
                                              $fecha_nacimiento_paciente = $resultadosemanas1['fecha_nacimiento_paciente'];
                                              $edad_paciente = $resultadosemanas1['edad_paciente'];
                                              $id_atencion = $resultadosemanas1['id_atencion'];
