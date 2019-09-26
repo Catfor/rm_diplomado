@@ -146,8 +146,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
 
 
           $rowwe = mysqli_fetch_assoc($result123);
-          $nombrepaciente = ucwords($rowwe['nombre_paciente']);
-          $apellidospaciente = ucwords($rowwe['apellidos_paciente']);
+          $nombrepaciente = ucwords(strtolower($rowwe['nombre_paciente']));
+          $apellidospaciente = ucwords(strtolower($rowwe['apellidos_paciente']));
           $edad_paciente = $rowwe['edad_paciente'];
           $fecha_nacimiento_paciente = $rowwe['fecha_nacimiento_paciente'];
 
@@ -221,7 +221,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var y = (event.clientY - offsetImg.top).toFixed(2);
             donax.value = x;
             donay.value = y;
-            console.log("X: " + x + " Y: " + y);
             ctxDona.drawImage(dona, 0, 0, 200, 200);
             ctxDona.lineWidth = 4;
             ctxDona.strokeStyle = "#FFF";
@@ -241,7 +240,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var y = (event.clientY - offsetImg.top).toFixed(2);
             vulvax.value = x;
             vulvay.value = y;
-            console.log("X: " + x + " Y: " + y);
             ctxVulva.drawImage(vulva, 0, 0, 200, 200);
             ctxVulva.lineWidth = 4;
             ctxVulva.strokeStyle = "#FFF";
@@ -496,8 +494,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                           <option value="hormonales_orales">Hormonales orales</option>
                           <option value="hormonales_inyectables">Hormonales inyectables</option>
                           <option value="condon">Condon</option>
+                          <option value="ninguno">Ninguno</option>
                           <option value="otro">Otro</option>
-                            <option value="ninguno">Ninguno</option>
                         </select>
 
                       </div>
@@ -517,131 +515,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                     </div>
                     <div class="row fila">
-                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <select name="edad_en_que_fue_su_regla" class="form-control">
-                          <option value="">Edad en que fue su regla</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>
-                          <option value="15">15</option>
-                          <option value="16">16</option>
-                          <option value="17">17</option>
-                          <option value="18">18</option>
-                          <option value="19">19</option>
-                          <option value="20">20</option>
-                          <option value="21">21</option>
-                          <option value="22">22</option>
-                          <option value="23">23</option>
-                          <option value="24">24</option>
-                          <option value="25">25</option>
-                          <option value="26">26</option>
-                          <option value="27">27</option>
-                          <option value="28">28</option>
-                          <option value="29">29</option>
-                          <option value="30">30</option>
-                          <option value="31">31</option>
-                          <option value="32">32</option>
-                          <option value="33">33</option>
-                          <option value="34">34</option>
-                          <option value="35">35</option>
-                          <option value="36">36</option>
-                          <option value="37">37</option>
-                          <option value="38">38</option>
-                          <option value="39">39</option>
-                          <option value="40">40</option>
-                          <option value="41">42</option>
-                          <option value="43">43</option>
-                          <option value="44">44</option>
-                          <option value="45">45</option>
-                          <option value="46">46</option>
-                          <option value="47">47</option>
-                          <option value="48">48</option>
-                          <option value="49">49</option>
-                          <option value="50">50</option>
-                          <option value="51">51</option>
-                          <option value="52">52</option>
-                          <option value="53">53</option>
-                          <option value="54">54</option>
-                          <option value="55">55</option>
-                          <option value="56">56</option>
-                          <option value="57">57</option>
-                          <option value="58">58</option>
-                          <option value="59">59</option>
-                          <option value="60">60</option>
-                          <option value="61">61</option>
-                          <option value="62">62</option>
-                          <option value="63">63</option>
-                          <option value="64">64</option>
-                          <option value="65">65</option>
-                          <option value="66">66</option>
-                          <option value="67">67</option>
-                          <option value="68">68</option>
-                          <option value="69">69</option>
-                          <option value="70">70</option>
-                          <option value="71">71</option>
-                          <option value="72">72</option>
-                          <option value="73">73</option>
-                          <option value="74">74</option>
-                          <option value="75">75</option>
-                          <option value="76">76</option>
-                          <option value="77">77</option>
-                          <option value="78">78</option>
-                          <option value="79">79</option>
-                          <option value="80">80</option>
-                          <option value="81">81</option>
-                          <option value="82">82</option>
-                          <option value="83">83</option>
-                          <option value="84">84</option>
-                          <option value="85">85</option>
-                          <option value="86">86</option>
-                          <option value="87">87</option>
-                          <option value="88">88</option>
-                          <option value="89">89</option>
-                          <option value="90">90</option>
-                          <option value="91">91</option>
-                          <option value="92">92</option>
-                          <option value="93">93</option>
-                          <option value="94">94</option>
-                          <option value="95">95</option>
-                          <option value="96">96</option>
-                          <option value="97">97</option>
-                          <option value="98">98</option>
-                          <option value="99">99</option>
-                          <option value="100">100</option>
-                          <option value="101">101</option>
-                          <option value="102">102</option>
-                          <option value="103">103</option>
-                          <option value="104">104</option>
-                          <option value="105">105</option>
-                          <option value="106">106</option>
-                          <option value="107">107</option>
-                          <option value="108">108</option>
-                          <option value="109">109</option>
-                          <option value="110">110</option>
-                          <option value="111">111</option>
-                          <option value="112">112</option>
-                          <option value="113">113</option>
-                          <option value="114">114</option>
-                          <option value="115">115</option>
-                          <option value="116">116</option>
-                          <option value="117">117</option>
-                          <option value="118">118</option>
-                          <option value="119">119</option>
-                          <option value="120">120</option>
-                        </select>
-
-                      </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="edad_inicio_vida_sexual" class="form-control">
                           <option value="">Edad de inicio de vida sexual</option>
@@ -1428,7 +1301,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                           <div class="form-group">
                                             <div class="nk-int-st">
-                                              <textarea class="form-control auto-size" rows="3" placeholder="LIEBG" name="recomendacion_diagnostica" disabled form="f"></textarea>
+                                              <textarea id=autoDiag class="form-control auto-size" rows="3" placeholder="" name="recomendacion_diagnostica" disabled form="f"></textarea>
                                             </div>
                                           </div>
                                         </div>
@@ -1891,164 +1764,230 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
       <!-- ----------------------------------------------------------------------------------------------------->
       <!-- ----------------------------------------------------------------------------------------------------->
       <script language="JavaScript">
+        var ep = 0;
+        var bs = 0;
+        var ag = 0;
+        var cy = 0;
         $("#epitelio_acetoblanco").change(function() {
           if ($("#epitelio_acetoblanco").val() === "presente") {
             $('#ep_criterios_menores').prop('disabled', false);
             $('#ep_criterios_intermedios').prop('disabled', false);
             $('#ep_criterios_mayores').prop('disabled', false);
 
+            $('#bs_criterios_menores').prop('disabled', false);
+            $('#bs_criterios_intermedios').prop('disabled', false);
+            $('#bs_criterios_mayores').prop('disabled', false);
+
+            $('#ag_criterios_menores').prop('disabled', false);
+            $('#ag_criterios_intermedios').prop('disabled', false);
+            $('#ag_criterios_mayores').prop('disabled', false);
+
+            $('#cy_criterios_menores').prop('disabled', false);
+            $('#cy_criterios_intermedios').prop('disabled', false);
+            $('#cy_criterios_mayores').prop('disabled', false);
+
           } else {
+
+            ep = 0;
+            bs = 0;
+            ag = 0;
+            cy = 0;
+
             $('#ep_criterios_menores').prop('disabled', 'disabled');
             $('#ep_criterios_intermedios').prop('disabled', 'disabled');
             $('#ep_criterios_mayores').prop('disabled', 'disabled');
+
+            $('#bs_criterios_menores').prop('disabled', 'disabled');
+            $('#bs_criterios_intermedios').prop('disabled', 'disabled');
+            $('#bs_criterios_mayores').prop('disabled', 'disabled');
+
+            $('#ag_criterios_menores').prop('disabled', 'disabled');
+            $('#ag_criterios_intermedios').prop('disabled', 'disabled');
+            $('#ag_criterios_mayores').prop('disabled', 'disabled');
+
+            $('#cy_criterios_menores').prop('disabled', 'disabled');
+            $('#cy_criterios_intermedios').prop('disabled', 'disabled');
+            $('#cy_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
 
 
         $("#ep_criterios_menores").change(function() {
           if ($("#ep_criterios_menores").val() === "") {
+            ep = 0;
             $('#ep_criterios_intermedios').prop('disabled', false);
             $('#ep_criterios_mayores').prop('disabled', false);
           } else {
-
+            ep = 0;
             $('#ep_criterios_intermedios').prop('disabled', 'disabled');
             $('#ep_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
 
         $("#ep_criterios_intermedios").change(function() {
           if ($("#ep_criterios_intermedios").val() === "") {
+            ep = 0;
             $('#ep_criterios_menores').prop('disabled', false);
             $('#ep_criterios_mayores').prop('disabled', false);
           } else {
-
+            ep = 1;
             $('#ep_criterios_menores').prop('disabled', 'disabled');
             $('#ep_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
-
-
-
 
         $("#ep_criterios_mayores").change(function() {
           if ($("#ep_criterios_mayores").val() === "") {
+            ep = 0;
             $('#ep_criterios_menores').prop('disabled', false);
             $('#ep_criterios_intermedios').prop('disabled', false);
           } else {
+            ep = 2;
             $('#ep_criterios_menores').prop('disabled', 'disabled');
             $('#ep_criterios_intermedios').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
         ///////////////////////////////////////////////////////////////////////////////////////////
         $("#bs_criterios_menores").change(function() {
           if ($("#bs_criterios_menores").val() === "") {
+            bs = 0;
             $('#bs_criterios_intermedios').prop('disabled', false);
             $('#bs_criterios_mayores').prop('disabled', false);
           } else {
-
+            bs = 0;
             $('#bs_criterios_intermedios').prop('disabled', 'disabled');
             $('#bs_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
 
         $("#bs_criterios_intermedios").change(function() {
           if ($("#bs_criterios_intermedios").val() === "") {
+            bs = 0;
             $('#bs_criterios_menores').prop('disabled', false);
             $('#bs_criterios_mayores').prop('disabled', false);
           } else {
-
+            bs = 1;
             $('#bs_criterios_menores').prop('disabled', 'disabled');
             $('#bs_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
-
-
-
 
         $("#bs_criterios_mayores").change(function() {
           if ($("#bs_criterios_mayores").val() === "") {
+            bs = 0;
             $('#bs_criterios_menores').prop('disabled', false);
             $('#bs_criterios_intermedios').prop('disabled', false);
           } else {
+            bs = 2;
             $('#bs_criterios_menores').prop('disabled', 'disabled');
             $('#bs_criterios_intermedios').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
         ////////////////////////////////////////////////
 
         $("#ag_criterios_menores").change(function() {
           if ($("#ag_criterios_menores").val() === "") {
+            ag = 0;
             $('#ag_criterios_intermedios').prop('disabled', false);
             $('#ag_criterios_mayores').prop('disabled', false);
           } else {
-
+            ag = 0;
             $('#ag_criterios_intermedios').prop('disabled', 'disabled');
             $('#ag_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
 
         $("#ag_criterios_intermedios").change(function() {
           if ($("#ag_criterios_intermedios").val() === "") {
+            ag = 0;
             $('#ag_criterios_menores').prop('disabled', false);
             $('#ag_criterios_mayores').prop('disabled', false);
           } else {
-
+            ag = 1;
             $('#ag_criterios_menores').prop('disabled', 'disabled');
             $('#ag_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
-
-
-
 
         $("#ag_criterios_mayores").change(function() {
           if ($("#ag_criterios_mayores").val() === "") {
+            ag = 0;
             $('#ag_criterios_menores').prop('disabled', false);
             $('#ag_criterios_intermedios').prop('disabled', false);
           } else {
+            ag = 2;
             $('#ag_criterios_menores').prop('disabled', 'disabled');
             $('#ag_criterios_intermedios').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
         //////////////////////////////////////////////////////
 
         $("#cy_menores").change(function() {
           if ($("#cy_menores").val() === "") {
+            cy = 0;
             $('#cy_intermedios').prop('disabled', false);
             $('#cy_mayores').prop('disabled', false);
           } else {
-
+            cy = 0;
             $('#cy_intermedios').prop('disabled', 'disabled');
             $('#cy_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
 
         $("#cy_intermedios").change(function() {
           if ($("#cy_intermedios").val() === "") {
+            cy = 0;
             $('#cy_menores').prop('disabled', false);
             $('#cy_mayores').prop('disabled', false);
           } else {
-
+            cy = 1;
             $('#cy_menores').prop('disabled', 'disabled');
             $('#cy_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
-
-
-
 
         $("#cy_mayores").change(function() {
           if ($("#cy_mayores").val() === "") {
-
+            cy = 0;
             $('#cy_menores').prop('disabled', false);
             $('#cy_intermedios').prop('disabled', false);
           } else {
+            cy = 2;
             $('#cy_menores').prop('disabled', 'disabled');
             $('#cy_intermedios').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
-      </script>
 
+        ///////////////////////////////////////////////
+
+        function calcularCriterios() {
+          var calculoCriterio = ep + bs + ag + cy;
+          if (calculoCriterio >= 0 && calculoCriterio <= 2) {
+            $("#autoDiag").val(calculoCriterio + " - LIEBG");
+            // LIEBG
+          } else if (calculoCriterio >= 3 && calculoCriterio <= 4) {
+            $("#autoDiag").val(calculoCriterio + " - NIC 1 VS NIC 2");
+            // NIC 1 VS NIC 2
+          } else if (calculoCriterio >= 5 && calculoCriterio <= 8) {
+            $("#autoDiag").val(calculoCriterio + " - LIEAG");
+            // LIEAG
+          }
+
+        }
+      </script>
 
       <script>
         function pagoOnChange(sel) {
@@ -2102,7 +2041,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         const screenshotButton = document.getElementById('btn-captura');
         const divCanvas = document.getElementById('vectorFotos');
 
-        iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision).then(function(){$(".loader").fadeOut()});
+        iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision).then(function() {
+          $(".loader").fadeOut()
+        });
 
         function getDevices() {
           // AFAICT in Safari this only gets default devices until gUM is called :/
@@ -2110,9 +2051,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         }
 
         function gotDevices(deviceInfos) {
-          console.log("Obteniendo informacion");
           window.deviceInfos = deviceInfos; // make available to console
-          //console.log('Dispositivos Disponibles:', deviceInfos);
           var dev = 1;
           for (const deviceInfo of deviceInfos) {
             const option = document.createElement('option');
@@ -2120,17 +2059,14 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             if (deviceInfo.kind === 'audioinput' && deviceInfo.label.includes("ISST")) {
               option.text = deviceInfo.label || `Microfono ${audioSelect.length + 1}`;
               audioSelect.appendChild(option);
-              console.log('audioinput', option);
             } else if (deviceInfo.kind === 'videoinput' && deviceInfo.label.includes("gato")) {
               option.text = deviceInfo.label || `Camara ${videoSelect.length + 1}`;
               videoSelect.appendChild(option);
-              console.log('videoinput', option);
             }
           }
         }
 
         function iniciaTransmicion() {
-          console.log("initTrans");
           if (window.stream) {
             window.stream.getTracks().forEach(track => {
               track.stop();
@@ -2158,20 +2094,17 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           document.querySelector("ul.notika-menu-wrap").style.paddingLeft = "200px";
           document.querySelector("div.logo-area").style.paddingLeft = "200px";
 
-          console.log("ending");
           return navigator.mediaDevices.getUserMedia(constraints).
           then(gotStream).catch(handleError);
         }
 
         function gotStream(stream) {
-          console.log("Setting up...");
           window.stream = stream; // make stream available to console
           audioSelect.selectedIndex = [...audioSelect.options].
           findIndex(option => option.text === stream.getAudioTracks()[0].label);
           videoSelect.selectedIndex = [...videoSelect.options].
           findIndex(option => option.text === stream.getVideoTracks()[0].label);
           videoElement.srcObject = stream;
-          console.log("Ready");
         }
 
         function handleError(error) {
@@ -2179,7 +2112,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         }
 
         function detenTransmision() {
-          console.log("stopTrans");
           if (window.stream) {
             window.stream.getTracks().forEach(function(track) {
               track.stop();
@@ -2200,20 +2132,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
           var canvas = document.createElement('canvas');
-          canvas.width = 300 //videoElement.videoWidth;
-          canvas.height = 300 //videoElement.videoHeight;
+          canvas.width = 300 ;
+          canvas.height = 300 ;
           canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
-          // Other browsers will fall back to image/png
           img.src = canvas.toDataURL('image/jpeg');
           img.setAttribute("id", "inputImg" + contadorCanvas);
           var input = document.createElement('input');
           input.setAttribute("id", "inputImg" + contadorCanvas);
           input.setAttribute("type", "hidden");
           input.setAttribute("name", "canvas[]");
-          //input.setAttribute("class", "form-control captura");
-          input.setAttribute("value", canvas.toDataURL('image/jpeg'));
-          //input.style.display = "none";
-          //input.addEventListener('submit', functSubmit);
           var div = document.createElement('div');
           var i = document.createElement('i');
           i.setAttribute("class", "far fa-times-circle fa-2x");
@@ -2230,6 +2157,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var ic = document.createElement('i');
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
             div.appendChild(ic);
+            input.setAttribute("value", "sel," + canvas.toDataURL('image/jpeg'));
+          }else{
+            input.setAttribute("value", canvas.toDataURL('image/jpeg'));
           }
           document.getElementById('vectorFotos').appendChild(div);
           formulario.appendChild(input);
@@ -2240,20 +2170,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
           var canvas = document.createElement('canvas');
-          canvas.width = 300 //videoElement.videoWidth;
-          canvas.height = 300 //videoElement.videoHeight;
+          canvas.width = 300;
+          canvas.height = 300 ;
           canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
-          // Other browsers will fall back to image/png
           img.src = canvas.toDataURL('image/jpeg');
           img.setAttribute("id", "inputImg" + contadorCanvas);
           var input = document.createElement('input');
           input.setAttribute("id", "inputImg" + contadorCanvas);
           input.setAttribute("type", "hidden");
           input.setAttribute("name", "canvas[]");
-          //input.setAttribute("class", "form-control captura");
-          input.setAttribute("value", "," + canvas.toDataURL('image/jpeg'));
-          //input.style.display = "none";
-          //input.addEventListener('submit', functSubmit);
           var div = document.createElement('div');
           var i = document.createElement('i');
           i.setAttribute("class", "far fa-times-circle fa-2x");
@@ -2270,6 +2195,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var ic = document.createElement('i');
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
             div.appendChild(ic);
+            input.setAttribute("value", "sel," + canvas.toDataURL('image/jpeg'));
+          }else{
+            input.setAttribute("value", canvas.toDataURL('image/jpeg'));
           }
           document.getElementById('vectorFotos').appendChild(div);
           formulario.appendChild(input);
@@ -2295,14 +2223,21 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
         $(document).on("click", ".contenedorCanvas", function(e) {
           var apuntador = $($(e.target)[0]).parent();
+          var inputHidden = document.getElementById($($(e.target)[0]).attr("id"));
+          var sel = inputHidden.value.split(",");
           if ($(".chkImagenSeleccionada").length < 8) {
             if ($(apuntador).children(".chkImagenSeleccionada").length == 0) {
               $(apuntador).append('<i class="chkImagenSeleccionada fas fa-check-circle fa-2x"></i>');
+              $(inputHidden).val( "sel," + sel.join(","));
             } else {
               $(apuntador).children(".chkImagenSeleccionada").remove();
+              sel.splice($.inArray("sel",sel),1);
+              $(inputHidden).val(sel.join(","));
             }
           } else if ($(apuntador).children(".chkImagenSeleccionada").length == 1) {
             $(apuntador).children(".chkImagenSeleccionada").remove();
+              sel.splice($.inArray("sel",sel),1);
+              $(inputHidden).val(sel.join(","));
           }
         });
 

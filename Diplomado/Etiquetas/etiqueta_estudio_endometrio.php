@@ -15,22 +15,21 @@
 	if (isset($_GET["id_paciente"]) && isset($_GET["id_estudio"])) {
 		$id_paciente = $_GET["id_paciente"];
 		$id_estudio = $_GET["id_estudio"];
-		$informacion = "SELECT 
-			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
-			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
-			p.edad_paciente,
-			e.fecha_estudio,
-			e.antecedente_metrorragia, 	
-			e.antecedente_hormonoterapia, 	
-			e.duracion_tratamiento, 	
-			e.periodo_menstrual, 	
-			e.fecha_ultima_menstruacion, 	
-			e.metodo_anticonceptivo
-			FROM
-			paciente p
-			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 4
-			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-			INNER JOIN estudio_biopsia_endometrio e ON ct.id_estudio = e.id_estudio";
+		$informacion = "SELECT
+		CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) AS paciente,
+		CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) AS medico,
+		p.edad_paciente,
+		e.fecha_estudio,
+		e.observaciones_endometrio,
+		am.metrorragia,
+		am.hormonoterapia,
+		am.duracion_hormonoterapia
+		FROM
+		paciente AS p
+		INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 4
+		INNER JOIN usu_me AS u ON u.id_usuario = ct.id_usuario
+		INNER JOIN estudio_biopsia_endometrio AS e ON ct.id_estudio = e.id_estudio
+		INNER JOIN atencion_medica AS am ON am.id_atencion_medica = ct.id_atencion";
 			
 		$res =$mysqliL->query($informacion);
 		$info = $res->fetch_assoc();
@@ -38,12 +37,10 @@
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
-		$antecedente_metrorragia = $info['antecedente_metrorragia'];
-		$antecedente_hormonoterapia = $info['antecedente_hormonoterapia'];
-		$duracion_tratamiento = $info['duracion_tratamiento'];
-		$periodo_menstrual = $info['periodo_menstrual'];
-		$fecha_ultima_menstruacion = $info['fecha_ultima_menstruacion'];
-		$metodo_anticonceptivo = $info['metodo_anticonceptivo'];
+		$antecedente_metrorragia = $info['metrorragia'];
+		$antecedente_hormonoterapia = $info['hormonoterapia'];
+		$duracion_tratamiento = $info['duracion_hormonoterapia'];
+		$observaciones_endometrio = $info['observaciones_endometrio'];
 
 		if (!endsWith(trim($colposcopico), ".")) {
 			$colposcopico = $colposcopico . '.';
@@ -131,12 +128,10 @@
 						</div>
 						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
-						<p><b>Antecedentes de Metrorragia:</b> <?php echo ucwords($antecedente_metrorragia); ?></p>
-						<p><b>Antecedentes de Hormonoterapia:</b> <?php echo ucwords($antecedente_hormonoterapia); ?></p>
-						<p><b>Duracion del Tratamiento:</b><?php echo ucwords($duracion_tratamiento); ?></p>
-						<p><b>Periodos menstruales:</b> <?php echo ucwords($periodo_menstrual); ?></p>
-						<p><b>F.U.M.:</b> <?php echo ucwords($fecha_ultima_menstruacion); ?></p>
-						<p><b>M&eacute;todo anticonceptivo:</b> <?php echo ucwords($metodo_anticonceptivo); ?></p>
+						<p><b>Antecedentes de Metrorragia:</b> <?php echo ucwords($antecedente_metrorragia == 0 ? "No" : "Si"); ?></p>
+						<p><b>Antecedentes de Hormonoterapia:</b> <?php echo ucwords($antecedente_hormonoterapia == 0 ? "No" : "Si"); ?></p>
+						<p><b>Duracion Hormonoterapia:</b><?php echo ucwords($duracion_tratamiento); ?></p>
+						<p><b>Observaciones: </b> <?php echo ($observaciones_endometrio); ?></p>
 					</div>
 				</div>
 			</div>
