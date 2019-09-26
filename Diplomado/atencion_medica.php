@@ -898,24 +898,16 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       </div>
 
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div>
+   <label for="bday">Fecha de la última regla</label>
+   <input type="date" id="bday" name="fecha_ultima_regla">
+ </div>
 
-                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
-                          <div class="input-group date nk-int-st">
-
-                            <span class="input-group-addon"></span>
-                            <input type="text" class="form-control inputDeshabilitado" name="fecha_ultima_regla" placeholder="Fecha de la última regla">
-                          </div>
-                        </div>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
-                          <div class="input-group date nk-int-st">
-
-                            <span class="input-group-addon"></span>
-                            <input type="text" class="form-control inputDeshabilitado" name="fecha_ultimo_papanicolau" placeholder="Fecha del último papanicolau:">
-                          </div>
-                        </div>
+                        <label for="bday">Fecha del último papanicolau</label>
+                        <input type="date" id="bday" name="fecha_ultimo_papanicolau">
+                      </div>
                       </div>
 
                     </div>
