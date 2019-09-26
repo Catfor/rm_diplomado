@@ -146,8 +146,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
 
 
           $rowwe = mysqli_fetch_assoc($result123);
-          $nombrepaciente = ucwords($rowwe['nombre_paciente']);
-          $apellidospaciente = ucwords($rowwe['apellidos_paciente']);
+          $nombrepaciente = ucwords(strtolower($rowwe['nombre_paciente']));
+          $apellidospaciente = ucwords(strtolower($rowwe['apellidos_paciente']));
           $edad_paciente = $rowwe['edad_paciente'];
           $fecha_nacimiento_paciente = $rowwe['fecha_nacimiento_paciente'];
 
@@ -221,7 +221,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var y = (event.clientY - offsetImg.top).toFixed(2);
             donax.value = x;
             donay.value = y;
-            console.log("X: " + x + " Y: " + y);
             ctxDona.drawImage(dona, 0, 0, 200, 200);
             ctxDona.lineWidth = 4;
             ctxDona.strokeStyle = "#FFF";
@@ -241,7 +240,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var y = (event.clientY - offsetImg.top).toFixed(2);
             vulvax.value = x;
             vulvay.value = y;
-            console.log("X: " + x + " Y: " + y);
             ctxVulva.drawImage(vulva, 0, 0, 200, 200);
             ctxVulva.lineWidth = 4;
             ctxVulva.strokeStyle = "#FFF";
@@ -1436,7 +1434,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                           <div class="form-group">
                                             <div class="nk-int-st">
-                                              <textarea class="form-control auto-size" rows="3" placeholder="LIEBG" name="recomendacion_diagnostica" disabled form="f"></textarea>
+                                              <textarea id=autoDiag class="form-control auto-size" rows="3" placeholder="" name="recomendacion_diagnostica" disabled form="f"></textarea>
                                             </div>
                                           </div>
                                         </div>
@@ -1899,164 +1897,231 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
       <!-- ----------------------------------------------------------------------------------------------------->
       <!-- ----------------------------------------------------------------------------------------------------->
       <script language="JavaScript">
+        var ep = 0;
+        var bs = 0;
+        var ag = 0;
+        var cy = 0;
         $("#epitelio_acetoblanco").change(function() {
           if ($("#epitelio_acetoblanco").val() === "presente") {
             $('#ep_criterios_menores').prop('disabled', false);
             $('#ep_criterios_intermedios').prop('disabled', false);
             $('#ep_criterios_mayores').prop('disabled', false);
-
+            
+            $('#bs_criterios_menores').prop('disabled', false);
+            $('#bs_criterios_intermedios').prop('disabled', false);
+            $('#bs_criterios_mayores').prop('disabled', false);
+            
+            $('#ag_criterios_menores').prop('disabled', false);
+            $('#ag_criterios_intermedios').prop('disabled', false);
+            $('#ag_criterios_mayores').prop('disabled', false);
+            
+            $('#cy_criterios_menores').prop('disabled', false);
+            $('#cy_criterios_intermedios').prop('disabled', false);
+            $('#cy_criterios_mayores').prop('disabled', false);
+            
           } else {
+
+            ep = 0;
+            bs = 0;
+            ag = 0;
+            cy = 0;
+
             $('#ep_criterios_menores').prop('disabled', 'disabled');
             $('#ep_criterios_intermedios').prop('disabled', 'disabled');
             $('#ep_criterios_mayores').prop('disabled', 'disabled');
+            
+            $('#bs_criterios_menores').prop('disabled', 'disabled');
+            $('#bs_criterios_intermedios').prop('disabled', 'disabled');
+            $('#bs_criterios_mayores').prop('disabled', 'disabled');
+            
+            $('#ag_criterios_menores').prop('disabled', 'disabled');
+            $('#ag_criterios_intermedios').prop('disabled', 'disabled');
+            $('#ag_criterios_mayores').prop('disabled', 'disabled');
+            
+            $('#cy_criterios_menores').prop('disabled', 'disabled');
+            $('#cy_criterios_intermedios').prop('disabled', 'disabled');
+            $('#cy_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
 
 
         $("#ep_criterios_menores").change(function() {
           if ($("#ep_criterios_menores").val() === "") {
+            ep = 0;
             $('#ep_criterios_intermedios').prop('disabled', false);
             $('#ep_criterios_mayores').prop('disabled', false);
           } else {
-
+            ep = 0;
             $('#ep_criterios_intermedios').prop('disabled', 'disabled');
             $('#ep_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
 
         $("#ep_criterios_intermedios").change(function() {
           if ($("#ep_criterios_intermedios").val() === "") {
+            ep = 0;
             $('#ep_criterios_menores').prop('disabled', false);
             $('#ep_criterios_mayores').prop('disabled', false);
           } else {
-
+            ep = 1;
             $('#ep_criterios_menores').prop('disabled', 'disabled');
             $('#ep_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
-
-
-
 
         $("#ep_criterios_mayores").change(function() {
           if ($("#ep_criterios_mayores").val() === "") {
+            ep = 0;
             $('#ep_criterios_menores').prop('disabled', false);
             $('#ep_criterios_intermedios').prop('disabled', false);
           } else {
+            ep = 2;
             $('#ep_criterios_menores').prop('disabled', 'disabled');
             $('#ep_criterios_intermedios').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
         ///////////////////////////////////////////////////////////////////////////////////////////
         $("#bs_criterios_menores").change(function() {
           if ($("#bs_criterios_menores").val() === "") {
+            bs=0;
             $('#bs_criterios_intermedios').prop('disabled', false);
             $('#bs_criterios_mayores').prop('disabled', false);
           } else {
-
+            bs=0;
             $('#bs_criterios_intermedios').prop('disabled', 'disabled');
             $('#bs_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
 
         $("#bs_criterios_intermedios").change(function() {
           if ($("#bs_criterios_intermedios").val() === "") {
+            bs=0;
             $('#bs_criterios_menores').prop('disabled', false);
             $('#bs_criterios_mayores').prop('disabled', false);
           } else {
-
+            bs=1;
             $('#bs_criterios_menores').prop('disabled', 'disabled');
             $('#bs_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
-
-
-
 
         $("#bs_criterios_mayores").change(function() {
           if ($("#bs_criterios_mayores").val() === "") {
+            bs=0;
             $('#bs_criterios_menores').prop('disabled', false);
             $('#bs_criterios_intermedios').prop('disabled', false);
           } else {
+            bs=2;
             $('#bs_criterios_menores').prop('disabled', 'disabled');
             $('#bs_criterios_intermedios').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
         ////////////////////////////////////////////////
 
         $("#ag_criterios_menores").change(function() {
           if ($("#ag_criterios_menores").val() === "") {
+            ag = 0;
             $('#ag_criterios_intermedios').prop('disabled', false);
             $('#ag_criterios_mayores').prop('disabled', false);
           } else {
-
+            ag = 0;
             $('#ag_criterios_intermedios').prop('disabled', 'disabled');
             $('#ag_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
 
         $("#ag_criterios_intermedios").change(function() {
           if ($("#ag_criterios_intermedios").val() === "") {
+            ag = 0;
             $('#ag_criterios_menores').prop('disabled', false);
             $('#ag_criterios_mayores').prop('disabled', false);
           } else {
-
+            ag= 1;
             $('#ag_criterios_menores').prop('disabled', 'disabled');
             $('#ag_criterios_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
-
-
-
 
         $("#ag_criterios_mayores").change(function() {
           if ($("#ag_criterios_mayores").val() === "") {
+            ag = 0;
             $('#ag_criterios_menores').prop('disabled', false);
             $('#ag_criterios_intermedios').prop('disabled', false);
           } else {
+            ag=2;
             $('#ag_criterios_menores').prop('disabled', 'disabled');
             $('#ag_criterios_intermedios').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
         //////////////////////////////////////////////////////
 
         $("#cy_menores").change(function() {
           if ($("#cy_menores").val() === "") {
+            cy=0;
             $('#cy_intermedios').prop('disabled', false);
             $('#cy_mayores').prop('disabled', false);
           } else {
-
+            cy=0;
             $('#cy_intermedios').prop('disabled', 'disabled');
             $('#cy_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
 
         $("#cy_intermedios").change(function() {
           if ($("#cy_intermedios").val() === "") {
+            cy=0;
             $('#cy_menores').prop('disabled', false);
             $('#cy_mayores').prop('disabled', false);
           } else {
-
+            cy=1;
             $('#cy_menores').prop('disabled', 'disabled');
             $('#cy_mayores').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
-
-
-
 
         $("#cy_mayores").change(function() {
           if ($("#cy_mayores").val() === "") {
-
+            cy=0;
             $('#cy_menores').prop('disabled', false);
             $('#cy_intermedios').prop('disabled', false);
           } else {
+            cy=2;
             $('#cy_menores').prop('disabled', 'disabled');
             $('#cy_intermedios').prop('disabled', 'disabled');
           }
+          calcularCriterios();
         });
-      </script>
 
+///////////////////////////////////////////////
+
+        function calcularCriterios(){
+          var calculoCriterio = ep + bs + ag + cy;
+          if( calculoCriterio >= 0 && calculoCriterio <= 2){
+            $("#autoDiag").val( calculoCriterio + " - LIEBG");
+            // LIEBG
+          }else if( calculoCriterio >= 3 && calculoCriterio <= 4){
+            $("#autoDiag").val( calculoCriterio + " - NIC 1 VS NIC 2");
+            // NIC 1 VS NIC 2
+          }else if( calculoCriterio >= 5 && calculoCriterio <= 8){
+            $("#autoDiag").val( calculoCriterio + " - LIEAG");
+            // LIEAG
+          }
+
+        }
+
+      </script>
 
       <script>
         function pagoOnChange(sel) {
@@ -2118,9 +2183,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         }
 
         function gotDevices(deviceInfos) {
-          console.log("Obteniendo informacion");
           window.deviceInfos = deviceInfos; // make available to console
-          //console.log('Dispositivos Disponibles:', deviceInfos);
           var dev = 1;
           for (const deviceInfo of deviceInfos) {
             const option = document.createElement('option');
@@ -2128,17 +2191,14 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             if (deviceInfo.kind === 'audioinput' && deviceInfo.label.includes("ISST")) {
               option.text = deviceInfo.label || `Microfono ${audioSelect.length + 1}`;
               audioSelect.appendChild(option);
-              console.log('audioinput', option);
             } else if (deviceInfo.kind === 'videoinput' && deviceInfo.label.includes("gato")) {
               option.text = deviceInfo.label || `Camara ${videoSelect.length + 1}`;
               videoSelect.appendChild(option);
-              console.log('videoinput', option);
             }
           }
         }
 
         function iniciaTransmicion() {
-          console.log("initTrans");
           if (window.stream) {
             window.stream.getTracks().forEach(track => {
               track.stop();
@@ -2166,20 +2226,17 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           document.querySelector("ul.notika-menu-wrap").style.paddingLeft = "200px";
           document.querySelector("div.logo-area").style.paddingLeft = "200px";
 
-          console.log("ending");
           return navigator.mediaDevices.getUserMedia(constraints).
           then(gotStream).catch(handleError);
         }
 
         function gotStream(stream) {
-          console.log("Setting up...");
           window.stream = stream; // make stream available to console
           audioSelect.selectedIndex = [...audioSelect.options].
           findIndex(option => option.text === stream.getAudioTracks()[0].label);
           videoSelect.selectedIndex = [...videoSelect.options].
           findIndex(option => option.text === stream.getVideoTracks()[0].label);
           videoElement.srcObject = stream;
-          console.log("Ready");
         }
 
         function handleError(error) {
@@ -2187,7 +2244,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         }
 
         function detenTransmision() {
-          console.log("stopTrans");
           if (window.stream) {
             window.stream.getTracks().forEach(function(track) {
               track.stop();
