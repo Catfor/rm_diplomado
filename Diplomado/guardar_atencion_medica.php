@@ -151,10 +151,12 @@ foreach ($_POST["canvas"] as $canvas) {
   $dir = opendir($directorio); //Abrimos el directorio de destino
   $datos = explode(";", $canvas);
   $data = explode(",", $datos[1]);
+  $sel = explode(",", $datos[0]);
+  $seleccionado = sizeof($sel) == 2 ? 1 : 0;
   $filename = 'Atencion_' . $id_ant_atencionmedica.'_img'.$imagenCont . '_CAM'.'.jpg';
   $imagenCont++;
   if (file_put_contents($directorio . '/' . $filename , base64_decode($data[1]))) {
-    $inserta_imagen = "INSERT INTO imagen (ruta_imagen,id_atencion_medica,fecha_imagen) VALUES ('$filename','$id_ant_atencionmedica','$hoys')";
+    $inserta_imagen = "INSERT INTO imagen (ruta_imagen,id_atencion_medica,fecha_imagen,seleccion) VALUES ('$filename','$id_ant_atencionmedica','$hoys', $seleccionado )";
     $resultado_inserta_imagen = $mysqliL->query($inserta_imagen);
   }
   closedir($dir); //Cerramos el directorio de destino
@@ -165,7 +167,6 @@ foreach ($_FILES["archivo"]['tmp_name'] as $key => $tmp_name) {
   if ($_FILES["archivo"]["name"][$key]) {
     $filename = 'Atencion_' . $id_ant_atencionmedica.'-'. $h . $_FILES["archivo"]["name"][$key]; //Obtenemos el nombre original del archivo
     $source = $_FILES["archivo"]["tmp_name"][$key]; //Obtenemos un nombre temporal del archivo
-    echo ($filename);
     $directorio = 'imagesestudios/'; //Declaramos un  variable con la ruta donde guardaremos los archivos
 
     //Validamos si la ruta de destino existe, en caso de no existir la creamos
@@ -190,4 +191,3 @@ foreach ($_FILES["archivo"]['tmp_name'] as $key => $tmp_name) {
 }
 
 //header("Location:consulta_paciente.php");
-?>
