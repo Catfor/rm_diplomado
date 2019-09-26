@@ -80,7 +80,7 @@
 			var x = <?php echo $x ?>;
 			var y = <?php echo $y ?>;
 			ctxVulva.drawImage(vulva, 0, 0,200,200);
-			ctxVulva.lineWidth = 5;
+			ctxVulva.lineWidth = 6;
 			ctxVulva.strokeStyle = "#FFF";
 			ctxVulva.beginPath();
 			ctxVulva.moveTo(x-10,y-10);

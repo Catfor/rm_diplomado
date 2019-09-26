@@ -42,3 +42,11 @@ p{
 	margin-right: 0px;
 	margin-left: 0px;
 }
+
+.etiqueta{
+	page-break-after: always;
+}
+
+.etiqueta:last-of-type{
+	page-break-after: avoid;
+}

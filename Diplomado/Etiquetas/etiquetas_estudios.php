@@ -8,6 +8,7 @@
 	<link href="../../css/etiquetas.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 	<?php
 	ob_start();
@@ -211,24 +212,6 @@
 	?>
 
 	<script>
-		function imprimeEtiqueta() {
-			var mywindow = window.open('', 'PRINT', '', 'false');
-
-			mywindow.document.write('<html><head><title>Etiquetas Disponibles</title>');
-			mywindow.document.write('</head><body >');
-			mywindow.document.write('<link href="../../css/bootstrap.min.css" rel="stylesheet"/>');
-			mywindow.document.write('<link href="../../css/etiquetas.css" rel="stylesheet"/>');
-			mywindow.document.write(document.getElementById('etiqueta').innerHTML);
-			mywindow.document.write('</body></html>');
-
-			mywindow.document.close(); // necessary for IE >= 10
-			mywindow.focus(); // necessary for IE >= 10*/
-
-			mywindow.print();
-			mywindow.close();
-			window.close();
-			return true;
-		}
 		////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -242,7 +225,7 @@
 			var x_cervix = <?php echo $x_cervix ?>;
 			var y_cervix = <?php echo $y_cervix ?>;
 			ctxDona.drawImage(dona, 0, 0, 200, 200);
-			ctxDona.lineWidth = 5;
+			ctxDona.lineWidth = 6;
 			ctxDona.strokeStyle = "#FFF";
 			ctxDona.beginPath();
 			ctxDona.moveTo(x_cervix - 10, y_cervix - 10);
@@ -273,7 +256,7 @@
 			var x_vulva = <?php echo $x_vulva ?>;
 			var y_vulva = <?php echo $y_vulva ?>;
 			ctxVulva.drawImage(vulva, 0, 0, 200, 200);
-			ctxVulva.lineWidth = 5;
+			ctxVulva.lineWidth = 6;
 			ctxVulva.strokeStyle = "#FFF";
 			ctxVulva.beginPath();
 			ctxVulva.moveTo(x_vulva - 10, y_vulva - 10);
@@ -293,9 +276,10 @@
 			vulva.setAttribute("src", canvasVulva.toDataURL());
 			vulva.style.display = "block";
 			canvasVulva.style.display = "none";
-			//$(canvasVulva).delay(200).queue(function() {
-			//	imprimeEtiqueta();
-			//});
+
+			$(canvasVulva).delay(200).queue(function() {
+				imprimeEtiqueta();
+			});
 
 
 		});
@@ -309,7 +293,7 @@
 <body>
 	<!-- SEPARACION DE ETIQUETAS -->
 	<?php if(isset($fecha_paps)){ ?>
-	<div id="etiqueta">
+	<div class="etiqueta">
 		<div class="container">
 			<div class="row">
 				<div style="background-color:#fff">
@@ -355,7 +339,7 @@
 	<?php } ?>
 	<!-- SEPARACION DE ETIQUETAS -->
 	<?php if(isset($fecha_endo)){ ?>
-	<div id="etiqueta">
+	<div class="etiqueta">
 		<div class="container">
 			<div class="row">
 				<div style="background-color:#fff">
@@ -402,7 +386,7 @@
 	<?php } ?>
 	<!-- SEPARACION DE ETIQUETAS -->
 	<?php if(isset($fecha_vagino)){ ?>
-	<div id="etiqueta">
+	<div class="etiqueta">
 		<div class="container">
 			<div class="row">
 				<div style="background-color:#fff">
@@ -451,7 +435,7 @@
 	<?php } ?>
 	<!-- SEPARACION DE ETIQUETAS -->
 	<?php if(isset($fecha_vulva)){ ?>
-	<div id="etiqueta">
+	<div class="etiqueta">
 		<div class="container">
 			<div class="row">
 				<div style="background-color:#fff">
@@ -512,7 +496,7 @@
 	<?php } ?>
 	<!-- SEPARACION DE ETIQUETAS -->
 	<?php if(isset($fecha_cervix)){ ?>
-	<div id="etiqueta">
+	<div class="etiqueta">
 		<div class="container" style="word-wrap:break-word;">
 			<div class="row">
 				<div style="background-color:#fff">
@@ -577,6 +561,35 @@
 	<footer>
 		<button onclick="imprimeEtiqueta()">Imprimir</button>
 	</footer>
+
+		<script>
+		
+			function imprimeEtiqueta() {
+				var mywindow = window.open('', 'PRINT', '', 'false');
+
+				mywindow.document.write('<html><head><title>Etiquetas Disponibles</title>');
+				mywindow.document.write('</head><body >');
+				mywindow.document.write('<link href="../../css/bootstrap.min.css" rel="stylesheet"/>');
+				mywindow.document.write('<link href="../../css/etiquetas.css" rel="stylesheet"/>');
+				var etiquetas = document.getElementsByClassName('etiqueta');
+				console.log(etiquetas);
+				var contenidos = '';
+				for(var i=0; i<etiquetas.length; i++) {
+					contenidos += '<div class="etiqueta">' + etiquetas[i].innerHTML + '</div><br clear="all" style="page-break-before:always" />';
+				}
+				mywindow.document.write(contenidos);
+				mywindow.document.write('</body></html>');
+
+				mywindow.document.close(); // necessary for IE >= 10
+				mywindow.focus(); // necessary for IE >= 10*/
+
+				mywindow.print();
+				mywindow.close();
+				window.close();
+				return true;
+			}
+		</script>
+
 
 </body>
 

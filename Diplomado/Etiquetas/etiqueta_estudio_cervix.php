@@ -89,7 +89,7 @@ $(document).ready(function(){
 			var x = <?php echo $x ?>;
 			var y = <?php echo $y ?>;
 			ctxDona.drawImage(dona, 0, 0,200,200);
-			ctxDona.lineWidth = 5;
+			ctxDona.lineWidth = 6;
 			ctxDona.strokeStyle = "#FFF";
 			ctxDona.beginPath();
 			ctxDona.moveTo(x-10,y-10);
