@@ -91,7 +91,7 @@ echo "
 </div>
 ";
 }
-else{
+else if($rol=='Supervisor'){
 echo "<div class='mobile-menu-area'>
   <div class='container'>
       <div class='row'>
