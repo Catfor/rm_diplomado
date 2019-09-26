@@ -372,7 +372,7 @@
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
 						<p><b>Antecedentes de Metrorragia:</b> <?php echo ucwords($antecedente_metrorragia == 0 ? "No" : "Si"); ?></p>
 						<p><b>Antecedentes de Hormonoterapia:</b> <?php echo ucwords($antecedente_hormonoterapia == 0 ? "No" : "Si"); ?></p>
-						<p><b>Duracion del Tratamiento:</b><?php echo ucwords($duracion_tratamiento); ?></p>
+						<p><b>Duracion Hormonoterapia:</b><?php echo ucwords($duracion_tratamiento); ?></p>
 						<p><b>Observaciones: </b> <?php echo ($observaciones_endometrio); ?></p>
 					</div>
 				</div>
