@@ -302,6 +302,24 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 
  ?>
+ <?php
+ if (isset($_GET['error'])) {
+
+
+
+
+   if ($_GET['error'] == 4) {
+     //imprimes el error
+     echo '
+
+     <div class="alert alert-danger" role="alert">
+     No coincide el Usuario
+     </div>
+
+         ';
+   }
+ }
+ ?>
  <div class="breadcomb-area">
      <div class="container">
          <div class="row">
@@ -431,21 +449,26 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
                                              echo "</td>";
                                              echo "<td>";
                                              //Papanicolaou
-$queryPapanicolaou = "SELECT c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio
+$queryPapanicolaou = "SELECT c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio,c.id_usu_pat AS asignacion
  FROM estudio_papanicolau e
 INNER JOIN ctrl_paciente_estudios c ON
 e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente =  $id_paciente; ";
                                              if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
-                                                 while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
-                                                     $paciente = $resultSet['paciente'];
-                                                      $atencion = $resultSet['atencion'];
-                                                      $estudio = $resultSet['estudio'];
-                                                       $tipo_estudio = $resultSet['tipo_estudio'];
+                                                 while ($resultpaps = $resultSetPapanicolaou->fetch_assoc()) {
+                                                     $paciente = $resultpaps['paciente'];
+                                                      $atencion = $resultpaps['atencion'];
+                                                      $estudio = $resultpaps['estudio'];
+                                                       $tipo_estudio = $resultpaps['tipo_estudio'];
+$asignacion= $resultpaps['asignacion'];
+if($asignacion==0){
+                                                     echo "<input  type='checkbox' name='paps[]' value='$atencion'> <a href='Etiquetas/etiqueta_estudio_papanicolaou.php?paciente=$paciente&atencion=$atencion&estudio=$estudio&tipo_estudio=$tipo_estudio'
+                                                      target='_blank'>Papanicolau</a> ";
+                                                   }else{
 
 
-                                                     echo "<input  type='checkbox' name='paps[]' value='$atencion'>  ";
                                                      echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?paciente=$paciente&atencion=$atencion&estudio=$estudio&tipo_estudio=$tipo_estudio'
-                                                      target='_blank'>Papanicolau</a>";
+                                                      target='_blank'>solo ver Papanicolau</a>";
+                                                      }
                                                  }
                                              }
                                              echo "</td>";
@@ -453,22 +476,31 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente =  $id
                                              //BIOPSIAS =============
                                              echo "<td>";
                                              //Vulvoscopia
-                                             $queryVulvoscopia = "SELECT 	c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio
+                                             $queryVulvoscopia = "SELECT 	c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio,c.id_usu_pat AS asignacion
  FROM 	estudio_vulvoscopia e INNER JOIN ctrl_paciente_estudios c
   ON    e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 6 	and c.id_paciente = $id_paciente;";
                                              if ($resultSetVulvoscopia = $mysqliL->query($queryVulvoscopia)) {
-                                                 while ($resultSet = $resultSetVulvoscopia->fetch_assoc()) {
-                                                     $pacientev = $resultSet['paciente'];
-                                                     $atencionv = $resultSet['atencion'];
-                                                     $id_tipo_estudiov = $resultSet['tipo_estudio'];
-                                                     $estudiov = $resultSet['estudio'];
-                                                     echo "<input  type='checkbox'  name='vulva[]' value='$atencionv'>";
-                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_vulva.php?paciente=$pacientev&atencion=$atencionv&estudio=$estudiov&tipo_estudio=$id_tipo_estudiov' target='_blank'>Vulvo</a></div>";
+                                                 while ($resultSetvulvo = $resultSetVulvoscopia->fetch_assoc()) {
+                                                     $pacientev = $resultSetvulvo['paciente'];
+                                                     $atencionv = $resultSetvulvo['atencion'];
+                                                     $id_tipo_estudiov = $resultSetvulvo['tipo_estudio'];
+                                                     $estudiov = $resultSetvulvo['estudio'];
+                                                     $asignacionv= $resultSetvulvo['asignacion'];
+
+if($asignacionv==0){
+
+
+                                                     echo "<input  type='checkbox'  name='vulva[]' value='$atencionv'><a href='Etiquetas/etiqueta_estudio_vulva.php?paciente=$pacientev&atencion=$atencionv&estudio=$estudiov&tipo_estudio=$id_tipo_estudiov' target='_blank'>Vulvo</a><br>";
+}else{
+  echo "<div><a href='Etiquetas/etiqueta_estudio_vulva.php?paciente=$pacientev&atencion=$atencionv&estudio=$estudiov&tipo_estudio=$id_tipo_estudiov' target='_blank'>Solo ver Vulvo</a></div>";
+
+}
                                                  }
+
                                              }
 
                                              //Vaginoscopia
-                                             $queryVaginoscopia = "SELECT 	c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio
+                                             $queryVaginoscopia = "SELECT 	c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio,c.id_usu_pat AS asignacion
  FROM 	estudio_vaginoscopia e INNER JOIN ctrl_paciente_estudios c
   ON    e.id_estudio = c.id_estudio	and c.id_tipo_estudio = 5 	and c.id_paciente = $id_paciente; ";
                                              if ($resultSetVaginoscopia = $mysqliL->query($queryVaginoscopia)) {
@@ -477,13 +509,17 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente =  $id
                                                       $atencionva = $resultSet['atencion'];
                                                       $estudiova = $resultSet['estudio'];
                                                        $tipo_estudiova = $resultSet['tipo_estudio'];
-                                                     echo " <input  type='checkbox'  name='vagi[]' value='$atencionva'> ";
-                                                     echo "<div><a href='Etiquetas/etiqueta_estudio_vaginoscopia.php?paciente=$pacienteva&atencion=$atencionva&estudio=$estudiova&tipo_estudio=$tipo_estudiova' target='_blank'>Vagins</a></div>";
+                                                          $asignacionvaf= $resultSet['asignacion'];
+if($asignacionvaf==0){
+ echo " <input  type='checkbox'  name='vagi[]' value='$atencionva'> <a href='Etiquetas/etiqueta_estudio_vaginoscopia.php?paciente=$pacienteva&atencion=$atencionva&estudio=$estudiova&tipo_estudio=$tipo_estudiova' target='_blank'>Vagins</a><br>";
+}else{
+   echo "<div><a href='Etiquetas/etiqueta_estudio_vaginoscopia.php?paciente=$pacienteva&atencion=$atencionva&estudio=$estudiova&tipo_estudio=$tipo_estudiova' target='_blank'>solo ver Vagina</a></div>";
+}
                                                  }
                                              }
 
                                              //Cervix
-                                             $queryCervix = "SELECT 	c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio
+                                             $queryCervix = "SELECT 	c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio,c.id_usu_pat AS asignacion
  FROM 	estudio_biopsia_cervix e INNER JOIN ctrl_paciente_estudios c
   ON    e.id_estudio = c.id_estudio	 	and c.id_tipo_estudio = 2 	and c.id_paciente = $id_paciente; ";
                                              if ($resultSetCervix = $mysqliL->query($queryCervix)) {
@@ -492,13 +528,21 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente =  $id
                                                      $atencionc = $resultSet['atencion'];
                                                      $estudioc = $resultSet['estudio'];
                                                      $tipo_estudioc = $resultSet['tipo_estudio'];
-                                                     echo " <div><input  type='checkbox' name='cervix[]' value='$atencionc'> ";
-                                                     echo "<a href='Etiquetas/etiqueta_estudio_cervix.php?paciente=$pacientec&atencion=$atencionc&estudio=$estudioc&tipo_estudio=$tipo_estudioc' target='_blank'>Cervix</a></div>";
+                                                      $asignacionc = $resultSet['asignacion'];
+                                                      if($asignacionc==0){
+ echo " <input  type='checkbox' name='cervix[]' value='$atencionc'><a href='Etiquetas/etiqueta_estudio_cervix.php?paciente=$pacientec&atencion=$atencionc&estudio=$estudioc&tipo_estudio=$tipo_estudioc' target='_blank'>Cervix</a><br>";
+}else{
+  echo "<div><a href='Etiquetas/etiqueta_estudio_cervix.php?paciente=$pacientec&atencion=$atencionc&estudio=$estudioc&tipo_estudio=$tipo_estudioc' target='_blank'>Solo Ver Cervix</a></div>";
+
+}
+
+
                                                  }
                                              }
 
                                              //Endometrio
-                                             $queryEndometrio = "SELECT c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio from 	estudio_biopsia_endometrio e inner join
+                                             $queryEndometrio = "SELECT c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio,c.id_usu_pat AS asignacion
+                                              from 	estudio_biopsia_endometrio e inner join
                                              ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 4 	and c.id_paciente = $id_paciente; ";
                                              if ($resultSetEndometrio = $mysqliL->query($queryEndometrio)) {
                                                  while ($resultSet = $resultSetEndometrio->fetch_assoc()) {
@@ -506,8 +550,13 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente =  $id
                                                    $atencione = $resultSet['atencion'];
                                                    $estudioe = $resultSet['estudio'];
                                                    $tipo_estudioe = $resultSet['tipo_estudio'];
-                                                     echo "<div><input  type='checkbox'  name='endo[]' value='$atencione'>";
-                                                     echo "<a href='Etiquetas/etiqueta_estudio_endometrio.php?paciente=$pacientee&atencion=$atencione&estudio=$estudioe&tipo_estudio=$tipo_estudioe' target='_blank'>Endometrio</a></div>";
+                                                   $asignacione = $resultSet['asignacion'];
+                                                   if($asignacione==0){
+                                                     echo "<input  type='checkbox'  name='endo[]' value='$atencione'><a href='Etiquetas/etiqueta_estudio_endometrio.php?paciente=$pacientee&atencion=$atencione&estudio=$estudioe&tipo_estudio=$tipo_estudioe' target='_blank'>Endometrio</a>";
+}else{
+  echo "<div><a href='Etiquetas/etiqueta_estudio_endometrio.php?paciente=$pacientee&atencion=$atencione&estudio=$estudioe&tipo_estudio=$tipo_estudioe' target='_blank'>Solo Ver Endometrio</a></div>";
+
+}
                                                  }
                                              }
 

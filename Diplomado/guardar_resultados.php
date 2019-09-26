@@ -14,9 +14,17 @@ $vagi=$_GET['vagi'];
 $cervix=$_GET['cervix'];
 $endo=$_GET['endo'];
 
+$consultarusuario = "SELECT * FROM usu_me WHERE correo_general='$email' AND contra='$password' AND id_usuario='$patologo'";
+                                             $resultconsultarusuario = $mysqliL->query($consultarusuario) ;
+$siono=$resultconsultarusuario->num_rows;
+                                        if($siono==0){
+                                          header("Location:consulta_estudios.php?error=4");
+                                        }
+else{
+
 
 if (isset($paps)){
-  /*
+
   for ($y = 0; $y < count($paps); $y++) {
     $paps1 = $paps[$y];
 
@@ -30,21 +38,21 @@ if (isset($paps)){
                                                          $estudiopa = $resultSet['estudio'];
                                                          $tipo_estudiopa = $resultSet['tipo_estudio'];
 
-                                                             echo $estudiopa."<br>";
+
 
                                                                  $sql11 = "INSERT INTO bitacora_ingreso
                                                                      (id_u,fecha_ingreso,id_atencion,accion,id_asignacion,id_tipo_estudio,id_estudio,paciente)
                                                                      VALUES
                                                                      ('$id','$hoys','$paps1','se autorizo entrega de muestras de papanicolau','$patologo','7','$estudiopa','$pacientepa')";
 
-                                                            //     $resultaq = $mysqliL->query($sql11);
+                                                                $resultaq = $mysqliL->query($sql11);
 
 
                                                                      $Modifi = "UPDATE ctrl_paciente_estudios
                                                                      SET id_usu_pat='$patologo'
                                                                      WHERE id_paciente='$pacientepa' and id_estudio='$estudiopa' and id_tipo_estudio='7' and id_atencion='$paps1'";
 
-                                                                    //$Mo= $mysqliL->query($Modifi);
+                                                                    $Mo= $mysqliL->query($Modifi);
 
 
                                                        }
@@ -54,13 +62,14 @@ if (isset($paps)){
 
 
 
-  }*/
 }
+}
+else{}
 if (isset($vulva)){
-  /*
+
   for ($y = 0; $y < count($vulva); $y++) {
     $vulva1 = $vulva[$y];
-    echo $vulva1.'<br>';
+
 
     $queryestudio_vulvoscopia = "SELECT c.id_paciente AS paciente ,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio
      FROM estudio_vulvoscopia e
@@ -79,14 +88,14 @@ if (isset($vulva)){
                                                                      VALUES
                                                                      ('$id','$hoys','$vulva1','se autorizo entrega de muestras de vulvoscopia','$patologo','6','$estudiovul','$pacientevul')";
 
-                                                            //     $resultaq = $mysqliL->query($sql11);
+                                                                $resultaq = $mysqliL->query($sql11);
 
 
                                                                      $Modifi = "UPDATE ctrl_paciente_estudios
                                                                      SET id_usu_pat='$patologo'
                                                                      WHERE id_paciente='$pacientevul' and id_estudio='$estudiovul' and id_tipo_estudio='6' and id_atencion='$vulva1'";
-echo $Modifi."<br>";
-                                                                    //$Mo= $mysqliL->query($Modifi);
+
+                                                                    $Mo= $mysqliL->query($Modifi);
 
 
                                                        }
@@ -96,13 +105,52 @@ echo $Modifi."<br>";
 
 
   }
-  */
-}
 
+}
+else{}
 if (isset($vagi)){
+  for ($y = 0; $y < count($vagi); $y++) {
+    $vagi1 = $vagi[$y];
 
+
+    $queryestudio_vulvoscopia = "SELECT c.id_paciente AS paciente ,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio
+     FROM estudio_vulvoscopia e
+    INNER JOIN ctrl_paciente_estudios c ON
+    e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 5	AND c.id_atencion =  $vagi1; ";
+                                                 $resultestudio_vulvoscopia= $mysqliL->query($queryestudio_vulvoscopia) ;
+                                                     while ($resultSetestudio_vulvoscopia = $resultestudio_vulvoscopia->fetch_assoc()) {
+                                                         $pacienteva = $resultSetestudio_vulvoscopia['paciente'];
+                                                         $estudiova = $resultSetestudio_vulvoscopia['estudio'];
+                                                         $tipo_estudiova = $resultSetestudio_vulvoscopia['tipo_estudio'];
+
+
+
+                                                                 $sql11 = "INSERT INTO bitacora_ingreso
+                                                                     (id_u,fecha_ingreso,id_atencion,accion,id_asignacion,id_tipo_estudio,id_estudio,paciente)
+                                                                     VALUES
+                                                                     ('$id','$hoys','$vagi1','se autorizo entrega de muestras de vaginoscopia','$patologo','6','$estudiova','$pacienteva')";
+
+                                                               $resultaq = $mysqliL->query($sql11);
+
+
+                                                                     $Modifi = "UPDATE ctrl_paciente_estudios
+                                                                     SET id_usu_pat='$patologo'
+                                                                     WHERE id_paciente='$pacienteva' and id_estudio='$estudiova' and id_tipo_estudio='5' and id_atencion='$vagi1'";
+
+                                                                    $Mo= $mysqliL->query($Modifi);
+
+
+                                                       }
+
+
+
+
+
+  }
 }
+else{}
 if (isset($cervix)){
+
   for ($y = 0; $y < count($cervix); $y++) {
     $cervix1 = $cervix[$y];
 
@@ -141,71 +189,68 @@ if (isset($cervix)){
 
 
   }
+
 }
+else{}
 if (isset($endo)){
 
+  for ($y = 0; $y < count($endo); $y++) {
+    $endo1 = $endo[$y];
+
+
+    $queryestudio_vulvoscopia = "SELECT c.id_paciente AS paciente ,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio
+     FROM estudio_biopsia_endometrio e
+    INNER JOIN ctrl_paciente_estudios c ON
+    e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 4	AND c.id_atencion =  $endo1; ";
+                                                 $resultestudio_vulvoscopia= $mysqliL->query($queryestudio_vulvoscopia) ;
+                                                     while ($resultSetestudio_vulvoscopia = $resultestudio_vulvoscopia->fetch_assoc()) {
+                                                         $pacienteen = $resultSetestudio_vulvoscopia['paciente'];
+                                                         $estudioen = $resultSetestudio_vulvoscopia['estudio'];
+                                                         $tipo_estudioen = $resultSetestudio_vulvoscopia['tipo_estudio'];
+
+
+
+                                                                 $sql11 = "INSERT INTO bitacora_ingreso
+                                                                     (id_u,fecha_ingreso,id_atencion,accion,id_asignacion,id_tipo_estudio,id_estudio,paciente)
+                                                                     VALUES
+                                                                     ('$id','$hoys','$endo1','se autorizo entrega de muestras de vulvoscopia','$patologo','4','$estudioen','$pacienteen')";
+
+                                                                $resultaq = $mysqliL->query($sql11);
+
+
+                                                                     $Modifi = "UPDATE ctrl_paciente_estudios
+                                                                     SET id_usu_pat='$patologo'
+                                                                     WHERE id_paciente='$pacienteen' and id_estudio='$estudioen' and id_tipo_estudio='4' and id_atencion='$endo1'";
+
+                                                                    $Mo= $mysqliL->query($Modifi);
+
+
+                                                       }
+
+
+
+
+
+  }
+
 }
-/*
-if (!empty($password) && !empty($email) && !empty($patologo)) {
 
-  $result123 = mysqli_query($mysqliL, "SELECT apellidos_usuario,rol,id_usuario,nick,nombre_usuario,activo,correo_general, contra
-    FROM usu_me WHERE correo_general = '$email' and contra='$password' and id_usuario='$patologo'");
+header("Location:consulta_estudios.php");
 
-
-  $rowwe = mysqli_fetch_assoc($result123);
-  $activo = $rowwe['activo'];
-  $correo_general = $rowwe['correo_general'];
-  $contra = $rowwe['contra'];
-  $id_usuario = $rowwe['id_usuario'];
-  $nombre_usuario = $rowwe['nombre_usuario'];
-  $rol = $rowwe['rol'];
-  $total = $result123->num_rows;
-  if ($total == 0) {
-    header('Location: accesos.php?error=1');
-  } else {
-
-    for ($y = 0; $y < count($idusuariopato); $y++) {
-      $idusuariopatos = $idusuariopato[$y];
-
-      $sql11 = "INSERT INTO bitacora_ingreso
-          (id_u,fecha_ingreso,id_atencion,accion,id_asignacion)
-          VALUES
-          ('$id','$hoys','$idusuariopatos','se autorizo entrega de muestras','$patologo')";
-      //$resultaq = $mysqliL->query($sql11);
-
-
-      $Modifi = "UPDATE ctrl_paciente_estudios
-      SET id_usu_pat='1'
-      WHERE id_estudio='$idusuariopatos'";
-
-    //  $Mo= $mysqliL->query($Modifi);
-    }
-
-
-//header("Location:consulta_estudios.php");
 
 }
 
 
 
 
-
-
-
-*/
 
 
 
 }
 else {
-    header('Location: accesos.php');
+  header("Location:consulta_estudios.php?error=4");
+
 
     exit;
 }
-
-
-
-
-
-
  ?>
