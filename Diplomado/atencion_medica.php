@@ -771,24 +771,16 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       </div>
 
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div>
+   <label for="bday">Fecha de la última regla</label>
+   <input type="date" id="bday" name="fecha_ultima_regla">
+ </div>
 
-                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
-                          <div class="input-group date nk-int-st">
-
-                            <span class="input-group-addon"></span>
-                            <input type="text" class="form-control inputDeshabilitado" name="fecha_ultima_regla" placeholder="Fecha de la última regla">
-                          </div>
-                        </div>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
-                          <div class="input-group date nk-int-st">
-
-                            <span class="input-group-addon"></span>
-                            <input type="text" class="form-control inputDeshabilitado" name="fecha_ultimo_papanicolau" placeholder="Fecha del último papanicolau:">
-                          </div>
-                        </div>
+                        <label for="bday">Fecha del último papanicolau</label>
+                        <input type="date" id="bday" name="fecha_ultimo_papanicolau">
+                      </div>
                       </div>
 
                     </div>
@@ -2139,6 +2131,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         screenshotButton.onclick = videoElement.onclick = function() {
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
+          var canvasHelper = document.createElement('canvas');
+          canvasHelper.width = 1000 ;
+          canvasHelper.height = 1000 ;
+          canvasHelper.getContext('2d').drawImage(videoElement, 0, 0, 1000, 1000);
           var canvas = document.createElement('canvas');
           canvas.width = 300 ;
           canvas.height = 300 ;
@@ -2165,9 +2161,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var ic = document.createElement('i');
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
             div.appendChild(ic);
-            input.setAttribute("value", "sel," + canvas.toDataURL('image/jpeg'));
+            input.setAttribute("value", "sel," + canvasHelper.toDataURL('image/jpeg'));
           }else{
-            input.setAttribute("value", canvas.toDataURL('image/jpeg'));
+            input.setAttribute("value", canvasHelper.toDataURL('image/jpeg'));
           }
           document.getElementById('vectorFotos').appendChild(div);
           formulario.appendChild(input);
@@ -2177,8 +2173,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         function capturaFoto() {
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
+          var canvasHelper = document.createElement('canvas');
+          canvasHelper.width = 1000 ;
+          canvasHelper.height = 1000 ;
+          canvasHelper.getContext('2d').drawImage(videoElement, 0, 0, 1000, 1000);
           var canvas = document.createElement('canvas');
-          canvas.width = 300;
+          canvas.width = 300 ;
           canvas.height = 300 ;
           canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
           img.src = canvas.toDataURL('image/jpeg');
@@ -2203,9 +2203,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var ic = document.createElement('i');
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
             div.appendChild(ic);
-            input.setAttribute("value", "sel," + canvas.toDataURL('image/jpeg'));
+            input.setAttribute("value", "sel," + canvasHelper.toDataURL('image/jpeg'));
           }else{
-            input.setAttribute("value", canvas.toDataURL('image/jpeg'));
+            input.setAttribute("value", canvasHelper.toDataURL('image/jpeg'));
           }
           document.getElementById('vectorFotos').appendChild(div);
           formulario.appendChild(input);
