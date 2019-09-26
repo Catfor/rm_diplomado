@@ -1781,19 +1781,19 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             $('#ep_criterios_menores').prop('disabled', false);
             $('#ep_criterios_intermedios').prop('disabled', false);
             $('#ep_criterios_mayores').prop('disabled', false);
-            
+
             $('#bs_criterios_menores').prop('disabled', false);
             $('#bs_criterios_intermedios').prop('disabled', false);
             $('#bs_criterios_mayores').prop('disabled', false);
-            
+
             $('#ag_criterios_menores').prop('disabled', false);
             $('#ag_criterios_intermedios').prop('disabled', false);
             $('#ag_criterios_mayores').prop('disabled', false);
-            
+
             $('#cy_criterios_menores').prop('disabled', false);
             $('#cy_criterios_intermedios').prop('disabled', false);
             $('#cy_criterios_mayores').prop('disabled', false);
-            
+
           } else {
 
             ep = 0;
@@ -1804,15 +1804,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             $('#ep_criterios_menores').prop('disabled', 'disabled');
             $('#ep_criterios_intermedios').prop('disabled', 'disabled');
             $('#ep_criterios_mayores').prop('disabled', 'disabled');
-            
+
             $('#bs_criterios_menores').prop('disabled', 'disabled');
             $('#bs_criterios_intermedios').prop('disabled', 'disabled');
             $('#bs_criterios_mayores').prop('disabled', 'disabled');
-            
+
             $('#ag_criterios_menores').prop('disabled', 'disabled');
             $('#ag_criterios_intermedios').prop('disabled', 'disabled');
             $('#ag_criterios_mayores').prop('disabled', 'disabled');
-            
+
             $('#cy_criterios_menores').prop('disabled', 'disabled');
             $('#cy_criterios_intermedios').prop('disabled', 'disabled');
             $('#cy_criterios_mayores').prop('disabled', 'disabled');
@@ -1862,11 +1862,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         ///////////////////////////////////////////////////////////////////////////////////////////
         $("#bs_criterios_menores").change(function() {
           if ($("#bs_criterios_menores").val() === "") {
-            bs=0;
+            bs = 0;
             $('#bs_criterios_intermedios').prop('disabled', false);
             $('#bs_criterios_mayores').prop('disabled', false);
           } else {
-            bs=0;
+            bs = 0;
             $('#bs_criterios_intermedios').prop('disabled', 'disabled');
             $('#bs_criterios_mayores').prop('disabled', 'disabled');
           }
@@ -1875,11 +1875,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
         $("#bs_criterios_intermedios").change(function() {
           if ($("#bs_criterios_intermedios").val() === "") {
-            bs=0;
+            bs = 0;
             $('#bs_criterios_menores').prop('disabled', false);
             $('#bs_criterios_mayores').prop('disabled', false);
           } else {
-            bs=1;
+            bs = 1;
             $('#bs_criterios_menores').prop('disabled', 'disabled');
             $('#bs_criterios_mayores').prop('disabled', 'disabled');
           }
@@ -1888,11 +1888,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
         $("#bs_criterios_mayores").change(function() {
           if ($("#bs_criterios_mayores").val() === "") {
-            bs=0;
+            bs = 0;
             $('#bs_criterios_menores').prop('disabled', false);
             $('#bs_criterios_intermedios').prop('disabled', false);
           } else {
-            bs=2;
+            bs = 2;
             $('#bs_criterios_menores').prop('disabled', 'disabled');
             $('#bs_criterios_intermedios').prop('disabled', 'disabled');
           }
@@ -1919,7 +1919,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             $('#ag_criterios_menores').prop('disabled', false);
             $('#ag_criterios_mayores').prop('disabled', false);
           } else {
-            ag= 1;
+            ag = 1;
             $('#ag_criterios_menores').prop('disabled', 'disabled');
             $('#ag_criterios_mayores').prop('disabled', 'disabled');
           }
@@ -1932,7 +1932,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             $('#ag_criterios_menores').prop('disabled', false);
             $('#ag_criterios_intermedios').prop('disabled', false);
           } else {
-            ag=2;
+            ag = 2;
             $('#ag_criterios_menores').prop('disabled', 'disabled');
             $('#ag_criterios_intermedios').prop('disabled', 'disabled');
           }
@@ -1942,11 +1942,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
         $("#cy_menores").change(function() {
           if ($("#cy_menores").val() === "") {
-            cy=0;
+            cy = 0;
             $('#cy_intermedios').prop('disabled', false);
             $('#cy_mayores').prop('disabled', false);
           } else {
-            cy=0;
+            cy = 0;
             $('#cy_intermedios').prop('disabled', 'disabled');
             $('#cy_mayores').prop('disabled', 'disabled');
           }
@@ -1955,11 +1955,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
         $("#cy_intermedios").change(function() {
           if ($("#cy_intermedios").val() === "") {
-            cy=0;
+            cy = 0;
             $('#cy_menores').prop('disabled', false);
             $('#cy_mayores').prop('disabled', false);
           } else {
-            cy=1;
+            cy = 1;
             $('#cy_menores').prop('disabled', 'disabled');
             $('#cy_mayores').prop('disabled', 'disabled');
           }
@@ -1968,34 +1968,33 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
         $("#cy_mayores").change(function() {
           if ($("#cy_mayores").val() === "") {
-            cy=0;
+            cy = 0;
             $('#cy_menores').prop('disabled', false);
             $('#cy_intermedios').prop('disabled', false);
           } else {
-            cy=2;
+            cy = 2;
             $('#cy_menores').prop('disabled', 'disabled');
             $('#cy_intermedios').prop('disabled', 'disabled');
           }
           calcularCriterios();
         });
 
-///////////////////////////////////////////////
+        ///////////////////////////////////////////////
 
-        function calcularCriterios(){
+        function calcularCriterios() {
           var calculoCriterio = ep + bs + ag + cy;
-          if( calculoCriterio >= 0 && calculoCriterio <= 2){
-            $("#autoDiag").val( calculoCriterio + " - LIEBG");
+          if (calculoCriterio >= 0 && calculoCriterio <= 2) {
+            $("#autoDiag").val(calculoCriterio + " - LIEBG");
             // LIEBG
-          }else if( calculoCriterio >= 3 && calculoCriterio <= 4){
-            $("#autoDiag").val( calculoCriterio + " - NIC 1 VS NIC 2");
+          } else if (calculoCriterio >= 3 && calculoCriterio <= 4) {
+            $("#autoDiag").val(calculoCriterio + " - NIC 1 VS NIC 2");
             // NIC 1 VS NIC 2
-          }else if( calculoCriterio >= 5 && calculoCriterio <= 8){
-            $("#autoDiag").val( calculoCriterio + " - LIEAG");
+          } else if (calculoCriterio >= 5 && calculoCriterio <= 8) {
+            $("#autoDiag").val(calculoCriterio + " - LIEAG");
             // LIEAG
           }
 
         }
-
       </script>
 
       <script>
@@ -2050,7 +2049,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         const screenshotButton = document.getElementById('btn-captura');
         const divCanvas = document.getElementById('vectorFotos');
 
-        iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision).then(function(){$(".loader").fadeOut()});
+        iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision).then(function() {
+          $(".loader").fadeOut()
+        });
 
         function getDevices() {
           // AFAICT in Safari this only gets default devices until gUM is called :/
@@ -2139,20 +2140,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
           var canvas = document.createElement('canvas');
-          canvas.width = 300 //videoElement.videoWidth;
-          canvas.height = 300 //videoElement.videoHeight;
+          canvas.width = 300 ;
+          canvas.height = 300 ;
           canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
-          // Other browsers will fall back to image/png
           img.src = canvas.toDataURL('image/jpeg');
           img.setAttribute("id", "inputImg" + contadorCanvas);
           var input = document.createElement('input');
           input.setAttribute("id", "inputImg" + contadorCanvas);
           input.setAttribute("type", "hidden");
           input.setAttribute("name", "canvas[]");
-          //input.setAttribute("class", "form-control captura");
-          input.setAttribute("value", canvas.toDataURL('image/jpeg'));
-          //input.style.display = "none";
-          //input.addEventListener('submit', functSubmit);
           var div = document.createElement('div');
           var i = document.createElement('i');
           i.setAttribute("class", "far fa-times-circle fa-2x");
@@ -2169,6 +2165,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var ic = document.createElement('i');
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
             div.appendChild(ic);
+            input.setAttribute("value", "sel," + canvas.toDataURL('image/jpeg'));
+          }else{
+            input.setAttribute("value", canvas.toDataURL('image/jpeg'));
           }
           document.getElementById('vectorFotos').appendChild(div);
           formulario.appendChild(input);
@@ -2179,20 +2178,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
           var canvas = document.createElement('canvas');
-          canvas.width = 300 //videoElement.videoWidth;
-          canvas.height = 300 //videoElement.videoHeight;
+          canvas.width = 300;
+          canvas.height = 300 ;
           canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
-          // Other browsers will fall back to image/png
           img.src = canvas.toDataURL('image/jpeg');
           img.setAttribute("id", "inputImg" + contadorCanvas);
           var input = document.createElement('input');
           input.setAttribute("id", "inputImg" + contadorCanvas);
           input.setAttribute("type", "hidden");
           input.setAttribute("name", "canvas[]");
-          //input.setAttribute("class", "form-control captura");
-          input.setAttribute("value", "," + canvas.toDataURL('image/jpeg'));
-          //input.style.display = "none";
-          //input.addEventListener('submit', functSubmit);
           var div = document.createElement('div');
           var i = document.createElement('i');
           i.setAttribute("class", "far fa-times-circle fa-2x");
@@ -2209,6 +2203,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var ic = document.createElement('i');
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
             div.appendChild(ic);
+            input.setAttribute("value", "sel," + canvas.toDataURL('image/jpeg'));
+          }else{
+            input.setAttribute("value", canvas.toDataURL('image/jpeg'));
           }
           document.getElementById('vectorFotos').appendChild(div);
           formulario.appendChild(input);
@@ -2234,14 +2231,21 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
         $(document).on("click", ".contenedorCanvas", function(e) {
           var apuntador = $($(e.target)[0]).parent();
+          var inputHidden = document.getElementById($($(e.target)[0]).attr("id"));
+          var sel = inputHidden.value.split(",");
           if ($(".chkImagenSeleccionada").length < 8) {
             if ($(apuntador).children(".chkImagenSeleccionada").length == 0) {
               $(apuntador).append('<i class="chkImagenSeleccionada fas fa-check-circle fa-2x"></i>');
+              $(inputHidden).val( "sel," + sel.join(","));
             } else {
               $(apuntador).children(".chkImagenSeleccionada").remove();
+              sel.splice($.inArray("sel",sel),1);
+              $(inputHidden).val(sel.join(","));
             }
           } else if ($(apuntador).children(".chkImagenSeleccionada").length == 1) {
             $(apuntador).children(".chkImagenSeleccionada").remove();
+              sel.splice($.inArray("sel",sel),1);
+              $(inputHidden).val(sel.join(","));
           }
         });
 
