@@ -84,7 +84,7 @@ $endo=$_GET['endo'];
           <div class="logo-area">
             <a href="#"><img src="img/logo/logo.png" width="200" height="200" /></a>
           </div>
-        
+
 
 
 

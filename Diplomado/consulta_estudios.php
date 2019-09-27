@@ -193,7 +193,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                     <th>Fecha de Nacimiento</th>
                                     <th>ID de Atencion</th>
                                     <th>Colposcopia</th>
-                                    <th>Papanicolau-----Biopsias</th>
+                                    <th>Papanicolau/Biopsias</th>
 
                                 </tr>
                             </thead>
@@ -390,7 +390,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                  <tr>
 
                                      <th>Nombre</th>
-                                     <th>Edad</th>
+                                     <th>Asignacion</th>
 
                                      <th>ID de Atencion</th>
                                      <th>Colposcopia</th>
@@ -403,7 +403,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                              <tbody>
                                  <?php
 
-                                         $consultasemanas = "SELECT DISTINCT ct.id_atencion as i,ct.id_estudio,ct.estatus,ct.id_usu_pat,p.id_paciente,
+                                         $consultasemanas = "SELECT DISTINCT ct.id_atencion as i,ct.id_estudio,ct.estatus_supervisor,ct.id_usu_pat,p.id_paciente,
 p.nombre_paciente, 	p.apellidos_paciente,
 IFNULL(LPAD(ct.id_atencion,4,'0000'),'-') AS id_atencion,
 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM
@@ -419,7 +419,7 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
                                              $edad_paciente = $resultadosemanas1['edad_paciente'];
                                              $id_atencion = $resultadosemanas1['id_atencion'];
                                              $id_usu_pat = $resultadosemanas1['id_usu_pat'];
-                                            $estatus1 = $resultadosemanas1['estatus'];
+                                            $estatus1 = $resultadosemanas1['estatus_supervisor'];
                                             $ii = $resultadosemanas1['i'];
 
 
@@ -628,7 +628,7 @@ if($asignacionvaf==0){
                                       <th>Fecha de Nacimiento</th>
                                       <th>ID de Atencion</th>
                                       <th>Colposcopia</th>
-                                      <th>Papanicolau-----Biopsias</th>
+                                      <th>Papanicolau/Biopsias</th>
 
                                   </tr>
                               </thead>
@@ -672,7 +672,7 @@ if($asignacionvaf==0){
                                               if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
                                                   while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
                                                       $id_estudio = $resultSet['id_estudio'];
-                                                      echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver </a>";
+                                                      echo "<a href='Etiquetas/etiquetas_estudios.php?id_paciente=$id_paciente' target='_blank'>Ver </a>";
                                                   }
                                               }
                                               echo "</td>";

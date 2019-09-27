@@ -49,8 +49,8 @@ if (isset($paps)){
 
 
                                                                      $Modifi = "UPDATE ctrl_paciente_estudios
-                                                                     SET id_usu_pat='$patologo'
-                                                                     WHERE id_paciente='$pacientepa' and id_estudio='$estudiopa' and id_tipo_estudio='7' and id_atencion='$paps1'";
+                                                                     SET id_usu_pat='$patologo',estatus_supervisor='1'
+                                                                     WHERE id_paciente='$pacientepa' and id_estudio='$estudiopa' and id_tipo_estudio='7' and id_atencion='$paps1' ";
 
                                                                     $Mo= $mysqliL->query($Modifi);
 
@@ -92,7 +92,7 @@ if (isset($vulva)){
 
 
                                                                      $Modifi = "UPDATE ctrl_paciente_estudios
-                                                                     SET id_usu_pat='$patologo'
+                                                                     SET id_usu_pat='$patologo',estatus_supervisor='1'
                                                                      WHERE id_paciente='$pacientevul' and id_estudio='$estudiovul' and id_tipo_estudio='6' and id_atencion='$vulva1'";
 
                                                                     $Mo= $mysqliL->query($Modifi);
@@ -134,7 +134,7 @@ if (isset($vagi)){
 
 
                                                                      $Modifi = "UPDATE ctrl_paciente_estudios
-                                                                     SET id_usu_pat='$patologo'
+                                                                     SET id_usu_pat='$patologo',estatus_supervisor='1'
                                                                      WHERE id_paciente='$pacienteva' and id_estudio='$estudiova' and id_tipo_estudio='5' and id_atencion='$vagi1'";
 
                                                                     $Mo= $mysqliL->query($Modifi);
@@ -176,7 +176,7 @@ if (isset($cervix)){
 
 
                                                                      $Modifi = "UPDATE ctrl_paciente_estudios
-                                                                     SET id_usu_pat='$patologo'
+                                                                     SET id_usu_pat='$patologo',estatus_supervisor='1'
                                                                      WHERE id_paciente='$pacientec' and id_estudio='$estudioc' and id_tipo_estudio='2' and id_atencion='$cervix1'";
 
                                                                     $Mo= $mysqliL->query($Modifi);
@@ -219,7 +219,7 @@ if (isset($endo)){
 
 
                                                                      $Modifi = "UPDATE ctrl_paciente_estudios
-                                                                     SET id_usu_pat='$patologo'
+                                                                     SET id_usu_pat='$patologo',estatus_supervisor='1'
                                                                      WHERE id_paciente='$pacienteen' and id_estudio='$estudioen' and id_tipo_estudio='4' and id_atencion='$endo1'";
 
                                                                     $Mo= $mysqliL->query($Modifi);
