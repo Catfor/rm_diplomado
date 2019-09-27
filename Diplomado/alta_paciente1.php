@@ -1,4 +1,7 @@
-<?php session_start();  ?>
+<?php session_start();
+
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+ ?>
 <!doctype html>
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
@@ -41,7 +44,7 @@
 <body>
     <?php
 
-    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+
         include('../coni/Localhost.php');
 
 
@@ -167,7 +170,7 @@
                                 //En este apartado se hace la precarga de datos si se recibe el id_paciente dentro del GET
 
 
-                            }
+
                             ?>
 
                             <!----------- ----------->
@@ -612,3 +615,9 @@
 </body>
 
 </html>
+<?php   }
+else {
+    header('Location: ../index.php');
+
+    exit;
+}?>
