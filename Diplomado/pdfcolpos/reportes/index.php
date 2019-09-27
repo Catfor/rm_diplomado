@@ -274,7 +274,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       <br><br>
       <center>
         <?php
-          $consultasemanas = "SELECT * FROM imagen AS i WHERE i.id_atencion_medica='$id_atencion'";
+          $consultasemanas = "SELECT * FROM imagen AS i WHERE i.id_atencion_medica='$id_atencion' AND i.seleccion = 1";
 
           $resultadosemanas = $mysqliL->query($consultasemanas);
 

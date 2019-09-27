@@ -84,6 +84,11 @@ $endo=$_GET['endo'];
           <div class="logo-area">
             <a href="#"><img src="img/logo/logo.png" width="200" height="200" /></a>
           </div>
+
+
+
+
+
           <h3>Confirma Identidad De <?php
           $result123 = mysqli_query($mysqliL, "SELECT apellidos_usuario,nombre_usuario,rol
             FROM usu_me WHERE id_usuario='$patologo'");

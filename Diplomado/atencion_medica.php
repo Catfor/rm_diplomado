@@ -2131,6 +2131,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         screenshotButton.onclick = videoElement.onclick = function() {
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
+          var canvasHelper = document.createElement('canvas');
+          canvasHelper.width = 1000 ;
+          canvasHelper.height = 1000 ;
+          canvasHelper.getContext('2d').drawImage(videoElement, 0, 0, 1000, 1000);
           var canvas = document.createElement('canvas');
           canvas.width = 300 ;
           canvas.height = 300 ;
@@ -2157,9 +2161,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var ic = document.createElement('i');
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
             div.appendChild(ic);
-            input.setAttribute("value", "sel," + canvas.toDataURL('image/jpeg'));
+            input.setAttribute("value", "sel," + canvasHelper.toDataURL('image/jpeg'));
           }else{
-            input.setAttribute("value", canvas.toDataURL('image/jpeg'));
+            input.setAttribute("value", canvasHelper.toDataURL('image/jpeg'));
           }
           document.getElementById('vectorFotos').appendChild(div);
           formulario.appendChild(input);
@@ -2169,8 +2173,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         function capturaFoto() {
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
+          var canvasHelper = document.createElement('canvas');
+          canvasHelper.width = 1000 ;
+          canvasHelper.height = 1000 ;
+          canvasHelper.getContext('2d').drawImage(videoElement, 0, 0, 1000, 1000);
           var canvas = document.createElement('canvas');
-          canvas.width = 300;
+          canvas.width = 300 ;
           canvas.height = 300 ;
           canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
           img.src = canvas.toDataURL('image/jpeg');
@@ -2195,9 +2203,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             var ic = document.createElement('i');
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
             div.appendChild(ic);
-            input.setAttribute("value", "sel," + canvas.toDataURL('image/jpeg'));
+            input.setAttribute("value", "sel," + canvasHelper.toDataURL('image/jpeg'));
           }else{
-            input.setAttribute("value", canvas.toDataURL('image/jpeg'));
+            input.setAttribute("value", canvasHelper.toDataURL('image/jpeg'));
           }
           document.getElementById('vectorFotos').appendChild(div);
           formulario.appendChild(input);
