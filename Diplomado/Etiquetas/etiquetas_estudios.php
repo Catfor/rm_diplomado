@@ -79,7 +79,7 @@
 		am.duracion_hormonoterapia
 		FROM
 		paciente AS p
-		INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = 4 AND ct.id_tipo_estudio = 4
+		INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 4
 		INNER JOIN usu_me AS u ON u.id_usuario = ct.id_usuario
 		INNER JOIN estudio_biopsia_endometrio AS e ON ct.id_estudio = e.id_estudio
 		INNER JOIN atencion_medica AS am ON am.id_atencion_medica = ct.id_atencion";
@@ -87,10 +87,10 @@
 		$res_endo = $mysqliL->query($informacion_endo);
 		$info_endo = $res_endo->fetch_assoc();
 		$fecha_endo = $info_endo['fecha_estudio'];
-		$antecedente_metrorragia = $info['metrorragia'];
-		$antecedente_hormonoterapia = $info['hormonoterapia'];
-		$duracion_tratamiento = $info['duracion_hormonoterapia'];
-		$observaciones_endometrio = $info['observaciones_endometrio'];
+		$antecedente_metrorragia = $info_endo['metrorragia'];
+		$antecedente_hormonoterapia = $info_endo['hormonoterapia'];
+		$duracion_tratamiento = $info_endo['duracion_hormonoterapia'];
+		$observaciones_endometrio = $info_endo['observaciones_endometrio'];
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -139,8 +139,8 @@
 		$info_vulva = $res_vulva->fetch_assoc();
 		$fecha_vulva = $info_vulva['fecha_estudio'];
 		$anotaciones_vulvoscopia_vulva = $info_vulva['anotaciones_vulvoscopia'];
-		$x_vulva = $info_vulva['x'];
-		$y_vulva = $info_vulva['y'];
+		$x_vulva = isset($info_vulva['x']) ? $info_vulva['x'] : 0 ;
+		$y_vulva = isset($info_vulva['y']) ? $info_vulva['y'] : 0;
 		$vulvoscopia_acetico_vulva = $info_vulva["vulvoscopia_acetico"];
 
 		if (!endsWith(trim($anotaciones_vulvoscopia_vulva), ".")) {
@@ -176,8 +176,8 @@
 		$antecendente_cancer_cervicouterino_cervix = $info_cervix['antecendente_cancer_cervicouterino'];
 		$hallazgos_colposcopicos_cervix = $info_cervix['hallazgos_colposcopicos'];
 		$senalizacion_cervix = $info_cervix['senalizacion'];
-		$x_cervix = $info_cervix['x'];
-		$y_cervix = $info_cervix['y'];
+		$x_cervix = isset($info_cervix['x']) ? $info_cervix['x'] : 0;
+		$y_cervix = isset($info_cervix['y']) ? $info_cervix['y'] : 0;
 		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info_cervix['posible_recomendacion_diagnostica']));
 
 		if (!endsWith(trim($hallazgos_colposcopicos_cervix), ".")) {
