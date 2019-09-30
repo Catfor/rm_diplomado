@@ -340,125 +340,139 @@ if($clasificacion_medico==1){
                     </div>
                   </div>
                 </div>
-
                 <div class="breadcomb-area">
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="breadcomb-list">
-                          <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                              <div class="breadcomb-wp">
-                                <div class="breadcomb-ctn">
-                                  <h5>3.-ELEMENTOS INFLAMATORIOS</h5>
-                                </div>
-                                </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="polimorfonucleares" class="selectpicker" required>
-                                          <option value="" >POLIMORFONUCLEARES</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="citolisis" class="selectpicker" required>
-                                          <option value="" >CITOLISIS</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="parasitos_hongos" class="selectpicker" required>
-                                          <option value="" >PARASITOS/HONGOS</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="tricomonas" class="selectpicker" required>
-                                          <option value="" >TRICOMONAS</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="celulas_guia" class="selectpicker" required>
-                                          <option value="" >CELULAS GUIA</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="histiocitos" class="selectpicker" required>
-                                          <option value="" >HISTIOCITOS</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="eritrocitos" class="selectpicker" required>
-                                          <option value="" >ERITROCITOS</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="candida" class="selectpicker" required>
-                                          <option value="" >CANDIDA</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>    <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select name="otros" class="selectpicker" required>
-                                              <option value="" >OTROS</option>
-                                              <option value="si">SI</option>
-                                              <option value="no" >NO</option>
-                                    </select>
-                                        </div>
-                                    </div>
-                                  </div>
-
+                <div class="container">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="breadcomb-list">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <div class="breadcomb-wp">
+                            <div class="breadcomb-ctn">
+                              <h5>3.-ELEMENTOS INFLAMATORIOS</h5>
+                            </div>
                             </div>
                             </div>
                           </div>
+                          <div class="row fila">
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                              <p>
+
+                              Polimorfonucleares:<br></p>
+
+                                <select name="polimorfonucleares" class="form-control" required>
+                                  <option value="" >Selecciona</option>
+                                  <option value="si">SI</option>
+                                  <option value="no" >NO</option>
+                        </select>
+                 </div>
+
+                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                   <p>
+
+                   Citolisis:<br></p>
+
+                     <select name="citolisis" class="form-control" required>
+                       <option value="" >Selecciona</option>
+                       <option value="si">SI</option>
+                       <option value="no" >NO</option>
+             </select>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+        <p>
+
+  Parásitos/Hongos:<br></p>
+
+          <select name="parasitos_hongos" class="form-control" required>
+            <option value="" >Selecciona</option>
+            <option value="si">SI</option>
+            <option value="no" >NO</option>
+  </select>
+</div>
+
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                              <p>
+
+                              Tricomonas:<br></p>
+
+                                <select name="tricomonas" class="form-control" required>
+                                  <option value="" >Selecciona</option>
+                                  <option value="si">SI</option>
+                                  <option value="no" >NO</option>
+                        </select>
+                 </div>
+
+                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                   <p>
+
+              Celulas Guia:<br></p>
+
+                     <select name="celulas_guia" class="form-control" required>
+                       <option value="" >Selecciona</option>
+                       <option value="si">SI</option>
+                       <option value="no" >NO</option>
+             </select>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+        <p>
+
+    Histiocitos:<br></p>
+
+          <select name="tricomonas" class="form-control" required>
+            <option value="" >Selecciona</option>
+            <option value="si">SI</option>
+            <option value="no" >NO</option>
+  </select>
+</div>
+                          </div>
+                          <div class="row fila">
+
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                              <p>
+
+                              Eritrocitos:<br></p>
+
+                                <select name="polimorfonucleares" class="form-control" required>
+                                  <option value="" >Selecciona</option>
+                                  <option value="si">SI</option>
+                                  <option value="no" >NO</option>
+                        </select>
+                 </div>
+
+                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                   <p>
+
+                  Candida:<br></p>
+
+                     <select name="candida" class="form-control" required>
+                       <option value="" >Selecciona</option>
+                       <option value="si">SI</option>
+                       <option value="no" >NO</option>
+             </select>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+        <p>
+
+        Otros:<br></p>
+
+          <select name="otros" class="form-control" required>
+            <option value="" >Selecciona</option>
+            <option value="si">SI</option>
+            <option value="no" >NO</option>
+  </select>
+</div>
+
+                          </div>
+                        </div>
                         </div>
                       </div>
+                    </div>
+                  </div>
+
+
 
                       <div class="breadcomb-area">
                         <div class="container">
