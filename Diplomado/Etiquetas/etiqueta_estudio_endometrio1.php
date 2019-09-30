@@ -1,9 +1,8 @@
-<?php session_start();  ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-	<title>Etiqueta Estudio Papanicolaou</title>
+	<title>Etiqueta Estudio Endometrio</title>
 	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../css/etiquetas.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
@@ -16,29 +15,34 @@
 	if (isset($_GET["id_paciente"]) && isset($_GET["id_estudio"])) {
 		$id_paciente = $_GET["id_paciente"];
 		$id_estudio = $_GET["id_estudio"];
-		$informacion = "SELECT 
-			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
-			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
-			p.edad_paciente,
-			e.fecha_estudio,
-			e.hallazgos_colposcopicos,
-			e.observaciones_papinocolau,
-			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
-			FROM
-			paciente p
-			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 7
-			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-			INNER JOIN estudio_papanicolau e ON ct.id_estudio = e.id_estudio";
-
-		$res = $mysqliL->query($informacion);
+		$informacion = "SELECT
+		CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) AS paciente,
+		CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) AS medico,
+		p.edad_paciente,
+		e.fecha_estudio,
+		e.observaciones_endometrio,
+		am.metrorragia,
+		am.hormonoterapia,
+		am.duracion_hormonoterapia,
+		ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
+		FROM
+		paciente AS p
+		INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 4
+		INNER JOIN usu_me AS u ON u.id_usuario = ct.id_usuario
+		INNER JOIN estudio_biopsia_endometrio AS e ON ct.id_estudio = e.id_estudio
+		INNER JOIN atencion_medica AS am ON am.id_atencion_medica = ct.id_atencion";
+			
+		$res =$mysqliL->query($informacion);
 		$info = $res->fetch_assoc();
 		$fecha = $info['fecha_estudio'];
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
 		$idAtencion = $info['id_atencion'];
-		$colposcopico = $info['hallazgos_colposcopicos'];
-		$observaciones = $info['observaciones_papinocolau'];
+		$antecedente_metrorragia = $info['metrorragia'];
+		$antecedente_hormonoterapia = $info['hormonoterapia'];
+		$duracion_tratamiento = $info['duracion_hormonoterapia'];
+		$observaciones_endometrio = $info['observaciones_endometrio'];
 
 		if (!endsWith(trim($colposcopico), ".")) {
 			$colposcopico = $colposcopico . '.';
@@ -49,13 +53,13 @@
 		}
 
 		ob_end_flush();
-	} else {
-		$fecha = "";
-		$edad = "";
-		$paciente = "";
-		$medico = "";
-		$colposcopico = "";
-		$observaciones = "";
+	}else{
+		$fecha ="";
+		$edad ="";
+		$paciente ="";
+		$medico ="";
+		$colposcopico ="";
+		$observaciones ="";
 	}
 
 	function endsWith($string, $endString)
@@ -84,6 +88,7 @@
 
 			mywindow.print();
 			mywindow.close();
+			
 			window.close();
 			return true;
 		}
@@ -108,11 +113,10 @@
 					<div>
 						<p>
 							<center>
-								<b>Solicitud De Estudio De Papanicolaou</b>
+								<b>Solicitud De Estudio Para Biopsia De Endometrio</b>
 							</center>
 							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 						</p>
-
 						<div class="row">
 							<div class="column">
 								<p>
@@ -127,10 +131,10 @@
 						</div>
 						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
-						<p><b>Estudio Solicitado:</b> Citolog&iacute;a Exfoliativa</p>
-						<p class="txt-justificado"><b>Hallazgos Colposc&oacute;picos:</b><?php echo $colposcopico; ?></p>
-						<p><b>Observaciones:</b></p>
-						<p class="txt-justificado"><?php echo $observaciones; ?></p>
+						<p><b>Antecedentes de Metrorragia:</b> <?php echo ucwords($antecedente_metrorragia == 0 ? "No" : "Si"); ?></p>
+						<p><b>Antecedentes de Hormonoterapia:</b> <?php echo ucwords($antecedente_hormonoterapia == 0 ? "No" : "Si"); ?></p>
+						<p><b>Duracion Hormonoterapia:</b><?php echo ucwords($duracion_tratamiento); ?></p>
+						<p><b>Observaciones: </b> <?php echo ($observaciones_endometrio); ?></p>
 					</div>
 				</div>
 			</div>

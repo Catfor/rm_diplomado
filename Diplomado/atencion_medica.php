@@ -1448,6 +1448,23 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                       </div>
                                       <div class="row fila">
+
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                          <p>
+
+                                          Clasificacion Urgencia   :<br></p>
+                                          <select name='clasificacion_medico' id='clasificacion_medico' class="form-control">
+                                            <option value="0" selected>Normal</option>
+                                            <option value="1">Urgente</option>
+
+
+
+
+                                          </select>
+
+                                        </div>
+                                      </div> <br>
+                                      <div class="row fila">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                           <div class="form-group purple-border">
                                             <div class="row fila">
@@ -2306,7 +2323,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           return false;
         });
 
-        
+
 
 
         function eliminaCoordDona(e) {

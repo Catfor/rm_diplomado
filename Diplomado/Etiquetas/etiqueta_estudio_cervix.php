@@ -46,7 +46,7 @@
 		$antecendente_cancer_cervicouterino = $info['antecendente_cancer_cervicouterino'];
 		$hallazgos_colposcopicos = $info['hallazgos_colposcopicos'];
 		$senalizacion = $info['senalizacion'];
-		$coordenadasHelper = "[\"" + implode("\",\"",explode("|",$info['coordenadas'])) + "\"]";
+		$coordenadasHelper = implode('","',explode('|',$info['coordenadas']));
 		$posible_recomendacion_diagnostica = ucwords(str_replace("_"," ",$info['posible_recomendacion_diagnostica']));
 
 		if (!endsWith(trim($hallazgos_colposcopicos), ".")) {
@@ -85,8 +85,7 @@ $(document).ready(function(){
             var canvasDona = document.getElementById("canvasDona");
             var ctxDona = canvasDona.getContext("2d");
             var dona = document.getElementById("recuadroDona");
-
-			var x = <?php echo $x ?>;
+			var coordenadas = <?php echo ('["' . $coordenadasHelper . '"]');?> ;
 			ctxDona.drawImage(dona, 0, 0,200,200);
 			
 			$(coordenadas).each(function (index, value){
@@ -166,7 +165,7 @@ $(document).ready(function(){
 							<center>
 								<b>Solicitud De Estudio Para Biopsia De Cervix</b>
 							</center>
-							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
+							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 						</p>
 						<div class="row">
 							<div class="column">

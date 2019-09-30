@@ -36,7 +36,7 @@
 		$edad = $infoPaciente['edad_paciente'];
 		$paciente = $infoPaciente['paciente'];
 		$medico = $infoPaciente['medico'];
-		$idAtencion = $info['id_atencion'];
+		$idAtencion = $infoPaciente['id_atencion'];
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -126,8 +126,7 @@
 		p.edad_paciente,
 		e.fecha_estudio,
 		e.anotaciones_vulvoscopia,
-		e.x,
-		e.y,
+		e.coordenadas,
 		ec.vulvoscopia_acetico
 		FROM
 		paciente p
@@ -141,8 +140,7 @@
 		$info_vulva = $res_vulva->fetch_assoc();
 		$fecha_vulva = $info_vulva['fecha_estudio'];
 		$anotaciones_vulvoscopia_vulva = $info_vulva['anotaciones_vulvoscopia'];
-		$x_vulva = isset($info_vulva['x']) ? $info_vulva['x'] : 0;
-		$y_vulva = isset($info_vulva['y']) ? $info_vulva['y'] : 0;
+		$coordenadasVulva = implode('","',explode('|',$info_vulva['coordenadas']));
 		$vulvoscopia_acetico_vulva = $info_vulva["vulvoscopia_acetico"];
 
 		if (!endsWith(trim($anotaciones_vulvoscopia_vulva), ".")) {
@@ -161,8 +159,7 @@
 			e.antecendente_cancer_cervicouterino,
 			e.hallazgos_colposcopicos,
 			e.senalizacion,
-			e.x,
-			e.y,
+			e.coordenadas,
 			ec.posible_recomendacion_diagnostica
 			FROM
 			paciente p
@@ -178,8 +175,7 @@
 		$antecendente_cancer_cervicouterino_cervix = $info_cervix['antecendente_cancer_cervicouterino'];
 		$hallazgos_colposcopicos_cervix = $info_cervix['hallazgos_colposcopicos'];
 		$senalizacion_cervix = $info_cervix['senalizacion'];
-		$x_cervix = isset($info_cervix['x']) ? $info_cervix['x'] : 0;
-		$y_cervix = isset($info_cervix['y']) ? $info_cervix['y'] : 0;
+		$coordenadasCervix = implode('","',explode('|',$info_cervix['coordenadas']));
 		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info_cervix['posible_recomendacion_diagnostica']));
 
 		if (!endsWith(trim($hallazgos_colposcopicos_cervix), ".")) {
@@ -222,29 +218,31 @@
 			var ctxDona = canvasDona.getContext("2d");
 			var dona = document.getElementById("recuadroDona");
 			if (dona) {
-				var x_cervix = <?php echo $x_cervix ?>;
-				var y_cervix = <?php echo $y_cervix ?>;
-				ctxDona.drawImage(dona, 0, 0, 200, 200);
-				ctxDona.lineWidth = 6;
-				ctxDona.strokeStyle = "#FFF";
-				ctxDona.beginPath();
-				ctxDona.moveTo(x_cervix - 10, y_cervix - 10);
-				ctxDona.lineTo(x_cervix + 10, y_cervix + 10);
-				ctxDona.moveTo(x_cervix - 10, y_cervix + 10);
-				ctxDona.lineTo(x_cervix + 10, y_cervix - 10);
-				ctxDona.stroke();
-				ctxDona.lineWidth = 2;
-				ctxDona.strokeStyle = "#000";
-				ctxDona.beginPath();
-				ctxDona.moveTo(x_cervix - 10, y_cervix - 10);
-				ctxDona.lineTo(x_cervix + 10, y_cervix + 10);
-				ctxDona.moveTo(x_cervix - 10, y_cervix + 10);
-				ctxDona.lineTo(x_cervix + 10, y_cervix - 10);
-				ctxDona.stroke();
-
+				var coordenadas = <?php echo ('["' . $coordenadasCervix . '"]');?> ;
+				ctxDona.drawImage(dona, 0, 0,200,200);
+				
+				$(coordenadas).each(function (index, value){
+					var coordsTemp = value.split(",");
+					ctxDona.lineWidth = 6;
+					ctxDona.strokeStyle = "#FFF";
+					ctxDona.beginPath();
+					ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
+					ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
+					ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
+					ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+					ctxDona.stroke();
+					ctxDona.lineWidth = 2;
+					ctxDona.strokeStyle = "#000";
+					ctxDona.beginPath();
+					ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
+					ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
+					ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
+					ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+					ctxDona.stroke();
+				});
 				dona.style.display = "block";
 				canvasDona.style.display = "none";
-				dona.setAttribute("src", canvasDona.toDataURL());
+				dona.setAttribute("src",canvasDona.toDataURL());
 			}
 			//$(canvasDona).delay(200).queue(function() {
 			//	imprimeEtiqueta();
@@ -254,29 +252,31 @@
 			var ctxVulva = canvasVulva.getContext("2d");
 			var vulva = document.getElementById("recuadroVulva");
 			if (vulva) {
-				var x_vulva = <?php echo $x_vulva ?>;
-				var y_vulva = <?php echo $y_vulva ?>;
-				ctxVulva.drawImage(vulva, 0, 0, 200, 200);
-				ctxVulva.lineWidth = 6;
-				ctxVulva.strokeStyle = "#FFF";
-				ctxVulva.beginPath();
-				ctxVulva.moveTo(x_vulva - 10, y_vulva - 10);
-				ctxVulva.lineTo(x_vulva + 10, y_vulva + 10);
-				ctxVulva.moveTo(x_vulva - 10, y_vulva + 10);
-				ctxVulva.lineTo(x_vulva + 10, y_vulva - 10);
-				ctxVulva.stroke();
-				ctxVulva.lineWidth = 2;
-				ctxVulva.strokeStyle = "#000";
-				ctxVulva.beginPath();
-				ctxVulva.moveTo(x_vulva - 10, y_vulva - 10);
-				ctxVulva.lineTo(x_vulva + 10, y_vulva + 10);
-				ctxVulva.moveTo(x_vulva - 10, y_vulva + 10);
-				ctxVulva.lineTo(x_vulva + 10, y_vulva - 10);
-				ctxVulva.stroke();
+				var coordenadas = <?php echo ('["' . $coordenadasVulva . '"]');?> ;
+				ctxVulva.drawImage(vulva, 0, 0,200,200);
 
-				vulva.setAttribute("src", canvasVulva.toDataURL());
-				vulva.style.display = "block";
-				canvasVulva.style.display = "none";
+				$(coordenadas).each(function (index, value){
+					var coordsTemp = value.split(",");
+					ctxVulva.lineWidth = 6;
+					ctxVulva.strokeStyle = "#FFF";
+					ctxVulva.beginPath();
+					ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
+					ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
+					ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
+					ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+					ctxVulva.stroke();
+					ctxVulva.lineWidth = 2;
+					ctxVulva.strokeStyle = "#000";
+					ctxVulva.beginPath();
+					ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
+					ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
+					ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
+					ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+					ctxVulva.stroke();
+				});
+			vulva.setAttribute("src",canvasVulva.toDataURL());
+			vulva.style.display = "block";
+			canvasVulva.style.display = "none";
 			}
 
 			$("body").delay(500).queue(function() {
@@ -313,7 +313,7 @@
 								<center>
 									<b>Solicitud De Estudio De Papanicolaou</b>
 								</center>
-							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
+							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 							</p>
 
 							<div class="row">
@@ -360,7 +360,7 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Endometrio</b>
 								</center>
-							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
+							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 							</p>
 							<div class="row">
 								<div class="column">
@@ -406,7 +406,7 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Vaginoscopia</b>
 								</center>
-							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
+							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 							</p>
 
 							<div class="row">
@@ -456,7 +456,7 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Vulva</b>
 								</center>
-							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
+							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 							</p>
 							<div class="row">
 								<div class="column">
@@ -518,7 +518,7 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Cervix</b>
 								</center>
-							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
+							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 							</p>
 							<div class="row">
 								<div class="column">
@@ -589,7 +589,7 @@
 
 			mywindow.print();
 			mywindow.close();
-			window.close();
+			//window.close();
 			return true;
 		}
 	</script>

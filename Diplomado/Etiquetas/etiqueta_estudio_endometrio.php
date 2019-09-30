@@ -115,7 +115,7 @@
 							<center>
 								<b>Solicitud De Estudio Para Biopsia De Endometrio</b>
 							</center>
-							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
+							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 						</p>
 						<div class="row">
 							<div class="column">

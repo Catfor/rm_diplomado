@@ -2,14 +2,11 @@
 <html>
 
 <head>
-	<title>Etiqueta Estudio Vulva</title>
+	<title>Etiqueta Estudio Vaginoscopia</title>
 	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../css/etiquetas.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-	
 
 	<?php
 	ob_start();
@@ -23,15 +20,15 @@
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
 			e.fecha_estudio,
-			e.anotaciones_vulvoscopia,
-			e.coordenadas,
-			ec.vulvoscopia_acetico,
+			e.anotaciones_vaginoscopia,
+			ec.vaginoscopia_acetico,
+			ec.vaginoscopia_lugol,
 			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
 			FROM
 			paciente p
-			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 6
+			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 5
 			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-			INNER JOIN estudio_vulvoscopia e ON ct.id_estudio = e.id_estudio
+			INNER JOIN estudio_vaginoscopia e ON ct.id_estudio = e.id_estudio
 			INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
 			INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
 			
@@ -42,14 +39,9 @@
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
 		$idAtencion = $info['id_atencion'];
-		$anotaciones_vulvoscopia = $info['anotaciones_vulvoscopia'];
-		$coordenadasHelper = "[\"" + implode("\",\"",explode("|",$info['coordenadas'])) + "\"]";
-		
-		$vulvoscopia_acetico = $info["vulvoscopia_acetico"];
-
-		if (!endsWith(trim($anotaciones_vulvoscopia), ".")) {
-			$anotaciones_vulvoscopia = $anotaciones_vulvoscopia . '.';
-		}
+		$vaginoscopia_acetico = $info['vaginoscopia_acetico'];
+		$vaginoscopia_lugol = $info['vaginoscopia_lugol'];
+		$anotaciones_vaginoscopia = $info['anotaciones_vaginoscopia'];
 
 		ob_end_flush();
 	}else{
@@ -57,8 +49,7 @@
 		$edad ="";
 		$paciente ="";
 		$medico ="";
-		$colposcopico ="";
-		$observaciones ="";
+		$anotaciones_vaginoscopia ="";
 	}
 
 	function endsWith($string, $endString)
@@ -70,46 +61,7 @@
 		return (substr($string, -$len) === $endString);
 	}
 	?>
-
 	<script>
-
-		$(document).ready(function(){
-
-			var canvasVulva = document.getElementById("canvasVulva");
-			var ctxVulva = canvasVulva.getContext("2d");
-			var vulva = document.getElementById("recuadroVulva");
-			var coordenadas = <?php echo $coordenadasHelper ?>;
-			ctxVulva.drawImage(vulva, 0, 0,200,200);
-			$(coordenadas).each(function (index, value){
-            	var coordsTemp = value.split(",");
-				ctxVulva.lineWidth = 6;
-				ctxVulva.strokeStyle = "#FFF";
-				ctxVulva.beginPath();
-				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
-				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
-				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
-				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
-				ctxVulva.stroke();
-				ctxVulva.lineWidth = 2;
-				ctxVulva.strokeStyle = "#000";
-				ctxVulva.beginPath();
-				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
-				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
-				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
-				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
-				ctxVulva.stroke();
-			});
-			vulva.setAttribute("src",canvasVulva.toDataURL());
-			vulva.style.display = "block";
-			canvasVulva.style.display = "none";
-			$(canvasVulva).delay( 200 ).queue(function() {
-				imprimeEtiqueta();
-			});
-
-
-		});
-
-
 		function imprimeEtiqueta() {
 			var mywindow = window.open('', 'PRINT', '', 'false');
 
@@ -133,7 +85,7 @@
 
 </head>
 
-<body>
+<body onload="imprimeEtiqueta()">
 	<div id="etiqueta">
 		<div class="container">
 			<div class="row">
@@ -150,10 +102,11 @@
 					<div>
 						<p>
 							<center>
-								<b>Solicitud De Estudio Para Biopsia De Vulva</b>
+								<b>Solicitud De Estudio Para Biopsia De Vaginoscopia</b>
 							</center>
-							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
+							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 						</p>
+
 						<div class="row">
 							<div class="column">
 								<p>
@@ -168,29 +121,13 @@
 						</div>
 						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
-						<!--<p class="txt-justificado">
-							<b>Hallazgos Vulvoscopia:</b></p>
-						<p>-->
-							<b>Acetico:</b> <?php echo ucwords($vulvoscopia_acetico)?></p>
+						<p class="txt-justificado"><b>Hallazgos Vaginoscopia:</b></p>
 						<p>
-							<p>
-								<b>Se&ntilde;ala Donde Fue Tomada la muestra:</b>
-							</p>
-
-							<div class="row">
-								<div id="columnaCanvas" class="column">
-									<center>
-										<img  id="recuadroVulva" src="../../img/vulva.JPG" width="200" height="200" style="display:none;max-width:200px;max-height:200px;">
-										<canvas id="canvasVulva" width="200" height="200">
-									</center>
-								</div>
-								<div class="column">
-									<p>
-										<b>Anotaciones:</b>
-									</p>
-									<p class="txt-justificado"><?php echo ucwords($anotaciones_vulvoscopia); ?></p>
-								</div>
-							</div>
+							<b>Acetico:</b> <?php echo ucwords($vaginoscopia_acetico); ?></p>
+						<p>
+							<b>Lugol:</b> <?php echo ucwords($vaginoscopia_lugol); ?></p>
+						<p><b>Anotaciones:</b></p>
+						<p class="txt-justificado"><?php echo $anotaciones_vaginoscopia; ?></p>
 					</div>
 				</div>
 			</div>
