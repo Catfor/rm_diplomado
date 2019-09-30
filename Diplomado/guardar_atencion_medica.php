@@ -74,8 +74,10 @@ $antecedente_cancer = $_POST['antecedente_cancer'];
 $antecedente_infeccion_vagina = $_POST['antecedente_infeccion_vagina'];
 $observaciones_papinocolau = $_POST['observaciones_papinocolau'];
 
-if (!empty(trim($observaciones_papinocolau)) || !empty(trim($antecedente_infeccion_vagina)) || !empty(trim($antecedente_cancer))) {
+if (!empty(trim($observaciones_papinocolau)) || isset($_POST['antecedente_infeccion_vagina']) || isset($_POST['observaciones_papinocolau']) ) {
   $observaciones_papinocolau = isset($_POST['observaciones_papinocolau']) ? $_POST['observaciones_papinocolau'] : "Sin observaciones registradas";
+  $antecedente_cancer = isset($_POST['antecedente_cancer']) ? $_POST['antecedente_cancer'] : 0;
+  $antecedente_infeccion_vagina = isset($_POST['antecedente_infeccion_vagina']) ?  $_POST['antecedente_infeccion_vagina'] : 0;
   $insertaestudio_papanicolau = "INSERT INTO estudio_papanicolau (antecedente_cancer,antecedente_infeccion_vagina,observaciones_papinocolau,fecha_estudio) VALUES ('$antecedente_cancer','$antecedente_infeccion_vagina','$observaciones_papinocolau','$hoys')";
 
   $resultadoestudio_papanicolau = $mysqliL->query($insertaestudio_papanicolau);
