@@ -598,7 +598,7 @@
 
 			mywindow.print();
 			mywindow.close();
-			//window.close();
+			window.close();
 			return true;
 		}
 	</script>
