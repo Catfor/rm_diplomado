@@ -140,7 +140,7 @@
 		$info_vulva = $res_vulva->fetch_assoc();
 		$fecha_vulva = $info_vulva['fecha_estudio'];
 		$anotaciones_vulvoscopia_vulva = $info_vulva['anotaciones_vulvoscopia'];
-		$coordenadasVulva = implode('","',explode('|',$info_vulva['coordenadas']));
+		$coordenadasVulva = implode('","', explode('|', $info_vulva['coordenadas']));
 		$vulvoscopia_acetico_vulva = $info_vulva["vulvoscopia_acetico"];
 
 		if (!endsWith(trim($anotaciones_vulvoscopia_vulva), ".")) {
@@ -175,7 +175,7 @@
 		$antecendente_cancer_cervicouterino_cervix = $info_cervix['antecendente_cancer_cervicouterino'];
 		$hallazgos_colposcopicos_cervix = $info_cervix['hallazgos_colposcopicos'];
 		$senalizacion_cervix = $info_cervix['senalizacion'];
-		$coordenadasCervix = implode('","',explode('|',$info_cervix['coordenadas']));
+		$coordenadasCervix = implode('","', explode('|', $info_cervix['coordenadas']));
 		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info_cervix['posible_recomendacion_diagnostica']));
 
 		if (!endsWith(trim($hallazgos_colposcopicos_cervix), ".")) {
@@ -211,74 +211,73 @@
 		////////////////////////////////////////////////////////////////////////////////////////////
 
 
-		$(document).ready(function() {
+		$(document).ready().delay(100).queue(function() {
 
+			<?php if (isset($fecha_cervix)) { ?>
+				var canvasDona = document.getElementById("canvasDona");
+				var ctxDona = canvasDona.getContext("2d");
+				var dona = document.getElementById("recuadroDona");
+				if (dona) {
+					var coordenadas = <?php echo ('["' . $coordenadasCervix . '"]'); ?>;
+					ctxDona.drawImage(dona, 0, 0, 200, 200);
 
-			var canvasDona = document.getElementById("canvasDona");
-			var ctxDona = canvasDona.getContext("2d");
-			var dona = document.getElementById("recuadroDona");
-			if (dona) {
-				var coordenadas = <?php echo ('["' . $coordenadasCervix . '"]');?> ;
-				ctxDona.drawImage(dona, 0, 0,200,200);
-				
-				$(coordenadas).each(function (index, value){
-					var coordsTemp = value.split(",");
-					ctxDona.lineWidth = 6;
-					ctxDona.strokeStyle = "#FFF";
-					ctxDona.beginPath();
-					ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
-					ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
-					ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
-					ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
-					ctxDona.stroke();
-					ctxDona.lineWidth = 2;
-					ctxDona.strokeStyle = "#000";
-					ctxDona.beginPath();
-					ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
-					ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
-					ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
-					ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
-					ctxDona.stroke();
-				});
-				dona.style.display = "block";
-				canvasDona.style.display = "none";
-				dona.setAttribute("src",canvasDona.toDataURL());
-			}
-			//$(canvasDona).delay(200).queue(function() {
-			//	imprimeEtiqueta();
-			//});
+					$(coordenadas).each(function(index, value) {
+						var coordsTemp = value.split(",");
+						ctxDona.lineWidth = 6;
+						ctxDona.strokeStyle = "#FFF";
+						ctxDona.beginPath();
+						ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+						ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+						ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+						ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
+						ctxDona.stroke();
+						ctxDona.lineWidth = 2;
+						ctxDona.strokeStyle = "#000";
+						ctxDona.beginPath();
+						ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+						ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+						ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+						ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
+						ctxDona.stroke();
+					});
+					dona.style.display = "block";
+					canvasDona.style.display = "none";
+					dona.setAttribute("src", canvasDona.toDataURL());
+				}
+			<?php } ?>
 
-			var canvasVulva = document.getElementById("canvasVulva");
-			var ctxVulva = canvasVulva.getContext("2d");
-			var vulva = document.getElementById("recuadroVulva");
-			if (vulva) {
-				var coordenadas = <?php echo ('["' . $coordenadasVulva . '"]');?> ;
-				ctxVulva.drawImage(vulva, 0, 0,200,200);
+			<?php if (isset($fecha_vulva)) { ?>
+				var canvasVulva = document.getElementById("canvasVulva");
+				var ctxVulva = canvasVulva.getContext("2d");
+				var vulva = document.getElementById("recuadroVulva");
+				if (vulva) {
+					var coordenadas = <?php echo ('["' . $coordenadasVulva . '"]'); ?>;
+					ctxVulva.drawImage(vulva, 0, 0, 200, 200);
 
-				$(coordenadas).each(function (index, value){
-					var coordsTemp = value.split(",");
-					ctxVulva.lineWidth = 6;
-					ctxVulva.strokeStyle = "#FFF";
-					ctxVulva.beginPath();
-					ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
-					ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
-					ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
-					ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
-					ctxVulva.stroke();
-					ctxVulva.lineWidth = 2;
-					ctxVulva.strokeStyle = "#000";
-					ctxVulva.beginPath();
-					ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
-					ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
-					ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
-					ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
-					ctxVulva.stroke();
-				});
-			vulva.setAttribute("src",canvasVulva.toDataURL());
-			vulva.style.display = "block";
-			canvasVulva.style.display = "none";
-			}
-
+					$(coordenadas).each(function(index, value) {
+						var coordsTemp = value.split(",");
+						ctxVulva.lineWidth = 6;
+						ctxVulva.strokeStyle = "#FFF";
+						ctxVulva.beginPath();
+						ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+						ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+						ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+						ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
+						ctxVulva.stroke();
+						ctxVulva.lineWidth = 2;
+						ctxVulva.strokeStyle = "#000";
+						ctxVulva.beginPath();
+						ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+						ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+						ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+						ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
+						ctxVulva.stroke();
+					});
+					vulva.setAttribute("src", canvasVulva.toDataURL());
+					vulva.style.display = "block";
+					canvasVulva.style.display = "none";
+				}
+			<?php } ?>
 			$("body").delay(500).queue(function() {
 				imprimeEtiqueta();
 			});
@@ -313,7 +312,9 @@
 								<center>
 									<b>Solicitud De Estudio De Papanicolaou</b>
 								</center>
-							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
+								<div style="float:right;margin-top: 5px;">
+									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
+								</div>
 							</p>
 
 							<div class="row">
@@ -360,7 +361,9 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Endometrio</b>
 								</center>
-							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
+								<div style="float:right;margin-top: 5px;">
+									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
+								</div>
 							</p>
 							<div class="row">
 								<div class="column">
@@ -406,7 +409,9 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Vaginoscopia</b>
 								</center>
-							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
+								<div style="float:right;margin-top: 5px;">
+									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
+								</div>
 							</p>
 
 							<div class="row">
@@ -456,7 +461,9 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Vulva</b>
 								</center>
-							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
+								<div style="float:right;margin-top: 5px;">
+									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
+								</div>
 							</p>
 							<div class="row">
 								<div class="column">
@@ -518,7 +525,9 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Cervix</b>
 								</center>
-							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
+								<div style="float:right;margin-top: 5px;">
+									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
+								</div>
 							</p>
 							<div class="row">
 								<div class="column">

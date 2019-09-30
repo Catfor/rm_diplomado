@@ -25,7 +25,7 @@ $metrorragia = isset($_POST['metrorragia']) ? $_POST['metrorragia'] : "N/A";
 $hormonoterapia = isset($_POST['hormonoterapia']) ? $_POST['hormonoterapia'] : "N/A";
 $duracion_hormonoterapia = isset($_POST['hormonoterapia']) ?  ( isset($_POST['duracion_hormonoterapia']) ? $_POST['duracion_hormonoterapia'] : "Sin registro de duración") : "N/A";
 $ritmo = isset($_POST['ritmo']) ? $_POST['ritmo'] : "No registrado";
-$antecedente_cancer_cervicouterino = isset($_POST['antecedente_cancer_cervicouterino']) ? $_POST['antecedente_cancer_cervicouterino'] : "Sin registro de antecedente";
+$antecedente_cancer_cervicouterino = isset($_POST['antecedente_cancer_cervicouterino']) ? $_POST['antecedente_cancer_cervicouterino'] : "0";
 $tratamiento_previo = isset($_POST['antecedente_cancer_cervicouterino']) ? (isset($_POST['tratamiento_previo']) ? $_POST['tratamiento_previo'] : "Sin registro del tratamiento") : "N/A";
 $insertaratecion = "INSERT INTO atencion_medica (edad_inicio_menstruacion,metodos_planificacion,cual,edad_inicio_vida_sexual,parejas_sexuales,gestas,para,cesareas,abortos, fecha_ultima_regla,fecha_ultimo_papanicolau,antecedentes_tratamiento,atecedentes_lesion,id_paciente,fecha_atencion_medica,metrorragia,hormonoterapia,duracion_hormonoterapia,ritmo,antecedente_cancer_cervicouterino,tratamiento_previo) VALUES ('$edad_inicio_menstruacion','$metodos_planificacion','$cual','$edad_inicio_vida_sexual','$parejas_sexuales','$gestas', '$para','$cesareas','$abortos','$fecha_ultima_regla','$fecha_ultimo_papanicolau','$antecedentes_tratamiento', '$atecedentes_lesion','$idpaciente','$hoys','$metrorragia','$hormonoterapia','$duracion_hormonoterapia', '$ritmo','$antecedente_cancer_cervicouterino','$tratamiento_previo')";
 $resultadoinsertaratencion = $mysqliL->query($insertaratecion);
@@ -75,7 +75,7 @@ $antecedente_infeccion_vagina = $_POST['antecedente_infeccion_vagina'];
 $observaciones_papinocolau = $_POST['observaciones_papinocolau'];
 
 if (!empty(trim($observaciones_papinocolau)) || isset($_POST['antecedente_infeccion_vagina']) || isset($_POST['observaciones_papinocolau']) ) {
-  $observaciones_papinocolau = isset($_POST['observaciones_papinocolau']) ? $_POST['observaciones_papinocolau'] : "Sin observaciones registradas";
+  $observaciones_papinocolau = !empty(trim($observaciones_papinocolau)) ? $observaciones_papinocolau : "Sin observaciones registradas";
   $antecedente_cancer = isset($_POST['antecedente_cancer']) ? $_POST['antecedente_cancer'] : 0;
   $antecedente_infeccion_vagina = isset($_POST['antecedente_infeccion_vagina']) ?  $_POST['antecedente_infeccion_vagina'] : 0;
   $insertaestudio_papanicolau = "INSERT INTO estudio_papanicolau (antecedente_cancer,antecedente_infeccion_vagina,observaciones_papinocolau,fecha_estudio) VALUES ('$antecedente_cancer','$antecedente_infeccion_vagina','$observaciones_papinocolau','$hoys')";
@@ -120,7 +120,9 @@ if (!empty(trim($anotaciones_vulvoscopia)) && !empty(trim($coordVulva))) {
 $estudio_solicitar_vaginoscopia = $_POST['estudio_solicitar_vaginoscopia'];
 $anotaciones_vaginoscopia = $_POST['anotaciones_vaginoscopia'];
 
-if (!empty(trim($anotaciones_vaginoscopia))) {
+if (!empty(trim($anotaciones_vaginoscopia)) || !empty(trim($estudio_solicitar_vaginoscopia))) {
+
+  $anotaciones_vaginoscopia = (!empty(trim($anotaciones_vaginoscopia))) ? $anotaciones_vaginoscopia : "Sin anotaciones de la biopsia";
   $insertaestudio_vaginoscopia = "INSERT INTO estudio_vaginoscopia (estudio_solicitar_vaginoscopia,anotaciones_vaginoscopia,fecha_estudio) VALUES ('$estudio_solicitar_vaginoscopia','$anotaciones_vaginoscopia','$hoys')";
   $resultadoestudio_vaginoscopia = $mysqliL->query($insertaestudio_vaginoscopia);
 
