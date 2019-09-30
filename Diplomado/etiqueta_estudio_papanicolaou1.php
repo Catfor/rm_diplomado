@@ -128,27 +128,54 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         ?>
 
 <?php
-        if (isset($_GET['nombres'])) {
-            if ($_GET['nombres']) {
-                $nombre = $_GET['nombres'];
-                //imprimes el error
-                echo " <div class='alert-list'>
-         <div class='alert alert-success alert-dismissible' role='alert'>
-             <button type='button' class='close' data-dismiss='alert'
-              aria-label='Close'><span aria-hidden='true'>
-              <i class='notika-icon notika-close'></i></span>
-              </button>
-           Atencion Medica Agregada Correctamente de   $nombre
-        </div>
+$id_paciente=$_GET['id_paciente'];
+$id_estudio=$_GET['id_estudio'];
+$id_tipo_estudio=$_GET['id_tipo_estudio'];
+$id_usuario=$_GET['id_usuario'];#USUARIO QUIEN HIZO CONSULTA
+$id_atencion=$_GET['id_atencion'];
+$id_usu_pat=$_GET['id_usu_pat'];
+$clasificacion_medico=$_GET['clasificacion_medico'];
 
 
+$queryColposcopia = "SELECT CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS paciente,CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,
+c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico,paps.observaciones_papinocolau,paps.antecedente_cancer,
+paps.antecedente_infeccion_vagina,paps.fecha_estudio
+FROM   estudio_papanicolau e INNER JOIN ctrl_paciente_estudios c ON
+                                                e.id_estudio = c.id_estudio
+                                                INNER JOIN usu_me AS u ON
+                                                u.id_usuario=c.id_usuario
+                                                INNER JOIN paciente AS p ON
+                                                p.id_paciente=c.id_paciente
+                                                INNER JOIN estudio_papanicolau AS paps
+                                                ON paps.id_estudio=c.id_estudio
+                                                AND c.id_tipo_estudio = '$id_tipo_estudio'
+                                                	AND c.id_paciente = '$id_paciente'";
 
-     </div>";
-            }
-        }
+$resultSetColposcopia = $mysqliL->query($queryColposcopia);
+    while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
+        $paciente = $resultSet['paciente'];
+$medico = $resultSet['medico'];
+///////////papa///////////////////////
+$antecedente_cancer = $resultSet['antecedente_cancer'];
+$observaciones_papinocolau = $resultSet['observaciones_papinocolau'];
+$antecedente_infeccion_vagina = $resultSet['antecedente_infeccion_vagina'];
+$fecha_estudio = $resultSet['fecha_estudio'];
+    }
 
-        ?>
 
+if($clasificacion_medico==1){
+?>
+
+                <div class='alert-list'>
+                            <div class='alert alert-danger alert-dismissible' role='alert'>
+                                <button type='button' class='close' data-dismiss='alert'
+                                aria-label='Close'><span aria-hidden='true'>
+                                <i class='notika-icon notika-close'></i></span>
+                                </button>
+                                    <CENTER> <H1>URGENTE</H1></CENTER>
+                            </div>
+                        </div>
+                        <?php }?>
 <div class="breadcomb-area">
     <div class="container">
         <div class="row">
@@ -481,37 +508,66 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                           <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
                               <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
                                   <div class="past-day-statis">
-                                      <h2>For The Past 30 Days</h2>
-                                      <p>Fusce eget dolor id justo luctus the commodo vel pharetra nisi. Donec velit of libero.</p>
+                                      <h2>Paciente/Medico </h2>
+                                      <p>Paciente:<?php echo $paciente;?></p>
+                                        <p>Medico:<?php echo $medico;?></p>
                                   </div>
-                      <div class="dash-widget-visits"></div>
+                                  <div class="past-day-statis">
+                                      <h2>Atencion Medica </h2>
+                                      <p>Paciente:<?php echo $paciente;?></p>
+
+                                  </div>
+                                  <div class="past-day-statis">
+                                      <h2>Datos Papanicolau </h2>
+
+
+                                  </div>
                                   <div class="past-statistic-an">
                                       <div class="past-statistic-ctn">
-                                          <h3><span class="counter">3,20,000</span></h3>
-                                          <p>Page Views</p>
+                                          <h3><span >Observaciones</span></h3>
+                                          <p><?php echo $observaciones_papinocolau;?></p>
                                       </div>
-                                      <div class="past-statistic-graph">
-                                          <div class="stats-bar"></div>
-                                      </div>
+
                                   </div>
                                   <div class="past-statistic-an">
                                       <div class="past-statistic-ctn">
                                           <h3><span class="counter">1,03,000</span></h3>
                                           <p>Total Clicks</p>
                                       </div>
-                                      <div class="past-statistic-graph">
-                                          <div class="stats-line"></div>
-                                      </div>
+
                                   </div>
                                   <div class="past-statistic-an">
                                       <div class="past-statistic-ctn">
-                                          <h3><span class="counter">24,00,000</span></h3>
-                                          <p>Site Visitors</p>
+                                          <h3><span class="counter">1,03,000</span></h3>
+                                          <p>Total Clicks</p>
                                       </div>
-                                      <div class="past-statistic-graph">
-                                          <div class="stats-bar-2"></div>
-                                      </div>
+
                                   </div>
+                                  <div class="past-statistic-an">
+                                      <div class="past-statistic-ctn">
+                                          <h3><span >Fecha:</span></h3>
+                                          <p><?php
+                                          setlocale(LC_TIME, 'es_ES', 'esp_esp');
+
+
+
+
+
+
+                                          $fe = date("d.M.Y", strtotime($fecha_estudio));
+                                          $inicio = strftime("%d de %B del %Y", strtotime($fe));
+
+
+
+
+
+
+
+                                           echo $inicio;?></p>
+                                      </div>
+
+                                  </div>
+
                               </div>
                           </div>
                       </div>

@@ -665,14 +665,24 @@ if($asignacionvaf==0){
                                               echo "</td>";
                                               echo "<td>";
                                               //Papanicolaou
-                                              $queryPapanicolaou = "SELECT 	c.id_usu_pat,e.id_estudio, 	e.fecha_estudio, 	e.estudio, 	e.antecedente_cancer,
-                                              	e.antecedente_infeccion_vagina, 	e.fecha_ultima_menstruacion, 	e.fecha_ultima_papanicolau, 	e.metodo_anticonceptivo,
-                                                e.menopausia, 	e.hallazgos_colposcopicos, 	e.observaciones_papinocolau from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on
+                                              $queryPapanicolaou = "SELECT c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico  from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on
                                                 e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7 	and c.id_paciente = '$id_paciente' WHERE id_usu_pat='$id'; ";
                                               if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
                                                   while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
-                                                      $id_estudio = $resultSet['id_estudio'];
-                                                      echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_paciente' target='_blank'>Agregar Resultado </a>";
+                                                      $id_pacientepaps = $resultSet['id_paciente'];
+                                                      $id_estudiopaps = $resultSet['id_estudio'];
+                                                      $id_tipo_estudiopaps = $resultSet['id_tipo_estudio'];
+                                                      $id_usuariopaps = $resultSet['id_usuario'];
+                                                      $id_atencionpaps = $resultSet['id_atencion'];
+                                                      $id_usu_patpaps = $resultSet['id_usu_pat'];
+                                                      $clasificacion_medicopaps = $resultSet['clasificacion_medico'];
+                                                      if($clasificacion_medicopaps==1){
+                                                        echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' style='color: red' target='_blank'>Agregar Resultado </a>";
+
+                                                      }else{
+                                                        echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' style='color: green' target='_blank'>Agregar Resultado </a>";
+
+                                                      }
                                                   }
                                               }
                                               echo "</td>";
