@@ -24,9 +24,9 @@
 			p.edad_paciente,
 			e.fecha_estudio,
 			e.anotaciones_vulvoscopia,
-			e.x,
-			e.y,
-			ec.vulvoscopia_acetico
+			e.coordenadas,
+			ec.vulvoscopia_acetico,
+			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 6
@@ -41,9 +41,10 @@
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
+		$idAtencion = $info['id_atencion'];
 		$anotaciones_vulvoscopia = $info['anotaciones_vulvoscopia'];
-		$x = $info['x'];
-		$y = $info['y'];
+		$coordenadasHelper = "[\"" + implode("\",\"",explode("|",$info['coordenadas'])) + "\"]";
+		
 		$vulvoscopia_acetico = $info["vulvoscopia_acetico"];
 
 		if (!endsWith(trim($anotaciones_vulvoscopia), ".")) {
@@ -77,26 +78,27 @@
 			var canvasVulva = document.getElementById("canvasVulva");
 			var ctxVulva = canvasVulva.getContext("2d");
 			var vulva = document.getElementById("recuadroVulva");
-			var x = <?php echo $x ?>;
-			var y = <?php echo $y ?>;
+			var coordenadas = <?php echo $coordenadasHelper ?>;
 			ctxVulva.drawImage(vulva, 0, 0,200,200);
-			ctxVulva.lineWidth = 6;
-			ctxVulva.strokeStyle = "#FFF";
-			ctxVulva.beginPath();
-			ctxVulva.moveTo(x-10,y-10);
-			ctxVulva.lineTo(x+10,y+10);
-			ctxVulva.moveTo(x-10,y+10);
-			ctxVulva.lineTo(x+10,y-10);
-			ctxVulva.stroke();
-			ctxVulva.lineWidth = 2;
-			ctxVulva.strokeStyle = "#000";
-			ctxVulva.beginPath();
-			ctxVulva.moveTo(x-10,y-10);
-			ctxVulva.lineTo(x+10,y+10);
-			ctxVulva.moveTo(x-10,y+10);
-			ctxVulva.lineTo(x+10,y-10);
-			ctxVulva.stroke();
-
+			$(coordenadas).each(function (index, value){
+            	var coordsTemp = value.split(",");
+				ctxVulva.lineWidth = 6;
+				ctxVulva.strokeStyle = "#FFF";
+				ctxVulva.beginPath();
+				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
+				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
+				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
+				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+				ctxVulva.stroke();
+				ctxVulva.lineWidth = 2;
+				ctxVulva.strokeStyle = "#000";
+				ctxVulva.beginPath();
+				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
+				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
+				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
+				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+				ctxVulva.stroke();
+			});
 			vulva.setAttribute("src",canvasVulva.toDataURL());
 			vulva.style.display = "block";
 			canvasVulva.style.display = "none";
@@ -150,6 +152,7 @@
 							<center>
 								<b>Solicitud De Estudio Para Biopsia De Vulva</b>
 							</center>
+							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 						</p>
 						<div class="row">
 							<div class="column">

@@ -23,7 +23,8 @@
 		e.observaciones_endometrio,
 		am.metrorragia,
 		am.hormonoterapia,
-		am.duracion_hormonoterapia
+		am.duracion_hormonoterapia,
+		ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
 		FROM
 		paciente AS p
 		INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 4
@@ -37,6 +38,7 @@
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
+		$idAtencion = $info['id_atencion'];
 		$antecedente_metrorragia = $info['metrorragia'];
 		$antecedente_hormonoterapia = $info['hormonoterapia'];
 		$duracion_tratamiento = $info['duracion_hormonoterapia'];
@@ -113,6 +115,7 @@
 							<center>
 								<b>Solicitud De Estudio Para Biopsia De Endometrio</b>
 							</center>
+							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 						</p>
 						<div class="row">
 							<div class="column">

@@ -22,7 +22,8 @@
 			p.edad_paciente,
 			e.fecha_estudio,
 			e.hallazgos_colposcopicos,
-			e.observaciones_papinocolau
+			e.observaciones_papinocolau,
+			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 7
@@ -35,6 +36,7 @@
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
+		$idAtencion = $info['id_atencion'];
 		$colposcopico = $info['hallazgos_colposcopicos'];
 		$observaciones = $info['observaciones_papinocolau'];
 
@@ -89,6 +91,7 @@
 							<center>
 								<b>Solicitud De Estudio De Papanicolaou</b>
 							</center>
+							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 						</p>
 
 						<div class="row">

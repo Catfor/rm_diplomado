@@ -22,7 +22,8 @@
 			e.fecha_estudio,
 			e.anotaciones_vaginoscopia,
 			ec.vaginoscopia_acetico,
-			ec.vaginoscopia_lugol
+			ec.vaginoscopia_lugol,
+			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 5
@@ -37,6 +38,7 @@
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
+		$idAtencion = $info['id_atencion'];
 		$vaginoscopia_acetico = $info['vaginoscopia_acetico'];
 		$vaginoscopia_lugol = $info['vaginoscopia_lugol'];
 		$anotaciones_vaginoscopia = $info['anotaciones_vaginoscopia'];
@@ -102,6 +104,7 @@
 							<center>
 								<b>Solicitud De Estudio Para Biopsia De Vaginoscopia</b>
 							</center>
+							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 						</p>
 
 						<div class="row">
