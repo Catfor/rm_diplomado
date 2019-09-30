@@ -6,10 +6,10 @@
 	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../css/etiquetas.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	
+
 
 	<?php
 	ob_start();
@@ -26,7 +26,8 @@
 			e.anotaciones_vulvoscopia,
 			e.coordenadas,
 			ec.vulvoscopia_acetico,
-			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
+			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion,
+			ct.clasificacion_medico
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 6
@@ -34,8 +35,8 @@
 			INNER JOIN estudio_vulvoscopia e ON ct.id_estudio = e.id_estudio
 			INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
 			INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
-			
-		$res =$mysqliL->query($informacion);
+
+		$res = $mysqliL->query($informacion);
 		$info = $res->fetch_assoc();
 		$fecha = $info['fecha_estudio'];
 		$edad = $info['edad_paciente'];
@@ -43,8 +44,8 @@
 		$medico = $info['medico'];
 		$idAtencion = $info['id_atencion'];
 		$anotaciones_vulvoscopia = $info['anotaciones_vulvoscopia'];
-		$coordenadasHelper = "[\"" + implode("\",\"",explode("|",$info['coordenadas'])) + "\"]";
-		
+		$coordenadasHelper = "[\"" + implode("\",\"", explode("|", $info['coordenadas'])) + "\"]";
+
 		$vulvoscopia_acetico = $info["vulvoscopia_acetico"];
 
 		if (!endsWith(trim($anotaciones_vulvoscopia), ".")) {
@@ -52,13 +53,13 @@
 		}
 
 		ob_end_flush();
-	}else{
-		$fecha ="";
-		$edad ="";
-		$paciente ="";
-		$medico ="";
-		$colposcopico ="";
-		$observaciones ="";
+	} else {
+		$fecha = "";
+		$edad = "";
+		$paciente = "";
+		$medico = "";
+		$colposcopico = "";
+		$observaciones = "";
 	}
 
 	function endsWith($string, $endString)
@@ -72,37 +73,36 @@
 	?>
 
 	<script>
-
-		$(document).ready(function(){
+		$(document).ready(function() {
 
 			var canvasVulva = document.getElementById("canvasVulva");
 			var ctxVulva = canvasVulva.getContext("2d");
 			var vulva = document.getElementById("recuadroVulva");
 			var coordenadas = <?php echo $coordenadasHelper ?>;
-			ctxVulva.drawImage(vulva, 0, 0,200,200);
-			$(coordenadas).each(function (index, value){
-            	var coordsTemp = value.split(",");
+			ctxVulva.drawImage(vulva, 0, 0, 200, 200);
+			$(coordenadas).each(function(index, value) {
+				var coordsTemp = value.split(",");
 				ctxVulva.lineWidth = 6;
 				ctxVulva.strokeStyle = "#FFF";
 				ctxVulva.beginPath();
-				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
-				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
-				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
-				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+				ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+				ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+				ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+				ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
 				ctxVulva.stroke();
 				ctxVulva.lineWidth = 2;
 				ctxVulva.strokeStyle = "#000";
 				ctxVulva.beginPath();
-				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
-				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
-				ctxVulva.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
-				ctxVulva.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+				ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+				ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+				ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+				ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
 				ctxVulva.stroke();
 			});
-			vulva.setAttribute("src",canvasVulva.toDataURL());
+			vulva.setAttribute("src", canvasVulva.toDataURL());
 			vulva.style.display = "block";
 			canvasVulva.style.display = "none";
-			$(canvasVulva).delay( 200 ).queue(function() {
+			$(canvasVulva).delay(200).queue(function() {
 				imprimeEtiqueta();
 			});
 
@@ -152,8 +152,15 @@
 							<center>
 								<b>Solicitud De Estudio Para Biopsia De Vulva</b>
 							</center>
-							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 						</p>
+						<div class="row">
+							<div class="column">
+								<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
+							</div>
+							<div class="column">
+								<p><b>Prioridad</b> <?php echo $clasificacion_medico_paps ?></p>
+							</div>
+						</div>
 						<div class="row">
 							<div class="column">
 								<p>
@@ -171,7 +178,7 @@
 						<!--<p class="txt-justificado">
 							<b>Hallazgos Vulvoscopia:</b></p>
 						<p>-->
-							<b>Acetico:</b> <?php echo ucwords($vulvoscopia_acetico)?></p>
+						<b>Acetico:</b> <?php echo ucwords($vulvoscopia_acetico) ?></p>
 						<p>
 							<p>
 								<b>Se&ntilde;ala Donde Fue Tomada la muestra:</b>
@@ -180,7 +187,7 @@
 							<div class="row">
 								<div id="columnaCanvas" class="column">
 									<center>
-										<img  id="recuadroVulva" src="../../img/vulva.JPG" width="200" height="200" style="display:none;max-width:200px;max-height:200px;">
+										<img id="recuadroVulva" src="../../img/vulva.JPG" width="200" height="200" style="display:none;max-width:200px;max-height:200px;">
 										<canvas id="canvasVulva" width="200" height="200">
 									</center>
 								</div>

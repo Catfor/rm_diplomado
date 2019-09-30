@@ -24,7 +24,8 @@
 			e.hallazgos_colposcopicos,
 			e.observaciones_papinocolau,
 			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion,
-			ec.posible_recomendacion_diagnostica
+			ec.posible_recomendacion_diagnostica,
+			ct.clasificacion_medico
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 7
@@ -113,8 +114,15 @@
 							<center>
 								<b>Solicitud De Estudio De Papanicolaou</b>
 							</center>
-							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 						</p>
+						<div class="row">
+							<div class="column">
+								<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
+							</div>
+							<div class="column">
+								<p><b>Prioridad</b> <?php echo $clasificacion_medico_paps ?></p>
+							</div>
+						</div>
 
 						<div class="row">
 							<div class="column">
