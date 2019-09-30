@@ -25,9 +25,9 @@
 			e.antecendente_cancer_cervicouterino,
 			e.hallazgos_colposcopicos,
 			e.senalizacion,
-			e.x,
-			e.y,
-			ec.posible_recomendacion_diagnostica
+			e.coordenadas,
+			ec.posible_recomendacion_diagnostica,
+			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 2
@@ -42,11 +42,11 @@
 		$edad = $info['edad_paciente'];
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
+		$idAtencion = $info['id_atencion'];
 		$antecendente_cancer_cervicouterino = $info['antecendente_cancer_cervicouterino'];
 		$hallazgos_colposcopicos = $info['hallazgos_colposcopicos'];
 		$senalizacion = $info['senalizacion'];
-		$x = $info['x'];
-		$y = $info['y'];
+		$coordenadasHelper = "[\"" + implode("\",\"",explode("|",$info['coordenadas'])) + "\"]";
 		$posible_recomendacion_diagnostica = ucwords(str_replace("_"," ",$info['posible_recomendacion_diagnostica']));
 
 		if (!endsWith(trim($hallazgos_colposcopicos), ".")) {
@@ -87,25 +87,27 @@ $(document).ready(function(){
             var dona = document.getElementById("recuadroDona");
 
 			var x = <?php echo $x ?>;
-			var y = <?php echo $y ?>;
 			ctxDona.drawImage(dona, 0, 0,200,200);
-			ctxDona.lineWidth = 6;
-			ctxDona.strokeStyle = "#FFF";
-			ctxDona.beginPath();
-			ctxDona.moveTo(x-10,y-10);
-			ctxDona.lineTo(x+10,y+10);
-			ctxDona.moveTo(x-10,y+10);
-			ctxDona.lineTo(x+10,y-10);
-			ctxDona.stroke();
-			ctxDona.lineWidth = 2;
-			ctxDona.strokeStyle = "#000";
-			ctxDona.beginPath();
-			ctxDona.moveTo(x-10,y-10);
-			ctxDona.lineTo(x+10,y+10);
-			ctxDona.moveTo(x-10,y+10);
-			ctxDona.lineTo(x+10,y-10);
-			ctxDona.stroke();
-
+			
+			$(coordenadas).each(function (index, value){
+            	var coordsTemp = value.split(",");
+				ctxDona.lineWidth = 6;
+				ctxDona.strokeStyle = "#FFF";
+				ctxDona.beginPath();
+				ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
+				ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
+				ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
+				ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+				ctxDona.stroke();
+				ctxDona.lineWidth = 2;
+				ctxDona.strokeStyle = "#000";
+				ctxDona.beginPath();
+				ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
+				ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
+				ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
+				ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+				ctxDona.stroke();
+			});
 			dona.style.display = "block";
 			canvasDona.style.display = "none";
 			dona.setAttribute("src",canvasDona.toDataURL());
@@ -164,6 +166,7 @@ $(document).ready(function(){
 							<center>
 								<b>Solicitud De Estudio Para Biopsia De Cervix</b>
 							</center>
+							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 						</p>
 						<div class="row">
 							<div class="column">

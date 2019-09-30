@@ -24,7 +24,8 @@
 		$informacionPaciente = "SELECT 
 			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
-			p.edad_paciente
+			p.edad_paciente,
+			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 0
@@ -35,6 +36,7 @@
 		$edad = $infoPaciente['edad_paciente'];
 		$paciente = $infoPaciente['paciente'];
 		$medico = $infoPaciente['medico'];
+		$idAtencion = $info['id_atencion'];
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -277,7 +279,7 @@
 				canvasVulva.style.display = "none";
 			}
 
-			$("body").delay(400).queue(function() {
+			$("body").delay(500).queue(function() {
 				imprimeEtiqueta();
 			});
 
@@ -311,6 +313,7 @@
 								<center>
 									<b>Solicitud De Estudio De Papanicolaou</b>
 								</center>
+							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 							</p>
 
 							<div class="row">
@@ -357,6 +360,7 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Endometrio</b>
 								</center>
+							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 							</p>
 							<div class="row">
 								<div class="column">
@@ -402,6 +406,7 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Vaginoscopia</b>
 								</center>
+							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 							</p>
 
 							<div class="row">
@@ -451,6 +456,7 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Vulva</b>
 								</center>
+							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 							</p>
 							<div class="row">
 								<div class="column">
@@ -512,6 +518,7 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Cervix</b>
 								</center>
+							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
 							</p>
 							<div class="row">
 								<div class="column">
