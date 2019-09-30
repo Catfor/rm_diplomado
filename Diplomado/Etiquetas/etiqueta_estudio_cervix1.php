@@ -6,7 +6,7 @@
 	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../css/etiquetas.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
@@ -27,7 +27,8 @@
 			e.senalizacion,
 			e.coordenadas,
 			ec.posible_recomendacion_diagnostica,
-			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
+			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion,
+			ct.clasificacion_medico
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 2
@@ -46,8 +47,8 @@
 		$antecendente_cancer_cervicouterino = $info['antecendente_cancer_cervicouterino'];
 		$hallazgos_colposcopicos = $info['hallazgos_colposcopicos'];
 		$senalizacion = $info['senalizacion'];
-		$coordenadasHelper = implode('","',explode('|',$info['coordenadas']));
-		$posible_recomendacion_diagnostica = ucwords(str_replace("_"," ",$info['posible_recomendacion_diagnostica']));
+		$coordenadasHelper = implode('","', explode('|', $info['coordenadas']));
+		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info['posible_recomendacion_diagnostica']));
 
 		if (!endsWith(trim($hallazgos_colposcopicos), ".")) {
 			$hallazgos_colposcopicos = $hallazgos_colposcopicos . '.';
@@ -58,13 +59,13 @@
 		}
 
 		ob_end_flush();
-	}else{
-		$fecha ="";
-		$edad ="";
-		$paciente ="";
-		$medico ="";
-		$colposcopico ="";
-		$observaciones ="";
+	} else {
+		$fecha = "";
+		$edad = "";
+		$paciente = "";
+		$medico = "";
+		$colposcopico = "";
+		$observaciones = "";
 	}
 
 	function endsWith($string, $endString)
@@ -78,9 +79,14 @@
 	?>
 
 	<script>
+		$(document).ready(function() {
 
-$(document).ready(function(){
 
+			var canvasDona = document.getElementById("canvasDona");
+			var ctxDona = canvasDona.getContext("2d");
+			var dona = document.getElementById("recuadroDona");
+			var coordenadas = <?php echo ('["' . $coordenadasHelper . '"]'); ?>;
+			ctxDona.drawImage(dona, 0, 0, 200, 200);
 
             var canvasDona = document.getElementById("canvasDona");
             var ctxDona = canvasDona.getContext("2d");
@@ -93,18 +99,18 @@ $(document).ready(function(){
 				ctxDona.lineWidth = 6;
 				ctxDona.strokeStyle = "#FFF";
 				ctxDona.beginPath();
-				ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
-				ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
-				ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
-				ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+				ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+				ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+				ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+				ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
 				ctxDona.stroke();
 				ctxDona.lineWidth = 2;
 				ctxDona.strokeStyle = "#000";
 				ctxDona.beginPath();
-				ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]-10);
-				ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]+10);
-				ctxDona.moveTo(coordsTemp[0]-10,coordsTemp[1]+10);
-				ctxDona.lineTo(coordsTemp[0]+10,coordsTemp[1]-10);
+				ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+				ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+				ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+				ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
 				ctxDona.stroke();
 			});
 			dona.style.display = "block";
@@ -165,7 +171,9 @@ $(document).ready(function(){
 							<center>
 								<b>Solicitud De Estudio Para Biopsia De Cervix</b>
 							</center>
-							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
+							<div style="float:right;margin-top: 5px;">
+								<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
+							</div>
 						</p>
 						<div class="row">
 							<div class="column">
@@ -191,7 +199,7 @@ $(document).ready(function(){
 						<div class="row">
 							<div class="column">
 								<center>
-									<img  id="recuadroDona" src="../../img/dona.JPG" width="200" height="200"  ismap  style="display:none">
+									<img id="recuadroDona" src="../../img/dona.JPG" width="200" height="200" ismap style="display:none">
 									<canvas id="canvasDona" width="200" height="200">
 								</center>
 							</div>

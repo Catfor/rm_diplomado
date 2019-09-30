@@ -198,110 +198,62 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           }
         }
 
-        var posDona = new Array();
-        var posVulva = new Array();
-        var limiteCoordDona = 5;
-        var limiteCoordVulva = 5;
-
         window.onload = function() {
           var canvasDona = document.getElementById("canvasDona");
           var ctxDona = canvasDona.getContext("2d");
           var dona = document.getElementById("recuadroDona");
-          var contDona = document.getElementById("contCoordCervix");
 
           var canvasVulva = document.getElementById("canvasVulva");
           var ctxVulva = canvasVulva.getContext("2d");
           var vulva = document.getElementById("recuadroVulva");
-          var contVulva = document.getElementById("contCoordVulva");
-
-          var donax = document.getElementById("coordCervix");
-
-          var vulvax = document.getElementById("coordVulva");
+          var donax = document.getElementById("x");
+          var donay = document.getElementById("y");
+          var vulvax = document.getElementById("xy");
+          var vulvay = document.getElementById("yx");
 
           ctxVulva.drawImage(vulva, 0, 0, 200, 200);
           ctxDona.drawImage(dona, 0, 0, 200, 200);
           ctxVulva.lineWidth = 3;
 
-
           $("#canvasDona").on("click", function(event) {
             var offsetImg = offset(this);
             var x = (event.clientX - offsetImg.left).toFixed(2);
             var y = (event.clientY - offsetImg.top).toFixed(2);
-            if ($(posDona).size() < limiteCoordDona) {
-              posDona.push(x + "," + y);
-              var btnCoord = document.createElement("div");
-              btnCoord.style.margin = "10px";
-              var txtCoord = document.createElement("input");
-              txtCoord.setAttribute("type", "text");
-              txtCoord.setAttribute("value", x + "," + y);
-              var i = document.createElement('i');
-              i.setAttribute("class", "far fa-times-circle");
-              i.setAttribute("id", "delCoordCervix");
-              i.setAttribute("onclick", "eliminaCoordDona(this)");
-              i.style.color = "red";
-              txtCoord.style.textAlign = "center";
-              btnCoord.appendChild(txtCoord);
-              btnCoord.appendChild(i);
-              $(contDona).append(btnCoord);
-            }
+            donax.value = x;
+            donay.value = y;
             ctxDona.drawImage(dona, 0, 0, 200, 200);
-
-            $(posDona).each(function(index, value) {
-              var coordsTemp = value.split(",");
-              ctxDona.lineWidth = 4;
-              ctxDona.strokeStyle = "#FFF";
-              ctxDona.beginPath();
-              ctxDona.arc(coordsTemp[0], coordsTemp[1], 10, 0, 2 * Math.PI);
-              ctxDona.stroke();
-              ctxDona.lineWidth = 2;
-              ctxDona.strokeStyle = "#000";
-              ctxDona.beginPath();
-              ctxDona.arc(coordsTemp[0], coordsTemp[1], 10, 0, 2 * Math.PI);
-              ctxDona.stroke();
-            });
-            donax.value = posDona.join("|");
+            ctxDona.lineWidth = 4;
+            ctxDona.strokeStyle = "#FFF";
+            ctxDona.beginPath();
+            ctxDona.arc(x, y, 10, 0, 2 * Math.PI);
+            ctxDona.stroke();
+            ctxDona.lineWidth = 2;
+            ctxDona.strokeStyle = "#000";
+            ctxDona.beginPath();
+            ctxDona.arc(x, y, 10, 0, 2 * Math.PI);
+            ctxDona.stroke();
           });
 
           $("#canvasVulva").on("click", function(event) {
             var offsetImg = offset(this);
             var x = (event.clientX - offsetImg.left).toFixed(2);
             var y = (event.clientY - offsetImg.top).toFixed(2);
-            if ($(posVulva).size() < limiteCoordDona) {
-              posVulva.push(x + "," + y);
-              var btnCoord = document.createElement("div");
-              btnCoord.style.margin = "10px";
-              var txtCoord = document.createElement("input");
-              txtCoord.setAttribute("type", "text");
-              txtCoord.setAttribute("value", x + "," + y);
-              var i = document.createElement('i');
-              i.setAttribute("class", "far fa-times-circle");
-              i.setAttribute("id", "delCoordCervix");
-              i.setAttribute("onclick", "eliminaCoordVulva(this)");
-              i.style.color = "red";
-              txtCoord.style.textAlign = "center";
-              btnCoord.appendChild(txtCoord);
-              btnCoord.appendChild(i);
-              $(contVulva).append(btnCoord);
-            }
-            vulvax.value = posVulva.join("|");
+            vulvax.value = x;
+            vulvay.value = y;
             ctxVulva.drawImage(vulva, 0, 0, 200, 200);
-            $(posVulva).each(function(index, value) {
-              var coordsTemp = value.split(",");
-              ctxVulva.lineWidth = 4;
-              ctxVulva.strokeStyle = "#FFF";
-              ctxVulva.beginPath();
-              ctxVulva.arc(coordsTemp[0], coordsTemp[1], 10, 0, 2 * Math.PI);
-              ctxVulva.stroke();
-              ctxVulva.lineWidth = 2;
-              ctxVulva.strokeStyle = "#000";
-              ctxVulva.beginPath();
-              ctxVulva.arc(coordsTemp[0], coordsTemp[1], 10, 0, 2 * Math.PI);
-              ctxVulva.stroke();
-            });
+            ctxVulva.lineWidth = 4;
+            ctxVulva.strokeStyle = "#FFF";
+            ctxVulva.beginPath();
+            ctxVulva.arc(x, y, 10, 0, 2 * Math.PI);
+            ctxVulva.stroke();
+            ctxVulva.lineWidth = 2;
+            ctxVulva.strokeStyle = "#000";
+            ctxVulva.beginPath();
+            ctxVulva.arc(x, y, 10, 0, 2 * Math.PI);
+            ctxVulva.stroke();
           });
 
-
-        }
+        };
       </script>
       <div id="formulario" style="padding-left: 400px;">
         <div class="breadcomb-area">
@@ -309,7 +261,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-              <div id="modalCam" style="position: fixed;top: 10px;left: 10px;z-index: 5;max-width: 200px;" class="tarjeta">
+              <div style="position: fixed;top: 10px;left: 10px;z-index: 5;max-width: 200px;" class="tarjeta">
                 <div style="display: none;">
                   <div class="select">
                     <label for="audioSource">Audio source: </label><select id="audioSource" onchange="iniciaTransmicion()"></select>
@@ -927,17 +879,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                         </select>
 
-                      </div>
-
-
-
-
-                    </div>
-
+                  </div>
+                 </div>
                 </div>
               </div>
+             </div>
             </div>
-          </div>
           <div class="row fila">
             <div class="accordion-area">
               <div class="container">
@@ -1448,23 +1395,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                       </div>
                                       <div class="row fila">
-
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                          <p>
-
-                                          Clasificacion Urgencia   :<br></p>
-                                          <select name='clasificacion_medico' id='clasificacion_medico' class="form-control">
-                                            <option value="0" selected>Normal</option>
-                                            <option value="1">Urgente</option>
-
-
-
-
-                                          </select>
-
-                                        </div>
-                                      </div> <br>
-                                      <div class="row fila">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                           <div class="form-group purple-border">
                                             <div class="row fila">
@@ -1506,30 +1436,14 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                             <div class="panel-body">
                                               <p>
                                                 <div class="row fila">
-                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style=" text-align: right; padding: 0 40px;">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="floating-numner">
                                                       <p>Señala Donde Fue Tomada la muetra</p>
                                                       <img id="recuadroDona" src="../img/dona.JPG" width="200" height="200" ismap style="display:none">
                                                       <canvas id="canvasDona" width="200" height="200">
-                                                        <input id="coordCervix" name="coordCervix" value="0" style="display:none">
+                                                        <input id="x" name="x" value="0" style="display:none">
+                                                        <input id="y" name="y" value="0" style="display:none">
                                                     </div>
-                                                  </div>
-                                                  <div id="contCoordCervix" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:25px 0px;">
-
-                                                  </div><br><br><br><br><br><br><br><br><br><br><br><br>
-                                                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                    <p>
-
-                                                    Clasificacion Urgencia   :<br></p>
-                                                    <select name='clasificacion_medicocervix' id='clasificacion_medicocervix' class="form-control">
-                                                      <option value="0" selected>Normal</option>
-                                                      <option value="1">Urgente</option>
-
-
-
-
-                                                    </select>
-
                                                   </div>
                                                 </div>
                                                 <div class="row fila">
@@ -1560,36 +1474,18 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <div id="accordionPurple-five" class="collapse" role="tabpanel">
                                             <div class="panel-body">
                                               <p>
-                                              <div class="row fila">
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style=" text-align: right; padding: 0 40px;">
-                                                  <div class="floating-numner">
-                                                    <p>Señala Donde Fue Tomada la muetra</p>
-                                                    <img id="recuadroVulva" src="../img/vulva.JPG" width="200" height="200" ismap style="display:none">
-                                                    <canvas id="canvasVulva" width="200" height="200">
-                                                      <input id="coordVulva" name="coordVulva" value="0" style="display:none">
-                                                  </div>
-                                                </div>
-
-                                                <div id="contCoordVulva" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:25px 0px;">
-
-                                                </div><br><br><br><br><br><br><br><br><br><br><br><br><br>
                                                 <div class="row fila">
-
-                                                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                    <p>
-
-                                                    Clasificacion Urgencia   :<br></p>
-                                                    <select name='clasificacion_medicoVulvo' id='clasificacion_medicoVulvo' class="form-control">
-                                                      <option value="0" selected>Normal</option>
-                                                      <option value="1">Urgente</option>
-
-
-
-
-                                                    </select>
-
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="floating-numner">
+                                                      <p>Señala Donde Fue Tomada la muetra</p>
+                                                      <img id="recuadroVulva" src="../img/vulva.JPG" width="200" height="200" ismap style="display:none">
+                                                      <canvas id="canvasVulva" width="200" height="200">
+                                                        <input id="xy" name="xy" value="0" style="display:none">
+                                                        <input id="yx" name="yx" value="0" style="display:none">
+                                                    </div>
                                                   </div>
                                                 </div>
+
                                                 <div class="row fila">
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group purple-border">
@@ -1617,25 +1513,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <div id="accordionPurple-seven" class="collapse" role="tabpanel">
                                             <div class="panel-body">
                                               <p>
+                                                <div class="row fila">
 
-
-                                                  <div class="row fila">
-
-                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                      <p>
-
-                                                      Clasificacion Urgencia   :<br></p>
-                                                      <select name='clasificacion_medicovagi' id='clasificacion_medicovagi' class="form-control">
-                                                        <option value="0" selected>Normal</option>
-                                                        <option value="1">Urgente</option>
-
-
-
-
-                                                      </select>
-
-                                                    </div>
-                                                  </div><div class="row fila">
                                                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                                     <select name='estudio_solicitar_vaginoscopia' id='estudio_solicitar_vaginoscopia' class="form-control">
@@ -1681,23 +1560,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           </div>
                                           <div id="accordionPurple-six" class="collapse" role="tabpanel">
                                             <div class="panel-body">
-                                              <div class="row fila">
-
-                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                  <p>
-
-                                                  Clasificacion Urgencia   :<br></p>
-                                                  <select name='clasificacion_medicoendo' id='clasificacion_medicoendo' class="form-control">
-                                                    <option value="0" selected>Normal</option>
-                                                    <option value="1">Urgente</option>
-
-
-
-
-                                                  </select>
-
-                                                </div>
-                                              </div>
                                               <p>
 
                                                 <div class="row fila">
@@ -2162,9 +2024,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           // Good to go!
         } else {
           alert('La captura de fotos desde la web no es soportado por tu navegador');
-          $(".loader").fadeOut()
           document.getElementById("modalCam").style.display = "none";
-          document.getElementById('formulario').style.paddingLeft = "0px";
         }
 
         'use strict';
@@ -2387,69 +2247,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         $('.inputDeshabilitado').keydown(function() {
           return false;
         });
-
-
-
-
-        function eliminaCoordDona(e) {
-          var divTemp = $(e).parent();
-          var inputTemp = $(e).prev();
-          var index = posDona.indexOf($(inputTemp).val());
-          var canvasDona = document.getElementById("canvasDona");
-          var ctxDona = canvasDona.getContext("2d");
-          var dona = document.getElementById("recuadroDona");
-          var donax = document.getElementById("coordCervix");
-
-          if (index > -1) {
-            posDona.splice(index, 1);
-            $(divTemp).remove();
-          }
-          ctxDona.drawImage(dona, 0, 0, 200, 200);
-          $(posDona).each(function(index, value) {
-            var coordsTemp = value.split(",");
-            ctxDona.lineWidth = 4;
-            ctxDona.strokeStyle = "#FFF";
-            ctxDona.beginPath();
-            ctxDona.arc(coordsTemp[0], coordsTemp[1], 10, 0, 2 * Math.PI);
-            ctxDona.stroke();
-            ctxDona.lineWidth = 2;
-            ctxDona.strokeStyle = "#000";
-            ctxDona.beginPath();
-            ctxDona.arc(coordsTemp[0], coordsTemp[1], 10, 0, 2 * Math.PI);
-            ctxDona.stroke();
-          });
-          donax.value = posDona.join("|");
-        };
-
-        function eliminaCoordVulva(e) {
-          var divTemp = $(e).parent();
-          var inputTemp = $(e).prev();
-          var index = posVulva.indexOf($(inputTemp).val());
-          var canvasVulva = document.getElementById("canvasVulva");
-          var ctxVulva = canvasVulva.getContext("2d");
-          var vulva = document.getElementById("recuadroVulva");
-          var vulvax = document.getElementById("coordVulva");
-
-          if (index > -1) {
-            posVulva.splice(index, 1);
-            $(divTemp).remove();
-          }
-          ctxVulva.drawImage(vulva, 0, 0, 200, 200);
-          $(posVulva).each(function(index, value) {
-            var coordsTemp = value.split(",");
-            ctxVulva.lineWidth = 4;
-            ctxVulva.strokeStyle = "#FFF";
-            ctxVulva.beginPath();
-            ctxVulva.arc(coordsTemp[0], coordsTemp[1], 10, 0, 2 * Math.PI);
-            ctxVulva.stroke();
-            ctxVulva.lineWidth = 2;
-            ctxVulva.strokeStyle = "#000";
-            ctxVulva.beginPath();
-            ctxVulva.arc(coordsTemp[0], coordsTemp[1], 10, 0, 2 * Math.PI);
-            ctxVulva.stroke();
-          });
-          vulvax.value = posVulva.join("|");
-        };
       </script>
 
 
