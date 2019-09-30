@@ -23,7 +23,8 @@
 			e.anotaciones_vaginoscopia,
 			ec.vaginoscopia_acetico,
 			ec.vaginoscopia_lugol,
-			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion
+			ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion,
+			ct.clasificacion_medico
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 5
@@ -31,8 +32,8 @@
 			INNER JOIN estudio_vaginoscopia e ON ct.id_estudio = e.id_estudio
 			INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
 			INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
-			
-		$res =$mysqliL->query($informacion);
+
+		$res = $mysqliL->query($informacion);
 		$info = $res->fetch_assoc();
 		$fecha = $info['fecha_estudio'];
 		$edad = $info['edad_paciente'];
@@ -44,12 +45,12 @@
 		$anotaciones_vaginoscopia = $info['anotaciones_vaginoscopia'];
 
 		ob_end_flush();
-	}else{
-		$fecha ="";
-		$edad ="";
-		$paciente ="";
-		$medico ="";
-		$anotaciones_vaginoscopia ="";
+	} else {
+		$fecha = "";
+		$edad = "";
+		$paciente = "";
+		$medico = "";
+		$anotaciones_vaginoscopia = "";
 	}
 
 	function endsWith($string, $endString)
@@ -104,8 +105,15 @@
 							<center>
 								<b>Solicitud De Estudio Para Biopsia De Vaginoscopia</b>
 							</center>
-							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 						</p>
+						<div class="row">
+							<div class="column">
+								<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
+							</div>
+							<div class="column">
+								<p><b>Prioridad</b> <?php echo $clasificacion_medico_paps ?></p>
+							</div>
+						</div>
 
 						<div class="row">
 							<div class="column">

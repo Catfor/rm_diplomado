@@ -46,7 +46,8 @@
 			p.edad_paciente,
 			e.fecha_estudio,
 			e.hallazgos_colposcopicos,
-			e.observaciones_papinocolau
+			e.observaciones_papinocolau,
+			ct.clasificacion_medico
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 7
@@ -58,6 +59,7 @@
 		$fecha_paps = $info_pap['fecha_estudio'];
 		$colposcopico_paps = $info_pap['hallazgos_colposcopicos'];
 		$observaciones_paps = $info_pap['observaciones_papinocolau'];
+		$clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 
 		if (!endsWith(trim($colposcopico_paps), ".")) {
 			$colposcopico_paps = $colposcopico_paps . '.';
@@ -78,7 +80,8 @@
 		e.observaciones_endometrio,
 		am.metrorragia,
 		am.hormonoterapia,
-		am.duracion_hormonoterapia
+		am.duracion_hormonoterapia,
+		ct.clasificacion_medico
 		FROM
 		paciente AS p
 		INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 4
@@ -93,6 +96,7 @@
 		$antecedente_hormonoterapia = $info_endo['hormonoterapia'];
 		$duracion_tratamiento = $info_endo['duracion_hormonoterapia'];
 		$observaciones_endometrio = $info_endo['observaciones_endometrio'];
+		$clasificacion_medico_endometrio = $info_endo['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -103,7 +107,8 @@
 			e.fecha_estudio,
 			e.anotaciones_vaginoscopia,
 			ec.vaginoscopia_acetico,
-			ec.vaginoscopia_lugol
+			ec.vaginoscopia_lugol,
+			ct.clasificacion_medico
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 5
@@ -118,6 +123,7 @@
 		$vaginoscopia_acetico_vagino = $info_vagino['vaginoscopia_acetico'];
 		$vaginoscopia_lugol_vagino = $info_vagino['vaginoscopia_lugol'];
 		$anotaciones_vaginoscopia_vagino = $info_vagino['anotaciones_vaginoscopia'];
+		$clasificacion_medico_vagino = $info_vagino['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 		$informacion_vulva = "SELECT 
@@ -127,7 +133,8 @@
 		e.fecha_estudio,
 		e.anotaciones_vulvoscopia,
 		e.coordenadas,
-		ec.vulvoscopia_acetico
+		ec.vulvoscopia_acetico,
+		ct.clasificacion_medico
 		FROM
 		paciente p
 		INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 6
@@ -142,6 +149,7 @@
 		$anotaciones_vulvoscopia_vulva = $info_vulva['anotaciones_vulvoscopia'];
 		$coordenadasVulva = implode('","', explode('|', $info_vulva['coordenadas']));
 		$vulvoscopia_acetico_vulva = $info_vulva["vulvoscopia_acetico"];
+		$clasificacion_medico_vulva = $info_vulva["clasificacion_medico"] == 0 ? "Normal" : "Urgente";
 
 		if (!endsWith(trim($anotaciones_vulvoscopia_vulva), ".")) {
 			$anotaciones_vulvoscopia_vulva = $anotaciones_vulvoscopia_vulva . '.';
@@ -160,7 +168,8 @@
 			e.hallazgos_colposcopicos,
 			e.senalizacion,
 			e.coordenadas,
-			ec.posible_recomendacion_diagnostica
+			ec.posible_recomendacion_diagnostica,
+			ct.clasificacion_medico
 			FROM
 			paciente p
 			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 2
@@ -175,6 +184,7 @@
 		$antecendente_cancer_cervicouterino_cervix = $info_cervix['antecendente_cancer_cervicouterino'];
 		$hallazgos_colposcopicos_cervix = $info_cervix['hallazgos_colposcopicos'];
 		$senalizacion_cervix = $info_cervix['senalizacion'];
+		$clasificacion_medico_cervix = $info_cervix['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 		$coordenadasCervix = implode('","', explode('|', $info_cervix['coordenadas']));
 		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info_cervix['posible_recomendacion_diagnostica']));
 
@@ -312,11 +322,15 @@
 								<center>
 									<b>Solicitud De Estudio De Papanicolaou</b>
 								</center>
-								<div style="float:right;margin-top: 5px;">
+							</p>
+							<div class="row">
+								<div class="column">
 									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
 								</div>
-							</p>
-
+								<div class="column">
+									<p><b>Prioridad</b> <?php echo $clasificacion_medico_paps ?></p>
+								</div>
+							</div>
 							<div class="row">
 								<div class="column">
 									<p>
@@ -361,10 +375,15 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Endometrio</b>
 								</center>
-								<div style="float:right;margin-top: 5px;">
+							</p>
+							<div class="row">
+								<div class="column">
 									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
 								</div>
-							</p>
+								<div class="column">
+									<p><b>Prioridad</b> <?php echo $clasificacion_medico_endometrio ?></p>
+								</div>
+							</div>
 							<div class="row">
 								<div class="column">
 									<p>
@@ -409,11 +428,16 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Vaginoscopia</b>
 								</center>
-								<div style="float:right;margin-top: 5px;">
-									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
-								</div>
 							</p>
 
+							<div class="row">
+								<div class="column">
+									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
+								</div>
+								<div class="column">
+									<p><b>Prioridad</b> <?php echo $clasificacion_medico_vagino ?></p>
+								</div>
+							</div>
 							<div class="row">
 								<div class="column">
 									<p>
@@ -461,10 +485,16 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Vulva</b>
 								</center>
-								<div style="float:right;margin-top: 5px;">
+							</p>
+
+							<div class="row">
+								<div class="column">
 									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
 								</div>
-							</p>
+								<div class="column">
+									<p><b>Prioridad</b> <?php echo $clasificacion_medico_vulva ?></p>
+								</div>
+							</div>
 							<div class="row">
 								<div class="column">
 									<p>
@@ -525,10 +555,16 @@
 								<center>
 									<b>Solicitud De Estudio Para Biopsia De Cervix</b>
 								</center>
-								<div style="float:right;margin-top: 5px;">
+							</p>
+
+							<div class="row">
+								<div class="column">
 									<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
 								</div>
-							</p>
+								<div class="column">
+									<p><b>Prioridad</b> <?php echo $clasificacion_medico_cervix ?></p>
+								</div>
+							</div>
 							<div class="row">
 								<div class="column">
 									<p>
