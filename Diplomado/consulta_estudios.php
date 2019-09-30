@@ -235,11 +235,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                             //Papanicolaou
                                             $queryPapanicolaou = "SELECT 	c.id_paciente from 	ctrl_paciente_estudios c WHERE  c.id_paciente = $id_paciente; ";
                                             if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
-                                                while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
-                                                    $id_paciente12 = $resultSet['id_paciente'];
-                                                      }
-                                                    echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente12' target='_blank'>Ver </a>";
-
+                                                echo "<a href='Etiquetas/etiquetas_estudios.php?id_paciente=$id_paciente' target='_blank'>Ver </a>";
                                             }
                                             echo "</td>";
 /*

@@ -16,7 +16,7 @@
 	if (isset($_GET["id_paciente"]) && isset($_GET["id_estudio"])) {
 		$id_paciente = $_GET["id_paciente"];
 		$id_estudio = $_GET["id_estudio"];
-		$informacion = "SELECT
+		$informacion = "SELECT 
 			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
@@ -68,7 +68,26 @@
 	}
 	?>
 
-	
+	<script>
+		function imprimeEtiqueta() {
+			var mywindow = window.open('', 'PRINT', '', 'false');
+
+			mywindow.document.write('<html><head><title>' + document.title + '</title>');
+			mywindow.document.write('</head><body >');
+			mywindow.document.write('<link href="../../css/bootstrap.min.css" rel="stylesheet"/>');
+			mywindow.document.write('<link href="../../css/etiquetas.css" rel="stylesheet"/>');
+			mywindow.document.write(document.getElementById('etiqueta').innerHTML);
+			mywindow.document.write('</body></html>');
+
+			mywindow.document.close(); // necessary for IE >= 10
+			mywindow.focus(); // necessary for IE >= 10*/
+
+			mywindow.print();
+			mywindow.close();
+			window.close();
+			return true;
+		}
+	</script>
 
 </head>
 
@@ -91,7 +110,7 @@
 							<center>
 								<b>Solicitud De Estudio De Papanicolaou</b>
 							</center>
-							<div style="float:right;">ID Atención <?php echo $idAtencion?></div>
+							<div style="float:right;margin-top: 5px;"><p><b>ID Atención</b> <?php echo $idAtencion?></p></div>
 						</p>
 
 						<div class="row">
