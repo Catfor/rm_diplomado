@@ -228,18 +228,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group ic-cmp-int" id="data_3">
                                                         <div class="form-ic-cmp">
                                                             <i class="notika-icon notika-calendar"></i>
                                                         </div>
-                                                        <div class="input-group date nk-int-st">
-                                                            <span class="input-group-addon" style="border: 0px;"></span>
-                                                            <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Fecha de Nacimiento" value="" >
-                                                        </div>
+                                                     <FONT FACE="Arial" SIZE="2.5" style="color:rgb(144, 143, 143);"> Ingresa Fecha de Nacimiento: </FONT>
+                                                    <input type="date" id="bday" name="edad_paciente">
                                                     </div>
                                                 </div>
+
 
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group ic-cmp-int" id="data_3">

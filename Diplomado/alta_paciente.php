@@ -228,10 +228,9 @@
                                                         <div class="form-ic-cmp">
                                                             <i class="notika-icon notika-calendar"></i>
                                                         </div>
-                                                        <div class="input-group date nk-int-st">
-                                                            <span class="input-group-addon" style="border: 0px;"></span>
-                                                            <input type="text" class="form-control" name="edad_paciente" placeholder="Ingresa Fecha de Nacimiento" value="" required>
-                                                        </div>
+
+                                                          <label for="bday">Ingresa Fecha de Nacimiento</label>
+                                                          <input type="date" id="bday" name="edad_paciente">
                                                     </div>
                                                 </div>
 
@@ -589,10 +588,10 @@
             <script src="../js/plugins.js"></script>
             <!-- and drop JS
 ============================================ -->
-            
 
-            
-            
+
+
+
             <!-- main JS
 ============================================ -->
             <script src="../js/main.js"></script>
