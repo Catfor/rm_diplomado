@@ -233,12 +233,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                             echo "</td>";
                                             echo "<td>";
                                             //Papanicolaou
-                                            $queryPapanicolaou = "select 	e.id_estudio, 	e.fecha_estudio, 	e.estudio, 	e.antecedente_cancer, 	e.antecedente_infeccion_vagina, 	e.fecha_ultima_menstruacion, 	e.fecha_ultima_papanicolau, 	e.metodo_anticonceptivo, 	e.menopausia, 	e.hallazgos_colposcopicos, 	e.observaciones_papinocolau from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7 	and c.id_paciente = $id_paciente; ";
+                                            $queryPapanicolaou = "SELECT 	c.id_paciente from 	ctrl_paciente_estudios c WHERE  c.id_paciente = $id_paciente; ";
                                             if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
                                                 while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
-                                                    $id_estudio = $resultSet['id_estudio'];
-                                                    echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Ver </a>";
-                                                }
+                                                    $id_paciente12 = $resultSet['id_paciente'];
+                                                      }
+                                                    echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$id_paciente12' target='_blank'>Ver </a>";
+
                                             }
                                             echo "</td>";
 /*
