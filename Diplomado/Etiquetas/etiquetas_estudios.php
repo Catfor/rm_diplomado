@@ -14,6 +14,8 @@
 	ob_start();
 
 	include('../../coni/Localhost.php');
+	
+	setlocale(LC_ALL, 'es_ES.UTF-8');
 	date_default_timezone_set('America/Mexico_City');
 
 	if (isset($_GET["id_paciente"])) {

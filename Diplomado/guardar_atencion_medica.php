@@ -4,6 +4,7 @@ $id_usuario = isset($_POST['id_usuario']) ? $_POST['id_usuario'] : die("Error :N
 
 include('../coni/Localhost.php');
 
+setlocale(LC_ALL, 'es_ES.UTF-8');
 date_default_timezone_set('America/Mexico_City');
 $h = date("Y-m-d");
 $hoys = date("Y-m-d H:i:s");
