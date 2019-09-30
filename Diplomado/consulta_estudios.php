@@ -672,7 +672,7 @@ if($asignacionvaf==0){
                                               if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
                                                   while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
                                                       $id_estudio = $resultSet['id_estudio'];
-                                                      echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou1.php?id_paciente=$id_paciente' target='_blank'>Agregar Resultado </a>";
+                                                      echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_paciente' target='_blank'>Agregar Resultado </a>";
                                                   }
                                               }
                                               echo "</td>";
