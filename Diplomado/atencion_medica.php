@@ -1516,7 +1516,22 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                   </div>
                                                   <div id="contCoordCervix" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:25px 0px;">
 
+                                                  </div><br><br><br><br><br><br><br><br><br><br><br><br>
+                                                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                    <p>
+
+                                                    Clasificacion Urgencia   :<br></p>
+                                                    <select name='clasificacion_medicocervix' id='clasificacion_medicocervix' class="form-control">
+                                                      <option value="0" selected>Normal</option>
+                                                      <option value="1">Urgente</option>
+
+
+
+
+                                                    </select>
+
                                                   </div>
+                                                </div>
                                                 <div class="row fila">
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group purple-border">
@@ -1557,8 +1572,24 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                                 <div id="contCoordVulva" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:25px 0px;">
 
-                                                </div>
+                                                </div><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                                <div class="row fila">
 
+                                                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                    <p>
+
+                                                    Clasificacion Urgencia   :<br></p>
+                                                    <select name='clasificacion_medicoVulvo' id='clasificacion_medicoVulvo' class="form-control">
+                                                      <option value="0" selected>Normal</option>
+                                                      <option value="1">Urgente</option>
+
+
+
+
+                                                    </select>
+
+                                                  </div>
+                                                </div>
                                                 <div class="row fila">
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group purple-border">
@@ -1586,8 +1617,25 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <div id="accordionPurple-seven" class="collapse" role="tabpanel">
                                             <div class="panel-body">
                                               <p>
-                                                <div class="row fila">
 
+
+                                                  <div class="row fila">
+
+                                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                      <p>
+
+                                                      Clasificacion Urgencia   :<br></p>
+                                                      <select name='clasificacion_medicovagi' id='clasificacion_medicovagi' class="form-control">
+                                                        <option value="0" selected>Normal</option>
+                                                        <option value="1">Urgente</option>
+
+
+
+
+                                                      </select>
+
+                                                    </div>
+                                                  </div><div class="row fila">
                                                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                                                     <select name='estudio_solicitar_vaginoscopia' id='estudio_solicitar_vaginoscopia' class="form-control">
@@ -1633,6 +1681,23 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           </div>
                                           <div id="accordionPurple-six" class="collapse" role="tabpanel">
                                             <div class="panel-body">
+                                              <div class="row fila">
+
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                  <p>
+
+                                                  Clasificacion Urgencia   :<br></p>
+                                                  <select name='clasificacion_medicoendo' id='clasificacion_medicoendo' class="form-control">
+                                                    <option value="0" selected>Normal</option>
+                                                    <option value="1">Urgente</option>
+
+
+
+
+                                                  </select>
+
+                                                </div>
+                                              </div>
                                               <p>
 
                                                 <div class="row fila">
