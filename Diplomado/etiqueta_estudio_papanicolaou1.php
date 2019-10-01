@@ -203,7 +203,7 @@ if($clasificacion_medico==1){
 </div>
 <!--//Breadcomb area End-->
 <!--//Data Table area Start-->
-
+<form action='guardar_resultado_paps.php' method="post" >
 <div class="data-table-area">
     <div class="container">
         <div class="row">
@@ -235,8 +235,8 @@ if($clasificacion_medico==1){
                         <div class="row">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                           <p>¿Presenta células endocervicales?
-                            <label><input type="radio" name="celulas_endocervicales" value="1" required> Si</label>
-                            <label><input type="radio" name="celulas_endocervicales" value="0" required> NO</label>
+                            <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
+                            <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
                                </p>
                            </div>
                         </div>
@@ -267,21 +267,21 @@ if($clasificacion_medico==1){
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                           <p>BACILAR
-                            <label><input type="radio" name="celulas_endocervicales" value="1" required> Si</label>
-                            <label><input type="radio" name="celulas_endocervicales" value="0" required> NO</label>
+                            <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
+                            <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
                                </p>
 
                               </div>
                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                              <p>COCOIDE
-                               <label><input type="radio" name="celulas_endocervicales" value="1" required> Si</label>
-                               <label><input type="radio" name="celulas_endocervicales" value="0" required> NO</label>
+                               <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
+                               <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
                                   </p>
                         </div><br><br><br><br>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                           <p>MIXTA
-                            <label><input type="radio" name="celulas_endocervicales" value="1" required> Si</label>
-                            <label><input type="radio" name="celulas_endocervicales" value="0" required> NO</label>
+                            <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
+                            <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
                                </p>
                      </div>
                         </div>
@@ -330,8 +330,8 @@ if($clasificacion_medico==1){
                         <div class="row">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                           <p>¿Presenta células endocervicales?
-                            <label><input type="radio" name="celulas_endocervicales" value="1" required> Si</label>
-                            <label><input type="radio" name="celulas_endocervicales" value="0" required> NO</label>
+                            <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
+                            <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
                                </p>
                            </div>
                         </div>
@@ -358,7 +358,7 @@ if($clasificacion_medico==1){
                               <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="polimorfonucleares" class="selectpicker" required>
+                                        <select name="polimorfonucleares" class="selectpicker" >
                                           <option value="" >POLIMORFONUCLEARES</option>
                                           <option value="si">SI</option>
                                           <option value="no" >NO</option>
@@ -369,7 +369,7 @@ if($clasificacion_medico==1){
                               <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="citolisis" class="selectpicker" required>
+                                        <select name="citolisis" class="selectpicker" >
                                           <option value="" >CITOLISIS</option>
                                           <option value="si">SI</option>
                                           <option value="no" >NO</option>
@@ -380,7 +380,7 @@ if($clasificacion_medico==1){
                               <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="parasitos_hongos" class="selectpicker" required>
+                                        <select name="parasitos_hongos" class="selectpicker" >
                                           <option value="" >PARASITOS/HONGOS</option>
                                           <option value="si">SI</option>
                                           <option value="no" >NO</option>
@@ -391,7 +391,7 @@ if($clasificacion_medico==1){
                               <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="tricomonas" class="selectpicker" required>
+                                        <select name="tricomonas" class="selectpicker" >
                                           <option value="" >TRICOMONAS</option>
                                           <option value="si">SI</option>
                                           <option value="no" >NO</option>
@@ -402,7 +402,7 @@ if($clasificacion_medico==1){
                               <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="celulas_guia" class="selectpicker" required>
+                                        <select name="celulas_guia" class="selectpicker" >
                                           <option value="" >CELULAS GUIA</option>
                                           <option value="si">SI</option>
                                           <option value="no" >NO</option>
@@ -413,7 +413,7 @@ if($clasificacion_medico==1){
                               <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="histiocitos" class="selectpicker" required>
+                                        <select name="histiocitos" class="selectpicker" >
                                           <option value="" >HISTIOCITOS</option>
                                           <option value="si">SI</option>
                                           <option value="no" >NO</option>
@@ -424,7 +424,7 @@ if($clasificacion_medico==1){
                               <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="eritrocitos" class="selectpicker" required>
+                                        <select name="eritrocitos" class="selectpicker" >
                                           <option value="" >ERITROCITOS</option>
                                           <option value="si">SI</option>
                                           <option value="no" >NO</option>
@@ -435,7 +435,7 @@ if($clasificacion_medico==1){
                               <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="candida" class="selectpicker" required>
+                                        <select name="candida" class="selectpicker" >
                                           <option value="" >CANDIDA</option>
                                           <option value="si">SI</option>
                                           <option value="no" >NO</option>
@@ -445,7 +445,7 @@ if($clasificacion_medico==1){
                               </div>    <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select name="otros" class="selectpicker" required>
+                                            <select name="otros" class="selectpicker" >
                                               <option value="" >OTROS</option>
                                               <option value="si">SI</option>
                                               <option value="no" >NO</option>
@@ -500,8 +500,10 @@ if($clasificacion_medico==1){
                             </div>
                           </div>
                         </div>
+                        <p><input type="submit" value="Enviar datos"></p>
                       </div>
 
+                      </form>
 
                               </div>
                           </div>
