@@ -1,5 +1,7 @@
 <?php
 include('../coni/Localhost.php');
+
+setlocale(LC_ALL, 'es_ES.UTF-8');
 date_default_timezone_set('America/Mexico_City');
 $hoys = date("Y-m-d H:i:s");
 $nombre_paciente = $_GET['nombre_paciente'];
