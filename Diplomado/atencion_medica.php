@@ -2051,7 +2051,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           for (const deviceInfo of deviceInfos) {
             const option = document.createElement('option');
             option.value = deviceInfo.deviceId;
-            if (deviceInfo.kind === 'audioinput' && deviceInfo.label.includes("ISST")) {
+            if (deviceInfo.kind === 'audioinput' && ( deviceInfo.label.includes("ISST") || deviceInfo.label.includes("Real"))) {
               option.text = deviceInfo.label || `Microfono ${audioSelect.length + 1}`;
               audioSelect.appendChild(option);
             } else if (deviceInfo.kind === 'videoinput' && deviceInfo.label.includes("gato")) {
