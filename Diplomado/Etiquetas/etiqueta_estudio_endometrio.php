@@ -46,6 +46,7 @@
 		$antecedente_hormonoterapia = $info['hormonoterapia'];
 		$duracion_tratamiento = $info['duracion_hormonoterapia'];
 		$observaciones_endometrio = $info['observaciones_endometrio'];
+		$clasificacion_medico_endo =  $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente"; 
 
 		if (!endsWith(trim($colposcopico), ".")) {
 			$colposcopico = $colposcopico . '.';
@@ -124,7 +125,7 @@
 								<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
 							</div>
 							<div class="column">
-								<p><b>Prioridad</b> <?php echo $clasificacion_medico_paps ?></p>
+								<p><b>Prioridad</b> <?php echo $clasificacion_medico_endo ?></p>
 							</div>
 						</div>
 						<div class="row">

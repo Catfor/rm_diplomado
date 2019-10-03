@@ -51,7 +51,7 @@
 		$senalizacion = $info['senalizacion'];
 		$coordenadasHelper = implode('","', explode('|', $info['coordenadas']));
 		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info['posible_recomendacion_diagnostica']));
-	$clasificacion_medico_paps = $info['clasificacion_medico'];
+		$clasificacion_medico_paps =  $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente"; 
 		if (!endsWith(trim($hallazgos_colposcopicos), ".")) {
 			$hallazgos_colposcopicos = $hallazgos_colposcopicos . '.';
 		}

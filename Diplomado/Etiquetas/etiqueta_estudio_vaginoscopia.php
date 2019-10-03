@@ -45,6 +45,7 @@
 		$vaginoscopia_acetico = $info['vaginoscopia_acetico'];
 		$vaginoscopia_lugol = $info['vaginoscopia_lugol'];
 		$anotaciones_vaginoscopia = $info['anotaciones_vaginoscopia'];
+		$clasificacion_medico_vagino = $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 
 		ob_end_flush();
 	} else {
@@ -113,7 +114,7 @@
 								<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
 							</div>
 							<div class="column">
-								<p><b>Prioridad</b> <?php echo $clasificacion_medico_paps ?></p>
+								<p><b>Prioridad</b> <?php echo $clasificacion_medico_vagino ?></p>
 							</div>
 						</div>
 

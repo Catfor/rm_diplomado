@@ -334,7 +334,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                         <i class="notika-icon notika-form"></i>
                       </div>
                       <div class="breadcomb-ctn">
-                        <h2>ATENCIÓN MÉDICA</h2>
+                        <h2>CONSULTA</h2>
                       </div>
                     </div>
                     <div class="row fila">
@@ -382,7 +382,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                   <div class="basic-tb-hd">
-                    <h2 class="cabecera-morada">ATENCIÓN MÉDICA</h2>
+                    <h2 class="cabecera-morada">CONSULTA</h2>
 
                   </div>
                   <div class="row fila"><br>

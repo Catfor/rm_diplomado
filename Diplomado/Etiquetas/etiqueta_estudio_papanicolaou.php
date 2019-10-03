@@ -45,6 +45,7 @@
 		$idAtencion = $info['id_atencion'];
 		$colposcopico = $info['posible_recomendacion_diagnostica'];
 		$observaciones = $info['observaciones_papinocolau'];
+		$clasificacion_medico_paps =  $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente"; 
 
 		if (!endsWith(trim($colposcopico), ".")) {
 			$colposcopico = $colposcopico . '.';

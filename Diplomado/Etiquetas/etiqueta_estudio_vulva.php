@@ -47,6 +47,7 @@
 		$idAtencion = $info['id_atencion'];
 		$anotaciones_vulvoscopia = $info['anotaciones_vulvoscopia'];
 		$coordenadasHelper = "[\"" + implode("\",\"", explode("|", $info['coordenadas'])) + "\"]";
+		$clasificacion_medico_vulva = $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 
 		$vulvoscopia_acetico = $info["vulvoscopia_acetico"];
 
@@ -160,7 +161,7 @@
 								<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
 							</div>
 							<div class="column">
-								<p><b>Prioridad</b> <?php echo $clasificacion_medico_paps ?></p>
+								<p><b>Prioridad</b> <?php echo $clasificacion_medico_vulva ?></p>
 							</div>
 						</div>
 						<div class="row">
