@@ -1273,14 +1273,14 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                       </div>
 
 
-                                      <div class="row fila">
+                                <!--      <div class="row fila">
                                         <h4 class="text-center">Imagenes Colposcopicas </h4>
                                         <div class="form-group">
                                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <center> <input type="file" class="form-control" id="archivo" name="archivo[]" multiple> </center>
                                           </div>
                                         </div>
-                                      </div>
+                                      </div>-->
                                       <div class="row fila">
                                         <div id="vectorFotos" style="width: 100%;display:inline-block; text-align:center;">
                                         </div>
