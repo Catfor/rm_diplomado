@@ -13,13 +13,13 @@
 	<?php
 	ob_start();
 	include('../../coni/Localhost.php');
-	
+
 	setlocale(LC_ALL, 'es_ES.UTF-8');
 	date_default_timezone_set('America/Mexico_City');
 	if (isset($_GET["id_paciente"]) && isset($_GET["id_estudio"])) {
 		$id_paciente = $_GET["id_paciente"];
 		$id_estudio = $_GET["id_estudio"];
-		$informacion = "SELECT 
+		$informacion = "SELECT
 			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
@@ -51,7 +51,7 @@
 		$senalizacion = $info['senalizacion'];
 		$coordenadasHelper = implode('","', explode('|', $info['coordenadas']));
 		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info['posible_recomendacion_diagnostica']));
-
+	$clasificacion_medico_paps = $info['clasificacion_medico'];
 		if (!endsWith(trim($hallazgos_colposcopicos), ".")) {
 			$hallazgos_colposcopicos = $hallazgos_colposcopicos . '.';
 		}
@@ -170,6 +170,8 @@
 								<p><b>ID Atención</b> <?php echo $idAtencion ?></p>
 							</div>
 							<div class="column">
+
+								
 								<p><b>Prioridad</b> <?php echo $clasificacion_medico_paps ?></p>
 							</div>
 						</div>

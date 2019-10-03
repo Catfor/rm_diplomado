@@ -2,7 +2,7 @@
     setlocale(LC_ALL, 'es_ES.UTF-8');
     date_default_timezone_set('America/Mexico_City');
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-  
+
   $hoys = date("Y-m-d");
   ?>
 <!doctype html>
@@ -460,12 +460,12 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente =  $id
                                                        $tipo_estudio = $resultpaps['tipo_estudio'];
 $asignacion= $resultpaps['asignacion'];
 if($asignacion==0){
-                                                     echo "<input  type='checkbox' name='paps[]' value='$atencion'> <a href='Etiquetas/etiqueta_estudio_papanicolaou.php?paciente=$paciente&atencion=$atencion&estudio=$estudio&tipo_estudio=$tipo_estudio'
+                                                     echo "<input  type='checkbox' name='paps[]' value='$atencion'> <a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$paciente&atencion=$atencion&id_estudio=$estudio&tipo_estudio=$tipo_estudio'
                                                       target='_blank'>Papanicolau</a> ";
                                                    }else{
 
 
-                                                     echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?paciente=$paciente&atencion=$atencion&estudio=$estudio&tipo_estudio=$tipo_estudio'
+                                                     echo "<a href='Etiquetas/etiqueta_estudio_papanicolaou.php?id_paciente=$paciente&atencion=$atencion&id_estudio=$estudio&tipo_estudio=$tipo_estudio'
                                                       target='_blank'>solo ver Papanicolau</a>";
                                                       }
                                                  }
@@ -529,7 +529,7 @@ if($asignacionvaf==0){
                                                      $tipo_estudioc = $resultSet['tipo_estudio'];
                                                       $asignacionc = $resultSet['asignacion'];
                                                       if($asignacionc==0){
- echo " <input  type='checkbox' name='cervix[]' value='$atencionc'><a href='Etiquetas/etiqueta_estudio_cervix.php?paciente=$pacientec&atencion=$atencionc&estudio=$estudioc&tipo_estudio=$tipo_estudioc' target='_blank'>Cervix</a><br>";
+ echo " <input  type='checkbox' name='cervix[]' value='$atencionc'><a href='Etiquetas/etiqueta_estudio_cervix.php?id_paciente=$pacientec&atencion=$atencionc&id_estudio=$estudioc&tipo_estudio=$tipo_estudioc' target='_blank'>Cervix</a><br>";
 }else{
   echo "<div><a href='Etiquetas/etiqueta_estudio_cervix.php?paciente=$pacientec&atencion=$atencionc&estudio=$estudioc&tipo_estudio=$tipo_estudioc' target='_blank'>Solo Ver Cervix</a></div>";
 
