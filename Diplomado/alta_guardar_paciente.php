@@ -72,5 +72,13 @@ VALUES
     echo $sql112;
   }
 
+  
+  $idUsuario = $_SESSION['id_usuario'];
+  $sql11 = "INSERT INTO bitacora_ingreso
+  (fecha_ingreso,accion,id_u)
+  VALUES
+  ('$hoys','Se agrego el paciente paciente $nombre_paciente $apellidos_paciente , con el ID $id_paciente','$idUsuario')";
+  $resultaq = $mysqliL->query($sql11);
+
   header("Location:consulta_paciente1.php?nom=$nombre_paciente $apellidos_paciente");
 }
