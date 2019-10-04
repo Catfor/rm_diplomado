@@ -178,7 +178,7 @@ foreach ($_POST["canvas"] as $canvas) {
   }
   closedir($dir); //Cerramos el directorio de destino
 }
-
+if(isset($_FILES["archivo"]))
 foreach ($_FILES["archivo"]['tmp_name'] as $key => $tmp_name) {
   //Validamos que el archivo exista
   if ($_FILES["archivo"]["name"][$key]) {
