@@ -223,7 +223,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
                                             //Colposcopia
                                             echo "<td>";
-                                            $queryColposcopia = "select 	e.id_estudio,c.id_atencion from 	estudio_colposcopico e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente;";
+                                            $queryColposcopia = "select 	e.id_estudio,c.id_atencion from 	estudio_colposcopico e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio  and c.id_atencion=$i	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente ;";
                                             if ($resultSetColposcopia = $mysqliL->query($queryColposcopia)) {
                                                 while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
                                                     $id_estudio = $resultSet['id_estudio'];
@@ -434,7 +434,7 @@ WHERE id_estudio!=0 GROUP BY ct.id_estudio";
                                              echo "<td>";
                                              $queryColposcopia = "SELECT c.id_paciente AS paciente ,c.id_atencion atencion,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio
                                               from 	estudio_colposcopico e inner join ctrl_paciente_estudios c on
-                                             	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente;";
+                                             	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente  and c.id_atencion=$id_atencion;";
                                              if ($resultSetColposcopia = $mysqliL->query($queryColposcopia)) {
                                                  while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
                                                      $pacientepa = $resultSet['paciente'];
@@ -655,7 +655,7 @@ if($asignacionvaf==0){
 
                                               //Colposcopia
                                               echo "<td>";
-                                              $queryColposcopia = "select 	e.id_estudio,c.id_atencion from 	estudio_colposcopico e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente;";
+                                              $queryColposcopia = "select 	e.id_estudio,c.id_atencion from 	estudio_colposcopico e inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio  and c.id_atencion=$i	and c.id_tipo_estudio = 1 	and c.id_paciente = $id_paciente ;";
                                               if ($resultSetColposcopia = $mysqliL->query($queryColposcopia)) {
                                                   while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
                                                       $id_estudio = $resultSet['id_estudio'];
