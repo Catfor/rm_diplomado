@@ -171,7 +171,7 @@
 							</div>
 							<div class="column">
 
-								
+
 								<p><b>Prioridad</b> <?php echo $clasificacion_medico_paps ?></p>
 							</div>
 						</div>

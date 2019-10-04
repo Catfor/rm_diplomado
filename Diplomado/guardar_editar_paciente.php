@@ -13,7 +13,7 @@ $municipio_paciente = $_GET['municipio_paciente'];
 $codigo_postal = $_GET['codigo_postal'];
 $tipo_seguro = $_GET['tipo_seguro'];
 $otro_tipo_seguro = $_GET['otro_tipo_seguro'];
-
+  $idUsuario = $_SESSION['id_usuario'];
 $ingresomensual = $_GET['ingresomensual'];
 $escolaridad_paciente = $_GET['escolaridad_paciente'];
 $apoyo_gubernamental_paciente = $_GET['apoyo_gubernamental_paciente'];
@@ -32,13 +32,7 @@ $newDate = date('Y-m-d', strtotime($_GET['edad_paciente']));
   $annos = $hoy->diff($cumpleanos);
   $edad = $annos->y;
 
-  $sql11 = "INSERT INTO bitacora_ingreso
-  (fecha_ingreso,accion,id_u)
-  VALUES
-  ('$hoys','modificacion paciente','$id_paciente')";
-  $resultaq = $mysqliL->query($sql11);
 
-  //$id_bitacora = $mysqliL->insert_id;
 
 
   $Modifi = "UPDATE paciente
@@ -62,7 +56,7 @@ $newDate = date('Y-m-d', strtotime($_GET['edad_paciente']));
 
   for ($y = 0; $y < count($tipo_seguro); $y++) {
     $tipos = $tipo_seguro[$y];
-echo $tipos.' tipo_seguro<br>';
+
 
     $sql112= "INSERT INTO tipo_seguro
     (id_seguro,id_paciente)
@@ -73,6 +67,11 @@ echo $tipos.' tipo_seguro<br>';
 
 
 
+    $sql11 = "INSERT INTO bitacora_ingreso
+    (fecha_ingreso,accion,id_u)
+    VALUES
+    ('$hoys','Se edito  el paciente $nombre_paciente $apellidos_paciente , con el ID $id_paciente','$idUsuario')";
+    $resultaq = $mysqliL->query($sql11);
 
 
   header("Location:consulta_paciente1.php");

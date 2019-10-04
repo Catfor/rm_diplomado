@@ -489,9 +489,9 @@ if($asignacion==0){
 if($asignacionv==0){
 
 
-                                                     echo "<input  type='checkbox'  name='vulva[]' value='$atencionv'><a href='Etiquetas/etiqueta_estudio_vulva.php?paciente=$pacientev&atencion=$atencionv&estudio=$estudiov&tipo_estudio=$id_tipo_estudiov' target='_blank'>Vulvo</a><br>";
+                                                     echo "<input  type='checkbox'  name='vulva[]' value='$atencionv'><a href='Etiquetas/etiqueta_estudio_vulva.php?id_paciente=$pacientev&atencion=$atencionv&id_estudio=$estudiov&tipo_estudio=$id_tipo_estudiov' target='_blank'>Vulvo</a><br>";
 }else{
-  echo "<div><a href='Etiquetas/etiqueta_estudio_vulva.php?paciente=$pacientev&atencion=$atencionv&estudio=$estudiov&tipo_estudio=$id_tipo_estudiov' target='_blank'>Solo ver Vulvo</a></div>";
+  echo "<div><a href='Etiquetas/etiqueta_estudio_vulva.php?id_paciente=$pacientev&atencion=$atencionv&id_estudio=$estudiov&tipo_estudio=$id_tipo_estudiov' target='_blank'>Solo ver Vulvo</a></div>";
 
 }
                                                  }
@@ -510,9 +510,9 @@ if($asignacionv==0){
                                                        $tipo_estudiova = $resultSet['tipo_estudio'];
                                                           $asignacionvaf= $resultSet['asignacion'];
 if($asignacionvaf==0){
- echo " <input  type='checkbox'  name='vagi[]' value='$atencionva'> <a href='Etiquetas/etiqueta_estudio_vaginoscopia.php?paciente=$pacienteva&atencion=$atencionva&estudio=$estudiova&tipo_estudio=$tipo_estudiova' target='_blank'>Vagins</a><br>";
+ echo " <input  type='checkbox'  name='vagi[]' value='$atencionva'> <a href='Etiquetas/etiqueta_estudio_vaginoscopia.php?id_paciente=$pacienteva&atencion=$atencionva&id_estudio=$estudiova&tipo_estudio=$tipo_estudiova' target='_blank'>Vagins</a><br>";
 }else{
-   echo "<div><a href='Etiquetas/etiqueta_estudio_vaginoscopia.php?paciente=$pacienteva&atencion=$atencionva&estudio=$estudiova&tipo_estudio=$tipo_estudiova' target='_blank'>solo ver Vagina</a></div>";
+   echo "<div><a href='Etiquetas/etiqueta_estudio_vaginoscopia.php?id_paciente=$pacienteva&atencion=$atencionva&id_estudio=$estudiova&tipo_estudio=$tipo_estudiova' target='_blank'>solo ver Vagina</a></div>";
 }
                                                  }
                                              }
@@ -531,7 +531,7 @@ if($asignacionvaf==0){
                                                       if($asignacionc==0){
  echo " <input  type='checkbox' name='cervix[]' value='$atencionc'><a href='Etiquetas/etiqueta_estudio_cervix.php?id_paciente=$pacientec&atencion=$atencionc&id_estudio=$estudioc&tipo_estudio=$tipo_estudioc' target='_blank'>Cervix</a><br>";
 }else{
-  echo "<div><a href='Etiquetas/etiqueta_estudio_cervix.php?paciente=$pacientec&atencion=$atencionc&estudio=$estudioc&tipo_estudio=$tipo_estudioc' target='_blank'>Solo Ver Cervix</a></div>";
+  echo "<div><a href='Etiquetas/etiqueta_estudio_cervix.php?id_paciente=$pacientec&atencion=$atencionc&id_estudio=$estudioc&tipo_estudio=$tipo_estudioc' target='_blank'>Solo Ver Cervix</a></div>";
 
 }
 
@@ -551,9 +551,9 @@ if($asignacionvaf==0){
                                                    $tipo_estudioe = $resultSet['tipo_estudio'];
                                                    $asignacione = $resultSet['asignacion'];
                                                    if($asignacione==0){
-                                                     echo "<input  type='checkbox'  name='endo[]' value='$atencione'><a href='Etiquetas/etiqueta_estudio_endometrio.php?paciente=$pacientee&atencion=$atencione&estudio=$estudioe&tipo_estudio=$tipo_estudioe' target='_blank'>Endometrio</a>";
+                                                     echo "<input  type='checkbox'  name='endo[]' value='$atencione'><a href='Etiquetas/etiqueta_estudio_endometrio.php?id_paciente=$pacientee&atencion=$atencione&id_estudio=$estudioe&tipo_estudio=$tipo_estudioe' target='_blank'>Endometrio</a>";
 }else{
-  echo "<div><a href='Etiquetas/etiqueta_estudio_endometrio.php?paciente=$pacientee&atencion=$atencione&estudio=$estudioe&tipo_estudio=$tipo_estudioe' target='_blank'>Solo Ver Endometrio</a></div>";
+  echo "<div><a href='Etiquetas/etiqueta_estudio_endometrio.php?id_paciente=$pacientee&atencion=$atencione&id_estudio=$estudioe&tipo_estudio=$tipo_estudioe' target='_blank'>Solo Ver Endometrio</a></div>";
 
 }
                                                  }
@@ -667,24 +667,47 @@ if($asignacionvaf==0){
                                               echo "</td>";
                                               echo "<td>";
                                               //Papanicolaou
-                                              $queryPapanicolaou = "SELECT c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico  from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on
-                                                e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7 	and c.id_paciente = '$id_paciente' WHERE id_usu_pat='$id'; ";
+                                              $queryPapanicolaou = "SELECT c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico  from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on
+                                                e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7 	and c.id_paciente = '$id_paciente'  ";
+
                                               if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
                                                   while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
                                                       $id_pacientepaps = $resultSet['id_paciente'];
+                                                        $estatus_supervisor = $resultSet['estatus_supervisor'];
+                                                            $estatus_patologo = $resultSet['estatus_patologo'];
                                                       $id_estudiopaps = $resultSet['id_estudio'];
                                                       $id_tipo_estudiopaps = $resultSet['id_tipo_estudio'];
                                                       $id_usuariopaps = $resultSet['id_usuario'];
                                                       $id_atencionpaps = $resultSet['id_atencion'];
                                                       $id_usu_patpaps = $resultSet['id_usu_pat'];
                                                       $clasificacion_medicopaps = $resultSet['clasificacion_medico'];
-                                                      if($clasificacion_medicopaps==1){
+                                                      $id_usu_pat = $resultSet['id_usu_pat'];
+
+                 if($estatus_patologo==0 and $estatus_supervisor==1 and $id_usu_pat==$id){
+
+
+
+                                                      if($clasificacion_medicopaps==1 ){
                                                         echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' style='color: red' target='_blank'>Agregar Resultado </a>";
 
-                                                      }else{
+                                                      }
+
+
+                                                      else{
                                                         echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' style='color: green' target='_blank'>Agregar Resultado </a>";
 
                                                       }
+}
+else  if($estatus_patologo==0 and $estatus_supervisor==1 and $id_usu_pat!=$id){
+  echo "No Esta Asignado Para Este Usuario";
+}
+else  if($estatus_patologo==1 and $estatus_supervisor==1 and $id_usu_pat!=$id){
+  echo "No Esta Asignado Para Este Usuario";
+}
+else{
+  echo "solo ver ";
+}
+
                                                   }
                                               }
                                               echo "</td>";
@@ -707,7 +730,7 @@ if($asignacionvaf==0){
                                               if ($resultSetVaginoscopia = $mysqliL->query($queryVaginoscopia)) {
                                                   while ($resultSet = $resultSetVaginoscopia->fetch_assoc()) {
                                                       $id_estudio = $resultSet['id_estudio'];
-                                                      echo "<div><a href='Etiquetas/etiqueta_estudio_vaginoscopia.1php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Agregar Vaginoscopia</a></div>";
+                                                      echo "<div><a href='Etiquetas/etiqueta_estudio_vaginoscopia.1php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Agregar Vagino</a></div>";
                                                   }
                                               }
 
@@ -727,7 +750,7 @@ if($asignacionvaf==0){
                                               if ($resultSetEndometrio = $mysqliL->query($queryEndometrio)) {
                                                   while ($resultSet = $resultSetEndometrio->fetch_assoc()) {
                                                       $id_estudio = $resultSet['id_estudio'];
-                                                      echo "<div><a href='Etiquetas/etiqueta_estudio_endometrio1.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Agregar Endometrio</a></div>";
+                                                      echo "<div><a href='Etiquetas/etiqueta_estudio_endometrio1.php?id_paciente=$id_paciente&id_estudio=$id_estudio' target='_blank'>Agregar Endom</a></div>";
                                                   }
                                               }
 

@@ -203,7 +203,14 @@ if($clasificacion_medico==1){
 </div>
 <!--//Breadcomb area End-->
 <!--//Data Table area Start-->
-<form action='guardar_resultado_paps.php' method="post" >
+<form action='guardar_resultado_paps.php' method="post" id="gform">
+
+
+  <input type="hidden" name="id_paciente" value="<?php echo $id_paciente;?>">
+  <input type="hidden" name="id_estudio" value="<?php echo $id_estudio;?>">
+  <input type="hidden" name="id_tipo_estudio" value="<?php echo $id_tipo_estudio;?>">
+  <input type="hidden" name="id_atencion" value="<?php echo $id_atencion;?>">
+
 <div class="data-table-area">
     <div class="container">
         <div class="row">
@@ -232,56 +239,49 @@ if($clasificacion_medico==1){
                           </div>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                          <p>¿Presenta células endocervicales?
-                            <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
-                            <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
-                               </p>
-                           </div>
-                        </div>
+
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <p>Cuenta con algùn Tipo de Seguro:</p>
+                          <font size=3> Flora Bacteriana</font></b><br><br>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                              <label><input type="checkbox" name="personality">C.PARABASAL     </label>
-                              <label><input type="checkbox" name="personality">C.INTERMEDIA    </label>
-                              <label><input type="checkbox" name="personality">C.SUPERFICIALES </label>
+                              <label><input type="checkbox" name="flora_bacteriana[]" value='C.PARABASA'>C.PARABASAL</label>
+                              <label><input type="checkbox" name="flora_bacteriana[]" value='C.INTERMEDIA'>C.INTERMEDIA</label>
+                              <label><input type="checkbox" name="flora_bacteriana[]" value='C.SUPERFICIALE'>C.SUPERFICIALES</label>
                         </div>
-                          </div>
+                      </div><br><br><br><br>
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                               <div class="form-group ic-cmp-int float-lb floating-lb">
                                 <div class="nk-int-st">
-                                      <input type="text" name="Valor_estrogeneo" class="form-control">
-                                      <label class="nk-label">Valor Estrogeneo %</label>
+                                      <input type="text" name="Valor_estrogeneo" class="form-control" placeholder="Valor Estrogeneo %">
+
                                   </div>
                               </div>
-                          </div>
+                          </div><br><br><br><br>
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <b>  <font size=3> Flora Bacteriana</font></b>
+                    <b>
                     </div>
                         </div>
                         <div class="row">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
                           <p>BACILAR
-                            <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
-                            <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
+                            <label><input type="radio" name="flora_bacteriana_bacilar" value="1" > Si</label>
+                            <label><input type="radio" name="flora_bacteriana_bacilar" value="0" > NO</label>
                                </p>
 
                               </div>
                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                              <p>COCOIDE
-                               <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
-                               <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
+                               <label><input type="radio" name="flora_bacteriana_cocoide" value="1" > Si</label>
+                               <label><input type="radio" name="flora_bacteriana_cocoide" value="0" > NO</label>
                                   </p>
                         </div><br><br><br><br>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                           <p>MIXTA
-                            <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
-                            <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
+                            <label><input type="radio" name="flora_bacteriana_mixta" value="1" > Si</label>
+                            <label><input type="radio" name="flora_bacteriana_mixta" value="0" > NO</label>
                                </p>
                      </div>
                         </div>
@@ -314,7 +314,7 @@ if($clasificacion_medico==1){
                             <p>
 
                             Clasificacion Urgencia   :<br></p>
-                            <select name='clasificacion_medicoendo' id='clasificacion_medicoendo' class="form-control">
+                            <select name='clasifiacion_patologo' id='clasifiacion_patologo' class="form-control">
                               <option value="0" selected>Bajo Grado</option>
                               <option value="1">Alto Grado</option>
                               <option value="2">Cancer escamoso incitu</option>
@@ -329,7 +329,7 @@ if($clasificacion_medico==1){
                         </div><br>
                         <div class="row">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                          <p>¿Presenta células endocervicales?
+                          <p>¿Presenta células endocervicales?<br>
                             <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
                             <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
                                </p>
@@ -354,106 +354,9 @@ if($clasificacion_medico==1){
                                 </div>
                                 </div>
                               </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="polimorfonucleares" class="selectpicker" >
-                                          <option value="" >POLIMORFONUCLEARES</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="citolisis" class="selectpicker" >
-                                          <option value="" >CITOLISIS</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="parasitos_hongos" class="selectpicker" >
-                                          <option value="" >PARASITOS/HONGOS</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="tricomonas" class="selectpicker" >
-                                          <option value="" >TRICOMONAS</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="celulas_guia" class="selectpicker" >
-                                          <option value="" >CELULAS GUIA</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="histiocitos" class="selectpicker" >
-                                          <option value="" >HISTIOCITOS</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="eritrocitos" class="selectpicker" >
-                                          <option value="" >ERITROCITOS</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="bootstrap-select fm-cmp-mg">
-                                        <select name="candida" class="selectpicker" >
-                                          <option value="" >CANDIDA</option>
-                                          <option value="si">SI</option>
-                                          <option value="no" >NO</option>
-                                </select>
-                                    </div>
-                                </div>
-                              </div>    <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select name="otros" class="selectpicker" >
-                                              <option value="" >OTROS</option>
-                                              <option value="si">SI</option>
-                                              <option value="no" >NO</option>
-                                    </select>
-                                        </div>
-                                    </div>
-                                  </div>
 
-                            </div>
+
+
                             </div>
                             </div>
                           </div>
@@ -466,8 +369,8 @@ if($clasificacion_medico==1){
 
                                 <select name="polimorfonucleares" class="form-control" required>
                                   <option value="" >Selecciona</option>
-                                  <option value="si">SI</option>
-                                  <option value="no" >NO</option>
+                                  <option value="1">SI</option>
+                                  <option value="0" >NO</option>
                         </select>
                  </div>
 
@@ -478,8 +381,8 @@ if($clasificacion_medico==1){
 
                      <select name="citolisis" class="form-control" required>
                        <option value="" >Selecciona</option>
-                       <option value="si">SI</option>
-                       <option value="no" >NO</option>
+                       <option value="1">SI</option>
+                       <option value="0" >NO</option>
              </select>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -489,8 +392,8 @@ if($clasificacion_medico==1){
 
           <select name="parasitos_hongos" class="form-control" required>
             <option value="" >Selecciona</option>
-            <option value="si">SI</option>
-            <option value="no" >NO</option>
+            <option value="1">SI</option>
+            <option value="0" >NO</option>
   </select>
 </div>
 
@@ -503,8 +406,8 @@ if($clasificacion_medico==1){
 
                                 <select name="tricomonas" class="form-control" required>
                                   <option value="" >Selecciona</option>
-                                  <option value="si">SI</option>
-                                  <option value="no" >NO</option>
+                                  <option value="1">SI</option>
+                                  <option value="0" >NO</option>
                         </select>
                  </div>
 
@@ -515,8 +418,8 @@ if($clasificacion_medico==1){
 
                      <select name="celulas_guia" class="form-control" required>
                        <option value="" >Selecciona</option>
-                       <option value="si">SI</option>
-                       <option value="no" >NO</option>
+                       <option value="1">SI</option>
+                       <option value="0" >NO</option>
              </select>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -524,10 +427,10 @@ if($clasificacion_medico==1){
 
     Histiocitos:<br></p>
 
-          <select name="tricomonas" class="form-control" required>
+          <select name="histiocitos" class="form-control" required>
             <option value="" >Selecciona</option>
-            <option value="si">SI</option>
-            <option value="no" >NO</option>
+            <option value="1">SI</option>
+            <option value="0" >NO</option>
   </select>
 </div>
                           </div>
@@ -538,10 +441,10 @@ if($clasificacion_medico==1){
 
                               Eritrocitos:<br></p>
 
-                                <select name="polimorfonucleares" class="form-control" required>
+                                <select name="eritrocitos" class="form-control" required>
                                   <option value="" >Selecciona</option>
-                                  <option value="si">SI</option>
-                                  <option value="no" >NO</option>
+                                  <option value="1">SI</option>
+                                  <option value="0" >NO</option>
                         </select>
                  </div>
 
@@ -552,8 +455,8 @@ if($clasificacion_medico==1){
 
                      <select name="candida" class="form-control" required>
                        <option value="" >Selecciona</option>
-                       <option value="si">SI</option>
-                       <option value="no" >NO</option>
+                       <option value="1">SI</option>
+                       <option value="0" >NO</option>
              </select>
       </div>
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
@@ -563,8 +466,8 @@ if($clasificacion_medico==1){
 
           <select name="otros" class="form-control" required>
             <option value="" >Selecciona</option>
-            <option value="si">SI</option>
-            <option value="no" >NO</option>
+            <option value="1">SI</option>
+            <option value="0" >NO</option>
   </select>
 </div>
 
@@ -592,10 +495,10 @@ if($clasificacion_medico==1){
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                           <div class="form-group">
                                               <div class="nk-int-st">
-                                                  <textarea class="form-control auto-size" rows="2" placeholder="INTERPRETACIÓN"></textarea>
+                                                  <textarea class="form-control auto-size" rows="2" placeholder="INTERPRETACIÓN" name="interpretacion" form="gform" ></textarea>
                                               </div>
                                           </div>
-                                      </div>
+
                                   </div>
                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="basic-tb-hd">
@@ -606,7 +509,7 @@ if($clasificacion_medico==1){
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                           <div class="form-group">
                                               <div class="nk-int-st">
-                                                  <textarea class="form-control auto-size" rows="2" placeholder="OBSERVACIONES"></textarea>
+                                                  <textarea class="form-control auto-size" rows="2" placeholder="OBSERVACIONES" name="observaciones" form="gform"></textarea>
                                               </div>
                                           </div>
                                       </div>
@@ -616,15 +519,15 @@ if($clasificacion_medico==1){
                               </div>
                             </div>
                           </div>
-                        </div>
-                        <p><input type="submit" value="Enviar datos"></p>
+                        </div><br><br>
+                        <center><p><input type="submit" value="Enviar datos"></p></center>
                       </div>
 
                       </form>
 
                               </div>
                           </div>
-                          <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                    <!--      <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
                               <div class="statistic-right-area notika-shadow mg-tb-30 sm-res-mg-t-0">
                                   <div class="past-day-statis">
                                       <h2>Paciente/Medico </h2>
@@ -688,7 +591,7 @@ if($clasificacion_medico==1){
                                   </div>
 
                               </div>
-                          </div>
+                          </div>-->
                       </div>
                   </div>
               </div>

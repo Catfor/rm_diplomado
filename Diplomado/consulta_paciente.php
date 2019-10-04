@@ -2,7 +2,7 @@
   setlocale(LC_ALL, 'es_ES.UTF-8');
   date_default_timezone_set('America/Mexico_City');
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-  
+
   $hoys = date("Y-m-d");
   ?>
 <!doctype html>
@@ -275,7 +275,7 @@ WHERE p.id_paciente=$id_paciente
                             }
                             echo "
                                             <td>$edad_paciente</td>
-                                            <td><a href='atencion_medica.php?id_paciente=$id_paciente'>CONSULTAR</a></td>
+                                            <td><a href='atencion_medica.php?id_paciente=$id_paciente'>Iniciar Consulta</a></td>
 
 
 
