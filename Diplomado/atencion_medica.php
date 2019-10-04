@@ -1224,8 +1224,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                                           <select name='schiller' id='schiller' class="form-control">
                                             <option value="">Selecciona Schiller</option>
-                                            <option value="negativa">Negativa</option>
                                             <option value="positiva">Positiva</option>
+                                            <option value="negativo">Negativo</option>
 
                                           </select>
 

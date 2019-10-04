@@ -65,7 +65,7 @@ $miscelaneos = $_POST['miscelaneos'];
 $posible_recomendacion_diagnostica = $_POST['posible_recomendacion_diagnostica'];
 $recomendacion_diagnostica = $_POST['recomendacion_diagnostica'];
 $vulvoscopia_acetico = isset($_POST['vulvoscopia_acetico']) ? $_POST['vulvoscopia_acetico'] : "N/A";
-$insertaestudio_colposcopico = "INSERT INTO estudio_colposcopico (colposcopia,causa,cervix,union_escamocolumnar,zona_transformacion,epitelio_acetoblanco,ep_criterios_menores,ep_criterios_intermedios,ep_criterios_mayores,bs_criterios_menores,bs_criterios_intermedios, bs_criterios_mayores,ag_criterios_menores,ag_criterios_intermedios,ag_criterios_mayores,cy_menores,cy_intermedios,cy_mayores,schiller, vaginoscopia_acetico,vaginoscopia_lugol,miscelaneos,posible_recomendacion_diagnostica,fecha_estudio,vulvoscopia_acetico)  VALUES ('$colposcopia','$causa','$cervix','$union_escamocolumnar','$zona_transformacion','$epitelio_acetoblanco','$ep_criterios_menores','$ep_criterios_intermedios','$ep_criterios_mayores', '$bs_criterios_menores','$bs_criterios_intermedios','$bs_criterios_mayores','$ag_criterios_menores','$ag_criterios_intermedios','$ag_criterios_mayores', '$cy_menores','$cy_intermedios','$cy_mayores','$schiller','$vaginoscopia','$vaginoscopia_lugol','$miscelaneos','$posible_recomendacion_diagnostica','$hoys','$vulvoscopia_acetico')";
+$insertaestudio_colposcopico = "INSERT INTO estudio_colposcopico (colposcopia,causa,cervix,union_escamocolumnar,zona_transformacion,epitelio_acetoblanco,ep_criterios_menores,ep_criterios_intermedios,ep_criterios_mayores,bs_criterios_menores,bs_criterios_intermedios, bs_criterios_mayores,ag_criterios_menores,ag_criterios_intermedios,ag_criterios_mayores,cy_menores,cy_intermedios,cy_mayores,schiller, vaginoscopia_acetico,vaginoscopia_lugol,miscelaneos,recomendacion_diagnostica,posible_recomendacion_diagnostica,fecha_estudio,vulvoscopia_acetico)  VALUES ('$colposcopia','$causa','$cervix','$union_escamocolumnar','$zona_transformacion','$epitelio_acetoblanco','$ep_criterios_menores','$ep_criterios_intermedios','$ep_criterios_mayores', '$bs_criterios_menores','$bs_criterios_intermedios','$bs_criterios_mayores','$ag_criterios_menores','$ag_criterios_intermedios','$ag_criterios_mayores', '$cy_menores','$cy_intermedios','$cy_mayores','$schiller','$vaginoscopia','$vaginoscopia_lugol','$miscelaneos','$recomendacion_diagnostica','$posible_recomendacion_diagnostica','$hoys','$vulvoscopia_acetico')";
 $resultadoinsertaestudio_colposcopico = $mysqliL->query($insertaestudio_colposcopico);
 $id_ant_colposcopico = $mysqliL->insert_id;
 
@@ -78,7 +78,7 @@ $antecedente_cancer = $_POST['antecedente_cancer'];
 $antecedente_infeccion_vagina = $_POST['antecedente_infeccion_vagina'];
 $observaciones_papinocolau = $_POST['observaciones_papinocolau'];
 
-if (!empty(trim($observaciones_papinocolau)) || isset($_POST['antecedente_infeccion_vagina']) || isset($_POST['observaciones_papinocolau']) ) {
+if (!empty(trim($observaciones_papinocolau)) || (isset($_POST['antecedente_infeccion_vagina']) && $_POST['antecedente_infeccion_vagina'] == 1) || (isset($_POST['antecedente_cancer'])  && $_POST['antecedente_cancer'] == 1) ) {
   $observaciones_papinocolau = !empty(trim($observaciones_papinocolau)) ? $observaciones_papinocolau : "Sin observaciones registradas";
   $antecedente_cancer = isset($_POST['antecedente_cancer']) ? $_POST['antecedente_cancer'] : 0;
   $antecedente_infeccion_vagina = isset($_POST['antecedente_infeccion_vagina']) ?  $_POST['antecedente_infeccion_vagina'] : 0;
@@ -97,8 +97,8 @@ $clasificacion_medicocervix=$_POST['clasificacion_medicocervix'];
 $coordCervix = $_POST["coordCervix"];
 
 if (!empty(trim($senalizacion)) || !empty(trim($coordCervix)) ) {
-  $insertaestudio_biopsia_cervix = "INSERT INTO estudio_biopsia_cervix (senalizacion,fecha_estudio,coordenadas)
-   VALUES ('$senalizacion','$hoys','$coordCervix')";
+  $insertaestudio_biopsia_cervix = "INSERT INTO estudio_biopsia_cervix (senalizacion,fecha_estudio,coordenadas,antecedente_cancer_cervicouterino)
+   VALUES ('$senalizacion','$hoys','$coordCervix','$antecedente_cancer_cervicouterino')";
   $resultadoestudio_biopsia_cervix = $mysqliL->query($insertaestudio_biopsia_cervix);
 
   $id_ant_estudio_biopsia_cervix = $mysqliL->insert_id;

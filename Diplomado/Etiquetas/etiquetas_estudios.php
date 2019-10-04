@@ -96,7 +96,7 @@
 		$fecha_endo = $info_endo['fecha_estudio'];
 		$antecedente_metrorragia = $info_endo['metrorragia'];
 		$antecedente_hormonoterapia = $info_endo['hormonoterapia'];
-		$duracion_tratamiento = $info_endo['duracion_hormonoterapia'];
+		$duracion_tratamiento = isset($info_endo['duracion_hormonoterapia']) && !empty(trim($info_endo['duracion_hormonoterapia'])) ? $info_endo['duracion_hormonoterapia'] : 'N/A';
 		$observaciones_endometrio = $info_endo['observaciones_endometrio'];
 		$clasificacion_medico_endometrio = $info_endo['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 
@@ -348,7 +348,7 @@
 							<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 							<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
 							<p><b>Estudio Solicitado:</b> Citolog&iacute;a Exfoliativa</p>
-							<p class="txt-justificado"><b>Hallazgos Colposc&oacute;picos:</b><?php echo $colposcopico_paps; ?></p>
+							<p class="txt-justificado"><b>Hallazgos Colposc&oacute;picos:</b><?php echo $posible_recomendacion_diagnostica; ?></p>
 							<p><b>Observaciones:</b></p>
 							<p class="txt-justificado"><?php echo $observaciones_paps; ?></p>
 						</div>
@@ -454,7 +454,6 @@
 							</div>
 							<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 							<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
-							<p class="txt-justificado"><b>Hallazgos Vaginoscopia:</b></p>
 							<p>
 								<b>Acetico:</b> <?php echo ucwords($vaginoscopia_acetico_vagino); ?></p>
 							<p>

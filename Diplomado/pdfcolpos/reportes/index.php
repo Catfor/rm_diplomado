@@ -65,9 +65,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
           $schiller = ucwords($resultadosemanas1['schiller']);
 
-          $bs_criterios_menores = ucwords($resultadosemanas1['bs_criterios_menores']);
-          $bs_criterios_intermedios = ucwords($resultadosemanas1['bs_criterios_intermedios']);
-          $bs_criterios_mayores = ucwords($resultadosemanas1['bs_criterios_mayores']);
+          $bs_criterios_menores = ucwords(str_replace("_", " ", $resultadosemanas1['bs_criterios_menores']));
+          $bs_criterios_intermedios = ucwords(str_replace("_", " ", $resultadosemanas1['bs_criterios_intermedios']));
+          $bs_criterios_mayores = ucwords(str_replace("_", " ", $resultadosemanas1['bs_criterios_mayores']));
 
           $menarca = ucwords($resultadosemanas1['menarca']);
           $zona_transformacion = ucwords($resultadosemanas1['zona_transformacion']);
