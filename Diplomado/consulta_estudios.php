@@ -715,8 +715,8 @@ else{
                                               //BIOPSIAS Patologo=============
                                              echo "<td>";
                                               //Vulvoscopia Patologo
-                                           $queryVulvoscopia = "SELECT 	c.id_usu_pat,e.id_estudio from 	estudio_vulvoscopia e
-                                           inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 6 	and c.id_paciente = $id_paciente  WHERE id_usu_pat='$id';";
+                                           $queryVulvoscopia = "SELECT c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico  from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on
+                                             e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 6 	and c.id_paciente = '$id_paciente' ";
                                               if ($resultSetVulvoscopia = $mysqliL->query($queryVulvoscopia)) {
                                                   while ($resultSet = $resultSetVulvoscopia->fetch_assoc()) {
                                                       $id_estudio = $resultSet['id_estudio'];
