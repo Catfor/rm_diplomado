@@ -2421,12 +2421,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             url: post_url,
             type: request_method,
             data: form_data,
+            beforeSend: function(){
+              $("button").attr("disabled", true);
+            },
             success: function(result) {
-              console.log(result);
+              //console.log(result);
               //if(result === "no_errors"){
-              //if (!result.includes("error")) {
-              //  location.href = "consulta_paciente.php"
-              //}
+              if (!result.includes("error")) {
+                location.href = "consulta_paciente.php"
+              }
               //}
             }
           });

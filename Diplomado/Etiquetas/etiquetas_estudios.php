@@ -185,7 +185,7 @@
 		$res_cervix = $mysqliL->query($informacion_cervix);
 		$info_cervix = $res_cervix->fetch_assoc();
 		$fecha_cervix = $info_cervix['fecha_estudio'];
-		$antecedente_cancer_cervicouterino_cervix = $info_cervix['antecedente_cancer_cervicouterino'];
+		$antecedente_cancer_cervicouterino_cervix = $info_cervix['antecedente_cancer_cervicouterino'] == 0 ? "No"  : "Si";
 		$hallazgos_colposcopicos_cervix = $info_cervix['hallazgos_colposcopicos'];
 		$senalizacion_cervix = $info_cervix['senalizacion'];
 		$clasificacion_medico_cervix = $info_cervix['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
