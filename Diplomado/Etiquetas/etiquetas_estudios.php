@@ -185,7 +185,7 @@
 		$res_cervix = $mysqliL->query($informacion_cervix);
 		$info_cervix = $res_cervix->fetch_assoc();
 		$fecha_cervix = $info_cervix['fecha_estudio'];
-		$antecendente_cancer_cervicouterino_cervix = $info_cervix['antecendente_cancer_cervicouterino'];
+		$antecedente_cancer_cervicouterino_cervix = $info_cervix['antecedente_cancer_cervicouterino'];
 		$hallazgos_colposcopicos_cervix = $info_cervix['hallazgos_colposcopicos'];
 		$senalizacion_cervix = $info_cervix['senalizacion'];
 		$clasificacion_medico_cervix = $info_cervix['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
@@ -588,7 +588,7 @@
 							<p class="txt-justificado">
 								<b>Hallazgos Colposcopia:</b><?php echo ucwords($posible_recomendacion_diagnostica); ?></p>
 							<p>
-								<b>Antecedentes de Cancer Cervicouterino:</b><?php echo ucwords($antecendente_cancer_cervicouterino_cervix); ?></p>
+								<b>Antecedentes de Cancer Cervicouterino:</b><?php echo ucwords($antecedente_cancer_cervicouterino_cervix); ?></p>
 							<p>
 								<b>Se&ntilde;ala Donde Fue Tomada la muestra:</b>
 							</p>
