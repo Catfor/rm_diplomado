@@ -23,6 +23,7 @@ $telefono_contacto_paciente = $_GET['telefono_contacto_paciente'];
 $celular_contacto_paciente = $_GET['celular_contacto_paciente'];
 $newDate = date('Y-m-d', strtotime($_GET['edad_paciente']));
 $otro_tipo_seguro = $_GET['otro_tipo_seguro'];
+$idUsuario = $_SESSION['id_usuario'];
 
 
 $result123 = mysqli_query($mysqliL, "SELECT * from paciente where nombre_paciente='$nombre_paciente' and apellidos_paciente='$apellidos_paciente'");
@@ -69,15 +70,14 @@ if ($total > 0) {
 VALUES
 ('$tipos','$id_bitacora')";
     $resultaq123 = $mysqliL->query($sql112);
-    echo $sql112;
+    
   }
 
   
-  $idUsuario = $_SESSION['id_usuario'];
   $sql11 = "INSERT INTO bitacora_ingreso
   (fecha_ingreso,accion,id_u)
   VALUES
-  ('$hoys','Se agrego el paciente paciente $nombre_paciente $apellidos_paciente , con el ID $id_paciente','$idUsuario')";
+  ('$hoys','Se agrego el paciente $nombre_paciente $apellidos_paciente , con el ID $id_paciente','$idUsuario')";
   $resultaq = $mysqliL->query($sql11);
 
   header("Location:consulta_paciente1.php?nom=$nombre_paciente $apellidos_paciente");
