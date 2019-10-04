@@ -43,9 +43,9 @@
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
 		$idAtencion = $info['id_atencion'];
-		$colposcopico = $info['posible_recomendacion_diagnostica'];
 		$observaciones = $info['observaciones_papinocolau'];
 		$clasificacion_medico_paps =  $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente"; 
+		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info['posible_recomendacion_diagnostica']));
 
 		if (!endsWith(trim($colposcopico), ".")) {
 			$colposcopico = $colposcopico . '.';
@@ -142,7 +142,7 @@
 						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
 						<p><b>Estudio Solicitado:</b> Citolog&iacute;a Exfoliativa</p>
-						<p class="txt-justificado"><b>Hallazgos Colposc&oacute;picos:</b><?php echo $colposcopico; ?></p>
+						<p class="txt-justificado"><b>Hallazgos Colposc&oacute;picos:</b><?php echo $posible_recomendacion_diagnostica; ?></p>
 						<p><b>Observaciones:</b></p>
 						<p class="txt-justificado"><?php echo $observaciones; ?></p>
 					</div>

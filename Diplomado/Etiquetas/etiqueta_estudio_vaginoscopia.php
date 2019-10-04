@@ -44,6 +44,7 @@
 		$idAtencion = $info['id_atencion'];
 		$vaginoscopia_acetico = $info['vaginoscopia_acetico'];
 		$vaginoscopia_lugol = $info['vaginoscopia_lugol'];
+		$estudio_solicitar_vaginoscopia = $info['estudio_solicitar_vaginoscopia'];
 		$anotaciones_vaginoscopia = $info['anotaciones_vaginoscopia'];
 		$clasificacion_medico_vagino = $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 
@@ -132,7 +133,7 @@
 						</div>
 						<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 						<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
-						<p class="txt-justificado"><b>Hallazgos Vaginoscopia:</b></p>
+						<p class="txt-justificado"><b>Estudio solicitado: </b><?php echo ucwords($estudio_solicitar_vaginoscopia); ?></p>
 						<p>
 							<b>Acetico:</b> <?php echo ucwords($vaginoscopia_acetico); ?></p>
 						<p>

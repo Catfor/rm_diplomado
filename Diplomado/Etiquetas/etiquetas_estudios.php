@@ -454,6 +454,7 @@
 							</div>
 							<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
 							<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
+							<p class="txt-justificado"><b>Estudio solicitado: </b><?php echo ucwords($estudio_solicitar_vaginoscopia); ?></p>
 							<p>
 								<b>Acetico:</b> <?php echo ucwords($vaginoscopia_acetico_vagino); ?></p>
 							<p>

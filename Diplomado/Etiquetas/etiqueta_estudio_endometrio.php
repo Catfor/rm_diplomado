@@ -44,7 +44,7 @@
 		$idAtencion = $info['id_atencion'];
 		$antecedente_metrorragia = $info['metrorragia'];
 		$antecedente_hormonoterapia = $info['hormonoterapia'];
-		$duracion_tratamiento = $info['duracion_hormonoterapia'];
+		$duracion_tratamiento = !empty(trim($info['duracion_hormonoterapia'])) ? $info['duracion_hormonoterapia'] : "N/A";
 		$observaciones_endometrio = $info['observaciones_endometrio'];
 		$clasificacion_medico_endo =  $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente"; 
 
