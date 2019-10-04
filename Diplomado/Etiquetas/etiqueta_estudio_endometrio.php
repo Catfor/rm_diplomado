@@ -48,14 +48,6 @@
 		$observaciones_endometrio = $info['observaciones_endometrio'];
 		$clasificacion_medico_endo =  $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente"; 
 
-		if (!endsWith(trim($colposcopico), ".")) {
-			$colposcopico = $colposcopico . '.';
-		}
-
-		if (!endsWith(trim($observaciones), ".")) {
-			$observaciones = $observaciones . '.';
-		}
-
 		ob_end_flush();
 	} else {
 		$fecha = "";
