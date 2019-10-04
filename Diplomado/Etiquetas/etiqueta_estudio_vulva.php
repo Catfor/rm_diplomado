@@ -46,7 +46,7 @@
 		$medico = $info['medico'];
 		$idAtencion = $info['id_atencion'];
 		$anotaciones_vulvoscopia = $info['anotaciones_vulvoscopia'];
-		$coordenadasHelper = "[\"" + implode("\",\"", explode("|", $info['coordenadas'])) + "\"]";
+		$coordenadasHelper = $info['coordenadas'];
 		$clasificacion_medico_vulva = $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 
 		$vulvoscopia_acetico = $info["vulvoscopia_acetico"];
@@ -81,7 +81,8 @@
 			var canvasVulva = document.getElementById("canvasVulva");
 			var ctxVulva = canvasVulva.getContext("2d");
 			var vulva = document.getElementById("recuadroVulva");
-			var coordenadas = <?php echo $coordenadasHelper ?>;
+			var coord = '<?php echo $coordenadasHelper ?>';
+			var coordenadas = coord.split('|');
 			ctxVulva.drawImage(vulva, 0, 0, 200, 200);
 			$(coordenadas).each(function(index, value) {
 				var coordsTemp = value.split(",");

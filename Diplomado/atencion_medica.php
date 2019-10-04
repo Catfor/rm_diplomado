@@ -820,513 +820,513 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
 
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div>
-   <label for="bday">Fecha de la última regla</label>
-   <input type="date" id="bday" name="fecha_ultima_regla">
- </div>
+                          <label for="bday">Fecha de la última regla</label>
+                          <input type="date" id="bday" name="fecha_ultima_regla">
+                        </div>
 
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <label for="bday">Fecha del último papanicolau</label>
                         <input type="date" id="bday" name="fecha_ultimo_papanicolau">
                       </div>
-                      </div>
-
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-group purple-border">
-                          <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                              <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
-                            </div>
-                          </div>
-                          <textarea class="form-control" rows="2" placeholder="Escribe Antecedentes de Lesión" name="atecedentes_lesion" form="f"></textarea>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="form-group purple-border">
-                          <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                              <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
-                            </div>
-                          </div>
-                          <textarea class="form-control" rows="2" placeholder="Escribe Antecedente de Tratamiento" name="antecedentes_tratamiento" form="f"></textarea>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row fila">
-                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-                        <select name="metrorragia" class="form-control">
-                          <option value="">Metrorragia</option>
-                          <option value="1">SI</option>
-                          <option value="0">NO</option>
-
-                        </select>
-
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-                        <select name="hormonoterapia" class="form-control">
-                          <option value="">Hormonoterapia</option>
-                          <option value="1">SI</option>
-                          <option value="0">NO</option>
-
-                        </select>
-
-                      </div>
-
-                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                        <div class="form-group">
-
-                          <div class="nk-int-st">
-                            <input type="text" name="duracion_hormonoterapia" class="form-control" placeholder="¿Duración?">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row fila">
-                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-                        <select name="ritmo" class="form-control">
-                          <option value="">Ritmo</option>
-                          <option value="regular">Regular</option>
-                          <option value="irregular">Irregular</option>
-                          <option value="ausente">Ausente</option>
-
-                        </select>
-
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-                        <select name="antecedente_cancer_cervicouterino" class="form-control">
-                          <option value="">Antecedente de Cáncer cervicouterino</option>
-                          <option value="1">SI</option>
-                          <option value="0">NO</option>
-
-                        </select>
-                      </div>
-
-
-                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-                        <select name="tratamiento_previo" class="form-control">
-                          <option value="">Tratamientos previos:</option>
-                          <option value="1">SI</option>
-                          <option value="0">NO</option>
-
-                        </select>
-
-                      </div>
-
-
-
-
                     </div>
 
                 </div>
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group purple-border">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
+                        </div>
+                      </div>
+                      <textarea class="form-control" rows="2" placeholder="Escribe Antecedentes de Lesión" name="atecedentes_lesion" form="f"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group purple-border">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
+                        </div>
+                      </div>
+                      <textarea class="form-control" rows="2" placeholder="Escribe Antecedente de Tratamiento" name="antecedentes_tratamiento" form="f"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row fila">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                    <select name="metrorragia" class="form-control">
+                      <option value="">Metrorragia</option>
+                      <option value="1">SI</option>
+                      <option value="0">NO</option>
+
+                    </select>
+
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                    <select name="hormonoterapia" class="form-control">
+                      <option value="">Hormonoterapia</option>
+                      <option value="1">SI</option>
+                      <option value="0">NO</option>
+
+                    </select>
+
+                  </div>
+
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                    <div class="form-group">
+
+                      <div class="nk-int-st">
+                        <input type="text" name="duracion_hormonoterapia" class="form-control" placeholder="¿Duración?">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row fila">
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                    <select name="ritmo" class="form-control">
+                      <option value="">Ritmo</option>
+                      <option value="regular">Regular</option>
+                      <option value="irregular">Irregular</option>
+                      <option value="ausente">Ausente</option>
+
+                    </select>
+
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                    <select name="antecedente_cancer_cervicouterino" class="form-control">
+                      <option value="">Antecedente de Cáncer cervicouterino</option>
+                      <option value="1">SI</option>
+                      <option value="0">NO</option>
+
+                    </select>
+                  </div>
+
+
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+                    <select name="tratamiento_previo" class="form-control">
+                      <option value="">Tratamientos previos:</option>
+                      <option value="1">SI</option>
+                      <option value="0">NO</option>
+
+                    </select>
+
+                  </div>
+
+
+
+
+                </div>
+
               </div>
             </div>
           </div>
-          <div class="row fila">
-            <div class="accordion-area">
-              <div class="container">
-                <div class="row fila">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="accordion-wn-wp">
-                      <div class="basic-tb-hd">
-                        <h2 class="cabecera-morada">ESTUDIOS MÉDICOS</h2>
+        </div>
+        <div class="row fila">
+          <div class="accordion-area">
+            <div class="container">
+              <div class="row fila">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="accordion-wn-wp">
+                    <div class="basic-tb-hd">
+                      <h2 class="cabecera-morada">ESTUDIOS MÉDICOS</h2>
 
-                      </div>
-                      <div class="row fila">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <div class="accordion-stn mg-t-30">
-                            <div class="panel-group" data-collapse-color="nk-purple" id="accordionPurple" role="tablist" aria-multiselectable="true">
-                              <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" role="tab">
-                                  <h4 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-one" aria-expanded="false">
-                                      DATOS COLPOSCOPICOS
-                                    </a>
-                                  </h4>
-                                </div>
-                                <div id="accordionPurple-one" class="collapse" role="tabpanel">
-                                  <div class="panel-body">
-                                    <p>
+                    </div>
+                    <div class="row fila">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="accordion-stn mg-t-30">
+                          <div class="panel-group" data-collapse-color="nk-purple" id="accordionPurple" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-collapse notika-accrodion-cus">
+                              <div class="panel-heading" role="tab">
+                                <h4 class="panel-title">
+                                  <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-one" aria-expanded="false">
+                                    DATOS COLPOSCOPICOS
+                                  </a>
+                                </h4>
+                              </div>
+                              <div id="accordionPurple-one" class="collapse" role="tabpanel">
+                                <div class="panel-body">
+                                  <p>
+                                    <div class="row fila">
+
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <select name='colposcopia' id='colposcopia' class="form-control">
+                                          <option value="">Selecciona Colposcopia</option>
+                                          <option value="adecuada">Adecuada</option>
+                                          <option value="no_adecuada">No Adecuada</option>
+                                        </select>
+
+                                      </div>
+
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <select name='causa' id='causa' class="form-control">
+                                          <option value="">Selecciona una Causa</option>
+                                          <option value="sangrado">Sangrado</option>
+                                          <option value="inflamacion">Inflamación</option>
+                                          <option value="cicatrices">Cicatrices</option>
+                                          <option value="no">Otras</option>
+                                        </select>
+
+                                      </div>
+
+
+
+
+                                    </div>
+
+
+                                    <div class="row fila">
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <select name='cervix' id='cervix' class="form-control">
+                                          <option value="">Selecciona Cervix</option>
+                                          <option value="eutrofico">Eutrófico</option>
+                                          <option value="atrofico">Atrófico</option>
+                                          <option value="hipotrofico">Hipotrófico</option>
+                                          <option value="hipertrofico">Hipertrófico</option>
+                                          <option value="ausencia_quirurgica">Ausencia Quirúrgica</option>
+                                          <option value="ausencia_otras_causas">Ausencia Otras Causas</option>
+                                        </select>
+
+                                      </div>
+
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <select name='union_escamocolumnar' id='union_escamocolumnar' class="form-control">
+                                          <option value="">Selecciona Union Escamocolumnar </option>
+                                          <option value="completamente_visible">Completamente Visible</option>
+                                          <option value="parcialmente_visible">Parcialmente Visible</option>
+                                        </select>
+
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <select name='zona_transformacion' id='zona_transformacion' class="form-control">
+                                          <option value="">Selecciona Zona De Transfromacion</option>
+                                          <option value="tipo 1">TIPO 1</option>
+                                          <option value="tipo 2 a">TIPO 2 A</option>
+                                          <option value=" tipo 2 b">TIPO 2 B</option>
+                                          <option value="tipo 3">TIPO 3</option>
+                                        </select>
+
+                                      </div>
+
+                                    </div>
+                                    <div class="row fila">
+
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="panel panel-default filaInterna">
+                                          <div class="panel-heading">Epitelio Acetoblanco</div>
+
+                                        </div>
+                                      </div>
+
+
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
+
+                                        <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' onChange="pagoOnChange(this)" class="form-control">
+
+                                          <option value="">Ausente</option>
+                                          <option value="presente">Presente</option>
+                                        </select>
+
+                                      </div>
+
+                                    </div>
+                                    <div id="ausente" style="display:none;">
+
+                                    </div>
+
+
+                                    <div id="presente" class="formularioOculto" style="display:none;">
+                                      <div class="row fila">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                          <select name='ep_criterios_menores' id='ep_criterios_menores' class="form-control">
+                                            <option value="">Selecciona Criterios Menores</option>
+                                            <option value="tenue">Tenue</option>
+                                            <option value="blanco_intenso_c/brillo_superficial">Blanco Intenso C/Brillo Superficial</option>
+                                            <option value="brillo_superficial">Brillo Superficial</option>
+                                            <option value="plano">Plano</option>
+                                            <option value="transparente">Transparente</option>
+                                            <option value="fuera_zt">Fuera de la ZT</option>
+
+                                          </select>
+
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                          <select name='ep_criterios_intermedios' id='ep_criterios_intermedios' class="form-control">
+                                            <option value="">Selecciona Criterios Intermedios</option>
+                                            <option value="blanco_intermedio_c/brillo">Blanco Intermedio C/Brillo</option>
+                                            <option value="mayoria_lesiones">(Mayoría de Lesiones)</option>
+                                          </select>
+
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                          <select name='ep_criterios_mayores' id='ep_criterios_mayores' class="form-control">
+                                            <option value="">Selecciona Criterios Mayores</option>
+                                            <option value="blanco_denso">Blanco Denso</option>
+                                            <option value="blanco_opaco">Blanco Opaco</option>
+                                            <option value="blanco_ostra">Blanco Ostra</option>
+                                            <option value="gris">Gris</option>
+                                          </select>
+
+                                        </div>
+                                      </div>
+
                                       <div class="row fila">
 
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='colposcopia' id='colposcopia' class="form-control">
-                                            <option value="">Selecciona colposcopia</option>
-                                            <option value="adecuada">Adecuada</option>
-                                            <option value="no_adecuada">No Adecuada</option>
-                                          </select>
+                                        <div class="panel panel-default filaInterna">
+                                          <div class="panel-heading">Borde y Superficie</div>
 
                                         </div>
-
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                          <select name='causa' id='causa' class="form-control">
-                                            <option value="">Selecciona una Causa</option>
-                                            <option value="sangrado">Sangrado</option>
-                                            <option value="inflamacion">Inflamación</option>
-                                            <option value="cicatrices">Cicatrices</option>
-                                            <option value="no">Otras</option>
-                                          </select>
-
-                                        </div>
-
-
-
-
-                                      </div>
-
-
-                                      <div class="row fila">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                          <select name='cervix' id='cervix' class="form-control">
-                                            <option value="">Selecciona Cervix</option>
-                                            <option value="eutrofico">Eutrófico</option>
-                                            <option value="atrofico">Atrófico</option>
-                                            <option value="hipotrofico">Hipotrófico</option>
-                                            <option value="hipertrofico">Hipertrófico</option>
-                                            <option value="ausencia_quirurgica">Ausencia Quirúrgica</option>
-                                            <option value="ausencia_otras_causas">Ausencia Otras Causas</option>
-                                          </select>
-
-                                        </div>
-
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                          <select name='union_escamocolumnar' id='union_escamocolumnar' class="form-control">
-                                            <option value="">Selecciona Union Escamocolumnar </option>
-                                            <option value="completamente_visible">Completamente Visible</option>
-                                            <option value="parcialmente_visible">Parcialmente Visible</option>
-                                          </select>
-
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                          <select name='zona_transformacion' id='zona_transformacion' class="form-control">
-                                            <option value="">Selecciona Zona De Transfromacion</option>
-                                            <option value="tipo 1">TIPO 1</option>
-                                            <option value="tipo 2 a">TIPO 2 A</option>
-                                            <option value=" tipo 2 b">TIPO 2 B</option>
-                                            <option value="tipo 3">TIPO 3</option>
-                                          </select>
-
-                                        </div>
-
                                       </div>
                                       <div class="row fila">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                          <div class="panel panel-default filaInterna">
-                                            <div class="panel-heading">Epitelio Acetoblanco</div>
+                                          <select name='bs_criterios_menores' id='bs_criterios_menores' class="form-control">
+                                            <option value="">Selecciona Criterios Menores</option>
+                                            <option value="microcondilomatoso">Microcondilomatoso</option>
+                                            <option value="micropapilar">Micropapilar</option>
+                                            <option value="borde_indefinido">Borde Indefinido</option>
+                                            <option value="borde_pluma_dentado">Borde en Pluma o Dentado</option>
+                                            <option value="lesion_angulada">Lesión Angulada</option>
+                                          </select>
 
-                                          </div>
                                         </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
+                                          <select name='bs_criterios_intermedios' id='bs_criterios_intermedios' class="form-control">
+                                            <option value="">Selecciona Criterios Intermedios</option>
+                                            <option value="lesion_regular">Lesión Regular</option>
+                                            <option value="simetrica">Simétrica</option>
+                                            <option value="contornos_netos">Contornos Netos</option>
+                                            <option value="contornos_rectilineos">Contornos Rectilíneos</option>
+                                          </select>
 
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' onChange="pagoOnChange(this)" class="form-control">
-
-                                            <option value="">Ausente</option>
-                                            <option value="presente">Presente</option>
+                                          <select name='bs_criterios_mayores' id='bs_criterios_mayores' class="form-control">
+                                            <option value="">Selecciona Criterios Mayores</option>
+                                            <option value="bordes_dehiscentes">Bordes Dehiscentes</option>
+                                            <option value="bordes_enrolaldos">Bordes Enrollados</option>
+                                            <option value="cambios_menores_perifericos_mayores">Cambios Menores Periféricos Y Mayores Centrales</option>
                                           </select>
 
                                         </div>
 
-                                      </div>
-                                      <div id="ausente" style="display:none;">
-
-                                      </div>
-
-
-                                      <div id="presente" class="formularioOculto" style="display:none;">
-                                        <div class="row fila">
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='ep_criterios_menores' id='ep_criterios_menores' class="form-control">
-                                              <option value="">Selecciona Criterios Menores</option>
-                                              <option value="tenue">Tenue</option>
-                                              <option value="blanco_intenso_c/brillo_superficial">Blanco Intenso C/Brillo Superficial</option>
-                                              <option value="brillo_superficial">Brillo Superficial</option>
-                                              <option value="plano">Plano</option>
-                                              <option value="transparente">Transparente</option>
-                                              <option value="fuera_zt">Fuera de la ZT</option>
-
-                                            </select>
-
-                                          </div>
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='ep_criterios_intermedios' id='ep_criterios_intermedios' class="form-control">
-                                              <option value="">Selecciona Criterios Intermedios</option>
-                                              <option value="blanco_intermedio_c/brillo">Blanco Intermedio C/Brillo</option>
-                                              <option value="mayoria_lesiones">(Mayoría de Lesiones)</option>
-                                            </select>
-
-                                          </div>
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='ep_criterios_mayores' id='ep_criterios_mayores' class="form-control">
-                                              <option value="">Selecciona Criterios Mayores</option>
-                                              <option value="blanco_denso">Blanco Denso</option>
-                                              <option value="blanco_opaco">Blanco Opaco</option>
-                                              <option value="blanco_ostra">Blanco Ostra</option>
-                                              <option value="gris">Gris</option>
-                                            </select>
-
-                                          </div>
-                                        </div>
-
-                                        <div class="row fila">
-
-
-                                          <div class="panel panel-default filaInterna">
-                                            <div class="panel-heading">Borde y Superficie</div>
-
-                                          </div>
-                                        </div>
-                                        <div class="row fila">
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='bs_criterios_menores' id='bs_criterios_menores' class="form-control">
-                                              <option value="">Selecciona Criterios Menores</option>
-                                              <option value="microcondilomatoso">Microcondilomatoso</option>
-                                              <option value="micropapilar">Micropapilar</option>
-                                              <option value="borde_indefinido">Borde Indefinido</option>
-                                              <option value="borde_pluma_dentado">Borde en Pluma o Dentado</option>
-                                              <option value="lesion_angulada">Lesión Angulada</option>
-                                            </select>
-
-                                          </div>
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='bs_criterios_intermedios' id='bs_criterios_intermedios' class="form-control">
-                                              <option value="">Selecciona Criterios Intermedios</option>
-                                              <option value="lesion_regular">Lesión Regular</option>
-                                              <option value="simetrica">Simétrica</option>
-                                              <option value="contornos_netos">Contornos Netos</option>
-                                              <option value="contornos_rectilineos">Contornos Rectilíneos</option>
-                                            </select>
-
-                                          </div>
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='bs_criterios_mayores' id='bs_criterios_mayores' class="form-control">
-                                              <option value="">Selecciona Criterios Mayores</option>
-                                              <option value="bordes_dehiscentes">Bordes Dehiscentes</option>
-                                              <option value="bordes_enrolaldos">Bordes Enrollados</option>
-                                              <option value="cambios_menores_perifericos_mayores">Cambios Menores Periféricos Y Mayores Centrales</option>
-                                            </select>
-
-                                          </div>
-
-                                        </div>
-
-                                        <div class="row fila">
-                                          <div class="panel panel-default filaInterna">
-                                            <div class="panel-heading">Angioarquitectura</div>
-
-                                          </div>
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='ag_criterios_menores' id='ag_criterios_menores' class="form-control">
-                                              <option value="">Selecciona Criterios Menores</option>
-                                              <option value="capilar_fino">Capilar Fino</option>
-                                              <option value="calibre_disposion_uniforme">Calibre y Disposición Uniforme</option>
-                                              <option value="puntilleo_fino">Puntilleo Fino</option>
-                                              <option value="nmosaico_fino">Mosaico Fino</option>
-                                              <option value="vasos_mas_alla_zt">Vasos Más Allá de ZT</option>
-                                            </select>
-
-                                          </div>
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='ag_criterios_intermedios' id='ag_criterios_intermedios' class="form-control">
-                                              <option value="">Selecciona Criterios Intermedios</option>
-                                              <option value="ausencia_vasos">Ausencia de Vasos</option>
-
-                                            </select>
-
-                                          </div>
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='ag_criterios_mayores' id='ag_criterios_mayores' class="form-control">
-                                              <option value="">Selecciona Criterios Mayores</option>
-                                              <option value="puntilleo_grueso">Puntilleo Grueso</option>
-                                              <option value="mosaico_grueso">Mosaico Grueso</option>
-                                            </select>
-
-                                          </div>
-
-                                        </div>
-
-                                        <div class="row fila ">
-                                          <div class="panel panel-default filaInterna">
-                                            <div class="panel-heading">Captación de Yodo</div>
-
-                                          </div>
-
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='cy_menores' id='cy_menores' class="form-control">
-                                              <option value="">Criterios Menores</option>
-                                              <option value="positiva">Positivo</option>
-                                              <option value="negativa_puntos_criterios_anteriores">Negativa Con < 3 Puntos En Criterios Anteriores</option> <option value="zonas_yodo_negativas">Zonas Yodonegativas Más Allá De La ZT</option>
-                                            </select>
-
-                                          </div>
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='cy_intermedios' id='cy_intermedios' class="form-control">
-                                              <option value="">Citerios Intermedios</option>
-                                              <option value="capacitacion_parcial_yodo">Captación Parcial De Yodo</option>
-                                              <option value="motedao_jaspeado">(Moteado-Jaspeado)</option>
-                                            </select>
-
-                                          </div>
-                                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                            <select name='cy_mayores' id='cy_mayores' class="form-control">
-                                              <option value="">Citerios Mayores</option>
-                                              <option value="yodo_negativa_conmas_puntos">Yodonegativa Con 4 O Más Puntos</option>
-                                              <option value="en_criterios_anteriores">En Criterios Anteriores</option>
-                                            </select>
-
-                                          </div>
-                                        </div>
                                       </div>
 
                                       <div class="row fila">
                                         <div class="panel panel-default filaInterna">
-                                          <div class="panel-heading">Schiller</div>
+                                          <div class="panel-heading">Angioarquitectura</div>
 
                                         </div>
-                                      </div>
-                                      <div class="row fila">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='schiller' id='schiller' class="form-control">
-                                            <option value="">Selecciona Schiller</option>
-                                            <option value="positiva">Positiva</option>
-                                            <option value="negativo">Negativo</option>
+                                          <select name='ag_criterios_menores' id='ag_criterios_menores' class="form-control">
+                                            <option value="">Selecciona Criterios Menores</option>
+                                            <option value="capilar_fino">Capilar Fino</option>
+                                            <option value="calibre_disposion_uniforme">Calibre y Disposición Uniforme</option>
+                                            <option value="puntilleo_fino">Puntilleo Fino</option>
+                                            <option value="nmosaico_fino">Mosaico Fino</option>
+                                            <option value="vasos_mas_alla_zt">Vasos Más Allá de ZT</option>
+                                          </select>
+
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                          <select name='ag_criterios_intermedios' id='ag_criterios_intermedios' class="form-control">
+                                            <option value="">Selecciona Criterios Intermedios</option>
+                                            <option value="ausencia_vasos">Ausencia de Vasos</option>
 
                                           </select>
 
                                         </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                      </div> <br>
+                                          <select name='ag_criterios_mayores' id='ag_criterios_mayores' class="form-control">
+                                            <option value="">Selecciona Criterios Mayores</option>
+                                            <option value="puntilleo_grueso">Puntilleo Grueso</option>
+                                            <option value="mosaico_grueso">Mosaico Grueso</option>
+                                          </select>
 
-                                      <div class="row fila">
+                                        </div>
+
+                                      </div>
+
+                                      <div class="row fila ">
                                         <div class="panel panel-default filaInterna">
-                                          <div class="panel-heading">Vaginoscopia</div>
+                                          <div class="panel-heading">Captación de Yodo</div>
 
                                         </div>
-                                      </div>
-                                      <div class="row fila">
+
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='vaginoscopia_acetico' id='vaginoscopia_acetico' class="form-control">
-                                            <option value="">Selecciona Acético</option>
-                                            <option value="positivo">Positivo</option>
-                                            <option value="negativo">Negativo</option>
+                                          <select name='cy_menores' id='cy_menores' class="form-control">
+                                            <option value="">Criterios Menores</option>
+                                            <option value="positiva">Positivo</option>
+                                            <option value="negativa_puntos_criterios_anteriores">Negativa Con < 3 Puntos En Criterios Anteriores</option> <option value="zonas_yodo_negativas">Zonas Yodonegativas Más Allá De La ZT</option>
                                           </select>
 
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='vaginoscopia_lugol' id='vaginoscopia_lugol' class="form-control">
-                                            <option value="">Selecciona Lugol</option>
-                                            <option value="positivo">Positivo</option>
-                                            <option value="negativo">Negativo</option>
+                                          <select name='cy_intermedios' id='cy_intermedios' class="form-control">
+                                            <option value="">Citerios Intermedios</option>
+                                            <option value="capacitacion_parcial_yodo">Captación Parcial De Yodo</option>
+                                            <option value="motedao_jaspeado">(Moteado-Jaspeado)</option>
                                           </select>
 
                                         </div>
-                                      </div>
-                                      <div class="row fila">
-                                        <div class="panel panel-default filaInterna">
-                                          <div class="panel-heading">Vulvoscopia</div>
-
-                                        </div>
-                                      </div>
-                                      <div class="row fila">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='vulvoscopia_acetico' id='vulvoscopia_acetico' class="form-control">
-                                            <option value="">Selecciona Acético</option>
-                                            <option value="positivo">Positivo</option>
-                                            <option value="negativo">Negativo</option>
+                                          <select name='cy_mayores' id='cy_mayores' class="form-control">
+                                            <option value="">Citerios Mayores</option>
+                                            <option value="yodo_negativa_conmas_puntos">Yodonegativa Con 4 O Más Puntos</option>
+                                            <option value="en_criterios_anteriores">En Criterios Anteriores</option>
                                           </select>
 
-                                        </div>
-                                      </div> <br>
-                                      <div class="row fila">
-                                        <div class="panel panel-default filaInterna">
-                                          <div class="panel-heading">Misceláneos</div>
                                         </div>
                                       </div>
-                                      <div class="row fila">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    </div>
 
-                                          <select name='miscelaneos' id='miscelaneos' class="form-control">
-                                            <option value="">Selecciona Miscelaneos</option>
-                                            <option value="condilomas">Condilomas</option>
-                                            <option value="eversion_glandular">Eversión Glandular</option>
-                                            <option value="leucoplasia">Leucoplasia</option>
-                                            <option value="zt_congenita">ZT Congénita</option>
-                                            <option value="inflamacion">Inflamación</option>
-                                            <option value="atrofia">Atrofia</option>
-                                            <option value="polipos">Pólipos</option>
-                                            <option value="deciduosis">Deciduosis</option>
-                                            <option value="queratosis">Queratosis</option>
-                                            <option value="hiperplasia_glandular">Hiperplasia Glandular</option>
-                                            <option value="micropapilomatosis_vestibular">Micropapilomatosis Vestibular</option>
-                                          </select>
-                                        </div>
+                                    <div class="row fila">
+                                      <div class="panel panel-default filaInterna">
+                                        <div class="panel-heading">Schiller</div>
 
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                          <div class="form-group purple-border">
-                                            <div class="row fila">
-                                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)</FONT>
-                                              </div>
+                                      </div>
+                                    </div>
+                                    <div class="row fila">
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <select name='schiller' id='schiller' class="form-control">
+                                          <option value="">Selecciona Schiller</option>
+                                          <option value="positiva">Positiva</option>
+                                          <option value="negativo">Negativo</option>
+
+                                        </select>
+
+                                      </div>
+
+                                    </div> <br>
+
+                                    <div class="row fila">
+                                      <div class="panel panel-default filaInterna">
+                                        <div class="panel-heading">Vaginoscopia</div>
+
+                                      </div>
+                                    </div>
+                                    <div class="row fila">
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <select name='vaginoscopia_acetico' id='vaginoscopia_acetico' class="form-control">
+                                          <option value="">Selecciona Acético</option>
+                                          <option value="positivo">Positivo</option>
+                                          <option value="negativo">Negativo</option>
+                                        </select>
+
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <select name='vaginoscopia_lugol' id='vaginoscopia_lugol' class="form-control">
+                                          <option value="">Selecciona Lugol</option>
+                                          <option value="positivo">Positivo</option>
+                                          <option value="negativo">Negativo</option>
+                                        </select>
+
+                                      </div>
+                                    </div>
+                                    <div class="row fila">
+                                      <div class="panel panel-default filaInterna">
+                                        <div class="panel-heading">Vulvoscopia</div>
+
+                                      </div>
+                                    </div>
+                                    <div class="row fila">
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <select name='vulvoscopia_acetico' id='vulvoscopia_acetico' class="form-control">
+                                          <option value="">Selecciona Acético</option>
+                                          <option value="positivo">Positivo</option>
+                                          <option value="negativo">Negativo</option>
+                                        </select>
+
+                                      </div>
+                                    </div> <br>
+                                    <div class="row fila">
+                                      <div class="panel panel-default filaInterna">
+                                        <div class="panel-heading">Misceláneos</div>
+                                      </div>
+                                    </div>
+                                    <div class="row fila">
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <select name='miscelaneos' id='miscelaneos' class="form-control">
+                                          <option value="">Selecciona Miscelaneos</option>
+                                          <option value="condilomas">Condilomas</option>
+                                          <option value="eversion_glandular">Eversión Glandular</option>
+                                          <option value="leucoplasia">Leucoplasia</option>
+                                          <option value="zt_congenita">ZT Congénita</option>
+                                          <option value="inflamacion">Inflamación</option>
+                                          <option value="atrofia">Atrofia</option>
+                                          <option value="polipos">Pólipos</option>
+                                          <option value="deciduosis">Deciduosis</option>
+                                          <option value="queratosis">Queratosis</option>
+                                          <option value="hiperplasia_glandular">Hiperplasia Glandular</option>
+                                          <option value="micropapilomatosis_vestibular">Micropapilomatosis Vestibular</option>
+                                        </select>
+                                      </div>
+
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group purple-border">
+                                          <div class="row fila">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                              <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)</FONT>
                                             </div>
-                                            <textarea class="form-control" rows="1" placeholder="Escribe Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)" name="antecedentes_de_importancia" form="f"></textarea>
                                           </div>
+                                          <textarea class="form-control" rows="1" placeholder="Escribe Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)" name="antecedentes_de_importancia" form="f"></textarea>
                                         </div>
-
-
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                          <div class="form-group purple-border">
-                                            <div class="row fila">
-                                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Plan de Tratamiento</FONT>
-                                              </div>
-                                            </div>
-                                            <textarea class="form-control" rows="1" placeholder="Escribe Plan de Tratamiento" name="plan_de_tratamiento" form="f"></textarea>
-                                          </div>
-                                        </div>
-
                                       </div>
 
 
-                                <!--      <div class="row fila">
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group purple-border">
+                                          <div class="row fila">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                              <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Plan de Tratamiento</FONT>
+                                            </div>
+                                          </div>
+                                          <textarea class="form-control" rows="1" placeholder="Escribe Plan de Tratamiento" name="plan_de_tratamiento" form="f"></textarea>
+                                        </div>
+                                      </div>
+
+                                    </div>
+
+
+                                    <!--      <div class="row fila">
                                         <h4 class="text-center">Imagenes Colposcopicas </h4>
                                         <div class="form-group">
                                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1334,27 +1334,27 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           </div>
                                         </div>
                                       </div>-->
-                                      <div class="row fila">
-                                        <div id="vectorFotos" style="width: 100%;display:inline-block; text-align:center;">
+                                    <div class="row fila">
+                                      <div id="vectorFotos" style="width: 100%;display:inline-block; text-align:center;">
+                                      </div>
+                                    </div>
+                                    <div class="row fila">
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="floating-numner">
+                                          <p> RECOMENDACIÓN </p>
                                         </div>
                                       </div>
-                                      <div class="row fila">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                          <div class="floating-numner">
-                                            <p> RECOMENDACIÓN </p>
+                                    </div>
+                                    <div class="row fila">
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                          <div class="nk-int-st">
+                                            <textarea id=autoDiag class="form-control auto-size" rows="3" placeholder="" name="recomendacion_diagnostica" disabled form="f"></textarea>
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="row fila">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                          <div class="form-group">
-                                            <div class="nk-int-st">
-                                              <textarea id=autoDiag class="form-control auto-size" rows="3" placeholder="" name="recomendacion_diagnostica" disabled form="f"></textarea>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <!--  <div class="row fila">
+                                    </div>
+                                    <!--  <div class="row fila">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                           <div class="floating-numner">
                                             <p> DIAGNOSTICA</p>
@@ -1370,137 +1370,152 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           </div>
                                         </div>
                                       </div>-->
-                                      <div class="row fila">
+                                    <div class="row fila">
 
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                          <select name='posible_recomendacion_diagnostica' id='posible_recomendacion_diagnostica' class="form-control">
-                                            <option value="">DIAGNOSTICO MÉDICO</option>
-                                            <option value="hallazgos_normales">HALLAZGOS NORMALES</option>
-                                            <option value="hallazgos_sugestivos_">HALLAZGOS SUGESTIVOS DE INVASIÓN</option>
-                                            <option value="miscelaneos_hallazgos_varios">MISCELANEOS O HALLAZGOS VARIOS</option>
-                                            <option value="lesion_intraepitelial_bajogrado">LESIÓN INTRAEPITELIAL DE BAJO GRADO</option>
-                                            <option value="lesion_intraepitelial_altogrado">LESIÓN INTRAEPITELIAL DE ALTO GRADO</option>
-
-
-
-                                          </select>
-
-                                        </div>
-                                      </div> <br>
-                                      <br>
-
-
-                                    </p>
-
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="panel panel-collapse notika-accrodion-cus">
-                                <div class="panel-heading" role="tab">
-                                  <h4 class="panel-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-two" aria-expanded="false">
-                                      PAPANICOLAOU
-                                    </a>
-                                  </h4>
-                                </div>
-                                <div id="accordionPurple-two" class="collapse" role="tabpanel">
-                                  <div class="panel-body">
-                                    <p>
-                                      <div class="row fila">
-
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                          <div class="nk-int-st">
-                                            <input id="" name="" type="text" class="form-control" placeholder="PAPANICOLAOU/CITOLOGIA EXFOLIATIVA" disabled>
-                                          </div>
+                                        <select name='posible_recomendacion_diagnostica' id='posible_recomendacion_diagnostica' class="form-control">
+                                          <option value="">DIAGNOSTICO MÉDICO</option>
+                                          <option value="hallazgos_normales">HALLAZGOS NORMALES</option>
+                                          <option value="hallazgos_sugestivos_">HALLAZGOS SUGESTIVOS DE INVASIÓN</option>
+                                          <option value="miscelaneos_hallazgos_varios">MISCELANEOS O HALLAZGOS VARIOS</option>
+                                          <option value="lesion_intraepitelial_bajogrado">LESIÓN INTRAEPITELIAL DE BAJO GRADO</option>
+                                          <option value="lesion_intraepitelial_altogrado">LESIÓN INTRAEPITELIAL DE ALTO GRADO</option>
 
 
 
+                                        </select>
 
-
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                          <p>
-
-                                            Antecedenctes de cancer:<br>
-
-                                            <label><input type="radio" name="antecedente_cancer" value="1"> Si</label>
-
-                                            <label><input type="radio" name="antecedente_cancer" value="0"> NO</label>
-
-
-
-                                          </p>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                          <p>
-
-                                            Antecedenctes de infecciòn vaginal :<br>
-
-                                            <label><input type="radio" name="antecedente_infeccion_vagina" value="1"> Si</label>
-
-                                            <label><input type="radio" name="antecedente_infeccion_vagina" value="0"> NO</label>
-
-
-
-                                          </p>
-                                        </div>
                                       </div>
-                                      <div class="row fila">
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                          <div class="form-group purple-border">
-                                            <div class="row fila">
-                                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Observaciones</FONT>
-                                              </div>
-                                            </div>
-                                            <textarea class="form-control" rows="3" placeholder="Escribe  las observaciones" name="observaciones_papinocolau" form="f"></textarea>
-                                          </div>
-                                        </div>
-                                      </div>
-                                  </div>
+                                    </div> <br>
+                                    <br>
+
+
                                   </p>
+
                                 </div>
                               </div>
                             </div>
                             <div class="panel panel-collapse notika-accrodion-cus">
                               <div class="panel-heading" role="tab">
                                 <h4 class="panel-title">
-                                  <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-three" aria-expanded="false">
-                                    BIOPSIAS
+                                  <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-two" aria-expanded="false">
+                                    PAPANICOLAOU
                                   </a>
                                 </h4>
                               </div>
-                              <div id="accordionPurple-three" class="collapse" role="tabpanel">
+                              <div id="accordionPurple-two" class="collapse" role="tabpanel">
                                 <div class="panel-body">
-                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="accordion-stn mg-t-30">
-                                      <div class="panel-group" data-collapse-color="nk-purple" id="accordionPurple" role="tablist" aria-multiselectable="true">
-                                        <div class="panel panel-collapse notika-accrodion-cus">
-                                          <div class="panel-heading" role="tab">
-                                            <h4 class="panel-title">
-                                              <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-four" aria-expanded="false">
-                                                BIOPSIAS CERVIX
-                                              </a>
-                                            </h4>
-                                          </div>
-                                          <div id="accordionPurple-four" class="collapse" role="tabpanel">
-                                            <div class="panel-body">
-                                              <p>
-                                                <div class="row fila">
-                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style=" text-align: right; padding: 0 40px;">
-                                                    <div class="floating-numner">
-                                                      <p>Señala Donde Fue Tomada la muetra</p>
-                                                      <img id="recuadroDona" src="../img/dona.JPG" width="200" height="200" ismap style="display:none">
-                                                      <canvas id="canvasDona" width="200" height="200">
-                                                        <input id="coordCervix" name="coordCervix" value="0" style="display:none">
-                                                    </div>
-                                                  </div>
-                                                  <div id="contCoordCervix" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:25px 0px;">
+                                  <p>
+                                    <div class="row fila">
 
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                        <div class="nk-int-st">
+                                          <input id="" name="" type="text" class="form-control" placeholder="PAPANICOLAOU/CITOLOGIA EXFOLIATIVA" disabled>
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <p>
+
+                                          Antecedenctes de cancer:<br>
+
+                                          <label><input type="radio" name="antecedente_cancer" value="1"> Si</label>
+
+                                          <label><input type="radio" name="antecedente_cancer" value="0"> NO</label>
+
+
+
+                                        </p>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <p>
+
+                                          Antecedenctes de infecciòn vaginal :<br>
+
+                                          <label><input type="radio" name="antecedente_infeccion_vagina" value="1"> Si</label>
+
+                                          <label><input type="radio" name="antecedente_infeccion_vagina" value="0"> NO</label>
+
+
+
+                                        </p>
+                                      </div>
+                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <p>
+                                          Clasificacion Urgencia :<br>
+                                        </p>
+                                        <select name='clasificacion_medico' id='clasificacion_medico' class="form-control">
+                                          <option value="0" selected>Normal</option>
+                                          <option value="1">Urgente</option>
+                                        </select>
+                                      </div>
+
+
+                                    </div>
+                                    <div class="row fila">
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group purple-border">
+                                          <div class="row fila">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                              <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Observaciones</FONT>
+                                            </div>
+                                          </div>
+                                          <textarea class="form-control" rows="3" placeholder="Escribe  las observaciones" name="observaciones_papinocolau" form="f"></textarea>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="panel panel-collapse notika-accrodion-cus">
+                            <div class="panel-heading" role="tab">
+                              <h4 class="panel-title">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-three" aria-expanded="false">
+                                  BIOPSIAS
+                                </a>
+                              </h4>
+                            </div>
+                            <div id="accordionPurple-three" class="collapse" role="tabpanel">
+                              <div class="panel-body">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                  <div class="accordion-stn mg-t-30">
+                                    <div class="panel-group" data-collapse-color="nk-purple" id="accordionPurple" role="tablist" aria-multiselectable="true">
+                                      <div class="panel panel-collapse notika-accrodion-cus">
+                                        <div class="panel-heading" role="tab">
+                                          <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-four" aria-expanded="false">
+                                              BIOPSIAS CERVIX
+                                            </a>
+                                          </h4>
+                                        </div>
+                                        <div id="accordionPurple-four" class="collapse" role="tabpanel">
+                                          <div class="panel-body">
+                                            <p>
+                                              <div class="row fila">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style=" text-align: right; padding: 0 40px;">
+                                                  <div class="floating-numner">
+                                                    <p>Señala Donde Fue Tomada la Muestra</p>
+                                                    <img id="recuadroDona" src="../img/dona.JPG" width="200" height="200" ismap style="display:none">
+                                                    <canvas id="canvasDona" width="200" height="200">
+                                                      <input id="coordCervix" name="coordCervix" value="0" style="display:none">
                                                   </div>
+                                                </div>
+                                                <div id="contCoordCervix" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:25px 0px;">
+
+                                                </div>
                                                 <div class="row fila">
+                                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <p>
+                                                      Clasificacion Urgencia :<br>
+                                                    </p>
+                                                    <select name='clasificacion_medicoCervix' id='clasificacion_medicoCervix' class="form-control">
+                                                      <option value="0" selected>Normal</option>
+                                                      <option value="1">Urgente</option>
+                                                    </select>
+                                                  </div>
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group purple-border">
                                                       <div class="row fila">
@@ -1512,26 +1527,35 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                     </div>
                                                   </div>
                                                 </div>
-                                              </p>
-
-                                            </div>
+                                            </p>
                                           </div>
                                         </div>
-                                        <div class="panel panel-collapse notika-accrodion-cus">
-                                          <div class="panel-heading" role="tab">
-                                            <h4 class="panel-title">
-                                              <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-five" aria-expanded="false">
-                                                BIOPSIAS DE VULVOSCOPIA
-                                              </a>
-                                            </h4>
-                                          </div>
-                                          <div id="accordionPurple-five" class="collapse" role="tabpanel">
-                                            <div class="panel-body">
-                                              <p>
+                                      </div>
+                                      <div class="panel panel-collapse notika-accrodion-cus">
+                                        <div class="panel-heading" role="tab">
+                                          <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-five" aria-expanded="false">
+                                              BIOPSIAS DE VULVOSCOPIA
+                                            </a>
+                                          </h4>
+                                        </div>
+                                        <div id="accordionPurple-five" class="collapse" role="tabpanel">
+                                          <div class="panel-body">
+                                            <p>
                                               <div class="row fila">
+                                                
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                  <p>
+                                                    Clasificacion Urgencia :<br>
+                                                  </p>
+                                                  <select name='clasificacion_medicoVulvo' id='clasificacion_medicoVulvo' class="form-control">
+                                                    <option value="0" selected>Normal</option>
+                                                    <option value="1">Urgente</option>
+                                                  </select>
+                                                </div>
                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style=" text-align: right; padding: 0 40px;">
                                                   <div class="floating-numner">
-                                                    <p>Señala Donde Fue Tomada la muetra</p>
+                                                    <p>Señala Donde Fue Tomada la Muestra</p>
                                                     <img id="recuadroVulva" src="../img/vulva.JPG" width="200" height="200" ismap style="display:none">
                                                     <canvas id="canvasVulva" width="200" height="200">
                                                       <input id="coordVulva" name="coordVulva" value="0" style="display:none">
@@ -1554,86 +1578,100 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                     </div>
                                                   </div>
                                                 </div>
-                                              </p>
-                                            </div>
+                                            </p>
                                           </div>
                                         </div>
-                                        <div class="panel panel-collapse notika-accrodion-cus">
-                                          <div class="panel-heading" role="tab">
-                                            <h4 class="panel-title">
-                                              <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-seven" aria-expanded="false">
-                                                BIOPSIAS DE VAGINOSCOPIA
-                                              </a>
-                                            </h4>
-                                          </div>
-                                          <div id="accordionPurple-seven" class="collapse" role="tabpanel">
-                                            <div class="panel-body">
-                                              <p>
-                                                <div class="row fila">
-
-                                                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-                                                    <select name='estudio_solicitar_vaginoscopia' id='estudio_solicitar_vaginoscopia' class="form-control">
-                                                      <option value="">Selecciona Estudio A Solicitar</option>
-                                                      <option value="institucional">INSICIONAL</option>
-                                                      <option value="trucut">TRUCUT</option>
-                                                      <option value="aspiracion">ASPIRACIÒN</option>
-                                                    </select>
-
-
-                                                  </div>
-
-                                                  <div class="row fila">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                      <div class="form-group purple-border">
-                                                        <div class="row fila">
-                                                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
-                                                          </div>
-                                                        </div>
-                                                        <textarea class="form-control" rows="3" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f"></textarea>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-
-
-
-
+                                      </div>
+                                      <div class="panel panel-collapse notika-accrodion-cus">
+                                        <div class="panel-heading" role="tab">
+                                          <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-seven" aria-expanded="false">
+                                              BIOPSIAS DE VAGINOSCOPIA
+                                            </a>
+                                          </h4>
+                                        </div>
+                                        <div id="accordionPurple-seven" class="collapse" role="tabpanel">
+                                          <div class="panel-body">
+                                            <p>
+                                              <div class="row fila">
+                                                
+                                                <div class="col-lg-14 col-md-14 col-sm-14 col-xs-12">
+                                                  <p>
+                                                    Clasificacion Urgencia :<br>
+                                                  </p>
+                                                  <select name='clasificacion_medicoVagi' id='clasificacion_medicoVagi' class="form-control">
+                                                    <option value="0" selected>Normal</option>
+                                                    <option value="1">Urgente</option>
+                                                  </select>
                                                 </div>
 
-                                              </p>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div class="panel panel-collapse notika-accrodion-cus">
-                                          <div class="panel-heading" role="tab">
-                                            <h4 class="panel-title">
-                                              <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-six" aria-expanded="false">
-                                                BIOPSIA DE ENDOMETRIO
+                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                                              </a>
-                                            </h4>
-                                          </div>
-                                          <div id="accordionPurple-six" class="collapse" role="tabpanel">
-                                            <div class="panel-body">
-                                              <p>
+                                                  <select name='estudio_solicitar_vaginoscopia' id='estudio_solicitar_vaginoscopia' class="form-control">
+                                                    <option value="">Selecciona Estudio A Solicitar</option>
+                                                    <option value="institucional">INSICIONAL</option>
+                                                    <option value="trucut">TRUCUT</option>
+                                                    <option value="aspiracion">ASPIRACIÒN</option>
+                                                  </select>
+
+                                                </div>
 
                                                 <div class="row fila">
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group purple-border">
                                                       <div class="row fila">
                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                          <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Observaciones</FONT>
+                                                          <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Anotaciones</FONT>
                                                         </div>
                                                       </div>
-                                                      <textarea class="form-control" rows="3" placeholder="Escribe  las observaciones" name="observaciones_endometrio" form="f"></textarea>
+                                                      <textarea class="form-control" rows="3" placeholder="Escribe  las Anotaciones" name="anotaciones_vaginoscopia" form="f"></textarea>
                                                     </div>
                                                   </div>
                                                 </div>
-                                            </div>
+
+
+
+
+                                              </div>
 
                                             </p>
                                           </div>
+                                        </div>
+                                      </div>
+                                      <div class="panel panel-collapse notika-accrodion-cus">
+                                        <div class="panel-heading" role="tab">
+                                          <h4 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-six" aria-expanded="false">
+                                              BIOPSIA DE ENDOMETRIO
+                                            </a>
+                                          </h4>
+                                        </div>
+                                        <div id="accordionPurple-six" class="collapse" role="tabpanel">
+                                          <div class="panel-body">
+                                            <p>
+                                              <div class="row fila">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                  <p>
+                                                    Clasificacion Urgencia :<br>
+                                                  </p>
+                                                  <select name='clasificacion_medicoEndo' id='clasificacion_medicoEndo' class="form-control">
+                                                    <option value="0" selected>Normal</option>
+                                                    <option value="1">Urgente</option>
+                                                  </select>
+                                                </div>
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                  <div class="form-group purple-border">
+                                                    <div class="row fila">
+                                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                        <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Observaciones</FONT>
+                                                      </div>
+                                                    </div>
+                                                    <textarea class="form-control" rows="3" placeholder="Escribe  las observaciones" name="observaciones_endometrio" form="f"></textarea>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                          </div>
+                                          </p>
                                         </div>
                                       </div>
                                     </div>
@@ -1641,7 +1679,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                 </div>
                               </div>
                             </div>
-
                           </div>
                         </div>
                       </div>
@@ -1651,9 +1688,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               </div>
             </div>
           </div>
-          <br><br>
-          <center> <button type="submit" class="btn btn-primary">Enviar</button></center>
         </div>
+        <br><br>
+        <center> <button type="submit" class="btn btn-primary">Enviar</button></center>
+      </div>
       </div>
 
       <!--<center><input type="submit" style="border: #000 1px solid; background-color: #ed80a8" value="Enviar formulario"></center>-->
@@ -2185,12 +2223,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
           var canvasHelper = document.createElement('canvas');
-          canvasHelper.width = 1000 ;
-          canvasHelper.height = 1000 ;
+          canvasHelper.width = 1000;
+          canvasHelper.height = 1000;
           canvasHelper.getContext('2d').drawImage(videoElement, 0, 0, 1000, 1000);
           var canvas = document.createElement('canvas');
-          canvas.width = 300 ;
-          canvas.height = 300 ;
+          canvas.width = 300;
+          canvas.height = 300;
           canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
           img.src = canvas.toDataURL('image/jpeg');
           img.setAttribute("id", "inputImg" + contadorCanvas);
@@ -2215,7 +2253,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
             div.appendChild(ic);
             input.setAttribute("value", "sel," + canvasHelper.toDataURL('image/jpeg'));
-          }else{
+          } else {
             input.setAttribute("value", canvasHelper.toDataURL('image/jpeg'));
           }
           document.getElementById('vectorFotos').appendChild(div);
@@ -2227,12 +2265,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
           var canvasHelper = document.createElement('canvas');
-          canvasHelper.width = 1000 ;
-          canvasHelper.height = 1000 ;
+          canvasHelper.width = 1000;
+          canvasHelper.height = 1000;
           canvasHelper.getContext('2d').drawImage(videoElement, 0, 0, 1000, 1000);
           var canvas = document.createElement('canvas');
-          canvas.width = 300 ;
-          canvas.height = 300 ;
+          canvas.width = 300;
+          canvas.height = 300;
           canvas.getContext('2d').drawImage(videoElement, 0, 0, 300, 300);
           img.src = canvas.toDataURL('image/jpeg');
           img.setAttribute("id", "inputImg" + contadorCanvas);
@@ -2257,7 +2295,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             ic.setAttribute("class", "chkImagenSeleccionada fas fa-check-circle fa-2x");
             div.appendChild(ic);
             input.setAttribute("value", "sel," + canvasHelper.toDataURL('image/jpeg'));
-          }else{
+          } else {
             input.setAttribute("value", canvasHelper.toDataURL('image/jpeg'));
           }
           document.getElementById('vectorFotos').appendChild(div);
@@ -2289,16 +2327,16 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           if ($(".chkImagenSeleccionada").length < 8) {
             if ($(apuntador).children(".chkImagenSeleccionada").length == 0) {
               $(apuntador).append('<i class="chkImagenSeleccionada fas fa-check-circle fa-2x"></i>');
-              $(inputHidden).val( "sel," + sel.join(","));
+              $(inputHidden).val("sel," + sel.join(","));
             } else {
               $(apuntador).children(".chkImagenSeleccionada").remove();
-              sel.splice($.inArray("sel",sel),1);
+              sel.splice($.inArray("sel", sel), 1);
               $(inputHidden).val(sel.join(","));
             }
           } else if ($(apuntador).children(".chkImagenSeleccionada").length == 1) {
             $(apuntador).children(".chkImagenSeleccionada").remove();
-              sel.splice($.inArray("sel",sel),1);
-              $(inputHidden).val(sel.join(","));
+            sel.splice($.inArray("sel", sel), 1);
+            $(inputHidden).val(sel.join(","));
           }
         });
 
@@ -2306,7 +2344,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           return false;
         });
 
-        
+
 
 
         function eliminaCoordDona(e) {
@@ -2384,11 +2422,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             type: request_method,
             data: form_data,
             success: function(result) {
-              //console.log(result);
+              console.log(result);
               //if(result === "no_errors"){
-              if (!result.includes("error")) {
-                location.href = "consulta_paciente.php"
-              }
+              //if (!result.includes("error")) {
+              //  location.href = "consulta_paciente.php"
+              //}
               //}
             }
           });

@@ -1,4 +1,8 @@
 <?php
+//echo "<pre>";
+// echo var_dump( $_POST);
+//echo "</pre>";
+
 $idpaciente = isset($_POST['idpaciente']) ? $_POST['idpaciente'] : die("Error :No se ha recibido el ID del paciente a registrar la atencion medica");
 $id_usuario = isset($_POST['id_usuario']) ? $_POST['id_usuario'] : die("Error :No se ha recibido el ID del medico que registra la atencion medica");
 
@@ -43,27 +47,27 @@ $colposcopia = $_POST['colposcopia'];
 
 $causa = $_POST['causa'];
 $cervix = $_POST['cervix'];
-$union_escamocolumnar = $_POST['union_escamocolumnar'];
-$zona_transformacion = $_POST['zona_transformacion'];
-$epitelio_acetoblanco = $_POST['epitelio_acetoblanco'];
-$ep_criterios_menores = $_POST['ep_criterios_menores'];
-$ep_criterios_intermedios = $_POST['ep_criterios_intermedios'];
-$ep_criterios_mayores = $_POST['ep_criterios_mayores'];
-$bs_criterios_menores = $_POST['bs_criterios_menores'];
-$bs_criterios_intermedios = $_POST['bs_criterios_intermedios'];
-$bs_criterios_mayores = $_POST['bs_criterios_mayores'];
-$ag_criterios_menores = $_POST['ag_criterios_menores'];
-$ag_criterios_intermedios = $_POST['ag_criterios_intermedios'];
-$ag_criterios_mayores = $_POST['ag_criterios_mayores'];
-$cy_menores = $_POST['cy_menores'];
-$cy_intermedios = $_POST['cy_intermedios'];
-$cy_mayores = $_POST['cy_mayores'];
+$union_escamocolumnar = isset($_POST['union_escamocolumnar']) ? $_POST['union_escamocolumnar'] : NULL;
+$zona_transformacion = isset($_POST['zona_transformacion']) ? $_POST['zona_transformacion'] : NULL;
+$epitelio_acetoblanco = isset($_POST['epitelio_acetoblanco']) ? $_POST['epitelio_acetoblanco'] : NULL;
+$ep_criterios_menores = isset($_POST['ep_criterios_menores']) ? $_POST['ep_criterios_menores'] : NULL;
+$ep_criterios_intermedios = isset($_POST['ep_criterios_intermedios']) ? $_POST['ep_criterios_intermedios'] : NULL;
+$ep_criterios_mayores = isset($_POST['ep_criterios_mayores']) ? $_POST['ep_criterios_mayores'] : NULL;
+$bs_criterios_menores = isset($_POST['bs_criterios_menores']) ? $_POST['bs_criterios_menores'] : NULL;
+$bs_criterios_intermedios = isset($_POST['bs_criterios_intermedios']) ? $_POST['bs_criterios_intermedios'] : NULL;
+$bs_criterios_mayores = isset($_POST['bs_criterios_mayores']) ? $_POST['bs_criterios_mayores'] : NULL;
+$ag_criterios_menores = isset($_POST['ag_criterios_menores']) ? $_POST['ag_criterios_menores'] : NULL;
+$ag_criterios_intermedios = isset($_POST['ag_criterios_intermedios']) ? $_POST['ag_criterios_intermedios'] : NULL;
+$ag_criterios_mayores = isset($_POST['ag_criterios_mayores']) ? $_POST['ag_criterios_mayores'] : NULL;
+$cy_menores = isset($_POST['cy_menores']) ? $_POST['cy_menores'] : NULL;
+$cy_intermedios = isset($_POST['cy_intermedios']) ? $_POST['cy_intermedios'] : NULL;
+$cy_mayores = isset($_POST['cy_mayores']) ? $_POST['cy_mayores'] : NULL;
 $schiller = $_POST['schiller'];
 $vaginoscopia = isset($_POST['vaginoscopia_acetico']) ? $_POST['vaginoscopia_acetico'] : "N/A";
 $vaginoscopia_lugol = isset( $_POST['vaginoscopia_lugol']) ?  $_POST['vaginoscopia_lugol'] : "N/A";
 $miscelaneos = $_POST['miscelaneos'];
 $posible_recomendacion_diagnostica = $_POST['posible_recomendacion_diagnostica'];
-$recomendacion_diagnostica = $_POST['recomendacion_diagnostica'];
+$recomendacion_diagnostica = isset($_POST['recomendacion_diagnostica']) ? $_POST['recomendacion_diagnostica'] : 'Sin Recomendacion Médica Registrada' ;
 $vulvoscopia_acetico = isset($_POST['vulvoscopia_acetico']) ? $_POST['vulvoscopia_acetico'] : "N/A";
 $insertaestudio_colposcopico = "INSERT INTO estudio_colposcopico (colposcopia,causa,cervix,union_escamocolumnar,zona_transformacion,epitelio_acetoblanco,ep_criterios_menores,ep_criterios_intermedios,ep_criterios_mayores,bs_criterios_menores,bs_criterios_intermedios, bs_criterios_mayores,ag_criterios_menores,ag_criterios_intermedios,ag_criterios_mayores,cy_menores,cy_intermedios,cy_mayores,schiller, vaginoscopia_acetico,vaginoscopia_lugol,miscelaneos,recomendacion_diagnostica,posible_recomendacion_diagnostica,fecha_estudio,vulvoscopia_acetico)  VALUES ('$colposcopia','$causa','$cervix','$union_escamocolumnar','$zona_transformacion','$epitelio_acetoblanco','$ep_criterios_menores','$ep_criterios_intermedios','$ep_criterios_mayores', '$bs_criterios_menores','$bs_criterios_intermedios','$bs_criterios_mayores','$ag_criterios_menores','$ag_criterios_intermedios','$ag_criterios_mayores', '$cy_menores','$cy_intermedios','$cy_mayores','$schiller','$vaginoscopia','$vaginoscopia_lugol','$miscelaneos','$recomendacion_diagnostica','$posible_recomendacion_diagnostica','$hoys','$vulvoscopia_acetico')";
 $resultadoinsertaestudio_colposcopico = $mysqliL->query($insertaestudio_colposcopico);
@@ -73,15 +77,13 @@ $sql2 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estu
 $resulta2 = $mysqliL->query($sql2);
 
 ////////////////////obtencion de parametros papanicolau/////////////////////////////////////////////////////
-$clasificacion_medico=$_POST['clasificacion_medico'];
-$antecedente_cancer = $_POST['antecedente_cancer'];
-$antecedente_infeccion_vagina = $_POST['antecedente_infeccion_vagina'];
-$observaciones_papinocolau = $_POST['observaciones_papinocolau'];
+$clasificacion_medico=isset($_POST['clasificacion_medico']) ? $_POST['clasificacion_medico'] : 'Normal';
+$antecedente_cancer = isset($_POST['antecedente_cancer']) ? $_POST['antecedente_cancer'] : 0;
+$antecedente_infeccion_vagina = isset($_POST['antecedente_infeccion_vagina']) ? $_POST['antecedente_infeccion_vagina'] : 0;
+$observaciones_papinocolau = isset($_POST['observaciones_papinocolau']) ? $_POST['observaciones_papinocolau'] : '';
 
 if (!empty(trim($observaciones_papinocolau)) || (isset($_POST['antecedente_infeccion_vagina']) && $_POST['antecedente_infeccion_vagina'] == 1) || (isset($_POST['antecedente_cancer'])  && $_POST['antecedente_cancer'] == 1) ) {
   $observaciones_papinocolau = !empty(trim($observaciones_papinocolau)) ? $observaciones_papinocolau : "Sin observaciones registradas";
-  $antecedente_cancer = isset($_POST['antecedente_cancer']) ? $_POST['antecedente_cancer'] : 0;
-  $antecedente_infeccion_vagina = isset($_POST['antecedente_infeccion_vagina']) ?  $_POST['antecedente_infeccion_vagina'] : 0;
   $insertaestudio_papanicolau = "INSERT INTO estudio_papanicolau (antecedente_cancer,antecedente_infeccion_vagina,observaciones_papinocolau,fecha_estudio) VALUES ('$antecedente_cancer','$antecedente_infeccion_vagina','$observaciones_papinocolau','$hoys')";
 
   $resultadoestudio_papanicolau = $mysqliL->query($insertaestudio_papanicolau);
@@ -93,10 +95,9 @@ if (!empty(trim($observaciones_papinocolau)) || (isset($_POST['antecedente_infec
 }
 ////////////////////obtencion de parametros biopsas CERVIX/////////////////////////////////////////////////////
 $senalizacion = $_POST['senalizacion'];
-$clasificacion_medicocervix=$_POST['clasificacion_medicocervix'];
+$clasificacion_medicocervix=$_POST['clasificacion_medicoCervix'];
 $coordCervix = $_POST["coordCervix"];
-
-if (!empty(trim($senalizacion)) || !empty(trim($coordCervix)) ) {
+if (!empty(trim($senalizacion)) || !empty($coordCervix) ) {
   $insertaestudio_biopsia_cervix = "INSERT INTO estudio_biopsia_cervix (senalizacion,fecha_estudio,coordenadas,antecedente_cancer_cervicouterino)
    VALUES ('$senalizacion','$hoys','$coordCervix','$antecedente_cancer_cervicouterino')";
   $resultadoestudio_biopsia_cervix = $mysqliL->query($insertaestudio_biopsia_cervix);
@@ -128,7 +129,7 @@ if (!empty(trim($anotaciones_vulvoscopia)) && !empty(trim($coordVulva))) {
 ////////////////////obtencion de parametros biopsas DE VAGINOSCOPIA/////////////////////////////////////////////////////
 $estudio_solicitar_vaginoscopia = $_POST['estudio_solicitar_vaginoscopia'];
 $anotaciones_vaginoscopia = $_POST['anotaciones_vaginoscopia'];
-$clasificacion_medicovagi=$_POST['clasificacion_medicovagi'];
+$clasificacion_medicovagi=$_POST['clasificacion_medicoVagi'];
 if (!empty(trim($anotaciones_vaginoscopia)) || !empty(trim($estudio_solicitar_vaginoscopia))) {
 
   $anotaciones_vaginoscopia = (!empty(trim($anotaciones_vaginoscopia))) ? $anotaciones_vaginoscopia : "Sin anotaciones de la biopsia";
@@ -144,7 +145,7 @@ if (!empty(trim($anotaciones_vaginoscopia)) || !empty(trim($estudio_solicitar_va
 
 ////////////////////obtencion de parametros biopsas DE ENDOMETRIO/////////////////////////////////////////////////////
 $observaciones_endometrio = $_POST['observaciones_endometrio'];
-$clasificacion_medicoendo=$_POST['clasificacion_medicoendo'];
+$clasificacion_medicoendo=$_POST['clasificacion_medicoEndo'];
 if (!empty(trim($observaciones_endometrio))) {
 
   $insertaestudio_biopsia_endometrio = "INSERT INTO estudio_biopsia_endometrio (observaciones_endometrio,fecha_estudio) VALUES ('$observaciones_endometrio','$hoys')";

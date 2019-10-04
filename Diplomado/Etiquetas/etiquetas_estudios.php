@@ -108,6 +108,7 @@
 			p.edad_paciente,
 			e.fecha_estudio,
 			e.anotaciones_vaginoscopia,
+			e.estudio_solicitar_vaginoscopia,
 			ec.vaginoscopia_acetico,
 			ec.vaginoscopia_lugol,
 			ct.clasificacion_medico
@@ -124,6 +125,7 @@
 		$fecha_vagino = $info_vagino['fecha_estudio'];
 		$vaginoscopia_acetico_vagino = $info_vagino['vaginoscopia_acetico'];
 		$vaginoscopia_lugol_vagino = $info_vagino['vaginoscopia_lugol'];
+		$estudio_solicitar_vaginoscopia = $info_vagino['estudio_solicitar_vaginoscopia'];
 		$anotaciones_vaginoscopia_vagino = $info_vagino['anotaciones_vaginoscopia'];
 		$clasificacion_medico_vagino = $info_vagino['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 
@@ -149,7 +151,7 @@
 		$info_vulva = $res_vulva->fetch_assoc();
 		$fecha_vulva = $info_vulva['fecha_estudio'];
 		$anotaciones_vulvoscopia_vulva = $info_vulva['anotaciones_vulvoscopia'];
-		$coordenadasVulva = implode('","', explode('|', $info_vulva['coordenadas']));
+		$coordenadasVulva =  $info_vulva['coordenadas'];
 		$vulvoscopia_acetico_vulva = $info_vulva["vulvoscopia_acetico"];
 		$clasificacion_medico_vulva = $info_vulva["clasificacion_medico"] == 0 ? "Normal" : "Urgente";
 
@@ -166,7 +168,7 @@
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
 			e.fecha_estudio,
-			e.antecendente_cancer_cervicouterino,
+			e.antecedente_cancer_cervicouterino,
 			e.hallazgos_colposcopicos,
 			e.senalizacion,
 			e.coordenadas,
@@ -187,7 +189,7 @@
 		$hallazgos_colposcopicos_cervix = $info_cervix['hallazgos_colposcopicos'];
 		$senalizacion_cervix = $info_cervix['senalizacion'];
 		$clasificacion_medico_cervix = $info_cervix['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
-		$coordenadasCervix = implode('","', explode('|', $info_cervix['coordenadas']));
+		$coordenadasCervix =$info_cervix['coordenadas'];
 		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info_cervix['posible_recomendacion_diagnostica']));
 
 		if (!endsWith(trim($hallazgos_colposcopicos_cervix), ".")) {
@@ -230,7 +232,8 @@
 				var ctxDona = canvasDona.getContext("2d");
 				var dona = document.getElementById("recuadroDona");
 				if (dona) {
-					var coordenadas = <?php echo ('["' . $coordenadasCervix . '"]'); ?>;
+					var coord = '<?php echo $coordenadasCervix ?>';
+					var coordenadas = coord.split('|');
 					ctxDona.drawImage(dona, 0, 0, 200, 200);
 
 					$(coordenadas).each(function(index, value) {
@@ -263,7 +266,8 @@
 				var ctxVulva = canvasVulva.getContext("2d");
 				var vulva = document.getElementById("recuadroVulva");
 				if (vulva) {
-					var coordenadas = <?php echo ('["' . $coordenadasVulva . '"]'); ?>;
+					var coord = '<?php echo $coordenadasVulva ?>';
+					var coordenadas = coord.split('|');
 					ctxVulva.drawImage(vulva, 0, 0, 200, 200);
 
 					$(coordenadas).each(function(index, value) {
