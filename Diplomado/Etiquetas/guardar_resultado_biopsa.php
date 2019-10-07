@@ -22,10 +22,10 @@ switch ($id_tipo_estudio) {
 
    $resultaq = $mysqliL->query($sql11);
 
-   $id_estudio_resultado_paps = $mysqliL->insert_id;
+   $id_estudio_resultado = $mysqliL->insert_id;
 
     $Modifi = "UPDATE ctrl_paciente_estudios
-    SET id_estudio_resultado_paps='$id_estudio_resultado_paps',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
+    SET id_estudio_resultado='$id_estudio_resultado',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
   WHERE id_atencion='$id_atencion' and id_paciente='$id_paciente' and  id_tipo_estudio='$id_tipo_estudio' and id_estudio='$id_estudio' ";
 
    $Mo= $mysqliL->query($Modifi);
@@ -39,10 +39,10 @@ switch ($id_tipo_estudio) {
 
    $resultaq = $mysqliL->query($sql11);
 
-   $id_estudio_resultado_paps = $mysqliL->insert_id;
+   $id_estudio_resultado = $mysqliL->insert_id;
 
     $Modifi = "UPDATE ctrl_paciente_estudios
-    SET id_estudio_resultado_paps='$id_estudio_resultado_paps',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
+    SET id_estudio_resultado='$id_estudio_resultado',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
   WHERE id_atencion='$id_atencion' and id_paciente='$id_paciente' and  id_tipo_estudio='$id_tipo_estudio' and id_estudio='$id_estudio' ";
 
    $Mo= $mysqliL->query($Modifi);
@@ -56,10 +56,10 @@ switch ($id_tipo_estudio) {
 
    $resultaq = $mysqliL->query($sql11);
 
-   $id_estudio_resultado_paps = $mysqliL->insert_id;
+   $id_estudio_resultado = $mysqliL->insert_id;
 
     $Modifi = "UPDATE ctrl_paciente_estudios
-    SET id_estudio_resultado_paps='$id_estudio_resultado_paps',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
+    SET id_estudio_resultado='$id_estudio_resultado',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
   WHERE id_atencion='$id_atencion' and id_paciente='$id_paciente' and  id_tipo_estudio='$id_tipo_estudio' and id_estudio='$id_estudio' ";
 
    $Mo= $mysqliL->query($Modifi);
@@ -73,10 +73,10 @@ switch ($id_tipo_estudio) {
 
    $resultaq = $mysqliL->query($sql11);
 
-   $id_estudio_resultado_paps = $mysqliL->insert_id;
+   $id_estudio_resultado = $mysqliL->insert_id;
 
     $Modifi = "UPDATE ctrl_paciente_estudios
-    SET id_estudio_resultado_paps='$id_estudio_resultado_paps',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
+    SET id_estudio_resultado='$id_estudio_resultado',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
   WHERE id_atencion='$id_atencion' and id_paciente='$id_paciente' and  id_tipo_estudio='$id_tipo_estudio' and id_estudio='$id_estudio' ";
 
    $Mo= $mysqliL->query($Modifi);
@@ -90,10 +90,10 @@ header('Location: ../consulta_estudios.php');
 
        $resultaq = $mysqliL->query($sql11);
 
-       $id_estudio_resultado_paps = $mysqliL->insert_id;
+       $id_estudio_resultado = $mysqliL->insert_id;
 
         $Modifi = "UPDATE ctrl_paciente_estudios
-        SET id_estudio_resultado_paps='$id_estudio_resultado_paps',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
+        SET id_estudio_resultado='$id_estudio_resultado',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
       WHERE id_atencion='$id_atencion' and id_paciente='$id_paciente' and  id_tipo_estudio='$id_tipo_estudio' and id_estudio='$id_estudio' ";
 
        $Mo= $mysqliL->query($Modifi);
@@ -107,10 +107,10 @@ header('Location: ../consulta_estudios.php');
 
            $resultaq = $mysqliL->query($sql11);
 
-           $id_estudio_resultado_paps = $mysqliL->insert_id;
+           $id_estudio_resultado = $mysqliL->insert_id;
 
             $Modifi = "UPDATE ctrl_paciente_estudios
-            SET id_estudio_resultado_paps='$id_estudio_resultado_paps',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
+            SET id_estudio_resultado='$id_estudio_resultado',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
           WHERE id_atencion='$id_atencion' and id_paciente='$id_paciente' and  id_tipo_estudio='$id_tipo_estudio' and id_estudio='$id_estudio' ";
 
            $Mo= $mysqliL->query($Modifi);
@@ -124,10 +124,10 @@ header('Location: ../consulta_estudios.php');
 
                  $resultaq = $mysqliL->query($sql11);
 
-                 $id_estudio_resultado_paps = $mysqliL->insert_id;
+                 $id_estudio_resultado = $mysqliL->insert_id;
 
                   $Modifi = "UPDATE ctrl_paciente_estudios
-                  SET id_estudio_resultado_paps='$id_estudio_resultado_paps',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
+                  SET id_estudio_resultado='$id_estudio_resultado',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
                 WHERE id_atencion='$id_atencion' and id_paciente='$id_paciente' and  id_tipo_estudio='$id_tipo_estudio' and id_estudio='$id_estudio' ";
 
                  $Mo= $mysqliL->query($Modifi);

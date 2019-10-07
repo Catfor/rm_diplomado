@@ -43,11 +43,11 @@ VALUES
 
 $resultaq = $mysqliL->query($sql11);
 
-$id_estudio_resultado_paps = $mysqliL->insert_id;
+$id_estudio_resultado = $mysqliL->insert_id;
 
 
 $Modifi = "UPDATE ctrl_paciente_estudios
-SET id_estudio_resultado_paps='$id_estudio_resultado_paps',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
+SET id_estudio_resultado='$id_estudio_resultado',clasifiacion_patologo='$clasifiacion_patologo',estatus_patologo='1'
 WHERE id_paciente='$id_paciente' and id_estudio='$id_estudio' and id_tipo_estudio='$id_tipo_estudio' and id_atencion='$id_atencion' ";
 
 $Mo= $mysqliL->query($Modifi);
@@ -63,7 +63,7 @@ echo $flora_bacteriana1;
                                                                $sql11 = "INSERT INTO flora_bacteriana
                                                                    (id_resultado_papa,flora_bacteriana)
                                                                    VALUES
-                                                                   ('$id_estudio_resultado_paps','$flora_bacteriana1')";
+                                                                   ('$id_estudio_resultado','$flora_bacteriana1')";
 
                                                       $resultaq = $mysqliL->query($sql11);
 
