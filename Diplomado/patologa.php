@@ -11,7 +11,7 @@
       <div class="row fila">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <div class="logo-area">
-            <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="100" height="100" /></a>
+            <a href="#"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
 
           </div>
         </div>

@@ -16,7 +16,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="logo-area">
-                            <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="130" height="100" /></a>
+                            <a href="#"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
 
                         </div>
                     </div>
@@ -52,13 +52,26 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             $nick = $_SESSION['nick'];
             $correo_general = $_SESSION['correo_general'];
             $nombre_usuario = ucwords($_SESSION['nombre_usuario']);
-            $rol = $_SESSION['rol'];
             $apellidos_usuario = ucwords($_SESSION['apellidos_usuario']);
+            $rol = $_SESSION['rol'];
+            $id_paciente = $_GET['id_paciente'];
+
+            $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
+
+            $rowwe = mysqli_fetch_assoc($result123);
+            $nombre_paciente = ucwords(strtolower($rowwe['nombre_paciente']));
+            $apellidos_paciente = ucwords(strtolower($rowwe['apellidos_paciente']));
+            $edad_paciente = $rowwe['edad_paciente'];
+            $fecha_nacimiento_paciente = $rowwe['fecha_nacimiento_paciente'];
 
             $result123 = mysqli_query($mysqliL, "SELECT contra from usu_me where id_usuario='$id'");
 
             $rowwe = mysqli_fetch_assoc($result123);
             $contra = $rowwe['contra'];
+
+            echo "<input type='hidden' value='$id' name='id_usuario'>";
+            echo "<input type='hidden' value='$id_paciente' name='id_paciente'>";
+
 
             include('menu.php');
 
@@ -70,16 +83,23 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <div class="container">
                     <div class="fila">
                         <div class="row">
-                            <div style="text-align:center;color: #ed80a8;">
-                                <i class="fas fa-user-md fa-4x"></i>
-                                <h2 style="margin-top:10px;">Receta Médica</h2>
-                                <p style="color:#000">
-                                    Emitida por <b><?php echo $_SESSION['nombre_usuario'] . " " . $_SESSION['apellidos_usuario']; ?></b>
-                                </p>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div style="text-align:center;color: #ed80a8;">
+                                    <i class="fas fa-user-md fa-4x"></i>
+                                    <h2 style="margin-top:10px;">Receta Médica</h2>
+                                    <div style="text-align:left;"> 
+                                        <p style="color:#000">
+                                            Emitida por <b><?php echo $nombre_usuario . " " . $apellidos_usuario; ?></b>
+                                        </p>
+                                        <p style="color:#000">
+                                            Paciente <b><?php echo $nombre_paciente . " " . $apellidos_paciente; ?></b>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <form>
+                    <form id="f" action='guardar_receta.php' method="post" enctype="multipart/form-data">
                         <hr>
                         <div class="fila med">
                             <div class="row">
@@ -87,7 +107,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                     <span class="input-group-addon">
                                         <i class="fas fa-prescription-bottle-alt"></i>
                                     </span>
-                                    <input type="email" class="form-control" id="Medicamento" placeholder="Medicamento, ejemplo: Paracetamol">
+                                    <input type="text" class="form-control" id="Medicamento" placeholder="Medicamento, ejemplo: Paracetamol">
                                     <span class="input-group-addon btnElimina" style="display:none;color:indigo;" class="input-group-addon">
                                         <i class="fas fa-times-circle"></i>
                                     </span>
@@ -98,7 +118,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                     <span class="input-group-addon">
                                         <i class="fas fa-calendar-alt"></i>
                                     </span>
-                                    <input type="email" class="form-control" id="Indicaciones" placeholder=" Indicaciones, ejemplo: 2 Tabletas Cada 8 Horas Por 5 Días">
+                                    <input type="text" class="form-control" id="Indicaciones" placeholder=" Indicaciones, ejemplo: 2 Tabletas Cada 8 Horas Por 5 Días">
                                 </div>
                             </div>
                         </div>
@@ -108,6 +128,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         <div class="row fila" style="text-align:center">
                             <i id="btnAgregar" class="fas fa-plus-circle fa-3x" style="color: #ed80a8;"></i>
                         </div>
+                        <div class="row fila" style="text-align:right">
+                            <i id="btnSubmit" class="fas fa-plus-circle fa-3x" style="color: #ed80a8;"></i>
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -199,6 +223,33 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 });
             });
         </script>
+
+
+    <script>
+        $("#f").submit(function(event) {
+          event.preventDefault(); //prevent default action
+          var post_url = $(this).attr("action"); //get form action url
+          var request_method = $(this).attr("method"); //get form GET/POST method
+          var form_data = $(this).serialize(); //Encode form elements for submission
+
+          $.ajax({
+            url: post_url,
+            type: request_method,
+            data: form_data,
+            beforeSend: function(){
+              $("button").attr("disabled", true);
+            },
+            success: function(result) {
+              //console.log(result);
+              //if(result === "no_errors"){
+              if (!result.includes("error")) {
+                location.href = "consulta_paciente.php"
+              }
+              //}
+            }
+          });
+        });
+    </script>
 
     </body>
 
