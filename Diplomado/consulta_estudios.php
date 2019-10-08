@@ -595,7 +595,7 @@ if($asignacionvaf==0){
                                       <i class="notika-icon notika-windows"></i>
                                   </div>
                                   <div class="breadcomb-ctn" style="margin: auto 15px;">
-                                      <h2> </h2>
+                                      <h2> Patologo</h2>
                                   </div>
                               </div>
                           </div>
@@ -689,13 +689,13 @@ if($asignacionvaf==0){
 
 
                                                       if($clasificacion_medicopaps==1 ){
-                                                        echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' style='color: red' target='_blank'>Agregar Resultado </a>";
+                                                        echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' style='color: red' >Agregar Resultado </a>";
 
                                                       }
 
 
                                                       else{
-                                                        echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' style='color: green' target='_blank'>Agregar Resultado </a>";
+                                                        echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' style='color: green' >Agregar Resultado </a>";
 
                                                       }
 }
@@ -737,10 +737,10 @@ else{
                                             //        echo "<div><a href='Etiquetas/etiqueta_estudio_vulva1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' target='_blank'>Agregar Vulvoscopia</a></div>";
 if($estatus_patologov==0){
                                                     if($estatus_patologov==0 and $estatus_supervisorv==1 and $id_usu_patv!=$id){
-                                                      echo "No Asignado";
+                                                      echo "No Asignado<br>";
                                                     }
                                                     else  if($estatus_patologov==1 and $estatus_supervisorv==1 and $id_usu_patv!=$id){
-                                                      echo "No Asignado";
+                                                      echo "No Asignado<br>";
                                                     }
                                                     else{
                                                      echo "<div><a href='Etiquetas/etiqueta_estudio_vulva1.php?id_paciente=$id_pacientepapsv&id_estudio=$id_estudiopapsv&id_tipo_estudio=$id_tipo_estudiopapsv&id_usuario=$id_usuariopapsv&id_atencion=$id_atencionpapsv&id_usu_pat=$id_usu_patpapsv&clasificacion_medico=$clasificacion_medicopapsv' target='_blank'>Agregar Vulvoscopia</a></div>";
@@ -835,7 +835,7 @@ if($estatus_patologoend==0){
   echo "<div><a href='Etiquetas/etiqueta_estudio_endometrio1.php?id_paciente=$id_pacientepapsend&id_estudio=$id_estudiopapsend&id_tipo_estudio=$id_tipo_estudiopapsend&id_usuario=$id_usuariopapsend&id_atencion=$id_atencionpapsend&id_usu_pat=$id_usu_patend&clasificacion_medico=$clasificacion_medicopapsend' target='_blank'>Agregar Endom</a></div>";
 
                                                     }else{
-                                                      echo "solo ver  ";
+                                                      echo "solo ver <br> ";
                                                     }
 
 

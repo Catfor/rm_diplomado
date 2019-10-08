@@ -10,7 +10,7 @@ $descripcion_macroscopica=$_GET['descripcion_macroscopica'];
 $impresion_diagnostica=$_GET['impresion_diagnostica'];
 $observaciones=$_GET['observaciones'];
 
-
+//cho "<script languaje='javascript' type='text/javascript'>window.close();</script>";
 date_default_timezone_set('America/Mexico_City');
 $hoys = date("Y-m-d H:i:s");
 switch ($id_tipo_estudio) {

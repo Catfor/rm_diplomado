@@ -11,7 +11,7 @@
       <div class="row fila">
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <div class="logo-area">
-            <a href="#"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
+            <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="130" height="100" /></a>
 
           </div>
         </div>
@@ -304,7 +304,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
         </div>
         <!-- Breadcomb area End-->
         <!-- Form Element area Start-->
-        <div class="form-element-area">
+        <div class="form-element-area">ddddddddddddddddddddddd
           <div class="container">
 
             <div class="row fila">
@@ -357,7 +357,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
         <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id; ?>">
         <input type="hidden" class="form-control" name="id_atencion" value="<?php echo $id_atencion; ?>">
 
-        <div class="row fila">
+        <div class="row fila">ffffffff
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <p>Seleccion Anterior Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></p>
               <select name="edad_inicio_menstruacion" class="form-control">
@@ -488,7 +488,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
           </div>
 
 
-        </div>
+        </div>fffffffffff
         <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
             <p>Edad de Regla Anterior fue:<?php echo $edad_en_que_fue_su_regla; ?></p>
