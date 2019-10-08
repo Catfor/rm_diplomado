@@ -24,7 +24,7 @@
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
 			e.fecha_estudio,
-			e.antecendente_cancer_cervicouterino,
+			e.antecedente_cancer_cervicouterino,
 			e.hallazgos_colposcopicos,
 			e.senalizacion,
 			e.coordenadas,
@@ -46,12 +46,12 @@
 		$paciente = $info['paciente'];
 		$medico = $info['medico'];
 		$idAtencion = $info['id_atencion'];
-		$antecendente_cancer_cervicouterino = $info['antecendente_cancer_cervicouterino'];
+		$antecendente_cancer_cervicouterino = $info['antecedente_cancer_cervicouterino'];
 		$hallazgos_colposcopicos = $info['hallazgos_colposcopicos'];
 		$senalizacion = $info['senalizacion'];
 		$coordenadasHelper = implode('","', explode('|', $info['coordenadas']));
 		$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info['posible_recomendacion_diagnostica']));
-		$clasificacion_medico_paps =  $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente"; 
+		$clasificacion_medico_paps =  $info['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 		if (!endsWith(trim($hallazgos_colposcopicos), ".")) {
 			$hallazgos_colposcopicos = $hallazgos_colposcopicos . '.';
 		}

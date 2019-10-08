@@ -66,7 +66,7 @@ $Mo= $mysqliL->query($Modifi);
 /*-------------------------------------papanicolau---------------------------------*/
 /*-------------------------------------papanicolau---------------------------------*/
 
-/*
+
 
 
 
@@ -103,6 +103,6 @@ foreach ($_FILES["archivo"]['tmp_name'] as $key => $tmp_name) {
     closedir($dir); //Cerramos el directorio de destino
   }
 }
-*/
+
 
  ?>
