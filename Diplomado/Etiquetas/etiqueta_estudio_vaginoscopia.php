@@ -11,13 +11,13 @@
 	<?php
 	ob_start();
 	include('../../coni/Localhost.php');
-	
+
 	setlocale(LC_ALL, 'es_ES.UTF-8');
 	date_default_timezone_set('America/Mexico_City');
 	if (isset($_GET["id_paciente"]) && isset($_GET["id_estudio"])) {
 		$id_paciente = $_GET["id_paciente"];
 		$id_estudio = $_GET["id_estudio"];
-		$informacion = "SELECT 
+		$informacion = "SELECT e.estudio_solicitar_vaginoscopia,
 			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
