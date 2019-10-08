@@ -331,7 +331,7 @@ $inicio = strftime("%d de %B del %Y", strtotime($fe));
 
 
       <div class="nk-int-st">
-        <input id="cual" name="cual" type="text" class="form-control" value='<?php echo $cual; ?>' >
+        <input id="cual" name="cual" type="text" class="form-control" value='<?php echo $cual; ?>' disabled >
       </div>
     </div>
   </div>
@@ -387,7 +387,7 @@ echo $inicio12; ?></label>
         <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
       </div>
     </div>
-    <textarea class="form-control" rows="2" placeholder="<?php echo $atecedentes_lesion; ?>" name="atecedentes_lesion" form="f1"></textarea>
+    <textarea class="form-control" rows="2" placeholder="<?php echo $atecedentes_lesion; ?>" name="atecedentes_lesion" form="f1" disabled></textarea>
   </div>
 </div>
 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
@@ -397,7 +397,7 @@ echo $inicio12; ?></label>
         <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
       </div>
     </div>
-    <textarea class="form-control" rows="2" placeholder="<?php echo $antecedentes_tratamiento; ?>" name="antecedentes_tratamiento" form="f1"></textarea>
+    <textarea class="form-control" rows="2" placeholder="<?php echo $antecedentes_tratamiento; ?>" name="antecedentes_tratamiento" form="f1" disabled></textarea>
   </div>
 </div><br><br><br><br><br>
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
