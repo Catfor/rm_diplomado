@@ -165,6 +165,52 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 
 if($clasificacion_medico==1){
 ?>
+<?php
+$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
+
+
+$rowwe = mysqli_fetch_assoc($result123);
+$nombrepaciente = ucwords($rowwe['nombre_paciente']);
+$apellidospaciente = ucwords($rowwe['apellidos_paciente']);
+$edad_paciente = $rowwe['edad_paciente'];
+$fecha_nacimiento_paciente = $rowwe['fecha_nacimiento_paciente'];
+
+$re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
+INNER JOIN atencion_medica AS a
+ON a.id_paciente=p.id_paciente
+
+
+
+WHERE a.id_paciente=$id_paciente and a.id_atencion_medica='$id_atencion' ");
+$total = $re->num_rows;
+
+
+$ro = mysqli_fetch_assoc($re);
+$edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
+$metodos_planificacion = $ro['metodos_planificacion'];
+$cual = $ro['cual'];
+  $fecha_atencion_medica = $ro['fecha_atencion_medica'];
+$edad_inicio_vida_sexual = $ro['edad_inicio_vida_sexual'];
+  $edad_en_que_fue_su_regla = $ro['edad_en_que_fue_su_regla'];
+$parejas_sexuales = $ro['parejas_sexuales'];
+$gestas = $ro['gestas'];
+$para = $ro['para'];
+$cesareas = $ro['cesareas'];
+$abortos = $ro['abortos'];
+$fecha_ultima_regla = $ro['fecha_ultima_regla'];
+$fecha_ultimo_papanicolau = $ro['fecha_ultimo_papanicolau'];
+$antecedentes_tratamiento = $ro['antecedentes_tratamiento'];
+$atecedentes_lesion = $ro['atecedentes_lesion'];
+$metrorragia = $ro['metrorragia'];
+$hormonoterapia = $ro['hormonoterapia'];
+$duracion_hormonoterapia = $ro['duracion_hormonoterapia'];
+$ritmo = $ro['ritmo'];
+$antecedente_cancer_cervicouterino = $ro['antecedente_cancer_cervicouterino'];
+$tratamiento_previo = $ro['tratamiento_previo'];
+$fecha_atencion_medica = $ro['fecha_atencion_medica'];
+
+
+?>
 
                 <div class='alert-list'>
                             <div class='alert alert-danger alert-dismissible' role='alert'>
@@ -176,6 +222,8 @@ if($clasificacion_medico==1){
                             </div>
                         </div>
                         <?php }?>
+
+
 <div class="breadcomb-area">
     <div class="container">
         <div class="row">
@@ -228,6 +276,207 @@ if($clasificacion_medico==1){
               <div class="breadcomb-area">
               <div class="container">
               <div class="row">
+
+
+<!-- aqui inicia el atencion medica-->
+              <div class="row fila">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="accordion-stn mg-t-30">
+                    <div class="panel-group" data-collapse-color="nk-purple" id="accordionPurple" role="tablist" aria-multiselectable="true">
+                      <div class="panel panel-collapse notika-accrodion-cus">
+                        <div class="panel-heading" role="tab">
+                          <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-one" aria-expanded="false">
+                              Informacion Atencion Medica
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="accordionPurple-one" class="collapse" role="tabpanel">
+                          <div class="panel-body">
+<!-- aqui va mi info///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!-- fehca -->
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+  <div class="nk-int-mk sl-dp-mn">
+    <h6>Fecha de Atencion Medica</h6>
+  </div>
+
+  <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+    <div class="input-group date nk-int-st">
+
+      <span class="input-group-addon"></span>
+      <input type="text" class="form-control" placeholder="<?php
+setlocale(LC_TIME, 'es_ES', 'esp_esp');
+$fe = date("d.M.Y", strtotime($fecha_atencion_medica));
+$inicio = strftime("%d de %B del %Y", strtotime($fe));
+  echo $inicio;  ?>" disabled>
+    </div>
+  </div>
+</div><br><br><br>
+<!-- fehca -->
+<!--////////////////////////////////// -->
+<div class="row fila">
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <p>Seleccion Anterior Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></p>
+
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <p> Anterior Metodos de Planificacion Fue:<?php echo $metodos_planificacion; ?></p>
+
+
+  </div><br><br><br>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+
+    <div class="form-group ic-cmp-int form-elet-mg"><p>Cual</p>
+
+
+      <div class="nk-int-st">
+        <input id="cual" name="cual" type="text" class="form-control" value='<?php echo $cual; ?>' >
+      </div>
+    </div>
+  </div>
+  <div class="row fila">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <p>Edad de Regla Anterior fue:<?php echo $edad_en_que_fue_su_regla; ?></p>
+      </div></div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <p>Edad de inicio de vida sexual elegida:<?php echo $edad_inicio_vida_sexual; ?></p>
+
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <p>Seleccion Anterior de Parejas sexuales:<?php echo $edad_inicio_vida_sexual; ?></p>
+      </div><br><br><br>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <p>Seleccion Ateriror Gestas Fue:<?php echo $gestas;?></p>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <p>Seleccion Anterior Para fue:<?php echo $para;?></p>
+  </div><br><br><br>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+  <p>Seleccion Anterior de Césareas Fue:<?php echo $cesareas;?> </p>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+    <p>Seleccion Anterior de Abortos Fue: <?php echo $abortos; ?> </p>
+</div><br><br><br>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+  <div>
+<label for="bday">Fecha de ultima regla Fue:<?php
+$fea = date("d.M.Y", strtotime($fecha_ultima_regla));
+$inicio1 = strftime("%d de %B del %Y", strtotime($fea));
+
+echo $inicio1; ?></label>
+
+</div>
+
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+  <div>
+<label for="bday">Fecha de ultimo papanicolau Fue:  <?php
+$fea2 = date("d.M.Y", strtotime($fecha_ultimo_papanicolau));
+$inicio12 = strftime("%d de %B del %Y", strtotime($fea2));
+echo $inicio12; ?></label>
+
+</div>
+
+</div><br><br><br>
+<div class="col-lg-4 col-md-1 col-sm-1 col-xs-2">
+  <div class="form-group purple-border">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
+      </div>
+    </div>
+    <textarea class="form-control" rows="2" placeholder="<?php echo $atecedentes_lesion; ?>" name="atecedentes_lesion" form="f1"></textarea>
+  </div>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+  <div class="form-group purple-border">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
+      </div>
+    </div>
+    <textarea class="form-control" rows="2" placeholder="<?php echo $antecedentes_tratamiento; ?>" name="antecedentes_tratamiento" form="f1"></textarea>
+  </div>
+</div><br><br><br><br><br>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+<p>Metrorragia anterior:<?php if($metrorragia==0) {
+echo "No";
+}else{
+echo "Si";
+} ?></p>
+
+
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+  <p>Hormonoterapia anterior:<?php if($hormonoterapia==0) {
+    echo "No";
+  }else{
+    echo "Si";
+  } ?></p>
+
+
+</div><br><br>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+  <div class="form-group">
+<p>duracion anterior:</p>
+    <div class="nk-int-st">
+      <input type="text" name="duracion_hormonoterapia" class="form-control" value="<?php echo $duracion_hormonoterapia;  ?>" disabled>
+    </div>
+  </div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+<p>Ritmo anterior: <?php echo $ritmo; ?> </p>
+
+
+
+</div><br><br><br><br>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+  <p>Antecedente de Cáncer cervicouterino :<?php if($antecedente_cancer_cervicouterino==0) {
+    echo "No";
+  }else{
+    echo "Si";
+  } ?></p>
+
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+  <p>Tratamiento Previos anterior:<?php if($tratamiento_previo==0) {
+    echo "No";
+  }else{
+    echo "Si";
+  } ?></p>
+
+
+</div>
+
+
+
+
+      </div>
+
+</div>
+<!-- ///////////////////////////-->
+
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+
+<!-- aqui finaliza el atencion medica-->
+
+
+
+
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="breadcomb-list">
                     <div class="row">

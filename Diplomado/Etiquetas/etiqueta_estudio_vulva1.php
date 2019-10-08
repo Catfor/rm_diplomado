@@ -136,7 +136,7 @@ $id_atencion=$_GET['id_atencion'];
 $id_usu_pat=$_GET['id_usu_pat'];
 $clasificacion_medico=$_GET['clasificacion_medico'];
 
-$idusuario=$_GET['idusuario'];
+
 $queryColposcopia = "SELECT CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS paciente,CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,
 c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico,paps.observaciones_papinocolau,paps.antecedente_cancer,
 paps.antecedente_infeccion_vagina,paps.fecha_estudio

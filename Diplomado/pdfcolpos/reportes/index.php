@@ -280,9 +280,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
           while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
             $ruta_imagen = $resultadosemanas1['ruta_imagen'];
-
-
-
             ?>
           <img src="../../imagesestudios/<?php echo $ruta_imagen; ?>" width="250" height="105" />
         <?php  }   ?>
