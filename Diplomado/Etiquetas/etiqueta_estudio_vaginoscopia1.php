@@ -500,7 +500,7 @@ $clasificacion_medico_vagino = $info_vagino['clasificacion_medico'] == 0 ? "Norm
 				</div>
 		</div>
 </div>
-<div class="modal animated rubberBand" id="myModalsix" role="dialog">
+<div class="modal animated rubberBand" id="myModalsix" role="dialog">ggggg
 		<div class="modal-dialog modals-default">
 				<div class="modal-content">
 						<div class="modal-header">
@@ -561,10 +561,7 @@ $clasificacion_medico_vagino = $info_vagino['clasificacion_medico'] == 0 ? "Norm
 
 
 						</div>
-						<div class="modal-footer">
 
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						</div>
 				</div>
 		</div>
 </div>

@@ -209,6 +209,30 @@ $antecedente_cancer_cervicouterino = $ro['antecedente_cancer_cervicouterino'];
 $tratamiento_previo = $ro['tratamiento_previo'];
 $fecha_atencion_medica = $ro['fecha_atencion_medica'];
 
+$informacion_paps = "SELECT
+  CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
+  CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
+  p.edad_paciente,
+  e.fecha_estudio,
+  e.hallazgos_colposcopicos,
+  e.observaciones_papinocolau,
+  ct.clasificacion_medico,ec.posible_recomendacion_diagnostica
+  FROM
+  paciente p
+  INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 7
+  INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
+  INNER JOIN estudio_papanicolau e ON ct.id_estudio = e.id_estudio
+ INNER JOIN estudio_colposcopico AS ec ON ec.id_estudio=ct.id_estudio
+  ";
+
+$res_paps = $mysqliL->query($informacion_paps);
+$info_pap = $res_paps->fetch_assoc();
+$fecha_paps = $info_pap['fecha_estudio'];
+$colposcopico_paps = $info_pap['hallazgos_colposcopicos'];
+$observaciones_paps = $info_pap['observaciones_papinocolau'];
+$posible_recomendacion_diagnostica = $info_pap['posible_recomendacion_diagnostica'];
+$clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
+
 
 ?>
 
@@ -249,6 +273,278 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
         </div>
     </div>
 </div>
+<div class="modals-default-cl">
+<center>
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalfive">Informacion De Atencion Medica</button>
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalsix">Biopsia De Papanicolaou</button>
+</center>
+</div><br><br>
+<div class="modal animated flash" id="myModalfive" role="dialog">
+		<div class="modal-dialog modals-default">
+				<div class="modal-content">
+						<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<div class="modal-body">
+								<h2>Antecedentes Atencion Medicos</h2>
+								<!-- aqui inicia el atencion medica-->
+															<div class="row fila">
+																<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+																	<div class="accordion-stn mg-t-30">
+																		<div class="panel-group" data-collapse-color="nk-purple" id="accordionPurple" role="tablist" aria-multiselectable="true">
+																			<div class="panel panel-collapse notika-accrodion-cus">
+
+
+																					<div class="panel-body">
+								<!-- aqui va mi info///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+								<!-- fehca -->
+								<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+									<div class="nk-int-mk sl-dp-mn">
+										<h6>Fecha de Atencion Medica</h6>
+									</div>
+
+									<div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+										<div class="input-group date nk-int-st">
+
+											<span class="input-group-addon"></span>
+											<input type="text" class="form-control" placeholder="<?php
+								setlocale(LC_TIME, 'es_ES', 'esp_esp');
+								$fe = date("d.M.Y", strtotime($fecha_atencion_medica));
+								$inicio = strftime("%d de %B del %Y", strtotime($fe));
+									echo $inicio;  ?>" disabled>
+										</div>
+									</div>
+								</div><br><br><br>
+								<!-- fehca -->
+								<!--////////////////////////////////// -->
+								<div class="row fila">
+									<div class="col-lg-6 col-md- col-sm-4 col-xs-12">
+											<p>Seleccion Anterior Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></p>
+
+									</div>
+									<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+											<p>  Metodo de Planificacion:<br><?php
+
+
+										echo	$metodos_planificacion; ?></p>
+
+
+									</div><br><br><br>
+									<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+
+
+										<div class="form-group ic-cmp-int form-elet-mg"><p>Cual</p>
+
+
+											<div class="nk-int-st">
+												<input id="cual" name="cual" type="text" class="form-control" value='<?php echo $cual; ?>' disabled >
+											</div>
+										</div>
+									</div>
+									<div class="row fila">
+										<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+											<p>Edad de Regla Anterior fue:<?php echo $edad_en_que_fue_su_regla; ?></p>
+										</div></div><br>
+											<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+												<p>Edad de inicio de vida sexual elegida:<?php echo $edad_inicio_vida_sexual; ?></p>
+
+												</div>
+
+												<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+												<p>Seleccion Anterior de Parejas sexuales:<?php echo $edad_inicio_vida_sexual; ?></p>
+											</div><br><br>
+											<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+												<p>Seleccion Ateriror Gestas Fue:<?php echo $gestas;?></p>
+											</div>
+											<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+												<p>Seleccion Anterior Para fue:<?php echo $para;?></p>
+									</div><br><br>
+									<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+									<p>Seleccion Anterior de Césareas Fue:<?php echo $cesareas;?> </p>
+									</div>
+									<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+										<p>Seleccion Anterior de Abortos Fue: <?php echo $abortos; ?> </p>
+								</div><br><br><br>
+								<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+									<div>
+								<label for="bday">Fecha de ultima regla Fue:<?php
+								$fea = date("d.M.Y", strtotime($fecha_ultima_regla));
+								$inicio1 = strftime("%d de %B del %Y", strtotime($fea));
+
+								echo $inicio1; ?></label>
+
+								</div>
+
+								</div>
+								<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+									<div>
+								<label for="bday">Fecha de ultimo papanicolau Fue:  <?php
+								$fea2 = date("d.M.Y", strtotime($fecha_ultimo_papanicolau));
+								$inicio12 = strftime("%d de %B del %Y", strtotime($fea2));
+								echo $inicio12; ?></label>
+
+								</div>
+
+								</div><br><br><br>
+								<div class="col-lg-6 col-md-1 col-sm-1 col-xs-2">
+									<div class="form-group purple-border">
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
+											</div>
+										</div>
+										<textarea class="form-control" rows="2" placeholder="<?php echo $atecedentes_lesion; ?>" name="atecedentes_lesion" form="f1" disabled></textarea>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+									<div class="form-group purple-border">
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
+											</div>
+										</div>
+										<textarea class="form-control" rows="2" placeholder="<?php echo $antecedentes_tratamiento; ?>" name="antecedentes_tratamiento" form="f1" disabled></textarea>
+									</div>
+								</div><br><br><br><br><br>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+								<p>Metrorragia anterior:<?php if($metrorragia==0) {
+								echo "No";
+								}else{
+								echo "Si";
+								} ?></p>
+
+
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<p>Hormonoterapia anterior:<?php if($hormonoterapia==0) {
+										echo "No";
+									}else{
+										echo "Si";
+									} ?></p>
+
+
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+									<div class="form-group">
+								<p>duracion anterior:</p>
+										<div class="nk-int-st">
+											<input type="text" name="duracion_hormonoterapia" class="form-control" value="<?php echo $duracion_hormonoterapia;  ?>" disabled>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<p>Ritmo anterior: <?php echo $ritmo; ?> </p>
+
+
+
+								</div><br><br><br><br>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<p>Antecedente de Cáncer cervicouterino :<?php if($antecedente_cancer_cervicouterino==0) {
+										echo "No";
+									}else{
+										echo "Si";
+									} ?></p>
+
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+									<p>Tratamiento Previos anterior:<?php if($tratamiento_previo==0) {
+										echo "No";
+									}else{
+										echo "Si";
+									} ?></p>
+
+
+								</div>
+
+
+
+
+											</div>
+
+								</div>
+								<!-- ///////////////////////////-->
+
+																					</div>
+																				</div>
+																			</div>
+
+
+																		</div>
+
+
+																	</div>
+																</div>
+						</div>
+						<div class="modal-footer">
+
+							<!--	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+						</div>
+				</div>
+		</div>
+    <!-- modal -->
+    <div class="modal animated rubberBand" id="myModalsix" role="dialog">
+    		<div class="modal-dialog modals-default">
+    				<div class="modal-content">
+    						<div class="modal-header">
+    								<button type="button" class="close" data-dismiss="modal">&times;</button>
+    						</div>
+    						<div class="modal-body">
+
+
+
+                  <div style="background-color:#fff">
+                    <div>
+                      <center>
+                        <div class="logo-area">
+                          <a href="#">
+                            <img src="../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
+                          </a>
+                        </div>
+                      </center>
+                    </div>
+                    <div>
+                      <p>
+                        <center>
+                          <b>Solicitud De Estudio De Papanicolaou</b>
+                        </center>
+                      </p>
+                      <div class="row">
+                        <div class="column">
+                          <p><b>ID Atención</b> <?php echo $id_atencion ?></p>
+                        </div>
+                        <div class="column">
+                          <p><b>Prioridad</b> <?php echo $clasificacion_medico_paps ?></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="column">
+                          <p>
+                            <b>Fecha:</b> <?php echo $fecha_paps; ?>
+                          </p>
+                        </div>
+                        <div class="column">
+                          <p>
+                            <b>Edad:</b> <?php echo $edad_paciente; ?></p>
+                          <p>
+                        </div>
+                      </div>
+                      <p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
+                      <p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
+                      <p><b>Estudio Solicitado:</b> Citolog&iacute;a Exfoliativa</p>
+                      <p class="txt-justificado"><b>Hallazgos Colposc&oacute;picos:</b><?php echo $posible_recomendacion_diagnostica; ?></p>
+                      <p><b>Observaciones:</b></p>
+                      <p class="txt-justificado"><?php echo $observaciones_paps; ?></p>
+                    </div>
+                  </div>
+
+
+    						</div>
+
+    				</div>
+    		</div>
+    </div>
 <!--//Breadcomb area End-->
 <!--//Data Table area Start-->
 <form action='guardar_resultado_paps.php' method="post" id="gform">
@@ -275,202 +571,7 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
 
               <div class="breadcomb-area">
               <div class="container">
-              <div class="row">
-
-
-<!-- aqui inicia el atencion medica-->
-              <div class="row fila">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="accordion-stn mg-t-30">
-                    <div class="panel-group" data-collapse-color="nk-purple" id="accordionPurple" role="tablist" aria-multiselectable="true">
-                      <div class="panel panel-collapse notika-accrodion-cus">
-                        <div class="panel-heading" role="tab">
-                          <h4 class="panel-title">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordionPurple" href="#accordionPurple-one" aria-expanded="false">
-                              Informacion Atencion Medica
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="accordionPurple-one" class="collapse" role="tabpanel">
-                          <div class="panel-body">
-<!-- aqui va mi info///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!-- fehca -->
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-  <div class="nk-int-mk sl-dp-mn">
-    <h6>Fecha de Atencion Medica</h6>
-  </div>
-
-  <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
-    <div class="input-group date nk-int-st">
-
-      <span class="input-group-addon"></span>
-      <input type="text" class="form-control" placeholder="<?php
-setlocale(LC_TIME, 'es_ES', 'esp_esp');
-$fe = date("d.M.Y", strtotime($fecha_atencion_medica));
-$inicio = strftime("%d de %B del %Y", strtotime($fe));
-  echo $inicio;  ?>" disabled>
-    </div>
-  </div>
-</div><br><br><br>
-<!-- fehca -->
-<!--////////////////////////////////// -->
-<div class="row fila">
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-      <p>Seleccion Anterior Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></p>
-
-  </div>
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-      <p> Anterior Metodos de Planificacion Fue:<?php echo $metodos_planificacion; ?></p>
-
-
-  </div><br><br><br>
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-    <div class="form-group ic-cmp-int form-elet-mg"><p>Cual</p>
-
-
-      <div class="nk-int-st">
-        <input id="cual" name="cual" type="text" class="form-control" value='<?php echo $cual; ?>' disabled >
-      </div>
-    </div>
-  </div>
-  <div class="row fila">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-      <p>Edad de Regla Anterior fue:<?php echo $edad_en_que_fue_su_regla; ?></p>
-      </div></div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <p>Edad de inicio de vida sexual elegida:<?php echo $edad_inicio_vida_sexual; ?></p>
-
-        </div>
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <p>Seleccion Anterior de Parejas sexuales:<?php echo $edad_inicio_vida_sexual; ?></p>
-      </div><br><br><br>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <p>Seleccion Ateriror Gestas Fue:<?php echo $gestas;?></p>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <p>Seleccion Anterior Para fue:<?php echo $para;?></p>
-  </div><br><br><br>
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-  <p>Seleccion Anterior de Césareas Fue:<?php echo $cesareas;?> </p>
-  </div>
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-    <p>Seleccion Anterior de Abortos Fue: <?php echo $abortos; ?> </p>
-</div><br><br><br>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-  <div>
-<label for="bday">Fecha de ultima regla Fue:<?php
-$fea = date("d.M.Y", strtotime($fecha_ultima_regla));
-$inicio1 = strftime("%d de %B del %Y", strtotime($fea));
-
-echo $inicio1; ?></label>
-
-</div>
-
-</div>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-  <div>
-<label for="bday">Fecha de ultimo papanicolau Fue:  <?php
-$fea2 = date("d.M.Y", strtotime($fecha_ultimo_papanicolau));
-$inicio12 = strftime("%d de %B del %Y", strtotime($fea2));
-echo $inicio12; ?></label>
-
-</div>
-
-</div><br><br><br>
-<div class="col-lg-4 col-md-1 col-sm-1 col-xs-2">
-  <div class="form-group purple-border">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes de Lesión</FONT>
-      </div>
-    </div>
-    <textarea class="form-control" rows="2" placeholder="<?php echo $atecedentes_lesion; ?>" name="atecedentes_lesion" form="f1" disabled></textarea>
-  </div>
-</div>
-<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-  <div class="form-group purple-border">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedente de Tratamiento</FONT>
-      </div>
-    </div>
-    <textarea class="form-control" rows="2" placeholder="<?php echo $antecedentes_tratamiento; ?>" name="antecedentes_tratamiento" form="f1" disabled></textarea>
-  </div>
-</div><br><br><br><br><br>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-<p>Metrorragia anterior:<?php if($metrorragia==0) {
-echo "No";
-}else{
-echo "Si";
-} ?></p>
-
-
-</div>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-  <p>Hormonoterapia anterior:<?php if($hormonoterapia==0) {
-    echo "No";
-  }else{
-    echo "Si";
-  } ?></p>
-
-
-</div><br><br>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-  <div class="form-group">
-<p>duracion anterior:</p>
-    <div class="nk-int-st">
-      <input type="text" name="duracion_hormonoterapia" class="form-control" value="<?php echo $duracion_hormonoterapia;  ?>" disabled>
-    </div>
-  </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-<p>Ritmo anterior: <?php echo $ritmo; ?> </p>
-
-
-
-</div><br><br><br><br>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-  <p>Antecedente de Cáncer cervicouterino :<?php if($antecedente_cancer_cervicouterino==0) {
-    echo "No";
-  }else{
-    echo "Si";
-  } ?></p>
-
-</div>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-  <p>Tratamiento Previos anterior:<?php if($tratamiento_previo==0) {
-    echo "No";
-  }else{
-    echo "Si";
-  } ?></p>
-
-
-</div>
-
-
-
-
-      </div>
-
-</div>
-<!-- ///////////////////////////-->
-
-                          </div>
-                        </div>
-                      </div>
-
-
-                    </div>
-
-
-                  </div>
-                </div>
-              </div>
+              
 
 <!-- aqui finaliza el atencion medica-->
 
