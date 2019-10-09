@@ -259,7 +259,7 @@ $clasificacion_medico_vagino = $info_vagino['clasificacion_medico'] == 0 ? "Norm
                                     <i class="notika-icon notika-windows"></i>
                                 </div>
                                 <div class="breadcomb-ctn" style="margin: auto 15px;">
-                                    <h2>Resultados Patologicos</h2>
+                                    <h2>Resultados Patologicos Vaginoscopia</h2>
                                 </div>
                             </div>
                         </div>

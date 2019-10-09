@@ -260,7 +260,7 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
                                     <i class="notika-icon notika-windows"></i>
                                 </div>
                                 <div class="breadcomb-ctn" style="margin: auto 15px;">
-                                    <h2>Resultados Patologicos</h2>
+                                    <h2>Resultados Patologicos Papanicolau</h2>
                                 </div>
                             </div>
                         </div>
@@ -571,7 +571,7 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
 
               <div class="breadcomb-area">
               <div class="container">
-              
+
 
 <!-- aqui finaliza el atencion medica-->
 

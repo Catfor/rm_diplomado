@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<title>Etiqueta Estudio Papanicolaou</title>
+	<title>Etiquetas Estudios </title>
 	<link href="../../css/bootstrap.min.css" rel="stylesheet" />
 	<link href="../../css/etiquetas.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="../../img/logo/corona.png" />
@@ -14,7 +14,7 @@
 	ob_start();
 
 	include('../../coni/Localhost.php');
-	
+
 	setlocale(LC_ALL, 'es_ES.UTF-8');
 	date_default_timezone_set('America/Mexico_City');
 
@@ -23,7 +23,7 @@
 		////////////////////////////////////////////////////////////////////////////////////////////
 
 		$id_paciente = $_GET["id_paciente"];
-		$informacionPaciente = "SELECT 
+		$informacionPaciente = "SELECT
 			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
@@ -42,7 +42,7 @@
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 
-		$informacion_paps = "SELECT 
+		$informacion_paps = "SELECT
 			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
@@ -102,7 +102,7 @@
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 
-		$informacion_vagino = "SELECT 
+		$informacion_vagino = "SELECT
 			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
@@ -130,7 +130,7 @@
 		$clasificacion_medico_vagino = $info_vagino['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 
 		////////////////////////////////////////////////////////////////////////////////////////////
-		$informacion_vulva = "SELECT 
+		$informacion_vulva = "SELECT
 		CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 		CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 		p.edad_paciente,
@@ -163,7 +163,7 @@
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 
-		$informacion_cervix = "SELECT 
+		$informacion_cervix = "SELECT
 			CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
 			CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 			p.edad_paciente,
