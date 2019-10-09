@@ -209,7 +209,32 @@ $antecedente_cancer_cervicouterino = $ro['antecedente_cancer_cervicouterino'];
 $tratamiento_previo = $ro['tratamiento_previo'];
 $fecha_atencion_medica = $ro['fecha_atencion_medica'];
 
+$informacion_vagino = "SELECT
+	CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
+	CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
+	p.edad_paciente,
+	e.fecha_estudio,
+	e.anotaciones_vaginoscopia,
+	e.estudio_solicitar_vaginoscopia,
+	ec.vaginoscopia_acetico,
+	ec.vaginoscopia_lugol,
+	ct.clasificacion_medico
+	FROM
+	paciente p
+	INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 5
+	INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
+	INNER JOIN estudio_vaginoscopia e ON ct.id_estudio = e.id_estudio
+	INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
+	INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
 
+$res_vagino = $mysqliL->query($informacion_vagino);
+$info_vagino = $res_vagino->fetch_assoc();
+$fecha_vagino = $info_vagino['fecha_estudio'];
+$vaginoscopia_acetico_vagino = $info_vagino['vaginoscopia_acetico'];
+$vaginoscopia_lugol_vagino = $info_vagino['vaginoscopia_lugol'];
+$estudio_solicitar_vaginoscopia = $info_vagino['estudio_solicitar_vaginoscopia'];
+$anotaciones_vaginoscopia_vagino = $info_vagino['anotaciones_vaginoscopia'];
+$clasificacion_medico_vagino = $info_vagino['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 ?>
 
                 <div class='alert-list'>
@@ -482,11 +507,62 @@ $fecha_atencion_medica = $ro['fecha_atencion_medica'];
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 						</div>
 						<div class="modal-body">
-								<h2>Modal title</h2>
-								<p>Curabitur blandit mollis lacus. Nulla sit amet est. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Cras sagittis.</p>
+
+
+
+											<div style="background-color:#fff">
+												<div>
+													<center>
+														<div class="logo-area">
+															<a href="#">
+																<img src="../../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
+															</a>
+														</div>
+													</center>
+												</div>
+												<div>
+													<p>
+														<center>
+															<b>Solicitud De Estudio Para Biopsia De Vaginoscopia</b>
+														</center>
+													</p>
+
+													<div class="row">
+														<div class="column">
+															<p><b>ID Atención</b> <?php echo $id_atencion ?></p>
+														</div>
+														<div class="column">
+															<p><b>Prioridad</b> <?php echo $clasificacion_medico_vagino ?></p>
+														</div>
+													</div>
+													<div class="row">
+														<div class="column">
+															<p>
+																<b>Fecha:</b> <?php echo $fecha_vagino; ?>
+															</p>
+														</div>
+														<div class="column">
+															<p>
+																<b>Edad:</b> <?php echo $edad_paciente; ?></p>
+															<p>
+														</div>
+													</div>
+													<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
+													<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
+													<p class="txt-justificado"><b>Estudio solicitado: </b><?php echo ucwords($estudio_solicitar_vaginoscopia); ?></p>
+													<p>
+														<b>Acetico:</b> <?php echo ucwords($vaginoscopia_acetico_vagino); ?></p>
+													<p>
+														<b>Lugol:</b> <?php echo ucwords($vaginoscopia_lugol_vagino); ?></p>
+													<p><b>Anotaciones:</b></p>
+													<p class="txt-justificado"><?php echo $anotaciones_vaginoscopia_vagino; ?></p>
+												</div>
+											</div>
+
+
 						</div>
 						<div class="modal-footer">
-						
+
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						</div>
 				</div>
