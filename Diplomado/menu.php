@@ -1,10 +1,5 @@
 <?php
 if($rol=='Medico'){
-
-
-
-
-
 echo "
 <div class='mobile-menu-area'>
   <div class='container'>
@@ -45,11 +40,6 @@ echo "
 ";
 }
 else if($rol=='Enfermera'){
-
-
-
-
-
 echo "
 <div class='mobile-menu-area'>
   <div class='container'>
@@ -164,5 +154,48 @@ echo "<div class='mobile-menu-area'>
         </div>
     </div>
 </div>";
+}
+/////////////////////////////////////////////////////////////////////////////
+else if($rol=='Admin'){
+  echo "
+  <div class='mobile-menu-area'>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                <div class='mobile-menu'>
+                    <nav id='dropdown'>
+                        <ul class='mobile-menu-nav'>
+
+                                    <li><a href='alta_paciente1.php'>Alta Paciente Admin</a></li>
+                                    <li><a href='consulta_paciente1.php'>Consultar Pacientes Admin</a></li>
+
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Main Menu area start-->
+  <div class='main-menu-area mg-tb-40'>
+      <div class='container'>
+          <div class='row'>
+              <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                  <ul class='nav nav-tabs notika-menu-wrap menu-it-icon-pro'>
+                   <li><a  href='alta_paciente1.php'><i class='notika-icon notika-form'></i>Alta Paciente Admin(Enfermera)</a>
+                      </li>
+                      <li><a  href='consulta_paciente1.php'><i class='notika-icon notika-form'></i>Consultar Pacientes Admin(Enfermera)</a>
+                        </li>
+<li><a  href='consulta_paciente.php'><i class='notika-icon notika-form'></i>Ver Lista Paciente Admin(Medico)</a></li>
+ <li><a  href='consulta_estudios.php?op=1'><i class='notika-icon notika-windows'></i>Consultas Realizadas Admin(Medico)</a></li>
+   <li><a href='resultados.php'><i class='notika-icon notika-form'></i>Lista Resultados Admin(En Desarrollo)</a></li>
+<li><a  href='consulta_estudios.php?op=2'><i class='notika-icon notika-form'></i>Consultas Realizadas Admin(Supervisor)</a></li>
+  <li><a href='consulta_estudios.php?op=3'>Consultas Realizadas Admin(Patologo)</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>  ";
 }
  ?>
