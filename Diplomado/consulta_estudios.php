@@ -752,7 +752,7 @@ if($estatus_patologov==0){
                                                     }
 ///////.//
 }else{
-                                                    echo "<div><a href='pdfpaps/app/reportes/index.html?id_paciente=$id_pacientepapsv&id_estudio=$id_estudiopapsv&id_tipo_estudio=$id_tipo_estudiopapsv&id_usuario=$id_usuariopapsv&id_atencion=$id_atencionpapsv&id_usu_pat=$id_usu_patpapsv&clasificacion_medico=$clasificacion_medicopapsv' target='_blank'>solo  ver</a></div>";
+                                                    echo "<div><a href='pdfpaps/app/reportes/index.html?id_paciente=$id_pacientepapsv&id_estudio=$id_estudiopapsv&id_tipo_estudio=$id_tipo_estudiopapsv&id_usuario=$id_usuariopapsv&id_atencion=$id_atencionpapsv&id_usu_pat=$id_usu_patpapsv&clasificacion_medico=$clasificacion_medicopapsv' target='_blank'>solo  ver </a></div>";
 }
                                                   }
                                               }
