@@ -16,11 +16,11 @@ a {
 
 body {
   position: relative;
-  width: 23cm;
-  height: 29.7cm;
+  width: 21cm;
+  height: 29cm;
   margin: 0 auto;
   color: #555555;
-  background: #FFFFFF;
+  background-image: url("logo.png")
   font-family: Arial, sans-serif;
   font-size: 14px;
   font-family: SourceSansPro;
@@ -29,7 +29,7 @@ body {
 header {
   padding: 10px 0;
   margin-bottom: 20px;
-  border-bottom: 1px solid #AAAAAA;
+  border-bottom: 3px solid #a25cbf;
 }
 
 #logo {
@@ -42,31 +42,9 @@ header {
 }
 
 #company {
-  font-size: 1.4em;
-  line-height: 1.4em;
-  font-weight: normal;
-  text-align: center;
-  margin: 0 0 20px 0;
-}
-#company1 {
-  float: left;
-  text-align: left;
-}
-
-#project div,
-#company1 div {
-  white-space: nowrap;
-}
-#reina {
   float: right;
   text-align: right;
 }
-
-#project div,
-#reina div {
-  white-space: nowrap;
-}
-
 
 
 #details {
@@ -74,28 +52,54 @@ header {
 }
 
 #client {
+
+  text-align: left;
   padding-left: 6px;
-  border-left: 6px solid #a25cbf;
+  border-left:  6px solid #a25cbf;
   float: left;
 }
 
 #client .to {
   color: #777777;
 }
-
-h2.name {
-  color: #5D6975;
-  font-size: 1.4em;
-  line-height: 2.8em;
-  font-weight: normal;
-  text-align: center;
-  margin: 0 0 20px 0;
+h6 {
+   right: 0px;
+    top:  4px;
+    position: absolute;
+    width: 182px;
+    color: #5D6975;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    font-weight: normal;
+    text-align: center;
+    margin: 0 0 20px 0;
 
 }
-
+h2.name {
+  right: 328px;
+    top: 48px;
+    position: absolute;
+  font-size: 1.4em;
+  font-weight: normal;
+  margin: 0;
+}
 #invoice {
   float: right;
   text-align: right;
+}
+#invoice1 {
+  right: 158px;
+   top: 53px;
+   position: absolute;
+  float: left;
+  text-align: left;
+}
+#invoice2 {
+  right: 108px;
+   top: 34px;
+   position: absolute;
+  float: left;
+  text-align: left;
 }
 
 #invoice h1 {
@@ -112,6 +116,7 @@ h2.name {
 }
 
 table {
+
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
@@ -120,8 +125,8 @@ table {
 
 table th,
 table td {
-  padding: 20px;
-  background: #a25cbf;
+  padding: 15px;
+  background: #ffffff00;
   text-align: left;
   border-bottom: 1px solid #FFFFFF;
 }
@@ -132,7 +137,7 @@ table th {
 }
 
 table td {
-  text-align: right;
+  text-align: inherit;
 }
 
 table td h3{
@@ -142,13 +147,12 @@ table td h3{
   margin: 0 0 0.2em 0;
 }
 
-table .no
+table .no {
+  color: #4e4e4e;
+  font-size: 1.2em;
+  background: #f1f1f1;
+  padding: 5px;
 
-  table .desc {
-    text-align: left;
-  color: #FFFFFF;
-  font-size: 1.6em;
-  background: #a25cbf;
 }
 
 table .desc {
@@ -200,53 +204,48 @@ table tfoot tr:last-child td {
 table tfoot tr td:first-child {
   border: none;
 }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin-bottom: 20px;
+table{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border-spacing: 0;
+}
+thead, tfoot{
+    background: #6A96CC;
+}
+thead th, tfoot td{
+    border-top: 2px solid #ffffff00;
+    border-bottom: 1px solid #C1CED9;
+}
+thead th{
+    color: #4e4e4e;
+    font-weight: normal;
+}
+tfoot td{
+    text-align: center;
+    color: #FFF;
+}
+td, th{
+    padding: 5px 10px;
+}
+tbody td{
+    color: #6666B5;
+}
+tbody tr{
+    background: #ffffff00;
 }
 
-table tr:nth-child(2n-1) td {
-  background: #F5F5F5;
+/* poner la última columna en negrita */
+
+
+/* intercalar color de fonto para filas impares */
+tbody tr:nth-child(2n+1){
+    background: #ffffff00;
 }
 
-table th,
-table td {
-  text-align: left;
-}
-
-table th {
-  padding: 15px 20px;
-  color: #ffffff;
-  border-bottom: 1px solid #C1CED9;
-  white-space: nowrap;
-  font-weight: normal;
-}
-
-table .service,
-table .desc {
-  text-align: left;
-}
-
-table td {
-  padding: 15px;
-  text-align: center;
-}
-
-table td.service,
-table td.desc {
-  vertical-align: top;
-}
-
-table td.unit,
-table td.qty,
-table td.total {
-  font-size: 1.2em;
-}
-
-table td.grand {
-  border-top: 1px solid #5D6975;;
+/* La primera columna es siempre verde y el texto negro */
+tbody tr td:first-child{
+    background: #ffffff;
+    color:#000000;
 }
 
 #thanks{
@@ -264,12 +263,12 @@ table td.grand {
 }
 
 footer {
-  color: #5D6975;
+  color: #777777;
   width: 100%;
-  height: 10px;
+  height: 30px;
   position: absolute;
   bottom: 0;
-  border-top: 1px solid #C1CED9;
+  border-top: 2px solid #a25cbf;
   padding: 8px 0;
-  text-align: right;
+  text-align: left;
 }
