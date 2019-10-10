@@ -304,7 +304,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
         </div>
         <!-- Breadcomb area End-->
         <!-- Form Element area Start-->
-        <div class="form-element-area">ddddddddddddddddddddddd
+        <div class="form-element-area">
           <div class="container">
 
             <div class="row fila">

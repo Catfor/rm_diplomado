@@ -54,6 +54,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     $correo_general = $_SESSION['correo_general'];
     $nombre_usuario = ucwords(strtolower($_SESSION['nombre_usuario']));
     $rol = $_SESSION['rol'];
+
     $apellidos_usuario = ucwords(strtolower($_SESSION['apellidos_usuario']));
 
     $result123 = mysqli_query($mysqliL, "SELECT contra from usu_me where id_usuario='$id'");
@@ -177,35 +178,37 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             }
           }
           ?>
-      <div class="breadcomb-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div class="breadcomb-list">
-                <div class="row">
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="breadcomb-wp">
-                      <div class="breadcomb-icon">
-                        <i class="notika-icon notika-windows"></i>
-                      </div>
 
-                      <div class="breadcomb-ctn" style="margin: auto 15px;">
-                        <h2>Pacientes Registrados</h2>
+      <!-- Breadcomb area End-->
+      <!-- Data Table area Start-->
+      <?php if($rol=='Medico'){?>
+        <div class="breadcomb-area">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcomb-list">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <div class="breadcomb-wp">
+                        <div class="breadcomb-icon">
+                          <i class="notika-icon notika-windows"></i>
+                        </div>
 
+                        <div class="breadcomb-ctn" style="margin: auto 15px;">
+                          <h2>Pacientes Registrados</h2>
+
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Breadcomb area End-->
-      <!-- Data Table area Start-->
       <div class="data-table-area">
         <div class="container">
           <div class="row">
@@ -296,8 +299,129 @@ WHERE p.id_paciente=$id_paciente
           </div>
         </div>
       </div>
-      <!-- Data Table area End-->
-      <!-- Start Footer area-->
+
+
+    <?php } else if($rol=='Admin'){?>
+      <div class="breadcomb-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="breadcomb-list">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="breadcomb-wp">
+                      <div class="breadcomb-icon">
+                        <i class="notika-icon notika-windows"></i>
+                      </div>
+
+                      <div class="breadcomb-ctn" style="margin: auto 15px;">
+                        <h2>Pacientes Registrados Admin</h2>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="data-table-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="data-table-list">
+                <div class="basic-tb-hd">
+
+                </div>
+                <div class="table-responsive">
+                  <table id="data-table-basic" class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Nombre Completo</th>
+
+                        <th> Fecha Alta</th>
+                        <th>Fecha Nacimiento</th>
+                        <th>CP</th>
+                        <th>total de Consultas</th>
+                        <th>Edad</th>
+
+                        <th>Estatus</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+
+                      <?php
+                          $consultasemanas = "SELECT   a.id_atencion_medica,p.nombre_paciente,p.apellidos_paciente,p.fecha_nacimiento_paciente,p.edad_paciente
+                            ,p.fecha_creacion,p.codigo_postal,p.id_paciente FROM paciente AS p
+                         LEFT JOIN atencion_medica AS a
+                         ON a.id_paciente=p.id_paciente WHERE DATE_FORMAT(p.fecha_creacion,'%Y-%m-%d')='$hoys'  ";
+                          $resultadosemanas = $mysqliL->query($consultasemanas);
+
+
+                          while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
+                            $nombre_paciente = ucwords(strtolower($resultadosemanas1['nombre_paciente']));
+                            $apellidos_paciente = ucwords(strtolower($resultadosemanas1['apellidos_paciente']));
+                            $fecha_nacimiento_paciente = $resultadosemanas1['fecha_nacimiento_paciente'];
+                            $edad_paciente = $resultadosemanas1['edad_paciente'];
+                            $fecha_creacion = $resultadosemanas1['fecha_creacion'];
+                            $codigo_postal = $resultadosemanas1['codigo_postal'];
+                            $id_paciente = $resultadosemanas1['id_paciente'];
+
+      $id_atencion_medica = $resultadosemanas1['id_atencion_medica'];
+      if($id_atencion_medica!=''){}else{
+
+                            echo "  <tr><td> $nombre_paciente $apellidos_paciente </td>
+
+                                          <td> $fecha_creacion</td>
+                                          <td>$fecha_nacimiento_paciente</td>
+                                          <td>$codigo_postal  </td>
+                                          ";
+                            $consultasemanas1 = "SELECT COUNT(*) as total FROM paciente AS p
+INNER JOIN atencion_medica AS a
+ON a.id_paciente=p.id_paciente
+WHERE p.id_paciente=$id_paciente
+                                           ";
+                            $resultadosemanas1 = $mysqliL->query($consultasemanas1);
+
+
+
+
+                            while ($resultadosemanas1w = $resultadosemanas1->fetch_assoc()) {
+                              $total = $resultadosemanas1w['total'];
+                              echo "<td>$total</td>";
+                            }
+                            echo "
+                                            <td>$edad_paciente</td>
+                                            <td><a href='atencion_medica.php?id_paciente=$id_paciente'>Iniciar Consulta</a></td>
+
+
+
+                                            </tr>";}
+                          }
+
+
+                          ?>
+
+
+
+                    </tbody>
+
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php
+          }
+          ?>
       <?php
           include('pie.php');
           ?>
