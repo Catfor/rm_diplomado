@@ -216,14 +216,14 @@ else if($rol=='Admin'){ ?>
                       </div>
                       <div id="Admin" class="tab-pane active notika-tab-menu-bg animated flipInX">
                           <ul class="notika-main-menu-dropdown">
-                              <li><a href="normal-table.html">Reiniciar DB(Truncate)</a>
+                              <li><a href="Reiniciar.php">Reiniciar DB(Truncate)</a>
                               </li>
-                              <li><a href="data-table.html">Reportes</a>
+                              <li><a href="reporte.php">Reportes</a>
                               </li>
-                              <li><a href="data-table.html">Usuarios</a>
+                              <li><a href="alta_usuario.php">Usuarios</a>
                               </li>
 
-                              <li><a href="data-table.html">Generar Backups</a>
+                              <li><a href="backups.php">Generar Backups</a>
                               </li>
                           </ul>
                       </div>
