@@ -1,7 +1,8 @@
 <?php
-echo "<pre>";
-echo var_dump($_POST);
-echo "</pre>";
+session_start();
+//echo "<pre>";
+//echo var_dump($_POST);
+//echo "</pre>";
 
 if(isset($_SESSION['id_usuario']) ){
 //if (false) {

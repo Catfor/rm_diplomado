@@ -294,10 +294,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
         <script>
             $("#f").submit(function(event) {
-                event.preventDefault(); //prevent default action
-                var post_url = $(this).attr("action"); //get form action url
-                var request_method = $(this).attr("method"); //get form GET/POST method
-                var form_data = $(this).serialize(); //Encode form elements for submission
+                event.preventDefault();
+                var post_url = $(this).attr("action");
+                var request_method = $(this).attr("method");
+                var form_data = $(this).serialize();
 
                 $.ajax({
                     url: post_url,
@@ -310,9 +310,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                     success: function(result) {
                         console.log(result);
                         //if(result === "no_errors"){
-                        //if (!result.includes("error")) {
-                        //  location.href = "consulta_paciente.php"
-                        //}
+                        if (!result.includes("error")) {
+                          location.href = "consulta_paciente.php"
+                        }
                         //}
                     }
                 });
