@@ -17,7 +17,7 @@ a {
 body {
   position: relative;
   width: 21cm;
-  height: 29cm;
+  height: 15cm;
   margin: 0 auto;
   color: #555555;
   background-image: url("logo.png")
@@ -27,7 +27,7 @@ body {
 }
 
 header {
-  padding: 0px 0;
+  padding: 10px 0;
   margin-bottom: 20px;
   border-bottom: 3px solid #a25cbf;
 }
@@ -53,22 +53,23 @@ header {
 
 #client {
 
-  text-align: left;
+  text-align: center;
   padding-left: 6px;
-  border-left:  6px solid #a25cbf;
+  border-left: 135px solid #ffffff00;
   float: left;
 }
 
 #client .to {
   color: #777777;
 }
-h6 {
+h1 {
    right: 0px;
-    top:  4px;
+    top: -35px;
     position: absolute;
-    width: 182px;
+    border-top: 2px solid #5D6975;
+    width: 176px;
     color: #5D6975;
-    font-size: 0.9em;
+    font-size: 1.1em;
     line-height: 1.5em;
     font-weight: normal;
     text-align: center;
@@ -76,9 +77,6 @@ h6 {
 
 }
 h2.name {
-  right: 328px;
-    top: 48px;
-    position: absolute;
   font-size: 1.4em;
   font-weight: normal;
   margin: 0;
@@ -125,9 +123,9 @@ table {
 
 table th,
 table td {
-  padding: 8px;
+  padding: 1px;
   background: #ffffff00;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #FFFFFF;
 }
 
@@ -148,11 +146,9 @@ table td h3{
 }
 
 table .no {
-  color: #4e4e4e;
-  font-size: 1.2em;
-  background: #f1f1f1;
-  padding: 5px;
-
+  color: #FFFFFF;
+  font-size: 1.6em;
+  background: #57B223;
 }
 
 table .desc {
@@ -210,14 +206,14 @@ table{
     border-spacing: 0;
 }
 thead, tfoot{
-    background: #ffffff00;
+    background: #6A96CC;
 }
 thead th, tfoot td{
-    border-top: 2px solid #ffffff00;
-    border-bottom: 1px solid #C1CED9;
+    border-top: 2px solid #6678B1;
+    border-bottom: 2px solid #6678B1;
 }
 thead th{
-    color: #4e4e4e;
+    color: #79008E;
     font-weight: normal;
 }
 tfoot td{
@@ -244,8 +240,8 @@ tbody tr:nth-child(2n+1){
 
 /* La primera columna es siempre verde y el texto negro */
 tbody tr td:first-child{
-    background: #ffffff00;
-    color:#000000;
+    background: #ffffff;
+    color: #6666b5;
 }
 
 #thanks{
@@ -270,5 +266,5 @@ footer {
   bottom: 0;
   border-top: 2px solid #a25cbf;
   padding: 8px 0;
-  text-align: left;
+  text-align: center;
 }
