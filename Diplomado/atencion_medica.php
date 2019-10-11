@@ -1543,7 +1543,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <div class="panel-body">
                                             <p>
                                               <div class="row fila">
-                                                
+
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <p>
                                                     Clasificacion Urgencia :<br>
@@ -1594,7 +1594,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <div class="panel-body">
                                             <p>
                                               <div class="row fila">
-                                                
+
                                                 <div class="col-lg-14 col-md-14 col-sm-14 col-xs-12">
                                                   <p>
                                                     Clasificacion Urgencia :<br>
@@ -2421,7 +2421,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             url: post_url,
             type: request_method,
             data: form_data,
-            beforeSend: function(){
+            beforeSend: function() {
               $("button").attr("disabled", true);
             },
             success: function(result) {

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../coni/Localhost.php');
 
 setlocale(LC_ALL, 'es_ES.UTF-8');

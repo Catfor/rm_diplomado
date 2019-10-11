@@ -11,6 +11,25 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <style>
+            #suggestions {
+                background: white;
+                box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, .2);
+                height: auto;
+                position: absolute;
+                top: 45px;
+                z-index: 9999;
+                width: 400px;
+            }
+
+            #suggestions .suggest-element {
+                border-top: 1px solid #d6d4d4;
+                cursor: pointer;
+                padding: 8px;
+                width: 100%;
+                float: left;
+            }
+        </style>
         <div class="header-top-area">
             <div class="container">
                 <div class="row">
@@ -45,6 +64,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </head>
 
     <body>
+
+
+        <div class="loader">
+            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+                    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite" />
+                </path>
+            </svg>
+        </div>
+
+
         <?php
 
             include('../coni/Localhost.php');
@@ -69,8 +99,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             $rowwe = mysqli_fetch_assoc($result123);
             $contra = $rowwe['contra'];
 
-            echo "<input type='hidden' value='$id' name='id_usuario'>";
-            echo "<input type='hidden' value='$id_paciente' name='id_paciente'>";
+
+
 
 
             include('menu.php');
@@ -87,7 +117,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                 <div style="text-align:center;color: #ed80a8;">
                                     <i class="fas fa-user-md fa-4x"></i>
                                     <h2 style="margin-top:10px;">Receta Médica</h2>
-                                    <div style="text-align:left;"> 
+                                    <div style="text-align:left;">
                                         <p style="color:#000">
                                             Emitida por <b><?php echo $nombre_usuario . " " . $apellidos_usuario; ?></b>
                                         </p>
@@ -100,6 +130,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         </div>
                     </div>
                     <form id="f" action='guardar_receta.php' method="post" enctype="multipart/form-data">
+                        <input type='hidden' value='<?php echo $id; ?>' name='id_usuario'>
+                        <input type='hidden' value='<?php echo $id_paciente; ?>' name='id_paciente'>
                         <hr>
                         <div class="fila med">
                             <div class="row">
@@ -107,7 +139,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                     <span class="input-group-addon">
                                         <i class="fas fa-prescription-bottle-alt"></i>
                                     </span>
-                                    <input type="text" class="form-control" id="Medicamento" placeholder="Medicamento, ejemplo: Paracetamol">
+                                    <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
+                                    <div id="suggestions"></div>
                                     <span class="input-group-addon btnElimina" style="display:none;color:indigo;" class="input-group-addon">
                                         <i class="fas fa-times-circle"></i>
                                     </span>
@@ -118,7 +151,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                     <span class="input-group-addon">
                                         <i class="fas fa-calendar-alt"></i>
                                     </span>
-                                    <input type="text" class="form-control" id="Indicaciones" placeholder=" Indicaciones, ejemplo: 2 Tabletas Cada 8 Horas Por 5 Días">
+                                    <input type="text" class="form-control" id="Indicaciones" name="indicaciones[]" placeholder=" Indicaciones, ejemplo: 2 Tabletas Cada 8 Horas Por 5 Días">
                                 </div>
                             </div>
                         </div>
@@ -126,10 +159,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         </div>
                         <hr>
                         <div class="row fila" style="text-align:center">
-                            <i id="btnAgregar" class="fas fa-plus-circle fa-3x" style="color: #ed80a8;"></i>
+                            <div id="btnAgregar" class="btn btn-primary">Agregar pregunta
+                                <i id="btnAgregar" class="fas fa-plus-circle fa-2x" style="color: #ed80a8;"></i>
+                            </div>
                         </div>
                         <div class="row fila" style="text-align:right">
-                            <i id="btnSubmit" class="fas fa-plus-circle fa-3x" style="color: #ed80a8;"></i>
+                            <button type="submit" class="btn btn-primary">Enviar
+                                <i id="btnSubmit" class="fas fa-plus-circle fa-2x" style="color: #ed80a8;"></i>
+                            </button>
                         </div>
 
                     </form>
@@ -200,56 +237,87 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <script src="js/data-table/data-table-act.js"></script>
 
         <script>
-            var medForm = "<div class='fila med' style='display:none;'><div class='row'><div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 input-group'><span class='input-group-addon'><i class='fas fa-prescription-bottle-alt'></i></span><input type='email' class='form-control' id='Medicamento' placeholder='Medicamento, ejemplo: Paracetamol'><span class='input-group-addon btnElimina' style='" + ($(".btnElimina").size() > 1 ? "display:none;" : "" ) + "color:indigo;' class='input-group-addon'><i class='fas fa-times-circle'></i></span></div></div><div class='row'><div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 input-group'><span class='input-group-addon'><i class='fas fa-calendar-alt'></i></span><input type='email' class='form-control' id='Indicaciones' placeholder=' Indicaciones, ejemplo: 2 Tabletas Cada 8 Horas Por 5 Días'></div></div></div>";
+            var medForm = "<div class='fila med' style='display:none;'><div class='row'><div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 input-group'><span class='input-group-addon'><i class='fas fa-prescription-bottle-alt'></i></span><input type='text' class='form-control' id='key' name='medicamento[]' placeholder='Medicamento, ejemplo: Paracetamol'><div id='suggestions'/><span class='input-group-addon btnElimina' style='" + ($(".btnElimina").size() > 1 ? "display:none;" : "") + "color:indigo;' class='input-group-addon'><i class='fas fa-times-circle'></i></span></div></div><div class='row'><div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 input-group'><span class='input-group-addon'><i class='fas fa-calendar-alt'></i></span><input type='text' class='form-control' id='Indicaciones' name='indicaciones[]' placeholder=' Indicaciones, ejemplo: 2 Tabletas Cada 8 Horas Por 5 Días'></div></div></div>";
             $("#btnAgregar").on("click", function() {
                 $("#final").before(medForm);
-                $(".med").last().slideDown(function(){
-                    if ($(".btnElimina").size() > 1) {
-                        $(".btnElimina").each( function(){
-                            $(this).show();
+                if ($(".btnElimina").size() > 1) {
+                    $(".btnElimina").each(function() {
+                        $(this).show();
+                    });
+                }
+                $(".med").last().slideDown();
+            });
+
+            $("body").on("click", ".btnElimina", function(e) {
+                $($($(e.target)).parents(".fila")[0]).slideUp(function() {
+                    $(this).remove();
+                    if ($(".btnElimina").size() <= 1) {
+                        $(".btnElimina").each(function() {
+                            $(this).hide();
                         });
                     }
                 });
             });
 
-            $("body").on("click",".btnElimina", function(e) {
-                $($($(e.target)).parents(".fila")[0]).slideUp(function(){
-                    $(this).remove(); 
-                    if ($(".btnElimina").size() <= 1) {
-                        $(".btnElimina").each( function(){
-                                $(this).hide();
-                            });
+            $("body").on("click", function() {
+                $("div").filter("#suggestions").slideUp()
+            });
+
+            $("body").on('keyup', '#key', function() {
+                var temp = $(this);
+                var key = $(this).val();
+                var dataString = 'key=' + key;
+                $.ajax({
+                    type: "POST",
+                    url: "buscarMedicina.php",
+                    data: dataString,
+                    success: function(data) {
+                        //Escribimos las sugerencias que nos manda la consulta
+                        $(temp).next().slideDown(500).html(data);
+                        //Al hacer click en alguna de las sugerencias
+                        $('.suggest-element').on('click', function() {
+                            //Obtenemos la id unica de la sugerencia pulsada
+                            var medicamento = $(this).html();
+                            $(temp).next().slideUp(500);
+                            $(temp).val(medicamento);
+                            return false;
+                        });
                     }
                 });
+            });
+
+            $(document).ready(function() {
+                $(".loader").fadeOut();
             });
         </script>
 
 
-    <script>
-        $("#f").submit(function(event) {
-          event.preventDefault(); //prevent default action
-          var post_url = $(this).attr("action"); //get form action url
-          var request_method = $(this).attr("method"); //get form GET/POST method
-          var form_data = $(this).serialize(); //Encode form elements for submission
+        <script>
+            $("#f").submit(function(event) {
+                event.preventDefault(); //prevent default action
+                var post_url = $(this).attr("action"); //get form action url
+                var request_method = $(this).attr("method"); //get form GET/POST method
+                var form_data = $(this).serialize(); //Encode form elements for submission
 
-          $.ajax({
-            url: post_url,
-            type: request_method,
-            data: form_data,
-            beforeSend: function(){
-              $("button").attr("disabled", true);
-            },
-            success: function(result) {
-              //console.log(result);
-              //if(result === "no_errors"){
-              if (!result.includes("error")) {
-                location.href = "consulta_paciente.php"
-              }
-              //}
-            }
-          });
-        });
-    </script>
+                $.ajax({
+                    url: post_url,
+                    type: request_method,
+                    data: form_data,
+                    beforeSend: function() {
+                        $(".loader").fadeIn();
+                        $("button").attr("disabled", true);
+                    },
+                    success: function(result) {
+                        console.log(result);
+                        //if(result === "no_errors"){
+                        //if (!result.includes("error")) {
+                        //  location.href = "consulta_paciente.php"
+                        //}
+                        //}
+                    }
+                });
+            });
+        </script>
 
     </body>
 

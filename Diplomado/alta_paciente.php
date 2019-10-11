@@ -248,6 +248,7 @@
                                                                 <option value="Casada">Casada</option>
                                                                 <option value="Divorciada" >Divorciada</option>
                                                                 <option value="Viuda">Viuda</option>
+                                                                <option value="Unión Libre">Unión Libre</option>
                                                             </select>
                                                         </div>
                                                     </div>
