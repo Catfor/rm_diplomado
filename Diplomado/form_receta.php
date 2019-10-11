@@ -99,20 +99,57 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             $rowwe = mysqli_fetch_assoc($result123);
             $contra = $rowwe['contra'];
 
-
-
-
-
             include('menu.php');
 
             if ($rol == 'Medico' || $rol == 'Supervisor' || $rol == 'Patologo') {
-
 
                 ?>
             <div class="breadcomb-area">
                 <div class="container">
                     <div class="fila">
                         <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 input-group">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-prescription-bottle-alt"></i>
+                                </span>
+                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 input-group">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-prescription-bottle-alt"></i>
+                                </span>
+                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 input-group">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-prescription-bottle-alt"></i>
+                                </span>
+                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 input-group">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-prescription-bottle-alt"></i>
+                                </span>
+                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 input-group">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-prescription-bottle-alt"></i>
+                                </span>
+                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 input-group">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-prescription-bottle-alt"></i>
+                                </span>
+                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 input-group">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-prescription-bottle-alt"></i>
+                                </span>
+                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
+                            </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div style="text-align:center;color: #ed80a8;">
                                     <i class="fas fa-user-md fa-4x"></i>
@@ -311,7 +348,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         console.log(result);
                         //if(result === "no_errors"){
                         if (!result.includes("error")) {
-                          location.href = "consulta_paciente.php"
+                            location.href = "./tratamientoc/app/reportes/index.html"
                         }
                         //}
                     }
