@@ -104,7 +104,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           <tbody class="cabecera">
             <tr>
               <td><b>Peso:</b><?php echo ' ' . $dato_peso ; ?> Kg </td>
-              <td><b>Talla:</b><?php echo ' ' . $dato_talla ; ?></td>
+              <td><b>Estatura:</b><?php echo ' ' . $dato_talla ; ?></td>
               <td><b>Grupo:</b><?php echo ' ' . $dato_sang ; ?> </td>
               <td><b>Temperatura:</b><?php echo ' ' . $dato_temp ; ?> °C </td>
               <td><b>T.A.:</b><?php echo ' ' . $dato_ta ; ?></td>

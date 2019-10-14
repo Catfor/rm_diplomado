@@ -584,7 +584,7 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="breadcomb-wp">
                           <div class="breadcomb-ctn">
-                            <h5>1.-CALIDAD DE LA MUESTRA</h5>
+                            
                           </div>
                           </div>
                           </div>
