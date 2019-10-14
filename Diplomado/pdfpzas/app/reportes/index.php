@@ -1,6 +1,7 @@
 
 <?php
 include("../../../../coni/localhost.php");
+
 $resultado=$_GET['resultado'];#
 $id_paciente=$_GET['id_paciente'];#
 $id_estudio=$_GET['id_estudio'];#
@@ -25,7 +26,7 @@ p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.interpretacion,
   ON p.id_paciente=c.id_paciente
   INNER JOIN usu_me AS u
   ON u.id_usuario=c.id_usuario
- WHERE er.id_estudio_resultado_paps= '$resultado' AND c.id_paciente='$id_paciente' AND c.id_estudio='1' AND c.id_atencion='$id_atencion'  ";
+ WHERE er.id_estudio_resultado_paps= '$resultado' AND c.id_paciente='$id_paciente' AND c.id_estudio='$id_estudio' AND c.id_atencion='$id_atencion'  ";
 
  $resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou);
     while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
