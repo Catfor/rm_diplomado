@@ -1,18 +1,30 @@
+
 <?php
 include("../../../../coni/localhost.php");
 $resultado=$_GET['resultado'];
-$queryPapanicolaou = "SELECT er.interpretacion,c.id_estudio_resultado,c.estatus_supervisor,
-c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
-  from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on
-  e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7
-  inner join etiqueta_resultado_estudio_papanicolaou as er
-  on er.id_estudio_resultado_paps=c.id_estudio_resultado
+$id_paciente=$_GET['id_paciente'];
+$id_estudio=$_GET['id_estudio'];
+$id_tipo_estudio=$_GET['id_tipo_estudio'];
+$id_atencion=$_GET['id_atencion'];
+$clasificacion_medico=$_GET['clasificacion_medico'];
+
+$queryPapanicolaou = "SELECT er.interpretacion,CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,p.edad_paciente,
+c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,
+c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico FROM estudio_papanicolau e INNER JOIN ctrl_paciente_estudios c
+ON e.id_estudio = c.id_estudio AND c.id_tipo_estudio = 7
+ INNER JOIN etiqueta_resultado_estudio_papanicolaou AS er
+ON er.id_estudio_resultado_paps=c.id_estudio_resultado
+INNER JOIN paciente AS p
+ON p.id_paciente=c.id_paciente
+INNER JOIN  usu_me   AS u
+ON u.id_usuario=c.id_usuario
   where er.id_estudio_resultado_paps= '$resultado' ";
 
  $resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou);
     while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
         $interpretacion = $resultSet['interpretacion'];
-
+$medico = ucwords($resultSet['medico']);
+$nombre = ucwords($resultSet['nombre']);
 }
 
 
@@ -22,7 +34,9 @@ c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.i
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Example 1</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../../img/logo/corona.png">
+
+    <title>Reporte Paps</title>
     <link rel="stylesheet" href="style.css" media="all" />
   </head>
   <body>
@@ -42,20 +56,20 @@ c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.i
 
     <div id="details" class="clearfix">
         <div id="client">
-        <div>Paciente :</div>
+        <div>Paciente :<?php echo $nombre; ?></div>
         <div>Fecha de Nacimiento:</div>
         <div>Edad:</div>
         <div>Sexo</div>
-        <div>Medico Solicitante</div>
+        <div>Medico Solicitante:<?php echo $medico; ?></div>
 
       </div>
       </div>
 
     <div class="row " style="position: absolute;top: 226px;left: -2px;">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <FONT FACE="Arial" SIZE="3" style="color:rgb(93, 105, 117);"> 1-.Clasificación </FONT>
+     1-.Clasificación <p style="color:#FF0000;margin:0;"><?php     echo $clasificacion_medico; ?></p>
   </div>
-</div> <br><br>
+</div><br><br><br>
 <div class="row " style="position: absolute;top: 266px;left: -2px;">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 <FONT FACE="Arial" SIZE="3" style="color:rgb(93, 105, 117);"> 2-.Calidad de la  muestra </FONT>
