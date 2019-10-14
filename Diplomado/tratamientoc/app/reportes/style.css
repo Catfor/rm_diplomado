@@ -20,7 +20,7 @@ body {
   height: 15cm;
   margin: 0 auto;
   color: #555555;
-  background-image: url("logo.png")
+  /*background-image: url("logo.png");*/
   font-family: Arial, sans-serif;
   font-size: 14px;
   font-family: SourceSansPro;
@@ -52,11 +52,8 @@ header {
 }
 
 #client {
-
-  text-align: center;
-  padding-left: 6px;
-  border-left: 135px solid #ffffff00;
-  float: left;
+  padding-left: 200px;
+  position: relative;
 }
 
 #client .to {
@@ -82,8 +79,9 @@ h2.name {
   margin: 0;
 }
 #invoice {
-  float: right;
-  text-align: right;
+  position: absolute;
+  right: 0px;
+  top: 15px;
 }
 #invoice1 {
   right: 158px;
@@ -158,9 +156,10 @@ table .desc {
 table .unit {
   background: #DDDDDD;
 }
-
+/*
 table .qty {
-}
+}¨
+*/
 
 table .total {
   background: #57B223;
@@ -173,7 +172,7 @@ table td.total {
   font-size: 1.2em;
 }
 
-table tbody tr:last-child td {
+table tbody.cabecera tr:last-child td {
   border: none;
 }
 
@@ -200,46 +199,68 @@ table tfoot tr:last-child td {
 table tfoot tr td:first-child {
   border: none;
 }
+
 table{
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
     border-spacing: 0;
 }
+
 thead, tfoot{
     background: #6A96CC;
 }
+
 thead th, tfoot td{
     border-top: 2px solid #6678B1;
     border-bottom: 2px solid #6678B1;
 }
+
 thead th{
-    color: #79008E;
-    font-weight: normal;
+  color: #79008E;
+  font-weight: normal;
 }
+
 tfoot td{
-    text-align: center;
-    color: #FFF;
+  text-align: center;
+  color: #FFF;
 }
+
+table.meds{
+  margin-left: 20px;
+}
+
+.meds tr td{
+  background: none;
+  color: rgb(55,55,55);
+  border: none;
+}
+
+.meds tr:nth-child(even) td{
+    background: none;
+    color: rgb(55,55,55);
+    padding-bottom: 10px;
+    border: none;
+}
+
 td, th{
     padding: 5px 10px;
 }
-tbody td{
+
+tbody.cabecera td{
     color: #6666B5;
 }
-tbody tr{
+
+tbody.cabecera tr{
     background: #ffffff00;
 }
 
-/* poner la última columna en negrita */
-
-
 /* intercalar color de fonto para filas impares */
-tbody tr:nth-child(2n+1){
+tbody.cabecera tr:nth-child(2n+1){
     background: #ffffff00;
 }
 
 /* La primera columna es siempre verde y el texto negro */
-tbody tr td:first-child{
+tbody.cabecera tr td:first-child{
     background: #ffffff;
     color: #6666b5;
 }
