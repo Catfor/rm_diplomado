@@ -564,16 +564,75 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
                       <div class="row">
                           <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
                               <div class="sale-statistic-inner notika-shadow mg-tb-30">
-
-
-
-
-
-              <div class="breadcomb-area">
-              <div class="container">
+                                <div class="breadcomb-area">
+                                <div class="container">
 
 
 <!-- aqui finaliza el atencion medica-->
+
+<div class="breadcomb-area">
+<div class="container">
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="breadcomb-list">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="breadcomb-wp">
+            <div class="breadcomb-ctn">
+              <h5>1.-CLASIFICACION</h5>
+            </div>
+            </div>
+            </div>
+          </div>
+          <div class="row fila">
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <p>
+
+              Clasificacion Urgencia   :<br></p>
+              <select name='clasifiacion_patologo' id='clasifiacion_patologo' class="form-control">
+                <option value="0" selected>Bajo Grado</option>
+                <option value="1">Alto Grado</option>
+                <option value="2">Cancer escamoso incitu</option>
+                <option value="3">Cancer Escamoso invasor</option>
+
+
+
+
+              </select>
+
+            </div>
+          </div><br>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="breadcomb-wp">
+              <div class="breadcomb-ctn">
+                <h5>2.-Calidad de la muestra</h5>
+              </div>
+              </div>
+              </div>
+          <div class="row fila">
+
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <select name='clasifiacion_patologo' id='clasifiacion_patologo' class="form-control">
+               <option value="satisfactoria">Satisfactoria</option>
+                <option value="insatisfactoria">Insatisfactoria</option></select>
+
+            </div>
+          </div><br
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <p>¿Presenta células endocervicales?<br>
+              <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
+              <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
+                 </p>
+             </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -584,7 +643,7 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="breadcomb-wp">
                           <div class="breadcomb-ctn">
-                            
+
                           </div>
                           </div>
                           </div>
@@ -592,14 +651,15 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
 
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                          <font size=3> Flora Bacteriana</font></b><br><br>
+                          <font size=3> Indice De Maduración</font></b><br><br>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                               <label><input type="checkbox" name="flora_bacteriana[]" value='C.PARABASA'>C.PARABASAL</label>
                               <label><input type="checkbox" name="flora_bacteriana[]" value='C.INTERMEDIA'>C.INTERMEDIA</label>
                               <label><input type="checkbox" name="flora_bacteriana[]" value='C.SUPERFICIALE'>C.SUPERFICIALES</label>
                         </div>
                       </div><br><br><br><br>
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                      <div class="row">
+                          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                               <div class="form-group ic-cmp-int float-lb floating-lb">
                                 <div class="nk-int-st">
                                       <input type="text" name="Valor_estrogeneo" class="form-control" placeholder="Valor Estrogeneo %">
@@ -607,9 +667,11 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
                                   </div>
                               </div>
                           </div><br><br><br><br>
+
                         </div>
                         <div class="row">
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <font size=3> Flora Bacteriana</font></b><br><br>
                     <b>
                     </div>
                         </div>
@@ -636,194 +698,172 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
                      </div>
                         </div>
 
-
-
-                  </div>
-                </div>
-              </div>
-              </div>
-              </div>
-
-              <div class="breadcomb-area">
-              <div class="container">
-              <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="breadcomb-list">
-                    <div class="row">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="breadcomb-wp">
-                          <div class="breadcomb-ctn">
-                            <h5>2.-CLASIFICACION</h5>
-                          </div>
-                          </div>
-                          </div>
+                        <div class="row">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <font size=3> 3.-ELEMENTOS INFLAMATORIOS</font></b><br><br>
+                    <b>
+                    </div>
                         </div>
+
                         <div class="row fila">
 
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <p>
 
-                            Clasificacion Urgencia   :<br></p>
-                            <select name='clasifiacion_patologo' id='clasifiacion_patologo' class="form-control">
-                              <option value="0" selected>Bajo Grado</option>
-                              <option value="1">Alto Grado</option>
-                              <option value="2">Cancer escamoso incitu</option>
-                              <option value="3">Cancer Escamoso invasor</option>
+                            Polimorfonucleares:<br></p>
 
+                              <select name="polimorfonucleares" class="form-control" required>
+                                <option value="" >Selecciona</option>
+                                <option value="1">SI</option>
+                                <option value="0" >NO</option>
+                      </select>
+               </div>
 
+               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                 <p>
 
+                 Citolisis:<br></p>
 
-                            </select>
+                   <select name="citolisis" class="form-control" required>
+                     <option value="" >Selecciona</option>
+                     <option value="1">SI</option>
+                     <option value="0" >NO</option>
+           </select>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <p>
 
-                          </div>
-                        </div><br>
+Parásitos/Hongos:<br></p>
+
+        <select name="parasitos_hongos" class="form-control" required>
+          <option value="" >Selecciona</option>
+          <option value="1">SI</option>
+          <option value="0" >NO</option>
+</select>
+</div>
+
+                        </div>
                         <div class="row">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                          <p>¿Presenta células endocervicales?<br>
-                            <label><input type="radio" name="celulas_endocervicales" value="1" > Si</label>
-                            <label><input type="radio" name="celulas_endocervicales" value="0" > NO</label>
-                               </p>
-                           </div>
+                            <p>
+
+                            Tricomonas:<br></p>
+
+                              <select name="tricomonas" class="form-control" required>
+                                <option value="" >Selecciona</option>
+                                <option value="1">SI</option>
+                                <option value="0" >NO</option>
+                      </select>
+               </div>
+
+               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                 <p>
+
+            Celulas Guia:<br></p>
+
+                   <select name="celulas_guia" class="form-control" required>
+                     <option value="" >Selecciona</option>
+                     <option value="1">SI</option>
+                     <option value="0" >NO</option>
+           </select>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <p>
+
+  Histiocitos:<br></p>
+
+        <select name="histiocitos" class="form-control" required>
+          <option value="" >Selecciona</option>
+          <option value="1">SI</option>
+          <option value="0" >NO</option>
+</select>
+</div>
                         </div>
-                      </div>
-                      </div>
+
+                        <div class="row fila">
+
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <p>
+
+                            Eritrocitos:<br></p>
+
+                              <select name="eritrocitos" class="form-control" required>
+                                <option value="" >Selecciona</option>
+                                <option value="1">SI</option>
+                                <option value="0" >NO</option>
+                      </select>
+               </div>
+
+               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                 <p>
+
+                Candida:<br></p>
+
+                   <select name="candida" class="form-control" required>
+                     <option value="" >Selecciona</option>
+                     <option value="1">SI</option>
+                     <option value="0" >NO</option>
+           </select>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <p>
+
+      Otros:<br></p>
+
+        <select name="otros" class="form-control" required>
+          <option value="" >Selecciona</option>
+          <option value="1">SI</option>
+          <option value="0" >NO</option>
+</select>
+</div>
+
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <font size=3> 4.-INTERPRETACIÓN</font></b><br><br>
+                    <b>
                     </div>
-                  </div>
-                </div>
-                <div class="breadcomb-area">
-                  <div class="container">
+
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="breadcomb-list">
-                          <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                              <div class="breadcomb-wp">
-                                <div class="breadcomb-ctn">
-                                  <h5>3.-ELEMENTOS INFLAMATORIOS</h5>
-                                </div>
-                                </div>
-                                </div>
-                              </div>
+                        <div class="form-group purple-border">
 
-
-
-                            </div>
-                            </div>
-                          </div>
-                          <div class="row fila">
-
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                              <p>
-
-                              Polimorfonucleares:<br></p>
-
-                                <select name="polimorfonucleares" class="form-control" required>
-                                  <option value="" >Selecciona</option>
-                                  <option value="1">SI</option>
-                                  <option value="0" >NO</option>
-                        </select>
-                 </div>
-
-                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                   <p>
-
-                   Citolisis:<br></p>
-
-                     <select name="citolisis" class="form-control" required>
-                       <option value="" >Selecciona</option>
-                       <option value="1">SI</option>
-                       <option value="0" >NO</option>
-             </select>
-      </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-        <p>
-
-  Parásitos/Hongos:<br></p>
-
-          <select name="parasitos_hongos" class="form-control" required>
-            <option value="" >Selecciona</option>
-            <option value="1">SI</option>
-            <option value="0" >NO</option>
-  </select>
-</div>
-
-                          </div>
-                          <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                              <p>
-
-                              Tricomonas:<br></p>
-
-                                <select name="tricomonas" class="form-control" required>
-                                  <option value="" >Selecciona</option>
-                                  <option value="1">SI</option>
-                                  <option value="0" >NO</option>
-                        </select>
-                 </div>
-
-                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                   <p>
-
-              Celulas Guia:<br></p>
-
-                     <select name="celulas_guia" class="form-control" required>
-                       <option value="" >Selecciona</option>
-                       <option value="1">SI</option>
-                       <option value="0" >NO</option>
-             </select>
-      </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-        <p>
-
-    Histiocitos:<br></p>
-
-          <select name="histiocitos" class="form-control" required>
-            <option value="" >Selecciona</option>
-            <option value="1">SI</option>
-            <option value="0" >NO</option>
-  </select>
-</div>
-                          </div>
-                          <div class="row fila">
-
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                              <p>
-
-                              Eritrocitos:<br></p>
-
-                                <select name="eritrocitos" class="form-control" required>
-                                  <option value="" >Selecciona</option>
-                                  <option value="1">SI</option>
-                                  <option value="0" >NO</option>
-                        </select>
-                 </div>
-
-                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                   <p>
-
-                  Candida:<br></p>
-
-                     <select name="candida" class="form-control" required>
-                       <option value="" >Selecciona</option>
-                       <option value="1">SI</option>
-                       <option value="0" >NO</option>
-             </select>
-      </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-        <p>
-
-        Otros:<br></p>
-
-          <select name="otros" class="form-control" required>
-            <option value="" >Selecciona</option>
-            <option value="1">SI</option>
-            <option value="0" >NO</option>
-  </select>
-</div>
-
-                          </div>
+                          <textarea class="form-control" rows="2" placeholder="INTERPRETACIÓN" name="interpretacion" form="gform"></textarea>
                         </div>
+                      </div>
+                    </div>
                         </div>
+
+
+
+                        <div class="row">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <font size=3> 5.-OBSERVACIONES</font></b><br><br>
+                    <b>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group purple-border">
+
+                          <textarea class="form-control" rows="2" placeholder="OBSERVACIONES" name="observaciones" form="gform"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                        </div>
+
+
+
+
+
+                  </div>
+                </div>
+              </div>
+              </div>
+              </div>
+
                       </div>
                     </div>
                   </div>
@@ -832,44 +872,7 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
 
                       <div class="breadcomb-area">
                         <div class="container">
-                          <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                              <div class="breadcomb-list">
-                                <div class="row">
-                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="basic-tb-hd">
-                                        <h4>4.-INTERPRETACIÓN</h4>
-                                    </div>
-                                  </div><br><br><br><br>
-                                  <div class="row">
-                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                          <div class="form-group">
-                                              <div class="nk-int-st">
-                                                  <textarea class="form-control auto-size" rows="2" placeholder="INTERPRETACIÓN" name="interpretacion" form="gform" ></textarea>
-                                              </div>
-                                          </div>
 
-                                  </div>
-                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <div class="basic-tb-hd">
-                                        <h4>OBSERVACIONES</h4>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                          <div class="form-group">
-                                              <div class="nk-int-st">
-                                                  <textarea class="form-control auto-size" rows="2" placeholder="OBSERVACIONES" name="observaciones" form="gform"></textarea>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div><br><br>
                         <center><p><input type="submit" value="Enviar datos"></p></center>
                       </div>
 

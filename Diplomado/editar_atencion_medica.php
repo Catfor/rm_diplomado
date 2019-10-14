@@ -1,4 +1,56 @@
-<?php session_start();   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
+<?php session_start();   if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+  include('../coni/Localhost.php');
+  $idpaciente = $_GET['id_paciente'];
+$id_atencion = $_GET['id_atencion'];
+            $re3 = mysqli_query($mysqliL,"SELECT ct.id_paciente,ec.colposcopia,ec.causa,ec.cervix,ec.union_escamocolumnar,ec.zona_transformacion,
+  ec.ag_criterios_intermedios,ec.ag_criterios_mayores,ec.ag_criterios_menores
+  ,ec.bs_criterios_intermedios,ec.bs_criterios_mayores,ec.bs_criterios_menores
+  ,ec.cy_intermedios,ec.cy_mayores,ec.cy_menores,ec.epitelio_acetoblanco,ec.ep_criterios_intermedios,ec.ep_criterios_mayores,ec.ep_criterios_menores,
+  ec.schiller,ec.vaginoscopia_acetico,ec.vaginoscopia_lugol,ec.vulvoscopia_acetico,ec.miscelaneos,ec.antecedentes_de_importancia,ec.plan_de_tratamiento
+  ,ec.posible_recomendacion_diagnostica
+
+   FROM atencion_medica AS  a
+  INNER JOIN ctrl_paciente_estudios AS ct
+  ON ct.id_paciente=a.id_paciente
+
+  INNER JOIN estudio_colposcopico AS ec
+  ON ec.id_estudio=ct.id_estudio
+
+
+
+
+  WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='1' ");
+
+
+
+            $ro2 = mysqli_fetch_assoc($re3);
+              $colposcopia = $ro2['colposcopia'];
+    $causa = $ro2['causa'];
+      $cervix = $ro2['cervix'];
+        $union_escamocolumnar = $ro2['union_escamocolumnar'];
+          $zona_transformacion = $ro2['zona_transformacion'];
+            $ag_criterios_intermedios = $ro2['ag_criterios_intermedios'];
+              $ag_criterios_mayores= $ro2['ag_criterios_mayores'];
+                $ag_criterios_menores = $ro2['ag_criterios_menores'];
+                  $bs_criterios_intermedios = $ro2['bs_criterios_intermedios'];
+                    $bs_criterios_mayores = $ro2['bs_criterios_mayores'];
+                      $bs_criterios_menores = $ro2['bs_criterios_menores'];
+                        $cy_intermedios = $ro2['cy_intermedios'];
+                          $cy_mayores = $ro2['cy_mayores'];
+                            $cy_menores = $ro2['cy_menores'];
+                              $epitelio_acetoblanco = $ro2['epitelio_acetoblanco'];
+                                $ep_criterios_intermedios = $ro2['ep_criterios_intermedios'];
+  $ep_criterios_mayores = $ro2['ep_criterios_mayores'];
+  $ep_criterios_menores = $ro2['ep_criterios_menores'];
+  $schiller = $ro2['schiller'];
+  $vaginoscopia_acetico = $ro2['vaginoscopia_acetico'];
+  $vaginoscopia_lugol = $ro2['vaginoscopia_lugol'];
+  $vulvoscopia_acetico = $ro2['vulvoscopia_acetico'];
+  $antecedentes_de_importancia = $ro2['antecedentes_de_importancia'];
+  $plan_de_tratamiento = $ro2['plan_de_tratamiento'];
+        $posible_recomendacion_diagnostica = $ro2['posible_recomendacion_diagnostica'];
+
+    $miscelaneos = $ro2['miscelaneos']; ?>
 <!doctype html>
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
@@ -43,7 +95,7 @@
 <body>
   <?php
 
-    include('../coni/Localhost.php');
+
     $id = $_SESSION['id_usuario'];
     $nick = $_SESSION['nick'];
     $correo_general = $_SESSION['correo_general'];
@@ -130,8 +182,7 @@
       <?php
 
           include('menu.php');
-          $idpaciente = $_GET['id_paciente'];
-  $id_atencion = $_GET['id_atencion'];
+
           $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$idpaciente");
 
 
@@ -352,12 +403,27 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
 
 
 
+
+
       <form id="f1" action='editar_guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
         <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente ;?>">
         <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id; ?>">
         <input type="hidden" class="form-control" name="id_atencion" value="<?php echo $id_atencion; ?>">
 
-        <div class="row fila">ffffffff
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group purple-border">
+            <div class="row fila">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)</FONT>
+              </div>
+            </div>
+            <textarea class="form-control" rows="1" placeholder="<?php echo $antecedentes_de_importancia;?>" name="antecedentes de importancia" form="f" disabled> </textarea>
+          </div>
+        </div>
+
+
+
+        <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <p>Seleccion Anterior Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></p>
               <select name="edad_inicio_menstruacion" class="form-control">
@@ -1017,56 +1083,6 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
           <?php
 
 
-          $re3 = mysqli_query($mysqliL,"SELECT ec.colposcopia,ec.causa,ec.cervix,ec.union_escamocolumnar,ec.zona_transformacion,
-ec.ag_criterios_intermedios,ec.ag_criterios_mayores,ec.ag_criterios_menores
-,ec.bs_criterios_intermedios,ec.bs_criterios_mayores,ec.bs_criterios_menores
-,ec.cy_intermedios,ec.cy_mayores,ec.cy_menores,ec.epitelio_acetoblanco,ec.ep_criterios_intermedios,ec.ep_criterios_mayores,ec.ep_criterios_menores,
-ec.schiller,ec.vaginoscopia_acetico,ec.vaginoscopia_lugol,ec.vulvoscopia_acetico,ec.miscelaneos,ec.antecedentes_de_importancia,ec.plan_de_tratamiento
-,ec.posible_recomendacion_diagnostica
-
- FROM atencion_medica AS  a
-INNER JOIN ctrl_paciente_estudios AS ct
-ON ct.id_paciente=a.id_paciente
-
-INNER JOIN estudio_colposcopico AS ec
-ON ec.id_estudio=ct.id_estudio
-
-
-
-
-WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='1' ");
-
-
-
-          $ro2 = mysqli_fetch_assoc($re3);
-            $colposcopia = $ro2['colposcopia'];
-  $causa = $ro2['causa'];
-    $cervix = $ro2['cervix'];
-      $union_escamocolumnar = $ro2['union_escamocolumnar'];
-        $zona_transformacion = $ro2['zona_transformacion'];
-          $ag_criterios_intermedios = $ro2['ag_criterios_intermedios'];
-            $ag_criterios_mayores= $ro2['ag_criterios_mayores'];
-              $ag_criterios_menores = $ro2['ag_criterios_menores'];
-                $bs_criterios_intermedios = $ro2['bs_criterios_intermedios'];
-                  $bs_criterios_mayores = $ro2['bs_criterios_mayores'];
-                    $bs_criterios_menores = $ro2['bs_criterios_menores'];
-                      $cy_intermedios = $ro2['cy_intermedios'];
-                        $cy_mayores = $ro2['cy_mayores'];
-                          $cy_menores = $ro2['cy_menores'];
-                            $epitelio_acetoblanco = $ro2['epitelio_acetoblanco'];
-                              $ep_criterios_intermedios = $ro2['ep_criterios_intermedios'];
-$ep_criterios_mayores = $ro2['ep_criterios_mayores'];
-$ep_criterios_menores = $ro2['ep_criterios_menores'];
-$schiller = $ro2['schiller'];
-$vaginoscopia_acetico = $ro2['vaginoscopia_acetico'];
-$vaginoscopia_lugol = $ro2['vaginoscopia_lugol'];
-$vulvoscopia_acetico = $ro2['vulvoscopia_acetico'];
-$antecedentes_de_importancia = $ro2['antecedentes_de_importancia'];
-$plan_de_tratamiento = $ro2['plan_de_tratamiento'];
-      $posible_recomendacion_diagnostica = $ro2['posible_recomendacion_diagnostica'];
-
-  $miscelaneos = $ro2['miscelaneos'];
-
           ?>
           <h2 class="cabecera-morada">ESTUDIOS MÉDICOS</h2>
 
@@ -1424,16 +1440,7 @@ $plan_de_tratamiento = $ro2['plan_de_tratamiento'];
                             </select>
                           </div>
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                              <div class="form-group purple-border">
-                                <div class="row fila">
-                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)</FONT>
-                                  </div>
-                                </div>
-                                <textarea class="form-control" rows="1" placeholder="<?php echo $antecedentes_de_importancia; ?>" name="antecedentes_de_importancia" form="f"></textarea>
-                              </div>
-                            </div>
+              
 
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

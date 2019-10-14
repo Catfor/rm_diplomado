@@ -40,10 +40,15 @@ $nombre = ucwords($resultSet['nombre']);
 <html lang="en">
   <head>
     <meta charset="utf-8">
+<<<<<<< Updated upstream:Diplomado/pdfpzas/app/reportes/index.php
     <link rel="shortcut icon" type="image/x-icon" href="../../../img/logo/corona.png">
 
     <title>Reporte Paps</title>
+=======
+    <title>Citologia Hispatologia Reina Madre</title>
+>>>>>>> Stashed changes:Diplomado/pdfpzas/app/reportes/index.html
     <link rel="stylesheet" href="style.css" media="all" />
+    <link rel="shortcut icon" type="image/x-icon" href="corona.png">
   </head>
   <body>
 

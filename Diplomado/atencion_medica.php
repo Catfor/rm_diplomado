@@ -334,7 +334,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                         <i class="notika-icon notika-form"></i>
                       </div>
                       <div class="breadcomb-ctn">
-                        <h2>CONSULTA</h2>
+                        <h2>CONSULTA </h2>
                       </div>
                     </div>
                     <div class="row fila">
@@ -384,6 +384,17 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                   <div class="basic-tb-hd">
                     <h2 class="cabecera-morada">CONSULTA</h2>
 
+                  </div>
+
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group purple-border">
+                      <div class="row fila">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                          <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)</FONT>
+                        </div>
+                      </div>
+                      <textarea class="form-control" rows="1" placeholder="Escribe Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)" name="antecedentes_de_importancia" required form="f" ></textarea>
+                    </div>
                   </div>
                   <div class="row fila"><br>
 
@@ -1300,16 +1311,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </select>
                                       </div>
 
-                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group purple-border">
-                                          <div class="row fila">
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                              <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)</FONT>
-                                            </div>
-                                          </div>
-                                          <textarea class="form-control" rows="1" placeholder="Escribe Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)" name="antecedentes_de_importancia" form="f"></textarea>
-                                        </div>
-                                      </div>
+                            
 
 
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
