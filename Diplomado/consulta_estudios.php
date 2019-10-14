@@ -721,7 +721,7 @@ echo   "<div><a href='pdfpzas/app/reportes/index.php?resultado=$id_estudio_resul
                                               //BIOPSIAS Patologo=============
                                              echo "<td>";
                                               //Vulvoscopia Patologo
-                                           $queryVulvoscopia = "SELECT c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
+                                           $queryVulvoscopia = " SELECT c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
                                            from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on
                                              e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 6
                                               	and c.id_paciente = '$id_paciente' ";
@@ -739,6 +739,7 @@ echo   "<div><a href='pdfpzas/app/reportes/index.php?resultado=$id_estudio_resul
                                                     $id_usu_patpapsv = $resultSetv['id_usu_pat'];
                                                     $clasificacion_medicopapsv = $resultSetv['clasificacion_medico'];
                                                     $id_usu_patv = $resultSetv['id_usu_pat'];
+                                                    $id_estudio_resultado = $resultSetv['id_estudio_resultado'];
                                             //        echo "<div><a href='Etiquetas/etiqueta_estudio_vulva1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' target='_blank'>Agregar Vulvoscopia</a></div>";
 if($estatus_patologov==0){
                                                     if($estatus_patologov==0 and $estatus_supervisorv==1 and $id_usu_patv!=$id){
@@ -752,13 +753,13 @@ if($estatus_patologov==0){
                                                     }
 ///////.//
 }else{
-                                                    echo "<div><a href='pdfpaps/app/reportes/index.html?id_paciente=$id_pacientepapsv&id_estudio=$id_estudiopapsv&id_tipo_estudio=$id_tipo_estudiopapsv&id_usuario=$id_usuariopapsv&id_atencion=$id_atencionpapsv&id_usu_pat=$id_usu_patpapsv&clasificacion_medico=$clasificacion_medicopapsv' target='_blank'>solo  ver </a></div>";
+                                                    echo "<div><a href='pdfpaps/app/reportes/index.php?resultado=$id_estudio_resultado&id_paciente=$id_pacientepapsv&id_estudio=$id_estudiopapsv&id_tipo_estudio=$id_tipo_estudiopapsv&id_usuario=$id_usuariopapsv&id_atencion=$id_atencionpapsv&id_usu_pat=$id_usu_patpapsv&clasificacion_medico=$clasificacion_medicopapsv' >Reporte Vulvoscopia </a></div>";
 }
                                                   }
                                               }
 
                                               //Vaginoscopia Patologo
-                                             $queryVaginoscopia = "SELECT 	c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico from 	estudio_vaginoscopia e
+                                             $queryVaginoscopia = "SELECT 	c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico from 	estudio_vaginoscopia e
                                              inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 5 	and c.id_paciente = $id_paciente WHERE id_usu_pat='$id'; ";
                                               if ($resultSetVaginoscopia = $mysqliL->query($queryVaginoscopia)) {
                                                   while ($resultSetvag = $resultSetVaginoscopia->fetch_assoc()) {
@@ -773,10 +774,11 @@ if($estatus_patologov==0){
                                                   $id_usu_patpapsvag = $resultSetvag['id_usu_pat'];
                                                   $clasificacion_medicopapsvag = $resultSetvag['clasificacion_medico'];
                                                   $id_usu_patvag = $resultSetvag['id_usu_pat'];
+                                                      $id_estudio_resultadovag = $resultSetvag['id_estudio_resultado'];
                                                   if($estatus_patologovag==0){
       echo "<div><a href='Etiquetas/etiqueta_estudio_vaginoscopia1.php?id_paciente=$id_pacientepapsvag&id_estudio=$id_estudiopapsvag&id_tipo_estudio=$id_tipo_estudiopapsvag&id_usuario=$id_usuariopapsvag&id_atencion=$id_atencionpapsvag&id_usu_pat=$id_usu_patpapsvag&clasificacion_medico=$clasificacion_medicopapsvag' target='_blank'>Agregar Vagino</a></div>";
 }else{
-echo "<div><a href='pdfpaps/app/reportes/index.html?id_paciente=$id_pacientepapsvag&id_estudio=$id_estudiopapsvag&id_tipo_estudio=$id_tipo_estudiopapsvag&id_usuario=$id_usuariopapsvag&id_atencion=$id_atencionpapsvag&id_usu_pat=$id_usu_patpapsvag&clasificacion_medico=$clasificacion_medicopapsvag' target='_blank'>Agregar Vagino</a></div>";
+echo "<div><a href='pdfpaps/app/reportes/index.php?resultado=$id_estudio_resultadovag&id_paciente=$id_pacientepapsvag&id_estudio=$id_estudiopapsvag&id_tipo_estudio=$id_tipo_estudiopapsvag&id_usuario=$id_usuariopapsvag&id_atencion=$id_atencionpapsvag&id_usu_pat=$id_usu_patpapsvag&clasificacion_medico=$clasificacion_medicopapsvag' >Reporte Vagino</a></div>";
 }
 
 
@@ -784,7 +786,7 @@ echo "<div><a href='pdfpaps/app/reportes/index.html?id_paciente=$id_pacientepaps
                                               }
 
                                               //Cervix
-                                            $queryCervix = "SELECT  		c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
+                                            $queryCervix = "SELECT  			c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
                                              from 	estudio_biopsia_cervix e inner join ctrl_paciente_estudios c on
                                             	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 2 	and c.id_paciente = $id_paciente WHERE id_usu_pat='$id'; ";
                                               if ($resultSetCervix = $mysqliL->query($queryCervix)) {
@@ -800,14 +802,14 @@ echo "<div><a href='pdfpaps/app/reportes/index.html?id_paciente=$id_pacientepaps
                                                   $id_usu_patpapscer = $resultSetcer['id_usu_pat'];
                                                   $clasificacion_medicopapscer = $resultSetcer['clasificacion_medico'];
                                                   $id_usu_patcer = $resultSetcer['id_usu_pat'];
-
+  $id_estudio_resultadocer = $resultSetcer['id_estudio_resultado'];
 
 
           if($estatus_patologocer==0){
 echo "<div><a href='Etiquetas/etiqueta_estudio_cervix1.php?id_paciente=$id_pacientepapscer&id_estudio=$id_estudiopapscer&id_tipo_estudio=$id_tipo_estudiopapscer&id_usuario=$id_usuariopapscer&id_atencion=$id_atencionpapscer&id_usu_pat=$id_usu_patcer&clasificacion_medico=$clasificacion_medicopapscer' target='_blank'>Agregar Cervix</a></div>";
 
 }else{
-  echo   "<div><a href='pdfpaps/app/reportes/index.html?id_paciente=$id_pacientepapscer&id_estudio=$id_estudiopapscer&id_tipo_estudio=$id_tipo_estudiopapscer&id_usuario=$id_usuariopapscer&id_atencion=$id_atencionpapscer&id_usu_pat=$id_usu_patcer&clasificacion_medico=$clasificacion_medicopapscer' target='_blank'>solo ver hola mundo</a></div>";
+  echo   "<div><a href='pdfpaps/app/reportes/index.php?resultado=$id_estudio_resultadocer&id_paciente=$id_pacientepapscer&id_estudio=$id_estudiopapscer&id_tipo_estudio=$id_tipo_estudiopapscer&id_usuario=$id_usuariopapscer&id_atencion=$id_atencionpapscer&id_usu_pat=$id_usu_patcer&clasificacion_medico=$clasificacion_medicopapscer' >Reporte Cervix</a></div>";
 }
 
 
@@ -816,7 +818,7 @@ echo "<div><a href='Etiquetas/etiqueta_estudio_cervix1.php?id_paciente=$id_pacie
                                               }
 
                                               //Endometrio Patologo
-                                           $queryEndometrio = "SELECT c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
+                                           $queryEndometrio = "SELECT 	c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
                                             from 	estudio_biopsia_endometrio e inner join ctrl_paciente_estudios c on
                                            	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 4 	and c.id_paciente = $id_paciente WHERE id_usu_pat='$id'; ";
                                               if ($resultSetEndometrio = $mysqliL->query($queryEndometrio)) {
@@ -833,14 +835,14 @@ echo "<div><a href='Etiquetas/etiqueta_estudio_cervix1.php?id_paciente=$id_pacie
                                                   $clasificacion_medicopapsend = $resultSetedn['clasificacion_medico'];
                                                   $id_usu_patend = $resultSetedn['id_usu_pat'];
 
-
+$id_estudio_resultadoend = $resultSetedn['id_estudio_resultado'];
 
 if($estatus_patologoend==0){
 
   echo "<div><a href='Etiquetas/etiqueta_estudio_endometrio1.php?id_paciente=$id_pacientepapsend&id_estudio=$id_estudiopapsend&id_tipo_estudio=$id_tipo_estudiopapsend&id_usuario=$id_usuariopapsend&id_atencion=$id_atencionpapsend&id_usu_pat=$id_usu_patend&clasificacion_medico=$clasificacion_medicopapsend' target='_blank'>Agregar Endom</a></div>";
 
                                                     }else{
-                                                      echo "<div><a href='pdfpaps/app/reportes/index.html?id_paciente=$id_pacientepapsend&id_estudio=$id_estudiopapsend&id_tipo_estudio=$id_tipo_estudiopapsend&id_usuario=$id_usuariopapsend&id_atencion=$id_atencionpapsend&id_usu_pat=$id_usu_patend&clasificacion_medico=$clasificacion_medicopapsend' target='_blank'>solo ver</a></div>";
+                                                      echo "<div><a href='pdfpaps/app/reportes/index.php?resultado=$id_estudio_resultadoend&id_paciente=$id_pacientepapsend&id_estudio=$id_estudiopapsend&id_tipo_estudio=$id_tipo_estudiopapsend&id_usuario=$id_usuariopapsend&id_atencion=$id_atencionpapsend&id_usu_pat=$id_usu_patend&clasificacion_medico=$clasificacion_medicopapsend' >Reporte Endometrio</a></div>";
                                                     }
 
 

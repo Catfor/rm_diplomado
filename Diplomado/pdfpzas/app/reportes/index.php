@@ -8,7 +8,7 @@ $id_tipo_estudio=$_GET['id_tipo_estudio'];#
 $id_atencion=$_GET['id_atencion'];
 $clasificacion_medico=$_GET['clasificacion_medico'];
 
-$queryPapanicolaou = "SELECT er.observaciones,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.interpretacion,
+$queryPapanicolaou = "SELECT  er.celulas_endocervicales,er.observaciones,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.interpretacion,
 CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,
 p.edad_paciente,
 c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,
@@ -31,6 +31,7 @@ $medico = ucwords($resultSet['medico']);
 $nombre = ucwords($resultSet['nombre']);
       $clasifiacion_patologo = $resultSet['clasifiacion_patologo'];
       $observaciones = $resultSet['observaciones'];
+        $celulas_endocervicales = $resultSet['celulas_endocervicales'];
 }
 
 
@@ -78,7 +79,7 @@ $nombre = ucwords($resultSet['nombre']);
 
     <div class="row " style="position: absolute;top: 226px;left: -2px;">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-     1-.Clasificación <?php
+     Clasificación <?php
      if($clasifiacion_patologo==0){
        echo "<p style='color:#2EFE2E;margin:0;'><FONT SIZE=5>Bajo Grado</font></p>";
      }  else if($clasifiacion_patologo==1){
@@ -92,11 +93,7 @@ $nombre = ucwords($resultSet['nombre']);
      }?>
   </div>
 </div><br><br><br>
-<div class="row " style="position: absolute;top: 266px;left: -2px;">
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-<FONT FACE="Arial" SIZE="3" style="color:rgb(93, 105, 117);"> 2-.Calidad de la  muestra </FONT>
-</div>
-</div> <br><br>
+
 <main>
   <table>
     <thead>
@@ -107,7 +104,14 @@ $nombre = ucwords($resultSet['nombre']);
     <tbody>
       <tr>
 
-        <td class="service">Design</td>  </tr>
+        <td class="service"><?php
+if($celulas_endocervicales==0){
+  echo "Si";
+}else{
+  echo "No";
+}
+
+        ?></td>  </tr>
       </tbody>
     </table>
   </main>
