@@ -8,7 +8,7 @@ $id_tipo_estudio=$_POST['id_tipo_estudio'];
 $id_atencion=$_POST['id_atencion'];
 
 
-
+$calidad_muestra=$_POST['calidad_muestra'];
 
 
 $celulas_endocervicales=$_POST['celulas_endocervicales'];
@@ -35,11 +35,11 @@ $observaciones=$_POST['observaciones'];
 $sql11 = "INSERT INTO etiqueta_resultado_estudio_papanicolaou
 (celulas_endocervicales,Valor_estrogeneo,flora_bacteriana_bacilar,flora_bacteriana_cocoide
   ,flora_bacteriana_mixta,polimorfonucleares,citolisis,parasitos_hongos,tricomonas
-  ,celulas_guia,histiocitos,eritrocitos,candida,otros,interpretacion,observaciones,fecha_terminacion)
+  ,celulas_guia,histiocitos,eritrocitos,candida,otros,interpretacion,observaciones,fecha_terminacion,calidad_muestra)
 VALUES
 ('$celulas_endocervicales','$Valor_estrogeneo','$flora_bacteriana_bacilar','$flora_bacteriana_cocoide','$flora_bacteriana_mixta',
   '$polimorfonucleares','$citolisis','$parasitos_hongos','$tricomonas','$celulas_guia','$histiocitos','$eritrocitos',
-  '$candida','$otros','$interpretacion','$observaciones','$hoys')";
+  '$candida','$otros','$interpretacion','$observaciones','$hoys','$calidad_muestra')";
 
 $resultaq = $mysqliL->query($sql11);
 

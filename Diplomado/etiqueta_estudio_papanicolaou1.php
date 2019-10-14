@@ -614,7 +614,7 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
 
 
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-              <select name='clasifiacion_patologo' id='clasifiacion_patologo' class="form-control">
+              <select name='calidad_muestra' id='calidad_muestra' class="form-control">
                <option value="satisfactoria">Satisfactoria</option>
                 <option value="insatisfactoria">Insatisfactoria</option></select>
 

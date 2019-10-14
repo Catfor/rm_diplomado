@@ -711,7 +711,7 @@ else  if($estatus_patologo==1 and $estatus_supervisor==1 and $id_usu_pat!=$id){
   echo "No Esta Asignado Para Este Usuario";
 }
 else{
-echo   "<div><a href='pdfpzas/app/reportes/index.php?resultado=$id_estudio_resultado&id_paciente=$id_paciente&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usuario=$id_usuariopaps&clasificacion_medico=$clasificacion_medicopaps' target='_blank'>Reporte Paps</a></div>";
+echo   "<div><a href='pdfpzas/app/reportes/index.php?resultado=$id_estudio_resultado&id_paciente=$id_paciente&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usuario=$id_usuariopaps&clasificacion_medico=$clasificacion_medicopaps' >Reporte Paps</a></div>";
 }
 
                                                   }
