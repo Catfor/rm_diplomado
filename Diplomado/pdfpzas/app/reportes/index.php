@@ -1,14 +1,16 @@
 
 <?php
 include("../../../../coni/localhost.php");
-$resultado=$_GET['resultado'];
-$id_paciente=$_GET['id_paciente'];
-$id_estudio=$_GET['id_estudio'];
-$id_tipo_estudio=$_GET['id_tipo_estudio'];
+$resultado=$_GET['resultado'];#
+$id_paciente=$_GET['id_paciente'];#
+$id_estudio=$_GET['id_estudio'];#
+$id_tipo_estudio=$_GET['id_tipo_estudio'];#
 $id_atencion=$_GET['id_atencion'];
 $clasificacion_medico=$_GET['clasificacion_medico'];
 
-$queryPapanicolaou = "SELECT er.interpretacion,CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,p.edad_paciente,
+$queryPapanicolaou = "SELECT er.observaciones,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.interpretacion,
+CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,
+p.edad_paciente,
 c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,
 c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico FROM estudio_papanicolau e INNER JOIN ctrl_paciente_estudios c
 ON e.id_estudio = c.id_estudio AND c.id_tipo_estudio = 7
@@ -18,13 +20,17 @@ INNER JOIN paciente AS p
 ON p.id_paciente=c.id_paciente
 INNER JOIN  usu_me   AS u
 ON u.id_usuario=c.id_usuario
-  where er.id_estudio_resultado_paps= '$resultado' ";
+ WHERE er.id_estudio_resultado_paps= '$resultado' AND c.id_paciente='$id_paciente' AND c.id_estudio='1' AND c.id_atencion='$id_atencion'  ";
 
  $resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou);
     while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
-        $interpretacion = $resultSet['interpretacion'];
+        $fecha_nacimiento_paciente = $resultSet['fecha_nacimiento_paciente'];
+              $edad_paciente = $resultSet['edad_paciente'];
+                $interpretacion = $resultSet['interpretacion'];
 $medico = ucwords($resultSet['medico']);
 $nombre = ucwords($resultSet['nombre']);
+      $clasifiacion_patologo = $resultSet['clasifiacion_patologo'];
+      $observaciones = $resultSet['observaciones'];
 }
 
 
@@ -48,7 +54,7 @@ $nombre = ucwords($resultSet['nombre']);
     </div>
       <h2 class="name">Citología Exfoliativa</h2>
      <div id="invoice">
-       <div class="no">No.Atencion</div>
+       <div class="no">No.Atencion:<?php echo "000".$id_atencion; ?></div>
      </div>
         </header>
 
@@ -57,9 +63,9 @@ $nombre = ucwords($resultSet['nombre']);
     <div id="details" class="clearfix">
         <div id="client">
         <div>Paciente :<?php echo $nombre; ?></div>
-        <div>Fecha de Nacimiento:</div>
-        <div>Edad:</div>
-        <div>Sexo</div>
+        <div>Fecha de Nacimiento:<?php echo $fecha_nacimiento_paciente  ; ?></div>
+        <div>Edad:<?php echo $edad_paciente  ; ?></div>
+        <div>Sexo:Femenino</div>
         <div>Medico Solicitante:<?php echo $medico; ?></div>
 
       </div>
@@ -67,7 +73,18 @@ $nombre = ucwords($resultSet['nombre']);
 
     <div class="row " style="position: absolute;top: 226px;left: -2px;">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-     1-.Clasificación <p style="color:#FF0000;margin:0;"><?php     echo $clasificacion_medico; ?></p>
+     1-.Clasificación <?php
+     if($clasifiacion_patologo==0){
+       echo "<p style='color:#2EFE2E;margin:0;'><FONT SIZE=5>Bajo Grado</font></p>";
+     }  else if($clasifiacion_patologo==1){
+ echo "<p style='color:#298A08;margin:0;'><FONT SIZE=5>Alto Grado</font></p>";
+     }
+     else if($clasifiacion_patologo==2){
+ echo "<p style='color:#FF0040;margin:0;'><FONT SIZE=5>Cancer Escamoso Incituoso</font></p>";
+     }
+     else if($clasifiacion_patologo==3){
+ echo "<p style='color:#B40431;margin:0;'><FONT SIZE=5>Cancer Escamoso invasor</font></p>";
+     }?>
   </div>
 </div><br><br><br>
 <div class="row " style="position: absolute;top: 266px;left: -2px;">
@@ -161,7 +178,7 @@ $nombre = ucwords($resultSet['nombre']);
             <tbody>
               <tr>
 
-                <td class="service">Design</td>
+                <td class="service"><?php echo $observaciones; ?></td>
               </tr>
               </tbody>
 
