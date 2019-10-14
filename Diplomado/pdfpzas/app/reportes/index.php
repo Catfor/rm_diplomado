@@ -1,3 +1,23 @@
+<?php
+include("../../../../coni/localhost.php");
+$resultado=$_GET['resultado'];
+$queryPapanicolaou = "SELECT er.interpretacion,c.id_estudio_resultado,c.estatus_supervisor,
+c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
+  from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on
+  e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7
+  inner join etiqueta_resultado_estudio_papanicolaou as er
+  on er.id_estudio_resultado_paps=c.id_estudio_resultado
+  where er.id_estudio_resultado_paps= '$resultado' ";
+
+ $resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou);
+    while ($resultSet = $resultSetPapanicolaou->fetch_assoc()) {
+        $interpretacion = $resultSet['interpretacion'];
+
+}
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +34,7 @@
     </div>
       <h2 class="name">Citología Exfoliativa</h2>
      <div id="invoice">
-       <div class="no">No.Estudio</div>
+       <div class="no">No.Atencion</div>
      </div>
         </header>
 
@@ -27,7 +47,7 @@
         <div>Edad:</div>
         <div>Sexo</div>
         <div>Medico Solicitante</div>
-        <div>Estudio</div>
+
       </div>
       </div>
 
@@ -117,7 +137,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="service">Design</td>  </tr>
+            <td class="service"><?php echo $interpretacion; ?></td>  </tr>
           </tbody>
           <thead>
             <tr>
@@ -143,7 +163,7 @@
       top: 712px;
       right: -21px;
       z-index: -1;
-      opacity: 0.1;">   
+      opacity: 0.1;">
 
   <footer>
 

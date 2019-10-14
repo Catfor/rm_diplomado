@@ -1,4 +1,5 @@
-<?php session_start();  setlocale(LC_TIME, 'es_ES', 'esp_esp');?>
+<?php session_start();
+ setlocale(LC_TIME, 'es_ES', 'esp_esp');?>
 <!doctype html>
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">

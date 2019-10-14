@@ -672,7 +672,7 @@ if($asignacionvaf==0){
                                               echo "</td>";
                                               echo "<td>";
                                               //Papanicolaou
-                                              $queryPapanicolaou = "SELECT c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
+                                              $queryPapanicolaou = "SELECT c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
                                                 from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on
                                                 e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 7 	and c.id_paciente = '$id_paciente'  ";
 
@@ -688,7 +688,7 @@ if($asignacionvaf==0){
                                                       $id_usu_patpaps = $resultSet['id_usu_pat'];
                                                       $clasificacion_medicopaps = $resultSet['clasificacion_medico'];
                                                       $id_usu_pat = $resultSet['id_usu_pat'];
-
+$id_estudio_resultado = $resultSet['id_estudio_resultado'];
                  if($estatus_patologo==0 and $estatus_supervisor==1 and $id_usu_pat==$id){
 
 
@@ -711,7 +711,7 @@ else  if($estatus_patologo==1 and $estatus_supervisor==1 and $id_usu_pat!=$id){
   echo "No Esta Asignado Para Este Usuario";
 }
 else{
-echo   "<div><a href='pdfpzas/app/reportes/index.html?id_paciente=$id_paciente&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usuario=$id_usuariopaps&clasificacion_medico=$clasificacion_medicopaps' target='_blank'>solo ver hola mundo</a></div>";
+echo   "<div><a href='pdfpzas/app/reportes/index.php?resultado=$id_estudio_resultado&id_paciente=$id_paciente&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usuario=$id_usuariopaps&clasificacion_medico=$clasificacion_medicopaps' target='_blank'>Reporte Paps</a></div>";
 }
 
                                                   }
