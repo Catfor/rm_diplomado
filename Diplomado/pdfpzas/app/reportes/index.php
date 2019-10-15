@@ -9,7 +9,8 @@ $id_tipo_estudio=$_GET['id_tipo_estudio'];#
 $id_atencion=$_GET['id_atencion'];
 $clasificacion_medico=$_GET['clasificacion_medico'];
 
-$queryPapanicolaou = "SELECT er.polimorfonucleares,er.parasitos_Hongos,er.celulas_guia,er.citolisis,er.eritrocitos,er.candida,er.tricomonas,er.histiocitos,er.otros,
+$queryPapanicolaou = "SELECT er.polimorfonucleares,er.parasitos_Hongos,er.celulas_guia,er.citolisis,er.
+,er.candida,er.tricomonas,er.histiocitos,er.otros,
 er.id_estudio_resultado_paps,er.flora_bacteriana_cocoide,er.flora_bacteriana_mixta,
 er.flora_bacteriana_bacilar,er.calidad_muestra,er.celulas_endocervicales,er.observaciones,
 p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.interpretacion,
@@ -159,7 +160,8 @@ if($celulas_endocervicales==0){
   <thead>
     <tr>
       <th class="service">Indice de  maduaricion</th>
-
+      <th class="service"> </th>
+      <th class="service"> </th>
       </tr>
   </thead>
 	<TR>
@@ -186,6 +188,8 @@ $query = "SELECT * from flora_bacteriana where id_resultado_papa='$id_estudio_re
   <thead>
     <tr>
       <th class="service">Flora Bacteriana</th>
+      <th class="service"> </th>
+      <th class="service"> </th>
 
       </tr>
   </thead>
@@ -231,6 +235,8 @@ echo "<Td class='service'>Cocoide (N/a)</Td>";
   <thead>
     <tr>
       <th class="service"> Elementos Inflamatorios</th>
+      <th class="service"> </th>
+      <th class="service"> </th>
 
       </tr>
   </thead>

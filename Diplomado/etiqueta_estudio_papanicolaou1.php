@@ -675,26 +675,27 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
                     <b>
                     </div>
                         </div>
-                        <div class="row">
+                        <div class="row fila">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 
-                          <p>BACILAR
+                          <label><input type="checkbox" name="flora_bacteriana_bacilar" value='BACILAR'>BACILAR</label>
                             <label><input type="radio" name="flora_bacteriana_bacilar" value="1" > Si</label>
                             <label><input type="radio" name="flora_bacteriana_bacilar" value="0" > NO</label>
-                               </p>
+
 
                               </div>
                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                             <p>COCOIDE
+                            <label><input type="checkbox" name="flora_bacteriana_cocoide" value='COCOIDE'>COCOIDE</label>
                                <label><input type="radio" name="flora_bacteriana_cocoide" value="1" > Si</label>
                                <label><input type="radio" name="flora_bacteriana_cocoide" value="0" > NO</label>
-                                  </p>
+
                         </div><br><br><br><br>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                          <p>MIXTA
+                          <label><input type="checkbox" name="flora_bacteriana_mixta" value='MIXTA'>MIXTA</label>
+
                             <label><input type="radio" name="flora_bacteriana_mixta" value="1" > Si</label>
                             <label><input type="radio" name="flora_bacteriana_mixta" value="0" > NO</label>
-                               </p>
+
                      </div>
                         </div>
 
