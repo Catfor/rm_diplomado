@@ -1,139 +1,149 @@
-<!doctype html>
-<html class="no-js" lang="">
-<link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
+<?php session_start();
+error_reporting(0);
+setlocale(LC_ALL, 'es_ES.UTF-8');
+date_default_timezone_set('America/Mexico_City');
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+  include('../coni/Localhost.php'); 
+  ?>
 
-<head>
+  <!doctype html>
+  <html class="no-js" lang="">
+  <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
+
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <div class="header-top-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="logo-area">
-                        <a href="#"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="logo-area">
+              <a href="#"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
 
-                    </div>
-                </div>
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <div class="header-top-menu">
-                        <ul class="nav navbar-nav notika-top-nav">
-
-                            <li class="nav-item dropdown">
-
-
-                            </li>
-                            <li class="nav-item dropdown">
-
-                                <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
-
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="header-top-menu">
+              <ul class="nav navbar-nav notika-top-nav">
+
+                <li class="nav-item dropdown">
+
+
+                </li>
+                <li class="nav-item dropdown">
+
+                  <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
+
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <?php
-    include('css.php');
-    ?>
-</head>
+      include('css.php');
+      ?>
+  </head>
 
-<body>
+  <body>
 
-	<!-- Breadcomb area Start-->
-	<div class="breadcomb-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="breadcomb-list">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-								<div class="breadcomb-wp">
-									<div class="breadcomb-icon">
-										<i class="notika-icon notika-windows"></i>
-									</div>
-									<div class="breadcomb-ctn">
-										<h2>Resultados</h2>
+    <!-- Breadcomb area Start-->
+    <div class="breadcomb-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="breadcomb-list">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <div class="breadcomb-wp">
+                    <div class="breadcomb-icon">
+                      <i class="notika-icon notika-windows"></i>
+                    </div>
+                    <div class="breadcomb-ctn">
+                      <h2>Resultados</h2>
 
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-								<div class="breadcomb-report">
-									<button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Breadcomb area End-->
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+                  <div class="breadcomb-report">
+                    <button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Breadcomb area End-->
     <!-- Data Table area Start-->
     <div class="data-table-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="data-table-list">
-
-                        <div class="table-responsive">
-
-
-                            <table id="data-table-basic" class="table table-striped">
-                                <thead>
- 
-                                    <tr>
-
-                                        <th>Pacientes</th>
-                                        <th>colposcopias</th>
-                                        <th>Papanicolaus</th>
-                                        <th>Biopsias</th>
-                                        <th>Resultados de patologia</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>Garrett Winters</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>63</td>
-                                        <td>2011/07/25</td>
-
-                                    </tr>
-                          </tbody>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="data-table-list">
+              <?php ?>
+              <div class="table-responsive">
 
 
-                            </table>
+                <table id="data-table-basic" class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Paciente</th>
+                      <th>Biopsias</th>
+                      <th>Atencion</th>
+                      <th>Resultados</th>
+                      <th>Tratamientos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
 
-                        </div>
-                    </div>
-                </div>
+                      $query = "SELECT 	CONCAT( p.nombre_paciente, ' ', p.apellidos_paciente ) AS paciente, 	COUNT( * ) AS biopsias, 	COUNT( DISTINCT ct.id_atencion ) AS atencion, 	COUNT( ct.id_estudio_resultado ) AS resultados, 	COUNT( cm.id_receta) AS tratamientos FROM 	paciente p 	INNER JOIN ctrl_paciente_estudios ct ON p.id_paciente = ct.id_paciente  	INNER JOIN atencion_medica a on a.id_atencion_medica = ct.id_atencion AND ct.id_tipo_estudio <> 0  	LEFT JOIN ctrl_receta_medico cm on cm.id_paciente = p.id_paciente  WHERE 1=1  GROUP BY 	p.nombre_paciente, 	p.apellidos_paciente";
+                      $resultset = $mysqliL->query($query);
+                      while ($fila = $resultset->fetch_assoc()) {
+                        $paciente = ucwords($fila['paciente']);
+                        $biopsias = $fila['biopsias'];
+                        $atencion = $fila['atencion'];
+                        $resultados = $fila['resultados'];
+                        $tratamientos = $fila['tratamientos'];
+                        echo "  <tr>
+                                                                    <td>$paciente </td>
+                                                                    <td>$biopsias </td>
+                                                                    <td>$atencion </td>
+                                                                    <td>$resultados </td>
+                                                                    <td>$tratamientos </td>
+                                                                    <tr>";
+                      }
+
+
+                      ?>
+                  </tbody>
+
+
+                </table>
+
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- Data Table area End-->
     <!-- Start Footer area-->
     <div class="footer-copyright-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="footer-copy-right">
-                        <p>Copyright © 2018
-. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="footer-copy-right">
+              <p>Copyright © 2018
+                . All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
             </div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- End Footer area-->
     <!-- jquery
@@ -185,7 +195,7 @@
     <!--  todo JS
 		============================================ -->
     <script src="js/todo/jquery.todo.js"></script>
-	<!--  wave JS
+    <!--  wave JS
 		============================================ -->
     <script src="js/wave/waves.min.js"></script>
     <script src="js/wave/wave-active.js"></script>
@@ -200,6 +210,8 @@
 		============================================ -->
     <script src="js/main.js"></script>
 
-</body>
+  </body>
 
-</html>
+  </html>
+
+<?php } ?>
