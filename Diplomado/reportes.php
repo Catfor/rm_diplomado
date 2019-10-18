@@ -3,7 +3,7 @@ error_reporting(0);
 setlocale(LC_ALL, 'es_ES.UTF-8');
 date_default_timezone_set('America/Mexico_City');
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-  include('../coni/Localhost.php'); 
+  include('../coni/Localhost.php');
   ?>
 
   <!doctype html>
@@ -44,6 +44,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <?php
       include('css.php');
       ?>
+
   </head>
 
   <body>
@@ -82,6 +83,25 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <div class="data-table-area">
       <div class="container">
         <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <input id="ifecha" type="text" placeholder="yyyy/mm/dd">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 input-group">
+
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+            </div>
+            <input id="iatencion" type="text" placeholder="id de atencion medica">
+          </div>
+
+          <div id="boton" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div style="padding:10px;background:crimson;color:black;"> soy un boton
+            </div>
+          </div>
+
+        </div>
+        <div class="row">
+
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="data-table-list">
               <?php ?>
@@ -100,8 +120,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                   </thead>
                   <tbody>
                     <?php
-
-                      $query = "SELECT 	CONCAT( p.nombre_paciente, ' ', p.apellidos_paciente ) AS paciente, 	COUNT( * ) AS biopsias, 	COUNT( DISTINCT ct.id_atencion ) AS atencion, 	COUNT( ct.id_estudio_resultado ) AS resultados, 	COUNT( cm.id_receta) AS tratamientos FROM 	paciente p 	INNER JOIN ctrl_paciente_estudios ct ON p.id_paciente = ct.id_paciente  	INNER JOIN atencion_medica a on a.id_atencion_medica = ct.id_atencion AND ct.id_tipo_estudio <> 0  	LEFT JOIN ctrl_receta_medico cm on cm.id_paciente = p.id_paciente  WHERE 1=1  GROUP BY 	p.nombre_paciente, 	p.apellidos_paciente";
+                      $condiciones = "WHERE 1=1";
+                      $query = "SELECT 	CONCAT( p.nombre_paciente, ' ', p.apellidos_paciente ) AS paciente, 	COUNT( * ) AS biopsias, 	COUNT( DISTINCT ct.id_atencion ) AS atencion, 	COUNT( ct.id_estudio_resultado ) AS resultados, 	COUNT( cm.id_receta) AS tratamientos FROM 	paciente p 	INNER JOIN ctrl_paciente_estudios ct ON p.id_paciente = ct.id_paciente  	INNER JOIN atencion_medica a on a.id_atencion_medica = ct.id_atencion AND ct.id_tipo_estudio <> 0  	LEFT JOIN ctrl_receta_medico cm on cm.id_paciente = p.id_paciente " . $condiciones . " GROUP BY 	p.nombre_paciente, 	p.apellidos_paciente";
                       $resultset = $mysqliL->query($query);
                       while ($fila = $resultset->fetch_assoc()) {
                         $paciente = ucwords($fila['paciente']);
@@ -110,12 +130,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         $resultados = $fila['resultados'];
                         $tratamientos = $fila['tratamientos'];
                         echo "  <tr>
-                                                                    <td>$paciente </td>
-                                                                    <td>$biopsias </td>
-                                                                    <td>$atencion </td>
-                                                                    <td>$resultados </td>
-                                                                    <td>$tratamientos </td>
-                                                                    <tr>";
+                                <td>$paciente </td>
+                                <td>$biopsias </td>
+                                <td>$atencion </td>
+                                <td>$resultados </td>
+                                <td>$tratamientos </td>
+                                <tr>";
                       }
 
 
@@ -148,7 +168,30 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <!-- End Footer area-->
     <!-- jquery
 		============================================ -->
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      
+
+  <script>
+
+$(document).ready( function(){
+
+  $("body").on("click","#boton", function(){
+    
+    $.ajax({
+            url: 'reportes_peticion.php',
+            type: 'POST',
+            data: 'fecha='+ $("#ifecha").val() + '&atencion='+$("#iatencion").val(),
+            success: function(result) {
+              console.log(result);
+            }
+          });
+  });
+
+});
+
+
+
+</script>
     <!-- bootstrap JS
 		============================================ -->
     <script src="js/bootstrap.min.js"></script>
@@ -191,7 +234,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <script src="js/knob/knob-active.js"></script>
     <!--  Chat JS
 		============================================ -->
-    <script src="js/chat/jquery.chat.js"></script>
     <!--  todo JS
 		============================================ -->
     <script src="js/todo/jquery.todo.js"></script>
