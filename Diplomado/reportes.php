@@ -118,7 +118,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                       <th>Tratamientos</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="contenidos">
                     <?php
                       $condiciones = "WHERE 1=1";
                       $query = "SELECT 	CONCAT( p.nombre_paciente, ' ', p.apellidos_paciente ) AS paciente, 	COUNT( * ) AS biopsias, 	COUNT( DISTINCT ct.id_atencion ) AS atencion, 	COUNT( ct.id_estudio_resultado ) AS resultados, 	COUNT( cm.id_receta) AS tratamientos FROM 	paciente p 	INNER JOIN ctrl_paciente_estudios ct ON p.id_paciente = ct.id_paciente  	INNER JOIN atencion_medica a on a.id_atencion_medica = ct.id_atencion AND ct.id_tipo_estudio <> 0  	LEFT JOIN ctrl_receta_medico cm on cm.id_paciente = p.id_paciente " . $condiciones . " GROUP BY 	p.nombre_paciente, 	p.apellidos_paciente";
@@ -182,7 +182,7 @@ $(document).ready( function(){
             type: 'POST',
             data: 'fecha='+ $("#ifecha").val() + '&atencion='+$("#iatencion").val(),
             success: function(result) {
-              console.log(result);
+              $("#contenidos").html(result)
             }
           });
   });
