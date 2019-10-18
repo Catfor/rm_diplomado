@@ -304,7 +304,12 @@ ON ec.id_estudio=c.id_estudio
 
 
     </main>
-    <div class="grid-block" style="background: url('micro.png');height: 100%;-webkit-print-color-adjust: exact;background-repeat: no-repeat;">
+    <img src="micro.png" style="
+      position: absolute;
+      top: 712px;
+      right: -21px;
+      z-index: -1;
+      opacity: 1.1;">
 
     <footer>
 <h6>  DATOS DE MÉDICO TRATANTE </h6>
@@ -317,6 +322,6 @@ ON ec.id_estudio=c.id_estudio
 
         <div><a >www.reinamadre.mx</a></div>
       </div>
-      </div>
+
     </footer>
 </html>
