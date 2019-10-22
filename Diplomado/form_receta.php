@@ -29,6 +29,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 width: 100%;
                 float: left;
             }
+
+            .input-group-addon{
+                min-width: 38px;
+            }
+
+            div.input-group{
+                margin-bottom: 5px ;
+            }
         </style>
         <div class="header-top-area">
             <div class="container">
@@ -101,55 +109,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
             include('menu.php');
 
-            if ($rol == 'Medico' || $rol == 'Supervisor' || $rol == 'Patologo') {
+            if ($rol == 'Medico' || $rol == 'Supervisor' || $rol == 'Patologo' || $rol == 'Admin') {
 
                 ?>
             <div class="breadcomb-area">
                 <div class="container">
                     <div class="fila">
                         <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 input-group">
-                                <span class="input-group-addon">
-                                    <i class="fas fa-prescription-bottle-alt"></i>
-                                </span>
-                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 input-group">
-                                <span class="input-group-addon">
-                                    <i class="fas fa-prescription-bottle-alt"></i>
-                                </span>
-                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 input-group">
-                                <span class="input-group-addon">
-                                    <i class="fas fa-prescription-bottle-alt"></i>
-                                </span>
-                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 input-group">
-                                <span class="input-group-addon">
-                                    <i class="fas fa-prescription-bottle-alt"></i>
-                                </span>
-                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 input-group">
-                                <span class="input-group-addon">
-                                    <i class="fas fa-prescription-bottle-alt"></i>
-                                </span>
-                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 input-group">
-                                <span class="input-group-addon">
-                                    <i class="fas fa-prescription-bottle-alt"></i>
-                                </span>
-                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 input-group">
-                                <span class="input-group-addon">
-                                    <i class="fas fa-prescription-bottle-alt"></i>
-                                </span>
-                                <input type="text" class="form-control" id="key" name="medicamento[]" placeholder="Medicamento, ejemplo: Paracetamol">
-                            </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div style="text-align:center;color: #ed80a8;">
                                     <i class="fas fa-user-md fa-4x"></i>
@@ -196,12 +162,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         </div>
                         <hr>
                         <div class="row fila" style="text-align:center">
-                            <div id="btnAgregar" class="btn btn-primary">Agregar pregunta
+                            <div id="btnAgregar" class="btn btn-primary">Agregar medicamento
                                 <i id="btnAgregar" class="fas fa-plus-circle fa-2x" style="color: #ed80a8;"></i>
                             </div>
                         </div>
                         <div class="row fila" style="text-align:right">
-                            <button type="submit" class="btn btn-primary">Enviar
+                            <button type="submit" class="btn btn-primary">Emitir
                                 <i id="btnSubmit" class="fas fa-plus-circle fa-2x" style="color: #ed80a8;"></i>
                             </button>
                         </div>
@@ -348,7 +314,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         console.log(result);
                         //if(result === "no_errors"){
                         if (!result.includes("error")) {
-                            location.href = "./tratamientoc/app/reportes/index.html"
+                            location.href = "./tratamientoc/app/reportes/receta.php?id_paciente=<?php echo $id_paciente ;?>";
                         }
                         //}
                     }

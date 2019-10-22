@@ -2,8 +2,6 @@
 session_start();
 setlocale(LC_ALL, 'es_ES.UTF-8');
 date_default_timezone_set('America/Mexico_City');
-echo "entro";
-echo var_dump($_POST);
 include('../coni/Localhost.php');
 
 $html = '';
@@ -22,7 +20,6 @@ if (isset($_POST['fecha']) || isset($_POST['atencion'])) {
 }else{
   $query = "SELECT 	CONCAT( p.nombre_paciente, ' ', p.apellidos_paciente ) AS paciente, 	COUNT( * ) AS biopsias, 	COUNT( DISTINCT ct.id_atencion ) AS atencion, 	COUNT( ct.id_estudio_resultado ) AS resultados, 	COUNT( cm.id_receta) AS tratamientos FROM 	paciente p 	INNER JOIN ctrl_paciente_estudios ct ON p.id_paciente = ct.id_paciente  	INNER JOIN atencion_medica a on a.id_atencion_medica = ct.id_atencion AND ct.id_tipo_estudio <> 0  	LEFT JOIN ctrl_receta_medico cm on cm.id_paciente = p.id_paciente GROUP BY 	p.nombre_paciente, 	p.apellidos_paciente";
 }
-  echo($query);
     $resultset = $mysqliL->query($query);
     while ($fila = $resultset->fetch_assoc()) {
       $paciente = ucwords($fila['paciente']);
