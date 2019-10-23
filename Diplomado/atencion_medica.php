@@ -3,7 +3,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
   <!doctype html>
   <html class="no-js" lang="">
   <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
-
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -13,22 +12,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="logo-area">
               <a href="#"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
-
             </div>
           </div>
           <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <div class="header-top-menu">
               <ul class="nav navbar-nav notika-top-nav">
-
                 <li class="nav-item dropdown">
-
-
                 </li>
                 <li class="nav-item dropdown">
-
-                  <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a><p style='color:white;'> Usuario: <b>
-<?php echo ucwords($_SESSION['nombre_usuario']) . ' ' .ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
-
+                  <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
+                  <p style='color:white;'> Usuario: <b>
+                      <?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
                 </li>
               </ul>
             </div>
@@ -39,11 +33,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
     <?php
       include('css.php');
       ?>
-
   </head>
-
   <body>
-
     <div class="loader">
       <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
         <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
@@ -51,9 +42,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
         </path>
       </svg>
     </div>
-
     <?php
-
       include('../coni/Localhost.php');
       $id = $_SESSION['id_usuario'];
       $nick = $_SESSION['nick'];
@@ -61,10 +50,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
       $nombre_usuario = ucwords($_SESSION['nombre_usuario']);
       $rol = $_SESSION['rol'];
       $apellidos_usuario = ucwords($_SESSION['apellidos_usuario']);
-
       $result123 = mysqli_query($mysqliL, "SELECT contra from usu_me where id_usuario='$id'");
-
-
       $rowwe = mysqli_fetch_assoc($result123);
       $contra = $rowwe['contra'];
       if ($contra == '3d603c7c93fb63c7db2b1d99b1998bb6') {
@@ -83,7 +69,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
                 <p>*Tu contraseña debe ser diferente a DiplomadoRM.<br>*La contraseña deberá ser mayor a 4 dígitos</p>
               </div>
               <div class="modal-footer">
-
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               </div>
             </div>
@@ -91,7 +76,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
         </div>
       </div>
       <?php
-
           echo "<div class='form-element-list'>
   <form action='password.php' method='POST'>
                                 <div class='row'>
@@ -108,60 +92,37 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
                                                 <input type='Password' class='form-control' placeholder='Nueva Password' name='password' id='password'  >
                                             </div>";
           ?>
-
       <?php echo "</div>
                                     </div>
                                     <button class='btn btn-primary notika-btn-primary waves-effect' type='button' onclick='m()'>Mostrar Contraseña</button>
                                     <input type='submit' value='cambiar password'>
                                 </div>
 
-
-
-
-
-
                                 </div>"
           ?>
-
-
     <?php
-
       } else {
         ?>
-
-
-
       <!--[if lt IE 8]>
               <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
           <![endif]-->
       <!-- Start Header Top Area -->
-
       <!-- End Header Top Area -->
       <!-- Mobile Menu start -->
       <?php
-
           include('menu.php');
           $idpaciente = $_GET['id_paciente'];
-
           $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$idpaciente");
-
-
           $rowwe = mysqli_fetch_assoc($result123);
           $nombrepaciente = ucwords(strtolower($rowwe['nombre_paciente']));
           $apellidospaciente = ucwords(strtolower($rowwe['apellidos_paciente']));
           $edad_paciente = $rowwe['edad_paciente'];
           $fecha_nacimiento_paciente = $rowwe['fecha_nacimiento_paciente'];
-
           $re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
 INNER JOIN atencion_medica AS a
 ON a.id_paciente=p.id_paciente
-
-
-
 WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           $total = $re->num_rows;
-
-
           $ro = mysqli_fetch_assoc($re);
           $edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
           $metodos_planificacion = $ro['metodos_planificacion'];
@@ -183,12 +144,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           $antecedente_cancer_cervicouterino = $ro['antecedente_cancer_cervicouterino'];
           $tratamiento_previo = $ro['tratamiento_previo'];
           $fecha_atencion_medica = $ro['fecha_atencion_medica'];
-
-
           ?>
       <script language="JavaScript">
         //Bloque de codigo
-
         function offset(el) {
           var rect = el.getBoundingClientRect(),
             scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
@@ -198,32 +156,24 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             left: rect.left
           }
         }
-
         var posDona = new Array();
         var posVulva = new Array();
         var limiteCoordDona = 5;
         var limiteCoordVulva = 5;
-
         window.onload = function() {
           var canvasDona = document.getElementById("canvasDona");
           var ctxDona = canvasDona.getContext("2d");
           var dona = document.getElementById("recuadroDona");
           var contDona = document.getElementById("contCoordCervix");
-
           var canvasVulva = document.getElementById("canvasVulva");
           var ctxVulva = canvasVulva.getContext("2d");
           var vulva = document.getElementById("recuadroVulva");
           var contVulva = document.getElementById("contCoordVulva");
-
           var donax = document.getElementById("coordCervix");
-
           var vulvax = document.getElementById("coordVulva");
-
           ctxVulva.drawImage(vulva, 0, 0, 200, 200);
           ctxDona.drawImage(dona, 0, 0, 200, 200);
           ctxVulva.lineWidth = 3;
-
-
           $("#canvasDona").on("click", function(event) {
             var offsetImg = offset(this);
             var x = (event.clientX - offsetImg.left).toFixed(2);
@@ -246,7 +196,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               $(contDona).append(btnCoord);
             }
             ctxDona.drawImage(dona, 0, 0, 200, 200);
-
             $(posDona).each(function(index, value) {
               var coordsTemp = value.split(",");
               ctxDona.lineWidth = 4;
@@ -262,7 +211,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             });
             donax.value = posDona.join("|");
           });
-
           $("#canvasVulva").on("click", function(event) {
             var offsetImg = offset(this);
             var x = (event.clientX - offsetImg.left).toFixed(2);
@@ -300,16 +248,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
               ctxVulva.stroke();
             });
           });
-
-
         }
       </script>
       <div id="formulario" style="padding-left: 400px;">
         <div class="breadcomb-area">
           <div class="container">
-
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
               <div id="modalCam" style="position: fixed;top: 10px;left: 10px;z-index: 5;max-width: 200px;" class="tarjeta">
                 <div style="display: none;">
                   <div class="select">
@@ -341,7 +285,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                     <div class="row fila">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group ic-cmp-int form-elet-mg">
-
                           <div class="nk-int-st">
                             <p>Paciente: <?php echo ' ' . $nombrepaciente . ' ' . $apellidospaciente; ?></p>
                           </div>
@@ -349,7 +292,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group ic-cmp-int form-elet-mg">
-
                           <div class="nk-int-st">
                             <p>Edad Paciente: <?php echo ' ' . $edad_paciente; ?></p>
                           </div>
@@ -357,17 +299,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="form-group ic-cmp-int form-elet-mg">
-
                           <div class="nk-int-st">
                             <p>Fecha Nacimiento: <?php echo ' ' . $fecha_nacimiento_paciente; ?></p>
                           </div>
                         </div>
                       </div>
-
-
-
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -378,15 +315,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         <!-- Form Element area Start-->
         <div class="form-element-area">
           <div class="container">
-
             <div class="row fila">
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                   <div class="basic-tb-hd">
                     <h2 class="cabecera-morada">CONSULTA</h2>
-
                   </div>
-
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-group purple-border">
                       <div class="row fila">
@@ -394,160 +328,45 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                           <FONT FACE="Arial" SIZE="2" style="color:rgb(144, 143, 143);">Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)</FONT>
                         </div>
                       </div>
-                      <textarea class="form-control" rows="1" placeholder="Escribe Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)" name="antecedentes_de_importancia" required form="f" ></textarea>
+                      <textarea class="form-control" rows="1" placeholder="Escribe Antecedentes De Importancia (Cirugías Previas, Ctrioterapia, Lasser, Electrocirugía)" name="antecedentes_de_importancia" required form="f"></textarea>
                     </div>
                   </div>
                   <div class="row fila"><br>
-
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <div class="nk-int-mk sl-dp-mn">
                         <h6>Fecha</h6>
                       </div>
-
                       <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
                         <div class="input-group date nk-int-st">
-
                           <span class="input-group-addon"></span>
-                          <input type="text" class="form-control" placeholder="<?php
-                                                                                    setlocale(LC_TIME, 'es_ES', 'esp_esp');
-
-
-                                                                                    date_default_timezone_set('America/Mexico_City');
-
-                                                                                    $hoys = date("Y-m-d");
-
-
-
-                                                                                    $fe = date("d.M.Y", strtotime($hoys));
-                                                                                    $inicio = strftime("%d de %B del %Y", strtotime($fe));
-
-
-
-                                                                                    echo $inicio;
-                                                                                    ?>" disabled>
+                          <input type="text" class="form-control" placeholder="
+                          <?php
+                              setlocale(LC_TIME, 'es_ES', 'esp_esp');
+                              date_default_timezone_set('America/Mexico_City');
+                              $hoys = date("Y-m-d");
+                              $fe = date("d.M.Y", strtotime($hoys));
+                              $inicio = strftime("%d de %B del %Y", strtotime($fe));
+                              echo $inicio;
+                              ?>" disabled>
                         </div>
                       </div>
                     </div>
-
                   </div><br><br>
-
-
-
                   <form id="f" action='guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
                     <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente ?>">
                     <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id ?>">
-
                     <div class="row fila">
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="edad_inicio_menstruacion" class="form-control">
                           <option value="">Edad de Inicio de menstruación</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>
-                          <option value="15">15</option>
-                          <option value="16">16</option>
-                          <option value="17">17</option>
-                          <option value="18">18</option>
-                          <option value="19">19</option>
-                          <option value="20">20</option>
-                          <option value="21">21</option>
-                          <option value="22">22</option>
-                          <option value="23">23</option>
-                          <option value="24">24</option>
-                          <option value="25">25</option>
-                          <option value="26">26</option>
-                          <option value="27">27</option>
-                          <option value="28">28</option>
-                          <option value="29">29</option>
-                          <option value="30">30</option>
-                          <option value="31">31</option>
-                          <option value="32">32</option>
-                          <option value="33">33</option>
-                          <option value="34">34</option>
-                          <option value="35">35</option>
-                          <option value="36">36</option>
-                          <option value="37">37</option>
-                          <option value="38">38</option>
-                          <option value="39">39</option>
-                          <option value="40">40</option>
-                          <option value="41">42</option>
-                          <option value="43">43</option>
-                          <option value="44">44</option>
-                          <option value="45">45</option>
-                          <option value="46">46</option>
-                          <option value="47">47</option>
-                          <option value="48">48</option>
-                          <option value="49">49</option>
-                          <option value="50">50</option>
-                          <option value="51">51</option>
-                          <option value="52">52</option>
-                          <option value="53">53</option>
-                          <option value="54">54</option>
-                          <option value="55">55</option>
-                          <option value="56">56</option>
-                          <option value="57">57</option>
-                          <option value="58">58</option>
-                          <option value="59">59</option>
-                          <option value="60">60</option>
-                          <option value="61">61</option>
-                          <option value="62">62</option>
-                          <option value="63">63</option>
-                          <option value="64">64</option>
-                          <option value="65">65</option>
-                          <option value="66">66</option>
-                          <option value="67">67</option>
-                          <option value="68">68</option>
-                          <option value="69">69</option>
-                          <option value="70">70</option>
-                          <option value="71">71</option>
-                          <option value="72">72</option>
-                          <option value="73">73</option>
-                          <option value="74">74</option>
-                          <option value="75">75</option>
-                          <option value="76">76</option>
-                          <option value="77">77</option>
-                          <option value="78">78</option>
-                          <option value="79">79</option>
-                          <option value="80">80</option>
-                          <option value="81">81</option>
-                          <option value="82">82</option>
-                          <option value="83">83</option>
-                          <option value="84">84</option>
-                          <option value="85">85</option>
-                          <option value="86">86</option>
-                          <option value="87">87</option>
-                          <option value="88">88</option>
-                          <option value="89">89</option>
-                          <option value="90">90</option>
-                          <option value="91">91</option>
-                          <option value="92">92</option>
-                          <option value="93">93</option>
-                          <option value="94">94</option>
-                          <option value="95">95</option>
-                          <option value="96">96</option>
-                          <option value="97">97</option>
-                          <option value="98">98</option>
-                          <option value="99">99</option>
-
+                        <?php 
+                          for ($i = 1; $i <= 99; $i++) {
+                            echo  "<option value='$i'>$i</option>";
+                          }
+                        ?>
                         </select>
-
                       </div>
-
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-
 
                         <select id='metodos_planificacion' name="metodos_planificacion" class="form-control">
                           <option value="">Selecciona Método de Planificación Familiar:</option>
@@ -557,11 +376,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                           <option value="ninguno">Ninguno</option>
                           <option value="otro">Otro</option>
                         </select>
-
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
                         <div class="form-group ic-cmp-int form-elet-mg">
                           <div class="form-ic-cmp">
                             <i class="notika-icon notika-edit"></i>
@@ -571,278 +387,88 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                           </div>
                         </div>
                       </div>
-
-
                     </div>
                     <div class="row fila">
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="edad_inicio_vida_sexual" class="form-control">
                           <option value="">Edad de inicio de vida sexual</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>
-                          <option value="15">15</option>
-                          <option value="16">16</option>
-                          <option value="17">17</option>
-                          <option value="18">18</option>
-                          <option value="19">19</option>
-                          <option value="20">20</option>
-                          <option value="21">21</option>
-                          <option value="22">22</option>
-                          <option value="23">23</option>
-                          <option value="24">24</option>
-                          <option value="25">25</option>
-                          <option value="26">26</option>
-                          <option value="27">27</option>
-                          <option value="28">28</option>
-                          <option value="29">29</option>
-                          <option value="30">30</option>
-                          <option value="31">31</option>
-                          <option value="32">32</option>
-                          <option value="33">33</option>
-                          <option value="34">34</option>
-                          <option value="35">35</option>
-                          <option value="36">36</option>
-                          <option value="37">37</option>
-                          <option value="38">38</option>
-                          <option value="39">39</option>
-                          <option value="40">40</option>
-                          <option value="41">42</option>
-                          <option value="43">43</option>
-                          <option value="44">44</option>
-                          <option value="45">45</option>
-                          <option value="46">46</option>
-                          <option value="47">47</option>
-                          <option value="48">48</option>
-                          <option value="49">49</option>
-                          <option value="50">50</option>
-                          <option value="51">51</option>
-                          <option value="52">52</option>
-                          <option value="53">53</option>
-                          <option value="54">54</option>
-                          <option value="55">55</option>
-                          <option value="56">56</option>
-                          <option value="57">57</option>
-                          <option value="58">58</option>
-                          <option value="59">59</option>
-                          <option value="60">60</option>
-                          <option value="61">61</option>
-                          <option value="62">62</option>
-                          <option value="63">63</option>
-                          <option value="64">64</option>
-                          <option value="65">65</option>
-                          <option value="66">66</option>
-                          <option value="67">67</option>
-                          <option value="68">68</option>
-                          <option value="69">69</option>
-                          <option value="70">70</option>
-                          <option value="71">71</option>
-                          <option value="72">72</option>
-                          <option value="73">73</option>
-                          <option value="74">74</option>
-                          <option value="75">75</option>
-                          <option value="76">76</option>
-                          <option value="77">77</option>
-                          <option value="78">78</option>
-                          <option value="79">79</option>
-                          <option value="80">80</option>
-                          <option value="81">81</option>
-                          <option value="82">82</option>
-                          <option value="83">83</option>
-                          <option value="84">84</option>
-                          <option value="85">85</option>
-                          <option value="86">86</option>
-                          <option value="87">87</option>
-                          <option value="88">88</option>
-                          <option value="89">89</option>
-                          <option value="90">90</option>
-                          <option value="91">91</option>
-                          <option value="92">92</option>
-                          <option value="93">93</option>
-                          <option value="94">94</option>
-                          <option value="95">95</option>
-                          <option value="96">96</option>
-                          <option value="97">97</option>
-                          <option value="98">98</option>
-                          <option value="99">99</option>
-                          <option value="100">100</option>
-                          <option value="101">101</option>
-                          <option value="102">102</option>
-                          <option value="103">103</option>
-                          <option value="104">104</option>
-                          <option value="105">105</option>
-                          <option value="106">106</option>
-                          <option value="107">107</option>
-                          <option value="108">108</option>
-                          <option value="109">109</option>
-                          <option value="110">110</option>
-                          <option value="111">111</option>
-                          <option value="112">112</option>
-                          <option value="113">113</option>
-                          <option value="114">114</option>
-                          <option value="115">115</option>
-                          <option value="116">116</option>
-                          <option value="117">117</option>
-                          <option value="118">118</option>
-                          <option value="119">119</option>
-                          <option value="120">120</option>
+                          <?php 
+                            for ($i = 1; $i <= 120; $i++) {
+                              echo  "<option value='$i'>$i</option>";
+                            }
+                          ?>
                         </select>
-
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-
                         <select name="parejas_sexuales" class="form-control">
                           <option value="">Parejas sexuales</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>
-                          <option value="15">15</option>
-                          <option value="16">16</option>
-                          <option value="17">17</option>
-                          <option value="18">18</option>
-                          <option value="19">19</option>
-                          <option value="20">20</option>
-                          <option value="21">21</option>
-                          <option value="22">22</option>
-                          <option value="23">23</option>
-                          <option value="24">24</option>
-                          <option value="25">25</option>
-                          <option value="26">26</option>
-                          <option value="27">27</option>
-                          <option value="28">28</option>
-                          <option value="29">29</option>
-                          <option value="30">30</option>
+                          
+                        <?php 
+                          for ($i = 1; $i <= 30; $i++) {
+                            echo  "<option value='$i'>$i</option>";
+                          }
+                        ?>
                         </select>
-
                       </div>
-
-
                     </div>
                     <div class="row fila">
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="gestas" class="form-control">
                           <option value="">Gestas</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>>
+                          
+                        <?php 
+                          for ($i = 1; $i <= 14; $i++) {
+                            echo  "<option value='$i'>$i</option>";
+                          }
+                        ?>
                         </select>
                       </div>
-
-
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="para" class="form-control">
                           <option value="">Para</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>>
+                          
+                        <?php 
+                          for ($i = 1; $i <= 14; $i++) {
+                            echo  "<option value='$i'>$i</option>";
+                          }
+                        ?>
                         </select>
-
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
-
                         <select name="cesareas" class="form-control">
                           <option value="">Césareas</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>>
+                          
+                        <?php 
+                          for ($i = 1; $i <= 14; $i++) {
+                            echo  "<option value='$i'>$i</option>";
+                          }
+                        ?>
                         </select>
-
                       </div>
-
                     </div>
                     <div class="row fila">
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="abortos" class="form-control">
                           <option value="">Abortos</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                          <option value="11">11</option>
-                          <option value="12">12</option>
-                          <option value="13">13</option>
-                          <option value="14">14</option>>
+                          
+                        <?php 
+                          for ($i = 1; $i <= 14; $i++) {
+                            echo  "<option value='$i'>$i</option>";
+                          }
+                        ?>
                         </select>
                       </div>
-
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div>
                           <label for="bday">Fecha de la última regla</label>
                           <input type="date" id="bday" name="fecha_ultima_regla">
                         </div>
-
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <label for="bday">Fecha del último papanicolau</label>
                         <input type="date" id="bday" name="fecha_ultimo_papanicolau">
                       </div>
                     </div>
-
                 </div>
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -868,84 +494,54 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                     </div>
                   </div>
                 </div>
-
                 <div class="row fila">
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
                     <select name="metrorragia" class="form-control">
                       <option value="">Metrorragia</option>
                       <option value="1">SI</option>
                       <option value="0">NO</option>
-
                     </select>
-
                   </div>
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
                     <select name="hormonoterapia" class="form-control">
                       <option value="">Hormonoterapia</option>
                       <option value="1">SI</option>
                       <option value="0">NO</option>
-
                     </select>
-
                   </div>
-
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                     <div class="form-group">
-
                       <div class="nk-int-st">
                         <input type="text" name="duracion_hormonoterapia" class="form-control" placeholder="¿Duración?">
                       </div>
                     </div>
                   </div>
                 </div>
-
                 <div class="row fila">
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
                     <select name="ritmo" class="form-control">
                       <option value="">Ritmo</option>
                       <option value="regular">Regular</option>
                       <option value="irregular">Irregular</option>
                       <option value="ausente">Ausente</option>
-
                     </select>
-
                   </div>
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
                     <select name="antecedente_cancer_cervicouterino" class="form-control">
                       <option value="">Antecedente de Cáncer cervicouterino</option>
                       <option value="1">SI</option>
                       <option value="0">NO</option>
-
                     </select>
                   </div>
-
-
                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
-
                     <select name="tratamiento_previo" class="form-control">
                       <option value="">Tratamientos previos:</option>
                       <option value="1">SI</option>
                       <option value="0">NO</option>
-
                     </select>
-
                   </div>
 
-
-
-
                 </div>
-
               </div>
             </div>
           </div>
@@ -958,7 +554,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                   <div class="accordion-wn-wp">
                     <div class="basic-tb-hd">
                       <h2 class="cabecera-morada">ESTUDIOS MÉDICOS</h2>
-
                     </div>
                     <div class="row fila">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -976,19 +571,14 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                 <div class="panel-body">
                                   <p>
                                     <div class="row fila">
-
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='colposcopia' id='colposcopia' class="form-control">
                                           <option value="">Selecciona Colposcopia</option>
                                           <option value="adecuada">Adecuada</option>
                                           <option value="no_adecuada">No Adecuada</option>
                                         </select>
-
                                       </div>
-
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='causa' id='causa' class="form-control">
                                           <option value="">Selecciona una Causa</option>
                                           <option value="sangrado">Sangrado</option>
@@ -996,18 +586,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <option value="cicatrices">Cicatrices</option>
                                           <option value="no">Otras</option>
                                         </select>
-
                                       </div>
 
-
-
-
                                     </div>
-
-
                                     <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='cervix' id='cervix' class="form-control">
                                           <option value="">Selecciona Cervix</option>
                                           <option value="eutrofico">Eutrófico</option>
@@ -1017,20 +600,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <option value="ausencia_quirurgica">Ausencia Quirúrgica</option>
                                           <option value="ausencia_otras_causas">Ausencia Otras Causas</option>
                                         </select>
-
                                       </div>
-
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='union_escamocolumnar' id='union_escamocolumnar' class="form-control">
                                           <option value="">Selecciona Union Escamocolumnar </option>
                                           <option value="completamente_visible">Completamente Visible</option>
                                           <option value="parcialmente_visible">Parcialmente Visible</option>
                                         </select>
-
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='zona_transformacion' id='zona_transformacion' class="form-control">
                                           <option value="">Selecciona Zona De Transfromacion</option>
                                           <option value="tipo 1">TIPO 1</option>
@@ -1038,40 +616,26 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <option value=" tipo 2 b">TIPO 2 B</option>
                                           <option value="tipo 3">TIPO 3</option>
                                         </select>
-
                                       </div>
-
                                     </div>
                                     <div class="row fila">
-
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="panel panel-default filaInterna">
                                           <div class="panel-heading">Epitelio Acetoblanco</div>
-
                                         </div>
                                       </div>
-
-
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 fila">
-
                                         <select name='epitelio_acetoblanco' id='epitelio_acetoblanco' onChange="pagoOnChange(this)" class="form-control">
-
                                           <option value="">Ausente</option>
                                           <option value="presente">Presente</option>
                                         </select>
-
                                       </div>
-
                                     </div>
                                     <div id="ausente" style="display:none;">
-
                                     </div>
-
-
                                     <div id="presente" class="formularioOculto" style="display:none;">
                                       <div class="row fila">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='ep_criterios_menores' id='ep_criterios_menores' class="form-control">
                                             <option value="">Selecciona Criterios Menores</option>
                                             <option value="tenue">Tenue</option>
@@ -1080,21 +644,16 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                             <option value="plano">Plano</option>
                                             <option value="transparente">Transparente</option>
                                             <option value="fuera_zt">Fuera de la ZT</option>
-
                                           </select>
-
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='ep_criterios_intermedios' id='ep_criterios_intermedios' class="form-control">
                                             <option value="">Selecciona Criterios Intermedios</option>
                                             <option value="blanco_intermedio_c/brillo">Blanco Intermedio C/Brillo</option>
                                             <option value="mayoria_lesiones">(Mayoría de Lesiones)</option>
                                           </select>
-
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='ep_criterios_mayores' id='ep_criterios_mayores' class="form-control">
                                             <option value="">Selecciona Criterios Mayores</option>
                                             <option value="blanco_denso">Blanco Denso</option>
@@ -1102,21 +661,15 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                             <option value="blanco_ostra">Blanco Ostra</option>
                                             <option value="gris">Gris</option>
                                           </select>
-
                                         </div>
                                       </div>
-
                                       <div class="row fila">
-
-
                                         <div class="panel panel-default filaInterna">
                                           <div class="panel-heading">Borde y Superficie</div>
-
                                         </div>
                                       </div>
                                       <div class="row fila">
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='bs_criterios_menores' id='bs_criterios_menores' class="form-control">
                                             <option value="">Selecciona Criterios Menores</option>
                                             <option value="microcondilomatoso">Microcondilomatoso</option>
@@ -1125,10 +678,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                             <option value="borde_pluma_dentado">Borde en Pluma o Dentado</option>
                                             <option value="lesion_angulada">Lesión Angulada</option>
                                           </select>
-
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='bs_criterios_intermedios' id='bs_criterios_intermedios' class="form-control">
                                             <option value="">Selecciona Criterios Intermedios</option>
                                             <option value="lesion_regular">Lesión Regular</option>
@@ -1136,28 +687,21 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                             <option value="contornos_netos">Contornos Netos</option>
                                             <option value="contornos_rectilineos">Contornos Rectilíneos</option>
                                           </select>
-
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='bs_criterios_mayores' id='bs_criterios_mayores' class="form-control">
                                             <option value="">Selecciona Criterios Mayores</option>
                                             <option value="bordes_dehiscentes">Bordes Dehiscentes</option>
                                             <option value="bordes_enrolaldos">Bordes Enrollados</option>
                                             <option value="cambios_menores_perifericos_mayores">Cambios Menores Periféricos Y Mayores Centrales</option>
                                           </select>
-
                                         </div>
-
                                       </div>
-
                                       <div class="row fila">
                                         <div class="panel panel-default filaInterna">
                                           <div class="panel-heading">Angioarquitectura</div>
-
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='ag_criterios_menores' id='ag_criterios_menores' class="form-control">
                                             <option value="">Selecciona Criterios Menores</option>
                                             <option value="capilar_fino">Capilar Fino</option>
@@ -1166,126 +710,95 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                             <option value="nmosaico_fino">Mosaico Fino</option>
                                             <option value="vasos_mas_alla_zt">Vasos Más Allá de ZT</option>
                                           </select>
-
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='ag_criterios_intermedios' id='ag_criterios_intermedios' class="form-control">
                                             <option value="">Selecciona Criterios Intermedios</option>
                                             <option value="ausencia_vasos">Ausencia de Vasos</option>
-
                                           </select>
-
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='ag_criterios_mayores' id='ag_criterios_mayores' class="form-control">
                                             <option value="">Selecciona Criterios Mayores</option>
                                             <option value="puntilleo_grueso">Puntilleo Grueso</option>
                                             <option value="mosaico_grueso">Mosaico Grueso</option>
                                           </select>
-
                                         </div>
-
                                       </div>
-
                                       <div class="row fila ">
                                         <div class="panel panel-default filaInterna">
                                           <div class="panel-heading">Captación de Yodo</div>
-
                                         </div>
-
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='cy_menores' id='cy_menores' class="form-control">
                                             <option value="">Criterios Menores</option>
                                             <option value="positiva">Positivo</option>
                                             <option value="negativa_puntos_criterios_anteriores">Negativa Con < 3 Puntos En Criterios Anteriores</option> <option value="zonas_yodo_negativas">Zonas Yodonegativas Más Allá De La ZT</option>
                                           </select>
-
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='cy_intermedios' id='cy_intermedios' class="form-control">
                                             <option value="">Citerios Intermedios</option>
                                             <option value="capacitacion_parcial_yodo">Captación Parcial De Yodo</option>
                                             <option value="motedao_jaspeado">(Moteado-Jaspeado)</option>
                                           </select>
-
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                           <select name='cy_mayores' id='cy_mayores' class="form-control">
                                             <option value="">Citerios Mayores</option>
                                             <option value="yodo_negativa_conmas_puntos">Yodonegativa Con 4 O Más Puntos</option>
                                             <option value="en_criterios_anteriores">En Criterios Anteriores</option>
                                           </select>
-
                                         </div>
                                       </div>
                                     </div>
-
                                     <div class="row fila">
                                       <div class="panel panel-default filaInterna">
                                         <div class="panel-heading">Schiller</div>
-
                                       </div>
                                     </div>
                                     <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='schiller' id='schiller' class="form-control">
                                           <option value="">Selecciona Schiller</option>
                                           <option value="positiva">Positiva</option>
                                           <option value="negativo">Negativo</option>
-
                                         </select>
-
                                       </div>
-
                                     </div> <br>
-
                                     <div class="row fila">
                                       <div class="panel panel-default filaInterna">
                                         <div class="panel-heading">Vaginoscopia</div>
-
                                       </div>
                                     </div>
                                     <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='vaginoscopia_acetico' id='vaginoscopia_acetico' class="form-control">
                                           <option value="">Selecciona Acético</option>
                                           <option value="positivo">Positivo</option>
                                           <option value="negativo">Negativo</option>
                                         </select>
-
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='vaginoscopia_lugol' id='vaginoscopia_lugol' class="form-control">
                                           <option value="">Selecciona Lugol</option>
                                           <option value="positivo">Positivo</option>
                                           <option value="negativo">Negativo</option>
                                         </select>
-
                                       </div>
                                     </div>
                                     <div class="row fila">
                                       <div class="panel panel-default filaInterna">
                                         <div class="panel-heading">Vulvoscopia</div>
-
                                       </div>
                                     </div>
                                     <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='vulvoscopia_acetico' id='vulvoscopia_acetico' class="form-control">
                                           <option value="">Selecciona Acético</option>
                                           <option value="positivo">Positivo</option>
                                           <option value="negativo">Negativo</option>
                                         </select>
-
                                       </div>
                                     </div> <br>
                                     <div class="row fila">
@@ -1295,7 +808,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                     </div>
                                     <div class="row fila">
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='miscelaneos' id='miscelaneos' class="form-control">
                                           <option value="">Selecciona Miscelaneos</option>
                                           <option value="condilomas">Condilomas</option>
@@ -1312,9 +824,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </select>
                                       </div>
 
-                            
-
-
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group purple-border">
                                           <div class="row fila">
@@ -1325,10 +834,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <textarea class="form-control" rows="1" placeholder="Escribe Plan de Tratamiento" name="plan_de_tratamiento" form="f"></textarea>
                                         </div>
                                       </div>
-
                                     </div>
-
-
                                     <!--      <div class="row fila">
                                         <h4 class="text-center">Imagenes Colposcopicas </h4>
                                         <div class="form-group">
@@ -1374,9 +880,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                         </div>
                                       </div>-->
                                     <div class="row fila">
-
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <select name='posible_recomendacion_diagnostica' id='posible_recomendacion_diagnostica' class="form-control">
                                           <option value="">DIAGNOSTICO MÉDICO</option>
                                           <option value="hallazgos_normales">HALLAZGOS NORMALES</option>
@@ -1384,18 +888,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <option value="miscelaneos_hallazgos_varios">MISCELANEOS O HALLAZGOS VARIOS</option>
                                           <option value="lesion_intraepitelial_bajogrado">LESIÓN INTRAEPITELIAL DE BAJO GRADO</option>
                                           <option value="lesion_intraepitelial_altogrado">LESIÓN INTRAEPITELIAL DE ALTO GRADO</option>
-
-
-
                                         </select>
-
                                       </div>
                                     </div> <br>
                                     <br>
-
-
                                   </p>
-
                                 </div>
                               </div>
                             </div>
@@ -1411,37 +908,23 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                 <div class="panel-body">
                                   <p>
                                     <div class="row fila">
-
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                         <div class="nk-int-st">
                                           <input id="" name="" type="text" class="form-control" placeholder="PAPANICOLAOU/CITOLOGIA EXFOLIATIVA" disabled>
                                         </div>
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <p>
-
                                           Antecedenctes de cancer:<br>
-
                                           <label><input type="radio" name="antecedente_cancer" value="1"> Si</label>
-
                                           <label><input type="radio" name="antecedente_cancer" value="0"> NO</label>
-
-
-
                                         </p>
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <p>
-
                                           Antecedenctes de infecciòn vaginal :<br>
-
                                           <label><input type="radio" name="antecedente_infeccion_vagina" value="1"> Si</label>
-
                                           <label><input type="radio" name="antecedente_infeccion_vagina" value="0"> NO</label>
-
-
-
                                         </p>
                                       </div>
                                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -1453,8 +936,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <option value="1">Urgente</option>
                                         </select>
                                       </div>
-
-
                                     </div>
                                     <div class="row fila">
                                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1507,7 +988,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                   </div>
                                                 </div>
                                                 <div id="contCoordCervix" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:25px 0px;">
-
                                                 </div>
                                                 <div class="row fila">
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1546,7 +1026,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <div class="panel-body">
                                             <p>
                                               <div class="row fila">
-
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                   <p>
                                                     Clasificacion Urgencia :<br>
@@ -1564,11 +1043,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                       <input id="coordVulva" name="coordVulva" value="0" style="display:none">
                                                   </div>
                                                 </div>
-
                                                 <div id="contCoordVulva" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:25px 0px;">
-
                                                 </div>
-
                                                 <div class="row fila">
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group purple-border">
@@ -1597,7 +1073,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                           <div class="panel-body">
                                             <p>
                                               <div class="row fila">
-
                                                 <div class="col-lg-14 col-md-14 col-sm-14 col-xs-12">
                                                   <p>
                                                     Clasificacion Urgencia :<br>
@@ -1607,18 +1082,14 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                     <option value="1">Urgente</option>
                                                   </select>
                                                 </div>
-
                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-
                                                   <select name='estudio_solicitar_vaginoscopia' id='estudio_solicitar_vaginoscopia' class="form-control">
                                                     <option value="">Selecciona Estudio A Solicitar</option>
                                                     <option value="institucional">INSICIONAL</option>
                                                     <option value="trucut">TRUCUT</option>
                                                     <option value="aspiracion">ASPIRACIÒN</option>
                                                   </select>
-
                                                 </div>
-
                                                 <div class="row fila">
                                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="form-group purple-border">
@@ -1632,11 +1103,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                                                   </div>
                                                 </div>
 
-
-
-
                                               </div>
-
                                             </p>
                                           </div>
                                         </div>
@@ -1696,19 +1163,10 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         <center> <button type="submit" class="btn btn-primary">Enviar</button></center>
       </div>
       </div>
-
       <!--<center><input type="submit" style="border: #000 1px solid; background-color: #ed80a8" value="Enviar formulario"></center>-->
-
-
       </form>
 
-
-
-
-
-
       <!-- Form Element area End-->
-
       <!-- End Footer area-->
       <!-- jquery
 		============================================ -->
@@ -1749,7 +1207,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
       <script src="js/flot/jquery.flot.js"></script>
       <script src="js/flot/jquery.flot.resize.js"></script>
       <script src="js/flot/flot-active.js"></script>
-
       <!-- knob JS
 		============================================ -->
       <script src="js/knob/jquery.knob.js"></script>
@@ -1764,7 +1221,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
       <script src="js/icheck/icheck-active.js"></script>
       <!--  Chat JS
 		============================================ -->
-
       <!--  todo JS
 		============================================ -->
       <script src="js/todo/jquery.todo.js"></script>
@@ -1798,7 +1254,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
       <script src="js/summernote/summernote-active.js"></script>
       <!-- dropzone JS
     ============================================ -->
-
       <!--  wave JS
 		============================================ -->
       <script src="js/wave/waves.min.js"></script>
@@ -1818,12 +1273,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
       <!-- and drop JS
 		============================================ -->
 
-
-
-
       <!-- main JS
 		============================================ -->
-
       <script language="JavaScript">
         $(function() {
           $("#metodos_planificacion").change(function() {
@@ -1865,46 +1316,35 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             $('#ep_criterios_menores').prop('disabled', false);
             $('#ep_criterios_intermedios').prop('disabled', false);
             $('#ep_criterios_mayores').prop('disabled', false);
-
             $('#bs_criterios_menores').prop('disabled', false);
             $('#bs_criterios_intermedios').prop('disabled', false);
             $('#bs_criterios_mayores').prop('disabled', false);
-
             $('#ag_criterios_menores').prop('disabled', false);
             $('#ag_criterios_intermedios').prop('disabled', false);
             $('#ag_criterios_mayores').prop('disabled', false);
-
             $('#cy_criterios_menores').prop('disabled', false);
             $('#cy_criterios_intermedios').prop('disabled', false);
             $('#cy_criterios_mayores').prop('disabled', false);
-
           } else {
-
             ep = 0;
             bs = 0;
             ag = 0;
             cy = 0;
-
             $('#ep_criterios_menores').prop('disabled', 'disabled');
             $('#ep_criterios_intermedios').prop('disabled', 'disabled');
             $('#ep_criterios_mayores').prop('disabled', 'disabled');
-
             $('#bs_criterios_menores').prop('disabled', 'disabled');
             $('#bs_criterios_intermedios').prop('disabled', 'disabled');
             $('#bs_criterios_mayores').prop('disabled', 'disabled');
-
             $('#ag_criterios_menores').prop('disabled', 'disabled');
             $('#ag_criterios_intermedios').prop('disabled', 'disabled');
             $('#ag_criterios_mayores').prop('disabled', 'disabled');
-
             $('#cy_criterios_menores').prop('disabled', 'disabled');
             $('#cy_criterios_intermedios').prop('disabled', 'disabled');
             $('#cy_criterios_mayores').prop('disabled', 'disabled');
           }
           calcularCriterios();
         });
-
-
         $("#ep_criterios_menores").change(function() {
           if ($("#ep_criterios_menores").val() === "") {
             ep = 0;
@@ -1917,7 +1357,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           }
           calcularCriterios();
         });
-
         $("#ep_criterios_intermedios").change(function() {
           if ($("#ep_criterios_intermedios").val() === "") {
             ep = 0;
@@ -1930,7 +1369,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           }
           calcularCriterios();
         });
-
         $("#ep_criterios_mayores").change(function() {
           if ($("#ep_criterios_mayores").val() === "") {
             ep = 0;
@@ -1956,7 +1394,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           }
           calcularCriterios();
         });
-
         $("#bs_criterios_intermedios").change(function() {
           if ($("#bs_criterios_intermedios").val() === "") {
             bs = 0;
@@ -1969,7 +1406,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           }
           calcularCriterios();
         });
-
         $("#bs_criterios_mayores").change(function() {
           if ($("#bs_criterios_mayores").val() === "") {
             bs = 0;
@@ -1983,7 +1419,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           calcularCriterios();
         });
         ////////////////////////////////////////////////
-
         $("#ag_criterios_menores").change(function() {
           if ($("#ag_criterios_menores").val() === "") {
             ag = 0;
@@ -1996,7 +1431,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           }
           calcularCriterios();
         });
-
         $("#ag_criterios_intermedios").change(function() {
           if ($("#ag_criterios_intermedios").val() === "") {
             ag = 0;
@@ -2009,7 +1443,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           }
           calcularCriterios();
         });
-
         $("#ag_criterios_mayores").change(function() {
           if ($("#ag_criterios_mayores").val() === "") {
             ag = 0;
@@ -2023,7 +1456,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           calcularCriterios();
         });
         //////////////////////////////////////////////////////
-
         $("#cy_menores").change(function() {
           if ($("#cy_menores").val() === "") {
             cy = 0;
@@ -2036,7 +1468,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           }
           calcularCriterios();
         });
-
         $("#cy_intermedios").change(function() {
           if ($("#cy_intermedios").val() === "") {
             cy = 0;
@@ -2049,7 +1480,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           }
           calcularCriterios();
         });
-
         $("#cy_mayores").change(function() {
           if ($("#cy_mayores").val() === "") {
             cy = 0;
@@ -2062,9 +1492,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           }
           calcularCriterios();
         });
-
         ///////////////////////////////////////////////
-
         function calcularCriterios() {
           var calculoCriterio = ep + bs + ag + cy;
           if (calculoCriterio >= 0 && calculoCriterio <= 2) {
@@ -2077,46 +1505,34 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             $("#autoDiag").val(calculoCriterio + " - LIEAG");
             // LIEAG
           }
-
         }
       </script>
-
       <script>
         function pagoOnChange(sel) {
           if (sel.value == "ausente") {
             divC = document.getElementById("ausente");
             divC.style.display = "";
-
             divT = document.getElementById("presente");
             divT.style.display = "none";
-
           } else if (sel.value == "") {
             divC = document.getElementById("ausente");
             divC.style.display = "";
-
             divT = document.getElementById("presente");
             divT.style.display = "none";
-
           } else {
-
             divC = document.getElementById("ausente");
             divC.style.display = "none";
-
             divT = document.getElementById("presente");
             divT.style.display = "";
           }
         }
       </script>
-
-
-
       <script>
         //Bloque de codigo de JS para hacer la captura de imagenes desde una webcam / colposcopio
         function hasGetUserMedia() {
           return !!(navigator.mediaDevices &&
             navigator.mediaDevices.getUserMedia);
         }
-
         if (hasGetUserMedia()) {
           // Good to go!
         } else {
@@ -2125,7 +1541,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           document.getElementById("modalCam").style.display = "none";
           document.getElementById('formulario').style.paddingLeft = "0px";
         }
-
         'use strict';
         var contadorCanvas = 1;
         var videoElement = document.querySelector('video');
@@ -2134,16 +1549,13 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         const captureVideoButton = document.querySelector('#screenshot .capture-button');
         const screenshotButton = document.getElementById('btn-captura');
         const divCanvas = document.getElementById('vectorFotos');
-
         iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision).then(function() {
           $(".loader").fadeOut()
         });
-
         function getDevices() {
           // AFAICT in Safari this only gets default devices until gUM is called :/
           return navigator.mediaDevices.enumerateDevices();
         }
-
         function gotDevices(deviceInfos) {
           window.deviceInfos = deviceInfos; // make available to console
           var dev = 1;
@@ -2159,7 +1571,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             }
           }
         }
-
         function iniciaTransmicion() {
           if (window.stream) {
             window.stream.getTracks().forEach(track => {
@@ -2187,11 +1598,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           document.getElementById('pantallaVideo').style.display = "block";
           document.querySelector("ul.notika-menu-wrap").style.paddingLeft = "200px";
           document.querySelector("div.logo-area").style.paddingLeft = "200px";
-
           return navigator.mediaDevices.getUserMedia(constraints).
           then(gotStream).catch(handleError);
         }
-
         function gotStream(stream) {
           window.stream = stream; // make stream available to console
           audioSelect.selectedIndex = [...audioSelect.options].
@@ -2200,11 +1609,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           findIndex(option => option.text === stream.getVideoTracks()[0].label);
           videoElement.srcObject = stream;
         }
-
         function handleError(error) {
           console.error('Error > ', error);
         }
-
         function detenTransmision() {
           if (window.stream) {
             window.stream.getTracks().forEach(function(track) {
@@ -2218,10 +1625,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           document.getElementById('pantallaVideo').style.display = "none";
           document.querySelector("ul.notika-menu-wrap").style.paddingLeft = "0px";
           document.querySelector("div.logo-area").style.paddingLeft = "0px";
-
         }
-
-
         screenshotButton.onclick = videoElement.onclick = function() {
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
@@ -2263,7 +1667,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           formulario.appendChild(input);
           contadorCanvas = contadorCanvas + 1;
         }
-
         function capturaFoto() {
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
@@ -2305,24 +1708,20 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           formulario.appendChild(input);
           contadorCanvas = contadorCanvas + 1;
         };
-
         function handleSuccess(stream) {
           screenshotButton.disabled = false;
           videoElement.srcObject = stream;
         }
-
         document.addEventListener("keyup", function(event) {
           if (event.keyCode == 44) {
             capturaFoto();
           }
         });
-
         $(document).on("click", ".fa-times-circle.fa-2x", function(e) {
           var idElemento = $($(e.target)[0]).prev().attr('id');
           $($(e.target)[0]).parent().fadeOut().remove();
           $('#' + idElemento).remove();
         });
-
         $(document).on("click", ".contenedorCanvas", function(e) {
           var apuntador = $($(e.target)[0]).parent();
           var inputHidden = document.getElementById($($(e.target)[0]).attr("id"));
@@ -2342,13 +1741,9 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             $(inputHidden).val(sel.join(","));
           }
         });
-
         $('.inputDeshabilitado').keydown(function() {
           return false;
         });
-
-
-
 
         function eliminaCoordDona(e) {
           var divTemp = $(e).parent();
@@ -2358,7 +1753,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           var ctxDona = canvasDona.getContext("2d");
           var dona = document.getElementById("recuadroDona");
           var donax = document.getElementById("coordCervix");
-
           if (index > -1) {
             posDona.splice(index, 1);
             $(divTemp).remove();
@@ -2379,7 +1773,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           });
           donax.value = posDona.join("|");
         };
-
         function eliminaCoordVulva(e) {
           var divTemp = $(e).parent();
           var inputTemp = $(e).prev();
@@ -2388,7 +1781,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           var ctxVulva = canvasVulva.getContext("2d");
           var vulva = document.getElementById("recuadroVulva");
           var vulvax = document.getElementById("coordVulva");
-
           if (index > -1) {
             posVulva.splice(index, 1);
             $(divTemp).remove();
@@ -2410,8 +1802,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           vulvax.value = posVulva.join("|");
         };
       </script>
-
-
       <!-- ----------------------------------------------------------------------------------------------------->
       <script>
         $("#f").submit(function(event) {
@@ -2419,7 +1809,6 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           var post_url = $(this).attr("action"); //get form action url
           var request_method = $(this).attr("method"); //get form GET/POST method
           var form_data = $(this).serialize(); //Encode form elements for submission
-
           $.ajax({
             url: post_url,
             type: request_method,
@@ -2439,29 +1828,18 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         });
       </script>
 
-
-
-
       <!-- ----------------------------------------------------------------------------------------------------->
       <?php
           include('pie.php');
           ?>
-
-
   </body>
-
   </html>
-
 <?php
   }
 } else {
   header('Location: ../index.php');
-
   exit;
 }
-
-
-
 /*
 <i class="far fa-times-circle fa-2x" style="
      top: 10px;
@@ -2470,7 +1848,5 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
      color:white;
      opacity: 0.5;
      "></i>
-
 */
-
 ?>

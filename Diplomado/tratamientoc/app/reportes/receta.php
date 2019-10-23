@@ -6,9 +6,12 @@ date_default_timezone_set('America/Mexico_City');
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   include('../../../../coni/Localhost.php');
   $id = $_SESSION['id_usuario'];
-  $resultado = mysqli_query($mysqliL, "SELECT genero from usu_me where id_usuario=$id");
+  $resultado = mysqli_query($mysqliL, "SELECT * from usu_me where id_usuario=$id");
   $fila = mysqli_fetch_assoc($resultado);
   $genero = $fila["genero"];
+  $escuela = $fila["escuela"];
+  $especialidad = $fila["especialidad"];
+  $cedula = $fila["cedula"];
   $nick = $_SESSION['nick'];
   $correo_general = $_SESSION['correo_general'];
   $nombre_usuario = ucwords($_SESSION['nombre_usuario']);
@@ -76,8 +79,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       </div>
       <div id="client">
         <h2 class="name"><?php echo  ( $genero == 'H' ? 'Dr.' : 'Dra.') . ' ' . $nombre_usuario . ' ' . $apellidos_usuario; ?></h2>
-        <div class="address">Benemérita Universidad Autónoma de Puebla</div>
-        <div class="address">Tollocan 402 Col. Cipres Toluca de Lerdo,Mèxico</div>
+        <div class="address" style="max-width:300px;text-align:center;"><?php echo $especialidad; ?></div>
+        <div class="address" style="max-width:300px;"><?php echo $escuela; ?></div>
       </div>
       <div id="invoice">
         <div class="date"><b><?php echo $id_receta; ?></b></div>
@@ -86,7 +89,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <div class="date">C.P50120</div>
       </div>
       <div id="invoice2">
-        <div class="date">Ced.Prof. 5446084</div>
+        <div class="date">Ced.Prof. <?php echo $cedula; ?></div>
       </div>
     </header>
     <div class="grid-block" style="background: url('reina1.png');height: 100%;-webkit-print-color-adjust: exact;background-repeat: no-repeat;">

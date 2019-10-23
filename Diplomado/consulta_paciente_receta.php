@@ -146,7 +146,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </div>
           </div>
         </div>
-        <div class="tarjeta">
+        <div class="tarjetaTratamiento">
           <div style="width:100%;">
             <div id="listaTratamientos" style="float: right; cursor: pointer;"><i class="far fa-times-circle"></i></div>
             <h3>Tratamientos previos:</h3>

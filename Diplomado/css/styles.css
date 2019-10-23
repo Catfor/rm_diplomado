@@ -254,7 +254,7 @@ body {
     fill: #a25cbf;
   }
 
-  .tarjeta{
+  .tarjetaTratamiento{
     position: fixed;
     left: 50%;
     top: 50%;
@@ -274,7 +274,7 @@ body {
     display:none;
   }
 
-  .tarjeta .lista{
+  .tarjetaTratamiento .lista{
     overflow-y: auto;
     max-height: 260px;
     padding: 5px 20px 0px 5px;
@@ -283,7 +283,7 @@ body {
   }
 
   
-.tarjeta .lista::-webkit-scrollbar-track
+.tarjetaTratamiento .lista::-webkit-scrollbar-track
 {
 
     width: 30px;
@@ -292,13 +292,13 @@ body {
 	background-color: #F5F5F500;
 }
 
-.tarjeta .lista::-webkit-scrollbar
+.tarjetaTratamiento .lista::-webkit-scrollbar
 {
 	width: 12px;
 	background-color: #F5F5F500;
 }
 
-.tarjeta .lista::-webkit-scrollbar-thumb
+.tarjetaTratamiento .lista::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);
