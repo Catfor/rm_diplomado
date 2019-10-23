@@ -11,7 +11,7 @@ if (isset($_POST['fecha']) || isset($_POST['atencion'])) {
   $condiciones = ' WHERE 1=1 ';
 
   if(isset($_POST['fecha']) && !empty($_POST['fecha'])){
-    $condiciones .= " AND DATE_FORMAT(a.fecha_atencion_medica,'%Y-%m-%d') = '" .$_POST["fecha"] . "' ";
+    $condiciones .= " AND DATE_FORMAT(a.fecha_atencion_medica,'%Y/%m/%d') = '" .$_POST["fecha"] . "' ";
   }
   if(isset($_POST['atencion']) && !empty($_POST['atencion'])){
     $condiciones .= " AND a.id_atencion_medica = '" .$_POST["atencion"] . "' ";

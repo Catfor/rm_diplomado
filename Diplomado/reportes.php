@@ -45,6 +45,22 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <?php
       include('css.php');
       ?>
+      <script>
+      var search = document.getElementById("search"),
+    food = document.getElementsByTagName("th"),
+    forEach = Array.prototype.forEach;
+
+search.addEventListener("keyup", function(e){
+    var choice = this.value;
+
+    forEach.call(food, function(f){
+        if (f.innerHTML.toLowerCase().search(choice.toLowerCase()) == -1)
+            f.parentNode.style.display = "none";
+        else
+            f.parentNode.style.display = "block";
+    });
+}, false);
+      </script>
 
   </head>
 
@@ -83,24 +99,36 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <!-- Data Table area Start-->
     <div class="data-table-area">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <input id="ifecha" type="text" placeholder="yyyy/mm/dd">
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 input-group">
+        <div class="breadcomb-area">
+      		<div class="container">
+      			<div class="row">
+      				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      					<div class="breadcomb-list">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <p>   Fecha de Atención:</p><input id="ifecha" type="text" placeholder="yyyy/mm/dd">
+                    </div>
 
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-            </div>
-            <input id="iatencion" type="text" placeholder="id de atencion medica">
-          </div>
 
-          <div id="boton" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <div style="padding:10px;background:crimson;color:black;"> soy un boton
-            </div>
-          </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 input-group">
+                    <p>   Folio de Atención:</p><input id="iatencion" type="search" placeholder="id de atencion medica">
+                    </div>
 
-        </div>
+                    <label for ="search">Choose your lunch name of below list:</label>
+                  <input type = "text" id = "search" placeholder = "Your choice" autofocus />
+
+
+                    <div id="boton" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                      <div style="position: absolute;top: -34px;right: -802px;padding:10px;background:#a25cbf;color:#ffffff;"> Buscar
+                      </div>
+                    </div>
+
+                  </div>
+      					</div>
+      				</div>
+      			</div>
+      		</div>
+      	</div>
         <div class="row">
 
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -170,14 +198,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <!-- jquery
 		============================================ -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-      
+
 
   <script>
 
 $(document).ready( function(){
 
   $("body").on("click","#boton", function(){
-    
+
     $.ajax({
             url: 'reportes_peticion.php',
             type: 'POST',
