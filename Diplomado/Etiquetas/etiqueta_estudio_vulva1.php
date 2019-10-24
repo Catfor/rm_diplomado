@@ -166,7 +166,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
     }
 
 
-if($clasificacion_medico==1){
+
 	$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
 
 
@@ -235,6 +235,7 @@ if($clasificacion_medico==1){
 	$vulvoscopia_acetico_vulva = $info_vulva["vulvoscopia_acetico"];
 	$posible_recomendacion_diagnostica = $info_vulva['posible_recomendacion_diagnostica'];
 	$clasificacion_medico_vulva = $info_vulva["clasificacion_medico"] == 0 ? "Normal" : "Urgente";
+	if($clasificacion_medico==1){
 ?>
 
                 <div class='alert-list'>

@@ -164,7 +164,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
     }
 
 
-if($clasificacion_medico==1){
+
 	$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
 
 
@@ -234,6 +234,7 @@ if($clasificacion_medico==1){
 	$duracion_tratamiento = isset($info_endo['duracion_hormonoterapia']) && !empty(trim($info_endo['duracion_hormonoterapia'])) ? $info_endo['duracion_hormonoterapia'] : 'N/A';
 	$observaciones_endometrio = $info_endo['observaciones_endometrio'];
 	$clasificacion_medico_endometrio = $info_endo['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
+	if($clasificacion_medico==1){
 ?>
 
                 <div class='alert-list'>

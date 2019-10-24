@@ -164,7 +164,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
     }
 
 
-if($clasificacion_medico==1){
+
 ?>
 <?php
 $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
@@ -236,6 +236,7 @@ $vaginoscopia_lugol_vagino = $info_vagino['vaginoscopia_lugol'];
 $estudio_solicitar_vaginoscopia = $info_vagino['estudio_solicitar_vaginoscopia'];
 $anotaciones_vaginoscopia_vagino = $info_vagino['anotaciones_vaginoscopia'];
 $clasificacion_medico_vagino = $info_vagino['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
+if($clasificacion_medico==1){
 ?>
 
                 <div class='alert-list'>

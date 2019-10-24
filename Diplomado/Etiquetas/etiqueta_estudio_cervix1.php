@@ -165,7 +165,6 @@ $fecha_estudio = $resultSet['fecha_estudio'];
     }
 
 
-if($clasificacion_medico==1){
 	$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
 
 
@@ -239,6 +238,7 @@ if($clasificacion_medico==1){
 	$coordenadasCervix =$info_cervix['coordenadas'];
 		$posible_recomendacion_diagnostica = $info_cervix['posible_recomendacion_diagnostica'];
 	$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info_cervix['posible_recomendacion_diagnostica']));
+if ($clasificacion_medico == 1) {
 
 ?>
 
