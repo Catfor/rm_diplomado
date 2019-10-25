@@ -213,9 +213,9 @@ ON ec.id_estudio=c.id_estudio
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
        Clasificación <?php
        if($clasifiacion_patologo==0){
-         echo "<p style='color:#2EFE2E;margin:0;'><FONT SIZE=5>Bajo Grado</font></p>";
+         echo "<p style='color:#2EFE2E;margin:0;'><FONT SIZE=5>Bajo Grado - LIEBG</font></p>";
        }  else if($clasifiacion_patologo==1){
-   echo "<p style='color:#298A08;margin:0;'><FONT SIZE=5>Alto Grado</font></p>";
+   echo "<p style='color:#298A08;margin:0;'><FONT SIZE=5>Alto Grado - LIEAG</font></p>";
        }
        else if($clasifiacion_patologo==2){
    echo "<p style='color:#FF0040;margin:0;'><FONT SIZE=5>Cancer Escamoso Incituoso</font></p>";
