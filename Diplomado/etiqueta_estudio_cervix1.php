@@ -773,7 +773,7 @@ if($clasificacion_medico==1){
 
 
 <?php
-        include('../pie.php');
+        include('pie.php');
         ?>
 <!--//End Footer area-->
 <!--//jquery		============================================ -->

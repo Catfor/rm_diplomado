@@ -499,7 +499,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 											<center>
 												<div class="logo-area">
 													<a href="#">
-														<img src="../../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
+														<img src="../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
 													</a>
 												</div>
 											</center>
@@ -764,7 +764,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 
 
 <?php
-        include('../pie.php');
+        include('pie.php');
         ?>
 <!--//End Footer area-->
 <!--//jquery		============================================ -->

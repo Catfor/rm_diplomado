@@ -141,7 +141,7 @@ $clasificacion_medico=$_GET['clasificacion_medico'];
 $queryColposcopia = "SELECT CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS paciente,CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,
 c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico,paps.observaciones_endometrio,paps.fecha_estudio
 FROM   estudio_biopsia_endometrio paps INNER JOIN ctrl_paciente_estudios c ON
-                                                e.id_estudio = c.id_estudio
+                                                paps.id_estudio = c.id_estudio
                                                 INNER JOIN usu_me AS u ON
                                                 u.id_usuario=c.id_usuario
                                                 INNER JOIN paciente AS p ON
@@ -155,9 +155,7 @@ $resultSetColposcopia = $mysqliL->query($queryColposcopia);
         $paciente = $resultSet['paciente'];
 $medico = $resultSet['medico'];
 ///////////papa///////////////////////
-$antecedente_cancer = $resultSet['antecedente_cancer'];
-$observaciones_papinocolau = $resultSet['observaciones_papinocolau'];
-$antecedente_infeccion_vagina = $resultSet['antecedente_infeccion_vagina'];
+
 $fecha_estudio = $resultSet['fecha_estudio'];
     }
 
@@ -496,7 +494,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 									<center>
 										<div class="logo-area">
 											<a href="#">
-												<img src="../../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
+												<img src="../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
 											</a>
 										</div>
 									</center>
@@ -703,7 +701,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 
 
 <?php
-        include('../pie.php');
+        include('pie.php');
         ?>
 <!--//End Footer area-->
 <!--//jquery		============================================ -->

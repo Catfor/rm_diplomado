@@ -114,7 +114,7 @@ if (isset($vagi)){
 
 
     $queryestudio_vulvoscopia = "SELECT c.id_paciente AS paciente ,c.id_estudio AS estudio,c.id_tipo_estudio AS tipo_estudio
-     FROM estudio_vulvoscopia e
+     FROM estudio_vaginoscopia e
     INNER JOIN ctrl_paciente_estudios c ON
     e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 5	AND c.id_atencion =  $vagi1; ";
                                                  $resultestudio_vulvoscopia= $mysqliL->query($queryestudio_vulvoscopia) ;
