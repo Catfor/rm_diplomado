@@ -221,7 +221,7 @@ ON ec.id_estudio=c.id_estudio
    echo "<p style='color:#FF0040;margin:0;'><FONT SIZE=5>Cancer Escamoso Incituoso</font></p>";
        }
        else if($clasifiacion_patologo==3){
-   echo "<p style='color:#B40431;margin:0;'><FONT SIZE=5>Cancer Escamoso invasor</font></p>";
+   echo "<p style='color:#B40431;margin:0;'><FONT SIZE=5>Cancer Escamoso Invasor</font></p>";
        }?>
     </div>
   </div><br><br><br>
