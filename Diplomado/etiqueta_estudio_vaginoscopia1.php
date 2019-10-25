@@ -502,7 +502,7 @@ if($clasificacion_medico==1){
 				</div>
 		</div>
 </div>
-<div class="modal animated rubberBand" id="myModalsix" role="dialog">ggggg
+<div class="modal animated rubberBand" id="myModalsix" role="dialog">
 		<div class="modal-dialog modals-default">
 				<div class="modal-content">
 						<div class="modal-header">
@@ -567,6 +567,12 @@ if($clasificacion_medico==1){
 				</div>
 		</div>
 </div>
+          <div class="row fila">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <p>Número De Caso :<br></p>
+                  <input type="text" name="no_caso" maxlength="50">
+            </div>
+          </div>
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="breadcomb-list">
 							<div class="row">

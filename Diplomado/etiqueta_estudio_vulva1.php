@@ -619,6 +619,12 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 
 	<div class="breadcomb-area">
 			<div class="container">
+          <div class="row fila">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <p>Número De Caso :<br></p>
+                  <input type="text" name="no_caso" maxlength="50">
+            </div>
+          </div>
 				<div class="row">
 
 

@@ -586,6 +586,12 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
             </div>
           </div>
           <div class="row fila">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <p>Número De Caso :<br></p>
+                  <input type="text" name="no_caso" maxlength="50">
+            </div>
+          </div>
+          <div class="row fila">
 
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
               <p>

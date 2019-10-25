@@ -9,6 +9,7 @@ $descripcion_microscopica=$_GET['descripcion_microscopica'];
 $descripcion_macroscopica=$_GET['descripcion_macroscopica'];
 $impresion_diagnostica=$_GET['impresion_diagnostica'];
 $observaciones=$_GET['observaciones'];
+$no_caso=$_GET['no_caso'];
 
 //cho "<script languaje='javascript' type='text/javascript'>window.close();</script>";
 date_default_timezone_set('America/Mexico_City');
@@ -16,9 +17,9 @@ $hoys = date("Y-m-d H:i:s");
 switch ($id_tipo_estudio) {
     case 1:
     $sql11 = "INSERT INTO resultado_biopsia
-    (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha)
+    (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha,no_caso)
     VALUES
-    ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys')";
+    ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys','$no_caso')";
 
    $resultaq = $mysqliL->query($sql11);
 
@@ -33,9 +34,9 @@ switch ($id_tipo_estudio) {
       break;
     case 2:
     $sql11 = "INSERT INTO resultado_biopsia
-    (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha)
+    (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha,no_caso)
     VALUES
-    ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys')";
+    ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys','$no_caso')";
 
    $resultaq = $mysqliL->query($sql11);
 
@@ -50,9 +51,9 @@ switch ($id_tipo_estudio) {
       break;
     case 3:
     $sql11 = "INSERT INTO resultado_biopsia
-    (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha)
+    (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha,no_caso)
     VALUES
-    ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys')";
+    ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys','$no_caso')";
 
    $resultaq = $mysqliL->query($sql11);
 
@@ -67,9 +68,9 @@ switch ($id_tipo_estudio) {
         break;
     case 4:
     $sql11 = "INSERT INTO resultado_biopsia
-    (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha)
+    (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha,no_caso)
     VALUES
-    ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys')";
+    ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys','$no_caso')";
 
    $resultaq = $mysqliL->query($sql11);
 
@@ -84,9 +85,9 @@ header('Location: consulta_estudios.php');
           break;
         case 5:
         $sql11 = "INSERT INTO resultado_biopsia
-        (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha)
+        (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha,no_caso)
         VALUES
-        ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys')";
+        ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys','$no_caso')";
 
        $resultaq = $mysqliL->query($sql11);
 
@@ -101,9 +102,9 @@ header('Location: consulta_estudios.php');
               break;
             case 6:
             $sql11 = "INSERT INTO resultado_biopsia
-            (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha)
+            (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha,no_caso)
             VALUES
-            ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys')";
+            ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys','$no_caso')";
 
            $resultaq = $mysqliL->query($sql11);
 
@@ -118,9 +119,9 @@ header('Location: consulta_estudios.php');
                   break;
                   case 7:
                   $sql11 = "INSERT INTO resultado_biopsia
-                  (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha)
+                  (descripcion_microscopica,descripcion_macroscopica,impresion_diagnostica,observaciones,fecha,no_caso)
                   VALUES
-                  ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys')";
+                  ('$descripcion_microscopica','$descripcion_macroscopica','$impresion_diagnostica','$observaciones','$hoys','$no_caso')";
 
                  $resultaq = $mysqliL->query($sql11);
 
