@@ -7,6 +7,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -15,7 +16,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="logo-area">
-                        <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="130" height="100" /></a>
+                        <a href="#"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
 
                     </div>
                 </div>
@@ -39,15 +40,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </div>
         </div>
     </div>
+
     <?php
-    include('../css.php');
+    include('css.php');
     ?>
 </head>
 
 <body>
     <?php
 
-        include('../../coni/Localhost.php');
+        include('../coni/Localhost.php');
         $id = $_SESSION['id_usuario'];
         $nick = $_SESSION['nick'];
         $correo_general = $_SESSION['correo_general'];
@@ -125,7 +127,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <!--//Mobile Menu start -->
 <?php
 
-        include('../menu.php');
+        include('menu.php');
         ?>
 
 <?php
@@ -208,32 +210,31 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 	$tratamiento_previo = $ro['tratamiento_previo'];
 	$fecha_atencion_medica = $ro['fecha_atencion_medica'];
 
-	$informacion_endo =
-		$informacion = "SELECT
-	CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) AS paciente,
-	CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) AS medico,
+	$informacion_vulva = "SELECT
+	CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
+	CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
 	p.edad_paciente,
 	e.fecha_estudio,
-	e.observaciones_endometrio,
-	am.metrorragia,
-	am.hormonoterapia,
-	am.duracion_hormonoterapia,
-	ct.clasificacion_medico
+	e.anotaciones_vulvoscopia,
+	e.coordenadas,
+	ec.vulvoscopia_acetico,
+	ct.clasificacion_medico,ec.posible_recomendacion_diagnostica
 	FROM
-	paciente AS p
-	INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 4
-	INNER JOIN usu_me AS u ON u.id_usuario = ct.id_usuario
-	INNER JOIN estudio_biopsia_endometrio AS e ON ct.id_estudio = e.id_estudio
-	INNER JOIN atencion_medica AS am ON am.id_atencion_medica = ct.id_atencion";
+	paciente p
+	INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 6
+	INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
+	INNER JOIN estudio_vulvoscopia e ON ct.id_estudio = e.id_estudio
+	INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
+	INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
 
-	$res_endo = $mysqliL->query($informacion_endo);
-	$info_endo = $res_endo->fetch_assoc();
-	$fecha_endo = $info_endo['fecha_estudio'];
-	$antecedente_metrorragia = $info_endo['metrorragia'];
-	$antecedente_hormonoterapia = $info_endo['hormonoterapia'];
-	$duracion_tratamiento = isset($info_endo['duracion_hormonoterapia']) && !empty(trim($info_endo['duracion_hormonoterapia'])) ? $info_endo['duracion_hormonoterapia'] : 'N/A';
-	$observaciones_endometrio = $info_endo['observaciones_endometrio'];
-	$clasificacion_medico_endometrio = $info_endo['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
+	$res_vulva = $mysqliL->query($informacion_vulva);
+	$info_vulva = $res_vulva->fetch_assoc();
+	$fecha_vulva = $info_vulva['fecha_estudio'];
+	$anotaciones_vulvoscopia_vulva = $info_vulva['anotaciones_vulvoscopia'];
+	$coordenadasVulva =  $info_vulva['coordenadas'];
+	$vulvoscopia_acetico_vulva = $info_vulva["vulvoscopia_acetico"];
+	$posible_recomendacion_diagnostica = $info_vulva['posible_recomendacion_diagnostica'];
+	$clasificacion_medico_vulva = $info_vulva["clasificacion_medico"] == 0 ? "Normal" : "Urgente";
 	if($clasificacion_medico==1){
 ?>
 
@@ -259,7 +260,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
                                     <i class="notika-icon notika-windows"></i>
                                 </div>
                                 <div class="breadcomb-ctn" style="margin: auto 15px;">
-                                    <h2>Resultados Patologicos Endometrio</h2>
+                                    <h2>Resultados Patologicos Vulvoscopia</h2>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +276,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 <div class="modals-default-cl">
 <center>
 		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalfive">Informacion De Atencion Medica</button>
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalsix">Biopsia De Endometrio</button>
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalsix">Biopsia De Vulvoscopia</button>
 </center>
 </div><br><br>
 <div class="modal animated flash" id="myModalfive" role="dialog">sdd
@@ -482,71 +483,129 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 						</div>
 				</div>
 		</div>
+		<!-- modal -->
+    <div class="modal animated rubberBand" id="myModalsix" role="dialog">
+    		<div class="modal-dialog modals-default">
+    				<div class="modal-content">
+    						<div class="modal-header">
+    								<button type="button" class="close" data-dismiss="modal">&times;</button>
+    						</div>
+    						<div class="modal-body">
 
 
-<!-- modal -->
-<div class="modal animated rubberBand" id="myModalsix" role="dialog">
-		<div class="modal-dialog modals-default">
-				<div class="modal-content">
-						<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-						<div class="modal-body">
 
-							<div style="background-color:#fff">
-								<div>
-									<center>
-										<div class="logo-area">
-											<a href="#">
-												<img src="../../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
-											</a>
+									<div style="background-color:#fff">
+										<div>
+											<center>
+												<div class="logo-area">
+													<a href="#">
+														<img src="../../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
+													</a>
+												</div>
+											</center>
 										</div>
-									</center>
-								</div>
-								<div>
-									<p>
-										<center>
-											<b>Solicitud De Estudio Para Biopsia De Endometrio</b>
-										</center>
-									</p>
-									<div class="row">
-										<div class="column">
-											<p><b>ID Atención</b> <?php echo $id_atencion ?></p>
-										</div>
-										<div class="column">
-											<p><b>Prioridad</b> <?php echo $clasificacion_medico_endometrio ?></p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="column">
+										<div>
 											<p>
-												<b>Fecha:</b> <?php echo $fecha_endo; ?>
+												<center>
+													<b>Solicitud De Estudio Para Biopsia De Vulva</b>
+												</center>
 											</p>
-										</div>
-										<div class="column">
+
+											<div class="row">
+												<div class="column">
+													<p><b>ID Atención</b> <?php echo $id_atencion ?></p>
+												</div>
+												<div class="column">
+													<p><b>Prioridad</b> <?php echo $clasificacion_medico_vulva ?></p>
+												</div>
+											</div>
+											<div class="row">
+												<div class="column">
+													<p>
+														<b>Fecha:</b> <?php echo $fecha_vulva; ?>
+													</p>
+												</div>
+												<div class="column">
+													<p>
+														<b>Edad:</b> <?php echo $edad_paciente; ?></p>
+													<p>
+												</div>
+											</div>
+											<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
+											<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
+											<b>Acetico:</b> <?php echo ucwords($vulvoscopia_acetico_vulva) ?></p>
 											<p>
-												<b>Edad:</b> <?php echo $edad_paciente; ?></p>
-											<p>
+												<p>
+													<b>Se&ntilde;ala Donde Fue Tomada la muestra:</b>
+												</p>
+
+												<div class="row">
+													<div id="columnaCanvas" class="column">
+														<center>
+															<img id="recuadroVulva" src="img/vulva.JPG" width="200" height="200" style="max-width:200px;max-height:200px;">
+															<canvas id="canvasVulva" width="200" height="200">
+														</center>
+													</div>
+													<div class="column">
+														<p>
+															<b>Anotaciones:</b>
+														</p>
+														<p class="txt-justificado"><?php echo ucwords($anotaciones_vulvoscopia_vulva); ?></p>
+													</div>
+												</div>
 										</div>
 									</div>
-									<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
-									<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
-									<p><b>Antecedentes de Metrorragia:</b> <?php echo ucwords($antecedente_metrorragia == 0 ? "No" : "Si"); ?></p>
-									<p><b>Antecedentes de Hormonoterapia:</b> <?php echo ucwords($antecedente_hormonoterapia == 0 ? "No" : "Si"); ?></p>
-									<p><b>Duracion Hormonoterapia:</b><?php echo ucwords($duracion_tratamiento); ?></p>
-									<p><b>Observaciones: </b> <?php echo ($observaciones_endometrio); ?></p>
-								</div>
-							</div>
 
 
-						</div>
+    						</div>
 
-				</div>
-		</div>
-</div>
+    				</div>
+    		</div>
+    </div>
+		<script>
 
 
 
+			$(document).ready().delay(100).queue(function() {
+				var canvasVulva = document.getElementById("canvasVulva");
+				var ctxVulva = canvasVulva.getContext("2d");
+				var vulva = document.getElementById("recuadroVulva");
+				if (vulva) {
+					var coord = '<?php echo $coordenadasVulva ?>';
+					var coordenadas = coord.split('|');
+					ctxVulva.drawImage(vulva, 0, 0, 200, 200);
+
+					$(coordenadas).each(function(index, value) {
+						var coordsTemp = value.split(",");
+						ctxVulva.lineWidth = 6;
+						ctxVulva.strokeStyle = "#FFF";
+						ctxVulva.beginPath();
+						ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+						ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+						ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+						ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
+						ctxVulva.stroke();
+						ctxVulva.lineWidth = 2;
+						ctxVulva.strokeStyle = "#000";
+						ctxVulva.beginPath();
+						ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+						ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+						ctxVulva.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+						ctxVulva.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
+						ctxVulva.stroke();
+					});
+					vulva.setAttribute("src", canvasVulva.toDataURL());
+					vulva.style.display = "block";
+					canvasVulva.style.display = "none";
+				}
+
+
+
+
+			});
+
+
+		</script>
 <!--//Breadcomb area End-->
 <!--//Data Table area Start-->
 <form action='guardar_resultado_biopsa.php' method="get" id="gform">

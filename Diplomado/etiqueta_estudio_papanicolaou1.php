@@ -141,14 +141,13 @@ $clasificacion_medico=$_GET['clasificacion_medico'];
 $queryColposcopia = "SELECT CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS paciente,CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,
 c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico,paps.observaciones_papinocolau,paps.antecedente_cancer,
 paps.antecedente_infeccion_vagina,paps.fecha_estudio
-FROM   estudio_papanicolau e INNER JOIN ctrl_paciente_estudios c ON
-                                                e.id_estudio = c.id_estudio
+FROM   estudio_papanicolau paps INNER JOIN ctrl_paciente_estudios c ON
+                                                paps.id_estudio = c.id_estudio
                                                 INNER JOIN usu_me AS u ON
                                                 u.id_usuario=c.id_usuario
                                                 INNER JOIN paciente AS p ON
                                                 p.id_paciente=c.id_paciente
-                                                INNER JOIN estudio_papanicolau AS paps
-                                                ON paps.id_estudio=c.id_estudio
+
                                                 AND c.id_tipo_estudio = '$id_tipo_estudio'
                                                 	AND c.id_paciente = '$id_paciente'";
 
@@ -182,7 +181,7 @@ ON a.id_paciente=p.id_paciente
 
 
 
-WHERE a.id_paciente=$id_paciente and a.id_atencion_medica='$id_atencion' ");
+WHERE a.id_paciente=$id_paciente  ");
 $total = $re->num_rows;
 
 
@@ -234,7 +233,6 @@ $observaciones_paps = $info_pap['observaciones_papinocolau'];
 $posible_recomendacion_diagnostica = $info_pap['posible_recomendacion_diagnostica'];
 $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
 if($clasificacion_medico==1){
-
 ?>
 
                 <div class='alert-list'>

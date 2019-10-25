@@ -6,7 +6,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <!doctype html>
 <html class="no-js" lang="">
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -40,14 +40,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         </div>
     </div>
     <?php
-    include('../css.php');
+    include('css.php');
     ?>
+
 </head>
 
 <body>
     <?php
 
-        include('../../coni/Localhost.php');
+        include('../coni/Localhost.php');
         $id = $_SESSION['id_usuario'];
         $nick = $_SESSION['nick'];
         $correo_general = $_SESSION['correo_general'];
@@ -125,7 +126,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 <!--//Mobile Menu start -->
 <?php
 
-        include('../menu.php');
+        include('menu.php');
         ?>
 
 <?php
@@ -139,16 +140,14 @@ $clasificacion_medico=$_GET['clasificacion_medico'];
 
 
 $queryColposcopia = "SELECT CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS paciente,CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,
-c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico,paps.observaciones_papinocolau,paps.antecedente_cancer,
-paps.antecedente_infeccion_vagina,paps.fecha_estudio
-FROM   estudio_vulvoscopia e INNER JOIN ctrl_paciente_estudios c ON
-                                                e.id_estudio = c.id_estudio
+c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico,paps.senalizacion,paps.coordenadas,paps.fecha_estudio
+FROM   estudio_biopsia_cervix paps INNER JOIN ctrl_paciente_estudios c ON
+                                                paps.id_estudio = c.id_estudio
                                                 INNER JOIN usu_me AS u ON
                                                 u.id_usuario=c.id_usuario
                                                 INNER JOIN paciente AS p ON
                                                 p.id_paciente=c.id_paciente
-                                                INNER JOIN estudio_papanicolau AS paps
-                                                ON paps.id_estudio=c.id_estudio
+
                                                 AND c.id_tipo_estudio = '$id_tipo_estudio'
                                                 	AND c.id_paciente = '$id_paciente'";
 
@@ -157,85 +156,86 @@ $resultSetColposcopia = $mysqliL->query($queryColposcopia);
         $paciente = $resultSet['paciente'];
 $medico = $resultSet['medico'];
 ///////////papa///////////////////////
-$antecedente_cancer = $resultSet['antecedente_cancer'];
-$observaciones_papinocolau = $resultSet['observaciones_papinocolau'];
-$antecedente_infeccion_vagina = $resultSet['antecedente_infeccion_vagina'];
+$coordenadas = $resultSet['coordenadas'];
+
 $fecha_estudio = $resultSet['fecha_estudio'];
     }
 
 
 
-?>
-<?php
-$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
+	$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
 
 
-$rowwe = mysqli_fetch_assoc($result123);
-$nombrepaciente = ucwords($rowwe['nombre_paciente']);
-$apellidospaciente = ucwords($rowwe['apellidos_paciente']);
-$edad_paciente = $rowwe['edad_paciente'];
-$fecha_nacimiento_paciente = $rowwe['fecha_nacimiento_paciente'];
+	$rowwe = mysqli_fetch_assoc($result123);
+	$nombrepaciente = ucwords($rowwe['nombre_paciente']);
+	$apellidospaciente = ucwords($rowwe['apellidos_paciente']);
+	$edad_paciente = $rowwe['edad_paciente'];
+	$fecha_nacimiento_paciente = $rowwe['fecha_nacimiento_paciente'];
 
-$re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
-INNER JOIN atencion_medica AS a
-ON a.id_paciente=p.id_paciente
+	$re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
+	INNER JOIN atencion_medica AS a
+	ON a.id_paciente=p.id_paciente
 
 
 
-WHERE a.id_paciente=$id_paciente and a.id_atencion_medica='$id_atencion' ");
-$total = $re->num_rows;
+	WHERE a.id_paciente=$id_paciente and a.id_atencion_medica='$id_atencion' ");
+	$total = $re->num_rows;
 
 
-$ro = mysqli_fetch_assoc($re);
-$edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
-$metodos_planificacion = $ro['metodos_planificacion'];
-$cual = $ro['cual'];
-  $fecha_atencion_medica = $ro['fecha_atencion_medica'];
-$edad_inicio_vida_sexual = $ro['edad_inicio_vida_sexual'];
-  $edad_en_que_fue_su_regla = $ro['edad_en_que_fue_su_regla'];
-$parejas_sexuales = $ro['parejas_sexuales'];
-$gestas = $ro['gestas'];
-$para = $ro['para'];
-$cesareas = $ro['cesareas'];
-$abortos = $ro['abortos'];
-$fecha_ultima_regla = $ro['fecha_ultima_regla'];
-$fecha_ultimo_papanicolau = $ro['fecha_ultimo_papanicolau'];
-$antecedentes_tratamiento = $ro['antecedentes_tratamiento'];
-$atecedentes_lesion = $ro['atecedentes_lesion'];
-$metrorragia = $ro['metrorragia'];
-$hormonoterapia = $ro['hormonoterapia'];
-$duracion_hormonoterapia = $ro['duracion_hormonoterapia'];
-$ritmo = $ro['ritmo'];
-$antecedente_cancer_cervicouterino = $ro['antecedente_cancer_cervicouterino'];
-$tratamiento_previo = $ro['tratamiento_previo'];
-$fecha_atencion_medica = $ro['fecha_atencion_medica'];
+	$ro = mysqli_fetch_assoc($re);
+	$edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
+	$metodos_planificacion = $ro['metodos_planificacion'];
+	$cual = $ro['cual'];
+		$fecha_atencion_medica = $ro['fecha_atencion_medica'];
+	$edad_inicio_vida_sexual = $ro['edad_inicio_vida_sexual'];
+		$edad_en_que_fue_su_regla = $ro['edad_en_que_fue_su_regla'];
+	$parejas_sexuales = $ro['parejas_sexuales'];
+	$gestas = $ro['gestas'];
+	$para = $ro['para'];
+	$cesareas = $ro['cesareas'];
+	$abortos = $ro['abortos'];
+	$fecha_ultima_regla = $ro['fecha_ultima_regla'];
+	$fecha_ultimo_papanicolau = $ro['fecha_ultimo_papanicolau'];
+	$antecedentes_tratamiento = $ro['antecedentes_tratamiento'];
+	$atecedentes_lesion = $ro['atecedentes_lesion'];
+	$metrorragia = $ro['metrorragia'];
+	$hormonoterapia = $ro['hormonoterapia'];
+	$duracion_hormonoterapia = $ro['duracion_hormonoterapia'];
+	$ritmo = $ro['ritmo'];
+	$antecedente_cancer_cervicouterino = $ro['antecedente_cancer_cervicouterino'];
+	$tratamiento_previo = $ro['tratamiento_previo'];
+	$fecha_atencion_medica = $ro['fecha_atencion_medica'];
 
-$informacion_vagino = "SELECT
-	CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
-	CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
-	p.edad_paciente,
-	e.fecha_estudio,
-	e.anotaciones_vaginoscopia,
-	e.estudio_solicitar_vaginoscopia,
-	ec.vaginoscopia_acetico,
-	ec.vaginoscopia_lugol,
-	ct.clasificacion_medico
-	FROM
-	paciente p
-	INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 5
-	INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
-	INNER JOIN estudio_vaginoscopia e ON ct.id_estudio = e.id_estudio
-	INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
-	INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
 
-$res_vagino = $mysqliL->query($informacion_vagino);
-$info_vagino = $res_vagino->fetch_assoc();
-$fecha_vagino = $info_vagino['fecha_estudio'];
-$vaginoscopia_acetico_vagino = $info_vagino['vaginoscopia_acetico'];
-$vaginoscopia_lugol_vagino = $info_vagino['vaginoscopia_lugol'];
-$estudio_solicitar_vaginoscopia = $info_vagino['estudio_solicitar_vaginoscopia'];
-$anotaciones_vaginoscopia_vagino = $info_vagino['anotaciones_vaginoscopia'];
-$clasificacion_medico_vagino = $info_vagino['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
+	$informacion_cervix = "SELECT
+		CONCAT(p.nombre_paciente,' ',p.apellidos_paciente ) as paciente,
+		CONCAT(u.nombre_usuario,' ',u.apellidos_usuario ) as medico,
+		p.edad_paciente,
+		e.fecha_estudio,
+		e.antecedente_cancer_cervicouterino,
+		e.hallazgos_colposcopicos,
+		e.senalizacion,
+		e.coordenadas,
+		ec.posible_recomendacion_diagnostica,
+		ct.clasificacion_medico,ec.posible_recomendacion_diagnostica
+		FROM
+		paciente p
+		INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 2
+		INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
+		INNER JOIN estudio_biopsia_cervix e ON ct.id_estudio = e.id_estudio
+		INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
+		INNER JOIN estudio_colposcopico ec ON ec.id_estudio = ctc.id_estudio";
+
+	$res_cervix = $mysqliL->query($informacion_cervix);
+	$info_cervix = $res_cervix->fetch_assoc();
+	$fecha_cervix = $info_cervix['fecha_estudio'];
+	$antecedente_cancer_cervicouterino_cervix = $info_cervix['antecedente_cancer_cervicouterino'] == 0 ? "No"  : "Si";
+	$hallazgos_colposcopicos_cervix = $info_cervix['hallazgos_colposcopicos'];
+	$senalizacion_cervix = $info_cervix['senalizacion'];
+	$clasificacion_medico_cervix = $info_cervix['clasificacion_medico'] == 0 ? "Normal" : "Urgente";
+	$coordenadasCervix =$info_cervix['coordenadas'];
+		$posible_recomendacion_diagnostica = $info_cervix['posible_recomendacion_diagnostica'];
+	$posible_recomendacion_diagnostica = ucwords(str_replace("_", " ", $info_cervix['posible_recomendacion_diagnostica']));
 if($clasificacion_medico==1){
 ?>
 
@@ -261,7 +261,7 @@ if($clasificacion_medico==1){
                                     <i class="notika-icon notika-windows"></i>
                                 </div>
                                 <div class="breadcomb-ctn" style="margin: auto 15px;">
-                                    <h2>Resultados Patologicos Vaginoscopia</h2>
+                                    <h2>Resultados Patologicos Cervix</h2>
                                 </div>
                             </div>
                         </div>
@@ -274,30 +274,13 @@ if($clasificacion_medico==1){
         </div>
     </div>
 </div>
-<!--//Breadcomb area End-->
-<!--//Data Table area Start-->
-<form action='guardar_resultado_biopsa.php' method="get" id="gform">
-
-
-  <input type="hidden" name="id_paciente" value="<?php echo $id_paciente;?>">
-  <input type="hidden" name="id_estudio" value="<?php echo $id_estudio;?>">
-  <input type="hidden" name="id_tipo_estudio" value="<?php echo $id_tipo_estudio;?>">
-  <input type="hidden" name="id_atencion" value="<?php echo $id_atencion;?>"><div class="breadcomb-area">
-  <input type="hidden" name="idusuario" value="<?php echo $idusuario;?>"><div class="breadcomb-area">
-
-	<div class="breadcomb-area">
-			<div class="container">
-				<div class="row">
-
-
-<br><br>
 <div class="modals-default-cl">
 <center>
 		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalfive">Informacion De Atencion Medica</button>
-		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalsix">Biopsia De Vaginoscopia</button>
+		<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModalsix">Biopsia De Cervix</button>
 </center>
 </div><br><br>
-<div class="modal animated flash" id="myModalfive" role="dialog">
+<div class="modal animated flash" id="myModalfive" role="dialog">sdd
 		<div class="modal-dialog modals-default">
 				<div class="modal-content">
 						<div class="modal-header">
@@ -332,12 +315,12 @@ if($clasificacion_medico==1){
 									echo $inicio;  ?>" disabled>
 										</div>
 									</div>
-								</div><br><br><br><br><br>
+								</div><br><br><br>
 								<!-- fehca -->
 								<!--////////////////////////////////// -->
 								<div class="row fila">
 									<div class="col-lg-6 col-md- col-sm-4 col-xs-12">
-											<p>Seleccion Anterior Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></p>
+											<p>edad de primera  Menstruacion  Fue:<?php echo $edad_inicio_menstruacion;?></p>
 
 									</div>
 									<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
@@ -501,72 +484,154 @@ if($clasificacion_medico==1){
 						</div>
 				</div>
 		</div>
-</div>
-<div class="modal animated rubberBand" id="myModalsix" role="dialog">ggggg
-		<div class="modal-dialog modals-default">
-				<div class="modal-content">
-						<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-						<div class="modal-body">
+		<!-- modal -->
+		<div class="modal animated rubberBand" id="myModalsix" role="dialog">
+				<div class="modal-dialog modals-default">
+						<div class="modal-content">
+								<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+								<div class="modal-body">
 
 
 
-											<div style="background-color:#fff">
-												<div>
-													<center>
-														<div class="logo-area">
-															<a href="#">
-																<img src="../../img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
-															</a>
-														</div>
-													</center>
+									<div style="background-color:#fff">
+										<div>
+											<center>
+												<div class="logo-area">
+													<a href="#">
+														<img src="img/logo/reina.png" style="max-width: 90px; max-height: 90px" />
+													</a>
 												</div>
-												<div>
-													<p>
-														<center>
-															<b>Solicitud De Estudio Para Biopsia De Vaginoscopia</b>
-														</center>
-													</p>
+											</center>
+										</div>
+										<div>
+											<p>
+												<center>
+													<b>Solicitud De Estudio Para Biopsia De Cervix</b>
+												</center>
+											</p>
 
-													<div class="row">
-														<div class="column">
-															<p><b>ID Atención</b> <?php echo $id_atencion ?></p>
-														</div>
-														<div class="column">
-															<p><b>Prioridad</b> <?php echo $clasificacion_medico_vagino ?></p>
-														</div>
-													</div>
-													<div class="row">
-														<div class="column">
-															<p>
-																<b>Fecha:</b> <?php echo $fecha_vagino; ?>
-															</p>
-														</div>
-														<div class="column">
-															<p>
-																<b>Edad:</b> <?php echo $edad_paciente; ?></p>
-															<p>
-														</div>
-													</div>
-													<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
-													<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
-													<p class="txt-justificado"><b>Estudio solicitado: </b><?php echo ucwords($estudio_solicitar_vaginoscopia); ?></p>
-													<p>
-														<b>Acetico:</b> <?php echo ucwords($vaginoscopia_acetico_vagino); ?></p>
-													<p>
-														<b>Lugol:</b> <?php echo ucwords($vaginoscopia_lugol_vagino); ?></p>
-													<p><b>Anotaciones:</b></p>
-													<p class="txt-justificado"><?php echo $anotaciones_vaginoscopia_vagino; ?></p>
+											<div class="row">
+												<div class="column">
+													<p><b>ID Atención</b> <?php echo $id_atencion ?></p>
+												</div>
+												<div class="column">
+													<p><b>Prioridad</b> <?php echo $clasificacion_medico_cervix ?></p>
 												</div>
 											</div>
+											<div class="row">
+												<div class="column">
+													<p>
+														<b>Fecha:</b> <?php echo $fecha_cervix; ?>
+													</p>
+												</div>
+												<div class="column">
+													<p>
+														<b>Edad:</b> <?php echo $edad_paciente; ?></p>
+													<p>
+												</div>
+											</div>
+											<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
+											<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
+											<p class="txt-justificado">
+												<b>Hallazgos Colposcopia:</b><?php echo ucwords($posible_recomendacion_diagnostica); ?></p>
+											<p>
+												<b>Antecedentes de Cancer Cervicouterino:</b><?php echo ucwords($antecedente_cancer_cervicouterino_cervix); ?></p>
+											<p>
+												<b>Se&ntilde;ala Donde Fue Tomada la muestra:</b>
+											</p>
+											<div class="row">
+												<div class="column">
+													<center>
+														<img id="recuadroDona" src="img/dona.JPG" width="200" height="200" ismap style="">
+														<canvas id="canvasDona" width="200" height="200">
+													</center>
+												</div>
+												<div class="column">
+													<p>
+														<b>Anotaciones:</b>
+													</p>
+													<p class="txt-justificado"><?php echo ucwords($senalizacion_cervix); ?></p>
+												</div>
+											</div>
+										</div>
+									</div>
 
+
+								</div>
 
 						</div>
-
 				</div>
 		</div>
-</div>
+		<script>
+			////////////////////////////////////////////////////////////////////////////////////////////
+
+
+			$(document).ready().delay(100).queue(function() {
+
+
+					var canvasDona = document.getElementById("canvasDona");
+					var ctxDona = canvasDona.getContext("2d");
+					var dona = document.getElementById("recuadroDona");
+					if (dona) {
+						var coord = '<?php echo $coordenadasCervix ?>';
+						var coordenadas = coord.split('|');
+						ctxDona.drawImage(dona, 0, 0, 200, 200);
+
+						$(coordenadas).each(function(index, value) {
+							var coordsTemp = value.split(",");
+							ctxDona.lineWidth = 6;
+							ctxDona.strokeStyle = "#FFF";
+							ctxDona.beginPath();
+							ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+							ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+							ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+							ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
+							ctxDona.stroke();
+							ctxDona.lineWidth = 2;
+							ctxDona.strokeStyle = "#000";
+							ctxDona.beginPath();
+							ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] - 10);
+							ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] + 10);
+							ctxDona.moveTo(coordsTemp[0] - 10, coordsTemp[1] + 10);
+							ctxDona.lineTo(coordsTemp[0] + 10, coordsTemp[1] - 10);
+							ctxDona.stroke();
+						});
+						dona.style.display = "block";
+						canvasDona.style.display = "none";
+						dona.setAttribute("src", canvasDona.toDataURL());
+					}
+
+
+
+
+
+
+
+
+			});
+
+
+			////////////////////////////////////////////////////////////////////////////////////////////
+		</script>
+<!--//Breadcomb area End-->
+<!--//Data Table area Start-->
+<form action='guardar_resultado_biopsa.php' method="get" id="gform">
+
+
+  <input type="hidden" name="id_paciente" value="<?php echo $id_paciente;?>">
+  <input type="hidden" name="id_estudio" value="<?php echo $id_estudio;?>">
+  <input type="hidden" name="id_tipo_estudio" value="<?php echo $id_tipo_estudio;?>">
+  <input type="hidden" name="id_atencion" value="<?php echo $id_atencion;?>"><div class="breadcomb-area">
+  <input type="hidden" name="idusuario" value="<?php echo $idusuario;?>"><div class="breadcomb-area">
+
+	<div class="breadcomb-area">
+			<div class="container">
+				<div class="row">
+
+
+
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="breadcomb-list">
 							<div class="row">
@@ -585,7 +650,7 @@ if($clasificacion_medico==1){
 								</select>
 							</div>
 						</div>
-					</div><br><br><br><br>
+					</div>
 
 
 
@@ -693,7 +758,7 @@ if($clasificacion_medico==1){
 	                  </div>
 	              </div>
 	            </div>
-
+	          </div>
 	        </div>
 	      </div>
 	    </div>
