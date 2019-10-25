@@ -592,8 +592,8 @@ $clasificacion_medico_paps = $info_pap['clasificacion_medico'] == 0 ? "Normal" :
 
               Clasificacion Urgencia   :<br></p>
               <select name='clasifiacion_patologo' id='clasifiacion_patologo' class="form-control">
-                <option value="0" selected>Bajo Grado</option>
-                <option value="1">Alto Grado</option>
+                <option value="0" selected>Bajo Grado - LIEBG</option>
+                <option value="1">Alto Grado - LIEAG</option>
                 <option value="2">Cancer escamoso incitu</option>
                 <option value="3">Cancer Escamoso invasor</option>
 
