@@ -68,7 +68,7 @@
       <form action="check-login.php" method="POST">
         <div class="nk-form">
           <div class="logo-area">
-            <a href="#"><img src="img/logo/logo.png" width="200" height="200" /></a>
+            <a href="#"><img src="img/logo/logo.png" height="200" /></a>
           </div>
           <div class="input-group">
             <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
