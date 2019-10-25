@@ -75,6 +75,7 @@ if (isset($vulva)){
      FROM estudio_vulvoscopia e
     INNER JOIN ctrl_paciente_estudios c ON
     e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 6	AND c.id_atencion =  $vulva1; ";
+
                                                  $resultestudio_vulvoscopia= $mysqliL->query($queryestudio_vulvoscopia) ;
                                                      while ($resultSetestudio_vulvoscopia = $resultestudio_vulvoscopia->fetch_assoc()) {
                                                          $pacientevul = $resultSetestudio_vulvoscopia['paciente'];
