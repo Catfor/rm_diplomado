@@ -255,6 +255,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                                                 <option value="Casada">Casada</option>
                                                                 <option value="Divorciada" >Divorciada</option>
                                                                 <option value="Viuda">Viuda</option>
+                                                                <option value="Union Libre">Union Libre</option>
                                                             </select>
                                                         </div>
                                                     </div>

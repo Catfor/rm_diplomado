@@ -158,9 +158,12 @@
                                 <tbody>
                                     <?php
                                             $dash = $mysqliL->query("SELECT v_dashboard_enfermera.registrados, v_dashboard_enfermera.atendidos, v_dashboard_enfermera.fecha_actividad, v_dashboard_enfermera.biopsias FROM v_dashboard_enfermera");
-
-                                            while ($dashinfo = $dash->fetch_assoc()) {
-                                                echo '<tr><td>' . $dashinfo["fecha_actividad"] . '</td><td>' . $dashinfo["registrados"] . '</td><td>' . $dashinfo["atendidos"] . '</td><td>' . $dashinfo["biopsias"] . '</td></tr>';
+                                            if($dash->num_rows > 0){
+                                                while ($dashinfo = $dash->fetch_assoc()) {
+                                                    echo '<tr><td>' . $dashinfo["fecha_actividad"] . '</td><td>' . $dashinfo["registrados"] . '</td><td>' . $dashinfo["atendidos"] . '</td><td>' . $dashinfo["biopsias"] . '</td></tr>';
+                                                }
+                                            }else{
+                                                echo '<tr><td colspan="4">Sin registros</td></tr>';
                                             }
 
                                             ?>

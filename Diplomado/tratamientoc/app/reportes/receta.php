@@ -35,7 +35,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   $id_receta = 0;
   if (isset($_GET["id_receta"])) {
     $id_receta = $_GET['id_receta'];
-    $queryMedicamentos = "SELECT c.* FROM (SELECT id_receta FROM ctrl_receta_medico c WHERE id_paciente = $id_paciente AND id_receta = $id_receta ORDER BY id_receta DESC LIMIT 1) r INNER JOIN ctrl_medicamento_receta c ON r.id_receta = c.id_receta";
+    $queryMedicamentos = "SELECT c.* FROM (SELECT c.id_receta FROM ctrl_receta_medico c WHERE id_paciente = $id_paciente AND id_receta = $id_receta ORDER BY id_receta DESC LIMIT 1) r INNER JOIN ctrl_medicamento_receta c ON r.id_receta = c.id_receta";
     $resultadoAdicional = mysqli_query($mysqliL, "SELECT * FROM ctrl_receta_medico c WHERE id_paciente = $id_paciente AND id_receta = $id_receta ORDER BY id_receta DESC LIMIT 1");
     $filaAdicional = mysqli_fetch_assoc($resultadoAdicional);
     $dato_peso = $filaAdicional["peso"];
@@ -46,6 +46,17 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     $dato_fc = $filaAdicional["fc"];
     $dato_fr = $filaAdicional["fr"];
     $id_receta = sprintf("%05d", $id_receta);
+    $resultadoAdicional = mysqli_query($mysqliL, "SELECT * FROM ctrl_receta_medico c INNER JOIN usu_me u ON u.id_usuario =c.id_usuario WHERE id_paciente = $id_paciente AND id_receta = $id_receta ORDER BY id_receta DESC LIMIT 1");
+    $filaAdicional = mysqli_fetch_assoc($resultadoAdicional);
+    $genero = $filaAdicional["genero"];
+    $escuela = $filaAdicional["escuela"];
+    $especialidad = $filaAdicional["especialidad"];
+    $cedula = $filaAdicional["cedula"];
+    $nick = $filaAdicional['nick'];
+    $correo_general = $filaAdicional['correo_general'];
+    $nombre_usuario = ucwords($filaAdicional['nombre_usuario']);
+    $apellidos_usuario = ucwords($filaAdicional['apellidos_usuario']);
+    $rol = $filaAdicional['rol'];
   } else {
     $resultado = mysqli_query($mysqliL, "SELECT id_receta FROM ctrl_receta_medico c WHERE id_paciente = $id_paciente ORDER BY id_receta DESC LIMIT 1");
     $fila = mysqli_fetch_assoc($resultado);

@@ -25,8 +25,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <li class="nav-item dropdown">
                 </li>
                 <li class="nav-item dropdown">
-                  <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a><p style='color:white;'> Usuario: <b>
-<?php echo ucwords($_SESSION['nombre_usuario']) . ' ' .ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
+                  <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
+                  <p style='color:white;'> Usuario: <b>
+                      <?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
                 </li>
               </ul>
             </div>
@@ -40,6 +41,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   </head>
 
   <body>
+        <div class="tarjetaTratamiento">
+          <div style="width:100%;">
+            <div id="listaTratamientos" style="float: right; cursor: pointer;"><i class="far fa-times-circle"></i></div>
+            <h3>Tratamientos previos:</h3>
+          </div>
+          <div class="lista">
+          </div>
+        </div>
     <?php
       include('../coni/Localhost.php');
       $id = $_SESSION['id_usuario'];
@@ -146,14 +155,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             </div>
           </div>
         </div>
-        <div class="tarjetaTratamiento">
-          <div style="width:100%;">
-            <div id="listaTratamientos" style="float: right; cursor: pointer;"><i class="far fa-times-circle"></i></div>
-            <h3>Tratamientos previos:</h3>
-          </div>
-          <div class="lista">
-          </div>
-        </div>
         <div class="data-table-area">
           <div class="container">
             <div class="row">
@@ -173,6 +174,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         </tr>
                       </thead>
                       <tbody>
+
                         <?php
                               $consultasemanas = "SELECT 	p.nombre_paciente, 	p.apellidos_paciente, 	p.fecha_nacimiento_paciente, 	p.edad_paciente, 	p.fecha_creacion, 	p.codigo_postal, 	p.id_paciente, 	a.fecha_atencion_medica, 	ct.id_receta FROM 	paciente AS p 	LEFT JOIN atencion_medica a ON a.id_paciente = p.id_paciente  	AND a.fecha_atencion_medica = ( SELECT MAX( a2.fecha_atencion_medica ) FROM atencion_medica a2 WHERE a2.id_paciente = p.id_paciente )  	LEFT JOIN ctrl_receta_medico ct ON ct.id_paciente =  p.id_paciente  	AND ct.id_receta = (SELECT MAX(ct2.id_receta) FROM ctrl_receta_medico ct2 WHERE ct2.id_paciente = p.id_paciente) ORDER BY 	p.apellidos_paciente, 	p.nombre_paciente ASC";
                               $resultadosemanas = $mysqliL->query($consultasemanas);
@@ -187,15 +189,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                 $fecha_atencion_medica = $resultadosemanas1['fecha_atencion_medica'];
                                 $id_receta = $resultadosemanas1['id_receta'];
                                 echo "<tr>
-                                <td>$id_paciente</td>
-                                <td>$nombre_paciente $apellidos_paciente</td>
-                                <td>$fecha_nacimiento_paciente</td>
-                                <td>$fecha_atencion_medica</td>
-                                <td style='text-align:center'>
-                                  ".(isset($id_receta) ? "<button id='btnTratamiento' type='button' class='btn btn-primary' data-toggle='tooltip' title='Mostrar Tratamientos'><i class='fas fa-list'></i></button> <input type='hidden' value='$id_paciente'>" : "")."
-                                  <a href='form_receta.php?id_paciente=$id_paciente'><button type='button' class='btn btn-primary' data-toggle='tooltip' title='Nuevo Tratamiento'><i class='far fa-plus-square'></i></button></a>
-                                </td>
-                                <tr/>";
+                                  <td>$id_paciente</td>
+                                  <td>$nombre_paciente $apellidos_paciente</td>
+                                  <td>$fecha_nacimiento_paciente</td>
+                                  <td>$fecha_atencion_medica</td>
+                                  <td style='text-align:center'>"; 
+                                    echo (isset($id_receta) ? "<button id='btnTratamiento' type='button' class='btn btn-primary' data-toggle='tooltip' title='Mostrar Tratamientos'><i class='fas fa-list'></i></button> <input type='hidden' value='$id_paciente'>" : "") ;
+                                    echo" <a href='form_receta.php?id_paciente=$id_paciente'><button type='button' class='btn btn-primary' data-toggle='tooltip' title='Nuevo Tratamiento'><i class='far fa-plus-square'></i></button></a>
+                                  </td>
+                                </tr>";
                               }
                               ?>
                       </tbody>
@@ -264,6 +266,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       <script src="js/plugins.js"></script>
       <!-- Data Table JS
 		============================================ -->
+<script src="js/data-table/jquery.dataTables.min.js"></script>
+<script src="js/data-table/data-table-act.js"></script>
       <!-- main JS
 		============================================ -->
       <script src="js/main.js"></script>
@@ -271,10 +275,10 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 		============================================ -->
       <script>
         $("body").on("click", "#listaTratamientos", function() {
-          $(this).parents(".tarjeta").slideUp();
+          $(this).parents(".tarjetaTratamiento").slideUp();
         });
         $("body").on("click", "#btnTratamiento", function() {
-          $(".tarjeta").slideDown();
+          $(".tarjetaTratamiento").slideDown();
           idPaciente = $(this).nextAll("input").val();
           $.ajax({
             url: 'consulta_paciente_receta_peticion.php',
@@ -295,5 +299,4 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   header('Location: ../index.php');
   exit;
 }
-include('js.php');
 ?>
