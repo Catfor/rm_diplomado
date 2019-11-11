@@ -632,10 +632,10 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente = '$id
                                                                                 echo "<a href='etiqueta_estudio_papanicolaou1.php?id_paciente=$id_pacientepaps&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usu_pat=$id_usu_patpaps&clasificacion_medico=$clasificacion_medicopaps' style='color: green' >Agregar Resultado </a>";
                                                                             }
                                                                         } else  if ($estatus_patologo == 0 and $estatus_supervisor == 1 and $id_usu_pat != $id) {
-                                                                            echo "No Esta Asignado Para Este Usuario";
+                                                                            //echo "No Esta Asignado Para Este Usuario";
                                                                         } else  if ($estatus_patologo == 1 and $estatus_supervisor == 1 and $id_usu_pat != $id) {
-                                                                            echo "No Esta Asignado Para Este Usuario";
-                                                                        } else {
+                                                                            //echo "No Esta Asignado Para Este Usuario";
+                                                                        } else if(isset($id_estudio_resultado)){
                                                                             echo   "<div><a href='pdfpzas/app/reportes/index.php?resultado=$id_estudio_resultado&id_paciente=$id_paciente&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usuario=$id_usuariopaps&clasificacion_medico=$clasificacion_medicopaps' >Reporte Paps</a></div>";
                                                                         }
                                                                     }

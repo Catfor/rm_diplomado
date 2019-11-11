@@ -14,12 +14,12 @@ while ($resultrepo = $resultreporte->fetch_assoc()) {
 }
 /************************ ******************************************************************/
 if ($id_tipo_estudio == 2) {
-  $reprotevulco = "SELECT c.clasifiacion_patologo,ec.antecedentes_de_importancia,er.observaciones,er.fecha,er.descripcion_microscopica,
+  $reprotevulco = "SELECT c.clasifiacion_patologo,er.observaciones,er.fecha,er.descripcion_microscopica,
 er.descripcion_macroscopica,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.impresion_diagnostica,
 CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,
  p.edad_paciente, c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,
  c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico
- FROM estudio_papanicolau e
+ FROM estudio_biopsia_cervix e
  INNER JOIN ctrl_paciente_estudios c
  ON e.id_estudio = c.id_estudio AND c.id_tipo_estudio = 2
  INNER JOIN resultado_biopsia AS er
@@ -27,10 +27,7 @@ CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_pacie
   INNER JOIN paciente AS p ON p.id_paciente=c.id_paciente
 INNER JOIN usu_me AS u
 ON u.id_usuario=c.id_usuario
-INNER JOIN estudio_colposcopico AS ec
-ON ec.id_estudio=c.id_estudio
-   WHERE er.id_resultado_biopsia= '$resultado' AND c.id_paciente='$id_paciente' AND c.id_estudio='$id_estudio' AND c.id_atencion='$id_atencion'  ";
-
+   WHERE er.id_resultado_biopsia= '$resultado' AND c.id_paciente='$id_paciente' AND c.id_estudio='$id_estudio' AND c.id_atencion='$id_atencion'; ";
   $resultreprotevulco = $mysqliL->query($reprotevulco);
   while ($resultreprotevulco1 = $resultreprotevulco->fetch_assoc()) {
 
@@ -43,7 +40,7 @@ ON ec.id_estudio=c.id_estudio
     $descripcion_macroscopica = $resultreprotevulco1['descripcion_macroscopica'];
     $impresion_diagnostica = $resultreprotevulco1['impresion_diagnostica'];
     $observaciones = $resultreprotevulco1['observaciones'];
-    $antecedentes_de_importancia = $resultreprotevulco1['antecedentes_de_importancia'];
+    $antecedentes_de_importancia = '';
     $fecha1 = date("d-m-Y", strtotime("$fecha"));
     $clasifiacion_patologo = $resultreprotevulco1['clasifiacion_patologo'];
     #2019-10-14
@@ -51,12 +48,12 @@ ON ec.id_estudio=c.id_estudio
 
   }
 } else if ($id_tipo_estudio == 4) {
-  $reprotevulco = "SELECT c.clasifiacion_patologo,ec.antecedentes_de_importancia,er.observaciones,er.fecha,er.descripcion_microscopica,
+  $reprotevulco = "SELECT c.clasifiacion_patologo,er.observaciones,er.fecha,er.descripcion_microscopica,
 er.descripcion_macroscopica,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.impresion_diagnostica,
 CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,
  p.edad_paciente, c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,
  c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico
- FROM estudio_papanicolau e
+ FROM estudio_biopsia_endometrio e
  INNER JOIN ctrl_paciente_estudios c
  ON e.id_estudio = c.id_estudio AND c.id_tipo_estudio = 4
  INNER JOIN resultado_biopsia AS er
@@ -64,8 +61,6 @@ CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_pacie
   INNER JOIN paciente AS p ON p.id_paciente=c.id_paciente
 INNER JOIN usu_me AS u
 ON u.id_usuario=c.id_usuario
-INNER JOIN estudio_colposcopico AS ec
-ON ec.id_estudio=c.id_estudio
    WHERE er.id_resultado_biopsia= '$resultado' AND c.id_paciente='$id_paciente' AND c.id_estudio='$id_estudio' AND c.id_atencion='$id_atencion'  ";
 
   $resultreprotevulco = $mysqliL->query($reprotevulco);
@@ -80,7 +75,7 @@ ON ec.id_estudio=c.id_estudio
     $descripcion_macroscopica = $resultreprotevulco1['descripcion_macroscopica'];
     $impresion_diagnostica = $resultreprotevulco1['impresion_diagnostica'];
     $observaciones = $resultreprotevulco1['observaciones'];
-    $antecedentes_de_importancia = $resultreprotevulco1['antecedentes_de_importancia'];
+    $antecedentes_de_importancia = '';
     $fecha1 = date("d-m-Y", strtotime("$fecha"));
     $clasifiacion_patologo = $resultreprotevulco1['clasifiacion_patologo'];
     #2019-10-14
@@ -88,12 +83,12 @@ ON ec.id_estudio=c.id_estudio
 
   }
 } else if ($id_tipo_estudio == 5) {
-  $reprotevulco = "SELECT c.clasifiacion_patologo,ec.antecedentes_de_importancia,er.observaciones,er.fecha,er.descripcion_microscopica,
+  $reprotevulco = "SELECT c.clasifiacion_patologo,er.observaciones,er.fecha,er.descripcion_microscopica,
 er.descripcion_macroscopica,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.impresion_diagnostica,
 CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,
  p.edad_paciente, c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,
  c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico
- FROM estudio_papanicolau e
+ FROM estudio_vaginoscopia e
  INNER JOIN ctrl_paciente_estudios c
  ON e.id_estudio = c.id_estudio AND c.id_tipo_estudio = 5
  INNER JOIN resultado_biopsia AS er
@@ -101,8 +96,6 @@ CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_pacie
   INNER JOIN paciente AS p ON p.id_paciente=c.id_paciente
 INNER JOIN usu_me AS u
 ON u.id_usuario=c.id_usuario
-INNER JOIN estudio_colposcopico AS ec
-ON ec.id_estudio=c.id_estudio
    WHERE er.id_resultado_biopsia= '$resultado' AND c.id_paciente='$id_paciente' AND c.id_estudio='$id_estudio' AND c.id_atencion='$id_atencion'  ";
 
   $resultreprotevulco = $mysqliL->query($reprotevulco);
@@ -117,7 +110,7 @@ ON ec.id_estudio=c.id_estudio
     $descripcion_macroscopica = $resultreprotevulco1['descripcion_macroscopica'];
     $impresion_diagnostica = $resultreprotevulco1['impresion_diagnostica'];
     $observaciones = $resultreprotevulco1['observaciones'];
-    $antecedentes_de_importancia = $resultreprotevulco1['antecedentes_de_importancia'];
+    $antecedentes_de_importancia = '';
     $fecha1 = date("d-m-Y", strtotime("$fecha"));
     $clasifiacion_patologo = $resultreprotevulco1['clasifiacion_patologo'];
     #2019-10-14
@@ -126,12 +119,12 @@ ON ec.id_estudio=c.id_estudio
   }
 } else if ($id_tipo_estudio == 6) {
   /************************ datos del reporte vulvoscopia******************************************************************/
-  $reprotevulco = "SELECT c.clasifiacion_patologo,ec.antecedentes_de_importancia,er.observaciones,er.fecha,er.descripcion_microscopica,
+  $reprotevulco = "SELECT c.clasifiacion_patologo,er.observaciones,er.fecha,er.descripcion_microscopica,
 er.descripcion_macroscopica,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.impresion_diagnostica,
 CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,
  p.edad_paciente, c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,
  c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico
- FROM estudio_papanicolau e
+ FROM estudio_vulvoscopia e
  INNER JOIN ctrl_paciente_estudios c
  ON e.id_estudio = c.id_estudio AND c.id_tipo_estudio = 6
  INNER JOIN resultado_biopsia AS er
@@ -139,8 +132,6 @@ CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_pacie
   INNER JOIN paciente AS p ON p.id_paciente=c.id_paciente
 INNER JOIN usu_me AS u
 ON u.id_usuario=c.id_usuario
-INNER JOIN estudio_colposcopico AS ec
-ON ec.id_estudio=c.id_estudio
    WHERE er.id_resultado_biopsia= '$resultado' AND c.id_paciente='$id_paciente' AND c.id_estudio='$id_estudio' AND c.id_atencion='$id_atencion'  ";
 
   $resultreprotevulco = $mysqliL->query($reprotevulco);
@@ -155,7 +146,7 @@ ON ec.id_estudio=c.id_estudio
     $descripcion_macroscopica = $resultreprotevulco1['descripcion_macroscopica'];
     $impresion_diagnostica = $resultreprotevulco1['impresion_diagnostica'];
     $observaciones = $resultreprotevulco1['observaciones'];
-    $antecedentes_de_importancia = $resultreprotevulco1['antecedentes_de_importancia'];
+    $antecedentes_de_importancia = '';
     $clasifiacion_patologo = $resultreprotevulco1['clasifiacion_patologo'];
     $fecha1 = date("d-m-Y", strtotime("$fecha"));
     #2019-10-14
