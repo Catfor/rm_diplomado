@@ -138,7 +138,7 @@ $observaciones_papinocolau = $resultSet['observaciones_papinocolau'];
 $antecedente_infeccion_vagina = $resultSet['antecedente_infeccion_vagina'];
 $fecha_estudio = $resultSet['fecha_estudio'];
     }
-	$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
+	$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
 	$rowwe = mysqli_fetch_assoc($result123);
 	$nombrepaciente = ucwords($rowwe['nombre_paciente']);
 	$apellidospaciente = ucwords($rowwe['apellidos_paciente']);
@@ -147,7 +147,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 	$re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
 	INNER JOIN atencion_medica AS a
 	ON a.id_paciente=p.id_paciente
-	WHERE a.id_paciente=$id_paciente and a.id_atencion_medica='$id_atencion' ");
+	WHERE a.id_paciente='$id_paciente' and a.id_atencion_medica='$id_atencion' ");
 	$total = $re->num_rows;
 	$ro = mysqli_fetch_assoc($re);
 	$edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
@@ -493,7 +493,7 @@ if($clasificacion_medico==1){
 		</div>
 		<script>
 			////////////////////////////////////////////////////////////////////////////////////////////
-			$(document).ready().delay(100).queue(function() {
+			$(document).ready().delay(300).queue(function() {
 					var canvasDona = document.getElementById("canvasDona");
 					var ctxDona = canvasDona.getContext("2d");
 					var dona = document.getElementById("recuadroDona");

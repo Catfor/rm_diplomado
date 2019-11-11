@@ -138,7 +138,7 @@ $observaciones_papinocolau = $resultSet['observaciones_papinocolau'];
 $antecedente_infeccion_vagina = $resultSet['antecedente_infeccion_vagina'];
 $fecha_estudio = $resultSet['fecha_estudio'];
     }
-	$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
+	$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
 	$rowwe = mysqli_fetch_assoc($result123);
 	$nombrepaciente = ucwords($rowwe['nombre_paciente']);
 	$apellidospaciente = ucwords($rowwe['apellidos_paciente']);
@@ -147,7 +147,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 	$re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
 	INNER JOIN atencion_medica AS a
 	ON a.id_paciente=p.id_paciente
-	WHERE a.id_paciente=$id_paciente and a.id_atencion_medica='$id_atencion' ");
+	WHERE a.id_paciente='$id_paciente' and a.id_atencion_medica='$id_atencion' ");
 	$total = $re->num_rows;
 	$ro = mysqli_fetch_assoc($re);
 	$edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
@@ -220,7 +220,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
                                     <i class="notika-icon notika-windows"></i>
                                 </div>
                                 <div class="breadcomb-ctn" style="margin: auto 15px;">
-                                    <h2>Resultados Patologicos Vulvoscopia</h2>
+                                    <h2>Resultados Patologicos Vulvoscopia<?php echo '<br>' . $nombrepaciente . ' ' .$apellidospaciente; ?></h2>
                                 </div>
                             </div>
                         </div>

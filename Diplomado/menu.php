@@ -11,7 +11,7 @@ if ($rol == 'Medico') {
 
                       <li><a  href='consulta_paciente.php'><i class='notika-icon notika-form'></i>Ver Lista Paciente</a></li>
                       <li><a  href='consulta_estudios.php'><i class='notika-icon notika-windows'></i>Consultas Realizadas</a></li>
-                     <li><a href='resultados.php'><i class='notika-icon notika-form'></i>Lista Resultados</a></li>
+                     <li><a href='listaresultados.php'><i class='notika-icon notika-form'></i>Lista Resultados</a></li>
                      <li><a href='consulta_paciente_receta.php'><i class='fas fa-prescription'></i></i>Tratamientos</a></li>
                      
                      
@@ -31,7 +31,7 @@ if ($rol == 'Medico') {
                      
                      <li><a  href='consulta_paciente.php'><i class='notika-icon notika-form'></i>Ver Lista Paciente</a></li>
                      <li><a  href='consulta_estudios.php'><i class='notika-icon notika-windows'></i>Consultas Realizadas</a></li>
-                     <li><a href='resultados.php'><i class='notika-icon notika-form'></i>Lista Resultados</a></li>
+                     <li><a href='listaresultados.php'><i class='notika-icon notika-form'></i>Lista Resultados</a></li>
                      <li><a href='consulta_paciente_receta.php'><i class='fas fa-prescription'></i>Tratamientos</a></li>
                      
                 </ul>
@@ -89,7 +89,7 @@ if ($rol == 'Medico') {
                       <ul class='mobile-menu-nav'>
                                   <li><a href='sistema.php'>Inicio</a></li>
                                   <li><a href='consulta_estudios.php'>Consultas Realizadas</a></li>
-                                  <li><a  href=''><i class='notika-icon notika-form'></i>Resultados Entregados</a></li>
+                                  <!-- <li><a  href=''><i class='notika-icon notika-form'></i>Resultados Entregados</a></li> -->
 
 
 
@@ -108,9 +108,7 @@ if ($rol == 'Medico') {
                 <ul class='nav nav-tabs notika-menu-wrap menu-it-icon-pro'>
                     <li><a  href='sistema.php'><i class='notika-icon notika-form'></i>Inicio</a></li>
                     <li><a  href='consulta_estudios.php'><i class='notika-icon notika-form'></i>Consultas Realizadas</a></li>
-                    <li><a  href=''><i class='notika-icon notika-form'></i>Resultados Entregados</a></li>
-
-
+                    <!-- <li><a  href=''><i class='notika-icon notika-form'></i>Resultados Entregados</a></li> -->
                 </ul>
             </div>
         </div>
@@ -124,11 +122,8 @@ if ($rol == 'Medico') {
               <div class='mobile-menu'>
                   <nav id='dropdown'>
                       <ul class='mobile-menu-nav'>
-<li><a href='sistema.php'>Inicio</a></li>
-                                  <li><a href='consulta_estudios.php'>Consultas Realizadas </a></li>
-
-
-
+                        <li><a href='sistema.php'>Inicio</a></li>
+                        <li><a href='consulta_estudios.php'>Consultas Realizadas </a></li>
                       </ul>
                   </nav>
               </div>
@@ -146,8 +141,6 @@ if ($rol == 'Medico') {
                   </li>
                     <li><a  href='consulta_estudios.php'><i class='notika-icon notika-form'></i>Consultas Realizadas</a>
                       </li>
-
-
                 </ul>
             </div>
         </div>
@@ -189,7 +182,7 @@ else if ($rol == 'Admin') { ?>
                                 </li>
                                 <li><a href="consulta_estudios.php?opcion=M">Consultas Realizadas</a>
                                 </li>
-                                <li><a href="compose-email.html">Lista Resultados(En Fase de Desarrollo)</a>
+                                <li><a href="listaresultados.php">Lista Resultados</a>
                                 </li>
                                 <li><a href="consulta_paciente_receta.php">Tratamientos</a>
                                 </li>

@@ -219,7 +219,7 @@ if($clasificacion_medico==1){
                                     <i class="notika-icon notika-windows"></i>
                                 </div>
                                 <div class="breadcomb-ctn" style="margin: auto 15px;">
-                                    <h2>Resultados Patologicos Vaginoscopia</h2>
+                                    <h2>Resultados Patologicos Vaginoscopia<?php echo '<br>' . $nombrepaciente . ' ' .$apellidospaciente; ?></h2>
                                 </div>
                             </div>
                         </div>

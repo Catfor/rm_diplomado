@@ -30,7 +30,7 @@
 			ct.clasificacion_medico
 		FROM
 		paciente AS p
-		INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 4
+		INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = '$id_paciente' AND ct.id_estudio = '$id_estudio' AND ct.id_tipo_estudio = 4
 		INNER JOIN usu_me AS u ON u.id_usuario = ct.id_usuario
 		INNER JOIN estudio_biopsia_endometrio AS e ON ct.id_estudio = e.id_estudio
 		INNER JOIN atencion_medica AS am ON am.id_atencion_medica = ct.id_atencion";

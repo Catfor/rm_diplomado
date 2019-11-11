@@ -32,7 +32,7 @@
 			ct.clasificacion_medico
 			FROM
 			paciente p
-			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_estudio = $id_estudio AND ct.id_tipo_estudio = 6
+			INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = '$id_paciente' AND ct.id_estudio = '$id_estudio' AND ct.id_tipo_estudio = 6
 			INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
 			INNER JOIN estudio_vulvoscopia e ON ct.id_estudio = e.id_estudio
 			INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
@@ -106,7 +106,7 @@
 			vulva.setAttribute("src", canvasVulva.toDataURL());
 			vulva.style.display = "block";
 			canvasVulva.style.display = "none";
-			$(canvasVulva).delay(200).queue(function() {
+			$(canvasVulva).delay(300).queue(function() {
 				imprimeEtiqueta();
 			});
 

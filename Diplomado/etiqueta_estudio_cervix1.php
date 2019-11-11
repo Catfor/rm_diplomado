@@ -134,7 +134,7 @@ FROM   estudio_biopsia_cervix paps INNER JOIN ctrl_paciente_estudios c ON
 						$coordenadas = $resultSet['coordenadas'];
 						$fecha_estudio = $resultSet['fecha_estudio'];
 					}
-					$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
+					$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
 					$rowwe = mysqli_fetch_assoc($result123);
 					$nombrepaciente = ucwords($rowwe['nombre_paciente']);
 					$apellidospaciente = ucwords($rowwe['apellidos_paciente']);
@@ -143,7 +143,7 @@ FROM   estudio_biopsia_cervix paps INNER JOIN ctrl_paciente_estudios c ON
 					$re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
 	INNER JOIN atencion_medica AS a
 	ON a.id_paciente=p.id_paciente
-	WHERE a.id_paciente=$id_paciente and a.id_atencion_medica='$id_atencion' ");
+	WHERE a.id_paciente='$id_paciente' and a.id_atencion_medica='$id_atencion' ");
 					$total = $re->num_rows;
 					$ro = mysqli_fetch_assoc($re);
 					$edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
@@ -181,7 +181,7 @@ FROM   estudio_biopsia_cervix paps INNER JOIN ctrl_paciente_estudios c ON
 		ct.clasificacion_medico,ec.posible_recomendacion_diagnostica
 		FROM
 		paciente p
-		INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 2
+		INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = '$id_paciente' AND ct.id_tipo_estudio = 2
 		INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
 		INNER JOIN estudio_biopsia_cervix e ON ct.id_estudio = e.id_estudio
 		INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
@@ -221,7 +221,7 @@ FROM   estudio_biopsia_cervix paps INNER JOIN ctrl_paciente_estudios c ON
 												<i class="notika-icon notika-windows"></i>
 											</div>
 											<div class="breadcomb-ctn" style="margin: auto 15px;">
-												<h2>Resultados Patologicos Cervix</h2>
+												<h2>Resultados Patologicos Cervix <?php echo '<br>' . $nombrepaciente . ' ' .$apellidospaciente; ?></h2>
 											</div>
 										</div>
 									</div>

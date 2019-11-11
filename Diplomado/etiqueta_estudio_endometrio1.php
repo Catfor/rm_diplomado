@@ -123,15 +123,15 @@ FROM   estudio_biopsia_endometrio paps INNER JOIN ctrl_paciente_estudios c ON
                                                 INNER JOIN paciente AS p ON
                                                 p.id_paciente=c.id_paciente
                                                 AND c.id_tipo_estudio = '$id_tipo_estudio'
-                                                	AND c.id_paciente = '$id_paciente'";
+                                                	AND c.id_paciente = '$id_paciente' limit 1";
 $resultSetColposcopia = $mysqliL->query($queryColposcopia);
     while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
         $paciente = $resultSet['paciente'];
-$medico = $resultSet['medico'];
-///////////papa///////////////////////
-$fecha_estudio = $resultSet['fecha_estudio'];
+        $medico = $resultSet['medico'];
+        ///////////papa///////////////////////
+        $fecha_estudio = $resultSet['fecha_estudio'];
     }
-	$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
+	$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
 	$rowwe = mysqli_fetch_assoc($result123);
 	$nombrepaciente = ucwords($rowwe['nombre_paciente']);
 	$apellidospaciente = ucwords($rowwe['apellidos_paciente']);
@@ -140,7 +140,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 	$re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
 	INNER JOIN atencion_medica AS a
 	ON a.id_paciente=p.id_paciente
-	WHERE a.id_paciente=$id_paciente and a.id_atencion_medica='$id_atencion' ");
+	WHERE a.id_paciente='$id_paciente' and a.id_atencion_medica='$id_atencion' ");
 	$total = $re->num_rows;
 	$ro = mysqli_fetch_assoc($re);
 	$edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
@@ -178,7 +178,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 	ct.clasificacion_medico
 	FROM
 	paciente AS p
-	INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 4
+	INNER JOIN ctrl_paciente_estudios AS ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = '$id_paciente' AND ct.id_tipo_estudio = 4
 	INNER JOIN usu_me AS u ON u.id_usuario = ct.id_usuario
 	INNER JOIN estudio_biopsia_endometrio AS e ON ct.id_estudio = e.id_estudio
 	INNER JOIN atencion_medica AS am ON am.id_atencion_medica = ct.id_atencion";
@@ -214,7 +214,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
                                     <i class="notika-icon notika-windows"></i>
                                 </div>
                                 <div class="breadcomb-ctn" style="margin: auto 15px;">
-                                    <h2>Resultados Patologicos Endometrio</h2>
+                                    <h2>Resultados Patologicos Endometrio<?php echo '<br>' . $nombrepaciente . ' ' .$apellidospaciente; ?></h2>
                                 </div>
                             </div>
                         </div>
@@ -452,7 +452,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 											<p>
 										</div>
 									</div>
-									<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
+									<p><b>Paciente:</b> <?php echo ucwords($nombrepaciente.' '.$apellidospaciente); ?></p>
 									<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
 									<p><b>Antecedentes de Metrorragia:</b> <?php echo ucwords($antecedente_metrorragia == 0 ? "No" : "Si"); ?></p>
 									<p><b>Antecedentes de Hormonoterapia:</b> <?php echo ucwords($antecedente_hormonoterapia == 0 ? "No" : "Si"); ?></p>
