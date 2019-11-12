@@ -126,7 +126,7 @@ FROM   estudio_vulvoscopia e INNER JOIN ctrl_paciente_estudios c ON
                                                 p.id_paciente=c.id_paciente
                                                 INNER JOIN estudio_papanicolau AS paps
                                                 ON paps.id_estudio=c.id_estudio
-                                                AND c.id_tipo_estudio = '$id_tipo_estudio'
+                                                AND c.id_tipo_estudio = 6
                                                 	AND c.id_paciente = '$id_paciente'";
 $resultSetColposcopia = $mysqliL->query($queryColposcopia);
     while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
@@ -183,7 +183,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 	ct.clasificacion_medico,ec.posible_recomendacion_diagnostica
 	FROM
 	paciente p
-	INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 6
+	INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = '$id_paciente' AND ct.id_tipo_estudio = 6
 	INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
 	INNER JOIN estudio_vulvoscopia e ON ct.id_estudio = e.id_estudio
 	INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
@@ -458,8 +458,8 @@ $fecha_estudio = $resultSet['fecha_estudio'];
 													<p>
 												</div>
 											</div>
-											<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
-											<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
+											<p><b>Paciente:</b> <?php echo ucwords($nombrepaciente . ' ' . $apellidospaciente); ?></p>
+											<p><b>Medico:</b> <?php echo ucwords(isset($medico)? $medico: ''); ?></p>
 											<b>Acetico:</b> <?php echo ucwords($vulvoscopia_acetico_vulva) ?></p>
 											<p>
 												<p>

@@ -123,7 +123,7 @@ FROM   estudio_vaginoscopia paps INNER JOIN ctrl_paciente_estudios c ON
                                                 u.id_usuario=c.id_usuario
                                                 INNER JOIN paciente AS p ON
                                                 p.id_paciente=c.id_paciente
-                                                AND c.id_tipo_estudio = '$id_tipo_estudio'
+                                                AND c.id_tipo_estudio = 5
                                                 	AND c.id_paciente = '$id_paciente'";
 $resultSetColposcopia = $mysqliL->query($queryColposcopia);
     while ($resultSet = $resultSetColposcopia->fetch_assoc()) {
@@ -136,7 +136,7 @@ $fecha_estudio = $resultSet['fecha_estudio'];
     }
 ?>
 <?php
-$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$id_paciente");
+$result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
 $rowwe = mysqli_fetch_assoc($result123);
 $nombrepaciente = ucwords($rowwe['nombre_paciente']);
 $apellidospaciente = ucwords($rowwe['apellidos_paciente']);
@@ -145,7 +145,7 @@ $fecha_nacimiento_paciente = $rowwe['fecha_nacimiento_paciente'];
 $re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
 INNER JOIN atencion_medica AS a
 ON a.id_paciente=p.id_paciente
-WHERE a.id_paciente=$id_paciente and a.id_atencion_medica='$id_atencion' ");
+WHERE a.id_paciente='$id_paciente' and a.id_atencion_medica='$id_atencion' ");
 $total = $re->num_rows;
 $ro = mysqli_fetch_assoc($re);
 $edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
@@ -182,7 +182,7 @@ $informacion_vagino = "SELECT
 	ct.clasificacion_medico
 	FROM
 	paciente p
-	INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = $id_paciente AND ct.id_tipo_estudio = 5
+	INNER JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente AND p.id_paciente = '$id_paciente' AND ct.id_tipo_estudio = 5
 	INNER JOIN usu_me u ON u.id_usuario = ct.id_usuario
 	INNER JOIN estudio_vaginoscopia e ON ct.id_estudio = e.id_estudio
 	INNER JOIN ctrl_paciente_estudios ctc ON ctc.id_atencion = ct.id_atencion AND ctc.id_tipo_estudio = 1
@@ -469,8 +469,8 @@ if($clasificacion_medico==1){
 															<p>
 														</div>
 													</div>
-													<p><b>Paciente:</b> <?php echo ucwords($paciente); ?></p>
-													<p><b>Medico:</b> <?php echo ucwords($medico); ?></p>
+													<p><b>Paciente:</b> <?php echo ucwords($nombrepaciente.' '.$apellidospaciente); ?></p>
+													<p><b>Medico:</b> <?php echo ucwords(isset($medico)?$medico:''); ?></p>
 													<p class="txt-justificado"><b>Estudio solicitado: </b><?php echo ucwords($estudio_solicitar_vaginoscopia); ?></p>
 													<p>
 														<b>Acetico:</b> <?php echo ucwords($vaginoscopia_acetico_vagino); ?></p>

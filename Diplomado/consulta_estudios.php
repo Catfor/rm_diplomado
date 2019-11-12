@@ -646,7 +646,7 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente = '$id
                                                                 echo "<td>";
                                                                 //Vulvoscopia Patologo
                                                                 $queryVulvoscopia = " SELECT c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico
-                                           from 	estudio_papanicolau e inner join ctrl_paciente_estudios c on
+                                           from estudio_vulvoscopia e inner join ctrl_paciente_estudios c on
                                              e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 6
                                               	and c.id_paciente = '$id_paciente'  limit 1 ";
 
@@ -682,7 +682,7 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente = '$id
 
                                                                 //Vaginoscopia Patologo
                                                                 $queryVaginoscopia = "SELECT 	c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,c.id_estudio,c.id_tipo_estudio,c.id_usuario,c.id_atencion,c.id_usu_pat,c.clasificacion_medico from 	estudio_vaginoscopia e
-                                             inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 5 	and c.id_paciente = $id_paciente WHERE id_usu_pat='$id' limit 1; ";
+                                             inner join ctrl_paciente_estudios c on 	e.id_estudio = c.id_estudio 	and c.id_tipo_estudio = 5 	and c.id_paciente = '$id_paciente' WHERE id_usu_pat='$id' limit 1; ";
                                                                 if ($resultSetVaginoscopia = $mysqliL->query($queryVaginoscopia)) {
                                                                     while ($resultSetvag = $resultSetVaginoscopia->fetch_assoc()) {
                                                                         $id_estudiovag = $resultSetvag['id_estudio'];
