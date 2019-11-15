@@ -16,18 +16,21 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <div class="row">
           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="logo-area">
-              <a href="sistema.php"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
+              <a href="sistema.php"><img src="../img/logo/LOGO-BLANCO.webp" height="100" /></a>
             </div>
           </div>
           <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <div class="header-top-menu">
               <ul class="nav navbar-nav notika-top-nav">
-                <li class="nav-item dropdown">
+
+                <li>
+                  <div class="chip">
+                    <img <?php if($_SESSION['genero'] === 'H'){ echo "src='./img/avatar_h.png' "; }else{ echo "src='./img/avatar_m.png' ";} ?> alt="Person" width="96" height="96">
+                    <b><?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b>
+                  </div>
                 </li>
                 <li class="nav-item dropdown">
                   <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
-                  <p style='color:white;'> Usuario: <b>
-                      <?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
                 </li>
               </ul>
             </div>
@@ -41,14 +44,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   </head>
 
   <body>
-        <div class="tarjetaTratamiento">
-          <div style="width:100%;">
-            <div id="listaTratamientos" style="float: right; cursor: pointer;"><i class="far fa-times-circle"></i></div>
-            <h3>Tratamientos previos:</h3>
-          </div>
-          <div class="lista">
-          </div>
-        </div>
+    <div class="tarjetaTratamiento">
+      <div style="width:100%;">
+        <div id="listaTratamientos" style="float: right; cursor: pointer;"><i class="far fa-times-circle"></i></div>
+        <h3>Tratamientos previos:</h3>
+      </div>
+      <div class="lista">
+      </div>
+    </div>
     <?php
       include('../coni/Localhost.php');
       $id = $_SESSION['id_usuario'];
@@ -143,7 +146,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                           <i class="notika-icon notika-windows"></i>
                         </div>
                         <div class="breadcomb-ctn" style="margin: auto 15px;">
-                          <h2>Pacientes Registrados</h2>
+                          <h2>Tratamientos</h2>
                         </div>
                       </div>
                     </div>
@@ -193,9 +196,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                   <td>$nombre_paciente $apellidos_paciente</td>
                                   <td>$fecha_nacimiento_paciente</td>
                                   <td>$fecha_atencion_medica</td>
-                                  <td style='text-align:center'>"; 
-                                    echo (isset($id_receta) ? "<button id='btnTratamiento' type='button' class='btn btn-primary' data-toggle='tooltip' title='Mostrar Tratamientos'><i class='fas fa-list'></i></button> <input type='hidden' value='$id_paciente'>" : "") ;
-                                    echo" <a href='form_receta.php?id_paciente=$id_paciente'><button type='button' class='btn btn-primary' data-toggle='tooltip' title='Nuevo Tratamiento'><i class='far fa-plus-square'></i></button></a>
+                                  <td style='text-align:center'>";
+                                echo (isset($id_receta) ? "<button id='btnTratamiento' type='button' class='btn btn-primary' data-toggle='tooltip' title='Mostrar Tratamientos'><i class='fas fa-list'></i></button> <input type='hidden' value='$id_paciente'>" : "");
+                                echo " <a href='form_receta.php?id_paciente=$id_paciente'><button type='button' class='btn btn-primary' data-toggle='tooltip' title='Nuevo Tratamiento'><i class='far fa-plus-square'></i></button></a>
                                   </td>
                                 </tr>";
                               }
@@ -266,8 +269,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       <script src="js/plugins.js"></script>
       <!-- Data Table JS
 		============================================ -->
-<script src="js/data-table/jquery.dataTables.min.js"></script>
-<script src="js/data-table/data-table-act.js"></script>
+      <script src="js/data-table/jquery.dataTables.min.js"></script>
+      <script src="js/data-table/data-table-act.js"></script>
       <!-- main JS
 		============================================ -->
       <script src="js/main.js"></script>

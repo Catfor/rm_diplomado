@@ -3,9 +3,9 @@
 // echo var_dump( $_POST);
 //echo "</pre>";
 
-$idpaciente = isset($_POST['idpaciente']) ? $_POST['idpaciente'] : die("Error :No se ha recibido el ID del paciente a registrar la atencion medica");
+$id_paciente = isset($_POST['id_paciente']) ? str_replace('_','-',$_POST['id_paciente']) : die("Error :No se ha recibido el ID del paciente a registrar la atencion medica");
 $id_usuario = isset($_POST['id_usuario']) ? $_POST['id_usuario'] : die("Error :No se ha recibido el ID del medico que registra la atencion medica");
-
+echo $id_paciente;
 include('../coni/Localhost.php');
 
 setlocale(LC_ALL, 'es_ES.UTF-8');
@@ -35,18 +35,21 @@ $tratamiento_previo = isset($_POST['antecedente_cancer_cervicouterino']) ? (isse
 
 
 
-$insertaratecion = "INSERT INTO atencion_medica (edad_inicio_menstruacion,metodos_planificacion,cual,edad_inicio_vida_sexual,parejas_sexuales,gestas,para,cesareas,abortos, fecha_ultima_regla,fecha_ultimo_papanicolau,antecedentes_tratamiento,atecedentes_lesion,id_paciente,fecha_atencion_medica,metrorragia,hormonoterapia,duracion_hormonoterapia,ritmo,antecedente_cancer_cervicouterino,tratamiento_previo) VALUES ('$edad_inicio_menstruacion','$metodos_planificacion','$cual','$edad_inicio_vida_sexual','$parejas_sexuales','$gestas', '$para','$cesareas','$abortos','$fecha_ultima_regla','$fecha_ultimo_papanicolau','$antecedentes_tratamiento', '$atecedentes_lesion','$idpaciente','$hoys','$metrorragia','$hormonoterapia','$duracion_hormonoterapia', '$ritmo','$antecedente_cancer_cervicouterino','$tratamiento_previo')";
+$insertaratecion = "INSERT INTO atencion_medica (id_atencion_medica,edad_inicio_menstruacion,metodos_planificacion,cual,edad_inicio_vida_sexual,parejas_sexuales,gestas,para,cesareas,abortos, fecha_ultima_regla,fecha_ultimo_papanicolau,antecedentes_tratamiento,atecedentes_lesion,id_paciente,fecha_atencion_medica,metrorragia,hormonoterapia,duracion_hormonoterapia,ritmo,antecedente_cancer_cervicouterino,tratamiento_previo) VALUES (uuid(),'$edad_inicio_menstruacion','$metodos_planificacion','$cual','$edad_inicio_vida_sexual','$parejas_sexuales','$gestas', '$para','$cesareas','$abortos','$fecha_ultima_regla','$fecha_ultimo_papanicolau','$antecedentes_tratamiento', '$atecedentes_lesion','$id_paciente','$hoys','$metrorragia','$hormonoterapia','$duracion_hormonoterapia', '$ritmo','$antecedente_cancer_cervicouterino','$tratamiento_previo')";
 $resultadoinsertaratencion = $mysqliL->query($insertaratecion);
 //   echo $sql11.'<br>';
-$id_ant_atencionmedica = $mysqliL->insert_id;
+$queryIdAtencionMedica = "SELECT id_atencion_medica FROM atencion_medica WHERE fecha_atencion_medica = '$hoys' AND id_paciente = '$id_paciente'";
+$idAtencionMedica = $mysqliL->query($queryIdAtencionMedica);
+$idAtencionRes = $idAtencionMedica -> fetch_assoc();
+$id_ant_atencionmedica = $idAtencionRes["id_atencion_medica"];
 
-$sql1 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion) VALUES ('$idpaciente','','','$id_usuario','$id_ant_atencionmedica')";
+$sql1 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion) VALUES ('$id_paciente','','','$id_usuario','$id_ant_atencionmedica')";
 $resulta1 = $mysqliL->query($sql1);
 ////////////////////obtencion de parametros colposcopia/////////////////////////////////////////////////////////////
 $colposcopia = $_POST['colposcopia'];
 
-$causa = $_POST['causa'];
-$cervix = $_POST['cervix'];
+$causa = isset($_POST['causa']) ? $_POST['causa'] : 'Sin Registro';
+$cervix = isset($_POST['cervix']) ? $_POST['cervix'] : 'Sin Registro';
 $union_escamocolumnar = isset($_POST['union_escamocolumnar']) ? $_POST['union_escamocolumnar'] : NULL;
 $zona_transformacion = isset($_POST['zona_transformacion']) ? $_POST['zona_transformacion'] : NULL;
 $epitelio_acetoblanco = isset($_POST['epitelio_acetoblanco']) ? $_POST['epitelio_acetoblanco'] : NULL;
@@ -73,7 +76,7 @@ $insertaestudio_colposcopico = "INSERT INTO estudio_colposcopico (colposcopia,ca
 $resultadoinsertaestudio_colposcopico = $mysqliL->query($insertaestudio_colposcopico);
 $id_ant_colposcopico = $mysqliL->insert_id;
 
-$sql2 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion) VALUES ('$idpaciente','$id_ant_colposcopico','1','$id_usuario','$id_ant_atencionmedica')";
+$sql2 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion) VALUES ('$id_paciente','$id_ant_colposcopico','1','$id_usuario','$id_ant_atencionmedica')";
 $resulta2 = $mysqliL->query($sql2);
 
 ////////////////////obtencion de parametros papanicolau/////////////////////////////////////////////////////
@@ -90,7 +93,7 @@ if (!empty(trim($observaciones_papinocolau)) || (isset($_POST['antecedente_infec
   $id_ant_estudio_papanicolau = $mysqliL->insert_id;
 
   $sql3 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,clasificacion_medico)
-   VALUES ('$idpaciente','$id_ant_estudio_papanicolau','7','$id_usuario','$id_ant_atencionmedica','$clasificacion_medico')";
+   VALUES ('$id_paciente','$id_ant_estudio_papanicolau','7','$id_usuario','$id_ant_atencionmedica','$clasificacion_medico')";
   $resulta3 = $mysqliL->query($sql3);
 }
 ////////////////////obtencion de parametros biopsas CERVIX/////////////////////////////////////////////////////
@@ -105,7 +108,7 @@ if (!empty(trim($senalizacion)) || !empty($coordCervix) ) {
   $id_ant_estudio_biopsia_cervix = $mysqliL->insert_id;
 
   $sql3 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,clasificacion_medico)
-  VALUES ('$idpaciente','$id_ant_estudio_biopsia_cervix','2','$id_usuario','$id_ant_atencionmedica','$clasificacion_medicocervix')";
+  VALUES ('$id_paciente','$id_ant_estudio_biopsia_cervix','2','$id_usuario','$id_ant_atencionmedica','$clasificacion_medicocervix')";
   $resulta3 = $mysqliL->query($sql3);
 }
 ////////////////////obtencion de parametros biopsas DE VULVOSCOPIA/////////////////////////////////////////////////////
@@ -123,7 +126,7 @@ if (!empty(trim($anotaciones_vulvoscopia)) && !empty(trim($coordVulva))) {
 
 
   $sql3 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,clasificacion_medico)
-  VALUES ('$idpaciente','$id_ant_estudio_vulvoscopia','6','$id_usuario','$id_ant_atencionmedica','$clasificacion_medicoVulvo')";
+  VALUES ('$id_paciente','$id_ant_estudio_vulvoscopia','6','$id_usuario','$id_ant_atencionmedica','$clasificacion_medicoVulvo')";
   $resulta3 = $mysqliL->query($sql3);
 }
 ////////////////////obtencion de parametros biopsas DE VAGINOSCOPIA/////////////////////////////////////////////////////
@@ -139,7 +142,7 @@ if (!empty(trim($anotaciones_vaginoscopia)) || !empty(trim($estudio_solicitar_va
   $id_ant_estudio_vaginoscopia = $mysqliL->insert_id;
 
   $sql3 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,clasificacion_medico)
-  VALUES ('$idpaciente','$id_ant_estudio_vaginoscopia','5','$id_usuario','$id_ant_atencionmedica','$clasificacion_medicovagi')";
+  VALUES ('$id_paciente','$id_ant_estudio_vaginoscopia','5','$id_usuario','$id_ant_atencionmedica','$clasificacion_medicovagi')";
   $resulta3 = $mysqliL->query($sql3);
 }
 
@@ -155,10 +158,11 @@ if (!empty(trim($observaciones_endometrio))) {
 
 
   $sql3 = "INSERT INTO ctrl_paciente_estudios (id_paciente,id_estudio,id_tipo_estudio,id_usuario,id_atencion,clasificacion_medico)
-  VALUES ('$idpaciente','$id_ant_estudio_biopsia_endometrio','4','$id_usuario','$id_ant_atencionmedica','$clasificacion_medicoendo')";
+  VALUES ('$id_paciente','$id_ant_estudio_biopsia_endometrio','4','$id_usuario','$id_ant_atencionmedica','$clasificacion_medicoendo')";
   $resulta3 = $mysqliL->query($sql3);
 }
 $imagenCont = 1;
+if(isset($_POST["canvas"]))
 foreach ($_POST["canvas"] as $canvas) {
   $directorio = 'imagesestudios/';
   //Validamos si la ruta de destino existe, en caso de no existir la creamos
@@ -192,7 +196,7 @@ foreach ($_FILES["archivo"]['tmp_name'] as $key => $tmp_name) {
     }
 
     $dir = opendir($directorio); //Abrimos el directorio de destino
-    $target_path = $directorio . '/' . $h . '-' . $idpaciente . $filename; //Indicamos la ruta de destino, así como el nombre del archivo
+    $target_path = $directorio . '/' . $h . '-' . $id_paciente . $filename; //Indicamos la ruta de destino, así como el nombre del archivo
     $target_pat = $h . '-' . $id_ant_atencionmedica . $filename;
     //Movemos y validamos que el archivo se haya cargado correctamente
     //El primer campo es el origen y el segundo el destino

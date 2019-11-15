@@ -6,19 +6,18 @@ $id_estudio = $_GET['id_estudio']; #
 $id_tipo_estudio = $_GET['id_tipo_estudio']; #
 $id_atencion = $_GET['id_atencion'];
 /************************ saber que reporte es ******************************************************************/
-$queryreporte = "SELECT * FROM tipo_estudio WHERE  id_tipo_estudio='$id_tipo_estudio'";
+$queryreporte = "SELECT * FROM tipo_estudio WHERE id_tipo_estudio='$id_tipo_estudio'";
 $resultreporte = $mysqliL->query($queryreporte);
 while ($resultrepo = $resultreporte->fetch_assoc()) {
-  $estudio_reporte = $resultrepo['estudio_reporte'];
-  $pat_estudio = $resultrepo['pat_estudio'];
+  $pat_estudio = $resultrepo['estudio'];
 }
-/************************ ******************************************************************/
+/************************                      ******************************************************************/
 if ($id_tipo_estudio == 2) {
   $reprotevulco = "SELECT c.clasifiacion_patologo,er.observaciones,er.fecha,er.descripcion_microscopica,
 er.descripcion_macroscopica,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.impresion_diagnostica,
 CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,
  p.edad_paciente, c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,
- c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico
+ c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico,er.no_caso
  FROM estudio_biopsia_cervix e
  INNER JOIN ctrl_paciente_estudios c
  ON e.id_estudio = c.id_estudio AND c.id_tipo_estudio = 2
@@ -40,8 +39,9 @@ ON u.id_usuario=c.id_usuario
     $descripcion_macroscopica = $resultreprotevulco1['descripcion_macroscopica'];
     $impresion_diagnostica = $resultreprotevulco1['impresion_diagnostica'];
     $observaciones = $resultreprotevulco1['observaciones'];
+    $no_caso = $resultreprotevulco1['no_caso'];
     $antecedentes_de_importancia = '';
-    $fecha1 = date("d-m-Y", strtotime("$fecha"));
+    $fecha1 = date("Y-M-d", strtotime("$fecha"));
     $clasifiacion_patologo = $resultreprotevulco1['clasifiacion_patologo'];
     #2019-10-14
     #14-10-2019
@@ -52,7 +52,7 @@ ON u.id_usuario=c.id_usuario
 er.descripcion_macroscopica,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.impresion_diagnostica,
 CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,
  p.edad_paciente, c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,
- c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico
+ c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico,er.no_caso
  FROM estudio_biopsia_endometrio e
  INNER JOIN ctrl_paciente_estudios c
  ON e.id_estudio = c.id_estudio AND c.id_tipo_estudio = 4
@@ -75,8 +75,9 @@ ON u.id_usuario=c.id_usuario
     $descripcion_macroscopica = $resultreprotevulco1['descripcion_macroscopica'];
     $impresion_diagnostica = $resultreprotevulco1['impresion_diagnostica'];
     $observaciones = $resultreprotevulco1['observaciones'];
+    $no_caso = $resultreprotevulco1['no_caso'];
     $antecedentes_de_importancia = '';
-    $fecha1 = date("d-m-Y", strtotime("$fecha"));
+    $fecha1 = date("Y-M-d", strtotime("$fecha"));
     $clasifiacion_patologo = $resultreprotevulco1['clasifiacion_patologo'];
     #2019-10-14
     #14-10-2019
@@ -87,7 +88,7 @@ ON u.id_usuario=c.id_usuario
 er.descripcion_macroscopica,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.impresion_diagnostica,
 CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,
  p.edad_paciente, c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,
- c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico
+ c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico,er.no_caso
  FROM estudio_vaginoscopia e
  INNER JOIN ctrl_paciente_estudios c
  ON e.id_estudio = c.id_estudio AND c.id_tipo_estudio = 5
@@ -110,8 +111,9 @@ ON u.id_usuario=c.id_usuario
     $descripcion_macroscopica = $resultreprotevulco1['descripcion_macroscopica'];
     $impresion_diagnostica = $resultreprotevulco1['impresion_diagnostica'];
     $observaciones = $resultreprotevulco1['observaciones'];
+    $no_caso = $resultreprotevulco1['no_caso'];
     $antecedentes_de_importancia = '';
-    $fecha1 = date("d-m-Y", strtotime("$fecha"));
+    $fecha1 = date("Y-M-d", strtotime("$fecha"));
     $clasifiacion_patologo = $resultreprotevulco1['clasifiacion_patologo'];
     #2019-10-14
     #14-10-2019
@@ -123,7 +125,7 @@ ON u.id_usuario=c.id_usuario
 er.descripcion_macroscopica,p.fecha_nacimiento_paciente,c.clasifiacion_patologo,er.impresion_diagnostica,
 CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS medico,CONCAT(p.nombre_paciente,' ',p.apellidos_paciente) AS nombre,
  p.edad_paciente, c.id_estudio_resultado,c.estatus_supervisor,c.estatus_patologo,c.id_paciente,
- c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico
+ c.id_estudio,c.id_tipo_estudio, c.id_usuario, c.id_atencion,c.id_usu_pat,c.clasificacion_medico,er.no_caso
  FROM estudio_vulvoscopia e
  INNER JOIN ctrl_paciente_estudios c
  ON e.id_estudio = c.id_estudio AND c.id_tipo_estudio = 6
@@ -146,9 +148,10 @@ ON u.id_usuario=c.id_usuario
     $descripcion_macroscopica = $resultreprotevulco1['descripcion_macroscopica'];
     $impresion_diagnostica = $resultreprotevulco1['impresion_diagnostica'];
     $observaciones = $resultreprotevulco1['observaciones'];
+    $no_caso = $resultreprotevulco1['no_caso'];
     $antecedentes_de_importancia = '';
     $clasifiacion_patologo = $resultreprotevulco1['clasifiacion_patologo'];
-    $fecha1 = date("d-m-Y", strtotime("$fecha"));
+    $fecha1 = date("Y-M-d", strtotime("$fecha"));
     #2019-10-14
     #14-10-2019
 
@@ -164,8 +167,13 @@ ON u.id_usuario=c.id_usuario
 <head>
   <meta charset="utf-8">
   <link rel="shortcut icon" type="image/x-icon" href="../../../img/logo/corona.png">
-  <title> <?php echo $estudio_reporte; ?></title>
+  <title> <?php echo $pat_estudio; ?></title>
   <link rel="stylesheet" href="style.css" media="all" />
+  <style>
+    td p {
+      margin: 0;
+    }
+  </style>
 </head>
 
 <body>
@@ -183,20 +191,16 @@ ON u.id_usuario=c.id_usuario
   <main>
     <div id="details" class="clearfix">
       <div id="client">
-        <div class="to">Paciente:<?php echo $nombre; ?></div>
-        <div class="date">Fecha de Nacimiento:<?php echo $fecha_nacimiento_paciente; ?></div>
-        <div class="to">Edad:<?php echo $edad_paciente; ?></div>
-        <div class="to">Medico Solicitante:<?php echo $medico; ?></div>
-        <div class="to">Estudio:<?php echo $pat_estudio; ?></div>
+        <div class="to">Paciente:<?php echo ' ' . ucwords(strtolower($nombre)); ?></div>
+        <div class="to">Fecha De Nacimiento:<?php echo ' ' . $fecha_nacimiento_paciente; ?></div>
+        <div class="to">Medico Solicitante:<?php echo ' ' . ucwords(strtolower($medico)); ?></div>
+        <div class="to"><?php echo ucwords($pat_estudio); ?></div>
+        <div class="to">No. De Caso: <?php echo ' '.ucwords($no_caso); ?></div>
 
       </div>
       <div id="invoice">
         <div class="date">Fecha de Estudio <?php echo $fecha1; ?> </div>
       </div>
-
-
-
-
     </div>
     <div class="row " style="position: absolute;top: 226px;left: -2px;">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -215,17 +219,20 @@ ON u.id_usuario=c.id_usuario
     <table border="0" cellspacing="0" cellpadding="0">
       <thead>
         <tr>
-          <th class="no">Datos Clinicos</th>
+          <th class="no">Datos Clínicos</th>
 
         </tr>
       </thead>
 
-      <tbody>
-        <tr>
-          <td class="service"><?php echo $antecedentes_de_importancia; ?></td>
-        </tr>
-      </tbody>
-
+      <?php if (strlen($antecedentes_de_importancia) > 0) { ?>
+        <tbody>
+          <tr>
+            <td class="service">
+              <p align="justify"><?php echo $antecedentes_de_importancia; ?></p>
+            </td>
+          </tr>
+        </tbody>
+      <?php } ?>
     </table>
     <table border="0" cellspacing="0" cellpadding="0">
       <thead>
@@ -237,7 +244,9 @@ ON u.id_usuario=c.id_usuario
 
       <tbody>
         <tr>
-          <td class="service"><?php echo $descripcion_macroscopica; ?></td>
+          <td class="service">
+            <p align="justify"><?php echo $descripcion_macroscopica; ?></p>
+          </td>
         </tr>
       </tbody>
 
@@ -252,7 +261,9 @@ ON u.id_usuario=c.id_usuario
 
       <tbody>
         <tr>
-          <td class="service"><?php echo $descripcion_microscopica; ?></td>
+          <td class="service">
+            <p align="justify"><?php echo $descripcion_microscopica; ?></p>
+          </td>
         </tr>
       </tbody>
 
@@ -267,7 +278,9 @@ ON u.id_usuario=c.id_usuario
 
       <tbody>
         <tr>
-          <td class="service"><?php echo $impresion_diagnostica; ?></td>
+          <td class="service">
+            <p align="justify"><?php echo $impresion_diagnostica; ?></p>
+          </td>
         </tr>
       </tbody>
 
@@ -282,7 +295,9 @@ ON u.id_usuario=c.id_usuario
 
       <tbody>
         <tr>
-          <td class="service"><?php echo $observaciones; ?></td>
+          <td class="service">
+            <p align="justify"><?php echo $observaciones; ?></p>
+          </td>
         </tr>
       </tbody>
 

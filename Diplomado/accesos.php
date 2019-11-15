@@ -82,7 +82,7 @@ $endo=$_GET['endo'];
       <form action="guardar_resultados.php" method="get">
         <div class="nk-form">
           <div class="logo-area">
-            <a href="#"><img src="img/logo/logo.png" height="200" /></a>
+            <a href="sistema.php"><img src="img/logo/logo.webp" height="200" /></a>
           </div>
 
 

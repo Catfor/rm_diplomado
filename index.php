@@ -51,6 +51,17 @@
   <!-- modernizr JS
 		============================================ -->
   <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  <style>
+    .card:hover {
+      box-shadow: 0 7px 20px 0 #a25cbfdd;
+    }
+
+    .card {
+      transition: 0.5s;
+      border-radius: 15px;
+      padding: 30px;
+    }
+  </style>
 </head>
 
 <body>
@@ -64,11 +75,16 @@
 
     <!-- Login -->
 
-    <div class="nk-block toggled" id="l-login">
+    <div class="nk-block toggled card" id="l-login">
       <form action="check-login.php" method="POST">
-        <div class="nk-form">
-          <div class="logo-area">
-            <a href="#"><img src="img/logo/logo.png" height="200" /></a>
+        <div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="logo-area">
+                <img src="img/logo/logo.webp" style="max-width:100%;" />
+                <button class="btn btn-login btn-success btn-float" style="position: relative !important;top: 15px;"><i class="notika-icon notika-right-arrow right-arrow-ant"></i></button>
+              </div>
+            </div>
           </div>
           <div class="input-group">
             <span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
@@ -82,7 +98,6 @@
               <input type="password" class="form-control" name='password' placeholder="Password">
             </div>
           </div>
-          <button class="btn btn-login btn-success btn-float"><i class="notika-icon notika-right-arrow right-arrow-ant"></i></button>
         </div>
         <?php
         if (isset($_GET['error'])) {

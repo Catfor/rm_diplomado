@@ -43,7 +43,7 @@ if (isset($paps)){
                                                                  $sql11 = "INSERT INTO bitacora_ingreso
                                                                      (id_u,fecha_ingreso,id_atencion,accion,id_asignacion,id_tipo_estudio,id_estudio,paciente)
                                                                      VALUES
-                                                                     ('$id','$hoys','$paps1','se autorizo entrega de muestras de papanicolau','$patologo','7','$estudiopa','$pacientepa')";
+                                                                     ('$id','$hoys','$paps1','Se autorizo entrega de muestras de papanicolau','$patologo','7','$estudiopa','$pacientepa')";
 
                                                                 $resultaq = $mysqliL->query($sql11);
 
@@ -87,7 +87,7 @@ if (isset($vulva)){
                                                                  $sql11 = "INSERT INTO bitacora_ingreso
                                                                      (id_u,fecha_ingreso,id_atencion,accion,id_asignacion,id_tipo_estudio,id_estudio,paciente)
                                                                      VALUES
-                                                                     ('$id','$hoys','$vulva1','se autorizo entrega de muestras de vulvoscopia','$patologo','6','$estudiovul','$pacientevul')";
+                                                                     ('$id','$hoys','$vulva1','Se autorizo entrega de muestras de vulvoscopia','$patologo','6','$estudiovul','$pacientevul')";
 
                                                                 $resultaq = $mysqliL->query($sql11);
 
@@ -129,7 +129,7 @@ if (isset($vagi)){
                                                                  $sql11 = "INSERT INTO bitacora_ingreso
                                                                      (id_u,fecha_ingreso,id_atencion,accion,id_asignacion,id_tipo_estudio,id_estudio,paciente)
                                                                      VALUES
-                                                                     ('$id','$hoys','$vagi1','se autorizo entrega de muestras de vaginoscopia','$patologo','6','$estudiova','$pacienteva')";
+                                                                     ('$id','$hoys','$vagi1','Se autorizo entrega de muestras de vaginoscopia','$patologo','6','$estudiova','$pacienteva')";
 
                                                                $resultaq = $mysqliL->query($sql11);
 
@@ -171,7 +171,7 @@ if (isset($cervix)){
                                                                  $sql11 = "INSERT INTO bitacora_ingreso
                                                                      (id_u,fecha_ingreso,id_atencion,accion,id_asignacion,id_tipo_estudio,id_estudio,paciente)
                                                                      VALUES
-                                                                     ('$id','$hoys','$cervix1','se autorizo entrega de muestras de cervix','$patologo','2','$estudioc','$pacientec')";
+                                                                     ('$id','$hoys','$cervix1','Se autorizo entrega de muestras de cervix','$patologo','2','$estudioc','$pacientec')";
 
                                                          $resultaq = $mysqliL->query($sql11);
 
@@ -214,7 +214,7 @@ if (isset($endo)){
                                                                  $sql11 = "INSERT INTO bitacora_ingreso
                                                                      (id_u,fecha_ingreso,id_atencion,accion,id_asignacion,id_tipo_estudio,id_estudio,paciente)
                                                                      VALUES
-                                                                     ('$id','$hoys','$endo1','se autorizo entrega de muestras de vulvoscopia','$patologo','4','$estudioen','$pacienteen')";
+                                                                     ('$id','$hoys','$endo1','Se autorizo entrega de muestras de vulvoscopia','$patologo','4','$estudioen','$pacienteen')";
 
                                                                 $resultaq = $mysqliL->query($sql11);
 

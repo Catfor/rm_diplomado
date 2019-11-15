@@ -1,73 +1,72 @@
 <?php session_start();
 
-    setlocale(LC_ALL, 'es_ES.UTF-8');
-    date_default_timezone_set('America/Mexico_City');
+setlocale(LC_ALL, 'es_ES.UTF-8');
+date_default_timezone_set('America/Mexico_City');
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    
- ?>
-<!doctype html>
-<html class="no-js" lang="">
-<link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <div class="header-top-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="logo-area">
-                        <a href="Sistema.php"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
+    ?>
+    <!doctype html>
+    <html class="no-js" lang="">
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <div class="header-top-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="logo-area">
+                            <a href="sistema.php"><img src="../img/logo/LOGO-BLANCO.webp" height="100" /></a>
+
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    <div class="header-top-menu">
-                        <ul class="nav navbar-nav notika-top-nav">
-
-                            <li class="nav-item dropdown">
-
-
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <div class="header-top-menu">
+                            <ul class="nav navbar-nav notika-top-nav">
+                            <li>
+                                <div class="chip">
+                                    <img <?php if($_SESSION['genero'] === 'H'){ echo "src='./img/avatar_h.png' "; }else{ echo "src='./img/avatar_m.png' ";} ?> alt="Person" width="96" height="96">
+                                    <b><?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b>
+                                </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a><p style='color:white;'> Usuario: <b>
-<?php echo ucwords($_SESSION['nombre_usuario']) . ' ' .ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
-
-                            </li>
-                        </ul>
+                                <li class="nav-item dropdown">
+                                    <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <?php include('css.php');  ?>
+        <?php include('css.php');  ?>
 
 
-</head>
+    </head>
 
-<body>
-    <?php
-
-
-        include('../coni/Localhost.php');
+    <body>
+        <?php
 
 
-
-        $id = $_SESSION['id_usuario'];
-        $nick = $_SESSION['nick'];
-        $correo_general = $_SESSION['correo_general'];
-        $nombre_usuario = ucwords($_SESSION['nombre_usuario']);
-        $rol = $_SESSION['rol'];
-        $apellidos_usuario = ucwords($_SESSION['apellidos_usuario']);
-
-        $result123 = mysqli_query($mysqliL, "SELECT contra from usu_me where id_usuario='$id'");
+            include('../coni/Localhost.php');
 
 
-        $rowwe = mysqli_fetch_assoc($result123);
-        $contra = $rowwe['contra'];
 
-        if ($contra == '3d603c7c93fb63c7db2b1d99b1998bb6') {
-            ?>
+            $id = $_SESSION['id_usuario'];
+            $nick = $_SESSION['nick'];
+            $correo_general = $_SESSION['correo_general'];
+            $nombre_usuario = ucwords($_SESSION['nombre_usuario']);
+            $rol = $_SESSION['rol'];
+            $apellidos_usuario = ucwords($_SESSION['apellidos_usuario']);
+
+            $result123 = mysqli_query($mysqliL, "SELECT contra from usu_me where id_usuario='$id'");
+
+
+            $rowwe = mysqli_fetch_assoc($result123);
+            $contra = $rowwe['contra'];
+
+            if ($contra == '3d603c7c93fb63c7db2b1d99b1998bb6') {
+                ?>
 
             <div class="modals-default-cl">
                 <button type="button" class="btn nk-deep-purple btn-info" data-toggle="modal" data-target="#myModaltwelve">ayuda</button>
@@ -137,12 +136,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
 
                                     <!----------- ----------->
-                            <?php
-                                    if (isset($_GET['nombre'])) {
-                                        if ($_GET['nombre']) {
-                                            $nombre = $_GET['nombre'];
-                                            //imprimes el error
-                                            echo " <div class='alert-list'>
+                                <?php
+                                        if (isset($_GET['nombre'])) {
+                                            if ($_GET['nombre']) {
+                                                $nombre = $_GET['nombre'];
+                                                //imprimes el error
+                                                echo " <div class='alert-list'>
                                                         <div class='alert alert-success alert-dismissible' role='alert'>
                                                             <button type='button' class='close' data-dismiss='alert'
                                                             aria-label='Close'><span aria-hidden='true'>
@@ -151,14 +150,14 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                                                     Se dio de alta el paciente  $nombre
                                                         </div>
                                                     </div>";
+                                            }
                                         }
-                                    }
 
-                                    if (isset($_GET['nombres'])) {
-                                        if ($_GET['nombres']) {
-                                            $nombres = $_GET['nombres'];
-                                            //imprimes el error
-                                            echo "  <div class='alert-list'>
+                                        if (isset($_GET['nombres'])) {
+                                            if ($_GET['nombres']) {
+                                                $nombres = $_GET['nombres'];
+                                                //imprimes el error
+                                                echo "  <div class='alert-list'>
                                                         <div class='alert alert-danger alert-dismissible' role='alert'>
                                                         <button type='button' class='close' data-dismiss='alert'
                                                         aria-label='Close'><span aria-hidden='true'>
@@ -167,27 +166,27 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                                                     Usuario Existente $nombres
                                                         </div>
                                                     </div>";
+                                            }
                                         }
                                     }
-                                }
 
-                                //En este apartado se hace la precarga de datos si se recibe el id_paciente dentro del GET
-
+                                    //En este apartado se hace la precarga de datos si se recibe el id_paciente dentro del GET
 
 
-                            ?>
 
-                            <!----------- ----------->
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="breadcomb-wp">
-                                    <div class="breadcomb-icon">
-                                        <i class="notika-icon notika-form"></i>
-                                    </div>
-                                    <div class="breadcomb-ctn">
-                                        <h2>Alta Paciente</h2>
+                                    ?>
+
+                                <!----------- ----------->
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="breadcomb-wp">
+                                        <div class="breadcomb-icon">
+                                            <i class="notika-icon notika-form"></i>
+                                        </div>
+                                        <div class="breadcomb-ctn">
+                                            <h2>Alta Paciente</h2>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
                                 </div>
                             </div>
@@ -198,305 +197,316 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             <!-- Breadcomb area End-->
             <!-- Form Element area Start-->
 
-                    <!-- Breadcomb area End-->
-                    <!-- Form Element area Start-->
-                    <form id="tuformulario" name="tuformulario" action="alta_guardar_paciente.php" method="GET" onsubmit="pregunta()">
-                        <div class="form-element-area">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-element-list">
-                                            <div class="basic-tb-hd">
-                                                <h2 class="cabecera-morada">Datos Generales Del Paciente</h2>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int">
-                                                        <div class="customFontAwesome">
-                                                            <i class="far fa-user"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input type="text" name="nombre_paciente" id="nombre_paciente" class="form-control" placeholder="Nombres del paciente" value="" >
-
-                                                        </div>
-                                                    </div>
+            <!-- Breadcomb area End-->
+            <!-- Form Element area Start-->
+            <form id="tuformulario" name="tuformulario" action="alta_guardar_paciente.php" method="GET" onsubmit="pregunta()">
+                <div class="form-element-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-element-list">
+                                    <div class="basic-tb-hd">
+                                        <h2 class="cabecera-morada">Datos Generales Del Paciente</h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="customFontAwesome">
+                                                    <i class="far fa-user"></i>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                      <div class="form-group ic-cmp-int">
-                                                      <div class="customFontAwesome">
-                                                          <i class="far fa-user"></i>
-                                                      </div>
-                                                        <div class="nk-int-st">
-                                                            <input type="text" name="apellidos_paciente" id="apellidos_paciente" class="form-control" placeholder="Apellidos Del Paciente" value="" >
+                                                <div class="nk-int-st">
+                                                    <input type="text" name="nombre_paciente" id="nombre_paciente" class="form-control" placeholder="Nombres del paciente" value="">
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int" id="data_3">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-calendar"></i>
-                                                        </div>
-                                                     <FONT FACE="Arial" SIZE="2.5" style="color:rgb(144, 143, 143);"> Ingresa Fecha de Nacimiento: </FONT>
-                                                    <input type="date" id="bday" name="edad_paciente">
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int" id="data_3">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-promos"></i>
-                                                        </div>
-                                                        <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name="estado_civil" class="selectpicker" >
-                                                                <option value="">Selecciona Estado Civil</option>
-                                                                <option value="Soltera">Soltera</option>
-                                                                <option value="Casada">Casada</option>
-                                                                <option value="Divorciada" >Divorciada</option>
-                                                                <option value="Viuda">Viuda</option>
-                                                                <option value="Union Libre">Union Libre</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-house"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input type="text" name="direccion_paciente" class="form-control" placeholder="Dirección Paciente" value="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-map"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input type="text" name="municipio_paciente" class="form-control" placeholder="Municipio" value="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-star"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input type="text" name="codigo_postal" class="form-control" data-mask="99999" placeholder="Código Postal" value="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int" id="data_3">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="glyphicon glyphicon-usd" style="color: #888;"></i>
-                                                        </div>
-                                                        <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name="ingresomensual" class="selectpicker" >
-                                                                <option value="">Selecciona Ingreso Mensual</option>
-                                                                <option value="Menos de $2,000">Menos de $2,000</option>
-                                                                <option value="Entre $2,000 y $6,000">Entre $2,001 y $6,000</option>
-                                                                <option value="Entre $6,001 y $12,000">Entre $6,001 y $12,000</option>
-                                                                <option value="Entre $12,001 y $18,000">Entre $12,001 y $18,000</option>
-                                                                <option value="Entre $18,001 y $23,000">Entre $18,001 y $23,000</option>
-                                                                <option value="Más de $23,001">Más de $23,001</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int" id="data_3">
-                                                        <div class="customFontAwesome">
-                                                            <i class="fas fa-graduation-cap"></i>
-                                                        </div>
-                                                        <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name="escolaridad_paciente" class="selectpicker" >
-                                                                <option value="">Selecciona Grado de Escolaridad</option>
-                                                                <option value="sin estudios">Sin estudios</option>
-                                                                <option value="primaria">Primaria</option>
-                                                                <option value="secundaria">Secundaria</option>
-                                                                <option value="preparatoria">Preparatoria</option>
-                                                                <option value="universidad">Universidad</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int" id="data_3">
-                                                        <div class="customFontAwesome">
-                                                            <i class="fas fa-user-shield"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <p>Selecciona el tipo de seguro</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group ic-cmp-int">
-
-                                                      <?php
-
-
-                                                         // Variable $row hold the result of the query
-                                                         $comnsultaBETWEENClientescreados = " SELECT * from seguros ";
-                                                         $resultBETWEENClientescreados = $mysqliL->query($comnsultaBETWEENClientescreados);
-
-
-                                                      //echo $comnsultaBETWEENClientescreados;
-                                                      while($rowBETWEENClientescreados= $resultBETWEENClientescreados->fetch_assoc()) {
-
-                                                      $nombre_seguro = $rowBETWEENClientescreados['nombre_seguro'];
-  $id_seguro = $rowBETWEENClientescreados['id_seguro'];
-
-
-
-                                                       ?>
-
-
-                                                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><input  type="checkbox" value='<?php echo $id_seguro ?>' name="tipo_seguro[]"> <?php echo $nombre_seguro ?> </label>
-
-                                                        <?php
-
-                                                        }
-                                                                                                               ?>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int" id="data_3">
-                                                        <div class="customFontAwesome">
-                                                            <i class="fas fa-question"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input id="otro_tipo_seguro" name='otro_tipo_seguro' type="text" class="form-control" placeholder="Otro Tipo de Seguro?" value="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int" id="data_3">
-                                                        <div class="customFontAwesome">
-                                                            <i class="fas fa-tag"></i>
-                                                        </div>
-                                                        <div class="bootstrap-select fm-cmp-mg">
-                                                            <select name='apoyo_gubernamental_paciente' id='apoyo_gubernamental_paciente' class="selectpicker" >
-                                                                <option value="">¿Apoyo gubernamental?</option>
-                                                                <option value="1">Si</option>
-                                                                <option value="0">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int" id="data_3">
-                                                        <div class="customFontAwesome">
-                                                            <i class="fas fa-question"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input id="apoyo_gubernamental" name='razon_apoyo_paciente' type="text" class="form-control" placeholder="¿Cúal?" value="">
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-element-list mg-t-30">
-                                            <div class="cmp-tb-hd">
-                                                <h2 class="cabecera-morada">DATOS DE FAMILAIR / CONTACTO</h2>
-
-                                            </div>
-                                            <div class="row" style="margin-bottom:15px;padding-bottom:15px;;border-bottom: 1px solid #ddd;">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int float-lb floating-lb">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-support"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input type="text" name="nombre_familiar_paciente" class="form-control" placeholder="Nombre de Contacto #1" value="">
-                                                        </div>
-                                                    </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="customFontAwesome">
+                                                    <i class="far fa-user"></i>
                                                 </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="nk-int-st">
+                                                    <input type="text" name="apellidos_paciente" id="apellidos_paciente" class="form-control" placeholder="Apellidos Del Paciente" value="">
 
-                                                    <div class="form-group ic-cmp-int">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-phone"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input name='telefono_familiar_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Telefono de Casa de Contacto #1"  value="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                                    <div class="form-group ic-cmp-int">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-phone"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input name='celular_familiar_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Numero Celular de Contacto #1"  value="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                    <div class="form-group ic-cmp-int float-lb floating-lb">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-support"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input type="text" name="nombre_contacto_paciente" class="form-control" placeholder="Nombre de Contacto #2" value="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                                    <div class="form-group ic-cmp-int">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-phone"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input name='telefono_contacto_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Telefono de Casa de Contacto #2" value="">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                                    <div class="form-group ic-cmp-int">
-                                                        <div class="form-ic-cmp">
-                                                            <i class="notika-icon notika-phone"></i>
-                                                        </div>
-                                                        <div class="nk-int-st">
-                                                            <input name='celular_contacto_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Numero Celular de Contacto #2" value="">
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                              </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int" id="data_3">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-calendar"></i>
+                                                </div>
+                                                <FONT style="color:rgb(144, 143, 143);font-family: Arial, Helvetica, sans-serif;font-size: 15px;"> Ingresa Fecha De Nacimiento: </FONT>
+                                                <input type="date" id="bday" name="edad_paciente">
+                                            </div>
+                                        </div>
 
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br>
-                                      <center>  <input class="btn notika-btn-purble" type="submit" value="Enviar formulario" style="float:center;margin: 10px 0;background: #a25cbf;color: white;">  </center>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-phone"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input name='telefono_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Telefono Del Paciente" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-mail"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input name='email_paciente' type="text" class="form-control" placeholder="Email Del Paciente" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-house"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input type="text" name="direccion_paciente" class="form-control" placeholder="Dirección Paciente" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-map"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input type="text" name="municipio_paciente" class="form-control" placeholder="Municipio" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-star"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input type="text" name="codigo_postal" class="form-control" data-mask="99999" placeholder="Código Postal" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int" id="data_3">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-promos"></i>
+                                                </div>
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select name="estado_civil" class="selectpicker">
+                                                        <option value="">Selecciona Estado Civil</option>
+                                                        <option value="Soltera">Soltera</option>
+                                                        <option value="Casada">Casada</option>
+                                                        <option value="Divorciada">Divorciada</option>
+                                                        <option value="Viuda">Viuda</option>
+                                                        <option value="Union Libre">Union Libre</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int" id="data_3">
+                                                <div class="form-ic-cmp">
+                                                    <i class="glyphicon glyphicon-usd" style="color: #888;"></i>
+                                                </div>
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select name="ingresomensual" class="selectpicker">
+                                                        <option value="">Selecciona Ingreso Mensual</option>
+                                                        <option value="Menos de $2,000">Menos de $2,000</option>
+                                                        <option value="Entre $2,000 y $6,000">Entre $2,001 y $6,000</option>
+                                                        <option value="Entre $6,001 y $12,000">Entre $6,001 y $12,000</option>
+                                                        <option value="Entre $12,001 y $18,000">Entre $12,001 y $18,000</option>
+                                                        <option value="Entre $18,001 y $23,000">Entre $18,001 y $23,000</option>
+                                                        <option value="Más de $23,001">Más de $23,001</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int" id="data_3">
+                                                <div class="customFontAwesome">
+                                                    <i class="fas fa-graduation-cap"></i>
+                                                </div>
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select name="escolaridad_paciente" class="selectpicker">
+                                                        <option value="">Selecciona Grado de Escolaridad</option>
+                                                        <option value="sin estudios">Sin estudios</option>
+                                                        <option value="primaria">Primaria</option>
+                                                        <option value="secundaria">Secundaria</option>
+                                                        <option value="preparatoria">Preparatoria</option>
+                                                        <option value="universidad">Universidad</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int" id="data_3">
+                                                <div class="customFontAwesome">
+                                                    <i class="fas fa-user-shield"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <p>Selecciona el tipo de seguro</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group ic-cmp-int">
+
+                                                <?php
+
+                                                    $comnsultaBETWEENClientescreados = " SELECT * from seguros ";
+                                                    $resultBETWEENClientescreados = $mysqliL->query($comnsultaBETWEENClientescreados);
+
+                                                    while ($rowBETWEENClientescreados = $resultBETWEENClientescreados->fetch_assoc()) {
+                                                        $nombre_seguro = $rowBETWEENClientescreados['nombre_seguro'];
+                                                        $id_seguro = $rowBETWEENClientescreados['id_seguro'];
+                                                        ?>
+                                                    <label class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="text-align:center;"><input type="checkbox" value='<?php echo $id_seguro ?>' name="tipo_seguro[]"> <?php echo $nombre_seguro ?> </label>
+                                                <?php
+                                                    }
+                                                    ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int" id="data_3">
+                                                <div class="customFontAwesome">
+                                                    <i class="fas fa-question"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input id="otro_tipo_seguro" name='otro_tipo_seguro' type="text" class="form-control" placeholder="Otro Tipo de Seguro?" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int" id="data_3">
+                                                <div class="customFontAwesome">
+                                                    <i class="fas fa-tag"></i>
+                                                </div>
+                                                <div class="bootstrap-select fm-cmp-mg">
+                                                    <select name='apoyo_gubernamental_paciente' id='apoyo_gubernamental_paciente' class="selectpicker">
+                                                        <option value="">¿Apoyo gubernamental?</option>
+                                                        <option value="1">Si</option>
+                                                        <option value="0">No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int" id="data_3">
+                                                <div class="customFontAwesome">
+                                                    <i class="fas fa-question"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input id="apoyo_gubernamental" name='razon_apoyo_paciente' type="text" class="form-control" placeholder="¿Cúal?" value="">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-element-list mg-t-30">
+                                    <div class="cmp-tb-hd">
+                                        <h2 class="cabecera-morada">DATOS DE FAMILAIR / CONTACTO</h2>
+
+                                    </div>
+                                    <div class="row" style="margin-bottom:15px;padding-bottom:15px;;border-bottom: 1px solid #ddd;">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int float-lb floating-lb">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-support"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input type="text" name="nombre_familiar_paciente" class="form-control" placeholder="Nombre de Contacto #1" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-phone"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input name='telefono_familiar_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Telefono de Casa de Contacto #1" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-phone"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input name='celular_familiar_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Numero Celular de Contacto #1" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="form-group ic-cmp-int float-lb floating-lb">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-support"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input type="text" name="nombre_contacto_paciente" class="form-control" placeholder="Nombre de Contacto #2" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-phone"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input name='telefono_contacto_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Telefono de Casa de Contacto #2" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                            <div class="form-group ic-cmp-int">
+                                                <div class="form-ic-cmp">
+                                                    <i class="notika-icon notika-phone"></i>
+                                                </div>
+                                                <div class="nk-int-st">
+                                                    <input name='celular_contacto_paciente' type="text" class="form-control" data-mask="(999) 999-9999" placeholder="Numero Celular de Contacto #2" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br>
+                                <center> <input class="btn notika-btn-purble" type="submit" value="Enviar formulario" style="float:center;margin: 10px 0;background: #a25cbf;color: white;"> </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </form>
 
             <?php
-            include('pie.php');
-            ?>
+                include('pie.php');
+                ?>
 
             <script language="JavaScript">
                 function pregunta() {
@@ -615,12 +625,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             <!-- main JS
 ============================================ -->
             <script src="../js/main.js"></script>
-</body>
+    </body>
 
-</html>
-<?php   }
-else {
+    </html>
+<?php   } else {
     header('Location: ../index.php');
 
     exit;
-}?>
+} ?>

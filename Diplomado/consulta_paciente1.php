@@ -1,67 +1,69 @@
 <?php session_start();
+
+setlocale(LC_ALL, 'es_ES.UTF-8');
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
   ?>
-<!doctype html>
-<html class="no-js" lang="">
-<link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
-<script src="jquery.min.js"></script>
+  <!doctype html>
+  <html class="no-js" lang="">
+  <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
+  <script src="jquery.min.js"></script>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <div class="header-top-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-          <div class="logo-area">
-            <a href="sistema.php"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <div class="header-top-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="logo-area">
+              <a href="sistema.php"><img src="../img/logo/LOGO-BLANCO.webp" height="100" /></a>
 
+            </div>
           </div>
-        </div>
-        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-          <div class="header-top-menu">
-            <ul class="nav navbar-nav notika-top-nav">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <div class="header-top-menu">
+              <ul class="nav navbar-nav notika-top-nav">
 
-              <li class="nav-item dropdown">
+                <li>
+                  <div class="chip">
+                    <img <?php if($_SESSION['genero'] === 'H'){ echo "src='./img/avatar_h.png' "; }else{ echo "src='./img/avatar_m.png' ";} ?> alt="Person" width="96" height="96">
+                    <b><?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
 
-
-              </li>
-              <li class="nav-item dropdown">
-
-                <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a><p style='color:white;'> Usuario: <b>
-<?php echo ucwords($_SESSION['nombre_usuario']) . ' ' .ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
-
-              </li>
-            </ul>
+                  <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <?php
-  include('css.php');
-  ?>
-</head>
-
-<body>
-  <?php
-
-    include('../coni/Localhost.php');
-    $id = $_SESSION['id_usuario'];
-    $nick = $_SESSION['nick'];
-    $correo_general = $_SESSION['correo_general'];
-    $nombre_usuario = ucwords($_SESSION['nombre_usuario']);
-    $rol = $_SESSION['rol'];
-    $apellidos_usuario = ucwords($_SESSION['apellidos_usuario']);
-
-    $result123 = mysqli_query($mysqliL, "SELECT contra from usu_me where id_usuario='$id'");
-
-
-    $rowwe = mysqli_fetch_assoc($result123);
-    $contra = $rowwe['contra'];
-    if ($contra == '3d603c7c93fb63c7db2b1d99b1998bb6') {
+    <?php
+      include('css.php');
       ?>
+  </head>
+
+  <body>
+    <?php
+
+      include('../coni/Localhost.php');
+      $id = $_SESSION['id_usuario'];
+      $nick = $_SESSION['nick'];
+      $correo_general = $_SESSION['correo_general'];
+      $nombre_usuario = ucwords($_SESSION['nombre_usuario']);
+      $rol = $_SESSION['rol'];
+      $apellidos_usuario = ucwords($_SESSION['apellidos_usuario']);
+
+      $result123 = mysqli_query($mysqliL, "SELECT contra from usu_me where id_usuario='$id'");
+
+
+      $rowwe = mysqli_fetch_assoc($result123);
+      $contra = $rowwe['contra'];
+      if ($contra == '3d603c7c93fb63c7db2b1d99b1998bb6') {
+        ?>
       <br>
       <div class="modals-default-cl">
         <button type="button" class="btn nk-deep-purple btn-info" data-toggle="modal" data-target="#myModaltwelve">ayuda</button>
@@ -248,41 +250,44 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                             $codigo_postal = $resultadosemanas1['codigo_postal'];
                             $id_paciente = $resultadosemanas1['id_paciente'];
 
-?>
+                            ?>
 
-                              <tr><td><span id="firstname"><?php echo $nombre_paciente.' '.$apellidos_paciente?></span></td>
-<?php
-echo "
+                        <tr>
+                          <td><span id="firstname"><?php echo $nombre_paciente . ' ' . $apellidos_paciente ?></span></td>
+                          <?php
+                                echo "
                                           <td>$edad_paciente</td>
                                           <td>$fecha_nacimiento_paciente</td>
                                           <td>$codigo_postal  </td>
                                           ";
-                            $consultasemanas1 = "SELECT COUNT(*) as total FROM paciente AS p
+                                $consultasemanas1 = "SELECT COUNT(*) as total FROM paciente AS p
 INNER JOIN atencion_medica AS a
 ON a.id_paciente=p.id_paciente
-WHERE p.id_paciente=$id_paciente
+WHERE p.id_paciente='$id_paciente'
                                            ";
-                            $resultadosemanas1 = $mysqliL->query($consultasemanas1);
+                                $resultadosemanas1 = $mysqliL->query($consultasemanas1);
 
 
 
 
-                            while ($resultadosemanas1w = $resultadosemanas1->fetch_assoc()) {
-                              $total = $resultadosemanas1w['total'];
-                              echo "<td>$total</td>";
-                            }
-                            echo "
+                                while ($resultadosemanas1w = $resultadosemanas1->fetch_assoc()) {
+                                  $total = $resultadosemanas1w['total'];
+                                  echo "<td>$total</td>";
+                                }
+                                echo "
                                             <td>$fecha_creacion</td>";
-?>
-                                      <td>       <a href="editar_paciente.php?id_paciente=<?php echo $id_paciente ?>"><center><i class='far fa-edit'></i></center>  </a></td>
+                                ?>
+                          <td> <a href="editar_paciente.php?id_paciente=<?php echo $id_paciente ?>">
+                              <center><i class='far fa-edit'></i></center>
+                            </a></td>
 
-<?php echo "
+                        <?php echo "
 
                                             </tr>";
-                          }
+                            }
 
 
-                          ?>
+                            ?>
 
 
 
@@ -300,8 +305,8 @@ WHERE p.id_paciente=$id_paciente
       <?php
           include('pie.php');
           ?>
-          <?php include('modal.php'); ?>
-          <script src="custom.js"></script>
+      <?php include('modal.php'); ?>
+      <script src="custom.js"></script>
       <!-- End Footer area-->
       <!-- jquery
 		============================================ -->
@@ -366,10 +371,10 @@ WHERE p.id_paciente=$id_paciente
 
       <!-- tawk chat JS
 		============================================ -->
-<?php include('js.php');?>
-</body>
+      <?php include('js.php'); ?>
+  </body>
 
-</html>
+  </html>
 <?php
   }
 } else {

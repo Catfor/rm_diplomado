@@ -18,7 +18,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="logo-area">
-                            <a href="#"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
+                            <a href="sistema.php"><img src="../img/logo/LOGO-BLANCO.webp" height="100" /></a>
 
                         </div>
                     </div>
@@ -26,15 +26,15 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                         <div class="header-top-menu">
                             <ul class="nav navbar-nav notika-top-nav">
 
-                                <li class="nav-item dropdown">
-
-
+                                <li>
+                                    <div class="chip">
+                                        <img <?php if($_SESSION['genero'] === 'H'){ echo "src='./img/avatar_h.png' "; }else{ echo "src='./img/avatar_m.png' ";} ?> alt="Person" width="96" height="96">
+                                        <b><?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b>
+                                    </div>
                                 </li>
                                 <li class="nav-item dropdown">
 
                                     <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
-                                    <p style='color:white;'> Usuario: <b>
-                                            <?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
 
                                 </li>
                             </ul>
@@ -168,7 +168,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                                     <i class="notika-icon notika-windows"></i>
                                                 </div>
                                                 <div class="breadcomb-ctn" style="margin: auto 15px;">
-                                                    <h2>Pacientes Registrados Medicos</h2>
+                                                    <h2>Atenciones Médicas Registradas</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -207,7 +207,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                             <tbody>
                                                 <?php
 
-                                                            $consultasemanas = "SELECT DISTINCT ct.id_atencion as i,p.id_paciente ,p.id_paciente as p, 	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente WHERE  ct.id_usuario='$id'";
+                                                            $consultasemanas = "SELECT DISTINCT ct.id_atencion as i,p.id_paciente ,p.id_paciente as p, 	p.nombre_paciente, 	p.apellidos_paciente, 	ct.id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente";
                                                             $resultadosemanas = $mysqliL->query($consultasemanas);
 
                                                             while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
@@ -239,8 +239,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                                                                 echo "</td>";
                                                                 echo "<td>";
                                                                 //Papanicolaou
-                                                                $queryPapanicolaou = "SELECT 	c.id_paciente from 	ctrl_paciente_estudios c WHERE  c.id_paciente ='$id_paciente'; ";
-                                                                if ($resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou)) {
+                                                                $queryPapanicolaou = "SELECT 	c.id_paciente from 	ctrl_paciente_estudios c WHERE  c.id_paciente ='$id_paciente' AND c.id_tipo_estudio in (2,4,5,6,7); ";
+                                                                $resultSetPapanicolaou = $mysqliL->query($queryPapanicolaou);
+                                                                if ($resultSetPapanicolaou->num_rows > 0) {
                                                                     echo "<a href='Etiquetas/etiquetas_estudios.php?id_paciente=$id_paciente' target='_blank'>Ver </a>";
                                                                 }
                                                                 echo "</td>";
@@ -573,7 +574,7 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente = '$id
                                             <tbody>
                                                 <?php
 
-                                                            $consultasemanas = "SELECT DISTINCT ct.id_usu_pat,ct.id_atencion as i,p.id_paciente ,p.id_paciente as p, 	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente WHERE id_usu_pat='$id'";
+                                                            $consultasemanas = "SELECT DISTINCT ct.id_usu_pat,ct.id_atencion as i,p.id_paciente ,p.id_paciente as p, 	p.nombre_paciente, 	p.apellidos_paciente, 	ct.id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente WHERE id_usu_pat='$id'";
                                                             $resultadosemanas = $mysqliL->query($consultasemanas);
 
                                                             while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
@@ -635,7 +636,7 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente = '$id
                                                                             //echo "No Esta Asignado Para Este Usuario";
                                                                         } else  if ($estatus_patologo == 1 and $estatus_supervisor == 1 and $id_usu_pat != $id) {
                                                                             //echo "No Esta Asignado Para Este Usuario";
-                                                                        } else if(isset($id_estudio_resultado)){
+                                                                        } else if (isset($id_estudio_resultado)) {
                                                                             echo   "<div><a href='pdfpzas/app/reportes/index.php?resultado=$id_estudio_resultado&id_paciente=$id_paciente&id_estudio=$id_estudiopaps&id_tipo_estudio=$id_tipo_estudiopaps&id_usuario=$id_usuariopaps&id_atencion=$id_atencionpaps&id_usuario=$id_usuariopaps&clasificacion_medico=$clasificacion_medicopaps' >Reporte Paps</a></div>";
                                                                         }
                                                                     }
@@ -1035,7 +1036,7 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente = '$id
                                             <tbody>
                                                 <?php
 
-                                                            $consultasemanas = "SELECT DISTINCT ct.id_atencion as i,p.id_paciente ,p.id_paciente as p, 	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente WHERE  ct.id_usuario='$id'";
+                                                            $consultasemanas = "SELECT DISTINCT ct.id_atencion as i,p.id_paciente ,p.id_paciente as p, 	p.nombre_paciente, 	p.apellidos_paciente, 	ct.id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente WHERE  ct.id_usuario='$id'";
                                                             $resultadosemanas = $mysqliL->query($consultasemanas);
 
                                                             while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {
@@ -1181,7 +1182,7 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente = '$id
                                                 <?php
 
                                                             $consultasemanas = "SELECT DISTINCT ct.id_usu_pat,CONCAT(u.nombre_usuario,' ',u.apellidos_usuario) AS asignado,ct.id_usu_pat,ct.id_atencion as i,p.id_paciente ,p.id_paciente as p,
-                                          	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion,
+                                          	p.nombre_paciente, 	p.apellidos_paciente, 	ct.id_atencion,
                                           	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p inner JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente
                                             INNER JOIN usu_me AS u
                                             ON u.id_usuario=ct.id_usu_pat
@@ -1435,7 +1436,7 @@ e.id_estudio = c.id_estudio 	AND c.id_tipo_estudio = 7 	AND c.id_paciente = '$id
                                             <tbody>
                                                 <?php
 
-                                                            $consultasemanas = "SELECT DISTINCT ct.id_usu_pat,ct.id_atencion as i,p.id_paciente ,p.id_paciente as p, 	p.nombre_paciente, 	p.apellidos_paciente, 	ifnull(lpad(ct.id_atencion,4,'0000'),'-') as id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente WHERE id_usu_pat='$id' ";
+                                                            $consultasemanas = "SELECT DISTINCT ct.id_usu_pat,ct.id_atencion as i,p.id_paciente ,p.id_paciente as p, 	p.nombre_paciente, 	p.apellidos_paciente, 	ct.id_atencion, 	p.fecha_nacimiento_paciente, 	p.edad_paciente FROM 	paciente p right JOIN ctrl_paciente_estudios ct ON ct.id_paciente = p.id_paciente WHERE id_usu_pat='$id' ";
                                                             $resultadosemanas = $mysqliL->query($consultasemanas);
 
                                                             while ($resultadosemanas1 = $resultadosemanas->fetch_assoc()) {

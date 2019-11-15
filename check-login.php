@@ -11,7 +11,7 @@ if (!empty($password) && !empty($email)) {
 
 	//if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
-		$result123 = mysqli_query($mysqliL, "SELECT apellidos_usuario,rol,id_usuario,nick,nombre_usuario,activo,correo_general, contra
+		$result123 = mysqli_query($mysqliL, "SELECT apellidos_usuario,rol,id_usuario,nick,nombre_usuario,activo,correo_general, contra,genero
 	    FROM usu_me WHERE correo_general = '$email' and contra='$password' and activo=1");
 
 
@@ -22,6 +22,7 @@ if (!empty($password) && !empty($email)) {
 		$id_usuario = $rowwe['id_usuario'];
 		$nombre_usuario = $rowwe['nombre_usuario'];
 		$rol = $rowwe['rol'];
+		$genero = $rowwe['genero'];
 		$total = $result123->num_rows;
 
 
@@ -32,9 +33,9 @@ if (!empty($password) && !empty($email)) {
 
 
 			$sql11 = "INSERT INTO bitacora_ingreso
-				  (id_u,fecha_ingreso)
+				  (id_u,fecha_ingreso,accion)
 				  VALUES
-				  ('$id_usuario','$hoy')";
+				  ('$id_usuario','$hoy','check-login')";
 			$resultaq = $mysqliL->query($sql11);
 			$id_bitacora = $mysqliL->insert_id;
 
@@ -47,10 +48,11 @@ if (!empty($password) && !empty($email)) {
 				$_SESSION['nick'] = $rowwe['nick'];
 				$_SESSION['id_usuario'] = $rowwe['id_usuario'];
 				$_SESSION['correo_general'] = $rowwe['correo_general'];
-				$_SESSION['nombre_usuario'] = $rowwe['nombre_usuario'];
+				$_SESSION['nombre_usuario'] =  ucwords(strtolower($rowwe['nombre_usuario']));
 				$_SESSION['nick'] = $rowwe['nick'];
 				$_SESSION['rol'] = $rowwe['rol'];
-				$_SESSION['apellidos_usuario'] = $rowwe['apellidos_usuario'];
+				$_SESSION['genero'] = strtoupper($rowwe['genero']);
+				$_SESSION['apellidos_usuario'] = ucwords(strtolower( $rowwe['apellidos_usuario']));
 				header('Location: Diplomado/Sistema.php');
 			}
 		}

@@ -10,7 +10,7 @@ $idu=$_SESSION['id_usuario'];
 date_default_timezone_set('America/Mexico_City');
 $hoy = date("Y-m-d H:i:s");
 $cierrasession = "INSERT INTO  bitacora_ingreso ( fecha_ingreso, accion,id_u)
-        VALUES ('$hoy','cerro la session','$idu')";
+        VALUES ('$hoy','Cerro session','$idu')";
 $cerrar = $mysqliL->query($cierrasession);
 echo $cierrasession;
 //////////////////////

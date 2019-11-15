@@ -3,6 +3,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
   <!doctype html>
   <html class="no-js" lang="">
   <link rel="shortcut icon" type="image/x-icon" href="../img/logo/corona.png">
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -11,18 +12,20 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
         <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="logo-area">
-              <a href="#"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
+              <a href="sistema.php"><img src="../img/logo/LOGO-BLANCO.webp" height="100" /></a>
             </div>
           </div>
           <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <div class="header-top-menu">
               <ul class="nav navbar-nav notika-top-nav">
-                <li class="nav-item dropdown">
+                <li>
+                  <div class="chip">
+                    <img <?php if($_SESSION['genero'] === 'H'){ echo "src='./img/avatar_h.png' "; }else{ echo "src='./img/avatar_m.png' ";} ?> alt="Person" width="96" height="96">
+                    <b><?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b>
+                  </div>
                 </li>
                 <li class="nav-item dropdown">
                   <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
-                  <p style='color:white;'> Usuario: <b>
-                      <?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
                 </li>
               </ul>
             </div>
@@ -34,6 +37,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
       include('css.php');
       ?>
   </head>
+
   <body>
     <div class="loader">
       <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
@@ -111,8 +115,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
       <!-- Mobile Menu start -->
       <?php
           include('menu.php');
-          $idpaciente = $_GET['id_paciente'];
-          $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$idpaciente");
+          $id_paciente = $_GET['id_paciente'];
+          $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
           $rowwe = mysqli_fetch_assoc($result123);
           $nombrepaciente = ucwords(strtolower($rowwe['nombre_paciente']));
           $apellidospaciente = ucwords(strtolower($rowwe['apellidos_paciente']));
@@ -121,7 +125,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) { ?>
           $re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
 INNER JOIN atencion_medica AS a
 ON a.id_paciente=p.id_paciente
-WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
+WHERE a.id_paciente='$id_paciente' ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           $total = $re->num_rows;
           $ro = mysqli_fetch_assoc($re);
           $edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
@@ -353,17 +357,17 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                     </div>
                   </div><br><br>
                   <form id="f" action='guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
-                    <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente ?>">
+                    <input type="hidden" class="form-control" name="id_paciente" value="<?php echo $id_paciente ?>">
                     <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id ?>">
                     <div class="row fila">
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="edad_inicio_menstruacion" class="form-control">
                           <option value="">Edad de Inicio de menstruación</option>
-                        <?php 
-                          for ($i = 1; $i <= 99; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+                          <?php
+                              for ($i = 1; $i <= 99; $i++) {
+                                echo  "<option value='$i'>$i</option>";
+                              }
+                              ?>
                         </select>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -392,22 +396,22 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="edad_inicio_vida_sexual" class="form-control">
                           <option value="">Edad de inicio de vida sexual</option>
-                          <?php 
-                            for ($i = 1; $i <= 120; $i++) {
-                              echo  "<option value='$i'>$i</option>";
-                            }
-                          ?>
+                          <?php
+                              for ($i = 1; $i <= 120; $i++) {
+                                echo  "<option value='$i'>$i</option>";
+                              }
+                              ?>
                         </select>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="parejas_sexuales" class="form-control">
                           <option value="">Parejas sexuales</option>
-                          
-                        <?php 
-                          for ($i = 1; $i <= 30; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+
+                          <?php
+                              for ($i = 1; $i <= 30; $i++) {
+                                echo  "<option value='$i'>$i</option>";
+                              }
+                              ?>
                         </select>
                       </div>
                     </div>
@@ -415,34 +419,34 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="gestas" class="form-control">
                           <option value="">Gestas</option>
-                          
-                        <?php 
-                          for ($i = 1; $i <= 14; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+
+                          <?php
+                              for ($i = 1; $i <= 14; $i++) {
+                                echo  "<option value='$i'>$i</option>";
+                              }
+                              ?>
                         </select>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="para" class="form-control">
                           <option value="">Para</option>
-                          
-                        <?php 
-                          for ($i = 1; $i <= 14; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+
+                          <?php
+                              for ($i = 1; $i <= 14; $i++) {
+                                echo  "<option value='$i'>$i</option>";
+                              }
+                              ?>
                         </select>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="cesareas" class="form-control">
                           <option value="">Césareas</option>
-                          
-                        <?php 
-                          for ($i = 1; $i <= 14; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+
+                          <?php
+                              for ($i = 1; $i <= 14; $i++) {
+                                echo  "<option value='$i'>$i</option>";
+                              }
+                              ?>
                         </select>
                       </div>
                     </div>
@@ -450,12 +454,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <select name="abortos" class="form-control">
                           <option value="">Abortos</option>
-                          
-                        <?php 
-                          for ($i = 1; $i <= 14; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+
+                          <?php
+                              for ($i = 1; $i <= 14; $i++) {
+                                echo  "<option value='$i'>$i</option>";
+                              }
+                              ?>
                         </select>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -1552,10 +1556,12 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
         iniciaTransmicion().then(getDevices).then(gotDevices).then(detenTransmision).then(function() {
           $(".loader").fadeOut()
         });
+
         function getDevices() {
           // AFAICT in Safari this only gets default devices until gUM is called :/
           return navigator.mediaDevices.enumerateDevices();
         }
+
         function gotDevices(deviceInfos) {
           window.deviceInfos = deviceInfos; // make available to console
           var dev = 1;
@@ -1571,6 +1577,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
             }
           }
         }
+
         function iniciaTransmicion() {
           if (window.stream) {
             window.stream.getTracks().forEach(track => {
@@ -1601,6 +1608,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           return navigator.mediaDevices.getUserMedia(constraints).
           then(gotStream).catch(handleError);
         }
+
         function gotStream(stream) {
           window.stream = stream; // make stream available to console
           audioSelect.selectedIndex = [...audioSelect.options].
@@ -1609,9 +1617,11 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           findIndex(option => option.text === stream.getVideoTracks()[0].label);
           videoElement.srcObject = stream;
         }
+
         function handleError(error) {
           console.error('Error > ', error);
         }
+
         function detenTransmision() {
           if (window.stream) {
             window.stream.getTracks().forEach(function(track) {
@@ -1667,6 +1677,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           formulario.appendChild(input);
           contadorCanvas = contadorCanvas + 1;
         }
+
         function capturaFoto() {
           var formulario = document.getElementById('f');
           var img = document.createElement('img');
@@ -1708,6 +1719,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           formulario.appendChild(input);
           contadorCanvas = contadorCanvas + 1;
         };
+
         function handleSuccess(stream) {
           screenshotButton.disabled = false;
           videoElement.srcObject = stream;
@@ -1773,6 +1785,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           });
           donax.value = posDona.join("|");
         };
+
         function eliminaCoordVulva(e) {
           var divTemp = $(e).parent();
           var inputTemp = $(e).prev();
@@ -1808,7 +1821,8 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           event.preventDefault(); //prevent default action
           var post_url = $(this).attr("action"); //get form action url
           var request_method = $(this).attr("method"); //get form GET/POST method
-          var form_data = $(this).serialize(); //Encode form elements for submission
+          var form_data = $(this).serialize().replace(/-/gi, '_'); //Encode form elements for submission
+          console.debug(form_data);
           $.ajax({
             url: post_url,
             type: request_method,
@@ -1833,6 +1847,7 @@ WHERE a.id_paciente=$idpaciente ORDER BY a.id_atencion_medica  DESC LIMIT 1");
           include('pie.php');
           ?>
   </body>
+
   </html>
 <?php
   }

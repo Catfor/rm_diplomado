@@ -11,19 +11,20 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="logo-area">
-                        <a href="Sistema.php"><img src="../img/logo/LOGO-BLANCO.png" height="100" /></a>
+                        <a href="Sistema.php"><img src="../img/logo/LOGO-BLANCO.webp" height="100" /></a>
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="header-top-menu">
                         <ul class="nav navbar-nav notika-top-nav">
-                            <li class="nav-item dropdown">
-
+                            <li>
+                                <div class="chip">
+                                    <img <?php if($_SESSION['genero'] === 'H'){ echo "src='./img/avatar_h.png' "; }else{ echo "src='./img/avatar_m.png' ";} ?> alt="Person" width="96" height="96">
+                                    <b><?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b>
+                                </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
-                                <p style='color:white;'> Usuario: <b>
-                                        <?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
                             </li>
                         </ul>
                     </div>
@@ -34,7 +35,6 @@
     <?php
     include('css.php');
     ?>
-
 </head>
 
 <body>
@@ -113,7 +113,7 @@
             <!-- Contact area Start-->
             <div class="contact-area">
                 <div class="container">
-                    <div class="row contact-list">
+                    <!--<div class="row contact-list">
                         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12" style="padding-left:55px;">
                             <div class="fila">
                                 <h4>Bienvenido A Diplomado <span class="bread-ntd">Reina Madre</span></h4>
@@ -131,39 +131,53 @@
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                    <div style="text-align:center;">
+                            <div style="text-align:center;">
 
-                                        <img src="../img/user/logo.png" width="250" height="150" />
-                                    </div>
+                                <img src="../img/user/logo.png" width="250" height="150" />
+                            </div>
 
                         </div>
 
-                    </div>
+                    </div>-->
                     <div class="row contact-list">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="overflow: auto;">
                             <div style="border: solid 1px #f6f8fa;width:100%;margin-bottom: -1px;text-align:center;">
                                 <h3 style="margin-top: 15px;">Historico Del Diplomado</h3>
                             </div>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered tabla-historial">
                                 <thead>
-                                    <th>Fecha
-                                    </th>
-                                    <th>Registrados
-                                    </th>
-                                    <th>Atendidos
-                                    </th>
-                                    <th>Biopsias
-                                    </th>
+                                    <tr>
+                                        <th rowspan="2">Salida
+                                        </th>
+                                        <th rowspan="2">Fecha
+                                        </th>
+                                        <th rowspan="2">Pacientes / Registrados
+                                        </th>
+                                        <th colspan="4">Biopsias
+                                        </th>
+                                        <th rowspan="2">Paps
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Cervix
+                                        </th>
+                                        <th>Endome
+                                        </th>
+                                        <th>Vagino
+                                        </th>
+                                        <th>Vulva
+                                        </th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                            $dash = $mysqliL->query("SELECT v_dashboard_enfermera.registrados, v_dashboard_enfermera.atendidos, v_dashboard_enfermera.fecha_actividad, v_dashboard_enfermera.biopsias FROM v_dashboard_enfermera");
-                                            if($dash->num_rows > 0){
+                                            $dash = $mysqliL->query("SELECT s.id_salida,UPPER(s.nombre_salida) AS salida,s.fecha_salida,count(DISTINCT a.id_paciente) AS pacientes,count(IF (c.id_tipo_estudio=2 AND c.estatus_patologo=0,1,NULL)) AS cervix_pendientes,count(IF (c.id_tipo_estudio=2 AND c.estatus_patologo=1,1,NULL)) AS cervix_recibidas,count(IF (c.id_tipo_estudio=4 AND c.estatus_patologo=0,1,NULL)) AS endometrio_pendientes,count(IF (c.id_tipo_estudio=4 AND c.estatus_patologo=1,1,NULL)) AS endometrio_recibidas,count(IF (c.id_tipo_estudio=5 AND c.estatus_patologo=0,1,NULL)) AS vagino_pendientes,count(IF (c.id_tipo_estudio=5 AND c.estatus_patologo=1,1,NULL)) AS vagino_recibidas,count(IF (c.id_tipo_estudio=6 AND c.estatus_patologo=0,1,NULL)) AS vulva_pendientes,count(IF (c.id_tipo_estudio=6 AND c.estatus_patologo=1,1,NULL)) AS vulva_recibidas,count(IF (c.id_tipo_estudio=7 AND c.estatus_patologo=0,1,NULL)) AS paps_pendientes,count(IF (c.id_tipo_estudio=7 AND c.estatus_patologo=1,1,NULL)) AS paps_recibidas FROM paciente p LEFT JOIN atencion_medica a ON a.id_paciente=p.id_paciente LEFT JOIN salidas s ON date_format(s.fecha_salida,'%Y-%m-%d')=date_format(a.fecha_atencion_medica,'%Y-%m-%d') LEFT JOIN ctrl_paciente_estudios c ON c.id_atencion=a.id_atencion_medica GROUP BY fecha_salida");
+                                            if ($dash->num_rows > 0) {
                                                 while ($dashinfo = $dash->fetch_assoc()) {
-                                                    echo '<tr><td>' . $dashinfo["fecha_actividad"] . '</td><td>' . $dashinfo["registrados"] . '</td><td>' . $dashinfo["atendidos"] . '</td><td>' . $dashinfo["biopsias"] . '</td></tr>';
+                                                    echo '<tr><td>' . $dashinfo["salida"] . '</td><td>' . $dashinfo["fecha_salida"] . '</td><td>' . $dashinfo["pacientes"] . '</td><td>' . $dashinfo["cervix_pendientes"] . '</td><td>' . $dashinfo["endometrio_pendientes"] . '</td><td>' . $dashinfo["vagino_pendientes"] . '</td><td>' . $dashinfo["vulva_pendientes"] . '</td><td>' . $dashinfo["paps_pendientes"] . '</td></tr>';
                                                 }
-                                            }else{
-                                                echo '<tr><td colspan="4">Sin registros</td></tr>';
+                                            } else {
+                                                echo '<tr><td colspan="5">Sin registros</td></tr>';
                                             }
 
                                             ?>
@@ -174,12 +188,11 @@
                 </div>
             </div>
             <!-- Contact area End-->
-            <!-- Start Footer area--><br><br><br><br><br>
-            <?php
-                    include('pie.php');
-                    ?>
-
 </body>
+
+<?php
+    include('pie.php');
+?>
 
 </html>
 <?php

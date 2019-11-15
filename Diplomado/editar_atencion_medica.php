@@ -1,7 +1,7 @@
 <?php session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   include('../coni/Localhost.php');
-  $idpaciente = $_GET['id_paciente'];
+  $id_paciente = $_GET['id_paciente'];
   $id_atencion = $_GET['id_atencion'];
   $re3 = mysqli_query($mysqliL, "SELECT ct.id_paciente,ec.colposcopia,ec.causa,ec.cervix,ec.union_escamocolumnar,ec.zona_transformacion,
   ec.ag_criterios_intermedios,ec.ag_criterios_mayores,ec.ag_criterios_menores
@@ -15,7 +15,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   INNER JOIN estudio_colposcopico AS ec
   ON ec.id_estudio=ct.id_estudio
 
-  WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='1' ");
+  WHERE ct.id_paciente='$id_paciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='1' ");
   $ro2 = mysqli_fetch_assoc($re3);
   $colposcopia = $ro2['colposcopia'];
   $causa = $ro2['causa'];
@@ -55,18 +55,20 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <div class="row fila">
           <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="logo-area">
-              <a href="#"><img src="../img/logo/LOGO-BLANCO.png" width="130" height="100" /></a>
+              <a href="sistema.php"><img src="../img/logo/LOGO-BLANCO.webp" width="130" height="100" /></a>
             </div>
           </div>
           <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
             <div class="header-top-menu">
               <ul class="nav navbar-nav notika-top-nav">
-                <li class="nav-item dropdown">
+                <li>
+                  <div class="chip">
+                    <img <?php if($_SESSION['genero'] === 'H'){ echo "src='./img/avatar_h.png' "; }else{ echo "src='./img/avatar_m.png' ";} ?> alt="Person" width="96" height="96">
+                    <b><?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b>
+                  </div>
                 </li>
                 <li class="nav-item dropdown">
                   <a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"> Salir <span><i class="fas fa-door-open"></i></span></a>
-                  <p style='color:white;'> Usuario: <b>
-                      <?php echo ucwords($_SESSION['nombre_usuario']) . ' ' . ucwords($_SESSION['apellidos_usuario']);  ?></b></p>
                 </li>
               </ul>
             </div>
@@ -148,7 +150,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       <!-- Mobile Menu start -->
       <?php
           include('menu.php');
-          $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente=$idpaciente");
+          $result123 = mysqli_query($mysqliL, "SELECT * from paciente where id_paciente='$id_paciente'");
           $rowwe = mysqli_fetch_assoc($result123);
           $nombrepaciente = ucwords($rowwe['nombre_paciente']);
           $apellidospaciente = ucwords($rowwe['apellidos_paciente']);
@@ -157,7 +159,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           $re = mysqli_query($mysqliL, "  SELECT * FROM paciente AS p
 INNER JOIN atencion_medica AS a
 ON a.id_paciente=p.id_paciente
-WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
+WHERE a.id_paciente='$id_paciente' and a.id_atencion_medica='$id_atencion' ");
           $total = $re->num_rows;
           $ro = mysqli_fetch_assoc($re);
           $edad_inicio_menstruacion = $ro['edad_inicio_menstruacion'];
@@ -375,7 +377,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                 </div><br><br>
 
                 <form id="f1" action='editar_guardar_atencion_medica.php' method="post" enctype="multipart/form-data">
-                  <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $idpaciente; ?>">
+                  <input type="hidden" class="form-control" name="idpaciente" value="<?php echo $id_paciente; ?>">
                   <input type="hidden" class="form-control" name="id_usuario" value="<?php echo $id; ?>">
                   <input type="hidden" class="form-control" name="id_atencion" value="<?php echo $id_atencion; ?>">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -393,11 +395,11 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                       <p>Seleccion Anterior Menstruacion Fue:<?php echo $edad_inicio_menstruacion; ?></p>
                       <select name="edad_inicio_menstruacion" class="form-control">
                         <option value="<?php echo $edad_inicio_menstruacion; ?>">Seleccion Anterior Menstruacion Fue:</option>
-                        <?php 
-                          for ($i = 1; $i <= 99; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+                        <?php
+                            for ($i = 1; $i <= 99; $i++) {
+                              echo  "<option value='$i'>$i</option>";
+                            }
+                            ?>
                       </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -424,34 +426,34 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                       <p>Edad de Regla Anterior fue:<?php echo $edad_en_que_fue_su_regla; ?></p>
                       <select name="edad_en_que_fue_su_regla" class="form-control">
                         <option value="<?php echo $edad_en_que_fue_su_regla; ?>">Edad de Regla Anterior fue:</option>
-                        <?php 
-                          for ($i = 1; $i <= 99; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+                        <?php
+                            for ($i = 1; $i <= 99; $i++) {
+                              echo  "<option value='$i'>$i</option>";
+                            }
+                            ?>
                       </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <p>Edad de inicio de vida sexual elegida:<?php echo $edad_inicio_vida_sexual; ?></p>
                       <select name="edad_inicio_vida_sexual" class="form-control">
                         <option value="<?php echo $edad_inicio_vida_sexual; ?>">Edad de inicio de vida sexual elegida:</option>
-                        <?php 
-                          for ($i = 1; $i <= 99; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+                        <?php
+                            for ($i = 1; $i <= 99; $i++) {
+                              echo  "<option value='$i'>$i</option>";
+                            }
+                            ?>
                       </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <p>Seleccion Anterior de Parejas sexuales:<?php echo $edad_inicio_vida_sexual; ?></p>
                       <select name="parejas_sexuales" class="form-control">
                         <option value="<?php echo $edad_inicio_vida_sexual; ?>">Seleccion Anterior de Parejas sexuales:</option>
-                        
-                        <?php 
-                          for ($i = 1; $i <= 30; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+
+                        <?php
+                            for ($i = 1; $i <= 30; $i++) {
+                              echo  "<option value='$i'>$i</option>";
+                            }
+                            ?>
                       </select>
                     </div>
                   </div>
@@ -460,33 +462,33 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                       <p>Seleccion Ateriror Gestas Fue:<?php echo $gestas; ?></p>
                       <select name="gestas" class="form-control">
                         <option value="<?php echo $gestas; ?>">Seleccion Ateriror Gestas Fue:</option>
-                        <?php 
-                          for ($i = 1; $i <= 15; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+                        <?php
+                            for ($i = 1; $i <= 15; $i++) {
+                              echo  "<option value='$i'>$i</option>";
+                            }
+                            ?>
                       </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <p>Seleccion Anterior Para fue:<?php echo $para; ?></p>
                       <select name="para" class="form-control">
                         <option value="<?php echo $para; ?>">Seleccion Anterior Para fue:</option>
-                        <?php 
-                          for ($i = 1; $i <= 15; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+                        <?php
+                            for ($i = 1; $i <= 15; $i++) {
+                              echo  "<option value='$i'>$i</option>";
+                            }
+                            ?>
                       </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <p>Seleccion Anterior de Césareas Fue:<?php echo $cesareas; ?> </p>
                       <select name="cesareas" class="form-control">
                         <option value="<?php echo $cesareas; ?>">Seleccion Anterior de Césareas Fue:</option>
-                        <?php 
-                          for ($i = 1; $i <= 15; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+                        <?php
+                            for ($i = 1; $i <= 15; $i++) {
+                              echo  "<option value='$i'>$i</option>";
+                            }
+                            ?>
                       </select>
                     </div>
                   </div>
@@ -495,11 +497,11 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                       <p>Seleccion Anterior de Abortos Fue: <?php echo $abortos; ?> </p>
                       <select name="abortos" class="form-control">
                         <option value="<?php echo $abortos; ?>">Selecciona Abortos </option>
-                        <?php 
-                          for ($i = 1; $i <= 15; $i++) {
-                            echo  "<option value='$i'>$i</option>";
-                          }
-                        ?>
+                        <?php
+                            for ($i = 1; $i <= 15; $i++) {
+                              echo  "<option value='$i'>$i</option>";
+                            }
+                            ?>
                       </select>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -937,7 +939,7 @@ WHERE a.id_paciente=$idpaciente and a.id_atencion_medica='$id_atencion' ");
                                               $id_imagen = $resultadosemanas1['id_imagen'];
 
                                               ?>
-                                          <img src="imagesestudios/<?php echo $ruta_imagen; ?>" width="150" height="75"> <a href='eliminarimagen.php?id_paciente=<?php echo $idpaciente; ?>&id_atencion=<?php echo $id_atencion; ?>&id_imagen=<?php echo $id_imagen; ?>'>eliminar</a></img>
+                                          <img src="imagesestudios/<?php echo $ruta_imagen; ?>" width="150" height="75"> <a href='eliminarimagen.php?id_paciente=<?php echo $id_paciente; ?>&id_atencion=<?php echo $id_atencion; ?>&id_imagen=<?php echo $id_imagen; ?>'>eliminar</a></img>
                                         <?php  }   ?>
                                         <br><br> <br><br> <br><br>
                                         <h4 class="text-center">Imagenes Colposcopicas </h4>
@@ -1007,7 +1009,7 @@ INNER JOIN ctrl_paciente_estudios AS ct
 ON ct.id_paciente=a.id_paciente
 INNER JOIN estudio_papanicolau AS ep
 ON ep.id_estudio=ct.id_estudio
-WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='7' ");
+WHERE ct.id_paciente='$id_paciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='7' ");
                                 $ro2 = mysqli_fetch_assoc($re4);
                                 $antecedente_cancer = $ro2['antecedente_cancer'];
                                 $antecedente_infeccion_vagina = $ro2['antecedente_infeccion_vagina'];
@@ -1107,7 +1109,7 @@ INNER JOIN ctrl_paciente_estudios AS ct
 ON ct.id_paciente=a.id_paciente
 INNER JOIN estudio_biopsia_cervix AS ep
 ON ep.id_estudio=ct.id_estudio
-                  WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='2' ");
+                  WHERE ct.id_paciente='$id_paciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='2' ");
                                               $ro2 = mysqli_fetch_assoc($re4);
                                               $senalizacion = $ro2['senalizacion'];
                                               ?>
@@ -1155,7 +1157,7 @@ INNER JOIN ctrl_paciente_estudios AS ct
 ON ct.id_paciente=a.id_paciente
 INNER JOIN estudio_vulvoscopia AS ep
 ON ep.id_estudio=ct.id_estudio
-                  WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='6' ");
+                  WHERE ct.id_paciente='$id_paciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='6' ");
                                               $ro2 = mysqli_fetch_assoc($re4);
                                               $anotaciones_vulvoscopia = $ro2['anotaciones_vulvoscopia'];
                                               ?>
@@ -1207,7 +1209,7 @@ ON ct.id_paciente=a.id_paciente
 INNER JOIN estudio_vaginoscopia AS ep
 ON ep.id_estudio=ct.id_estudio
 
-                                  WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='5' ");
+                                  WHERE ct.id_paciente='$id_paciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='5' ");
                                                     $ro2 = mysqli_fetch_assoc($re4);
                                                     $anotaciones_vaginoscopia = $ro2['anotaciones_vaginoscopia'];
                                                     $estudio_solicitar_vaginoscopia = $ro2['estudio_solicitar_vaginoscopia'];
@@ -1247,7 +1249,7 @@ ON ct.id_paciente=a.id_paciente
 INNER JOIN estudio_biopsia_endometrio AS ep
 ON ep.id_estudio=ct.id_estudio
 
-                WHERE ct.id_paciente='$idpaciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='4' ");
+                WHERE ct.id_paciente='$id_paciente' AND ct.id_atencion='$id_atencion'  AND ct.id_tipo_estudio='4' ");
                                             $ro2 = mysqli_fetch_assoc($re4);
                                             $observaciones_endometrio = $ro2['observaciones_endometrio'];
                                             ?>

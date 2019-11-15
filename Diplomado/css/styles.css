@@ -304,3 +304,60 @@ body {
 	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);
 	background-color: #a25cbf;
 }
+
+#circulo {
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    background: red;
+}
+
+.tabla-historial th {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+.tabla-historial tr td {
+    text-align: center;
+}
+
+.tabla-historial tbody tr:hover {
+    background-color: #a25cbf33;
+}
+
+.tabla-historial tr td:first-child {
+    text-align: left;
+}
+
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #ed80a8;
+    color: white;
+}
+
+.chip img {
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.header-top-menu {
+    padding: 40px 0px;
+}
+
+.sistema-logout{
+    padding-top: 0px;
+}
+
+.sistema-logout a{
+    padding: 0px;
+}
